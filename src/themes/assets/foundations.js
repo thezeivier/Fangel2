@@ -1,30 +1,37 @@
-const colors = {
+export const colors = {
   background: {
-    gradient:'linear-gradient(180deg, #02131F 0%, #04061C 100%)',
-    black: '#04061C',
-    blackHome: 'linear-gradient(180deg, #02111D 0%, #04061C 100%)',
+    gradientDark:'linear-gradient(180deg, #02131F 0%, #04061C 100%)',
+    gradientLight: 'linear-gradient(180deg, #F6F3EF 0%, #D7DBFC 100%)',
   },
   color: {
-    gray: '#AEAEAE',
     danger: '#EB4444',
-    black: '#1F1F24',
     green: '#19BF16',
+    smallText:{
+      grayDark: '#AEAEAE',
+      grayLight: '#333333',
+    },
     brand: {
-      solid: '#E9760D',
-      transparent: 'rgba(233, 118, 13, 0.8)',
+      solidDark: '#E9760D',
+      solidLight: '#143895',
+      transparentDark: 'rgba(233, 118, 13, 0.8)',
+      transparentLight: 'rgba(20, 56, 149, 0.8)',
     },
     white: {
       solid: '#EFF0F7',
       transparent: 'rgba(239, 240, 247, 0.8)',
     },
+    black :{
+      solid:'#1F1F24',
+      transparent:'rgba(31, 31, 36, 0.8)',
+    },
     form: {
-      solid: '#0F1123',
-      transparent: 'rgba(27, 29, 51, 0.46)',
+      transparentDark: 'rgba(27, 29, 51, 0.46)',
+      transparentLight: 'rgba(27, 29, 51, 0.08)',
     },
   },
 }
 
-const fonts = {
+export const fonts = {
   primaryFont: 'Spartan',
   seconaryFont: 'Poppins',
   weight: {
@@ -36,5 +43,3 @@ const fonts = {
     bold: 700,
   },
 }
-
-export default {colors, fonts}
