@@ -28,6 +28,10 @@ export const colors = {
       transparentDark: 'rgba(27, 29, 51, 0.46)',
       transparentLight: 'rgba(27, 29, 51, 0.08)',
     },
+    card: {
+      transparentDark: 'rgba(27, 29, 51, 0.35)',
+      transparentLight: 'rgba(27, 29, 51, 0.05)'
+    }
   },
 }
 
