@@ -32,10 +32,9 @@ function App() {
   return (
     <ThemeProvider theme={theme(mode)}>
       <>
-        <GlobalStyles/>
+        <GlobalStyles />
         <Container>
-          <Landing/>
-          hola
+          <Landing />
         </Container>
       </>
     </ThemeProvider>
