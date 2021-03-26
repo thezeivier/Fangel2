@@ -2,12 +2,10 @@ import React, {useState, useEffect} from 'react'
 import GlobalStyles from './themes/GlobalStyles'
 import styled, { ThemeProvider } from 'styled-components'
 import theme from './themes/Theme'
+import Landing from './pages/Landing'
 import './App.css';
+import Container from './styles/sApp'
 
-const Prueba = styled.h1`
-  background: ${props => props.theme.background};
-  color: ${props => props.theme.textColor}
-`
 function App() {
 
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
@@ -19,6 +17,7 @@ function App() {
       localStorage.setItem("mode","light")
     }
   },[])
+
   const changeTheme = () =>{
     if(localStorage.mode === "light"){
       localStorage.setItem("mode", "dark")
@@ -28,13 +27,16 @@ function App() {
       setMode("light")
     }
   }
+
   console.log(mode)
   return (
     <ThemeProvider theme={theme(mode)}>
       <>
         <GlobalStyles/>
-        <Prueba>Hola</Prueba>
-        <button onClick={changeTheme}>Tema</button>
+        <Container>
+          <Landing/>
+          hola
+        </Container>
       </>
     </ThemeProvider>
   );
