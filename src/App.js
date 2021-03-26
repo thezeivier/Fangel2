@@ -10,7 +10,8 @@ const Prueba = styled.h1`
 `
 function App() {
 
-  const [mode, setMode] = useState("light")
+  const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
+  
   useEffect(()=>{
     if(localStorage.mode){
       setMode(localStorage.getItem("mode"))
@@ -27,7 +28,7 @@ function App() {
       setMode("light")
     }
   }
-
+  console.log(mode)
   return (
     <ThemeProvider theme={theme(mode)}>
       <>
