@@ -1,6 +1,10 @@
-import react from 'react'
-import styled from 'styled-components'
 import {colors, fonts} from './assets/foundations'
+
+localStorage.setItem("mode", 0)
+
+const mode = localStorage.mode? (localStorage.mode === "1"? true: false) :false 
+
+console.log(mode)
 
 const theme = {
   /*constant colors*/
@@ -8,13 +12,13 @@ const theme = {
   colorSuccess: colors.color.green,
 
   /*variable colors*/  
-  background: true? colors.background.gradientDark: colors.background.gradientLight,
-  textColor: true? colors.color.white.solid: colors.color.black.solid,
-  colorbrandSolid: true? colors.color.brand.solidDark: colors.color.brand.solidLight,
-  colorBrandTransparent: true? colors.color.brand.transparentDark: colors.color.brand.transparentLight,
-  inputForm: true? colors.color.form.transparentDark: colors.color.form.transparentLight,
-  smallText: true? colors.color.smallText.grayDark: colors.color.smallText.grayLight,
-  inputPlaceholder: true? colors.color.white.transparent: colors.color.black.transparent,
+  background: mode? colors.background.gradientDark: colors.background.gradientLight,
+  textColor: mode? colors.color.white.solid: colors.color.black.solid,
+  colorbrandSolid: mode? colors.color.brand.solidDark: colors.color.brand.solidLight,
+  colorBrandTransparent: mode? colors.color.brand.transparentDark: colors.color.brand.transparentLight,
+  inputForm: mode? colors.color.form.transparentDark: colors.color.form.transparentLight,
+  smallText: mode? colors.color.smallText.grayDark: colors.color.smallText.grayLight,
+  inputPlaceholder: mode? colors.color.white.transparent: colors.color.black.transparent,
 
   /*Fonts*/
   primaryFont: fonts.primaryFont,
