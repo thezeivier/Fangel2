@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import Footer from './../general/Footer'
 import { CoverPage, TitleStyledCover, TextStyledCover, ButtonsContainer,
@@ -19,8 +20,12 @@ const LadingPage = () => {
               ¿Te gusta el cine, la tecnología o hacer chacota? Conoce a personas con los mismos gustos y comparte ideas.
             </TextStyledCover>
             <ButtonsContainer>
-              <ButtonStyledCover primary standarP>Regístrate</ButtonStyledCover>
-              <ButtonStyledCover secondary standarS>Inicia sesión</ButtonStyledCover>
+              <Link to={"/register"}>
+                <ButtonStyledCover primary standarP>Regístrate</ButtonStyledCover>
+              </Link>
+              <Link to={"/login"}>
+                <ButtonStyledCover secondary standarS>Inicia sesión</ButtonStyledCover>
+              </Link>
             </ButtonsContainer>
           </Container>
         </Wrapper>

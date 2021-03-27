@@ -13,6 +13,8 @@ import ExternalLayout from './components/general/ExternalLayout'
 
 import Landing from './pages/Landing'
 import Register from './pages/signInAndUp/Register'
+import Login from './pages/signInAndUp/Login'
+import RecoverPassword from './pages/signInAndUp/RecoverPassword'
 
 function App() {
 
@@ -48,6 +50,12 @@ function App() {
             <ExternalLayout changeTheme={changeTheme}>
               <Route exact path={"/register"}>
                 <Register/>
+              </Route>
+              <Route exact path={"/login"}>
+                <Login/>
+              </Route>
+              <Route exact path={"/recover-password"}>
+                <RecoverPassword/>
               </Route>
             </ExternalLayout>
           </Switch>
