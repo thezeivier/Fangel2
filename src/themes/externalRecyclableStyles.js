@@ -189,9 +189,4 @@ export const SmallText = styled.p`
   line-height: 2.2em;
   color: ${props => props.theme.smallText};
   width: max-content;
-  
-  &:nth-child(1),
-  &:nth-child(3) {
-    margin: 0 12px 0 0;
-  }
 `
