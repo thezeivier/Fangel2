@@ -86,7 +86,7 @@ export const Button = styled.button`
 
   ${props => props.primary && css`
     background: ${props => props.theme.colorbrandSolid};
-    color: ${props => props.theme.colorbrandSolid};
+    color: ${props => props.theme.textButton};
 
     &:hover,
     &:active {
@@ -103,7 +103,6 @@ export const Button = styled.button`
     &:active {
       background: ${props => props.theme.colorHoverSecondary};
     }
-
   `}
 
   ${props => props.standarP && css`
@@ -133,26 +132,29 @@ export const Button = styled.button`
 `
 
 export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
 
-  input {
-    position: static;
-    background: ${props => props.theme.inputForm};
-    color: ${props => props.theme.textColor};
-    width: 29.5em;
-    height: 44px;
-    flex: none;
-    flex-grow: 0;
-    border: none;
-    border-radius: 20px;
-    padding-left: 21px;
-    margin: 20px auto;
-    outline: none;
-  }
+  ${props => props.center && css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `}
+`
 
-  input::placeholder {
+export const Input = styled.input`
+  position: static;
+  background: ${props => props.theme.inputForm};
+  color: ${props => props.theme.textColor};
+  width: 29.5em;
+  height: 44px;
+  flex: none;
+  flex-grow: 0;
+  border: none;
+  border-radius: 20px;
+  padding-left: 21px;
+  outline: none;
+
+  &::placeholder {
     color: ${props => props.theme.inputPlaceholder};
     font-family: ${props => props.theme.secondaryFont};
     font-style: normal;

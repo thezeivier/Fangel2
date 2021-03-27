@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components'
 import Wrapper from '../../components/general/Wrapper'
-import {ExternalsWrapper, SecondaryTitle, TextBody, Form, Button} from '../../themes/externalRecyclableStyles'
+import {ExternalsWrapper, SecondaryTitle, TextBody, Form, Input, Button} from '../../themes/externalRecyclableStyles'
 
 const Description = styled.h6`
   font-family: ${props => props.theme.secondarFont};
@@ -29,14 +29,14 @@ const Register = () => {
       <ExternalsWrapper>
         <SecondaryTitle>Regístrate para empezar</SecondaryTitle>
         <TextBody>A unirte o crear comunidades</TextBody>
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <input type="text" placeholder="Usuario" name="Username" ref={register({required: true, maxLength: 80})} />
-          <input type="text" placeholder="Correo electrónico" name="Email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
-          <input type="password" placeholder="Contraseña" name="Password" ref={register({required: true, minLength: 8, maxLength: 100})} />
-          <input type="text" placeholder="Código" name="Code" ref={register({required: true, minLength: 8, maxLength: 100})} />
+        <Form center onSubmit={handleSubmit(onSubmit)}>
+          <Input type="text" placeholder="Usuario" name="Username" ref={register({required: true, maxLength: 80})} />
+          <Input type="text" placeholder="Correo electrónico" name="Email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
+          <Input type="password" placeholder="Contraseña" name="Password" ref={register({required: true, minLength: 8, maxLength: 100})} />
+          <Input type="text" placeholder="Código" name="Code" ref={register({required: true, minLength: 8, maxLength: 100})} />
           <Description>Usa el codigo que te proporcionó la persona que te invito a su comunidad</Description>
           <p>Al registrate estas de acuerdo con los <span>Términos y Condiciones</span> y <span>Políticas de privacidad.</span></p>
-          <input type="submit" />
+          <Button primary type="submit">Registrarse</Button> 
         </Form>
       </ExternalsWrapper>
     </Wrapper>
