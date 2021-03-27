@@ -1,9 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import {Description} from './styles/sRegister'
-import {InputContainer, ButtonContainer} from './styles/sGlobalForm'
+import { Description, Contract } from './styles/sRegister'
+import { SubtitleStyled, TextStyled, FormStyled, InputStyled,
+         ButtonStyled, ContainerDesktop } from './styles/sGlobalForm'
+import Wrapper from './../../components/general/Wrapper'
+import Footer from './../../components/general/Footer'
 
-import {ExternalsWrapper, SecondaryTitle, TextBody, Form, Input, Button} from '../../themes/externalRecyclableStyles'
+import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
 
 const Register = () => {
   const { register, handleSubmit, watch, errors } = useForm();
@@ -12,29 +15,30 @@ const Register = () => {
   console.log(watch("example"))
   
   return (
-    <ExternalsWrapper externalPagePadding={'6em'}>
-      <SecondaryTitle>Regístrate para empezar</SecondaryTitle>
-      <TextBody>A unirte o crear comunidades</TextBody>
-      <Form center onSubmit={handleSubmit(onSubmit)}>
-        <InputContainer>
-          <Input type="text" placeholder="Usuario" name="Username" ref={register({required: true, maxLength: 80})} />
-        </InputContainer>
-        <InputContainer>
-          <Input type="text" placeholder="Correo electrónico" name="Email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
-        </InputContainer>
-        <InputContainer>
-          <Input type="password" placeholder="Contraseña" name="Password" ref={register({required: true, minLength: 8, maxLength: 100})} />
-        </InputContainer>
-        <InputContainer>
-          <Input special type="text" placeholder="Código de invitación" name="Code" ref={register({required: true, minLength: 8, maxLength: 100})} />
-        </InputContainer>
-          <Description>Usa el codigo que te proporcionó la persona que te invito a su comunidad</Description>
-          <p>Al registrate estas de acuerdo con los <span>Términos y Condiciones</span> y <span>Políticas de privacidad.</span></p>
-        <ButtonContainer>
-          <Button primary type="submit">Registrarse</Button> 
-        </ButtonContainer>
-      </Form>
-    </ExternalsWrapper>
+    <>
+      <Wrapper>
+        <ExternalsWrapper>
+          <ContainerDesktop>
+            <SubtitleStyled>Regístrate para empezar</SubtitleStyled>
+            <TextStyled>A unirte o crear comunidades</TextStyled>
+            <Form center onSubmit={handleSubmit(onSubmit)}>
+              <InputStyled type="text" placeholder="Usuario" name="Username" ref={register({required: true, maxLength: 80})} />
+              <InputStyled type="text" placeholder="Correo electrónico" name="Email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
+              <InputStyled type="password" placeholder="Contraseña" name="Password" ref={register({required: true, minLength: 8, maxLength: 100})} />
+              <InputStyled special type="text" placeholder="Código de invitación" name="Code" ref={register({required: true, minLength: 8, maxLength: 100})} />
+              <Description>
+                Usa el codigo que te proporcionó la persona que te invito a su comunidad
+              </Description>
+              <Contract>
+                Al registrarte estas de acuerdo con los <a>Términos y Condiciones</a> y <a>Políticas de privacidad.</a>
+              </Contract>
+              <ButtonStyled primary type="submit">Registrarse</ButtonStyled>
+            </Form>
+          </ContainerDesktop>
+        </ExternalsWrapper>
+      </Wrapper>
+      <Footer />
+    </>
   );
 }
 

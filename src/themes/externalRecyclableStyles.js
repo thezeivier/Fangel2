@@ -1,15 +1,17 @@
 import styled, { css } from 'styled-components'
 
 export const ExternalsWrapper = styled.div`
-  display: block;
   text-align: center;
-  margin: auto;
-  ${props => props.externalPagePadding && css`
-    padding-top: ${props.externalPagePadding};
-    padding-bottom: ${props.externalPagePadding};
-    padding-left: calc(50% - 14.75em);
-    padding-right: calc(50% - 14.75em);
-  `}
+  padding: 100px 0 0 0;
+
+  @media(min-width:768px) {
+    padding: 140px 14% 0 14%;
+  }
+
+  @media(min-width:1200px) {
+    padding: 140px auto 0 auto;
+    width: 1200px;
+  }
 `
 
 const standarTextMixin = css`
@@ -157,16 +159,18 @@ export const Input = styled.input`
   position: static;
   background: ${props => props.theme.inputForm};
   color: ${props => props.theme.textColor};
+
   ${props => props.special && css`
-      color: ${props => props.theme.colorbrandSolid};
-    `}
-  width: 29.5em;
+    color: ${props => props.theme.colorbrandSolid};
+  `}
+  
+  width: -webkit-fill-available;
   height: 44px;
   flex: none;
   flex-grow: 0;
   border: none;
   border-radius: 20px;
-  padding-left: 21px;
+  padding: 0 21px;
   outline: none;
 
   &::placeholder {

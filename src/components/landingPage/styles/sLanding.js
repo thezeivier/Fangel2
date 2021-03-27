@@ -58,27 +58,18 @@ export const Container = styled.div`
 
 export const TitleStyledCover = styled(PrimaryTitle) `
   margin: 0 0 30px 0;
-
-  h1 {
-    text-align: center;
-  }
+  text-align: center;
 
   @media(min-width:1200px) {
     margin: 0 0 20px 0;
-
-    h1 {
-      text-align: start;
-    }
+    text-align: start;
   }
 `
 
 
 export const TextStyledCover = styled(TextBody) `
   margin: 0 0 54px 0;
-
-  p {
-    text-align: center;
-  }
+  text-align: center;
 
   @media(min-width:1024px) {
     margin: 0 0 70px 0;
@@ -86,10 +77,7 @@ export const TextStyledCover = styled(TextBody) `
 
   @media(min-width:1200px) {
     width: 600px;
-    
-    p {
-      text-align: start;
-    }
+    text-align: start;
   }
 `
 
@@ -128,9 +116,9 @@ export const ButtonStyledCover = styled(Button) `
 
   @media(min-width:1200px) {
     margin: 0 20px 0 0;
+    width: max-content;
   }
 `
-
 
 /* Body page */
 
