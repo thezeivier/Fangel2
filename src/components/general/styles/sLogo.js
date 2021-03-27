@@ -7,7 +7,8 @@ export const LogoBox = styled.div`
 
   img {
     height: 2em;
-    margin-right: 8px;    
+    margin-right: 8px;
+    fill: ${props => props.theme.logoColor};
   }
 
   h3 {

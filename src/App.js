@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import GlobalStyles from './themes/GlobalStyles'
 import { ThemeProvider } from 'styled-components'
 import theme from './themes/Theme'
@@ -38,15 +39,19 @@ function App() {
   console.log(mode)
   return (
     <ThemeProvider theme={theme(mode)}>
-      <>
         <GlobalStyles />
         <Container>
-          <Landing changeTheme={changeTheme}/>
-          <ExternalLayout changeTheme={changeTheme}>
-            <Register/>
-          </ExternalLayout>
+          <Switch>
+            <Route exact path={"/"}>
+              <Landing changeTheme={changeTheme}/>
+            </Route>
+            <ExternalLayout changeTheme={changeTheme}>
+              <Route exact path={"/register"}>
+                <Register/>
+              </Route>
+            </ExternalLayout>
+          </Switch>
         </Container>
-      </>
     </ThemeProvider>
   );
 }
