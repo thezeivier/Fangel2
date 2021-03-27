@@ -130,3 +130,9 @@ export const ButtonContainer = styled.div`
 `
 
 /* Body page */
+
+export const ListContainer = styled.ul`
+  li {
+    
+  }
+`

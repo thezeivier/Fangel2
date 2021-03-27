@@ -1,7 +1,7 @@
 import React from 'react';
 import Wrapper from './../general/Wrapper'
-import { CoverPage, TitleContainer,TextContainer, ButtonsContainer,
-         ButtonContainer, Container } from './styles/sLanding'
+import { CoverPage, TitleContainer, TextContainer, ButtonsContainer,
+         ButtonContainer, Container, ListContainer } from './styles/sLanding'
 import { PrimaryTitle, SecondaryTitle, TextBody, Button } from './../../themes/externalRecyclableStyles'
 
 const LadingPage = () => {
@@ -41,9 +41,17 @@ const LadingPage = () => {
         <SecondaryTitle>
           Cada comunidad es un espacio unico para compartir momentos
         </SecondaryTitle>
-        <TextContainer>
+        <TextBody>
           Las comunidades creadas son efímeras haciendo que no exista despues otra igual a ella. Cada comunidad se eliminará automaticamente despues de unas horas, haciendo que estas sean únicas. Las personas pueden compartir y disfrutar sobre un tema, conocer nuevas personas y establecer conexiones con ellas.
-        </TextContainer>
+        </TextBody>
+        <ListContainer>
+          <li>
+            <p>Crea discuciones y debates sobre un tema</p>
+            <p>Organiza exposiciones o eventos</p>
+            <p>Abre un espacio para conecer personas y compartir experiencias</p>
+            <p>O simplemente haz una fiesta</p>
+          </li>
+        </ListContainer>
       </Wrapper>
     </>
   );
