@@ -91,10 +91,10 @@ const GlobalStyles = createGlobalStyle`
     background: ${props => props.theme.colorbrandSolid};
     transition: all .2s;
 
-    &:hover,
+/*     &:hover,
     &:active {
       background: ${props => props.theme.colorHoverPrimary};
-    }
+    } */
   }
 
   .secondary {

@@ -2,8 +2,16 @@ import React, {useState, useEffect} from 'react'
 import GlobalStyles from './themes/GlobalStyles'
 import { ThemeProvider } from 'styled-components'
 import theme from './themes/Theme'
-import Landing from './pages/Landing'
+
+
+
 import Container from './styles/sApp'
+/* import './App.css'; */
+
+import ExternalLayout from './components/general/ExternalLayout'
+
+import Landing from './pages/Landing'
+import Register from './pages/signInAndUp/Register'
 
 function App() {
 
@@ -33,7 +41,10 @@ function App() {
       <>
         <GlobalStyles />
         <Container>
-          <Landing changeTheme={changeTheme}/>
+          {/* <Landing changeTheme={changeTheme}/> */}
+          <ExternalLayout changeTheme={changeTheme}>
+            <Register/>
+          </ExternalLayout>
         </Container>
       </>
     </ThemeProvider>
