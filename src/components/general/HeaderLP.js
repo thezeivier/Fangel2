@@ -7,10 +7,10 @@ import { Header, Container } from './styles/sHeaderLP'
 const HeaderLP = ({changeTheme}) => {
   return (
     <Header>
-      <Wrapper changeTheme={changeTheme}>
+      <Wrapper>
         <Container>
           <Logo />
-          <DarkMode />
+          <DarkMode changeTheme={changeTheme}/>
         </Container>
       </Wrapper>
     </Header>
