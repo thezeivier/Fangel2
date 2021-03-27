@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { PrimaryTitle, SecondaryTitle, TextBody, Button } from './../../../themes/externalRecyclableStyles'
 
 /* Cover page */
 
@@ -55,7 +56,7 @@ export const Container = styled.div`
   }
 `
 
-export const TitleContainer = styled.div`
+export const TitleStyledCover = styled(PrimaryTitle) `
   margin: 0 0 30px 0;
 
   h1 {
@@ -71,7 +72,8 @@ export const TitleContainer = styled.div`
   }
 `
 
-export const TextContainer = styled.div`
+
+export const TextStyledCover = styled(TextBody) `
   margin: 0 0 54px 0;
 
   p {
@@ -121,7 +123,7 @@ export const ButtonsContainer = styled.div`
   }
 `
 
-export const ButtonContainer = styled.div`
+export const ButtonStyledCover = styled(Button) `
   margin: 0 0 16px 0;
 
   @media(min-width:1200px) {
@@ -129,10 +131,44 @@ export const ButtonContainer = styled.div`
   }
 `
 
+
 /* Body page */
 
 export const ListContainer = styled.ul`
+  margin: 0 0 40px 0;
+
   li {
-    
+    font-size: 0.97em;
+    margin: 0 0 15px 0;
+    line-height: 1.45em;
+    display: flex;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 0.5em;
+      height: 0.5em;
+      margin: 5px 10px 0 0;
+      background: ${props => props.theme.colorSuccess};
+      border-radius: 50%;
+    }
   }
+`
+
+export const Box = styled.div`
+  width: 100%;
+  height: 300px;
+  background: peru;
+`
+
+export const SubtitleStyled = styled(SecondaryTitle) `
+  margin: 60px 0 25px 0;
+`
+
+export const TextStyled = styled(TextBody) `
+  margin: 0 0 20px 0;
+`
+
+export const ButtonStyled = styled(Button) `
+  margin: 40px 0 0 0;
 `

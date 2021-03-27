@@ -28,7 +28,7 @@ export const PrimaryTitle = styled.h1`
   }
 
   @media screen and (min-width: 1024px) and (orientation : landscape) {
-    font-size: 2.67em;
+    font-size: 2.72em;
   }
 
   ${standarTextMixin}
@@ -37,8 +37,8 @@ export const PrimaryTitle = styled.h1`
 export const SecondaryTitle = styled.h2`
   font-style: normal;
   font-weight: ${props => props.theme.weight.semiMedium};
-  font-size: 25px;
-  line-height: 35px;
+  font-size: 1.7em;
+  line-height: 1.5em;
 
   @media(min-width: 1100px){
     font-size: 34px;
@@ -161,5 +161,20 @@ export const Input = styled.input`
     font-weight: ${props => props.theme.weight.light};
     font-size: 16px;
     line-height: 27px;
+  }
+`
+
+export const SmallText = styled.p`
+  font-family: ${props => props.theme.secondaryFont};
+  font-style: normal;
+  font-weight: ${props => props.theme.weight.light};
+  font-size: 0.92em;
+  line-height: 2.2em;
+  color: ${props => props.theme.smallText};
+  width: max-content;
+  
+  &:nth-child(1),
+  &:nth-child(3) {
+    margin: 0 12px 0 0;
   }
 `

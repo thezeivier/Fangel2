@@ -42,9 +42,9 @@ function App() {
         <GlobalStyles />
         <Container>
           <Landing changeTheme={changeTheme}/>
-          <ExternalLayout changeTheme={changeTheme}>
+{/*           <ExternalLayout changeTheme={changeTheme}>
             <Register/>
-          </ExternalLayout>
+          </ExternalLayout> */}
         </Container>
       </>
     </ThemeProvider>
