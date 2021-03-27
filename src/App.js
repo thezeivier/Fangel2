@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import GlobalStyles from './themes/GlobalStyles'
-import styled, { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import theme from './themes/Theme'
 import Landing from './pages/Landing'
 import './App.css';
