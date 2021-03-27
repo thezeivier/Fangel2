@@ -15,29 +15,25 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-size: 16px;
+    font-size: 13px;
     font-family: 'spartan', sans-serif;
     background: #F7FEFF;
     color: #14080E;
   }
 
-/*   @media(min-width:359px) {
+    @media(min-width:375px) {
     body {
-      font-size: 17px;
+      font-size: 14px;
     }
   }
 
-  @media(min-width:374px) {
+  @media(min-width:410px) {
     body {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 
-  @media(min-width:439px) {
-    body {
-      font-size: 20px;
-    }
-  }
+/*
 
   @media(min-width:767px) {
     body {
@@ -89,6 +85,28 @@ const GlobalStyles = createGlobalStyle`
 
   [hidden] {
     display: none;
+  }
+
+  .primary {
+    background: ${props => props.theme.colorbrandSolid};
+    transition: all .2s;
+
+    &:hover,
+    &:active {
+      background: ${props => props.theme.colorHoverPrimary};
+    }
+  }
+
+  .secondary {
+    background: transparent;
+    border: 1px solid ${props => props.theme.colorbrandSolid} !important;
+    color: ${props => props.theme.colorbrandSolid} !important;
+    transition: all .2s;
+
+    &:hover,
+    &:active {
+      background: ${props => props.theme.colorHoverSecondary};
+    }
   }
 `
 

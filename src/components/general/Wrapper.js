@@ -1,18 +1,26 @@
 import React from 'react';
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const Container = styled.div`
-  padding: ${props => props.padding};
+  padding: 0 20px;
   width: -webkit-fill-available;
+  display: ${props => props.display};
+  justify-content: space-between;
+  position: relative;
 
-  ${props => props.flex && css`
-    display: flex;
-    justify-content: space-between;
-  `}
+  @media(min-width:768px) {
+    padding: 0 5%;
+  }
+
+  @media(min-width:1200px) {
+    padding: 0;
+    width: 1200px;
+    margin: 0 auto;
+  }
 `
 
 const Wrapper = (props) => (
-  <Container padding={props.padding} flex>
+  <Container display={props.display}>
     {props.children}
   </Container>
 )

@@ -42,4 +42,13 @@ export const Container = styled.div`
     transition: .3s;
     will-change: transform;
   }
+
+  @media(min-width:768px) {
+    span {
+      margin: 0 16px 0 0;
+      width: min-content;
+      font-size: 0.89em;
+      width: max-content;
+    }
+  }
 `

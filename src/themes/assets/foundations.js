@@ -30,14 +30,21 @@ export const colors = {
     },
     card: {
       transparentDark: 'rgba(27, 29, 51, 0.35)',
-      transparentLight: 'rgba(27, 29, 51, 0.05)'
+      transparentLight: 'rgba(27, 29, 51, 0.05)',
+    },
+    hover: {
+      dark: {
+        primary: 'rgb(255 155 64 / 80%)',
+        secondary: 'rgb(35 17 0 / 45%)',
+      }
     }
   },
 }
 
 export const fonts = {
   primaryFont: 'Spartan',
-  seconaryFont: 'Poppins',
+  secondaryFont: 'Poppins',
+  buttonFont: 'Roboto',
   weight: {
     thin: 100,
     light: 300,

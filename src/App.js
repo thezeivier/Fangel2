@@ -3,7 +3,6 @@ import GlobalStyles from './themes/GlobalStyles'
 import styled, { ThemeProvider } from 'styled-components'
 import theme from './themes/Theme'
 import Landing from './pages/Landing'
-import './App.css';
 import Container from './styles/sApp'
 
 function App() {
