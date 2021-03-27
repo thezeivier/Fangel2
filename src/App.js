@@ -30,11 +30,11 @@ function App() {
 
   console.log(mode)
   return (
-    <ThemeProvider theme={theme('dark')}>
+    <ThemeProvider theme={theme(mode)}>
       <>
         <GlobalStyles />
         <Container>
-          <Landing />
+          <Landing changeTheme={changeTheme}/>
         </Container>
       </>
     </ThemeProvider>
