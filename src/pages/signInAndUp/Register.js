@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom"
 import { useForm } from 'react-hook-form';
 import { Description, Contract } from './styles/sRegister'
 import { SubtitleStyled, TextStyled, FormStyled, InputStyled,
@@ -36,6 +37,9 @@ const Register = () => {
             </Form>
           </ContainerDesktop>
         </ExternalsWrapper>
+        <Link to={"/login"}>
+          <p>¿Tienes una cuenta?</p>
+        </Link>
       </Wrapper>
       <Footer />
     </>
