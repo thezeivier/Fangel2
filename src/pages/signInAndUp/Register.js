@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components'
 import Wrapper from '../../components/general/Wrapper'
-import {ExternalsWrapper, SecondaryTitle, BodyText, Form} from '../../themes/externalRecyclableStyles'
+import {ExternalsWrapper, SecondaryTitle, TextBody, Form, Button} from '../../themes/externalRecyclableStyles'
 
 const Description = styled.h6`
   font-family: ${props => props.theme.secondarFont};
@@ -28,7 +28,7 @@ const Register = () => {
     <Wrapper padding={"5em 3em"}>
       <ExternalsWrapper>
         <SecondaryTitle>Regístrate para empezar</SecondaryTitle>
-        <BodyText>A unirte o crear comunidades</BodyText>
+        <TextBody>A unirte o crear comunidades</TextBody>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <input type="text" placeholder="Usuario" name="Username" ref={register({required: true, maxLength: 80})} />
           <input type="text" placeholder="Correo electrónico" name="Email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />

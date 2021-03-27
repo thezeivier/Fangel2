@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const ExternalsWrapper = styled.div`
   display: block;
@@ -6,35 +6,129 @@ export const ExternalsWrapper = styled.div`
   margin: auto;
 `
 
+const standarTextMixin = css`
+  ${props => props.standar && css`
+    color: ${props => props.theme.colorWhite};
+  `}
+`
+
+export const PrimaryTitle = styled.h1`
+  font-style: normal;
+  font-weight: ${props => props.theme.weight.semiMedium};
+  font-size: 2em;
+  line-height: 1.45em;
+  margin: ${props => props.margin};
+
+  @media(min-width:768px) {
+    font-size: 2.3em;
+  }
+
+  @media(min-width:768px) {
+    font-size: 2.45em;
+  }
+
+  @media screen and (min-width: 1024px) and (orientation : landscape) {
+    font-size: 2.67em;
+  }
+
+  ${standarTextMixin}
+`
+
 export const SecondaryTitle = styled.h2`
-  font-family: ${props => props.theme.primaryFont};
   font-style: normal;
   font-weight: ${props => props.theme.weight.semiMedium};
   font-size: 25px;
   line-height: 35px;
-  text-align: center;
-  flex: none;
-  margin: 0.4em auto;
 
   @media(min-width: 1100px){
     font-size: 34px;
     line-height: 45px;
   }
+
+  ${standarTextMixin}
 `
 
-export const BodyText = styled.p`
-  font-family: ${props => props.theme.secondaryFont};
+export const TextBody = styled.p`
   font-style: normal;
-  font-weight: ${props => props.theme.weight.regular};
-  font-size: 14px;
-  line-height: 24px;
-  text-align: center;
-  flex: none;
-  margin: 0.3em auto;
+  font-family: ${props => props.theme.secondaryFont};
+  font-weight: ${props => props.theme.weight.light};
+  font-size: 1.1em;
+  line-height: 1.7em;
+  margin: ${props => props.margin};
 
-  @media(min-width: 1100px){
-    font-size: 16px;
-    line-height: 27px;
+  @media(min-width:768px) {
+    font-size: 1.2em;
+  }
+
+  @media(min-width:1200px) {
+    font-size: 1.15em;
+  }
+
+  ${standarTextMixin}
+`
+
+export const Button = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 11px 48px;
+  border-radius: 30px;
+  color: ${props => props.theme.textButton};
+  font-size: 1.2em;
+  width: ${props => props.width || '100%'};
+  border: none;
+  font-family: ${props => props.theme.buttonFont};
+  font-weight: ${props => props.theme.weight.semiMedium};
+  margin: ${props => props.margin};
+  cursor: pointer;
+  transition: all .2s;
+
+  ${props => props.primary && css`
+    background: ${props => props.theme.colorbrandSolid};
+    color: ${props => props.theme.colorbrandSolid};
+
+    &:hover,
+    &:active {
+      background: ${props => props.theme.colorHoverPrimary};
+    }
+  `}
+
+  ${props => props.secondary && css`
+    background: transparent;
+    border: 1px solid ${props => props.theme.colorbrandSolid};
+    color: ${props => props.theme.colorbrandSolid};
+
+    &:hover,
+    &:active {
+      background: ${props => props.theme.colorHoverSecondary};
+    }
+
+  `}
+
+  ${props => props.standarP && css`
+    background: ${props => props.theme.colorBrandDark};
+    color: ${props => props.theme.colorDark};
+
+    &:hover,
+    &:active {
+      background: ${props => props.theme.colorHoverDarkPrimary};
+    }
+  `}
+
+  ${props => props.standarS && css`
+    background: transparent;
+    border: 1px solid ${props => props.theme.colorBrandDark};
+    color: ${props => props.theme.colorBrandDark};
+
+    &:hover,
+    &:active {
+      background: ${props => props.theme.colorHoverDarkSecondary};
+    }
+  `}
+
+  @media(min-width:1200px) {
+    font-size: 1.15em;
   }
 `
 

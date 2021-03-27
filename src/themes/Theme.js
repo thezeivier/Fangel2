@@ -6,6 +6,14 @@ const theme = (type)=> {
     /*constant colors*/
     colorAlert: colors.color.danger,
     colorSuccess: colors.color.green,
+    colorBrandDark: colors.color.brand.solidDark,
+    colorBrandLight: colors.color.brand.solidLight,
+    colorDark: colors.color.black.solid,
+    colorWhite: colors.color.white.solid,
+
+    /* Contant hovers */
+    colorHoverDarkPrimary: colors.color.hover.dark.primary,
+    colorHoverDarkSecondary: colors.color.hover.dark.secondary,
   
     /*variable colors*/  
     background: mode ? colors.background.gradientDark : colors.background.gradientLight,
@@ -24,9 +32,8 @@ const theme = (type)=> {
     /*Fonts*/
     primaryFont: fonts.primaryFont,
     secondaryFont: fonts.secondaryFont,
-    buttonFont: fonts.secondaryFont,
+    buttonFont: fonts.buttonFont,
     weight: fonts.weight,
-
   })
 }
 

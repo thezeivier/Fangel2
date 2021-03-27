@@ -41,10 +41,10 @@ function App() {
       <>
         <GlobalStyles />
         <Container>
-          {/* <Landing changeTheme={changeTheme}/> */}
-          <ExternalLayout changeTheme={changeTheme}>
+          <Landing changeTheme={changeTheme}/>
+{/*           <ExternalLayout changeTheme={changeTheme}>
             <Register/>
-          </ExternalLayout>
+          </ExternalLayout> */}
         </Container>
       </>
     </ThemeProvider>

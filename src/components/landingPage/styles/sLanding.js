@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+/* Cover page */
+
 export const CoverPage = styled.main`
   background-image: url('https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FLanding%2FBackground.png?alt=media&token=dac11772-50b8-4e35-8b27-aa7e9258fc7a');
   background-size: cover;
@@ -8,8 +10,19 @@ export const CoverPage = styled.main`
   max-height: 100vh;
   background-position-x: center;
 
+  img {
+    display: none;
+  }
+
   @media(min-width:1200px) {
     min-height: 100vh;
+
+    img {
+      display: block;
+      position: absolute;
+      width: 450px;
+      right: 0;
+    }
   }
 `
 
@@ -40,24 +53,30 @@ export const Container = styled.div`
     justify-content: center;
     align-items: flex-start;
   }
-
-  img {
-    position: absolute;
-    width: 450px;
-    right: 0;
-  }
 `
 
 export const TitleContainer = styled.div`
   margin: 0 0 30px 0;
 
+  h1 {
+    text-align: center;
+  }
+
   @media(min-width:1200px) {
     margin: 0 0 20px 0;
+
+    h1 {
+      text-align: start;
+    }
   }
 `
 
 export const TextContainer = styled.div`
   margin: 0 0 54px 0;
+
+  p {
+    text-align: center;
+  }
 
   @media(min-width:1024px) {
     margin: 0 0 70px 0;
@@ -65,6 +84,10 @@ export const TextContainer = styled.div`
 
   @media(min-width:1200px) {
     width: 600px;
+    
+    p {
+      text-align: start;
+    }
   }
 `
 
@@ -105,3 +128,5 @@ export const ButtonContainer = styled.div`
     margin: 0 20px 0 0;
   }
 `
+
+/* Body page */

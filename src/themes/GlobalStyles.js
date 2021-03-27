@@ -86,28 +86,6 @@ const GlobalStyles = createGlobalStyle`
   [hidden] {
     display: none;
   }
-
-  .primary {
-    background: ${props => props.theme.colorbrandSolid};
-    transition: all .2s;
-
-/*     &:hover,
-    &:active {
-      background: ${props => props.theme.colorHoverPrimary};
-    } */
-  }
-
-  .secondary {
-    background: transparent;
-    border: 1px solid ${props => props.theme.colorbrandSolid} !important;
-    color: ${props => props.theme.colorbrandSolid} !important;
-    transition: all .2s;
-
-    &:hover,
-    &:active {
-      background: ${props => props.theme.colorHoverSecondary};
-    }
-  }
 `
 
 export default GlobalStyles
