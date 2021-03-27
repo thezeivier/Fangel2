@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Header = styled.header`
   position: fixed;
   width: -webkit-fill-available;
+  z-index: 1000;
 `
 
 export const Container = styled.div`
