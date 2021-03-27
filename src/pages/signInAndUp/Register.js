@@ -1,22 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import styled from 'styled-components'
-import Wrapper from '../../components/general/Wrapper'
+import {Description} from './styles/sRegister'
+import {InputContainer, ButtonContainer} from './styles/sGlobalForm'
+
 import {ExternalsWrapper, SecondaryTitle, TextBody, Form, Input, Button} from '../../themes/externalRecyclableStyles'
-
-const Description = styled.h6`
-  font-family: ${props => props.theme.secondarFont};
-  color: ${props => props.theme.smallText};
-  font-style: normal;
-  font-weight: ${props => props.theme.weight.light};
-  font-size: 11px;
-  line-height: 17px;
-
-  @media(min-width: 1100px){
-    font-size: 12px;
-    line-height: 17px;
-  }
-`
 
 const Register = () => {
   const { register, handleSubmit, watch, errors } = useForm();
@@ -25,21 +12,29 @@ const Register = () => {
   console.log(watch("example"))
   
   return (
-    <Wrapper padding={"5em 3em"}>
-      <ExternalsWrapper>
-        <SecondaryTitle>Regístrate para empezar</SecondaryTitle>
-        <TextBody>A unirte o crear comunidades</TextBody>
-        <Form center onSubmit={handleSubmit(onSubmit)}>
+    <ExternalsWrapper externalPagePadding={'6em'}>
+      <SecondaryTitle>Regístrate para empezar</SecondaryTitle>
+      <TextBody>A unirte o crear comunidades</TextBody>
+      <Form center onSubmit={handleSubmit(onSubmit)}>
+        <InputContainer>
           <Input type="text" placeholder="Usuario" name="Username" ref={register({required: true, maxLength: 80})} />
+        </InputContainer>
+        <InputContainer>
           <Input type="text" placeholder="Correo electrónico" name="Email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
+        </InputContainer>
+        <InputContainer>
           <Input type="password" placeholder="Contraseña" name="Password" ref={register({required: true, minLength: 8, maxLength: 100})} />
-          <Input type="text" placeholder="Código" name="Code" ref={register({required: true, minLength: 8, maxLength: 100})} />
+        </InputContainer>
+        <InputContainer>
+          <Input special type="text" placeholder="Código de invitación" name="Code" ref={register({required: true, minLength: 8, maxLength: 100})} />
+        </InputContainer>
           <Description>Usa el codigo que te proporcionó la persona que te invito a su comunidad</Description>
           <p>Al registrate estas de acuerdo con los <span>Términos y Condiciones</span> y <span>Políticas de privacidad.</span></p>
+        <ButtonContainer>
           <Button primary type="submit">Registrarse</Button> 
-        </Form>
-      </ExternalsWrapper>
-    </Wrapper>
+        </ButtonContainer>
+      </Form>
+    </ExternalsWrapper>
   );
 }
 

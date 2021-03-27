@@ -51,7 +51,7 @@ const LadingPage = () => {
         <ButtonStyled primary>¡Quiero una invitación!</ButtonStyled>
       </Wrapper>
 
-      {/* Body page */}
+      {/* Footer page */}
       <Footer />
     </>
   );

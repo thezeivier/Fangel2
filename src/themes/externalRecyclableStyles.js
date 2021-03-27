@@ -4,6 +4,12 @@ export const ExternalsWrapper = styled.div`
   display: block;
   text-align: center;
   margin: auto;
+  ${props => props.externalPagePadding && css`
+    padding-top: ${props.externalPagePadding};
+    padding-bottom: ${props.externalPagePadding};
+    padding-left: calc(50% - 14.75em);
+    padding-right: calc(50% - 14.75em);
+  `}
 `
 
 const standarTextMixin = css`
@@ -82,6 +88,7 @@ export const Button = styled.button`
   font-weight: ${props => props.theme.weight.semiMedium};
   margin: ${props => props.margin};
   cursor: pointer;
+  outline: none;
   transition: all .2s;
 
   ${props => props.primary && css`
@@ -142,9 +149,17 @@ export const Form = styled.form`
 `
 
 export const Input = styled.input`
+  font-family: ${props => props.theme.secondaryFont};
+  font-style: normal;
+  font-weight: ${props => props.theme.weight.light};
+  font-size: 16px;
+  line-height: 27px;
   position: static;
   background: ${props => props.theme.inputForm};
   color: ${props => props.theme.textColor};
+  ${props => props.special && css`
+      color: ${props => props.theme.colorbrandSolid};
+    `}
   width: 29.5em;
   height: 44px;
   flex: none;
@@ -156,11 +171,9 @@ export const Input = styled.input`
 
   &::placeholder {
     color: ${props => props.theme.inputPlaceholder};
-    font-family: ${props => props.theme.secondaryFont};
-    font-style: normal;
-    font-weight: ${props => props.theme.weight.light};
-    font-size: 16px;
-    line-height: 27px;
+    ${props => props.special && css`
+      color: ${props => props.theme.colorBrandTransparent};
+    `}
   }
 `
 
