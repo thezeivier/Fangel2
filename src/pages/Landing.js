@@ -1,10 +1,12 @@
 import React from 'react'
-import CLadingPage from './../components/landingPage/cLadingPage'
+import LadingPageMain from './../components/landingPage/LadingPageMain'
+import HeaderLP from './../components/general/HeaderLP'
 
 const Landing = () =>{
   return(
     <>
-      <CLadingPage />
+      <HeaderLP />
+      <LadingPageMain />
     </>
   )
 }

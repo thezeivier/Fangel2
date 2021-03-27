@@ -16,12 +16,12 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'spartan', sans-serif;
     background: #F7FEFF;
     color: #14080E;
   }
 
-  @media(min-width:359px) {
+/*   @media(min-width:359px) {
     body {
       font-size: 17px;
     }
@@ -49,7 +49,7 @@ const GlobalStyles = createGlobalStyle`
     body {
       font-size: 27px;
     }
-  }
+  } */
 
   main {
     display: block;
