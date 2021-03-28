@@ -37,8 +37,7 @@ function App() {
       setMode("light")
     }
   }
-
-  console.log(mode)
+  
   return (
     <ThemeProvider theme={theme(mode)}>
         <GlobalStyles />
