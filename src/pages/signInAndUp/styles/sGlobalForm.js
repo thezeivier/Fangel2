@@ -34,6 +34,8 @@ export const ButtonStyled = styled(Button) `
 `
 export const ErrorAlert = styled.p`
   color: ${props => props.theme.colorAlert};
-  margin-top: -10px;
-  margin-bottom: 10px;
+  margin: -10px 0 15px 16px;
+  font-size: 0.8em;
+  width: -webkit-fill-available;
+  text-align: start;
 `
