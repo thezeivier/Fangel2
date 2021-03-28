@@ -12,8 +12,8 @@ const theme = (type)=> {
     colorWhite: colors.color.white.solid,
 
     /* Contant hovers */
-    colorHoverDarkPrimary: colors.color.hover.dark.primary,
-    colorHoverDarkSecondary: colors.color.hover.dark.secondary,
+    colorHoverDarkPrimary: colors.color.hover.button.dark.primary,
+    colorHoverDarkSecondary: colors.color.hover.button.dark.secondary,
   
     /*variable colors*/  
     background: mode ? colors.background.gradientDark : colors.background.gradientLight,
@@ -26,8 +26,9 @@ const theme = (type)=> {
     inputPlaceholder: mode ? colors.color.white.transparent : colors.color.black.transparent,
     cardComunity: mode ? colors.color.card.transparentDark : colors.color.card.transparentLight,
     textButton: mode ? colors.color.black.solid : colors.color.white.solid,
-    colorHoverPrimary: mode ? colors.color.hover.dark.primary : colors.color.hover.light.primary,
-    colorHoverSecondary: mode ? colors.color.hover.dark.secondary : colors.color.card.transparentLight, //falta
+    colorHoverPrimary: mode ? colors.color.hover.button.dark.primary : colors.color.hover.light.primary,
+    colorHoverSecondary: mode ? colors.color.hover.button.dark.secondary : colors.color.card.transparentLight, //falta
+    colorHoverInput: mode ? colors.color.hover.input.dark : colors.color.hover.input.light,
     colorBar: mode ? colors.color.bar.dark : colors.color.bar.light,
     colorShadow: mode ? colors.color.shadow.dark : colors.color.shadow.light,
 

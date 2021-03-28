@@ -5,6 +5,11 @@ import { SecondaryTitle, TextBody, Form,
 export const ContainerDesktop = styled.div`
   width: inherit;
 
+  @media(min-width:768px) {
+    width: 480px;
+    margin: 0 auto;
+  }
+
   @media(min-width:1200px) {
     width: 560px;
     margin: 0 auto;
@@ -14,11 +19,19 @@ export const ContainerDesktop = styled.div`
 export const SubtitleStyled = styled(SecondaryTitle) `
   margin: 0 0 10px 0;
   text-align: center;
+
+  @media(min-width:1024px) {
+    margin: 0 0 15px 0;
+  }
 `
 
 export const TextStyled = styled(TextBody) `
   margin: 0 0 30px 0;
   text-align: center;
+
+  @media(min-width:1024px) {
+    margin: 0 0 40px 0;
+  }
 `
 
 export const FormStyled = styled(Form) `
@@ -26,7 +39,7 @@ export const FormStyled = styled(Form) `
 `
 
 export const InputStyled = styled(Input) `
-  margin: 0 0 20px 0;
+  margin: 0 0 16px 0;
 `
 
 export const ButtonStyled = styled(Button) `
@@ -38,4 +51,40 @@ export const ErrorAlert = styled.p`
   font-size: 0.8em;
   width: -webkit-fill-available;
   text-align: start;
+
+  @media(min-width:1024px) {
+    font-size: 0.82em;
+  }
+`
+
+export const LinkOtherPage = styled.div`
+  font-family: ${props => props.theme.secondarFont};
+  font-style: normal;
+  font-weight: ${props => props.theme.weight.light};
+  font-size: 1em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin: 50px 0 0 0;
+  justify-content: center;
+
+  @media(min-width:1024px) {
+    margin: 60px 0 0 0;
+  }
+
+  p {
+    margin: 0 8px 0 0;
+    width: max-content;
+  }
+
+  a {
+    color: ${props => props.theme.colorbrandSolid};
+    cursor: pointer;
+    width: max-content;
+
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
+  }
 `

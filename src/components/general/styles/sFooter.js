@@ -3,6 +3,10 @@ import { SmallText } from './../../../themes/externalRecyclableStyles'
 
 export const FooterContainer = styled.footer`
   padding: 80px 0 30px;
+
+  @media(min-width:1024px) {
+    padding: 100px 0 25px;
+  }
 `
 
 export const OnlyDesktop = styled.div`

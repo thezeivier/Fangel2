@@ -33,21 +33,27 @@ export const colors = {
       transparentLight: 'rgba(27, 29, 51, 0.05)',
     },
     hover: {
-      dark: {
-        primary: 'rgb(255 155 64 / 80%)',
-        secondary: 'rgb(35 17 0 / 45%)',
+      button: {
+        dark: {
+          primary: 'rgb(255 155 64 / 80%)',
+          secondary: 'rgb(35 17 0 / 45%)',
+        },
+        light: {
+          primary: '#08205f',
+        }
       },
-      light: {
-        primary: '#08205f',
+      input: {
+        dark: '#0000005c',
+        light: '#00000026',
       }
     },
     bar: {
       dark: 'rgba(233, 118, 13, 0.5)',
-      light: 'rgba(20, 56, 149, 0.5)'
+      light: 'rgba(20, 56, 149, 0.5)',
     },
     shadow: {
       dark: 'rgba(255,255,255,0.5)',
-      light: 'rgba(20, 56, 149, 0.9)'
+      light: 'rgba(20, 56, 149, 0.9)',
     }
   },
 }
