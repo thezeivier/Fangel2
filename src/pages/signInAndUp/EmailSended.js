@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react'
-import {Link, useLocation, Redirect} from 'react-router-dom'
-import { SubtitleStyled, TextStyled, FormStyled, InputStyled,
-        ButtonStyled, ContainerDesktop, ErrorAlert } from './styles/sGlobalForm'
+import React, { useState, useEffect } from 'react'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
+import { Link, useLocation, Redirect } from 'react-router-dom'
+import { SubtitleStyled, TextStyled, ButtonStyled, LinkOtherPage } from './styles/sGlobalForm'
+import { Email } from './styles/sEmailSended'
 
 import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
 
@@ -47,11 +47,11 @@ const EmailSended = () => {
         <ExternalsWrapper>
           <SubtitleStyled>{selectedText.title}</SubtitleStyled>
           <TextStyled>Acabamos de enviar un correo eléctronico a:</TextStyled>
-          <SubtitleStyled>{location.state.email}</SubtitleStyled>
+          <Email>{location.state.email}</Email>
           <TextStyled>{selectedText.informationText}</TextStyled>
-          <Link to="/login">
-            <p>Regresar al Inicio de sesión</p>
-          </Link>
+          <LinkOtherPage>
+            <Link to={"/login"}>Regresar al Inicio de sesión</Link>
+          </LinkOtherPage>
         </ExternalsWrapper>
         <Footer/>
       </Wrapper>

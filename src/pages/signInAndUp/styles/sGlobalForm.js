@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { SecondaryTitle, TextBody, Form,
          Input, Button } from '../../../themes/externalRecyclableStyles'
 
@@ -44,6 +44,18 @@ export const InputStyled = styled(Input) `
 
 export const ButtonStyled = styled(Button) `
   width: -webkit-fill-available;
+
+  ${props => props.topSpace && css`
+    margin: 30px 0 0 0;
+
+    @media(min-width: 768px){
+      margin: 35px 0 0 0;
+    }
+
+    @media(min-width: 1024px){
+      margin: 40px 0 0 0;
+    }
+  `}
 `
 export const ErrorAlert = styled.p`
   color: ${props => props.theme.colorAlert};
