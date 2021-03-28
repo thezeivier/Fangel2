@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { PrimaryTitle, SecondaryTitle, TextBody, Button } from './../../../themes/externalRecyclableStyles'
 
 /* Cover page */
 
-export const CoverPage = styled.main`
+export const CoverPage = styled.div`
   background-image: url('https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FLanding%2FBackground.png?alt=media&token=dac11772-50b8-4e35-8b27-aa7e9258fc7a');
   background-size: cover;
   background-repeat: no-repeat;
@@ -147,16 +147,81 @@ export const Box = styled.div`
   width: 100%;
   height: 300px;
   background: peru;
+
+  @media(min-width:1200px) {
+    margin: 60px 0 0 0;
+  }
 `
 
 export const SubtitleStyled = styled(SecondaryTitle) `
   margin: 60px 0 25px 0;
+
+  @media(min-width:768px) {
+    margin: 60px 0 35px 0;
+  }
 `
 
 export const TextStyled = styled(TextBody) `
   margin: 0 0 20px 0;
+
+  @media(min-width:768px) {
+    margin: 0 0 25px 0;
+  }
 `
 
 export const ButtonStyled = styled(Button) `
   margin: 40px 0 0 0;
+
+  @media(min-width:768px) {
+    margin: 40px auto 0 auto;
+    width: 300px;
+  }
+
+  ${props => props.mobile && css`
+    display: block;
+
+    @media(min-width:1200px) {
+      display: none;
+    }
+  `}
+
+  ${props => props.desktop && css`
+    display: none;
+
+    @media(min-width:1200px) {
+      display: block;
+      margin: 40px 0 0 0;
+    }
+  `}
+`
+
+/* Desktop */
+
+export const DesktopGridRight = styled.div`
+  display: block;
+
+  @media(min-width:1200px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+  }
+`
+
+export const DesktopGridLeft = styled.div`
+  display: block;
+
+  @media(min-width:1200px) {
+    display: grid;
+    grid-template-areas: "left right";
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+
+    .left {
+      grid-area: right;
+    }
+
+    .right {
+      grid-area: left;
+    }
+  }
 `
