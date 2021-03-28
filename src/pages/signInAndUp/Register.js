@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { useForm } from 'react-hook-form';
 import { Description, Contract } from './styles/sRegister'
 import { SubtitleStyled, TextStyled, FormStyled, InputStyled,
-         ButtonStyled, ContainerDesktop } from './styles/sGlobalForm'
+         ButtonStyled, ContainerDesktop, ErrorAlert } from './styles/sGlobalForm'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 
@@ -32,17 +32,18 @@ const Register = () => {
                     required: true,
                     maxLength: {
                       value: 30,
-                      message: "El usuario debe ser menor a 30 caracteres.",
+                      message: "El usuario debe ser menor a 30 caracteres*",
                     },
                     pattern: {
                       value: /^[a-zA-Z0-9_]{5,}[a-zA-Z]+[0-9]*$/,
-                      message: "Usuario no válido o demasiado corto"
+                      message: "Usuario no válido o demasiado corto*"
                     }
                   })
                 } 
               />
-              {/* Falta posicionar */}
-              {errors.username? errors.username.message: ""} 
+              <ErrorAlert>
+                {errors.username? errors.username.message: ""}
+              </ErrorAlert>
 
               <InputStyled 
                 type="text"
@@ -53,13 +54,14 @@ const Register = () => {
                     required: true,
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "Correo electrónico inválido"
+                      message: "Correo electrónico inválido*"
                     }
                   })
                 } 
               />
-              {/* Falta posicionar */}
-              {errors.email? errors.email.message: ""} 
+              <ErrorAlert>
+                {errors.email? errors.email.message: ""} 
+              </ErrorAlert>
 
               <InputStyled 
                 type="password"
@@ -70,12 +72,14 @@ const Register = () => {
                     required: true,
                     pattern: {
                       value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                      message: "Tu contraseña es insegura."
+                      message: "Tu contraseña es insegura*"
                     }
                   })
                 } 
               />
-              {errors.password? errors.password.message: ""}
+              <ErrorAlert>
+                {errors.password? errors.password.message: ""}
+              </ErrorAlert>
 
               <InputStyled 
                 special
@@ -87,12 +91,14 @@ const Register = () => {
                     required: true,
                     pattern: {
                       value: /^(admin)?[A-Za-z\d]{12}$/i,
-                      message: "Rectifica tu código de invitación."
+                      message: "Rectifica tu código de invitación*"
                     }
                   })
                 } 
               />
-              {errors.code? errors.code.message: ""}
+              <ErrorAlert>
+                {errors.code? errors.code.message: ""}
+              </ErrorAlert>
 
               <Description>
                 Usa el codigo que te proporcionó la persona que te invito a su comunidad
