@@ -5,7 +5,7 @@ import { SubtitleStyled, TextStyled, FormStyled, InputStyled,
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 
-import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
+import { ExternalsWrapper} from '../../themes/externalRecyclableStyles'
 
 
 const EmailSended = () => {

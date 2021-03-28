@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link, Redirect } from "react-router-dom"
 import { useForm } from 'react-hook-form';
 import {RegisterWithEmail} from './algorithms/RegisterWithEmail'
@@ -22,16 +22,21 @@ import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
 
 const Register = () => {
   const auth = useAuth()
+  const firestore = useFirestore()
   const [registerComplete, setRegisterComplete] = useState(null)
   const [dataRegister, setDataRegister] = useState()
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => {
-    setDataRegister(data)
-    setRegisterComplete(RegisterWithEmail(data, auth))
+  const onSubmit = async data => {
+    let confirm = await RegisterWithEmail(data, auth)
+    if(confirm){
+      setDataRegister(data)
+    }
+    setRegisterComplete(confirm)
   }
+
   return (
     <>
-      {registerComplete?
+      {registerComplete === true?
         <Redirect to={{
           pathname: "/email-sended",
           state: { 
@@ -44,6 +49,9 @@ const Register = () => {
             <ContainerDesktop>
               <SubtitleStyled>Regístrate para empezar</SubtitleStyled>
               <TextStyled>A unirte o crear comunidades</TextStyled>
+              <ErrorAlert>
+                  {registerComplete == false? "Ya existe una cuenta con este correo*": ""}
+              </ErrorAlert>
               <Form center onSubmit={handleSubmit(onSubmit)}>
                 <InputStyled 
                   type="text"
@@ -74,8 +82,9 @@ const Register = () => {
                   ref={
                     register({
                       required: true,
+                      max: 45,
                       pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,45}$/i,
                         message: "Correo electrónico inválido*"
                       }
                     })
