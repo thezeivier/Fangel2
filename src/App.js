@@ -15,6 +15,7 @@ import Landing from './pages/Landing'
 import Register from './pages/signInAndUp/Register'
 import Login from './pages/signInAndUp/Login'
 import RecoverPassword from './pages/signInAndUp/RecoverPassword'
+import EmailSended from './pages/signInAndUp/EmailSended'
 import Quiz from './pages/Quiz'
 
 function App() {
@@ -56,6 +57,9 @@ function App() {
             </Route>
             <Route exact path={"/recover-password"}>
               <RecoverPassword/>
+            </Route>
+            <Route exact path={"/email-sended"}>
+              <EmailSended/>
             </Route>
             <Route exact path={"/quiz"}>
               <Quiz/>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import {InputContainer, ButtonContainer} from './styles/sGlobalForm'
@@ -8,9 +8,8 @@ import {ExternalsWrapper, SecondaryTitle, TextBody, Form, Input, Button} from '.
 const Login = () => {
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = data => console.log(data);
-  console.log(errors);
-  console.log(watch("example"))
-  
+  // console.log(errors);
+  // console.log(watch("example"))  
   return (
     <ExternalsWrapper externalPagePadding={'6em'}>
       <SecondaryTitle>¡Bienvenido de nuevo!</SecondaryTitle>
