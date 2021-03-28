@@ -1,12 +1,12 @@
 import React from 'react';
-import HeaderLP from './../components/general/HeaderLP'
 import QuizMain from './../components/quiz/QuizMain'
+import Footer from './../components/general/Footer'
 
 const Quiz = () => {
   return (
     <>
-      <HeaderLP />
       <QuizMain />
+      <Footer />
     </>
   );
 }

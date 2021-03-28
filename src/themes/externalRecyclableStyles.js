@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-export const ExternalsWrapper = styled.div`
+export const ExternalsWrapper = styled.main`
   text-align: center;
   padding: 100px 0 0 0;
 

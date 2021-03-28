@@ -40,6 +40,14 @@ export const colors = {
       light: {
         primary: '#08205f',
       }
+    },
+    bar: {
+      dark: 'rgba(233, 118, 13, 0.5)',
+      light: 'rgba(20, 56, 149, 0.5)'
+    },
+    shadow: {
+      dark: 'rgba(255,255,255,0.5)',
+      light: 'rgba(20, 56, 149, 0.9)'
     }
   },
 }
