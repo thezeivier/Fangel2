@@ -28,6 +28,8 @@ const theme = (type)=> {
     textButton: mode ? colors.color.black.solid : colors.color.white.solid,
     colorHoverPrimary: mode ? colors.color.hover.dark.primary : colors.color.hover.light.primary,
     colorHoverSecondary: mode ? colors.color.hover.dark.secondary : colors.color.card.transparentLight, //falta
+    colorBar: mode ? colors.color.bar.dark : colors.color.bar.light,
+    colorShadow: mode ? colors.color.shadow.dark : colors.color.shadow.light,
 
     /*Fonts*/
     primaryFont: fonts.primaryFont,

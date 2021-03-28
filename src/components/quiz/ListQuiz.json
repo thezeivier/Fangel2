@@ -1,0 +1,77 @@
+{
+  "listQuiz": [
+    {
+      "id": 1,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fanimals.png?alt=media&token=00e544a6-c4ed-470c-af97-51728db9eb16",
+      "category": "Animales"
+    }, {
+      "id": 2,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fanime.png?alt=media&token=84d8cc94-3f63-4023-86ae-82cace29e52c",
+      "category": "Anime"
+    }, {
+      "id": 3,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fculture.png?alt=media&token=59a60c61-1a9d-40ac-805f-17a4e4774847",
+      "category": "Cultura"
+    }, {
+      "id": 4,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Feducation.png?alt=media&token=50e457cf-e7da-4496-8989-74d6295ca120",
+      "category": "Educacion"
+    }, {
+      "id": 5,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Ffinances.png?alt=media&token=5597921f-28d7-41e6-9d0e-b00dfb020da2",
+      "category": "Finanzas"
+    }, {
+      "id": 6,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fgames.png?alt=media&token=74fa3477-27d1-46d0-b02c-cd8809397d9b",
+      "category": "Videojuegos"
+    }, {
+      "id": 7,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2FhacerChacota.png?alt=media&token=e05ec932-6532-4ad1-af83-afa98ccf1631",
+      "category": "Hacer chacota"
+    }, {
+      "id": 8,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fhealthy.png?alt=media&token=09e0eb7b-afbb-40a1-b930-8dd62949f68e",
+      "category": "Salud y nutrición"
+    }, {
+      "id": 9,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fliterature.png?alt=media&token=3a178b58-3b5a-460d-813f-23c583dd1cbf",
+      "category": "Literatura"
+    }, {
+      "id": 10,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fmeet.png?alt=media&token=9c4fb93c-a422-49bd-9503-0528739ace3e",
+      "category": "Conocer personas"
+    }, {
+      "id": 11,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fmovies.png?alt=media&token=d57eaf02-30ed-44c4-a6da-661ddfe48a06",
+      "category": "Películas"
+    }, {
+      "id": 12,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fmusic.png?alt=media&token=f4999bc3-d62e-4690-aa63-13e1e0c67590",
+      "category": "Musica"
+    }, {
+      "id": 13,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fnature.png?alt=media&token=3cfedf66-406e-42a3-a108-465b42705881",
+      "category": "Naturaleza"
+    }, {
+      "id": 14,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fparty.png?alt=media&token=95d8ecad-0440-4d41-8c44-cddf9febb0b4",
+      "category": "Fiesta"
+    }, {
+      "id": 15,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fpolitic.png?alt=media&token=58e8f0c7-53d5-44f6-97ea-043743fa98c2",
+      "category": "Política"
+    }, {
+      "id": 16,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fsport.png?alt=media&token=47ba9085-13b6-400c-aee5-68fae908d8e7",
+      "category": "Deportes"
+    }, {
+      "id": 17,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Ftecnology.png?alt=media&token=d58236f8-502c-41e4-a084-78d1fc0cc1b6",
+      "category": "Tecnología"
+    }, {
+      "id": 18,
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fothers.png?alt=media&token=0b986635-dbe8-4bb7-9583-59a4e7578764",
+      "category": "Otros"
+    }
+  ]
+}

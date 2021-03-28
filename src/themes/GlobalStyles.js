@@ -113,7 +113,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body::-webkit-scrollbar-thumb {
-    background-color: rgba(233, 118, 13, 0.5);
+    background-color: ${props => props.theme.colorBar};
     border-radius: 20px;
   }
 
