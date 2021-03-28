@@ -194,7 +194,7 @@ export const Input = styled.input`
   
   &:hover,
   &:focus {
-    background-color: #0000005c;
+    background-color: ${props => props.theme.colorHoverInput};
   }
 
   &::placeholder {
