@@ -32,3 +32,8 @@ export const InputStyled = styled(Input) `
 export const ButtonStyled = styled(Button) `
   width: -webkit-fill-available;
 `
+export const ErrorAlert = styled.p`
+  color: ${props => props.theme.colorAlert};
+  margin-top: -10px;
+  margin-bottom: 10px;
+`
