@@ -15,6 +15,7 @@ import Landing from './pages/Landing'
 import Register from './pages/signInAndUp/Register'
 import Login from './pages/signInAndUp/Login'
 import RecoverPassword from './pages/signInAndUp/RecoverPassword'
+import Quiz from './pages/Quiz'
 
 function App() {
 
@@ -41,25 +42,28 @@ function App() {
   console.log(mode)
   return (
     <ThemeProvider theme={theme(mode)}>
-        <GlobalStyles />
-        <Container>
-          <Switch>
-            <Route exact path={"/"}>
-              <Landing changeTheme={changeTheme}/>
+      <GlobalStyles />
+      <Container>
+        <Switch>
+          <Route exact path={"/"}>
+            <Landing changeTheme={changeTheme}/>
+          </Route>
+          <ExternalLayout changeTheme={changeTheme}>
+            <Route exact path={"/register"}>
+              <Register/>
             </Route>
-            <ExternalLayout changeTheme={changeTheme}>
-              <Route exact path={"/register"}>
-                <Register/>
-              </Route>
-              <Route exact path={"/login"}>
-                <Login/>
-              </Route>
-              <Route exact path={"/recover-password"}>
-                <RecoverPassword/>
-              </Route>
-            </ExternalLayout>
-          </Switch>
-        </Container>
+            <Route exact path={"/login"}>
+              <Login/>
+            </Route>
+            <Route exact path={"/recover-password"}>
+              <RecoverPassword/>
+            </Route>
+            <Route exact path={"/quiz"}>
+              <Quiz/>
+            </Route>
+          </ExternalLayout>
+        </Switch>
+      </Container>
     </ThemeProvider>
   );
 }

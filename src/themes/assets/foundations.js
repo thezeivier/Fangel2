@@ -36,6 +36,9 @@ export const colors = {
       dark: {
         primary: 'rgb(255 155 64 / 80%)',
         secondary: 'rgb(35 17 0 / 45%)',
+      },
+      light: {
+        primary: '#08205f',
       }
     }
   },

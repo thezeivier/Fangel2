@@ -4,9 +4,11 @@ const Container = styled.div`
   background: ${props => props.theme.background};
   color:${props => props.theme.textColor};
   height: 100%;
+  width: 100vw;
+  overflow-y: none;
 
-  @media(min-width:768px) {
-    height: 100vh;
+  @media(min-width:1200px) {
+    width: calc(100vw - 10px);
   }
 `
 

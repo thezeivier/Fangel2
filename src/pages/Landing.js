@@ -10,18 +10,14 @@ const FormatLogo = styled.div`
   }
 `
 
-const Container = styled.div`
-  background: ${props => props.theme.background};
-`
-
 const Landing = ({changeTheme}) =>{
   return(
-    <Container>
+    <>
       <FormatLogo>
         <HeaderLP changeTheme={changeTheme}/>
       </FormatLogo>
       <LadingPageMain />
-    </Container>
+    </>
   )
 }
 

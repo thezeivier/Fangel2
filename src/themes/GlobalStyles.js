@@ -19,6 +19,13 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'spartan', sans-serif;
     background: #F7FEFF;
     color: #14080E;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    background: #1F1F24;
+
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
   }
 
     @media(min-width:375px) {
@@ -85,6 +92,33 @@ const GlobalStyles = createGlobalStyle`
 
   [hidden] {
     display: none;
+  }
+
+  body::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+
+  body::-webkit-scrollbar:vertical {
+    width:10px;
+    background: #1F1F24;
+  }
+
+  body::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+  } 
+
+  body::-webkit-scrollbar:horizontal {
+    height: 10px;
+    background: #1F1F24;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: rgba(233, 118, 13, 0.5);
+    border-radius: 20px;
+  }
+
+  body::-webkit-scrollbar-track {
+    border-radius: 10px;  
   }
 `
 

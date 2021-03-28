@@ -3,7 +3,7 @@ import HeaderLP from './HeaderLP'
 import styled from 'styled-components'
 
 const ExternalLayoutWrapper = styled.div`
-  background: ${props => props.theme.background};
+  /* background: ${props => props.theme.background}; */
 `
 
 const ExternalLayout = ({changeTheme, children}) => {
