@@ -75,6 +75,24 @@ export const TextBody = styled.p`
   ${standarTextMixin}
 `
 
+export const SmallText = styled.p`
+  font-family: ${props => props.theme.secondaryFont};
+  font-style: normal;
+  font-weight: ${props => props.theme.weight.light};
+  font-size: 0.92em;
+  line-height: 2.2em;
+  color: ${props => props.theme.smallText};
+  width: max-content;
+`
+
+export const TextDetails = styled.p`
+  font-family: ${props => props.theme.secondaryFont};
+  font-style: normal;
+  font-weight: ${props => props.theme.weight.light};
+  font-size: 0.89em;
+  line-height: 2.1em;
+`
+
 export const Button = styled.button`
   display: flex;
   flex-direction: row;
@@ -135,8 +153,9 @@ export const Button = styled.button`
     }
   `}
 
-  @media(min-width:1200px) {
-    font-size: 1.15em;
+  @media(min-width:1024px) {
+    font-size: 1.218em;
+    padding: 14px 48px;
   }
 `
 
@@ -154,16 +173,11 @@ export const Input = styled.input`
   font-family: ${props => props.theme.secondaryFont};
   font-style: normal;
   font-weight: ${props => props.theme.weight.light};
-  font-size: 16px;
+  font-size: 1.1em;
   line-height: 27px;
   position: static;
   background: ${props => props.theme.inputForm};
   color: ${props => props.theme.textColor};
-
-  ${props => props.special && css`
-    color: ${props => props.theme.colorbrandSolid};
-  `}
-  
   width: -webkit-fill-available;
   height: 44px;
   flex: none;
@@ -172,6 +186,16 @@ export const Input = styled.input`
   border-radius: 20px;
   padding: 0 21px;
   outline: none;
+  transition: all .2s;
+
+  ${props => props.special && css`
+    color: ${props => props.theme.colorbrandSolid};
+  `}
+  
+  &:hover,
+  &:focus {
+    background-color: ${props => props.theme.colorHoverInput};
+  }
 
   &::placeholder {
     color: ${props => props.theme.inputPlaceholder};
@@ -179,14 +203,9 @@ export const Input = styled.input`
       color: ${props => props.theme.colorBrandTransparent};
     `}
   }
-`
 
-export const SmallText = styled.p`
-  font-family: ${props => props.theme.secondaryFont};
-  font-style: normal;
-  font-weight: ${props => props.theme.weight.light};
-  font-size: 0.92em;
-  line-height: 2.2em;
-  color: ${props => props.theme.smallText};
-  width: max-content;
+  @media(min-width:1024px) {
+    padding: 25px 21px;
+    font-size: 1em;
+  }
 `

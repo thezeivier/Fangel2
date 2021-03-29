@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
+import Wrapper from './../../components/general/Wrapper'
+import Footer from './../../components/general/Footer'
 import { Link, Redirect } from "react-router-dom"
 import { useForm } from 'react-hook-form';
-import {RegisterWithEmail} from './algorithms/RegisterWithEmail'
+import { RegisterWithEmail } from './algorithms/RegisterWithEmail'
 import 'firebase/auth'
 import {
   AuthCheck,
@@ -13,13 +15,8 @@ import {
 } from 'reactfire';
 import { Description, Contract } from './styles/sRegister'
 import { SubtitleStyled, TextStyled, FormStyled, InputStyled,
-         ButtonStyled, ContainerDesktop, ErrorAlert } from './styles/sGlobalForm'
-import Wrapper from './../../components/general/Wrapper'
-import Footer from './../../components/general/Footer'
-
+  ButtonStyled, ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
 import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
-
-
 const Register = () => {
   const auth = useAuth()
   const firestore = useFirestore()
@@ -141,9 +138,10 @@ const Register = () => {
                 <ButtonStyled primary type="submit">Registrarse</ButtonStyled>
               </Form>
             </ContainerDesktop>
-            <Link to={"/login"}>
-              <p>¿Tienes una cuenta?</p>
-            </Link>
+            <LinkOtherPage>
+              <p>¿Ya tienes una cuenta?</p>
+              <Link to={"/login"}>Inicia sesión</Link>
+            </LinkOtherPage>
           </ExternalsWrapper>
         </Wrapper>
       }

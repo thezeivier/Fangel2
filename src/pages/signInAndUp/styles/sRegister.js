@@ -10,10 +10,13 @@ export const Description = styled.h6`
   margin: -10px 4px 30px 4px;
   text-align: start;
 
-/*   @media(min-width: 1100px){
-    font-size: 12px;
-    line-height: 17px;
-  } */
+  @media(min-width: 768px){
+    margin: -10px 4px 35px 4px;
+  }
+
+  @media(min-width: 1024px){
+    margin: -10px 4px 40px 4px;
+  }
 `
 
 export const Contract = styled.p`
@@ -23,6 +26,14 @@ export const Contract = styled.p`
   font-size: 0.975em;
   line-height: 1.7;
   margin: 0 0 40px 0;
+
+  @media(min-width: 768px){
+    margin: 0 0 45px 0;
+  }
+
+  @media(min-width: 1024px){
+    margin: 0 0 50px 0;
+  }
 
   a {
     color: ${props => props.theme.colorbrandSolid};
