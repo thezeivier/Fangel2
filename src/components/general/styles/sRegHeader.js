@@ -4,6 +4,9 @@ export const Header = styled.header`
   width: -webkit-fill-available;
   border-bottom: 1px solid ${props => props.theme.colorLine};
   flex: 0 0 auto;
+  position: fixed;
+  z-index: 1000;
+  background: ${props => props.theme.backgroundHeader};
 `
 
 export const Container = styled.div`
@@ -27,49 +30,50 @@ export const IconsContainer = styled.div`
   a {
     svg {
       fill: ${props => props.theme.colorIcon};
+      transition: all .2s;
 
-      &:nth-child(1) {
-        margin: 0 15px 0 0;
-        width: 33px;
+      &:active,
+      &:focus,
+      &:hover {
+        fill: ${props => props.theme.colorHoverIcon};
       }
+    }
 
-      &:nth-child(2) {
-        width: 30px;
-      }
+    .profile {
+      margin: 0 15px 0 0;
+      width: 30px;
+    }
+
+    .settings {
+      width: 27px;
     }
   }
 
   @media(min-width: 400px){
     a {
-      svg {
-        &:nth-child(1) {
-          margin: 0 21px 0 0;
-          width: 35px;
-        }
+      .profile {
+        margin: 0 21px 0 0;
+        width: 35px;
+      }
 
-        &:nth-child(2) {
-          width: 32px;
-        }
+      .settings {
+        width: 32px;
       }
     }
   }
 
   @media(min-width: 768px){
     a {
-      svg {
-        &:nth-child(1) {
-          width: 36px;
-        }
+      .profile {
+        width: 36px;
       }
     }
   }
 
   @media(min-width: 1024px){
     a {
-      svg {
-        &:nth-child(1) {
-          width: 37px;
-        }
+      .profile {
+        width: 37px;
       }
     }
   }

@@ -2,6 +2,8 @@ export const colors = {
   background: {
     gradientDark:'linear-gradient(180deg, #02131F 0%, #04061C 100%)',
     gradientLight: 'linear-gradient(180deg, #F6F3EF 0%, #D7DBFC 100%)',
+    dark: '#02131F',
+    light: '#F6F3EF',
   },
   color: {
     danger: '#EB4444',
@@ -45,6 +47,10 @@ export const colors = {
       input: {
         dark: '#0000005c',
         light: '#00000026',
+      },
+      addCard: {
+        shadowDark: 'rgb(117 130 197 / 12%)',
+        shadowLight: 'rgb(70 70 74 / 12%)',
       }
     },
     bar: {
