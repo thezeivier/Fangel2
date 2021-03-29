@@ -1,42 +1,69 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
+import {Redirect} from 'react-router-dom'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
-import { Description, Contract } from './styles/sRegister'
 import { SubtitleStyled, TextStyled, FormStyled, InputStyled,
          ButtonStyled, ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
 import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
-import { LinkRecoveryPasssword }from './styles/sLogin'
+import { LinkRecoveryPasssword } from './styles/sLogin'
+import {emailFValidator, passwordFValidator} from './objects/formValidators'
+import {LoginWithEmail} from './algorithms/LoginWithEmail'
+import {useAuth} from 'reactfire'
 
 const Login = () => {
-  const { register, handleSubmit, watch, errors } = useForm();
-  const onSubmit = data => console.log(data);
-  // console.log(errors);
-  // console.log(watch("example"))  
+  const auth = useAuth()
+  const { register, handleSubmit, errors } = useForm()
+  const [isLoginCorrect, setIsLoginCorrect] = useState(null)
+  const onSubmit = async data => {
+
+    let confirmToLogin = await LoginWithEmail(data, auth)
+    setIsLoginCorrect(confirmToLogin)
+  }
+
   return (
     <>
-      <Wrapper>
-        <ExternalsWrapper>
-          <ContainerDesktop>
-            <SubtitleStyled>¡Bienvenido de nuevo!</SubtitleStyled>
-            <TextStyled>Inicia Sesión para unirte o crear comunidades</TextStyled>
-            <Form center onSubmit={handleSubmit(onSubmit)}>
-                <InputStyled type="text" placeholder="Correo electrónico" name="Email" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
-                <InputStyled type="password" placeholder="Contraseña" name="Password" ref={register({required: true, minLength: 8, maxLength: 100})} />
-              <LinkRecoveryPasssword>
-                <Link to={"/recover-password"}>¿Olvidate tu contraseña?</Link>
-              </LinkRecoveryPasssword>
-              <ButtonStyled primary type="submit">Iniciar Sesión</ButtonStyled>
-              <LinkOtherPage>
-                <p>¿No tienes una cuenta?</p>
-                <Link to={"/register"}>Regístrate</Link>
-              </LinkOtherPage>
-            </Form>
-          </ContainerDesktop>
-        </ExternalsWrapper>
-      </Wrapper>
-      <Footer />
+    {isLoginCorrect?(
+      isLoginCorrect.verified?
+      <Redirect to={{
+        pathname: "/home",
+        state: isLoginCorrect
+      }}/>:
+      <Redirect to={{
+        pathname: "/email-sended",
+        state: { 
+          email: isLoginCorrect.email,
+          origin: "register"
+        }
+      }}/>
+    ):
+      <>
+        <Wrapper>
+          <ExternalsWrapper>
+            <ContainerDesktop>
+              <SubtitleStyled>¡Bienvenido de nuevo!</SubtitleStyled>
+              <TextStyled>Inicia Sesión para unirte o crear comunidades</TextStyled>
+              <Form center onSubmit={handleSubmit(onSubmit)}>
+                  <InputStyled type="text" placeholder="Correo electrónico" name="email" ref={register(emailFValidator)} />
+                  <ErrorAlert>{errors.email? "Correo inválido*":""}</ErrorAlert>
+                  <InputStyled type="password" placeholder="Contraseña" name="password" ref={register(passwordFValidator)} />
+                  <ErrorAlert>{errors.Password? "Correo incorrecta*":""}</ErrorAlert>
+                <LinkRecoveryPasssword>
+                  <Link to={"/recover-password"}>¿Olvidate tu contraseña?</Link>
+                </LinkRecoveryPasssword>
+                <ButtonStyled primary type="submit">Iniciar Sesión</ButtonStyled>
+                <LinkOtherPage>
+                  <p>¿No tienes una cuenta?</p>
+                  <Link to={"/register"}>Regístrate</Link>
+                </LinkOtherPage>
+              </Form>
+            </ContainerDesktop>
+          </ExternalsWrapper>
+        </Wrapper>
+        <Footer />
+      </>
+    }
     </>
   );
 }
