@@ -7,6 +7,6 @@ export const Container = styled.div`
 
   main {
     flex: 1 0 auto;
-    margin: 32px 0 0 0;
+    margin: 92px 0 0 0;
   }
 `

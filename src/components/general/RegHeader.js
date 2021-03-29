@@ -16,10 +16,10 @@ const RegHeader = () => {
           <Logo />
           <IconsContainer>
             <Link to={"/profile"}>
-              <ProfileSVG />
+              <ProfileSVG className="profile" />
             </Link>
-            <Link to={"/settings"}>
-              <SettingsSVG />
+            <Link >
+              <SettingsSVG className="settings" />
             </Link>
           </IconsContainer>
         </Container>
