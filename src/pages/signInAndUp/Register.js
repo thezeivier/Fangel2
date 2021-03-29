@@ -3,7 +3,8 @@ import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import { Link, Redirect } from "react-router-dom"
 import { useForm } from 'react-hook-form';
-import { RegisterWithEmail, codeValidator } from './algorithms/RegisterWithEmail'
+import { RegisterWithEmail, codeValidator, sendDataUser } from './algorithms/RegisterWithEmail'
+import {usernameFValidator, emailFValidator, passwordFValidator, codeFValidator} from './objects/formValidators'
 import 'firebase/auth'
 import {
   AuthCheck,
@@ -21,22 +22,29 @@ import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
 const Register = () => {
   const auth = useAuth()
   const firestore = useFirestore()
-  const [registerComplete, setRegisterComplete] = useState(null)
-  const [dataRegister, setDataRegister] = useState()
   const { register, handleSubmit, errors } = useForm();
+
+  const [emailRegistered, setEmailRegistered] = useState(null)
+  const [codeBValidated, setCodeBValiated] = useState(null)
+  const [dataRegister, setDataRegister] = useState(null)
+
   const onSubmit = async data => {
-    let noRepeatEmail = await RegisterWithEmail(data, auth)
+    setDataRegister(data)
     let codeValidated = await codeValidator(data.code, firestore)
-    console.log(codeValidated)
-    if(noRepeatEmail){
-      setDataRegister(data)
+    if(codeValidated.confirm){
+      var noRepeatEmail = await RegisterWithEmail(data, auth)
+      if(noRepeatEmail.confirm){
+        sendDataUser(data, noRepeatEmail.uid, codeValidated.type)
+      }
     }
-    setRegisterComplete(noRepeatEmail)
+    noRepeatEmail? setEmailRegistered(noRepeatEmail.confirm): setEmailRegistered(noRepeatEmail)
+    codeValidated? setCodeBValiated(codeValidated.confirm): setCodeBValiated(codeValidated)
+
   }
 
   return (
     <>
-      {registerComplete === true?
+      {emailRegistered && codeBValidated ?
         <Redirect to={{
           pathname: "/email-sended",
           state: { 
@@ -50,26 +58,14 @@ const Register = () => {
               <SubtitleStyled>Regístrate para empezar</SubtitleStyled>
               <TextStyled>A unirte o crear comunidades</TextStyled>
               <ErrorAlert>
-                  {registerComplete == false? "Ya existe una cuenta con este correo*": ""}
+                {emailRegistered === false? "Ya existe una cuenta con este correo*": ""}
               </ErrorAlert>
               <Form center onSubmit={handleSubmit(onSubmit)}>
                 <InputStyled 
                   type="text"
                   placeholder="Usuario"
                   name="username"
-                  ref={
-                    register({
-                      required: true,
-                      maxLength: {
-                        value: 30,
-                        message: "El usuario debe ser menor a 30 caracteres*",
-                      },
-                      pattern: {
-                        value: /^[a-zA-Z0-9_]{5,}[a-zA-Z]+[0-9]*$/,
-                        message: "Usuario no válido o demasiado corto*"
-                      }
-                    })
-                  } 
+                  ref={register(usernameFValidator)} 
                 />
                 <ErrorAlert>
                   {errors.username? errors.username.message: ""}
@@ -79,16 +75,7 @@ const Register = () => {
                   type="text"
                   placeholder="Correo electrónico"
                   name="email"
-                  ref={
-                    register({
-                      required: true,
-                      max: 45,
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,45}$/i,
-                        message: "Correo electrónico inválido*"
-                      }
-                    })
-                  } 
+                  ref={register(emailFValidator)} 
                 />
                 <ErrorAlert>
                   {errors.email? errors.email.message: ""} 
@@ -99,15 +86,7 @@ const Register = () => {
                   placeholder="Contraseña"
                   name="password"
                   autocomplete="new-password"
-                  ref={
-                    register({
-                      required: true,
-                      pattern: {
-                        value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                        message: "Tu contraseña es insegura*"
-                      }
-                    })
-                  } 
+                  ref={register(passwordFValidator)} 
                 />
                 <ErrorAlert>
                   {errors.password? errors.password.message: ""}
@@ -118,18 +97,10 @@ const Register = () => {
                   type="text" 
                   placeholder="Código de invitación" 
                   name="code" 
-                  ref={
-                    register({
-                      required: true,
-                      pattern: {
-                        value: /^(admin)?[A-Za-z\d]{12}$/i,
-                        message: "Rectifica tu código de invitación*"
-                      }
-                    })
-                  } 
+                  ref={register(codeFValidator)} 
                 />
                 <ErrorAlert>
-                  {errors.code? errors.code.message: ""}
+                  {errors.code? errors.code.message: "" || codeBValidated === false? "Código inválido o expirado*":""}
                 </ErrorAlert>
 
                 <Description>

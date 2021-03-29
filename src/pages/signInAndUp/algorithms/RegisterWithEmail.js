@@ -13,13 +13,15 @@ export const RegisterWithEmail = async (data, auth) => {
     }).catch(error=>{
       console.log(error)
     })
-    return true
+    return {confirm: true, uid: result.user.uid}
   }).catch(error=>{
     console.log(error)
     return false
   })
   return value
 }
+
+
 
 export const codeValidator = async (code, firestore) => {
 
@@ -30,7 +32,7 @@ export const codeValidator = async (code, firestore) => {
     .get()
     .then((result)=>{
       if(!result.empty){
-        return true
+        return {confirm: true, type: "admin"}
       }else{
         return false
       }
@@ -43,17 +45,15 @@ export const codeValidator = async (code, firestore) => {
   }else{
     let ref = firestore.collection("userCodes")
     let validate = await ref
-    .where("code", "==", code)
+    .doc(code)
     .get()
     .then(result => {
-      if(!result.empty){ 
-        result.forEach(doc => {
-          if(doc.data().users.length <= 50){
-            return true
-          }else{
-            return false
-          }
-        });
+      if(result.exists){
+        if(result.data().users.length <= 50){
+          return {confirm: true, type: "user"}
+        }else{
+          return false
+        }
       }else{
         return false
       }
@@ -61,7 +61,17 @@ export const codeValidator = async (code, firestore) => {
       console.error(error)
       return false
     })
-    console.log(validate)
     return validate
   }
+}
+
+
+export const sendDataUser = async (data, uid, type) => {
+  const {username, password, email, code} = data
+  console.log(uid)
+  console.log(username)
+  console.log(password)
+  console.log(email)
+  console.log(code)
+  console.log(type)
 }
