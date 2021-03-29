@@ -6,14 +6,7 @@ import { useForm } from 'react-hook-form';
 import { RegisterWithEmail, codeValidator, sendDataUser } from './algorithms/RegisterWithEmail'
 import {usernameFValidator, emailFValidator, passwordFValidator, codeFValidator} from './objects/formValidators'
 import 'firebase/auth'
-import {
-  AuthCheck,
-  StorageImage,
-  useFirestoreDocData,
-  useUser,
-  useAuth,
-  useFirestore
-} from 'reactfire';
+import {useAuth, useFirestore, useFirebaseApp} from 'reactfire';
 import { Description, Contract } from './styles/sRegister'
 import { SubtitleStyled, TextStyled, FormStyled, InputStyled,
   ButtonStyled, ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
@@ -22,6 +15,7 @@ import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
 const Register = () => {
   const auth = useAuth()
   const firestore = useFirestore()
+  const firebase = useFirebaseApp()
   const { register, handleSubmit, errors } = useForm();
 
   const [emailRegistered, setEmailRegistered] = useState(null)
@@ -34,12 +28,11 @@ const Register = () => {
     if(codeValidated.confirm){
       var noRepeatEmail = await RegisterWithEmail(data, auth)
       if(noRepeatEmail.confirm){
-        sendDataUser(data, noRepeatEmail.uid, codeValidated.type)
+        sendDataUser(data, noRepeatEmail.uid, codeValidated.type, firestore, firebase)
       }
     }
     noRepeatEmail? setEmailRegistered(noRepeatEmail.confirm): setEmailRegistered(noRepeatEmail)
     codeValidated? setCodeBValiated(codeValidated.confirm): setCodeBValiated(codeValidated)
-
   }
 
   return (

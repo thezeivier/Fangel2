@@ -66,12 +66,53 @@ export const codeValidator = async (code, firestore) => {
 }
 
 
-export const sendDataUser = async (data, uid, type) => {
-  const {username, password, email, code} = data
-  console.log(uid)
-  console.log(username)
-  console.log(password)
-  console.log(email)
-  console.log(code)
-  console.log(type)
+export const sendDataUser = async (data, uid, type, firestore, firebase) => {
+  const {username, email, code} = data
+  let batch = firestore.batch()
+
+  firestore
+  .collection('users')
+  .doc(uid)
+  .set({
+      uid: uid,
+      username: username,
+      email: email,
+      type: type,
+      registerDate: Date.now(),
+  }).then(()=>{
+    console.log("Send Success")
+  }).catch(error =>{
+      console.error('Error de envío', error)
+  })
+
+  if(type == "admin"){
+    let codeDBRef = firestore.collection("adminCodes").doc("listOfCodes")
+    batch.set(
+      codeDBRef, 
+      {
+        disponibleCodes: firebase.firebase_.firestore.FieldValue.arrayRemove(code),
+      },
+      {
+        usedCodes: firebase.firebase_.firestore.FieldValue.arrayUnion(code),
+      }, 
+      {merge: true}
+    )
+    batch.commit().then(()=>{
+      console.log("éxito")
+    })
+  }else if (type == "user"){
+    let codeDBRef = firestore.collection("userCodes").doc(code)
+    batch.set(
+      codeDBRef,
+      {
+        users: firebase.firebase_.firestore.FieldValue.arrayUnion(uid),
+      }, 
+      {merge: true}
+    )
+    batch.commit().then(()=>{
+      console.log("éxito")
+    })
+  }
+
+
 }
