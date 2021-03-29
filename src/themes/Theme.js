@@ -31,6 +31,8 @@ const theme = (type)=> {
     colorHoverInput: mode ? colors.color.hover.input.dark : colors.color.hover.input.light,
     colorBar: mode ? colors.color.bar.dark : colors.color.bar.light,
     colorShadow: mode ? colors.color.shadow.dark : colors.color.shadow.light,
+    colorIcon: mode ? colors.color.white.solid : colors.color.brand.solidLight,
+    colorLine: mode ? colors.color.line.dark : colors.color.line.light,
 
     /*Fonts*/
     primaryFont: fonts.primaryFont,

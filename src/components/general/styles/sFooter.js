@@ -3,6 +3,7 @@ import { SmallText } from './../../../themes/externalRecyclableStyles'
 
 export const FooterContainer = styled.footer`
   padding: 80px 0 30px;
+  flex: 0 0 auto;
 
   @media(min-width:1024px) {
     padding: 100px 0 25px;
@@ -26,8 +27,8 @@ export const SupportLinksContainer = styled.div`
 `
 
 export const SmallTextStyled = styled(SmallText) `
-  margin: 0 0 10px 0;
   text-align: center;
+  line-height: 2.8em;
 
   &:active {
     color: ${props => props.theme.colorbrandSolid};

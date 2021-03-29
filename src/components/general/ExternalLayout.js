@@ -1,7 +1,5 @@
 import React from 'react'
 import HeaderLP from './HeaderLP'
-import styled from 'styled-components'
-
 
 const ExternalLayout = ({changeTheme, children}) => {
   return(

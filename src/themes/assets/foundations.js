@@ -54,6 +54,10 @@ export const colors = {
     shadow: {
       dark: 'rgba(255,255,255,0.5)',
       light: 'rgba(20, 56, 149, 0.9)',
+    },
+    line: {
+      dark: 'rgba(239, 240, 247, 0.1)',
+      light: 'rgba(20, 56, 149, 0.2)'
     }
   },
 }
