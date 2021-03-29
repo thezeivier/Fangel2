@@ -1,5 +1,6 @@
 import React from 'react';
 import Wrapper from './Wrapper'
+import { Link } from 'react-router-dom'
 import { SmallText } from './../../themes/externalRecyclableStyles'
 import { FooterContainer, SupportLinksContainer, SmallTextStyled, Fangel,
          OnlyDesktop } from './styles/sFooter'
@@ -10,10 +11,10 @@ const Footer = () => {
       <Wrapper>
         <OnlyDesktop>
           <SupportLinksContainer>
-            <SmallTextStyled>Términos y condiciones</SmallTextStyled>
-            <SmallTextStyled>Políticas y privacidad</SmallTextStyled>
-            <SmallTextStyled>Ayuda y Soporte de Fangel</SmallTextStyled>
-            <SmallTextStyled>Preguntas frecuentes</SmallTextStyled>
+            <SmallTextStyled as={Link} to="/terms-conditions" >Términos y condiciones</SmallTextStyled>
+            <SmallTextStyled as={Link} to="/politics-privacy" >Políticas y privacidad</SmallTextStyled>
+            <SmallTextStyled as={Link} to="/support" >Ayuda y Soporte de Fangel</SmallTextStyled>
+            <SmallTextStyled as={Link} to="/faqs" >Preguntas frecuentes</SmallTextStyled>
           </SupportLinksContainer>
           <Fangel>@fangel 2021</Fangel>
         </OnlyDesktop>
