@@ -26,12 +26,9 @@ const Register = () => {
     setDataRegister(data)
     let codeValidated = await codeValidator(data.code, firestore)
     if(codeValidated.confirm){
-      var noRepeatEmail = await RegisterWithEmail(data, auth)
-      if(noRepeatEmail.confirm){
-        sendDataUser(data, noRepeatEmail.uid, codeValidated.type, firestore, firebase)
-      }
+      var noRepeatEmail = await RegisterWithEmail(data, auth, codeValidated.type, firestore, firebase)
     }
-    noRepeatEmail? setEmailRegistered(noRepeatEmail.confirm): setEmailRegistered(noRepeatEmail)
+    setEmailRegistered(noRepeatEmail)
     codeValidated? setCodeBValiated(codeValidated.confirm): setCodeBValiated(codeValidated)
   }
 
