@@ -3,7 +3,7 @@ import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import { Link, Redirect } from "react-router-dom"
 import { useForm } from 'react-hook-form';
-import { RegisterWithEmail } from './algorithms/RegisterWithEmail'
+import { RegisterWithEmail, codeValidator } from './algorithms/RegisterWithEmail'
 import 'firebase/auth'
 import {
   AuthCheck,
@@ -17,6 +17,7 @@ import { Description, Contract } from './styles/sRegister'
 import { SubtitleStyled, TextStyled, FormStyled, InputStyled,
   ButtonStyled, ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
 import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
+
 const Register = () => {
   const auth = useAuth()
   const firestore = useFirestore()
@@ -24,11 +25,13 @@ const Register = () => {
   const [dataRegister, setDataRegister] = useState()
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = async data => {
-    let confirm = await RegisterWithEmail(data, auth)
-    if(confirm){
+    let noRepeatEmail = await RegisterWithEmail(data, auth)
+    let codeValidated = await codeValidator(data.code, firestore)
+    console.log(codeValidated)
+    if(noRepeatEmail){
       setDataRegister(data)
     }
-    setRegisterComplete(confirm)
+    setRegisterComplete(noRepeatEmail)
   }
 
   return (
