@@ -1,26 +1,27 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { AppContext } from '../../App'
 import Logo from './Logo'
 import Wrapper from './Wrapper'
-import DarkMode from './DarkMode'
 import { Link } from 'react-router-dom'
 import { Header, Container, IconsContainer } from './styles/sRegHeader'
 
 import { ReactComponent as ProfileSVG } from './icons/profile.svg'
 import { ReactComponent as SettingsSVG } from './icons/settings.svg'
 
-const RegHeader = ({username}) => {
+const RegHeader = () => {
+  const userApp = useContext(AppContext)
   return (
     <Header>
       <Wrapper>
         <Container>
           <Logo />
           <IconsContainer>
-            {username}
+            {userApp? userApp.authState.displayName:"Cargando..."}{/*Falta maquillar*/}
             <Link to={"/profile"}>
-              <ProfileSVG className="profile" />
+              <ProfileSVG  className="profile" />
             </Link>
-            <Link >
-              <SettingsSVG className="settings" />
+            <Link to={"/settings"}>
+              <SettingsSVG  className="settings" />
             </Link>
           </IconsContainer>
         </Container>
