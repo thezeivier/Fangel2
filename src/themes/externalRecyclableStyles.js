@@ -20,6 +20,35 @@ const standarTextMixin = css`
   `}
 `
 
+const inputMixin = css`
+  font-family: ${props => props.theme.secondaryFont};
+  font-style: normal;
+  font-weight: ${props => props.theme.weight.light};
+  font-size: 1.1em;
+  line-height: 27px;
+  background: ${props => props.theme.inputForm};
+  color: ${props => props.theme.textColor};
+  width: -webkit-fill-available;
+  flex: none;
+  flex-grow: 0;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  transition: all .2s;
+
+  &:hover,
+  &:focus {
+    background-color: ${props => props.theme.colorHoverInput};
+  }
+
+  &::placeholder {
+    color: ${props => props.theme.inputPlaceholder};
+    ${props => props.special && css`
+      color: ${props => props.theme.colorBrandTransparent};
+    `}
+  }
+`
+
 export const PrimaryTitle = styled.h1`
   font-style: normal;
   font-weight: ${props => props.theme.weight.semiMedium};
@@ -170,42 +199,23 @@ export const Form = styled.form`
 `
 
 export const Input = styled.input`
-  font-family: ${props => props.theme.secondaryFont};
-  font-style: normal;
-  font-weight: ${props => props.theme.weight.light};
-  font-size: 1.1em;
-  line-height: 27px;
-  position: static;
-  background: ${props => props.theme.inputForm};
-  color: ${props => props.theme.textColor};
-  width: -webkit-fill-available;
   height: 44px;
-  flex: none;
-  flex-grow: 0;
-  border: none;
-  border-radius: 20px;
   padding: 0 21px;
-  outline: none;
-  transition: all .2s;
+  ${inputMixin};
 
   ${props => props.special && css`
     color: ${props => props.theme.colorbrandSolid};
   `}
   
-  &:hover,
-  &:focus {
-    background-color: ${props => props.theme.colorHoverInput};
-  }
-
-  &::placeholder {
-    color: ${props => props.theme.inputPlaceholder};
-    ${props => props.special && css`
-      color: ${props => props.theme.colorBrandTransparent};
-    `}
-  }
-
   @media(min-width:1024px) {
     padding: 25px 21px;
     font-size: 1em;
   }
+`
+
+export const TextArea = styled.textarea`
+  ${inputMixin};
+  padding: 9px 21px;
+  resize: none;
+  height: 150px;
 `

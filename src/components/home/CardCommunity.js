@@ -12,7 +12,9 @@ const CardCommunity = () => {
         <ContainerTextTop>
           <TextCommunity>Comunidad creada por por:</TextCommunity>
           <UserContainer>
-            <ProfileSVG />
+            <Link to="/profile">
+              <ProfileSVG />
+            </Link>
             <User as="h4">Useryang</User>
           </UserContainer>
         </ContainerTextTop>

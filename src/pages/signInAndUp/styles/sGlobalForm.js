@@ -40,6 +40,16 @@ export const FormStyled = styled(Form) `
 
 export const InputStyled = styled(Input) `
   margin: 0 0 16px 0;
+
+  ${props => props.invitationCode && css`
+    font-weight: ${props => props.theme.weight.semiMedium};
+    letter-spacing: 1px;
+    font-size: 1.4em;
+    text-align: center;
+    cursor: pointer;
+    width: initial;
+    margin: 20px 10px 40px 0;
+  `}
 `
 
 export const ButtonStyled = styled(Button) `

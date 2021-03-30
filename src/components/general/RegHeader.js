@@ -8,7 +8,7 @@ import { Header, Container, IconsContainer } from './styles/sRegHeader'
 import { ReactComponent as ProfileSVG } from './icons/profile.svg'
 import { ReactComponent as SettingsSVG } from './icons/settings.svg'
 
-const RegHeader = ({username}) => {
+const RegHeader = ({ username }) => {
   return (
     <Header>
       <Wrapper>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Wrapper from './../general/Wrapper'
 import CardCommunity from './CardCommunity'
+import { Link } from 'react-router-dom'
 import { TitleStyled, TextStyled } from './../../themes/internalRecyclableStyles'
 import { AddCardContainer, EndCercle, CardsList } from './styles/sMainHome'
 import { ReactComponent as AddCardSVG } from './icons/addCard.svg'
@@ -12,22 +13,11 @@ const MainHome = () => {
         <TitleStyled>Comunidades</TitleStyled>
         <TextStyled main>Conoce a personas con los mismos gustos y comparte ideas.</TextStyled>
         <CardsList>
-          <AddCardContainer>
+          <AddCardContainer as={Link} to="/create-community-1" >
             <AddCardSVG />
             <span>Crear comunidad</span>
           </AddCardContainer>
-          <CardCommunity />
-          <CardCommunity />
-          <CardCommunity />
-          <CardCommunity />
-          <CardCommunity />
-          <CardCommunity />
-          <CardCommunity />
-          <CardCommunity />
-          <CardCommunity />
-          <CardCommunity />
-          <CardCommunity />
-          <CardCommunity />
+          {/* <CardCommunity /> */}
         </CardsList>
       </Wrapper>
       <EndCercle />
