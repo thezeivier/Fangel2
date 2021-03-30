@@ -27,7 +27,7 @@ const Login = () => {
     {isLoginCorrect?(
       isLoginCorrect.verified?
       <Redirect to={{
-        pathname: "/home",
+        pathname: "/",
         state: isLoginCorrect
       }}/>:
       <Redirect to={{

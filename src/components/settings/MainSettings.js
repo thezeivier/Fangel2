@@ -16,7 +16,7 @@ const listOptions = [
     name: 'Reportar un problema',
     to: '/report'
   }, {
-    id: 1,
+    id: 2,
     svg: <ExitSVG />,
     name: 'Salir de la cuenta',
     to: '/'
@@ -30,7 +30,7 @@ const MainSettings = () => {
         <TitleStyled bottom>Configuración</TitleStyled>
         <Top>
           <SubtitleStyled bottom15>Tema</SubtitleStyled>
-          <DarkMode textExtend />
+          <DarkMode textExtend/>
         </Top>
         <div>
           <SubtitleStyled bottom14>General</SubtitleStyled>

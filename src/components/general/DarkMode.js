@@ -1,11 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import {AppContext} from '../../App'
 import { Container } from './styles/sDarkMode'
 
-const DarkMode = ({ changeTheme }) => {
+const DarkMode = () => {
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
+  const contextFromApp = useContext(AppContext)
 
   const clickChangeTheme = () => {
-    changeTheme()
+    contextFromApp.changeTheme()
     setMode(localStorage.getItem("mode"))
   }
 

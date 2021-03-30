@@ -16,6 +16,7 @@ const MainCreateCOne = () => {
   const onSubmit = async data => {
     const result = await CreateCommunity(data, firestore, userApp)
     console.log(result)
+    // Falta redireccionamiento**
   }
   return (
     <main>
