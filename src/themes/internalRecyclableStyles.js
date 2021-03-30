@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { PrimaryTitle, SecondaryTitle, TextBody, Button,
-         Input, TextArea } from './externalRecyclableStyles'
+         TextArea } from './externalRecyclableStyles'
 
 export const TitleStyled = styled(PrimaryTitle)`
   margin: 0 0 8px 0;
@@ -16,6 +16,10 @@ export const SubtitleStyled = styled(SecondaryTitle)`
 
   ${props => props.bottom15 && css`
     margin: 0 0 15px 0;
+  `}
+
+  ${props => props.big && css`
+    font-size: 1.9em;
   `}
 `
 
@@ -53,6 +57,10 @@ export const ButtonStyled = styled(Button)`
   @media(min-width:1200px) {
     width: initial;
   }
+
+  ${props => props.bottom30 && css`
+    margin: 0 0 40px 0;
+  `}
 `
 
 export const OnlyDesktop = styled.div`

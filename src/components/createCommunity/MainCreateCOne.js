@@ -27,6 +27,9 @@ const MainCreateCOne = () => {
             <ErrorAlert>{errors.nameCommunity? errors.nameCommunity.message: ""}</ErrorAlert>
             <TextAreaStyled type="text" placeholder="Descripcion" name="descriptionCommunity" ref={register({require:{value: true, message:"Campo requerido*"}})}/>
             <ErrorAlert>{errors.descriptionCommunity? errors.descriptionCommunity.message: ""}</ErrorAlert>
+            <div>
+              <ButtonStyled secondary bottom30>Subir imagen</ButtonStyled>
+            </div>
             <TextBody>
               Las comunidades tiene vida solo por 1 hora, esto significa que esta comunidad sera única y especial.
             </TextBody>
