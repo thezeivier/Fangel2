@@ -5,10 +5,11 @@ export const LogoBox = styled.div`
   align-items: center;
   color: ${props => props.theme.logoColor};
 
-  img {
+  svg {
     height: 2em;
     margin-right: 8px;
     fill: ${props => props.theme.logoColor};
+    width: auto;
   }
 
   h3 {

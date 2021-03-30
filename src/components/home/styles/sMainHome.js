@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const AddCardContainer = styled.div`
+export const AddCardContainer = styled.li`
   background: ${props => props.theme.colorAddCard};
   border-radius: 4px;
   box-shadow: 0px 0px 8px ${props => props.theme.colorAddCardHover};
@@ -39,6 +39,39 @@ export const AddCardContainer = styled.div`
     font-weight: ${props => props.theme.weight.semiMedium};
     font-size: 1.5em;
   }
+`
+
+export const CardsList = styled.ul`
+  display: block;
+
+  @media(min-width:1024px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+
+    li:first-child {
+      margin: 0 !important;
+    }
+
+    li:nth-child(2n + 1) {
+      margin: -240px 0 0 0;
+    }
+  }
+
+  @media(min-width:1200px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 40px;
+    row-gap: 65px;
+
+    li:nth-child(2n + 1) {
+      margin: 0;
+    }
+
+    li:nth-child(3n + 1) {
+      margin: -260px 0 0 0;
+    }
+  }
+
 `
 
 export const EndCercle = styled.div`

@@ -7,6 +7,10 @@ export const CardContainer = styled.div`
   background: ${props => props.theme.cardComunity};
   border-radius: 4px;
   padding: 10px 0 15px 0;
+
+  @media(min-width:1024px) {
+    margin: 0;
+  }
 `
 
 const wrapperMixin = css`
@@ -36,11 +40,20 @@ export const UserContainer = styled.div`
 
 export const TextCommunity = styled(SmallText)`
   ${textSmallMixin};
+  width: auto;
+
+  @media(min-width:1200px) {
+    font-size: 1em;
+  }
 `
 
 export const User = styled(SmallText)`
   ${textSmallMixin};
   font-weight: ${props => props.theme.weight.regular};
+
+  @media(min-width:1200px) {
+    font-size: 1.05em;
+  }
 `
 
 export const ImageContainer = styled.div`
@@ -50,9 +63,27 @@ export const ImageContainer = styled.div`
     width: -webkit-fill-available;
     height: 100%;
     min-height: 350px;
-    max-height: 430px;
     object-fit: cover;
     line-height: 0;
+    
+    @media(min-width:410px) {
+      width: 100%;
+      min-height: 360px;
+    }
+
+    @media(min-width:768px) {
+      width: 100%;
+      min-height: 370px;
+    }
+
+    @media(min-width:1024px) {
+      width: 100%;
+      min-height: 380px;
+    }
+
+    @media(min-width:1200px) {
+      min-height: 400px;
+    }
   }
 `
 
@@ -68,15 +99,23 @@ export const DescriptionContainer = styled.div`
   transition: all .1s;
   padding: 0 10px 30px 10px;
 
+  @media(min-width:1200px) {
+    padding: 0 10px 34px 10px;
+  }
+
   h3 {
     font-style: normal;
     font-weight: ${props => props.theme.weight.semiMedium};
     font-size: 1.5em;
     margin: 0 0 5px 0;
+
+    @media(min-width:1200px) {
+      font-size: 2.1em;
+    }
   }
 
   &:focus {
-    height: min-content;
+    height: 60%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -92,6 +131,7 @@ export const DescriptionContainer = styled.div`
 
   &:focus > .truncate:after {
     display: none;
+    opacity: 0;
   }
 
   &:focus > .buttonCardCommunity {
@@ -104,7 +144,12 @@ export const DescriptionContainer = styled.div`
 
 export const TextDescription = styled(TextBody)`
   font-size: 1em;
-  line-height: 1.45em;
+  line-height: 1.62em;
+
+  @media(min-width:1200px) {
+    font-size: 1.08em;
+    line-height: 1.65em;
+  }
 `
 
 export const Truncate = styled.div`
@@ -120,7 +165,14 @@ export const Truncate = styled.div`
     bottom: 10px;
     font-family: ${props => props.theme.secondaryFont};
     color: #8f8f92;
-    font-size: 0.9em;
+    font-size: 0.94em;
+    cursor: pointer;
+    transition: .05s;
+    will-change: opacity;
+
+    @media(min-width:1200px) {
+      font-size: 1.08em;
+    }
   }
 `
 

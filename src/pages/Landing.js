@@ -8,6 +8,10 @@ const FormatLogo = styled.div`
   span {
     color: ${props => props.theme.colorWhite} !important;
   }
+  
+  svg {
+    fill: ${props => props.theme.colorWhite} !important;
+  }
 `
 
 const Landing = ({changeTheme}) =>{

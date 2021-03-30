@@ -8,6 +8,10 @@ const Container = styled.div`
   justify-content: space-between;
   position: relative;
 
+  @media(min-width:410px) {
+    padding: 0 30px;
+  }
+
   @media(min-width:768px) {
     padding: 0 5%;
   }
