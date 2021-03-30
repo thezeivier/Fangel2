@@ -44,11 +44,15 @@ export const InputStyled = styled(Input) `
   ${props => props.invitationCode && css`
     font-weight: ${props => props.theme.weight.semiMedium};
     letter-spacing: 1px;
-    font-size: 1.4em;
+    font-size: 1.3em;
     text-align: center;
     cursor: pointer;
     width: initial;
     margin: 20px 10px 40px 0;
+
+    @media screen and (min-width: 375px) and (orientation : landscape) {
+      font-size: 1.35em;
+    }
   `}
 `
 

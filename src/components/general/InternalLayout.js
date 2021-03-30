@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -8,6 +8,7 @@ export const Container = styled.div`
   main {
     flex: 1 0 auto;
     margin: 92px 0 0 0;
+    position: relative;
 
     @media(min-width:768px) {
       margin: 120px 15% 0 15%;
@@ -21,4 +22,14 @@ export const Container = styled.div`
       margin: 120px 0 0 0;
     }
   }
+
+  ${props => props.padding40 && css`
+    main {
+      padding: 0 0 40px 0;
+
+      @media(min-width:1200px) {
+        padding: 0 0 0 0;
+      }
+    }
+  `}
 `

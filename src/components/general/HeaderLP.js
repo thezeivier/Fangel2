@@ -4,13 +4,13 @@ import Wrapper from './Wrapper'
 import DarkMode from './DarkMode'
 import { Header, Container } from './styles/sHeaderLP'
 
-const HeaderLP = ({changeTheme}) => {
+const HeaderLP = ({ changeTheme }) => {
   return (
     <Header>
       <Wrapper>
         <Container>
           <Logo />
-          <DarkMode changeTheme={changeTheme}/>
+          <DarkMode changeTheme={changeTheme} />
         </Container>
       </Wrapper>
     </Header>
