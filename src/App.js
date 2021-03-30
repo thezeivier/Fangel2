@@ -61,8 +61,6 @@ function App() {
     }
   }
 
-  console.log()
-
   // auth.signOut().then(
   //   console.log("SignOut exitoso")
   // )

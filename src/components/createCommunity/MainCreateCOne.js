@@ -1,21 +1,34 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {AppContext} from '../../App'
+import { useForm } from 'react-hook-form'
+import {useFirestore} from 'reactfire'
 import Wrapper from './../general/Wrapper'
 import { TitleStyled, TextStyled, TextAreaStyled, ButtonStyled,
          OnlyDesktop } from './../../themes/internalRecyclableStyles'
-import { InputStyled } from './../../pages/signInAndUp/styles/sGlobalForm'
+import { InputStyled, ErrorAlert } from './../../pages/signInAndUp/styles/sGlobalForm'
 import { TextBody } from './../../themes/externalRecyclableStyles'
+import {CreateCommunity} from './algorithms/CreateCommunity'
 
 const MainCreateCOne = () => {
+  const firestore = useFirestore()
+  const userApp = useContext(AppContext)
+  const {register, handleSubmit, errors } = useForm()
+  const onSubmit = async data => {
+    const result = await CreateCommunity(data, firestore, userApp)
+    console.log(result)
+  }
   return (
     <main>
       <Wrapper>
         <TitleStyled bottom>Crear una comunidad</TitleStyled>
         <OnlyDesktop>
-          <form>
-            <InputStyled type="text" placeholder="Nombre de la comunidad" name="nameCommunity" />
-            <TextAreaStyled type="text" placeholder="Descripcion" name="descriptionCommunity" />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <InputStyled type="text" placeholder="Nombre de la comunidad" name="nameCommunity" ref={register({require:{value: true, message:"Campo requerido*"}})}/>
+            <ErrorAlert>{errors.nameCommunity? errors.nameCommunity.message: ""}</ErrorAlert>
+            <TextAreaStyled type="text" placeholder="Descripcion" name="descriptionCommunity" ref={register({require:{value: true, message:"Campo requerido*"}})}/>
+            <ErrorAlert>{errors.descriptionCommunity? errors.descriptionCommunity.message: ""}</ErrorAlert>
             <TextBody>
-              Las comunidades tiene vida solo por 1 hora, esto signifiaca que esta comunidad sera única y especial.
+              Las comunidades tiene vida solo por 1 hora, esto significa que esta comunidad sera única y especial.
             </TextBody>
             <ButtonStyled primary type="submit">Crear comunidad</ButtonStyled>
           </form>
