@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Wrapper from './../general/Wrapper'
 import DarkMode from './../general/DarkMode'
 import SettingsOption from './SettingsOption'
@@ -19,11 +19,12 @@ const listOptions = [
     id: 2,
     svg: <ExitSVG />,
     name: 'Salir de la cuenta',
-    to: '/'
+    to: false
   }
 ]
 
 const MainSettings = () => {
+  
   return (
     <main>
       <Wrapper>

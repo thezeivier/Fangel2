@@ -60,16 +60,12 @@ function App() {
       setMode("light")
     }
   }
-
-  // auth.signOut().then(
-  //   console.log("SignOut exitoso")
-  // )
   
   const userValue = {
     authState: (authState? authState: false),
     changeTheme,
   }
-  
+
   console.log("render")
   return (
     <ThemeProvider theme={theme(mode)}>
