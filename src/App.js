@@ -28,12 +28,14 @@ import FAQs from './pages/FAQs'
 import PoliticsNPrivacy from './pages/PoliticsNPrivacy'
 import TermsNConditions from './pages/TermsNConditions'
 
+const AppContext =  React.createContext()
+const {Provider, Consumer} = AppContext
 
 function App() {
   const auth = useAuth()
 
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
-  const [session, setSession] = useState()
+  const [authState, setAuthState] = useState()
   
   useEffect(()=>{
     if(localStorage.mode){
@@ -43,10 +45,11 @@ function App() {
     }
     auth.onAuthStateChanged(user => {
       if (user) {
-        console.log(user)
+        setAuthState(user)
       }
     });
-  },[])
+  },[auth])
+
 
   const changeTheme = () =>{
     if(localStorage.mode === "light"){
@@ -58,69 +61,58 @@ function App() {
     }
   }
 
+  console.log()
+
   // auth.signOut().then(
   //   console.log("SignOut exitoso")
   // )
   
+  const userValue = {
+    authState
+  }
+  console.log("render")
   return (
     <ThemeProvider theme={theme(mode)}>
-      <GlobalStyles />
-      <Container>
-        <Switch>
-          <Route exact path={"/"}>
-            <Landing changeTheme={changeTheme}/>
-          </Route>
-          <Route exact path={"/home"}> {/* temporal */}
-            <Home />
-          </Route >
-          <Route exact path={"/create-community-1"}> {/* temporal */}
-            <CreateCommunityOne />
-          </Route >
-          <Route exact path={"/create-community-2"}> {/* temporal */}
-            <CreateCommunityTwo />
-          </Route >
-          <Route exact path={"/report"}>
-            <ReportAProblem />
-          </Route >
-          <Route exact path={"/settings"}> {/* temporal */}
-            <Settings />
-          </Route >
-          <Route exact path={"/support"}>
-            <Support />
-          </Route >
-          <Route exact path={"/profile"}> {/* temporal */}
-            <Profile />
-          </Route >
-          <Route exact path={"/faqs"}>
-            <FAQs />
-          </Route >
-          <Route exact path={"/politics-privacy"}>
-            <PoliticsNPrivacy />
-          </Route >
-          <Route exact path={"/terms-conditions"}>
-            <TermsNConditions />
-          </Route >
-          <ExternalLayout changeTheme={changeTheme}>
-            <Route exact path={"/register"}>
-              <Register />
+      <Provider value={userValue}>
+        <GlobalStyles />
+        <Container>
+          <Switch>
+            <Route exact path={"/"}>
+              {
+                authState?
+                <Home/>:
+                <Landing changeTheme={changeTheme}/>
+              }
             </Route>
-            <Route exact path={"/login"}>
-              <Login />
-            </Route>
-            <Route exact path={"/recover-password"}>
-              <RecoverPassword/>
-            </Route>
-            <Route exact path={"/email-sended"}>
-              <EmailSended/>
-            </Route>
-            <Route exact path={"/quiz"}>
-              <Quiz />
-            </Route>
-          </ExternalLayout>
-        </Switch>
-      </Container>
+            <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/> {/* temporal */}
+            <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/> {/* temporal */}
+            <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
+            <Route exact path={"/settings"} component={authState ? Settings : Landing}/> {/* temporal */}
+            <Route exact path={"/support"}>
+              <Support />
+            </Route >
+            <Route exact path={"/profile"} component={authState ? Profile : Landing}/> {/* temporal */}
+            <Route exact path={"/faqs"}>
+              <FAQs />
+            </Route >
+            <Route exact path={"/politics-privacy"}>
+              <PoliticsNPrivacy />
+            </Route >
+            <Route exact path={"/terms-conditions"}>
+              <TermsNConditions />
+            </Route >
+            <ExternalLayout changeTheme={changeTheme}>
+              <Route exact path={"/register"} component={Register}/>
+              <Route exact path={"/login"} component={Login}/>
+              <Route exact path={"/recover-password"} component={RecoverPassword}/>
+              <Route exact path={"/email-sended"} component={EmailSended}/>
+              <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
+            </ExternalLayout>
+          </Switch>
+        </Container>
+      </Provider>
     </ThemeProvider>
   );
 }
 
-export default App;
+export {App, Consumer as AppConsumer, AppContext}
