@@ -66,7 +66,7 @@ function App() {
   // )
   
   const userValue = {
-    authState
+    authState: (authState? authState: false),
   }
   console.log("render")
   return (
