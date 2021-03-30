@@ -14,7 +14,7 @@ const MainSupport = () => {
           <BoxOption color="#BB6BD9" as={Link} to="/faqs">
             <span>Preguntas frecuentes</span>
           </BoxOption>
-          <BoxOption color="#F2C94C" as={Link} to="/terms-conditions">
+          <BoxOption color="#56CCF2" as={Link} to="/terms-conditions">
             <span>Términos y condiciones</span>
           </BoxOption>
           <BoxOption color="#27AE60" as={Link} to="/politics-privacy">

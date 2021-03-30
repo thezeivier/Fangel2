@@ -36,6 +36,10 @@ export const BoxOption = styled.li`
     @media(min-width:768px) {
       font-size: 1.2em;
     }
+
+    @media(min-width:1200px) {
+      font-size: 1.35em;
+    }
   }
 `
 
