@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router'
 import { useFirestore } from 'reactfire'
 import Wrapper from './../general/Wrapper'
 import QuizCard from './QuizCard'
+import { AppContext } from '../../App'
 import { sendPreferences } from './algorithms/SendPreferences' 
 import { listQuiz } from './ListQuiz.json'
 import { ExternalsWrapper } from './../../themes/externalRecyclableStyles'
@@ -14,9 +15,9 @@ const QuizMain = () => {
   const [cartQuiz, setCartQuiz] = useState([])
   const history = useHistory()
   const firestore = useFirestore()
+  const userApp = useContext(AppContext)
 
-  // Este es un id de prueba
-  const idTest = "B8OtUWc9XoWdrHO43JivtbvdIan2"
+  const id = userApp ? userApp.authState.uid : ""
 
   const isDisableButton = cartQuiz.length > 2 ? false: true
 
@@ -49,7 +50,7 @@ const QuizMain = () => {
             primary 
             type="button"
             disabled={isDisableButton} 
-            onClick={() => sendPreferences(idTest, firestore, dataCategory, redirectToHome)}
+            onClick={() => sendPreferences(id, firestore, dataCategory, redirectToHome)}
           >¡Términe!</ButtonStyled>
         </form>
         </ExternalsWrapper>
