@@ -16,4 +16,10 @@ export const TextStyled = styled(TextBody) `
   ${props => props.bottom && css`
     margin: 0 0 20px 0;
   `}
+
+  ${props => props.main && css`
+    @media(min-width:1024px) {
+      margin: 0 0 40px 0;
+    }
+  `}
 `

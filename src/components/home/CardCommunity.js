@@ -22,7 +22,7 @@ const CardCommunity = () => {
             <h3>Lorem ipsum</h3>
             <Truncate className="truncate">
               <TextDescription className="textCardCommunity">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
               </TextDescription>
             </Truncate>
           </DescriptionContainer>

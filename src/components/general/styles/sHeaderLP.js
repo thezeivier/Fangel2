@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Header = styled.header`
   position: fixed;
@@ -22,4 +22,5 @@ export const Container = styled.div`
   @media(min-width:1200px) {
     padding: 30px 0 0 0;
   }
+
 `
