@@ -35,7 +35,7 @@ function App() {
   const auth = useAuth()
 
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
-  const [authState, setAuthState] = useState()
+  const [authState, setAuthState] = useState(false)
   
   useEffect(()=>{
     if(localStorage.mode){
