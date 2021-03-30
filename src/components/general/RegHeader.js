@@ -17,7 +17,7 @@ const RegHeader = () => {
         <Container>
           <Logo />
           <IconsContainer>
-            {userApp? userApp.authState.displayName:"Cargando..."}{/*Falta maquillar*/}
+            {userApp? (userApp.authState? userApp.authState.displayName:"Cargando..."):"Cargando..."}{/*Falta maquillar*/}
             <Link to={"/profile"}>
               <ProfileSVG  className="profile" />
             </Link>

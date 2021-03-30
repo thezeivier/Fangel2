@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import { Link, Redirect } from "react-router-dom"
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form'
 import { RegisterWithEmail, codeValidator } from './algorithms/RegisterWithEmail'
 import {usernameFValidator, emailFValidator, passwordFValidator, codeFValidator} from './objects/formValidators'
 import 'firebase/auth'
-import {useAuth, useFirestore, useFirebaseApp} from 'reactfire';
+import {useAuth, useFirestore, useFirebaseApp} from 'reactfire'
 import { Description, Contract } from './styles/sRegister'
 import { SubtitleStyled, TextStyled, InputStyled,
   ButtonStyled, ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
