@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Button } from './../../../themes/externalRecyclableStyles'
 
 export const CardsContainer = styled.div`
@@ -26,12 +26,18 @@ export const LabelStyled = styled.label`
     display: none;
     will-change: transform;
   }
-
-  [type="checkbox"]:checked + .cardQuiz {
-    filter: drop-shadow(0px 0px 8px ${props => props.theme.colorShadow});
-    transform: scale(1.075);
-    font-size: 1.182em;
+  
+  ${({active}) => 
+      active &&
+      css`
+        [type="checkbox"]:checked + .cardQuiz {
+          filter: drop-shadow(0px 0px 8px ${props => props.theme.colorShadow});
+          transform: scale(1.075);
+          font-size: 1.182em;
+        }
+      `
   }
+
 `
 
 export const Card = styled.div`
