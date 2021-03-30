@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -46,7 +46,6 @@ export const Container = styled.div`
   @media(min-width:768px) {
     span {
       margin: 0 16px 0 0;
-      width: min-content;
       font-size: 0.89em;
       width: max-content;
     }

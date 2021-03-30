@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Container } from './styles/sDarkMode'
 
-const DarkMode = ({changeTheme}) => {
+const DarkMode = ({ changeTheme }) => {
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
 
   const clickChangeTheme = () => {

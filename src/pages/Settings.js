@@ -6,7 +6,7 @@ import { Container } from './../components/general/InternalLayout'
 
 const Settings = () => {
   return (
-    <Container>
+    <Container padding40>
       <Header />
       <MainSettings />
       <Footer />

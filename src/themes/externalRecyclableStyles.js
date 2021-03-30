@@ -49,6 +49,20 @@ const inputMixin = css`
   }
 `
 
+export const svgMixin = css`
+  svg {
+    cursor: pointer;
+    fill: ${props => props.theme.colorIcon};
+    transition: all .2s;
+
+    &:active,
+    &:focus,
+    &:hover {
+      fill: ${props => props.theme.colorHoverIcon};
+    }
+  }
+`
+
 export const PrimaryTitle = styled.h1`
   font-style: normal;
   font-weight: ${props => props.theme.weight.semiMedium};
