@@ -6,7 +6,7 @@ import { Container } from './../components/general/InternalLayout'
 
 const Support = () => {
   return (
-    <Container>
+    <Container padding40>
       <Header />
       <MainSupport />
       <Footer />

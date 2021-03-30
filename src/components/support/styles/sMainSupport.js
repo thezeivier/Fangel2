@@ -1,6 +1,28 @@
 import styled, { css } from 'styled-components'
-import { Button } from './../../../themes/externalRecyclableStyles'
+import { Button, SecondaryTitle } from './../../../themes/externalRecyclableStyles'
 
+//Support
+export const ListBoxOptions = styled.ul`
+  display: flex;
+  flex-direction: column;
+`
+
+export const BoxOption = styled.li`
+  padding: 20px;
+  width: -webkit-fill-available;
+  margin: 0 0 20px 0;
+  background: ${props => props.theme.inputForm};
+
+  span {
+    color: ${props => props.color};
+    font-size: 1.05em;
+    text-align: center;
+    width: max-content;
+    display: inline-block;
+  }
+`
+
+//Report a problem
 export const OnlyDesktop = styled.div`
   a,
   span {
@@ -50,4 +72,9 @@ export const ButtonStyled = styled(Button)`
       width: initial;
     `}
   }
+`
+
+//Faqs
+export const SubtitleSmallStyled = styled(Button)`
+  font-size: 1.45;
 `
