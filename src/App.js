@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
+import {useAuth} from 'reactfire'
 
 import GlobalStyles from './themes/GlobalStyles'
 import theme from './themes/Theme'
@@ -27,9 +28,12 @@ import FAQs from './pages/FAQs'
 import PoliticsNPrivacy from './pages/PoliticsNPrivacy'
 import TermsNConditions from './pages/TermsNConditions'
 
+
 function App() {
+  const auth = useAuth()
 
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
+  const [session, setSession] = useState()
   
   useEffect(()=>{
     if(localStorage.mode){
@@ -37,6 +41,11 @@ function App() {
     }else{
       localStorage.setItem("mode","light")
     }
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        console.log(user)
+      }
+    });
   },[])
 
   const changeTheme = () =>{
@@ -48,6 +57,10 @@ function App() {
       setMode("light")
     }
   }
+
+  // auth.signOut().then(
+  //   console.log("SignOut exitoso")
+  // )
   
   return (
     <ThemeProvider theme={theme(mode)}>
