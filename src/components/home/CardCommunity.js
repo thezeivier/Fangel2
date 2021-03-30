@@ -12,12 +12,14 @@ const CardCommunity = () => {
         <ContainerTextTop>
           <TextCommunity>Comunidad creada por por:</TextCommunity>
           <UserContainer>
-            <ProfileSVG />
+            <Link to="/profile">
+              <ProfileSVG />
+            </Link>
             <User as="h4">Useryang</User>
           </UserContainer>
         </ContainerTextTop>
         <ImageContainer>
-          <img src="https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FSvgs%2Fnature.jpg?alt=media&token=8a477dec-0352-40d1-963e-69be50a13083" />
+          <img src={"https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FSvgs%2Fnature.jpg?alt=media&token=8a477dec-0352-40d1-963e-69be50a13083"} />
           <DescriptionContainer as="button" >
             <h3>Lorem ipsum</h3>
             <Truncate className="truncate">

@@ -20,7 +20,7 @@ const QuizCard = ({ background, id, category, quiz, cartQuiz, setCartQuiz }) => 
       isDisabled()
     }
   }
-  
+
   // Remueve del cartQuiz el Card no deseado y luego lo actualiza
   const removeCard = id => {
       const quizObject = cartQuiz.filter(itemCart => itemCart.id !== id)
@@ -34,7 +34,7 @@ const QuizCard = ({ background, id, category, quiz, cartQuiz, setCartQuiz }) => 
   }
 
   return (
-    <LabelStyled for={category} active={isActiveCard}>
+    <LabelStyled htmlFor={category} active={isActiveCard}>
       {!checkState ?
         <input 
           type="checkbox" 

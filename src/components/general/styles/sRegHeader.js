@@ -40,7 +40,7 @@ export const IconsContainer = styled.div`
     }
 
     .profile {
-      margin: 0 15px 0 0;
+      margin: 0 10px 0 5px;
       width: 30px;
     }
 
@@ -52,7 +52,7 @@ export const IconsContainer = styled.div`
   @media(min-width: 400px){
     a {
       .profile {
-        margin: 0 21px 0 0;
+        margin: 0 14px 0 5px;
         width: 35px;
       }
 
@@ -65,6 +65,7 @@ export const IconsContainer = styled.div`
   @media(min-width: 768px){
     a {
       .profile {
+        margin: 0 17px 0 8px;
         width: 36px;
       }
     }
@@ -73,6 +74,7 @@ export const IconsContainer = styled.div`
   @media(min-width: 1024px){
     a {
       .profile {
+        margin: 0 19px 0 8px;
         width: 37px;
       }
     }

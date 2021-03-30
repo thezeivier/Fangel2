@@ -6,11 +6,12 @@ import Footer from './../components/general/Footer'
 import { Container } from './../components/general/InternalLayout'
 
 const Home = () => {
-  const location = useLocation()
-  const dataUser = location.state? location.state: ""
+  // const location = useLocation()
+  // const dataUser = location.state? location.state: session
+  // console.log(session)
   return (
     <Container>
-      <Header username={dataUser.username}/>
+      <Header/>
       <MainHome />
       <Footer />
     </Container>

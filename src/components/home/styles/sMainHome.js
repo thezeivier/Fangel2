@@ -14,6 +14,14 @@ export const AddCardContainer = styled.li`
   max-height: 305px;
   cursor: pointer;
 
+  @media(min-width:768px) {
+    min-height: 210px;
+  }
+
+  @media(min-width:1200px) {
+    min-height: 220px;
+  }
+
   &:hover {
     svg {
       fill: ${props => props.theme.colorbrandSolid};
@@ -71,7 +79,6 @@ export const CardsList = styled.ul`
       margin: -260px 0 0 0;
     }
   }
-
 `
 
 export const EndCercle = styled.div`

@@ -31,16 +31,24 @@ export const UserContainer = styled.div`
   align-items: center;
   margin: -8px 0 0 0;
 
-  svg {
-    fill: ${props => props.theme.textColor};
+  a {
     width: 28px;
-    margin: 0 8px 0 0;
+    margin: 4px 8px 0 0;
+
+    svg {
+      fill: ${props => props.theme.textColor};
+    }
   }
+
 `
 
 export const TextCommunity = styled(SmallText)`
   ${textSmallMixin};
   width: auto;
+
+  @media(min-width:410px) {
+    font-size: 1.05em;
+  }
 
   @media(min-width:1200px) {
     font-size: 1em;
@@ -97,9 +105,10 @@ export const DescriptionContainer = styled.div`
   color: ${props => props.theme.colorWhite};
   text-align: start;
   transition: all .1s;
-  padding: 0 10px 30px 10px;
+  padding: 0 10px 32px 10px;
+  letter-spacing: 0.02em;
 
-  @media(min-width:1200px) {
+  @media(min-width:768px) {
     padding: 0 10px 34px 10px;
   }
 
@@ -107,7 +116,11 @@ export const DescriptionContainer = styled.div`
     font-style: normal;
     font-weight: ${props => props.theme.weight.semiMedium};
     font-size: 1.5em;
-    margin: 0 0 5px 0;
+    margin: 0 0 7px 0;
+
+    @media(min-width:410px) {
+      font-size: 1.9em;
+    }
 
     @media(min-width:1200px) {
       font-size: 2.1em;
@@ -146,8 +159,16 @@ export const TextDescription = styled(TextBody)`
   font-size: 1em;
   line-height: 1.62em;
 
-  @media(min-width:1200px) {
+  @media(min-width:410px) {
+    font-size: 1.07em;
+  }
+
+  @media(min-width:768px) {
     font-size: 1.08em;
+    line-height: 1.58em;
+  }
+
+  @media(min-width:1200px) {
     line-height: 1.65em;
   }
 `
@@ -165,10 +186,15 @@ export const Truncate = styled.div`
     bottom: 10px;
     font-family: ${props => props.theme.secondaryFont};
     color: #8f8f92;
-    font-size: 0.94em;
+    font-size: 0.97em;
     cursor: pointer;
     transition: .05s;
     will-change: opacity;
+    letter-spacing: 0.02em;
+
+    @media(min-width:410px) {
+      font-size: 1.04em;
+    }
 
     @media(min-width:1200px) {
       font-size: 1.08em;
