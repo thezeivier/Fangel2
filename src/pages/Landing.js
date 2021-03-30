@@ -14,11 +14,11 @@ const FormatLogo = styled.div`
   }
 `
 
-const Landing = ({changeTheme}) =>{
+const Landing = () =>{
   return(
     <>
       <FormatLogo>
-        <HeaderLP changeTheme={changeTheme}/>
+        <HeaderLP/>
       </FormatLogo>
       <LadingPageMain />
     </>

@@ -9,7 +9,7 @@ import { ReactComponent as ProfileSVG } from './icons/profile.svg'
 import { ReactComponent as SettingsSVG } from './icons/settings.svg'
 
 const RegHeader = () => {
-  const userApp = useContext(AppContext)
+  const contextFromApp = useContext(AppContext)
   
   return (
     <Header>
@@ -17,7 +17,7 @@ const RegHeader = () => {
         <Container>
           <Logo />
           <IconsContainer>
-            {userApp? (userApp.authState? userApp.authState.displayName:"Cargando..."):"Cargando..."}{/*Falta maquillar*/}
+            {contextFromApp? (contextFromApp.authState? contextFromApp.authState.displayName:"Cargando..."):"Cargando..."}{/*Falta maquillar*/}
             <Link to={"/profile"}>
               <ProfileSVG  className="profile" />
             </Link>

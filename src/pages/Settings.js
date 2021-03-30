@@ -8,7 +8,7 @@ const Settings = () => {
   return (
     <Container padding40>
       <Header />
-      <MainSettings />
+      <MainSettings/>
       <Footer />
     </Container>
   );

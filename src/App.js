@@ -66,8 +66,10 @@ function App() {
   // )
   
   const userValue = {
-    authState
+    authState: (authState? authState: false),
+    changeTheme,
   }
+  
   console.log("render")
   return (
     <ThemeProvider theme={theme(mode)}>
@@ -75,13 +77,7 @@ function App() {
         <GlobalStyles />
         <Container>
           <Switch>
-            <Route exact path={"/"}>
-              {
-                authState?
-                <Home/>:
-                <Landing changeTheme={changeTheme}/>
-              }
-            </Route>
+            <Route exact path={"/"} component={authState ? Home : Landing}/>
             <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/> {/* temporal */}
             <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/> {/* temporal */}
             <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
