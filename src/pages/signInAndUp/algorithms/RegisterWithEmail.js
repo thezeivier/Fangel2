@@ -88,7 +88,7 @@ export const sendDataUser = async (data, uid, type, firestore, firebase) => {
     console.error('Error de envío', error)
   })
 
-  if(type == "admin"){
+  if(type === "admin"){
     let codeDBRef = firestore.collection("adminCodes").doc("listOfCodes")
     batch.set(
       codeDBRef, 
@@ -106,7 +106,7 @@ export const sendDataUser = async (data, uid, type, firestore, firebase) => {
       return false
     })
     return updateACodes
-  }else if (type == "user"){
+  }else if (type === "user"){
     let codeDBRef = firestore.collection("userCodes").doc(code)
     batch.set(
       codeDBRef,

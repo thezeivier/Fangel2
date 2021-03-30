@@ -8,7 +8,7 @@ import "firebase/firestore"
 import "firebase/app"
 import "firebase/storage"
 import { FirebaseAppProvider} from 'reactfire';
-import firebaseConfig from './firebase/Config'
+import {firebaseConfig} from './firebase/Config'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

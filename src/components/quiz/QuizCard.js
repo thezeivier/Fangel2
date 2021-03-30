@@ -3,7 +3,7 @@ import { Card, LabelStyled } from './styles/sQuizMain'
 
 const QuizCard = ({ background, category }) => {
   return (
-    <LabelStyled for={category}>
+    <LabelStyled htmlFor={category}>
       <input type="checkbox" id={category} value={category} />
       <Card className="cardQuiz">
         <img src={background} alt={category} />

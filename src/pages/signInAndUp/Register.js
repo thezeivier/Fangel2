@@ -98,7 +98,7 @@ const Register = () => {
                     Usa el codigo que te proporcionó la persona que te invito a su comunidad
                   </Description>
                   <Contract>
-                    Al registrarte estas de acuerdo con los <a>Términos y Condiciones</a> y <a>Políticas de privacidad.</a>
+                    Al registrarte estas de acuerdo con los <Link to={"/terms-conditions"}>Términos y Condiciones</Link> y <Link to={"/politics-privacy"}>Políticas de privacidad.</Link>
                   </Contract>
                   <ButtonStyled primary type="submit">Registrarse</ButtonStyled>
                 </Form>

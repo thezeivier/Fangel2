@@ -48,7 +48,7 @@ function App() {
         setAuthState(user)
       }
     });
-  },[])
+  },[auth])
 
 
   const changeTheme = () =>{
@@ -77,6 +77,13 @@ function App() {
         <GlobalStyles />
         <Container>
           <Switch>
+            <Route exact path={"/home"}>
+              {
+                authState?
+                <Home/>:
+                <Landing changeTheme={changeTheme}/>
+              }  
+            </Route> {/* temporal */}
             <Route exact path={"/"}>
               {
                 authState?
@@ -84,7 +91,6 @@ function App() {
                 <Landing changeTheme={changeTheme}/>
               }
             </Route>
-            <Route exact path={"/home"} component={authState ? Home : Landing}/> {/* temporal */}
             <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/> {/* temporal */}
             <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/> {/* temporal */}
             <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
