@@ -77,13 +77,6 @@ function App() {
         <GlobalStyles />
         <Container>
           <Switch>
-            <Route exact path={"/home"}>
-              {
-                authState?
-                <Home/>:
-                <Landing changeTheme={changeTheme}/>
-              }  
-            </Route> {/* temporal */}
             <Route exact path={"/"}>
               {
                 authState?
