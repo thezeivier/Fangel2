@@ -1,9 +1,9 @@
 export const firebaseConfig ={
-  apiKey: "AIzaSyDvIGkzb23CemFRX0nLnHGp8XTYaNdti4M",
-  authDomain: "fangelv2.firebaseapp.com",
-  projectId: "fangelv2",
-  storageBucket: "fangelv2.appspot.com",
-  messagingSenderId: "360028787657",
-  appId: "1:360028787657:web:96025f135dc51df0014e18",
-  measurementId: "G-7H9B4CNZMN"
+  apiKey: "AIzaSyDIwBI5Sd5y5JyXFZl-oiLumjIEh1zfPes",
+  authDomain: "fangelv2-300300.firebaseapp.com",
+  projectId: "fangelv2-300300",
+  storageBucket: "fangelv2-300300.appspot.com",
+  messagingSenderId: "128412156233",
+  appId: "1:128412156233:web:081a906f0c7ef2ba281a98",
+  measurementId: "G-L91R7CNQRN"
 };
