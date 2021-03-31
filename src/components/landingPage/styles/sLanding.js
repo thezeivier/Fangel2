@@ -4,7 +4,7 @@ import { PrimaryTitle, SecondaryTitle, TextBody, Button } from './../../../theme
 /* Cover page */
 
 export const CoverPage = styled.div`
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FLanding%2FBackground.png?alt=media&token=dac11772-50b8-4e35-8b27-aa7e9258fc7a');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/landingPage%2Fhuman.png?alt=media&token=8e3befd0-1662-4b97-80ee-2f63ea1d39b6');
   background-size: cover;
   background-repeat: no-repeat;
   min-height: auto;
