@@ -9,6 +9,7 @@ export const Description = styled.h6`
   line-height: 1.8em;
   margin: -10px 4px 30px 4px;
   text-align: start;
+  cursor: default;
 
   @media(min-width: 768px){
     margin: -10px 4px 35px 4px;

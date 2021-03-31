@@ -101,6 +101,7 @@ export const LinkOtherPage = styled.div`
   p {
     margin: 0 8px 0 0;
     width: max-content;
+    cursor: default;
   }
 
   a {

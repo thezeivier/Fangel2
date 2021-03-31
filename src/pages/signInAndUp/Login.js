@@ -52,7 +52,7 @@ const Login = () => {
                 <LinkRecoveryPasssword>
                   <Link to={"/recover-password"}>¿Olvidate tu contraseña?</Link>
                 </LinkRecoveryPasssword>
-                <ButtonStyled primary type="submit">Iniciar Sesión</ButtonStyled>
+                <ButtonStyled primary type="submit">Iniciar sesión</ButtonStyled>
                 <LinkOtherPage>
                   <p>¿No tienes una cuenta?</p>
                   <Link to={"/register"}>Regístrate</Link>
