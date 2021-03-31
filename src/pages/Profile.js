@@ -6,7 +6,7 @@ import { Container } from './../components/general/InternalLayout'
 
 const Profile = () => {
   return (
-    <Container>
+    <Container padding40>
       <Header />
       <MainProfile />
       <Footer />

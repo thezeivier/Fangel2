@@ -70,6 +70,7 @@ export const Fangel = styled.h6`
   font-weight: ${props => props.theme.weight.regular};
   font-size: 0.92em;
   color: #888787;
+  cursor: default;
 
   @media(min-width:1024px) {
     margin: 0 0 30px 0;

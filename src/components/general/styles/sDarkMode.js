@@ -8,7 +8,8 @@ export const Container = styled.div`
     margin: 0 12px 0 0;
     width: min-content;
     font-size: 0.875em;
-    font-weight: ${props => props.theme.weight.light}
+    font-weight: ${props => props.theme.weight.light};
+    cursor: default;
   }
 
   .checkbox {

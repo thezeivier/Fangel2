@@ -124,6 +124,7 @@ export const ButtonStyledCover = styled(Button) `
 
 export const ListContainer = styled.ul`
   margin: 0 0 40px 0;
+  cursor: default;
 
   li {
     font-size: 0.97em;

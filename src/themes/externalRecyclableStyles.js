@@ -69,6 +69,7 @@ export const PrimaryTitle = styled.h1`
   font-size: 2em;
   line-height: 1.45em;
   margin: ${props => props.margin};
+  cursor: default;
 
   @media(min-width:768px) {
     font-size: 2.3em;
@@ -90,6 +91,7 @@ export const SecondaryTitle = styled.h2`
   font-weight: ${props => props.theme.weight.semiMedium};
   font-size: 1.7em;
   line-height: 1.5em;
+  cursor: default;
 
   @media(min-width: 1100px){
     font-size: 34px;
@@ -106,6 +108,7 @@ export const TextBody = styled.p`
   font-size: 1.1em;
   line-height: 1.7em;
   margin: ${props => props.margin};
+  cursor: default;
 
   @media(min-width:768px) {
     font-size: 1.2em;
@@ -134,6 +137,7 @@ export const TextDetails = styled.p`
   font-weight: ${props => props.theme.weight.light};
   font-size: 0.89em;
   line-height: 2.1em;
+  cursor: default;
 `
 
 export const Button = styled.button`
