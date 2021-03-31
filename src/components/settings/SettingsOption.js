@@ -1,14 +1,14 @@
 import React from 'react';
 import {useAuth} from 'reactfire'
-import { Link } from 'react-router-dom'
+import { Link, useHistory} from 'react-router-dom'
 import { Option } from './styles/sMainSettings'
 
 const SettingsOption = ({ svg, name, to}) => {
   const auth = useAuth()
+  let history = useHistory();
   const SignOut = () => {
-    console.log(auth)
     auth.signOut().then(() => {
-      console.log("SignOut exitoso")
+      history.push('/')
       window.location.reload()
     })
   }
@@ -28,7 +28,6 @@ const SettingsOption = ({ svg, name, to}) => {
       </Option>
     )
   }
-
 }
 
 export default SettingsOption;

@@ -1,10 +1,10 @@
 import React from 'react'
 import HeaderLP from './HeaderLP'
 
-const ExternalLayout = ({changeTheme, children}) => {
+const ExternalLayout = ({children}) => {
   return(
     <>
-      <HeaderLP changeTheme={changeTheme}/>
+      <HeaderLP/>
       {children}
     </>
   )
