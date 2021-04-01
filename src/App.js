@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {Switch, Route} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import {useAuth} from 'reactfire'
+import {useAuth, useFirestore} from 'reactfire'
+import {RecoverUser} from './algorithmsToApp/RecoverUser'
 
 import GlobalStyles from './themes/GlobalStyles'
 import theme from './themes/Theme'
@@ -35,9 +36,11 @@ const {Provider, Consumer} = AppContext
 
 function App() {
   const auth = useAuth()
+  const firestore = useFirestore()
 
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
+  const [userFromDB, setUserFromDB] = useState(false)
   
   useEffect(()=>{
     if(localStorage.mode){
@@ -45,12 +48,13 @@ function App() {
     }else{
       localStorage.setItem("mode","light")
     }
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged(async user => {
       if (user) {
         setAuthState(user)
+        setUserFromDB(await RecoverUser(firestore, user.uid))
       }
-    });
-  },[auth])
+    });  
+  },[auth, firestore])
 
 
   const changeTheme = () =>{
@@ -65,6 +69,7 @@ function App() {
   
   const userValue = {
     authState: (authState? authState: false),
+    userFromDB: (userFromDB? userFromDB: false),
     changeTheme,
   }
 

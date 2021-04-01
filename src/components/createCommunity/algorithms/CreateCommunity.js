@@ -9,7 +9,7 @@ export const CreateCommunity = async (data, firestore, userApp) => {
       title: nameCommunity,
       description: descriptionCommunity,
       duration: 60,
-      transcurred: 0
+      transcurred: 0,
   }).then(()=>{
     return true
   }).catch(error => {
