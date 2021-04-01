@@ -1,14 +1,26 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
+import {AppContext} from '../../App'
 import Wrapper from './../general/Wrapper'
-import { TitleStyled, TextStyled, TextAreaStyled, ButtonStyled,
+import { TitleStyled, TextStyled, ButtonStyled,
          OnlyDesktop, SubtitleStyled } from './../../themes/internalRecyclableStyles'
 import { InputStyled } from './../../pages/signInAndUp/styles/sGlobalForm'
-import { TextBody } from './../../themes/externalRecyclableStyles'
 import { Form } from './styles/sMainCreateCommunity'
+
+import {CopyCode} from './algorithms/CopyCode'
 
 import { ReactComponent as CopySVG } from './icons/copy.svg'
 
 const MainCreateCTwo = () => {
+  const contextFromApp = useContext(AppContext)
+  const [code, setCode] = useState()
+  if(contextFromApp.userFromDB.type === "admin" && contextFromApp.userFromDB.codeRef){
+    contextFromApp.userFromDB.codeRef
+    .get()
+    .then(result =>{
+      setCode(result.data().code)
+    })
+  }
+
   return (
     <main>
       <Wrapper>
@@ -19,8 +31,8 @@ const MainCreateCTwo = () => {
             Puedes compartir este código con 20 personas para que puedan unirse a tu comunidad.
           </TextStyled>
             <Form>
-              <InputStyled special invitationCode type="text" placeholder="Código de invitación" />
-              <CopySVG />
+              <InputStyled id="copyCode" special invitationCode type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
+              <CopySVG onClick={CopyCode}/>
             </Form>
             <TextStyled>
               Despues que las personas se registren con una invitacion, podrán entrar a otras comunidades.

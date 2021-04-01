@@ -19,6 +19,13 @@ exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").
           users: [],
         }
     );
+    batch.set(
+      db.collection("users").doc(uid),
+      {
+        codeRef: db.doc(`userCodes/${code}`)
+      },
+      {merge: true}
+    );
     batch.commit();
   } else {
     return false;
