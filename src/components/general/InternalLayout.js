@@ -33,3 +33,35 @@ export const Container = styled.div`
     }
   `}
 `
+
+export const ContainerForCommunity = styled.div`
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+
+    @media(min-width:1200px) {
+      margin: 120px 0 0 0;
+    }
+
+    .mainWrapper {
+      @media(min-width:410px) {
+        padding: 0;
+      }
+    }
+  }
+
+  footer,
+  .regHeader {
+    display: none;
+
+    @media(min-width:1200px) {
+      display: block;
+    }
+  }
+`

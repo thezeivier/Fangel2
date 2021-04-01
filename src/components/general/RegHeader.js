@@ -12,7 +12,7 @@ const RegHeader = () => {
   const contextFromApp = useContext(AppContext)
   
   return (
-    <Header>
+    <Header className="regHeader">
       <Wrapper>
         <Container>
           <Logo />

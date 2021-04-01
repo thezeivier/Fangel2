@@ -1,0 +1,35 @@
+import styled from 'styled-components'
+import { SecondaryTitle } from './../../../themes/externalRecyclableStyles'
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  width: -webkit-fill-available;
+  padding: 12px 20px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid ${props => props.theme.colorLine};
+  flex: 0 0 auto;
+  
+  @media(min-width:410px) {
+    padding: 0 30px;
+  }
+
+  @media(min-width:768px) {
+    padding: 0 5%;
+  }
+
+  @media(min-width:1200px) {
+    display: none;
+  }
+`
+
+export const TitleCommunityStyled = styled(SecondaryTitle)`
+  width: -webkit-fill-available;
+  text-align: start;
+  padding: 0 10px;
+  font-size: 1.29em;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+`

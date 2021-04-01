@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { SmallText } from './../../../themes/externalRecyclableStyles'
 
 export const FooterContainer = styled.footer`

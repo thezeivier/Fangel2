@@ -28,6 +28,8 @@ import FAQs from './pages/FAQs'
 import PoliticsNPrivacy from './pages/PoliticsNPrivacy'
 import TermsNConditions from './pages/TermsNConditions'
 
+import VideoUser from './pages/inCommunity/VideoUser'
+
 const AppContext =  React.createContext()
 const {Provider, Consumer} = AppContext
 
@@ -74,14 +76,14 @@ function App() {
         <Container>
           <Switch>
             <Route exact path={"/"} component={authState ? Home : Landing}/>
-            <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/> {/* temporal */}
-            <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/> {/* temporal */}
+            <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/>
+            <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/>
             <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
-            <Route exact path={"/settings"} component={authState ? Settings : Landing}/> {/* temporal */}
+            <Route exact path={"/settings"} component={authState ? Settings : Landing}/>
             <Route exact path={"/support"}>
               <Support />
             </Route >
-            <Route exact path={"/profile"} component={authState ? Profile : Landing}/> {/* temporal */}
+            <Route exact path={"/profile"} component={authState ? Profile : Landing}/>
             <Route exact path={"/faqs"}>
               <FAQs />
             </Route >
@@ -91,6 +93,11 @@ function App() {
             <Route exact path={"/terms-conditions"}>
               <TermsNConditions />
             </Route >
+            
+            <Route exact path={"/video-user"}>  {/* temporal */}
+              <VideoUser />
+            </Route >
+
             <ExternalLayout changeTheme={changeTheme}>
               <Route exact path={"/register"} component={Register}/>
               <Route exact path={"/login"} component={Login}/>
