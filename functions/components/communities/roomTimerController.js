@@ -1,6 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-exports.roomTimeController = functions.firestore.document("communities/{documentId}").onWrite((change)=>{
+exports.roomTimerController = functions.firestore.document("communities/{documentId}").onWrite((change)=>{
   const document = change.after.exists ? change.after.data() : null;
   const oldDocument = change.before.data();
   if(document){
