@@ -2,75 +2,75 @@
   "listQuiz": [
     {
       "id": 1,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fanimals.png?alt=media&token=00e544a6-c4ed-470c-af97-51728db9eb16",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fanimals.png?alt=media&token=d1b6795c-b776-4648-b894-5353cbde48af",
       "category": "Animales"
     }, {
       "id": 2,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fanime.png?alt=media&token=84d8cc94-3f63-4023-86ae-82cace29e52c",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fanime.png?alt=media&token=11545a82-59c5-42e6-981d-4896aec3069f",
       "category": "Anime"
     }, {
       "id": 3,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fculture.png?alt=media&token=59a60c61-1a9d-40ac-805f-17a4e4774847",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fculture.png?alt=media&token=8b986e25-e6a7-40e9-ab1b-755578d8355a",
       "category": "Cultura"
     }, {
       "id": 4,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Feducation.png?alt=media&token=50e457cf-e7da-4496-8989-74d6295ca120",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Feducation.png?alt=media&token=275e79a3-b136-4b9c-a87f-c1402fb6489a",
       "category": "Educacion"
     }, {
       "id": 5,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Ffinances.png?alt=media&token=5597921f-28d7-41e6-9d0e-b00dfb020da2",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Ffinances.png?alt=media&token=916ed40f-0bda-48c4-bc8a-d34bd07d3c89",
       "category": "Finanzas"
     }, {
       "id": 6,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fgames.png?alt=media&token=74fa3477-27d1-46d0-b02c-cd8809397d9b",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fvideogames.png?alt=media&token=1501cc40-014c-4d27-855f-d727b04cba4e",
       "category": "Videojuegos"
     }, {
       "id": 7,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2FhacerChacota.png?alt=media&token=e05ec932-6532-4ad1-af83-afa98ccf1631",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fchacota.png?alt=media&token=fca48cd4-4867-4e1c-8ba9-3ecfc3e175a9",
       "category": "Hacer chacota"
     }, {
       "id": 8,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fhealthy.png?alt=media&token=09e0eb7b-afbb-40a1-b930-8dd62949f68e",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fhealthy.png?alt=media&token=33158e18-1ffd-4634-8139-a69b0823ef2e",
       "category": "Salud y nutrición"
     }, {
       "id": 9,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fliterature.png?alt=media&token=3a178b58-3b5a-460d-813f-23c583dd1cbf",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fliterature.png?alt=media&token=176d6821-a191-48dd-8bb6-90556bf2ff0e",
       "category": "Literatura"
     }, {
       "id": 10,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fmeet.png?alt=media&token=9c4fb93c-a422-49bd-9503-0528739ace3e",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fmeet.png?alt=media&token=ef75c3d9-ac20-40ae-a1c6-8d8b8b658607",
       "category": "Conocer personas"
     }, {
       "id": 11,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fmovies.png?alt=media&token=d57eaf02-30ed-44c4-a6da-661ddfe48a06",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fmovies.png?alt=media&token=2e717a3c-3895-4a39-86b7-0e8722b8c359",
       "category": "Películas"
     }, {
       "id": 12,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fmusic.png?alt=media&token=f4999bc3-d62e-4690-aa63-13e1e0c67590",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fmusic.png?alt=media&token=3446a500-724e-4798-9b43-9dc9ff5c1284",
       "category": "Musica"
     }, {
       "id": 13,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fnature.png?alt=media&token=3cfedf66-406e-42a3-a108-465b42705881",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fnature.png?alt=media&token=dd7ea2ee-358a-47f7-b947-5f5c9bb4cb49",
       "category": "Naturaleza"
     }, {
       "id": 14,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fparty.png?alt=media&token=95d8ecad-0440-4d41-8c44-cddf9febb0b4",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fparty.png?alt=media&token=84772dd5-f711-4d9c-af70-2fd0aabe577c",
       "category": "Fiesta"
     }, {
       "id": 15,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fpolitic.png?alt=media&token=58e8f0c7-53d5-44f6-97ea-043743fa98c2",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fpolitic.png?alt=media&token=e153cc6c-dcc9-4bef-9b4d-dcfc11433587",
       "category": "Política"
     }, {
       "id": 16,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fsport.png?alt=media&token=47ba9085-13b6-400c-aee5-68fae908d8e7",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fsports.png?alt=media&token=f19f5210-fbb9-43b0-90ec-c8ed96c34aae",
       "category": "Deportes"
     }, {
       "id": 17,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Ftecnology.png?alt=media&token=d58236f8-502c-41e4-a084-78d1fc0cc1b6",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Ftecnology.png?alt=media&token=0ceec031-6591-4a8c-b6c4-873ccbe7311c",
       "category": "Tecnología"
     }, {
       "id": 18,
-      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FQuiz%2Fothers.png?alt=media&token=0b986635-dbe8-4bb7-9583-59a4e7578764",
+      "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fothers.png?alt=media&token=a0d6ceab-70b8-4996-b1d2-3e8086793a01",
       "category": "Otros"
     }
   ]

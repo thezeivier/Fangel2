@@ -16,7 +16,7 @@ const LadingPage = () => {
 
             {/* Cover page */}
             <Container>
-              <img src="https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FLanding%2FvideoCaller.svg?alt=media&token=4ebbdffc-6bff-4733-81d6-5d02e0e62acb" />
+              <img src="https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/landingPage%2Fundraw_video_call_kxyp.svg?alt=media&token=3588a07e-b292-4822-8e3c-b22a93fd3d7d" />
               <TitleStyledCover standar>Crea comunidades únicas</TitleStyledCover>
               <TextStyledCover standar>
                 ¿Te gusta el cine, la tecnología o hacer chacota? Conoce a personas con los mismos gustos y comparte ideas.
