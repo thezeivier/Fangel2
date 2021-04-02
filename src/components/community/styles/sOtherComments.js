@@ -22,10 +22,18 @@ export const CommentContainer = styled.div`
     margin: 0 0 6px 0;
     font-size: 1em;
     font-weight: ${props => props.theme.weight.medium};
+
+    @media(min-width:1200px) {
+      font-size: 0.95em;
+    }
   }
 
   p {
     line-height: 1.67em;
+
+    @media(min-width:1200px) {
+      font-size: 0.88em;
+    }
   }
 `
 

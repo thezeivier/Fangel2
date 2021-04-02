@@ -13,6 +13,16 @@ export const CommentContainerStyled = styled(CommentContainer)`
 
   h6 {
     text-align: end;
+
+    @media(min-width:1200px) {
+      font-size: 0.95em;
+    }
+  }
+
+  p {
+    @media(min-width:1200px) {
+      font-size: 0.88em;
+    }
   }
 `
 

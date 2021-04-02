@@ -103,7 +103,8 @@ const GlobalStyles = createGlobalStyle`
     background: #1F1F24;
   }
 
-  body::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+  body::-webkit-scrollbar-button:increment,
+  body::-webkit-scrollbar-button {
     display: none;
   } 
 

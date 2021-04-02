@@ -9,6 +9,7 @@ export const InputContainer = styled.div`
 
   @media(min-width:768px) {
     margin: 10px 0 20px 0;
+    width: 95%;
   }
 `
 
