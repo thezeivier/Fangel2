@@ -12,7 +12,7 @@ exports.roomTimerController = functions.firestore.document("communities/{documen
     let uid = document.uid
     if(oldTranscurred !== transcurred){
       const batch = db.batch();
-      var time = 476000
+      var time = 470000
       if(transcurred < duration){
         let leftTime = duration - transcurred
         var addTime = 8
