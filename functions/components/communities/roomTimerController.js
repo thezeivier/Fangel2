@@ -1,17 +1,18 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-exports.roomTimerController = functions.firestore.document("communities/{documentId}").onWrite((change)=>{
-  const document = change.after.exists ? change.after.data() : null;
-  const oldDocument = change.before.data();
+const db = admin.firestore();
+exports.roomTimerController = functions.firestore.document("communities/{documentId}")
+.onWrite((change)=>{
+  const document = change.after.exists? change.after.data() : null;
+  const oldDocument = change.before.exists? change.before.data(): null;
   if(document){
     let duration = document.duration;
     let transcurred = document.transcurred;
-    let oldTranscurred = oldDocument.transcurred;
-    let uid = document.after.data().uid
+    let oldTranscurred = oldDocument? oldDocument.transcurred : oldDocument;
+    let uid = document.uid
     if(oldTranscurred !== transcurred){
-      const db = admin.firestore();
       const batch = db.batch();
-      var time = 479700
+      var time = 470000
       if(transcurred < duration){
         let leftTime = duration - transcurred
         var addTime = 8
@@ -27,7 +28,9 @@ exports.roomTimerController = functions.firestore.document("communities/{documen
             },
             {merge: true}
           )
-        }, time) //479700 time
+
+          batch.commit();
+        }, time) //476000 time
       }else{
         db.collection("communities").doc(uid).delete()
       }

@@ -1,8 +1,8 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
+const db = admin.firestore();
 exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").onCreate((snap) =>{
   if (snap.data().type === "admin") {
-    const db = admin.firestore();
     const batch = db.batch();
     const uid = snap.data().uid;
     const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -25,7 +25,9 @@ exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").
       },
       {merge: true}
     );
-    batch.commit();
+    batch.commit()
+    .then(console.log("Generado de código exitoso"))
+    .catch(error => console.error("Error al generar código", error));
   } else {
     return false;
   }
