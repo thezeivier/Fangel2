@@ -11,7 +11,7 @@ const Home = () => {
   // console.log(session)
   return (
     <Container>
-      <Header/>
+      <Header />
       <MainHome />
       <Footer />
     </Container>
