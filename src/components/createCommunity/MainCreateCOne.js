@@ -1,4 +1,5 @@
-import React, {useContext} from 'react';
+import React, {useState, useContext} from 'react';
+import {Redirect} from 'react-router-dom'
 import {AppContext} from '../../App'
 import { useForm } from 'react-hook-form'
 import {useFirestore} from 'reactfire'
@@ -12,13 +13,17 @@ import {CreateCommunity} from './algorithms/CreateCommunity'
 const MainCreateCOne = () => {
   const firestore = useFirestore()
   const userApp = useContext(AppContext)
+  const [communityCreated, setCommunityCreated] = useState()
   const {register, handleSubmit, errors } = useForm()
   const onSubmit = async data => {
     const result = await CreateCommunity(data, firestore, userApp)
-    console.log(result)
-    // Falta redireccionamiento**
+    setCommunityCreated(result)
   }
   return (
+    communityCreated?
+    <Redirect to={{
+      pathname: "/video-user"
+    }}/>:
     <main>
       <Wrapper>
         <TitleStyled bottom>Crear una comunidad</TitleStyled>
