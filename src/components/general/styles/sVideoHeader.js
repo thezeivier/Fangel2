@@ -11,11 +11,15 @@ export const HeaderContainer = styled.div`
   flex: 0 0 auto;
   
   @media(min-width:410px) {
-    padding: 0 30px;
+    padding: 12px 30px;
   }
 
   @media(min-width:768px) {
-    padding: 0 5%;
+    padding: 20px 5%;
+  }
+
+  @media(min-width:1024px) {
+    padding: 25px 5%;
   }
 
   @media(min-width:1200px) {

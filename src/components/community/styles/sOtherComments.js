@@ -4,9 +4,13 @@ export const CommentContainer = styled.div`
   display: flex;
   margin: 0 0 12px 0;
 
+  @media(min-width:768px) {
+    margin: 0 0 14px 0;
+  }
+
   img {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     margin: 0 10px 0 0;
     background: gray;
     border-radius: 50%;

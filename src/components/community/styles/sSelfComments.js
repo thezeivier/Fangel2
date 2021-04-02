@@ -7,6 +7,8 @@ export const CommentContainerStyled = styled(CommentContainer)`
   img {
     background: red;
     margin: 0 0 0 10px;
+    width: 30px;
+    height: 30px;
   }
 
   h6 {

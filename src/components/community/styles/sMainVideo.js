@@ -6,4 +6,8 @@ export const ContainerResponsive = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  @media(min-width:1024px) and (orientation : portrait) {
+    margin: 0 15%;
+  }
 `

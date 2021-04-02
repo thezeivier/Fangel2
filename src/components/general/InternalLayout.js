@@ -38,7 +38,14 @@ export const ContainerForCommunity = styled.div`
   margin: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+
+  @media (orientation : portrait) {
+    height: 100vh;
+  }
+
+  @media (orientation : landscape) {
+    height: 100%;
+  }
   
   main {
     display: flex;
@@ -49,11 +56,11 @@ export const ContainerForCommunity = styled.div`
       margin: 120px 0 0 0;
     }
 
-    .mainWrapper {
+/*     .mainWrapper {
       @media(min-width:410px) {
         padding: 0;
       }
-    }
+    } */
   }
 
   footer,
