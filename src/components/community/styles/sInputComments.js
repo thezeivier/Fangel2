@@ -19,6 +19,7 @@ export const SvgsContainer = styled.div`
 
   svg {
     height: 24px;
+    fill: ${props => props.theme.textColor};
   }
 
   .microphone {
@@ -39,6 +40,10 @@ export const Form = styled.form`
   align-items: center;
   justify-content: space-between;
   flex: 1 1 auto;
+
+  svg {
+    fill: ${props => props.theme.colorbrandSolid};
+  }
 `
 
 export const InputStyled = styled(Input)`

@@ -4,6 +4,7 @@ export const MainOnlyDesktop = styled.main`
   .mainWrapper {
     @media(min-width:1200px) {
       width: auto;
+      margin: 0;
     }
   }
 `

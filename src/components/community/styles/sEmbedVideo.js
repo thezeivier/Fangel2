@@ -9,6 +9,7 @@ export const TitleOnlyDesktopContainer = styled.div`
 
     svg {
       margin: 0 10px 0 0;
+      fill: ${props => props.theme.textColor};
     }
 
     h3 {
@@ -59,6 +60,7 @@ export const CountContainer = styled.div`
     font-weight: ${props => props.theme.weight.light};
     margin: 0 4px 0 0;
     font-size: 0.85em;
+    color: ${props => props.theme.colorWhite};
   }
 
   @media(min-width:1200px) {

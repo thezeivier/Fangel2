@@ -63,8 +63,12 @@ export const colors = {
     },
     line: {
       dark: 'rgba(239, 240, 247, 0.1)',
-      light: 'rgba(20, 56, 149, 0.2)'
-    }
+      light: 'rgba(20, 56, 149, 0.2)',
+    },
+    shadowBox: {
+      gradientDark: 'linear-gradient(180deg, #04061C 28.16%, rgba(4,6,28,0) 100%)',
+      gradientLight: 'linear-gradient(180deg, #dedede 28.16%, rgba(4,6,28,0) 100%)',
+    },
   },
 }
 

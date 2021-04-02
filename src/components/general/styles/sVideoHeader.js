@@ -9,6 +9,10 @@ export const HeaderContainer = styled.div`
   align-items: center;
   border-bottom: 1px solid ${props => props.theme.colorLine};
   flex: 0 0 auto;
+
+  svg {
+    fill: ${props => props.theme.textColor};
+  }
   
   @media(min-width:410px) {
     padding: 12px 30px;

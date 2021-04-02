@@ -56,9 +56,9 @@ export const ContainerForCommunity = styled.div`
       margin: 120px auto 0 auto;
       padding: 0;
       width: 1200px;
-
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 58% 1fr;
+      column-gap: 40px;
     }
 
 /*     .mainWrapper {

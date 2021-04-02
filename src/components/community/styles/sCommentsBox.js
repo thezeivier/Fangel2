@@ -66,7 +66,7 @@ export const Transperent = styled.div`
   width: 100%;
   top: 0;
   left: 0;
-  background: linear-gradient(180deg, #04061C 28.16%, rgba(4,6,28,0) 100%);
+  background: ${props => props.theme.colorShadowBox};
   z-index: 100;
 
   @media(min-width:1200px) {
