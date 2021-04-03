@@ -121,6 +121,25 @@ const GlobalStyles = createGlobalStyle`
   body::-webkit-scrollbar-track {
     border-radius: 10px;  
   }
+
+  .ReactModalPortal {
+    z-index: 1000;
+  }
+
+  .ReactModal__Content {
+    background: ${props => props.theme.background} !important;
+    color: ${props => props.theme.textColor};
+    border-radius: none !important;
+    border: none !important;
+    width: 100%;
+    padding: 0 !important;
+  }
+
+  @media (orientation : landscape) {
+    .ReactModal__Content {
+      height: 100%;
+    }
+  }
 `
 
 export default GlobalStyles

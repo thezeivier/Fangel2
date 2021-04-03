@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components'
 import Wrapper from './../general/Wrapper'
 import EmbedVideo from './EmbedVideo'
 import CommentsBox from './CommentsBox'

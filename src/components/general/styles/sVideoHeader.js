@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { SecondaryTitle } from './../../../themes/externalRecyclableStyles'
 
 export const HeaderContainer = styled.div`
@@ -13,7 +13,7 @@ export const HeaderContainer = styled.div`
   svg {
     fill: ${props => props.theme.textColor};
   }
-  
+
   @media(min-width:410px) {
     padding: 12px 30px;
   }
@@ -40,4 +40,19 @@ export const TitleCommunityStyled = styled(SecondaryTitle)`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;  
   overflow: hidden;
+`
+
+export const ContainerSVG = styled.div`
+  button {
+    background: transparent;
+    border: none;
+  }
+
+  .svgOnlyMobile {
+    display: ${props => props.display || 'block'};
+  }
+
+  .svgCloseOnlyMobile {
+    display: ${props => props.isSettings || 'block'};
+  }
 `
