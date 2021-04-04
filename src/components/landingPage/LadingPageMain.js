@@ -9,8 +9,7 @@ import { CoverPage, TitleStyledCover, TextStyledCover, ButtonsContainer,
          DesktopGridLeft, DescriptionContainer } from './styles/sLanding'
 
 const LadingPage = () => {
-  const refSeccionOne = useRef()
-  const refSeccionTwo = useRef()
+  const ref = useRef()
 
   const onScreen = useOnScreen(ref, "300px")
   const onScreenDesktop = useOnScreen(ref, "-150px")
@@ -57,7 +56,7 @@ const LadingPage = () => {
                 <li>O simplemente haz una fiesta</li>
               </ListContainer>
             </DescriptionContainer>
-            <Box ref={refSeccionOne} onScreen={onScreen} onScreenDesktop={onScreenDesktop} translateRight></Box>
+            <Box ref={ref} onScreen={onScreen} onScreenDesktop={onScreenDesktop} translateRight></Box>
           </DesktopGridRight>
           <DesktopGridLeft>
             <div className="left">
