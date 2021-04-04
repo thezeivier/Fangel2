@@ -1,11 +1,14 @@
 import React from 'react';
+import useHover from './../../hook/use-hover'
 import Wrapper from './../general/Wrapper'
 import UserConnect from './UserConnect'
 import { SubtitleStyled, InputStyled, InputContainer, SectionContainer,
-         TimerDescripcion, ButtonStyled, DisplayContainer } from './styles/sMainSettings'
+         TimerDescripcion, ButtonStyled, DisplayContainer, Comment } from './styles/sMainSettings'
 import { ReactComponent as CodeCopySVG } from './icons/codeCopy.svg'
 
 const MainSettingsAdmin = ({ inDesktop }) => {
+  const [hoverRef, isHovered] = useHover();
+  
   return (
     <Wrapper>
       <DisplayContainer inDesktop={inDesktop}>
@@ -23,8 +26,12 @@ const MainSettingsAdmin = ({ inDesktop }) => {
             <SubtitleStyled as="h4">Código de invitación</SubtitleStyled>
             <InputContainer>
               <InputStyled placeholder="Código de invitación" />
-              <button>
+              <button ref={hoverRef}>
                 <CodeCopySVG />
+                {isHovered
+                  ? <Comment>Copiar código</Comment>
+                  : <></>
+                }
               </button>
             </InputContainer>
           </SectionContainer>

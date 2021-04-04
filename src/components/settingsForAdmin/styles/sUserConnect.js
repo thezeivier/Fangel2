@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Comment } from './sMainSettings'
 
 export const Container = styled.div`
   display: flex;
@@ -6,6 +7,11 @@ export const Container = styled.div`
   border-bottom: 1px solid ${props => props.theme.colorLine};
   padding: 0 0 10px 0;
   margin: 0 0 19px 0;
+
+  .containerBanUserSVG {
+    height: 24px !important;
+    position: relative;
+  }
 
   @media(min-width:1200px) {
     padding: 0 0 14px 0;
@@ -70,4 +76,8 @@ export const VideoSvgsContainer = styled.div`
       margin: 0 20px 0 0;
     }
   }
+`
+
+export const CommentStyled = styled(Comment)`
+  font-size: 0.8em;
 `

@@ -1,10 +1,13 @@
 import React from 'react';
+import useHover from './../../hook/use-hover'
 import { ReactComponent as CameraVideoDisableSVG } from './../community/icons/cameraVideoDisable.svg'
 import { ReactComponent as MicrophoneDisableSVG } from './../community/icons/microphoneDisable.svg'
 import { ReactComponent as BanUserSVG } from './icons/banUser.svg'
-import { User, Container, VideoSvgsContainer } from './styles/sUserConnect'
+import { User, Container, VideoSvgsContainer, CommentStyled } from './styles/sUserConnect'
 
 const UserConnect = () => {
+  const [hoverRef, isHovered] = useHover();
+
   return (
     <Container>
       <User>
@@ -15,7 +18,13 @@ const UserConnect = () => {
         <CameraVideoDisableSVG className="cameraSVG" />
         <MicrophoneDisableSVG className="microphoneSVG" />
       </VideoSvgsContainer>
-      <BanUserSVG className="banUserSVG" />
+      <div className="containerBanUserSVG" ref={hoverRef}>
+        <BanUserSVG className="banUserSVG" />
+        {isHovered
+          ? <CommentStyled>Sacar de la sala al usuario</CommentStyled>
+          : <></>
+        }
+      </div>
     </Container>
   );
 }
