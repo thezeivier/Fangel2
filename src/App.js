@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Switch, Route} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import {useAuth, useFirestore} from 'reactfire'
-import {RecoverUser} from './algorithmsToApp/RecoverUser'
-
+import { RecoverUser} from './algorithmsToApp/RecoverUser'
 import GlobalStyles from './themes/GlobalStyles'
 import theme from './themes/Theme'
 
@@ -30,6 +29,8 @@ import PoliticsNPrivacy from './pages/PoliticsNPrivacy'
 import TermsNConditions from './pages/TermsNConditions'
 
 import VideoUser from './pages/inCommunity/VideoUser'
+import SettingsAdmin from './pages/inCommunity/SettingsAdmin'
+import VideoAdmin from './pages/inCommunity/VideoAdmin'
 
 const AppContext =  React.createContext()
 const {Provider, Consumer} = AppContext
@@ -101,6 +102,12 @@ function App() {
             
             <Route exact path={"/video-user"}>  {/* temporal */}
               <VideoUser />
+            </Route >
+            <Route exact path={"/settings-admin"}>  {/* temporal */}
+              <SettingsAdmin />
+            </Route >
+            <Route exact path={"/video-admin"}>  {/* temporal */}
+              <VideoAdmin />
             </Route >
 
             <ExternalLayout changeTheme={changeTheme}>

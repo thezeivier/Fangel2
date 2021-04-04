@@ -7,10 +7,22 @@ export const CommentContainerStyled = styled(CommentContainer)`
   img {
     background: red;
     margin: 0 0 0 10px;
+    width: 30px;
+    height: 30px;
   }
 
   h6 {
     text-align: end;
+
+    @media(min-width:1200px) {
+      font-size: 0.95em;
+    }
+  }
+
+  p {
+    @media(min-width:1200px) {
+      font-size: 0.88em;
+    }
   }
 `
 

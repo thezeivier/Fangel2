@@ -103,7 +103,8 @@ const GlobalStyles = createGlobalStyle`
     background: #1F1F24;
   }
 
-  body::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+  body::-webkit-scrollbar-button:increment,
+  body::-webkit-scrollbar-button {
     display: none;
   } 
 
@@ -119,6 +120,25 @@ const GlobalStyles = createGlobalStyle`
 
   body::-webkit-scrollbar-track {
     border-radius: 10px;  
+  }
+
+  .ReactModalPortal {
+    z-index: 1000;
+  }
+
+  .ReactModal__Content {
+    background: ${props => props.theme.background} !important;
+    color: ${props => props.theme.textColor};
+    border-radius: unset !important;
+    border: none !important;
+    width: 100%;
+    padding: 0 !important;
+  }
+
+  @media (orientation : landscape) {
+    .ReactModal__Content {
+      height: 100%;
+    }
   }
 `
 

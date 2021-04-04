@@ -37,6 +37,7 @@ const theme = (type)=> {
     colorLine: mode ? colors.color.line.dark : colors.color.line.light,
     colorAddCard: mode ? colors.color.hover.input.dark : colors.color.white.solid,
     colorAddCardHover: mode ? colors.color.hover.addCard.shadowDark : colors.color.hover.addCard.shadowLight,
+    colorShadowBox: mode ? colors.color.shadowBox.gradientDark : colors.color.shadowBox.gradientLight,
 
     /*Fonts*/
     primaryFont: fonts.primaryFont,

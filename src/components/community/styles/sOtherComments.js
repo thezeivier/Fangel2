@@ -4,9 +4,13 @@ export const CommentContainer = styled.div`
   display: flex;
   margin: 0 0 12px 0;
 
+  @media(min-width:768px) {
+    margin: 0 0 14px 0;
+  }
+
   img {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     margin: 0 10px 0 0;
     background: gray;
     border-radius: 50%;
@@ -18,10 +22,18 @@ export const CommentContainer = styled.div`
     margin: 0 0 6px 0;
     font-size: 1em;
     font-weight: ${props => props.theme.weight.medium};
+
+    @media(min-width:1200px) {
+      font-size: 0.95em;
+    }
   }
 
   p {
     line-height: 1.67em;
+
+    @media(min-width:1200px) {
+      font-size: 0.88em;
+    }
   }
 `
 
