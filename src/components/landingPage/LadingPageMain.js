@@ -70,7 +70,7 @@ const LadingPage = () => {
               <ButtonStyled primary desktop>¡Quiero una invitación!</ButtonStyled>
             </div>
             <div className="right">
-              <Boxt></Box>
+              <Box></Box>
               <ButtonStyled primary mobile>¡Quiero una invitación!</ButtonStyled>
             </div>
           </DesktopGridLeft>
