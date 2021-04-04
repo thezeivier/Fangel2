@@ -15,7 +15,7 @@ const InputComments = () => {
       <Form>
         <InputStyled placeholder="Escribe un comentario" />
         <Button type="submit">
-          <SendCommentsSVG />
+          <SendCommentsSVG className="sendCommentsSVG" />
         </Button>
       </Form>
     </InputContainer>

@@ -2,15 +2,15 @@ import React from 'react';
 import Wrapper from './../general/Wrapper'
 import UserConnect from './UserConnect'
 import { SubtitleStyled, InputStyled, InputContainer, SectionContainer,
-         TimerDescripcion, ButtonStyled } from './styles/sMainSettings'
+         TimerDescripcion, ButtonStyled, DisplayContainer } from './styles/sMainSettings'
 import { ReactComponent as CodeCopySVG } from './icons/codeCopy.svg'
 
-const MainSettingsAdmin = () => {
+const MainSettingsAdmin = ({ inDesktop }) => {
   return (
     <Wrapper>
-      <div>
+      <DisplayContainer inDesktop={inDesktop}>
         <SectionContainer>
-          <SubtitleStyled as="h4">Personas</SubtitleStyled>
+          <SubtitleStyled as="h4">Personas <span>(4)</span></SubtitleStyled>
           <div>
             <UserConnect />
             <UserConnect />
@@ -37,7 +37,7 @@ const MainSettingsAdmin = () => {
             <ButtonStyled secondary>Extender 1 hora más</ButtonStyled>
           </SectionContainer>
         </div>
-      </div>
+      </DisplayContainer>
     </Wrapper>
   );
 }

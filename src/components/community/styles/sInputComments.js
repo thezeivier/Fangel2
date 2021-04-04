@@ -6,6 +6,8 @@ export const InputContainer = styled.div`
   align-items: center;
   margin: 10px 0;
   flex: 0 0 auto;
+  position: relative;
+  z-index: 1000;
 
   @media(min-width:768px) {
     margin: 10px 0 20px 0;
@@ -14,6 +16,16 @@ export const InputContainer = styled.div`
 
   @media(min-width:768px) {
     margin: 10px 0;
+  }
+
+  @media(min-width:1200px) {
+    .microphone,
+    .cameraVideo,
+    .sendCommentsSVG {
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 `
 

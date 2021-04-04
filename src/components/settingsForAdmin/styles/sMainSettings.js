@@ -1,13 +1,33 @@
 import styled from 'styled-components'
 import { SecondaryTitle, Input, Button } from './../../../themes/externalRecyclableStyles'
 
+export const DisplayContainer = styled.div`
+  display: ${props => props.inDesktop ? 'none' : `${props.inDesktop}`};
+
+  @media(min-width:1200px) {
+    display: ${props => props.inDesktop ? `${props.inDesktop}` : 'none'}; //grid
+    display: grid;
+    grid-template-columns: 51% 1fr;
+    column-gap: calc(7% + 40px);
+    margin: 100px 0 0 0;
+  }
+`
+
 export const SectionContainer = styled.section`
   margin: 30px 0;
+
+  @media(min-width:1200px) {
+    margin: 0 0 40px 0;
+  }
 `
 
 export const SubtitleStyled = styled(SecondaryTitle)`
   margin: 0 0 20px 0;
   font-size: 1.4em;
+
+  span {
+    font-weight: ${props => props.theme.weight.light};
+  }
 `
 
 export const InputContainer = styled.div`
@@ -23,6 +43,12 @@ export const InputContainer = styled.div`
     svg {
       fill: ${props => props.theme.textColor};
       width: 36px;
+      transition: .2s;
+
+      &:hover {
+        cursor: pointer;
+        fill: ${props => props.theme.colorbrandSolid};
+      }
     }
   }
 `

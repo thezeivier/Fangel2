@@ -6,6 +6,19 @@ export const Container = styled.div`
   border-bottom: 1px solid ${props => props.theme.colorLine};
   padding: 0 0 10px 0;
   margin: 0 0 19px 0;
+
+  @media(min-width:1200px) {
+    padding: 0 0 14px 0;
+    margin: 0 0 23px 0;
+
+    .cameraSVG,
+    .microphoneSVG,
+    .banUserSVG {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
 `
 
 export const User = styled.div`
@@ -19,6 +32,10 @@ export const User = styled.div`
     background: gray;
     border-radius: 50%;
     margin: 0 10px 0 0;
+
+    @media(min-width:1200px) {
+      margin: 0 12px 0 0;
+    }
   }
 
   h6 {
@@ -44,5 +61,13 @@ export const VideoSvgsContainer = styled.div`
 
   .cameraSVG {
     margin: 0 15px 0 0;
+  }
+
+  @media(min-width:1200px) {
+    margin: 0 30px;
+
+    .cameraSVG {
+      margin: 0 20px 0 0;
+    }
   }
 `

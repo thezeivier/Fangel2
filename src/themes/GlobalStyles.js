@@ -129,7 +129,7 @@ const GlobalStyles = createGlobalStyle`
   .ReactModal__Content {
     background: ${props => props.theme.background} !important;
     color: ${props => props.theme.textColor};
-    border-radius: none !important;
+    border-radius: unset !important;
     border: none !important;
     width: 100%;
     padding: 0 !important;

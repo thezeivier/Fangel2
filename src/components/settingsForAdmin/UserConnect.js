@@ -13,9 +13,9 @@ const UserConnect = () => {
       </User>
       <VideoSvgsContainer>
         <CameraVideoDisableSVG className="cameraSVG" />
-        <MicrophoneDisableSVG />
+        <MicrophoneDisableSVG className="microphoneSVG" />
       </VideoSvgsContainer>
-      <BanUserSVG />
+      <BanUserSVG className="banUserSVG" />
     </Container>
   );
 }
