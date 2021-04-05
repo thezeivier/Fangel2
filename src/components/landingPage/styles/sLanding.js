@@ -177,16 +177,6 @@ export const Box = styled.div`
     }
   `}
 
-  ${props => props.translateLeft && css`
-    opacity: ${props => props.onScreen ? '1' : '0'};
-    transform: ${props => props.onScreen ? 'translateX(0)' : 'translateX(-10px)'};
-
-    @media(min-width:1200px) {
-      opacity: ${props => props.onScreensd ? '1' : '0'};
-      transform: ${props => props.onScreensd ? 'translateX(0)' : 'translateX(-10px)'};
-    }
-  `}
-
   @media(min-width:1200px) {
     margin: 60px 0 0 0;
   }
