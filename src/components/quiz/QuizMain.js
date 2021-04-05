@@ -37,13 +37,7 @@ const QuizMain = () => {
           <SubtitleStyled>Escoge tus gustos e intereses</SubtitleStyled>
           <CardsContainer>
             {
-              quiz.map(card =>  <QuizCard 
-                                  key={card.id} 
-                                  {...card} 
-                                  quiz={quiz} 
-                                  cartQuiz={cartQuiz} 
-                                  setCartQuiz={setCartQuiz}
-                                />)
+              quiz.map(card =>  <QuizCard key={card.id} {...card} quiz={quiz} cartQuiz={cartQuiz} setCartQuiz={setCartQuiz}/>)
             }
           </CardsContainer>
           <ButtonStyled 
