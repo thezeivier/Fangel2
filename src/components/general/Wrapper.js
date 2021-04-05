@@ -8,7 +8,7 @@ const Container = styled.div`
   justify-content: space-between;
   position: relative;
 
-  height: ${props => props.height}; //solo para community video
+  height: ${props => props.height}; //solo para community video y error 404
 
   @media(min-width:410px) {
     padding: 0 30px;
@@ -26,7 +26,7 @@ const Container = styled.div`
 `
 
 const Wrapper = (props) => (
-  <Container display={props.display} height={props.heightCommunityVideo} className="mainWrapper">
+  <Container display={props.display} height={props.height} className="mainWrapper">
     {props.children}
   </Container>
 )

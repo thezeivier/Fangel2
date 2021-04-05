@@ -9,7 +9,7 @@ const VideoUser = () => {
   return (
     <MainOnlyDesktop>
       <EmbedVideo src="https://www.youtube.com/watch?v=c0aQkYxjMdI" />
-      <Wrapper heightCommunityVideo="100%">
+      <Wrapper height="100%">
         <ContainerResponsive>
           <CommentsBox />
           <InputComments />
