@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import {useAuth, useFirestore} from 'reactfire'
 import { RecoverUser} from './algorithmsToApp/RecoverUser'
@@ -38,6 +38,7 @@ const {Provider, Consumer} = AppContext
 function App() {
   const auth = useAuth()
   const firestore = useFirestore()
+  const [loading, setLoading] = useState(true)
 
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
@@ -50,6 +51,7 @@ function App() {
       localStorage.setItem("mode","light")
     }
     auth.onAuthStateChanged(async user => {
+      setLoading(false)
       if (user) {
         setAuthState(user)
         setUserFromDB(await RecoverUser(firestore, user.uid))
@@ -74,7 +76,8 @@ function App() {
     changeTheme,
   }
 
-  console.log("render")
+  if(loading) return <p>Pending...</p> // Aquí agregar loader
+
   return (
     <ThemeProvider theme={theme(mode)}>
       <Provider value={userValue}>
@@ -89,7 +92,6 @@ function App() {
             <Route exact path={"/support"}>
               <Support />
             </Route >
-            <Route exact path={"/profile"} component={authState ? Profile : Landing}/>
             <Route exact path={"/faqs"}>
               <FAQs />
             </Route >
@@ -109,6 +111,9 @@ function App() {
             <Route exact path={"/video-admin"}>  {/* temporal */}
               <VideoAdmin />
             </Route >
+            <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
+
+            {/* <Route exact path="/404" render={() =><p>Error 404</p>} />  */}
 
             <ExternalLayout changeTheme={changeTheme}>
               <Route exact path={"/register"} component={Register}/>
