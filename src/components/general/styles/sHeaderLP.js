@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 export const Header = styled.header`
-  position: fixed;
+  position: absolute;
   width: -webkit-fill-available;
   z-index: 1000;
 `

@@ -54,6 +54,8 @@ export const InputContainer = styled.div`
 `
 
 export const ButtonStyled = styled(Button)`
+  position: relative;
+
   @media(min-width:768px) {
     width: initial;
     margin: 0 auto;
@@ -80,5 +82,21 @@ export const TimerDescripcion = styled.div`
   span {
     color: ${props => props.theme.colorbrandSolid};
     font-weight: ${props => props.theme.weight.semiMedium};
+  }
+`
+
+export const Comment = styled.div`
+  display: none;
+
+  @media(min-width:1200px) {
+    display: block;
+    position: absolute;
+    background: black;
+    color: ${props => props.theme.colorWhite};
+    padding: 10px 20px;
+    border-radius: 2px;
+    width: max-content;
+    right: -40px;
+    font-family: ${props => props.theme.secondaryFont};
   }
 `

@@ -1,16 +1,19 @@
 import React, {useContext, useState} from 'react';
+import useHover from './../../hook/use-hover'
 import {AppContext} from '../../App'
 import Wrapper from './../general/Wrapper'
 import { TitleStyled, TextStyled, ButtonStyled,
          OnlyDesktop, SubtitleStyled } from './../../themes/internalRecyclableStyles'
 import { InputStyled } from './../../pages/signInAndUp/styles/sGlobalForm'
-import { Form } from './styles/sMainCreateCommunity'
+import { Form, CommentSVGContainer, CommentStyled } from './styles/sMainCreateCommunity'
 
 import {CopyCode} from './algorithms/CopyCode'
 
 import { ReactComponent as CopySVG } from './icons/copy.svg'
 
 const MainCreateCTwo = () => {
+  const [hoverRef, isHovered] = useHover();
+
   const contextFromApp = useContext(AppContext)
   const [code, setCode] = useState()
   if(contextFromApp.userFromDB.type === "admin" && contextFromApp.userFromDB.codeRef){
@@ -32,7 +35,13 @@ const MainCreateCTwo = () => {
           </TextStyled>
             <Form>
               <InputStyled id="copyCode" special invitationCode type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
-              <CopySVG onClick={CopyCode}/>
+              <CommentSVGContainer ref={hoverRef}>
+                <CopySVG onClick={CopyCode}/>
+                {isHovered
+                  ? <CommentStyled>Copiar código</CommentStyled>
+                  : <></>
+                }
+              </CommentSVGContainer>
             </Form>
             <TextStyled>
               Despues que las personas se registren con una invitacion, podrán entrar a otras comunidades.
