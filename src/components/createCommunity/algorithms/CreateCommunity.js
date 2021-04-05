@@ -11,8 +11,10 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
       duration: 60,
       transcurred: 0,
   }).then(async()=>{
-     let sendImageResult = await communityImageSender(communityImage, storage, uid)
-    return true && sendImageResult
+    if(communityImage){
+      await communityImageSender(communityImage, storage, uid)
+    }
+    return true
   }).catch(error => {
     console.error(error)
     return false
@@ -35,9 +37,6 @@ const communityImageSender = async (communityImage, storage, uid) => {
     })
     return await uploadTask.then(async ()=>{
       // console.log("upload success")
-      return true
-    }).catch(()=>{
-      return false
     })
   }else{
     return false

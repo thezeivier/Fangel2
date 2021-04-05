@@ -1,6 +1,6 @@
 export const codeValidator = async (code, firestore) => {
 
-  if(code.substr(0, 5) === "admin"){
+  if(code.startsWith("admin")){
     let ref = firestore.collection("adminCodes")
     let validate = await ref
     .where("disponibleCodes", "array-contains", code)
