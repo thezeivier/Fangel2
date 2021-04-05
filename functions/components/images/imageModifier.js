@@ -30,7 +30,6 @@ exports.imageModifier = functions.storage.object().onFinalize(async (object) => 
   }
   // [END stopConditions]
   const uid = fileName.substr(0, 28);//Recover uid from file name
-  
   // [START thumbnailGeneration]
   // Download file from bucket.
   const bucket = admin.storage().bucket(fileBucket);
@@ -60,6 +59,7 @@ exports.imageModifier = functions.storage.object().onFinalize(async (object) => 
     db.collection("communities").doc(uid),
     {
       route: newThumbFilePath,
+      bucket: fileBucket,
     },
     {merge: true}
   )

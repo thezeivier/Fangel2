@@ -18,6 +18,7 @@ const MainCreateCOne = () => {
   const [imageRecovered, setImageRecovered] = useState()
   const {register, handleSubmit, errors } = useForm()
   const onSubmit = async data => {
+    setCommunityCreated("test")
     const result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage)
     setCommunityCreated(result)
   }
@@ -33,7 +34,7 @@ const MainCreateCOne = () => {
   }
 
   return (
-    communityCreated?
+    communityCreated === true?
     <Redirect to={{
       pathname: "/video-user"
     }}/>:
@@ -47,13 +48,15 @@ const MainCreateCOne = () => {
             <TextAreaStyled type="text" placeholder="Descripcion" name="descriptionCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
             <ErrorAlert>{errors.descriptionCommunity? errors.descriptionCommunity.message: ""}</ErrorAlert>
             <div>
-              <input type="file" accept="image/*" onChange={Image} style={{display: "none"}} id="communityImage"/>
+              <input type="file" accept="image/*" style={{display: "none"}} id="communityImage"/>
               <ButtonStyled onClick={recoverCommunityImage} secondary bottom30>Subir imagen</ButtonStyled>
             </div>
             <TextBody>
               Las comunidades tiene vida solo por 1 hora, esto significa que esta comunidad sera única y especial.
             </TextBody>
-            <ButtonStyled primary type="submit">Crear comunidad</ButtonStyled>
+            {
+              (!communityCreated || communityCreated !== "test") && <ButtonStyled primary type="submit">Crear comunidad</ButtonStyled>
+            }
           </form>
         </OnlyDesktop>
       </Wrapper>

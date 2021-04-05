@@ -5,8 +5,8 @@ export const usernameFValidator = {
     message: "El usuario debe ser menor a 30 caracteres*",
   },
   pattern: {
-    value: /^[a-zA-Z0-9_]{5,}[a-zA-Z]+[0-9]*$/,
-    message: "Usuario no válido o demasiado corto*"
+    value: /^[a-z0-9_]{5,}[a-z]+[0-9]*$/,
+    message: "Usuario debe ser mayor a cinco caracteres y en minúsculas*"
   }
 }
 
