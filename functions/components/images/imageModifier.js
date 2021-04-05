@@ -1,7 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const db = admin.firestore();
-const storage = admin.storage();
 const spawn = require('child-process-promise').spawn;
 const path = require('path');
 const os = require('os');
@@ -49,7 +48,6 @@ exports.imageModifier = functions.storage.object().onFinalize(async (object) => 
   // We add a 'thumb_' prefix to thumbnails file name. That's where we'll upload the thumbnail.
   const thumbFileName = `thumb_${fileName}`;
   const newThumbFilePath = path.join(newFilePath, thumbFileName); //New destination for thumb.
-  const lastFilePath = path.join(path.dirname(filePath), fileName)
   // Uploading the thumbnail.
   await bucket.upload(tempFilePath, {
     destination: newThumbFilePath,
@@ -67,20 +65,10 @@ exports.imageModifier = functions.storage.object().onFinalize(async (object) => 
   )
   batch.commit();//Sending information to firestore.
 
-
-  //The problem is here. Help me please Khevin.
-  console.log("Este es el storage", storage)
-  const storageRef = storage.ref();
-  const removeImageRef = storageRef.child(lastFilePath); //Create a reference of the image to delete.
-  console.log("Ruta a borrar", lastFilePath)
-  removeImageRef.delete()//Delete image from beforeEvaluation folder.
-  .then(()=>{
-    console.log("se borró")
-  }).catch((error)=>{
-    console.error("Este es mi error", error)
-  })
+  await bucket.file(filePath).delete(); //Delete image from beforeEvaluation folder.
+  console.log("Residual file delete")
   
   // Delete temp file.
   return fs.unlinkSync(tempFilePath);
-  // [END thumbnailGeneration]
+  // [END imageModifier]
 });
