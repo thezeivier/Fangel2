@@ -5,7 +5,7 @@ export const Header = styled.header`
   border-bottom: 1px solid ${props => props.theme.colorLine};
   flex: 0 0 auto;
   position: fixed;
-  z-index: 1000;
+  z-index: 2000;
   background: ${props => props.theme.backgroundHeader};
 `
 

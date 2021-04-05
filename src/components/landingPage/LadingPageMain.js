@@ -1,13 +1,19 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
+import React, { useRef } from 'react';
+import useOnScreen from './../../hook/use-on-screen'
+import { Link } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import Footer from './../general/Footer'
 import { CoverPage, TitleStyledCover, TextStyledCover, ButtonsContainer,
          ButtonStyledCover, Container, ListContainer, Box,
          SubtitleStyled, TextStyled, ButtonStyled, DesktopGridRight,
-         DesktopGridLeft } from './styles/sLanding'
+         DesktopGridLeft, DescriptionContainer } from './styles/sLanding'
 
 const LadingPage = () => {
+  const ref = useRef()
+
+  const onScreen = useOnScreen(ref, "300px")
+  const onScreenDesktop = useOnScreen(ref, "-150px")
+
   return (
     <>
       <main>
@@ -36,7 +42,7 @@ const LadingPage = () => {
         {/* Body page */}
         <Wrapper>
           <DesktopGridRight>
-            <div>
+            <DescriptionContainer ref={ref} onScreen={onScreen} onScreenDesktop={onScreenDesktop} >
               <SubtitleStyled>
                 Cada comunidad es un espacio unico para compartir momentos
               </SubtitleStyled>
@@ -49,8 +55,8 @@ const LadingPage = () => {
                 <li>Abre un espacio para conecer personas y compartir experiencias</li>
                 <li>O simplemente haz una fiesta</li>
               </ListContainer>
-            </div>
-            <Box></Box>
+            </DescriptionContainer>
+            <Box ref={ref} onScreen={onScreen} onScreenDesktop={onScreenDesktop} translateRight></Box>
           </DesktopGridRight>
           <DesktopGridLeft>
             <div className="left">

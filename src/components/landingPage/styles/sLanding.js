@@ -1,5 +1,17 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { PrimaryTitle, SecondaryTitle, TextBody, Button } from './../../../themes/externalRecyclableStyles'
+
+const FadedContainer = keyframes`
+  from {
+    opacity: 0;
+    transform: transalteX(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: transalteX(0px);
+  }
+`
 
 /* Cover page */
 
@@ -29,6 +41,9 @@ export const CoverPage = styled.div`
 
 export const Container = styled.div`
   padding: 44% 0 0 0;
+  animation-delay: .2s;
+  animation: ${FadedContainer} .5s linear;
+  will-change: transition, opacity;
 
   @media(min-width:768px) {
     padding: 35% 0 0 0;
@@ -148,6 +163,29 @@ export const Box = styled.div`
   width: 100%;
   height: 300px;
   background: peru;
+  transition-delay: 1s;
+  transition: all ease-in .2s;
+  will-change: opacity, transform;
+
+  ${props => props.translateRight && css`
+    opacity: ${props => props.onScreen ? '1' : '0'};
+    transform: ${props => props.onScreen ? 'translateX(0)' : 'translateX(10px)'};
+
+    @media(min-width:1200px) {
+      opacity: ${props => props.onScreenDesktop ? '1' : '0'};
+      transform: ${props => props.onScreenDesktop ? 'translateX(0)' : 'translateX(10px)'};
+    }
+  `}
+
+  ${props => props.translateLeft && css`
+    opacity: ${props => props.onScreen ? '1' : '0'};
+    transform: ${props => props.onScreen ? 'translateX(0)' : 'translateX(-10px)'};
+
+    @media(min-width:1200px) {
+      opacity: ${props => props.onScreensd ? '1' : '0'};
+      transform: ${props => props.onScreensd ? 'translateX(0)' : 'translateX(-10px)'};
+    }
+  `}
 
   @media(min-width:1200px) {
     margin: 60px 0 0 0;
@@ -194,6 +232,19 @@ export const ButtonStyled = styled(Button) `
       margin: 40px 0 0 0;
     }
   `}
+`
+
+export const DescriptionContainer = styled.div`
+  transition-delay: 1s;
+  transition: all ease-in .2s;
+  opacity: ${props => props.onScreen ? '1' : '0'};
+  transform: ${props => props.onScreen ? 'translateX(0)' : 'translateX(-10px)'};
+  will-change: opacity, transform;
+
+  @media(min-width:1200px) {
+    opacity: ${props => props.onScreenDesktop ? '1' : '0'};
+    transform: ${props => props.onScreenDesktop ? 'translateX(0)' : 'translateX(-10px)'};
+  }
 `
 
 /* Desktop */
