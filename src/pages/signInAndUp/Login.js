@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {Redirect} from 'react-router-dom'
+import React, {useState, useContext} from 'react';
+import {AppContext} from '../../App'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
-import { Link } from 'react-router-dom'
+import { Link, useHistory, Redirect } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { SubtitleStyled, TextStyled, InputStyled, ButtonStyled,
          ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
@@ -13,11 +13,17 @@ import {LoginWithEmail} from './algorithms/LoginWithEmail'
 import {useAuth} from 'reactfire'
 
 const Login = () => {
+  const contextFromApp = useContext(AppContext)
+  const history = useHistory()
   const auth = useAuth()
   const { register, handleSubmit, errors } = useForm()
   const [isLoginCorrect, setIsLoginCorrect] = useState(null)
-  const onSubmit = async data => {
 
+  if(contextFromApp.authState){
+    history.push("/")//Cancel render if the user is logged in.
+  }
+
+  const onSubmit = async data => {
     let confirmToLogin = await LoginWithEmail(data, auth)
     setIsLoginCorrect(confirmToLogin)
   }

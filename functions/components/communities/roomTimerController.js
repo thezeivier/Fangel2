@@ -34,7 +34,7 @@ exports.roomTimerController = functions.firestore.document("communities/{documen
           batch.commit();
         }, time) //476000 time
       }else{
-        await admin.storage.bucket(fileBucket).file(route).delete(); //Delete community thumb.
+        await admin.storage().bucket(fileBucket).file(route).delete(); //Delete community thumb.
         console.log("Thumbnail deleted");
         await db.collection("communities").doc(uid).delete();//Delete community document from firestore.
         console.log("Community deleted");

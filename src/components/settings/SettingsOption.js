@@ -1,14 +1,12 @@
 import React from 'react';
 import {useAuth} from 'reactfire'
-import { Link, useHistory} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { Option } from './styles/sMainSettings'
 
 const SettingsOption = ({ svg, name, to}) => {
   const auth = useAuth()
-  let history = useHistory();
-  const SignOut = () => {
+  const SignOut = async() => {
     auth.signOut().then(() => {
-      history.push('/')
       window.location.reload()
     })
   }

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import {AppContext} from '../../App'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
-import { Link, Redirect } from "react-router-dom"
+import { Link, Redirect, useHistory } from "react-router-dom"
 import { useForm } from 'react-hook-form'
 import { RegisterWithEmail, codeValidator } from './algorithms/RegisterWithEmail'
 import {usernameFValidator, emailFValidator, passwordFValidator, codeFValidator} from './objects/formValidators'
@@ -13,14 +14,19 @@ import { SubtitleStyled, TextStyled, InputStyled,
 import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
 
 const Register = () => {
+  const contextFromApp = useContext(AppContext)
+  const history = useHistory()
   const auth = useAuth()
   const firestore = useFirestore()
   const firebase = useFirebaseApp()
   const { register, handleSubmit, errors } = useForm()
-
   const [emailRegistered, setEmailRegistered] = useState(null)
   const [codeBValidated, setCodeBValiated] = useState(null)
   const [dataRegister, setDataRegister] = useState(null)
+
+  if(contextFromApp.authState){
+    history.push("/")//Cancel render if the user is logged in.
+  }
 
   const onSubmit = async data => {
     setDataRegister(data)

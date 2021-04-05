@@ -45,6 +45,7 @@ function App() {
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
   const [userFromDB, setUserFromDB] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
   
   useEffect(()=>{
     if(localStorage.mode){
@@ -53,12 +54,16 @@ function App() {
       localStorage.setItem("mode","light")
     }
     auth.onAuthStateChanged(async user => {
-      setLoading(false)
       if (user) {
         setAuthState(user)
-        setUserFromDB(await RecoverUser(firestore, user.uid))
+        let dataUser = await RecoverUser(firestore, user.uid)
+        setUserFromDB(dataUser)
+        if(dataUser.type === "admin"){
+          setIsAdmin(true)
+        }
       }
-    });  
+      setLoading(false)
+    });
   },[auth, firestore])
 
 
@@ -75,6 +80,7 @@ function App() {
   const userValue = {
     authState: (authState? authState: false),
     userFromDB: (userFromDB? userFromDB: false),
+    isAdmin,
     changeTheme,
   }
 

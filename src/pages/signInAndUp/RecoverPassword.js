@@ -1,15 +1,23 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {AppContext} from '../../App'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { SubtitleStyled, TextStyled, FormStyled, InputStyled,
          ButtonStyled, ContainerDesktop, LinkOtherPage } from './styles/sGlobalForm'
 import { ExternalsWrapper } from '../../themes/externalRecyclableStyles'
 
 const RecoverPassword = () => {
+  const contextFromApp = useContext(AppContext)
+  const history = useHistory()
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = data => console.log(data);
+
+  if(contextFromApp.authState){
+    history.push("/")//Cancel render if the user is logged in.
+  }
+  
   console.log(errors);
   console.log(watch("example"))
   

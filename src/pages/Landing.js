@@ -1,4 +1,5 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
 import LadingPageMain from './../components/landingPage/LadingPageMain'
 import HeaderLP from './../components/general/HeaderLP'
 import styled from 'styled-components'
@@ -15,6 +16,10 @@ const FormatLogo = styled.div`
 `
 
 const Landing = () =>{
+  let history = useHistory();
+  if(window.location.pathname === "/settings"){
+    history.push("/")
+  }
   return(
     <>
       <FormatLogo>
