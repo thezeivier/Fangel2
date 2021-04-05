@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components'
 import SelfComments from './SelfComments'
 import OtherComments from './OtherComments'
 import { CommentsContainer, Transperent } from './styles/sCommentsBox'

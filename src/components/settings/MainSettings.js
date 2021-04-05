@@ -3,7 +3,7 @@ import Wrapper from './../general/Wrapper'
 import DarkMode from './../general/DarkMode'
 import SettingsOption from './SettingsOption'
 import ReturnPage from './../general/ReturnPage'
-import { TitleStyled, TextStyled, SubtitleStyled } from './../../themes/internalRecyclableStyles'
+import { TitleStyled, SubtitleStyled } from './../../themes/internalRecyclableStyles'
 import { Top, ListOptions } from './styles/sMainSettings'
 
 import { ReactComponent as ExitSVG } from './icons/exit.svg'

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ModalSettingsAdmin from './../../pages/inCommunity/ModalSettingsAdmin'
 import { HeaderContainer, TitleCommunityStyled, ContainerSVG } from './styles/sVideoHeader'
 import { ReactComponent as CommunitySVG } from './icons/community.svg'

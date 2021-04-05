@@ -4,7 +4,7 @@ import {AppContext} from '../../App'
 import { useForm } from 'react-hook-form'
 import {useFirestore, useStorage} from 'reactfire'
 import Wrapper from './../general/Wrapper'
-import { TitleStyled, TextStyled, TextAreaStyled, ButtonStyled,
+import { TitleStyled, TextAreaStyled, ButtonStyled,
          OnlyDesktop } from './../../themes/internalRecyclableStyles'
 import { InputStyled, ErrorAlert } from './../../pages/signInAndUp/styles/sGlobalForm'
 import { TextBody } from './../../themes/externalRecyclableStyles'

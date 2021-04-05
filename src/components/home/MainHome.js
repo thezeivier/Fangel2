@@ -1,6 +1,6 @@
 import React from 'react';
 import Wrapper from './../general/Wrapper'
-import CardCommunity from './CardCommunity'
+/* import CardCommunity from './CardCommunity' */
 import { Link } from 'react-router-dom'
 import { TitleStyled, TextStyled } from './../../themes/internalRecyclableStyles'
 import { AddCardContainer, EndCercle, CardsList } from './styles/sMainHome'

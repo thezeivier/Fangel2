@@ -11,7 +11,7 @@ const EmbedVideo = ({ src }) => {
         <h3>Construyendo Fangel en 3 días</h3>
       </TitleOnlyDesktopContainer>
       <EmbedContainer>
-        <iframe src={src} frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src={src} frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="videollamada"></iframe>
       </EmbedContainer>
       <CountContainer>
         <span>18</span>

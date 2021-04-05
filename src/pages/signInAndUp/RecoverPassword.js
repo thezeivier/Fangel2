@@ -3,11 +3,9 @@ import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
-import { InputContainer, ButtonContainer } from './styles/sGlobalForm'
 import { SubtitleStyled, TextStyled, FormStyled, InputStyled,
          ButtonStyled, ContainerDesktop, LinkOtherPage } from './styles/sGlobalForm'
-import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
-import { LinkRecoveryPasssword }from './styles/sLogin'
+import { ExternalsWrapper } from '../../themes/externalRecyclableStyles'
 
 const RecoverPassword = () => {
   const { register, handleSubmit, watch, errors } = useForm();

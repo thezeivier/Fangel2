@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import { Link, useLocation, Redirect } from 'react-router-dom'
-import { SubtitleStyled, TextStyled, ButtonStyled, LinkOtherPage } from './styles/sGlobalForm'
+import { SubtitleStyled, TextStyled, LinkOtherPage } from './styles/sGlobalForm'
 import { Email } from './styles/sEmailSended'
-
-import { ExternalsWrapper} from '../../themes/externalRecyclableStyles'
-
+import { ExternalsWrapper } from '../../themes/externalRecyclableStyles'
 
 const EmailSended = () => {
   const location = useLocation()

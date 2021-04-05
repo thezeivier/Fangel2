@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Switch, Route, Redirect} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import {useAuth, useFirestore} from 'reactfire'
 import { RecoverUser} from './algorithmsToApp/RecoverUser'

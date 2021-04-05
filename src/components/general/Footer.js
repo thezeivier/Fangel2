@@ -1,7 +1,6 @@
 import React from 'react';
 import Wrapper from './Wrapper'
 import { Link } from 'react-router-dom'
-import { SmallText } from './../../themes/externalRecyclableStyles'
 import { FooterContainer, SupportLinksContainer, SmallTextStyled, Fangel,
          OnlyDesktop } from './styles/sFooter'
 

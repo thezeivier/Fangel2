@@ -4,8 +4,8 @@ import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
-import { SubtitleStyled, TextStyled, FormStyled, InputStyled,
-         ButtonStyled, ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
+import { SubtitleStyled, TextStyled, InputStyled, ButtonStyled,
+         ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
 import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
 import { LinkRecoveryPasssword } from './styles/sLogin'
 import {emailFValidator, passwordFValidator} from './objects/formValidators'

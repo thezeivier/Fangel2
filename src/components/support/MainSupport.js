@@ -2,7 +2,7 @@ import React from 'react';
 import Wrapper from './../general/Wrapper'
 import ReturnPage from './../general/ReturnPage'
 import { Link } from 'react-router-dom'
-import { TitleStyled, TextStyled } from './../../themes/internalRecyclableStyles'
+import { TitleStyled } from './../../themes/internalRecyclableStyles'
 import { BoxOption, ListBoxOptions } from './styles/sMainSupport'
 
 const MainSupport = () => {

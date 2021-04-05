@@ -7,8 +7,8 @@ import { AppContext } from '../../App'
 import { sendPreferences } from './algorithms/SendPreferences' 
 import { listQuiz } from './ListQuiz.json'
 import { ExternalsWrapper } from './../../themes/externalRecyclableStyles'
-import { TextStyled, SubtitleStyled } from './../../pages/signInAndUp/styles/sGlobalForm'
-import { CardsContainer, Card, ButtonStyled } from './styles/sQuizMain'
+import { SubtitleStyled } from './../../pages/signInAndUp/styles/sGlobalForm'
+import { CardsContainer, ButtonStyled } from './styles/sQuizMain'
 
 const QuizMain = () => {
   const [quiz, setQuiz] = useState(listQuiz);

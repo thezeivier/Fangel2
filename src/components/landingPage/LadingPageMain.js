@@ -22,7 +22,10 @@ const LadingPage = () => {
 
             {/* Cover page */}
             <Container>
-              <img src="https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/landingPage%2Fundraw_video_call_kxyp.svg?alt=media&token=3588a07e-b292-4822-8e3c-b22a93fd3d7d" />
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/landingPage%2Fundraw_video_call_kxyp.svg?alt=media&token=3588a07e-b292-4822-8e3c-b22a93fd3d7d"
+                alt="Comundidades en fangel"
+              />
               <TitleStyledCover standar>Crea comunidades únicas</TitleStyledCover>
               <TextStyledCover standar>
                 ¿Te gusta el cine, la tecnología o hacer chacota? Conoce a personas con los mismos gustos y comparte ideas.

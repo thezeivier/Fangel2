@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useFirestore } from 'reactfire'
-import { useRouteMatch, useHistory }  from 'react-router-dom'
+import { /* useRouteMatch, */ useHistory }  from 'react-router-dom'
 
 export const useMatchRouteUserData = (collection, nameUserRoute) => {
   const [ loading, setLoading ] = useState(true)

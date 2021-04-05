@@ -11,7 +11,7 @@ const UserConnect = () => {
   return (
     <Container>
       <User>
-        <img />
+        <img alt="foto de perfil" />
         <h6>Useryang</h6>
       </User>
       <VideoSvgsContainer>

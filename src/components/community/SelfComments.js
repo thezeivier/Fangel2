@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components'
 import { CommentContainerStyled, CommentStyled } from './styles/sSelfComments'
 
 const SelfComments = () => {
@@ -9,7 +8,7 @@ const SelfComments = () => {
         <h6>Thezevier</h6>
         <p>Sed ut perspiciatis unde omnis</p>
       </CommentStyled>
-      <img />
+      <img alt="foto de perfil" />
     </CommentContainerStyled>
   );
 }

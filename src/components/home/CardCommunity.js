@@ -19,7 +19,7 @@ const CardCommunity = () => {
           </UserContainer>
         </ContainerTextTop>
         <ImageContainer>
-          <img src={"https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FSvgs%2Fnature.jpg?alt=media&token=8a477dec-0352-40d1-963e-69be50a13083"} />
+          <img src={"https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FSvgs%2Fnature.jpg?alt=media&token=8a477dec-0352-40d1-963e-69be50a13083"} alt="Imagen de referencia de la comunidad" />
           <DescriptionContainer as="button" >
             <h3>Lorem ipsum</h3>
             <Truncate className="truncate">

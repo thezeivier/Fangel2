@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components'
 import { ReactComponent as MicrophoneDisableSVG } from './icons/microphoneDisable.svg'
 import { ReactComponent as CameraVideoDisableSVG } from './icons/cameraVideoDisable.svg'
 import { ReactComponent as SendCommentsSVG } from './icons/sendComments.svg'
