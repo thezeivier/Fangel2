@@ -32,6 +32,8 @@ import VideoUser from './pages/inCommunity/VideoUser'
 import SettingsAdmin from './pages/inCommunity/SettingsAdmin'
 import VideoAdmin from './pages/inCommunity/VideoAdmin'
 
+import NotFound from './pages/NotFound'
+
 import Spinner from './components/spinner/MainSpinner'
 
 const AppContext =  React.createContext()
@@ -121,7 +123,7 @@ function App() {
             </Route >
             <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
 
-            {/* <Route exact path="/404" render={() =><p>Error 404</p>} />  */}
+            <Route exact path="/404" render={() =><NotFound />} />
 
             <ExternalLayout changeTheme={changeTheme}>
               <Route exact path={"/register"} component={Register}/>
