@@ -32,6 +32,8 @@ import VideoUser from './pages/inCommunity/VideoUser'
 import SettingsAdmin from './pages/inCommunity/SettingsAdmin'
 import VideoAdmin from './pages/inCommunity/VideoAdmin'
 
+import Spinner from './components/spinner/MainSpinner'
+
 const AppContext =  React.createContext()
 const {Provider, Consumer} = AppContext
 
@@ -76,7 +78,7 @@ function App() {
     changeTheme,
   }
 
-  if(loading) return <p>Pending...</p> // Aquí agregar loader
+  if(loading) return <Spinner />
 
   return (
     <ThemeProvider theme={theme(mode)}>
