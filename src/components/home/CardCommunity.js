@@ -4,8 +4,9 @@ import { CardContainer, UserContainer, ContainerTextTop, TextCommunity,
          User, ImageContainer, DescriptionContainer, TextDescription,
          Truncate, ButtonStyled } from './styles/sCardCommunity'
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
+import communityThumb from '../general/images/thumb_community_s1.svg'
 
-const CardCommunity = () => {
+const CardCommunity = ({communityData}) => {
   return (
     <li>
       <CardContainer>
@@ -19,7 +20,7 @@ const CardCommunity = () => {
           </UserContainer>
         </ContainerTextTop>
         <ImageContainer>
-          <img src={"https://firebasestorage.googleapis.com/v0/b/fangelv2.appspot.com/o/Assets%2FSvgs%2Fnature.jpg?alt=media&token=8a477dec-0352-40d1-963e-69be50a13083"} alt="Imagen de referencia de la comunidad" />
+          <img src={communityThumb} alt="Imagen de referencia de la comunidad" />
           <DescriptionContainer as="button" >
             <h3>Lorem ipsum</h3>
             <Truncate className="truncate">

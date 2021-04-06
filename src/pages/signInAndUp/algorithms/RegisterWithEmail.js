@@ -91,7 +91,7 @@ export const sendDataUser = async (data, uid, type, firestore, firebase) => {
   if(type === "admin"){
     let codeDBRef = firestore.collection("adminCodes").doc("listOfCodes")
     batch.set(
-      codeDBRef, 
+      codeDBRef,
       {
         disponibleCodes: firebase.firebase_.firestore.FieldValue.arrayRemove(code),
         usedCodes: firebase.firebase_.firestore.FieldValue.arrayUnion(code),

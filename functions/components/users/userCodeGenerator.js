@@ -21,7 +21,7 @@ exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").
     batch.set(
       db.collection("users").doc(uid),
       {
-        codeRef: db.doc(`userCodes/${code}`)
+        userCodesRef: db.doc(`userCodes/${code}`)
       },
       {merge: true}
     );

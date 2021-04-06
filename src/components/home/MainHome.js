@@ -1,14 +1,32 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState, useEffect, lazy, Suspense} from 'react';
 import {AppContext} from '../../App'
+import {useFirestore} from 'reactfire'
 import Wrapper from './../general/Wrapper'
-import CardCommunity from './CardCommunity'
 import { Link } from 'react-router-dom'
 import { TitleStyled, TextStyled } from './../../themes/internalRecyclableStyles'
 import { AddCardContainer, EndCercle, CardsList } from './styles/sMainHome'
 import { ReactComponent as AddCardSVG } from './icons/addCard.svg'
 
+//Import Algorithms
+import { RecoverCommunities } from './algorithms/RecoverCommunities'
+
+//CardCommunity lazy load start.
+const CardCommunity = lazy(()=> import('./CardCommunity'))
+
 const MainHome = () => {
   const contextFromApp = useContext(AppContext)
+  const firestore = useFirestore()
+  const [communities, setCommunities] = useState([]) //Communities recovered array.
+
+  useEffect(()=>{
+    callToRecoverCommunities()
+  },[])
+
+  const callToRecoverCommunities = async() => {
+    return await RecoverCommunities(firestore)
+  }
+
+  console.log(communities)
   return (
     <main>
       <Wrapper>
@@ -16,13 +34,19 @@ const MainHome = () => {
         <TextStyled main>Conoce a personas con los mismos gustos y comparte ideas.</TextStyled>
         <CardsList>
         {
-          contextFromApp.isAdmin &&
+          contextFromApp.isAdmin && //If the user is an admin, activate the "AddCardContainer" button.
           <AddCardContainer as={Link} to="/create-community-1" >
             <AddCardSVG />
             <span>Crear comunidad</span>
           </AddCardContainer>  
         }
-          <CardCommunity />
+          <Suspense fallback={<p>Cargando...</p>}>
+            {
+              communities.map((community)=>{ //Render list of "CardCommunity".
+                return <CardCommunity data={community}/>
+              })
+            }
+					</Suspense>
         </CardsList>
       </Wrapper>
       <EndCercle />

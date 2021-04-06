@@ -63,6 +63,16 @@ exports.imageModifier = functions.storage.object().onFinalize(async (object) => 
     },
     {merge: true}
   )
+  
+  batch.set(
+    db.collection("activeCommunities").doc(uid),
+    {
+      route: newThumbFilePath,
+      bucket: fileBucket,
+    },
+    {merge: true}
+  )
+
   batch.commit();//Sending information to firestore.
 
   await bucket.file(filePath).delete(); //Delete image from beforeEvaluation folder.

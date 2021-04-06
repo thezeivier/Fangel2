@@ -1,24 +1,48 @@
 export const CreateCommunity = async (data, firestore, userApp, communityImage, storage) => {
   const {nameCommunity, descriptionCommunity} = data
   let uid = userApp.authState.uid
-  let communitiesRef = firestore.collection('communities')
-  let result = await communitiesRef.doc(uid)
-  .set({
+  let batch = firestore.batch()
+  let activeCommunitiesRef = firestore.collection('activeCommunities').doc(uid)
+  let communitiesRef = firestore.collection('communities').doc(uid)
+
+  batch.set(
+    activeCommunitiesRef,
+    {
       uid,
+      duration: 60,
+      transcurred: 0,
+      userCodesRef: firestore.doc(`communities/${uid}`)
+    },
+    {merge:true}
+    )
+    
+    batch.set(
+      communitiesRef,
+    {
       username: userApp.authState.displayName,
       title: nameCommunity,
       description: descriptionCommunity,
-      duration: 60,
-      transcurred: 0,
-  }).then(async()=>{
-    if(communityImage){
-      await communityImageSender(communityImage, storage, uid)
-    }
-    return true
-  }).catch(error => {
-    console.error(error)
-    return false
-  })
+      creatorUid: uid,
+      numberOfUsersConnected: 1,
+      usersConnected: [
+        {
+          uid: uid,
+          username: userApp.authState.displayName
+        },
+      ],
+    },
+    {merge:true}
+  )
+  let result = await batch.commit()
+    .then(async()=>{
+      if(communityImage){
+        await communityImageSender(communityImage, storage, uid)
+      }
+      return true
+    }).catch(error => {
+      console.error(error)
+      return false
+    })
   return result
 }
 
