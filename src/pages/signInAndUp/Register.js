@@ -25,7 +25,9 @@ const Register = () => {
   const [dataRegister, setDataRegister] = useState(null)
 
   if(contextFromApp.authState){
-    history.push("/")//Cancel render if the user is logged in.
+    if(!dataRegister){
+      history.push("/")//Cancel render if the user is logged in.
+    }
   }
 
   const onSubmit = async data => {

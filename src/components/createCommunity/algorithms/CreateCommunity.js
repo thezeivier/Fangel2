@@ -2,8 +2,8 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
   const {nameCommunity, descriptionCommunity} = data
   let uid = userApp.authState.uid
   let batch = firestore.batch()
-  let activeCommunitiesRef = firestore.collection('activeCommunities').doc(uid)
   let communitiesRef = firestore.collection('communities').doc(uid)
+  let activeCommunitiesRef = firestore.collection('activeCommunities').doc(uid)
 
   batch.set(
     activeCommunitiesRef,
