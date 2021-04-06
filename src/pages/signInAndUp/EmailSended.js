@@ -47,7 +47,7 @@ const EmailSended = () => {
           <TextStyled>Acabamos de enviar un correo eléctronico a:</TextStyled>
           <Email>{location.state.email}</Email>
           <TextStyled>{selectedText.informationText}</TextStyled>
-          <LinkOtherPage>
+          <LinkOtherPage onClick={() => window.location.reload()}>
             <Link to={"/login"}>Regresar al Inicio de sesión</Link>
           </LinkOtherPage>
         </ExternalsWrapper>
