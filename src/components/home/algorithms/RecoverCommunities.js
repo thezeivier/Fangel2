@@ -9,11 +9,9 @@ export const RecoverCommunities = async (firestore) => {
       console.log("No hay comunidades disponibles.")
       return null
     }else{
-      return {
-        community: result.docs.map(doc => {
-          return {data: doc.data()}
+      return result.docs.map(doc => {
+          return doc.data()
         })
-      }
     }
   })
 }

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom'
+import {useStorage} from 'reactfire'
 import { CardContainer, UserContainer, ContainerTextTop, TextCommunity,
          User, ImageContainer, DescriptionContainer, TextDescription,
          Truncate, ButtonStyled } from './styles/sCardCommunity'
@@ -7,25 +8,35 @@ import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import communityThumb from '../general/images/thumb_community_s1.svg'
 
 const CardCommunity = ({communityData}) => {
+  const storage = useStorage()
+  const [thumb, setThumb] = useState()
+  useEffect(()=>{
+    const gsReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.route}`)
+    gsReference.getDownloadURL().then(url => {
+      setThumb(url)
+    })
+  }, [])
+
+  console.log(communityData)
   return (
     <li>
       <CardContainer>
         <ContainerTextTop>
           <TextCommunity>Comunidad creada por por:</TextCommunity>
           <UserContainer>
-            <Link to="/profile">
+            <Link to={`/${communityData.username}`}>
               <ProfileSVG />
             </Link>
-            <User as="h4">Useryang</User>
+            <User as="h4">{communityData.username}</User>
           </UserContainer>
         </ContainerTextTop>
         <ImageContainer>
-          <img src={communityThumb} alt="Imagen de referencia de la comunidad" />
+          <img src={thumb? thumb: communityThumb} alt="Imagen de referencia de la comunidad" />
           <DescriptionContainer as="button" >
-            <h3>Lorem ipsum</h3>
+            <h3>{communityData.title}</h3>
             <Truncate className="truncate">
               <TextDescription className="textCardCommunity">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                {communityData.description}
               </TextDescription>
             </Truncate>
           </DescriptionContainer>
