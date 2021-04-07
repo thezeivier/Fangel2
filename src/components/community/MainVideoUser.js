@@ -8,7 +8,7 @@ import { ContainerResponsive, MainOnlyDesktop } from './styles/sMainVideo'
 const VideoUser = () => {
   return (
     <MainOnlyDesktop>
-      <EmbedVideo src="https://www.youtube.com/watch?v=c0aQkYxjMdI" />
+      <EmbedVideo src="https://www.youtube.com/embed/LB6_e2uA7rE" />
       <Wrapper height="100%">
         <ContainerResponsive>
           <CommentsBox />
