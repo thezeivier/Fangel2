@@ -1,7 +1,7 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const db = admin.firestore();
-exports.roomTimerController = functions.firestore.document("communities/{documentId}")
+exports.roomTimerController = functions.firestore.document("activeCommunities/{documentId}")
 .onWrite(async(change)=>{
   const document = change.after.exists? change.after.data() : null;
   const oldDocument = change.before.exists? change.before.data(): null;
@@ -24,7 +24,7 @@ exports.roomTimerController = functions.firestore.document("communities/{documen
         }
         setTimeout(()=>{
           batch.set(
-            db.collection("communities").doc(uid),
+            db.collection("activeCommunities").doc(uid),
             {
               transcurred: transcurred + addTime
             },
@@ -36,7 +36,7 @@ exports.roomTimerController = functions.firestore.document("communities/{documen
       }else{
         await admin.storage().bucket(fileBucket).file(route).delete(); //Delete community thumb.
         console.log("Thumbnail deleted");
-        await db.collection("communities").doc(uid).delete();//Delete community document from firestore.
+        await db.collection("activeCommunities").doc(uid).delete();//Delete community document from firestore.
         console.log("Community deleted");
       }
     }else{

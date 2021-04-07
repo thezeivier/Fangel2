@@ -7,6 +7,9 @@ import { TitleStyled, TextStyled } from './../../themes/internalRecyclableStyles
 import { AddCardContainer, EndCercle, CardsList } from './styles/sMainHome'
 import { ReactComponent as AddCardSVG } from './icons/addCard.svg'
 
+//Import Loading
+import Spinner from '../spinner/MainSpinner'
+
 //Import Algorithms
 import { RecoverCommunities } from './algorithms/RecoverCommunities'
 
@@ -16,17 +19,17 @@ const CardCommunity = lazy(()=> import('./CardCommunity'))
 const MainHome = () => {
   const contextFromApp = useContext(AppContext)
   const firestore = useFirestore()
-  const [communities, setCommunities] = useState([]) //Communities recovered array.
+  const [communities, setCommunities] = useState() //Communities recovered array.
+  const [loading, setLoading] = useState(true)
 
-  useEffect(()=>{
-    callToRecoverCommunities()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(async ()=>{
+    let diponibleCommunities = await RecoverCommunities(firestore)
+    setCommunities(diponibleCommunities)
   },[])
-
-  const callToRecoverCommunities = async() => {
-    return await RecoverCommunities(firestore)
-  }
-
-  console.log(communities)
+  
+  // communities? setLoading(false): setLoading(true)
+  // console.log(communities)
   return (
     <main>
       <Wrapper>
@@ -41,11 +44,14 @@ const MainHome = () => {
           </AddCardContainer>  
         }
           <Suspense fallback={<p>Cargando...</p>}>
-            {
-              communities.map((community)=>{ //Render list of "CardCommunity".
-                return <CardCommunity data={community}/>
-              })
-            }
+            {/* {
+              loading?
+                <Spinner />:
+              communities &&
+                communities.map((community)=>{ //Render list of "CardCommunity".
+                  return <CardCommunity data={community}/>
+                })
+            } */}
 					</Suspense>
         </CardsList>
       </Wrapper>
