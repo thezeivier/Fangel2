@@ -17,7 +17,7 @@ const FormatLogo = styled.div`
 
 const Landing = () =>{
   let history = useHistory();
-  if(window.location.pathname === "/settings"){
+  if(window.location.pathname === "/settings"){ //Quit delay to logout.
     history.push("/")
   }
   return(

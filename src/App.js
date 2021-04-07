@@ -60,8 +60,10 @@ function App() {
         setAuthState(user)
         let dataUser = await RecoverUser(firestore, user.uid)
         setUserFromDB(dataUser)
-        if(dataUser.type === "admin"){
-          setIsAdmin(true)
+        if(dataUser){
+          if(dataUser.type === "admin"){
+            setIsAdmin(true)
+          }
         }
       }
       setLoading(false)
