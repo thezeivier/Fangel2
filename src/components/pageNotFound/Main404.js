@@ -20,7 +20,9 @@ const Main404 = () => {
               Si es otro caso, por favor informa este problema en <Link to="/report">Reportar un problema</Link>. Lo solucionaremos rápidamente.
             </TextBodyStyled>
             <div>
-              <ButtonStyled secondary>Regresar al inicio</ButtonStyled>          
+              <Link to="/">
+                <ButtonStyled secondary>Regresar al inicio</ButtonStyled>          
+              </Link>
               <SmallTextStyled as={Link} to="/support">Ir al centro de soporte y ayuda</SmallTextStyled>
             </div>
           </DescriptionErrorContainer>

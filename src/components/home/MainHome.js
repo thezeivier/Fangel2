@@ -23,7 +23,7 @@ const MainHome = () => {
     let diponibleCommunities = await RecoverCommunities(firestore)
     diponibleCommunities.map(com => {
       if(!communities.includes(com)){
-        setCommunities(prevState => [...prevState, com])
+        setCommunities(prevState => [...prevState, com]) //Assign communities to state.
       }
     })
   },[])

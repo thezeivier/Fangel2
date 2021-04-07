@@ -9,22 +9,20 @@ import communityThumb from '../general/images/thumb_community_s1.svg'
 
 const CardCommunity = ({communityData}) => {
   const storage = useStorage()
-  const [thumb, setThumb] = useState()
+  const [thumb, setThumb] = useState()//State for thumbnail.
   useEffect(()=>{
     const gsReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.route}`)
-    gsReference.getDownloadURL().then(url => {
+    gsReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
       setThumb(url)
     })
   }, [])
-
-  console.log(communityData)
   return (
     <li>
       <CardContainer>
         <ContainerTextTop>
           <TextCommunity>Comunidad creada por por:</TextCommunity>
           <UserContainer>
-            <Link to={`/${communityData.username}`}>
+            <Link to={`/u/${communityData.username}`}>
               <ProfileSVG />
             </Link>
             <User as="h4">{communityData.username}</User>
@@ -32,7 +30,7 @@ const CardCommunity = ({communityData}) => {
         </ContainerTextTop>
         <ImageContainer>
           <img src={thumb? thumb: communityThumb} alt="Imagen de referencia de la comunidad" />
-          <DescriptionContainer as="button" >
+          <DescriptionContainer as="button">
             <h3>{communityData.title}</h3>
             <Truncate className="truncate">
               <TextDescription className="textCardCommunity">
