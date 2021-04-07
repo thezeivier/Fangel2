@@ -21,11 +21,13 @@ const MainHome = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async ()=>{
     let diponibleCommunities = await RecoverCommunities(firestore)
-    diponibleCommunities.map(com => {
-      if(!communities.includes(com)){
-        setCommunities(prevState => [...prevState, com]) //Assign communities to state.
-      }
-    })
+    if(diponibleCommunities){
+      diponibleCommunities.map(com => {
+        if(!communities.includes(com)){
+          setCommunities(prevState => [...prevState, com]) //Assign communities to state.
+        }
+      })
+    }
   },[])
 
   return (
