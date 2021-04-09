@@ -5,10 +5,10 @@ import CommentsBox from './CommentsBox'
 import InputComments from './InputComments'
 import { ContainerResponsive, MainOnlyDesktop } from './styles/sMainVideo'
 
-const VideoUser = () => {
+const VideoUser = ({communityData}) => {
   return (
     <MainOnlyDesktop>
-      <EmbedVideo src="https://www.youtube.com/embed/LB6_e2uA7rE" />
+      <EmbedVideo communityData={communityData} />
       <Wrapper height="100%">
         <ContainerResponsive>
           <CommentsBox />

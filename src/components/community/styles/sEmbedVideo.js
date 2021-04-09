@@ -34,6 +34,16 @@ export const EmbedContainer = styled.div`
   height: 0;
   overflow: hidden;
 
+  .watermark {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .subject-text {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
   @media(min-width:1200px) {
     border-radius: 4px;
   }

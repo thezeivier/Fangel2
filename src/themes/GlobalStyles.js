@@ -140,6 +140,11 @@ const GlobalStyles = createGlobalStyle`
       height: 100%;
     }
   }
+
+  .watermark,
+  .leftwatermark {
+    display: none !important;
+  }
 `
 
 export default GlobalStyles
