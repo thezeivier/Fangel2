@@ -23,11 +23,12 @@ const interfaceConfig = {
     // "profile",
     // "chat",
     // "settings",
-    // "videoquality",
+    "videoquality",
     "tileview",
     // "download",
     // "help",
-    "mute-everyone"
+    "mute-everyone",
+    'mute-video-everyone',
     // 'security'
   ]
 };

@@ -4,7 +4,9 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
   let batch = firestore.batch()
   let communitiesRef = firestore.collection('communities').doc(uid)
   let activeCommunitiesRef = firestore.collection('activeCommunities').doc(uid)
-
+  const hashName = digestName();
+  console.log(hashName)
+  
   batch.set(
     activeCommunitiesRef,
     {
@@ -21,6 +23,7 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
     {
       username: userApp.authState.displayName,
       title: nameCommunity,
+      roomName: hashName,
       description: descriptionCommunity,
       creatorUid: uid,
       numberOfUsersConnected: 1,
@@ -65,4 +68,14 @@ const communityImageSender = async (communityImage, storage, uid) => {
   }else{
     return false
   }
+}
+
+
+const digestName  = () => {
+  const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+  let code = "";
+  while (code.length < 128) {
+    code = code.concat(model.charAt(Math.round(Math.random()*model.length)));
+  }
+  return code;
 }
