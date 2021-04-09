@@ -48,6 +48,7 @@ const Name = styled.div`
   font-family: 'Spartan';
   font-size: 2.1em;
   font-weight: 500;
+  cursor: default;
 
   @media (min-width: 768px) {
     font-size: 2.5em;
