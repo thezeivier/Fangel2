@@ -4,19 +4,21 @@ import { VideoContainer, EmbedContainer, CountContainer, TitleOnlyDesktopContain
 import { ReactComponent as NumberPeopleSVG } from './icons/numberPeople.svg'
 import { ReactComponent as CommunitySVG } from './../general/icons/community.svg'
 
+
 import VideoCall from './VideoCall'
 
-const EmbedVideo = ({ src }) => {
+const EmbedVideo = ({communityData}) => {
   const userFromDB = useContext(AppContext)
   const myDataUser = userFromDB.userFromDB
+  
   return (
     <VideoContainer>
       <TitleOnlyDesktopContainer>
         <CommunitySVG />
-        <h3>Construyendo Fangel en 3 días</h3>
+        <h3>{communityData.title}</h3>
       </TitleOnlyDesktopContainer>
       <EmbedContainer>
-        <VideoCall dataUser={myDataUser}/>
+        <VideoCall dataUser={myDataUser} communityData={communityData}/>
       </EmbedContainer>
       <CountContainer>
         <span>18</span>

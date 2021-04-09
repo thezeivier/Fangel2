@@ -5,7 +5,6 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
   let communitiesRef = firestore.collection('communities').doc(uid)
   let activeCommunitiesRef = firestore.collection('activeCommunities').doc(uid)
   const hashName = digestName();
-  console.log(hashName)
   
   batch.set(
     activeCommunitiesRef,

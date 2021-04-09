@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Jitsi from 'react-jitsi'
-import spinner from '../spinner/VideoSpinner'
+import VideoSpinner from '../spinner/VideoSpinner'
 
 const interfaceConfig = {
   LANG_DETECTION: false,
@@ -49,20 +49,22 @@ const config = {
   interfaceConfigOverwrite: { DISABLE_DOMINANT_SPEAKER_INDICATOR: true }, */
 };
 
-const VideoCall = ({dataUser}) => {
+const VideoCall = ({dataUser, communityData}) => {
   const handleAPI = JitsiMeetAPI => {
     JitsiMeetAPI.executeCommand("toggleVideo");
     JitsiMeetAPI.executeCommand("toggleAudio");
   };
+
+  console.log(communityData)
 
   return (
     <>
       <Jitsi
         domain="meet.jit.si"
         onAPILoad={handleAPI}
-        roomName={"Fangel"}
+        roomName={communityData.room}
         displayName={dataUser.username}
-        loadingComponent={spinner} //Crear un nuevo spinner para la pantalla de video.
+        loadingComponent={VideoSpinner}
         interfaceConfig={interfaceConfig}
         config={config}
       />
