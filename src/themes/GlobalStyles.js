@@ -141,9 +141,8 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  .subject-text,
   .watermark,
-  .insecure {
+  .leftwatermark {
     display: none !important;
   }
 `
