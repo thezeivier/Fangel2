@@ -11,7 +11,7 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
       uid,
       duration: 60,
       transcurred: 0,
-      userCodesRef: firestore.doc(`communities/${uid}`)
+      communitiesRef: firestore.doc(`communities/${uid}`)
     },
     {merge:true}
     )

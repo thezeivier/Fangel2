@@ -36,7 +36,9 @@ exports.roomTimerController = functions.firestore.document("activeCommunities/{d
       }else{
         await admin.storage().bucket(fileBucket).file(route).delete(); //Delete community thumb.
         console.log("Thumbnail deleted");
-        await db.collection("activeCommunities").doc(uid).delete();//Delete community document from firestore.
+        await db.collection("activeCommunities").doc(uid).delete();//Delete acitveCommunity document from firestore.
+        console.log("activeCommunity deleted");
+        await db.collection("communities").doc(uid).delete();//Delete community document from firestore.
         console.log("Community deleted");
       }
     }else{

@@ -42,7 +42,7 @@ exports.imageModifier = functions.storage.object().onFinalize(async (object) => 
   await bucket.file(filePath).download({destination: tempFilePath});
   console.log('Image downloaded locally to', tempFilePath);
   // Generate a thumbnail using ImageMagick.
-  await spawn('convert', [tempFilePath, '-thumbnail', '400>x400', tempFilePath]);
+  await spawn('convert', [tempFilePath, '-thumbnail', '400x400>', tempFilePath]);
   console.log('Thumbnail created at', tempFilePath);
   // We add a 'thumb_' prefix to thumbnails file name. That's where we'll upload the thumbnail.
   const thumbFileName = `thumb_${fileName}`;
