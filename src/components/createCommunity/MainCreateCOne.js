@@ -36,7 +36,7 @@ const MainCreateCOne = () => {
   return (
     communityCreated === true?
     <Redirect to={{
-      pathname: "/video-user"
+      pathname: "/create-community-2"
     }}/>:
     <main>
       <Wrapper>

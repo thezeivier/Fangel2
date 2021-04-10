@@ -24,7 +24,7 @@ export const codeValidator = async (code, firestore) => {
     .get()
     .then(result => {
       if(result.exists){
-        if(result.data().users.length <= 20){
+        if(result.data().users.length < 20){
           return {confirm: true, type: "user"}
         }else{
           return false

@@ -1,4 +1,5 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
+import {Redirect} from 'react-router-dom'
 import useHover from './../../hook/use-hover'
 import {AppContext} from '../../App'
 import Wrapper from './../general/Wrapper'
@@ -13,18 +14,30 @@ import { ReactComponent as CopySVG } from './icons/copy.svg'
 
 const MainCreateCTwo = () => {
   const [hoverRef, isHovered] = useHover();
+  const [end, setEnd] = useState(false)
 
   const contextFromApp = useContext(AppContext)
   const [code, setCode] = useState()
-  if(contextFromApp.userFromDB.type === "admin" && contextFromApp.userFromDB.userCodesRef){
-    contextFromApp.userFromDB.userCodesRef
-    .get()
-    .then(result =>{
-      setCode(result.data().code)
-    })
-  }
+  useEffect(()=> {
+    if(contextFromApp.userFromDB.type === "admin" && contextFromApp.userFromDB.userCodesRef){
+      contextFromApp.userFromDB.userCodesRef
+      .get()
+      .then(result =>{
+        if(result.data().users.length < 20){
+          setCode(result.data().code)
+        }else{
+          setEnd(true)
+        }
+  
+      })
+    }
+  },[])
 
   return (
+    end?
+    <Redirect to={{
+      pathname: "/video-admin"
+    }}/>:
     <main>
       <Wrapper>
         <TitleStyled bottom>Crear una comunidad</TitleStyled>
@@ -46,7 +59,7 @@ const MainCreateCTwo = () => {
             <TextStyled>
               Despues que las personas se registren con una invitacion, podrán entrar a otras comunidades.
             </TextStyled>
-            <ButtonStyled primary>¡Ya acabé!</ButtonStyled>
+            <ButtonStyled primary onClick={()=>{setEnd(true)}}>¡Ya acabé!</ButtonStyled>
         </OnlyDesktop>
       </Wrapper>
     </main>
