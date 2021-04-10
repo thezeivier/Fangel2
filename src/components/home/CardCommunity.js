@@ -22,6 +22,7 @@ const CardCommunity = ({communityData}) => {
     let community = {
       title: communityData.title,
       room: communityData.roomName,
+      creator: communityData.creatorUid,
     }
     localStorage.setItem("communityData", JSON.stringify(community))
     setEnterComunity(true)
