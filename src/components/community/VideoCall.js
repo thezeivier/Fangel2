@@ -62,7 +62,7 @@ const VideoCall = ({dataUser, communityData}) => {
       <Jitsi
         domain="meet.jit.si"
         onAPILoad={handleAPI}
-        // roomName={communityData.room}
+        roomName={communityData.room}
         displayName={dataUser.username}
         loadingComponent={VideoSpinner}
         interfaceConfig={interfaceConfig}

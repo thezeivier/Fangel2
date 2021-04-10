@@ -16,8 +16,8 @@ const MainCreateCTwo = () => {
 
   const contextFromApp = useContext(AppContext)
   const [code, setCode] = useState()
-  if(contextFromApp.userFromDB.type === "admin" && contextFromApp.userFromDB.codeRef){
-    contextFromApp.userFromDB.codeRef
+  if(contextFromApp.userFromDB.type === "admin" && contextFromApp.userFromDB.userCodesRef){
+    contextFromApp.userFromDB.userCodesRef
     .get()
     .then(result =>{
       setCode(result.data().code)
