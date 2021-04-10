@@ -2,15 +2,16 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
   const {nameCommunity, descriptionCommunity} = data
   let uid = userApp.authState.uid
   let batch = firestore.batch()
-  let communitiesRef = firestore.collection('communities').doc(uid)
-  let chatroomRef = firestore.collection('chatroom').doc(uid)
-  let activeCommunitiesRef = firestore.collection('activeCommunities').doc(uid)
   const hashName = digestName();
+  let communitiesRef = firestore.collection('communities').doc(uid)
+  let activeCommunitiesRef = firestore.collection('activeCommunities').doc(uid)
+  let chatroomRef = firestore.collection('chatroom').doc(hashName)
 
   batch.set(
     chatroomRef,
     { 
-      uid,
+      roomName: hashName,
+      creatorUid: uid,
       communitiesRef: firestore.doc(`communities/${uid}`)
     },
     {merge:true}
