@@ -113,16 +113,16 @@ function App() {
             <Route exact path={"/terms-conditions"}>
               <TermsNConditions />
             </Route >
-            
+
             <Route exact path={"/video-user"}>  {/* temporal */}
-              <VideoUser />
+              <VideoUser/>
             </Route >
             <Route exact path={"/settings-admin"}>  {/* temporal */}
-              <SettingsAdmin />
+              <SettingsAdmin/>
             </Route >
             <Route exact path={"/video-admin"}>  {/* temporal */}
-              <VideoAdmin />
-            </Route >
+              <VideoAdmin/>
+            </Route >          
             <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
 
             <Route exact path="/404" render={() =><NotFound />} />

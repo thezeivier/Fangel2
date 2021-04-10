@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ReactComponent as MicrophoneDisableSVG } from './icons/microphoneDisable.svg'
 import { ReactComponent as CameraVideoDisableSVG } from './icons/cameraVideoDisable.svg'
 import { ReactComponent as SendCommentsSVG } from './icons/sendComments.svg'
@@ -8,12 +8,12 @@ import firebase from 'firebase/app'
 
 const InputComments = ({userFromDB, lastMsgRef}) => {
   const [formValue, setFormValue] = useState('')
-  const messageRef = firebase.firestore().collection('chatroom').doc('o0dUmKl2NYPPGvzHPl7ORFbdNho1').collection('messages')
-
+  let { creator } = JSON.parse(localStorage.getItem('communityData'))
+  const messageRef = firebase.firestore().collection('chatroom').doc(creator).collection('messages')
+  
+  // Send new message
   const sendMessage = async (e) => {
     e.preventDefault()
-
-    // Send new message
     await messageRef.add({
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       photoUrl: "",
@@ -24,8 +24,20 @@ const InputComments = ({userFromDB, lastMsgRef}) => {
 
     setFormValue('')
 
-    lastMsgRef.current.scrollIntoView({ behavior: 'smooth'}) // Scroll to last message 
+    lastMsgRef.current.scrollIntoView({ behavior: 'smooth'}) // Scroll into last message 
   }
+
+  // Scroll into last message
+  const scrollIntoLastMessage = () => {
+    lastMsgRef.current.scrollIntoView({ behavior: 'smooth'})
+  }
+
+  useEffect(() => {
+    const handler = scrollIntoLastMessage()
+    window.addEventListener('scroll', handler)
+    return () => window.removeEventListener('scroll', handler)
+      
+  }, [])
 
   return (
     <InputContainer>

@@ -14,7 +14,6 @@ const VideoUser = () => {
     setCommunityData(JSON.parse(actualCommunity))
   },[])
 
-  console.log(communityData)
   return (
     <>
       {
@@ -23,7 +22,7 @@ const VideoUser = () => {
         <ContainerForCommunity> {/* Sin margenes en moviles y tablets ni footer ni regHeader,
           wrapper sin paddign en moviles y tablet*/}
           <RegHeader /> {/* Solo para moviles */}
-          <VideoHeader displayNoAdmin="none" isSettings="none" />
+          <VideoHeader communityData={communityData} displayNoAdmin="none" isSettings="none" />
           <MainVideoUser communityData={communityData}/>
           <Footer noMobile/>
         </ContainerForCommunity>

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import Jitsi from 'react-jitsi'
 import VideoSpinner from '../spinner/VideoSpinner'
 
@@ -14,6 +14,7 @@ const interfaceConfig = {
   HIDE_INVITE_MORE_HEADER: true,
   MOBILE_APP_PROMO: false,
   SHOW_CHROME_EXTENSION_BANNER: false,
+  TOOLBAR_TIMEOUT: 2000,
 
   /* SHOW_JITSI_WATERMARK: false,
   HIDE_DEEP_LINKING_LOGO: true,
@@ -53,9 +54,8 @@ const VideoCall = ({dataUser, communityData}) => {
   const handleAPI = JitsiMeetAPI => {
     JitsiMeetAPI.executeCommand("toggleVideo");
     JitsiMeetAPI.executeCommand("toggleAudio");
-  };
 
-  // console.log(communityData)
+  };
 
   return (
     <>

@@ -140,10 +140,11 @@ const GlobalStyles = createGlobalStyle`
       height: 100%;
     }
   }
-
+  
   .watermark,
   .leftwatermark {
     display: none !important;
+    visibility: hidden !important;
   }
 `
 
