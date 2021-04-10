@@ -8,8 +8,8 @@ import firebase from 'firebase/app'
 
 const InputComments = ({userFromDB, lastMsgRef}) => {
   const [formValue, setFormValue] = useState('')
-  let { creator } = JSON.parse(localStorage.getItem('communityData'))
-  const messageRef = firebase.firestore().collection('chatroom').doc(creator).collection('messages')
+  let { room } = JSON.parse(localStorage.getItem('communityData'))
+  const messageRef = firebase.firestore().collection('chatroom').doc(room).collection('messages')
   
   // Send new message
   const sendMessage = async (e) => {
@@ -24,7 +24,8 @@ const InputComments = ({userFromDB, lastMsgRef}) => {
 
     setFormValue('')
 
-    lastMsgRef.current.scrollIntoView({ behavior: 'smooth'}) // Scroll into last message 
+    // Scroll into last message
+    lastMsgRef.current.scrollIntoView({ behavior: 'smooth'})  
   }
 
   // Scroll into last message
@@ -36,7 +37,6 @@ const InputComments = ({userFromDB, lastMsgRef}) => {
     const handler = scrollIntoLastMessage()
     window.addEventListener('scroll', handler)
     return () => window.removeEventListener('scroll', handler)
-      
   }, [])
 
   return (
