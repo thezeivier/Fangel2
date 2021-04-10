@@ -9,7 +9,6 @@ import theme from './themes/Theme'
 import Container from './styles/sApp'
 
 import ExternalLayout from './components/general/ExternalLayout'
-import VideoContainer from './components/general/VideoContainer'
 
 import Landing from './pages/Landing'
 import Register from './pages/signInAndUp/Register'
@@ -115,17 +114,15 @@ function App() {
               <TermsNConditions />
             </Route >
 
-            <VideoContainer>
-              <Route exact path={"/video-user"}>  {/* temporal */}
-                <VideoUser key="videoUser"/>
-              </Route >
-              <Route exact path={"/settings-admin"}>  {/* temporal */}
-                <SettingsAdmin key="settingsAdmin"/>
-              </Route >
-              <Route exact path={"/video-admin"}>  {/* temporal */}
-                <VideoAdmin key="videoAdmin"/>
-              </Route >
-            </VideoContainer>            
+            <Route exact path={"/video-user"}>  {/* temporal */}
+              <VideoUser/>
+            </Route >
+            <Route exact path={"/settings-admin"}>  {/* temporal */}
+              <SettingsAdmin/>
+            </Route >
+            <Route exact path={"/video-admin"}>  {/* temporal */}
+              <VideoAdmin/>
+            </Route >          
             <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
 
             <Route exact path="/404" render={() =><NotFound />} />
