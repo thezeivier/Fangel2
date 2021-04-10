@@ -55,14 +55,14 @@ const VideoCall = ({dataUser, communityData}) => {
     JitsiMeetAPI.executeCommand("toggleAudio");
   };
 
-  console.log(communityData)
+  // console.log(communityData)
 
   return (
     <>
       <Jitsi
         domain="meet.jit.si"
         onAPILoad={handleAPI}
-        roomName={communityData.room}
+        // roomName={communityData.room}
         displayName={dataUser.username}
         loadingComponent={VideoSpinner}
         interfaceConfig={interfaceConfig}

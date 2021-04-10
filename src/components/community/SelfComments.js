@@ -1,14 +1,14 @@
 import React from 'react';
 import { CommentContainerStyled, CommentStyled } from './styles/sSelfComments'
 
-const SelfComments = () => {
+const SelfComments = ({text, username}) => {
   return (
     <CommentContainerStyled>
       <CommentStyled>
-        <h6>Thezevier</h6>
-        <p>Sed ut perspiciatis unde omnis</p>
+        <h6>{username}</h6>
+        <p>{text}</p>
       </CommentStyled>
-      <img alt="foto de perfil" />
+      {/* <img alt="foto de perfil" /> */}
     </CommentContainerStyled>
   );
 }

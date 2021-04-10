@@ -1,13 +1,13 @@
 import React from 'react';
 import { CommentContainer, Comment } from './styles/sOtherComments'
 
-const OtherComments = () => {
+const OtherComments = ({text, username}) => {
   return (
     <CommentContainer>
-      <img alt="foto de perfil" />
+      {/* <img alt="foto de perfil" /> */}
       <Comment>
-        <h6>Useryang</h6>
-        <p>fugiat nulla pariatur. Excepteur sint occaecat cupidatat</p>
+        <h6>{username}</h6>
+        <p>{text}</p>
       </Comment>
     </CommentContainer>
   );

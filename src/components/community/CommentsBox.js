@@ -2,19 +2,15 @@ import React from 'react';
 import SelfComments from './SelfComments'
 import OtherComments from './OtherComments'
 import { CommentsContainer, Transperent } from './styles/sCommentsBox'
+import { ChatMessage } from './ChatMessage'
 
-const CommentsBox = () => {
+const CommentsBox = ({data, userFromDB, lastMsgRef}) => {
   return (
     <>
       <Transperent /> {/* Cuadro transparente */}
       <CommentsContainer>
-        <OtherComments />
-        <OtherComments />
-        <SelfComments />
-        <OtherComments />
-        <SelfComments />
-        <OtherComments />
-        <OtherComments />
+        {data && data.map(msg => <ChatMessage key={`${msg.id}`} msg={msg} myUid={userFromDB.uid}/>) }
+        <div ref={lastMsgRef}></div>
       </CommentsContainer>
     </>
   );
