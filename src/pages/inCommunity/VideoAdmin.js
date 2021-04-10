@@ -25,7 +25,6 @@ const VideoAdmin = () => {
     setCommunityData(JSON.parse(actualCommunity))
   },[])
 
- console.log(communityData)
   return (
     <>
       {
