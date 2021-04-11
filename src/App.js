@@ -16,9 +16,6 @@ import CreateCommunityTwo from './pages/CreateCommunityTwo'
 import ReportAProblem from './pages/ReportAProblem'
 import Settings from './pages/Settings'
 import Profile from './pages/Profile'
-import VideoUser from './pages/inCommunity/VideoUser'
-import SettingsAdmin from './pages/inCommunity/SettingsAdmin'
-import VideoAdmin from './pages/inCommunity/VideoAdmin'
 import SwitchCommunityVideo from './pages/inCommunity/SwitchCommunityVideo'
 //List of routers and loading
 import ListOfRoutes from './pages/objects/ListOfRoutes' 
@@ -31,7 +28,6 @@ function App() {
   const auth = useAuth()
   const firestore = useFirestore()
   const [loading, setLoading] = useState(true)
-
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
   const [userFromDB, setUserFromDB] = useState(false)
@@ -76,10 +72,6 @@ function App() {
     changeTheme,
   }
 
-  const routes = [
-    {}
-  ]
-
   if(loading) return <Spinner />
 
   return (
@@ -95,10 +87,9 @@ function App() {
             <Route exact path={"/settings"} component={authState ? Settings : Landing}/>
             <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
             <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>        
-            {/* <Route exact path={"/settings-admin"} component={SettingsAdmin}/> */}
             <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
             {ListOfRoutes.map((route)=>{
-              return <ExternalLayoutRoute authState={authState} path={route.path} component={route.component}/>
+              return <ExternalLayoutRoute key={route.path} authState={authState} {...route}/>
             })}
             <Redirect from="*" to="/404"/>
           </Switch>

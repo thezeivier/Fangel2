@@ -51,12 +51,9 @@ const MainCreateCTwo = () => {
           </TextStyled>
             <Form>
               <InputStyled id="copyCode" special invitationCode type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
-              <CommentSVGContainer ref={hoverRef}>
-                <CopySVG onClick={CopyCode}/>
-                {isHovered
-                  ? <CommentStyled>Copiar código</CommentStyled>
-                  : <></>
-                }
+              <CommentSVGContainer onClick={()=>CopyCode("copyCode")} ref={hoverRef}>
+                <CopySVG/>
+                {isHovered &&<CommentStyled>Copiar código</CommentStyled>}
               </CommentSVGContainer>
             </Form>
             <TextStyled>

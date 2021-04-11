@@ -1,5 +1,5 @@
-export const CopyCode = () => {
-  let copyCode = document.getElementById("copyCode")
+export const CopyCode = (id) => {
+  let copyCode = document.getElementById(id)
   copyCode.select()
   document.execCommand("copy")
 }

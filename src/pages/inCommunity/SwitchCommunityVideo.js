@@ -15,7 +15,6 @@ const SwitchCommunityVideo = () => {
     const idRoomRoute = match.params.idRoom
     const history = useHistory()
     const [data, status, error] = GetCommunityVideoData(idRoomRoute)
-
     if(status) return <p>Pending...</p>
     if(error) return null
     
