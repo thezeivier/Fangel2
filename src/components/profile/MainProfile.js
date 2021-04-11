@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useRouteMatch, /* useHistory */ } from 'react-router-dom'
+import { useRouteMatch } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import ReturnPage from './../general/ReturnPage'
 import UserTag from './UserTag'
@@ -13,10 +13,8 @@ import { ReactComponent as AddPhotoSVG } from './icons/addPhoto.svg'
 
 const MainProfile = () => {
   const {userFromDB, authState} = useContext(AppContext)
-  /* const history = useHistory() */
   const match = useRouteMatch("/u/:id")
   const nameUserRoute = match.params.id
-  // console.log(nameUserRoute)
   const [userData, loading, error] = useMatchRouteUserData("users", nameUserRoute)
 
   if(loading) return <p>Pending..</p> // Aquí va un loader

@@ -19,6 +19,7 @@ import Profile from './pages/Profile'
 import VideoUser from './pages/inCommunity/VideoUser'
 import SettingsAdmin from './pages/inCommunity/SettingsAdmin'
 import VideoAdmin from './pages/inCommunity/VideoAdmin'
+import SwitchCommunityVideo from './pages/inCommunity/SwitchCommunityVideo'
 //List of routers and loading
 import ListOfRoutes from './pages/objects/ListOfRoutes' 
 import Spinner from './components/spinner/MainSpinner'
@@ -93,9 +94,8 @@ function App() {
             <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
             <Route exact path={"/settings"} component={authState ? Settings : Landing}/>
             <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
-            <Route exact path={"/video-user"} component={VideoUser}/>  {/* temporal */}
-            <Route exact path={"/settings-admin"} component={SettingsAdmin}/>  {/* temporal */}
-            <Route exact path={"/video-admin"} component={VideoAdmin}/> {/* temporal */}       
+            <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>        
+            {/* <Route exact path={"/settings-admin"} component={SettingsAdmin}/> */}
             <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
             {ListOfRoutes.map((route)=>{
               return <ExternalLayoutRoute authState={authState} path={route.path} component={route.component}/>

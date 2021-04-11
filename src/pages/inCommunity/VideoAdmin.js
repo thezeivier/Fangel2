@@ -8,9 +8,8 @@ import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsA
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
-const VideoAdmin = () => {
+const VideoAdmin = ({communityData}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [communityData, setCommunityData] = useState(false)
 
   const openMoldal = () => {
     setModalIsOpen(true)
@@ -19,11 +18,6 @@ const VideoAdmin = () => {
   const closeModal = () => {
     setModalIsOpen(false)
   }
-
-  useEffect(()=>{
-    let actualCommunity = localStorage.getItem('communityData')
-    setCommunityData(JSON.parse(actualCommunity))
-  },[])
 
   return (
     <>

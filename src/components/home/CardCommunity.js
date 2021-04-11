@@ -19,12 +19,6 @@ const CardCommunity = ({communityData}) => {
   }, [])
 
   const ChangeCommunity = () =>{
-    let community = {
-      title: communityData.title,
-      room: communityData.roomName,
-      creator: communityData.creatorUid,
-    }
-    localStorage.setItem("communityData", JSON.stringify(community))
     setEnterComunity(true)
   }
 
@@ -32,7 +26,7 @@ const CardCommunity = ({communityData}) => {
     <>
       {
         enterCommunity?
-        <Redirect to="/video-user"/>:
+        <Redirect to={`/room/${communityData.roomName}`}/>:
         <li>
           <CardContainer>
             <ContainerTextTop>

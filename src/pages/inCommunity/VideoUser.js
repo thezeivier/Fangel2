@@ -7,13 +7,7 @@ import { ContainerForCommunity } from './../../components/general/InternalLayout
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
-const VideoUser = () => {
-  const [communityData, setCommunityData] = useState(false)
-  useEffect(()=>{
-    let actualCommunity = localStorage.getItem('communityData')
-    setCommunityData(JSON.parse(actualCommunity))
-  },[])
-
+const VideoUser = ({communityData}) => {
   return (
     <>
       {
