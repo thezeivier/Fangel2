@@ -12,7 +12,7 @@ import { GetChatRoomMessages } from './algorithms/GetChatRoomMessages'
 
 const VideoUser = ({communityData}) => {
   const { userFromDB } = useContext(AppContext)
-  const {data, status, error} = GetChatRoomMessages()
+  const {data, status, error} = GetChatRoomMessages(communityData.roomName)
   const lastMsgRef = useRef()
   
   if(status === "loading") return <p>Pending...</p>
@@ -24,7 +24,7 @@ const VideoUser = ({communityData}) => {
       <Wrapper height="100%">
         <ContainerResponsive>
           <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef}/>
-          <InputComments userFromDB={userFromDB} lastMsgRef={lastMsgRef}/>
+          <InputComments userFromDB={userFromDB} lastMsgRef={lastMsgRef} roomName={communityData.roomName}/>
         </ContainerResponsive>
       </Wrapper>
     </MainOnlyDesktop>

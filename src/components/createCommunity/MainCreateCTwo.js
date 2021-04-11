@@ -36,7 +36,7 @@ const MainCreateCTwo = () => {
   return (
     end?
     <Redirect to={{
-      pathname: "/video-admin"
+      pathname: "/"
     }}/>:
     <main>
       <Wrapper>

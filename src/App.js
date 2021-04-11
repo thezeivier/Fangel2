@@ -31,6 +31,7 @@ import TermsNConditions from './pages/TermsNConditions'
 import VideoUser from './pages/inCommunity/VideoUser'
 import SettingsAdmin from './pages/inCommunity/SettingsAdmin'
 import VideoAdmin from './pages/inCommunity/VideoAdmin'
+import SwitchCommunityVideo from './pages/inCommunity/SwitchCommunityVideo'
 
 import NotFound from './pages/NotFound'
 
@@ -113,19 +114,11 @@ function App() {
             <Route exact path={"/terms-conditions"}>
               <TermsNConditions />
             </Route >
-
-            <Route exact path={"/video-user"}>  {/* temporal */}
-              <VideoUser/>
-            </Route >
-            <Route exact path={"/settings-admin"}>  {/* temporal */}
+            <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>
+            {/* <Route exact path={"/settings-admin/:idRoom"}>
               <SettingsAdmin/>
-            </Route >
-            <Route exact path={"/video-admin"}>  {/* temporal */}
-              <VideoAdmin/>
-            </Route >          
-            <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
-
-            <Route exact path="/404" render={() =><NotFound />} />
+            </Route > */}
+            <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/>
 
             <ExternalLayout changeTheme={changeTheme}>
               <Route exact path={"/register"} component={Register}/>
@@ -134,6 +127,7 @@ function App() {
               <Route exact path={"/email-sended"} component={EmailSended}/>
               <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
             </ExternalLayout>
+            <Route component={() =><NotFound />} />
           </Switch>
         </Container>
       </Provider>

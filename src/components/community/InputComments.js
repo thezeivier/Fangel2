@@ -6,10 +6,9 @@ import { InputStyled, InputContainer, SvgsContainer, Form, Button } from './styl
 
 import firebase from 'firebase/app'
 
-const InputComments = ({userFromDB, lastMsgRef}) => {
+const InputComments = ({userFromDB, lastMsgRef, roomName}) => {
   const [formValue, setFormValue] = useState('')
-  let { room } = JSON.parse(localStorage.getItem('communityData'))
-  const messageRef = firebase.firestore().collection('chatroom').doc(room).collection('messages')
+  const messageRef = firebase.firestore().collection('chatroom').doc(roomName).collection('messages')
   
   // Send new message
   const sendMessage = async (e) => {

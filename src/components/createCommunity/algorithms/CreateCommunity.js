@@ -52,7 +52,6 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
       if(communityImage){
         await communityImageSender(communityImage, storage, uid)
       }
-      ChangeCommunity(nameCommunity, hashName, uid)
       return true
     }).catch(error => {
       console.error(error)
@@ -90,13 +89,4 @@ const digestName  = () => {
     code = code.concat(model.charAt(Math.round(Math.random()*model.length)));
   }
   return code;
-}
-
-const ChangeCommunity = (title, room, creator) =>{
-  let community = {
-    title,
-    room,
-    creator,
-  }
-  localStorage.setItem("communityData", JSON.stringify(community))
 }
