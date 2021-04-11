@@ -7,7 +7,6 @@ import { Container } from './../components/general/InternalLayout'
 const PoliticsNPrivacy = () => {
   return (
     <Container>
-      <Header />
       <MainPolitics />
       <Footer />
     </Container>

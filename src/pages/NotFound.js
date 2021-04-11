@@ -7,7 +7,6 @@ import { Container } from '../components/general/InternalLayout'
 const NotFound = () => {
   return (
     <Container padding40>
-      <Header />
       <Main404 />
       <Footer />
     </Container>

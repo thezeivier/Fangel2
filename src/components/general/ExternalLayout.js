@@ -1,12 +1,17 @@
 import React from 'react'
 import HeaderLP from './HeaderLP'
+import RegHeader from './RegHeader'
 
-const ExternalLayout = ({children}) => {
+const ExternalLayout = ({children, authState}) => {
   return(
-    <>
-      <HeaderLP/>
+    <React.Fragment>
+      {
+        authState?
+        <RegHeader/>:
+        <HeaderLP/>
+      }
       {children}
-    </>
+    </React.Fragment>
   )
 }
 

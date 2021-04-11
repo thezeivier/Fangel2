@@ -29,9 +29,6 @@ const RecoverPassword = () => {
     history.push("/")//Cancel render if the user is logged in.
   }
   
-  console.log(sendEmail);
-  // console.log(watch("example"))
-  
   return (
     <>
     {

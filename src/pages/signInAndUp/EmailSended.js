@@ -13,8 +13,6 @@ const EmailSended = () => {
     informationText: ""
   })
 
-  console.log(location.state)
-
   useEffect(()=>{
     if(location.state){
       switch(location.state.origin){

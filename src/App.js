@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import {useAuth, useFirestore} from 'reactfire'
 import { RecoverUser} from './algorithmsToApp/RecoverUser'
@@ -88,6 +88,8 @@ function App() {
     changeTheme,
   }
 
+  console.log(authState)
+
   if(loading) return <Spinner />
 
   return (
@@ -101,19 +103,6 @@ function App() {
             <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/>
             <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
             <Route exact path={"/settings"} component={authState ? Settings : Landing}/>
-            <Route exact path={"/support"}>
-              <Support />
-            </Route >
-            <Route exact path={"/faqs"}>
-              <FAQs />
-            </Route >
-            <Route exact path={"/politics-privacy"}>
-              <PoliticsNPrivacy />
-            </Route >
-            <Route exact path={"/terms-conditions"}>
-              <TermsNConditions />
-            </Route >
-
             <Route exact path={"/video-user"}>  {/* temporal */}
               <VideoUser/>
             </Route >
@@ -124,16 +113,57 @@ function App() {
               <VideoAdmin/>
             </Route >          
             <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
-
-            <Route exact path="/404" render={() =><NotFound />} />
-
-            <ExternalLayout changeTheme={changeTheme}>
-              <Route exact path={"/register"} component={Register}/>
-              <Route exact path={"/login"} component={Login}/>
-              <Route exact path={"/recover-password"} component={RecoverPassword}/>
-              <Route exact path={"/email-sended"} component={EmailSended}/>
-              <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
-            </ExternalLayout>
+            <Route exact path={"/support"}>
+              <ExternalLayout authState={authState}>
+                <Support />
+              </ExternalLayout>
+            </Route >
+            <Route exact path={"/faqs"}>
+              <ExternalLayout authState={authState}>
+                <FAQs />
+              </ExternalLayout>
+            </Route >
+            <Route exact path={"/politics-privacy"}>
+              <ExternalLayout authState={authState}>
+                <PoliticsNPrivacy />
+              </ExternalLayout>
+            </Route >
+            <Route exact path={"/terms-conditions"}>
+              <ExternalLayout authState={authState}>
+                <TermsNConditions />
+              </ExternalLayout>
+            </Route >
+            <Route exact path={"/register"}>
+              <ExternalLayout authState={authState}>
+                <Register/>
+              </ExternalLayout>
+            </Route>
+            <Route exact path={"/login"}>
+              <ExternalLayout authState={authState}>
+                <Login/>
+              </ExternalLayout>
+            </Route>
+            <Route exact path={"/recover-password"}>
+              <ExternalLayout authState={authState}>
+                <RecoverPassword/>
+              </ExternalLayout>
+            </Route>
+            <Route exact path={"/email-sended"}>
+              <ExternalLayout authState={authState}>
+                <EmailSended/>
+              </ExternalLayout>
+            </Route>
+            <Route exact path={"/quiz"} component={authState? Quiz: Landing}>
+              <ExternalLayout authState={authState}>
+                {authState? <Quiz/>: <Landing/>}
+              </ExternalLayout>
+            </Route>
+            <Route exact path={"/404"}>
+              <ExternalLayout authState={authState}>
+                <NotFound/>
+              </ExternalLayout>
+            </Route>
+            <Redirect from="*" to="/404"/>
           </Switch>
         </Container>
       </Provider>

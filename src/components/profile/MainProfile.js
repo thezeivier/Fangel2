@@ -16,7 +16,7 @@ const MainProfile = () => {
   /* const history = useHistory() */
   const match = useRouteMatch("/u/:id")
   const nameUserRoute = match.params.id
-  console.log(nameUserRoute)
+  // console.log(nameUserRoute)
   const [userData, loading, error] = useMatchRouteUserData("users", nameUserRoute)
 
   if(loading) return <p>Pending..</p> // Aquí va un loader
