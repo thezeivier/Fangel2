@@ -5,7 +5,7 @@ import {useAuth, useFirestore} from 'reactfire'
 import { RecoverUser} from './algorithmsToApp/RecoverUser'
 import GlobalStyles from './themes/GlobalStyles'
 import theme from './themes/Theme'
-
+//Import Page components
 import Container from './styles/sApp'
 import ExternalLayoutRoute from './components/general/ExternalLayoutRoute'
 import Landing from './pages/Landing'
@@ -19,7 +19,7 @@ import Profile from './pages/Profile'
 import VideoUser from './pages/inCommunity/VideoUser'
 import SettingsAdmin from './pages/inCommunity/SettingsAdmin'
 import VideoAdmin from './pages/inCommunity/VideoAdmin'
-
+//List of routers and loading
 import ListOfRoutes from './pages/objects/ListOfRoutes' 
 import Spinner from './components/spinner/MainSpinner'
 
