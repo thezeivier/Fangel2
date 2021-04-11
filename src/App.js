@@ -7,33 +7,20 @@ import GlobalStyles from './themes/GlobalStyles'
 import theme from './themes/Theme'
 
 import Container from './styles/sApp'
-
-import ExternalLayout from './components/general/ExternalLayout'
-
+import ExternalLayoutRoute from './components/general/ExternalLayoutRoute'
 import Landing from './pages/Landing'
-import Register from './pages/signInAndUp/Register'
-import Login from './pages/signInAndUp/Login'
-import RecoverPassword from './pages/signInAndUp/RecoverPassword'
-import EmailSended from './pages/signInAndUp/EmailSended'
 import Quiz from './pages/Quiz'
-
 import Home from './pages/Home'
 import CreateCommunityOne from './pages/CreateCommunityOne'
 import CreateCommunityTwo from './pages/CreateCommunityTwo'
 import ReportAProblem from './pages/ReportAProblem'
 import Settings from './pages/Settings'
-import Support from './pages/Support'
 import Profile from './pages/Profile'
-import FAQs from './pages/FAQs'
-import PoliticsNPrivacy from './pages/PoliticsNPrivacy'
-import TermsNConditions from './pages/TermsNConditions'
-
 import VideoUser from './pages/inCommunity/VideoUser'
 import SettingsAdmin from './pages/inCommunity/SettingsAdmin'
 import VideoAdmin from './pages/inCommunity/VideoAdmin'
 
-import NotFound from './pages/NotFound'
-
+import ListOfRoutes from './pages/objects/ListOfRoutes' 
 import Spinner from './components/spinner/MainSpinner'
 
 const AppContext =  React.createContext()
@@ -88,7 +75,9 @@ function App() {
     changeTheme,
   }
 
-  console.log(authState)
+  const routes = [
+    {}
+  ]
 
   if(loading) return <Spinner />
 
@@ -103,66 +92,14 @@ function App() {
             <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/>
             <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
             <Route exact path={"/settings"} component={authState ? Settings : Landing}/>
-            <Route exact path={"/video-user"}>  {/* temporal */}
-              <VideoUser/>
-            </Route >
-            <Route exact path={"/settings-admin"}>  {/* temporal */}
-              <SettingsAdmin/>
-            </Route >
-            <Route exact path={"/video-admin"}>  {/* temporal */}
-              <VideoAdmin/>
-            </Route >          
+            <Route exact path={"/video-user"} component={VideoUser}/>  {/* temporal */}
+            <Route exact path={"/settings-admin"} component={SettingsAdmin}/>  {/* temporal */}
+            <Route exact path={"/video-admin"} component={VideoAdmin}/> {/* temporal */}       
             <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
-            <Route exact path={"/support"}>
-              <ExternalLayout authState={authState}>
-                <Support />
-              </ExternalLayout>
-            </Route >
-            <Route exact path={"/faqs"}>
-              <ExternalLayout authState={authState}>
-                <FAQs />
-              </ExternalLayout>
-            </Route >
-            <Route exact path={"/politics-privacy"}>
-              <ExternalLayout authState={authState}>
-                <PoliticsNPrivacy />
-              </ExternalLayout>
-            </Route >
-            <Route exact path={"/terms-conditions"}>
-              <ExternalLayout authState={authState}>
-                <TermsNConditions />
-              </ExternalLayout>
-            </Route >
-            <Route exact path={"/register"}>
-              <ExternalLayout authState={authState}>
-                <Register/>
-              </ExternalLayout>
-            </Route>
-            <Route exact path={"/login"}>
-              <ExternalLayout authState={authState}>
-                <Login/>
-              </ExternalLayout>
-            </Route>
-            <Route exact path={"/recover-password"}>
-              <ExternalLayout authState={authState}>
-                <RecoverPassword/>
-              </ExternalLayout>
-            </Route>
-            <Route exact path={"/email-sended"}>
-              <ExternalLayout authState={authState}>
-                <EmailSended/>
-              </ExternalLayout>
-            </Route>
-            <Route exact path={"/quiz"} component={authState? Quiz: Landing}>
-              <ExternalLayout authState={authState}>
-                {authState? <Quiz/>: <Landing/>}
-              </ExternalLayout>
-            </Route>
-            <Route exact path={"/404"}>
-              <ExternalLayout authState={authState}>
-                <NotFound/>
-              </ExternalLayout>
-            </Route>
+            {ListOfRoutes.map((route)=>{
+              return <ExternalLayoutRoute authState={authState} path={route.path} component={route.component}/>
+            })}
+            <ExternalLayoutRoute path={"/quiz"} authState={authState} component={authState? Quiz: Landing}/>
             <Redirect from="*" to="/404"/>
           </Switch>
         </Container>
