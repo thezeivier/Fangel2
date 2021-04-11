@@ -92,6 +92,7 @@ function App() {
             <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/>
             <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
             <Route exact path={"/settings"} component={authState ? Settings : Landing}/>
+            <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
             <Route exact path={"/video-user"} component={VideoUser}/>  {/* temporal */}
             <Route exact path={"/settings-admin"} component={SettingsAdmin}/>  {/* temporal */}
             <Route exact path={"/video-admin"} component={VideoAdmin}/> {/* temporal */}       
@@ -99,7 +100,6 @@ function App() {
             {ListOfRoutes.map((route)=>{
               return <ExternalLayoutRoute authState={authState} path={route.path} component={route.component}/>
             })}
-            <ExternalLayoutRoute path={"/quiz"} authState={authState} component={authState? Quiz: Landing}/>
             <Redirect from="*" to="/404"/>
           </Switch>
         </Container>
