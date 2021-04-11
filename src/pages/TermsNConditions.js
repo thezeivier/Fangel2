@@ -7,13 +7,10 @@ import { Container } from './../components/general/InternalLayout'
 const TermsNConditions = () => {
   return (
     <Container>
-      <Header />
       <MainTerms />
       <Footer />
     </Container>
   );
 }
-
-/* IMPORTANTE: Hacer un header del landing para los terminos */
 
 export default TermsNConditions;

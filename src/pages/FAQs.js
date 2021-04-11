@@ -7,7 +7,6 @@ import { Container } from './../components/general/InternalLayout'
 const FAQs = () => {
   return (
     <Container>
-      <Header />
       <MainFAQs />
       <Footer />
     </Container>
