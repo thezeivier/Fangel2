@@ -93,13 +93,13 @@ function App() {
             <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/>
             <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
             <Route exact path={"/settings"} component={authState ? Settings : Landing}/>
-            <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>
+            <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
+            <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>        
             {/* <Route exact path={"/settings-admin"} component={SettingsAdmin}/> */}
             <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
             {ListOfRoutes.map((route)=>{
               return <ExternalLayoutRoute authState={authState} path={route.path} component={route.component}/>
             })}
-            <ExternalLayoutRoute path={"/quiz"} authState={authState} component={authState? Quiz: Landing}/>
             <Redirect from="*" to="/404"/>
           </Switch>
         </Container>
