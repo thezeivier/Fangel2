@@ -4,7 +4,7 @@ export const CreateReport = async (data, firestore, imageRecovered, storage, use
     const type = userFromDB.type
     const reportRef = firestore.collection("reports").doc(uid)
     if(data.reportDescription){
-        reportImageSender(storage, uid, imageRecovered, type)
+        let resultOfImage = await reportImageSender(storage, uid, imageRecovered, type)
         batch.set(
             reportRef,
             {
@@ -13,6 +13,7 @@ export const CreateReport = async (data, firestore, imageRecovered, storage, use
                 uid,
                 user: userFromDB.username,
                 type: userFromDB.type,
+                capture: resultOfImage,
             },
             {merge: true}
         )
@@ -30,18 +31,25 @@ export const CreateReport = async (data, firestore, imageRecovered, storage, use
 
 const reportImageSender = async (storage, uid, reportImage, type) => {
     let storageRef = storage.ref()
-    let nameOfImage = uid.concat(new Date().getTime())
+    let nameOfImage = `report_${uid.concat(new Date().getTime())}`
     let imageRenamed = new File([reportImage], `${nameOfImage}.jpeg`, {type: 'image/jpeg'})
     let initialType = reportImage.type.substr(0, 5)
     if(reportImage && (initialType === "image" )){
         let routePath = `reports/${type}/${imageRenamed.name}`
         let uploadTask  = storageRef.child(routePath).put(imageRenamed)
-        uploadTask.on('state_changed', (result)=>{
-        let progress = (result.bytesTransferred/result.totalBytes) * 100
+        uploadTask.on('state_changed', (snapshot)=>{
+        let progress = (snapshot.bytesTransferred/snapshot.totalBytes) * 100
         // console.log('Subido' + progress + '%')
         })
-        return await uploadTask.then(async ()=>{
-        // console.log("upload success")
+        return await uploadTask.then(async (result)=>{
+            if(result.state === 'success'){
+                let storageNewRef = storage.ref()
+                return await storageNewRef.child(result.metadata.fullPath)
+                .getDownloadURL()
+                .then((url)=>{
+                    return url
+                })
+            }
         })
     }else{
         return false
