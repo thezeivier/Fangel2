@@ -8,9 +8,9 @@ const MainFAQs = () => {
   return (
     <main>
       <Wrapper>
-        <TitleStyled>Preguntas frecuentes</TitleStyled>
+        <TitleStyled bottom>Preguntas frecuentes</TitleStyled>
         <DetailsContainer>
-          <SubtitleStyled big summary as="summary">Preguntas generales</SubtitleStyled>
+          <SubtitleStyled big summary green as="summary">Preguntas generales</SubtitleStyled>
           <div>
             <TextContainer>
               <SubtitleSmallStyled as="h4" question>¿Qué es Fangel?</SubtitleSmallStyled>
@@ -45,7 +45,7 @@ const MainFAQs = () => {
           </div>
         </DetailsContainer>
         <DetailsContainer>
-          <SubtitleStyled big summary as="summary">Preguntas sobre el registro en Fangel</SubtitleStyled>
+          <SubtitleStyled big summary green as="summary">Preguntas sobre el registro en Fangel</SubtitleStyled>
           <div>
             <TextContainer>
               <SubtitleSmallStyled as="h4" question>¿Cómo me registro en Fangel?</SubtitleSmallStyled>
@@ -59,7 +59,7 @@ const MainFAQs = () => {
           </div>
         </DetailsContainer>
         <DetailsContainer>
-          <SubtitleStyled big summary as="summary">Preguntas sobre las comunidades</SubtitleStyled>
+          <SubtitleStyled big summary green as="summary">Preguntas sobre las comunidades</SubtitleStyled>
           <div>
             <TextContainer>
               <SubtitleSmallStyled as="h4" question>¿Cómo puedo crear una comunidad?</SubtitleSmallStyled>
@@ -104,7 +104,7 @@ const MainFAQs = () => {
           </div>
         </DetailsContainer>
         <DetailsContainer>
-          <SubtitleStyled big summary as="summary">Otras preguntas</SubtitleStyled>
+          <SubtitleStyled big summary green as="summary">Otras preguntas</SubtitleStyled>
           <div>
             <TextContainer>
               <SubtitleSmallStyled as="h4" question>¿Cómo puedo colaborar con el proyecto o enviar recomendaciones?</SubtitleSmallStyled>

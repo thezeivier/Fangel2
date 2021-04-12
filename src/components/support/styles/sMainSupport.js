@@ -106,6 +106,15 @@ export const TextContainer = styled.div`
   @media(min-width:1200px) {
     margin: 22px 0 0 0;
   }
+
+  ${props => props.top10 && css`
+    margin: 10px 0 0 0;
+
+    @media(min-width:768px) {
+      margin: 10px 0 0 0;
+    }
+  `}
+
 `
 
 export const DetailsContainer = styled.details`
@@ -191,4 +200,9 @@ export const TextList = styled.ul`
       margin: 0 0 7px 15px;
     }
   }
+`
+
+//Terms
+export const ContainerSection = styled.section`
+  margin: 23px 0 0 0;
 `
