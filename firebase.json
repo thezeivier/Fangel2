@@ -1,9 +1,5 @@
 {
   "functions": {
-<<<<<<< HEAD
-    "predeploy": [
-      // "npm --prefix functions run lint"
-=======
     "predeploy": [],
     "source": "functions"
   },
@@ -19,7 +15,6 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
->>>>>>> 6d9d33e (Quiz)
     ]
   }
 }
