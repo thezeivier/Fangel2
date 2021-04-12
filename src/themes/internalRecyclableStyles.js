@@ -21,6 +21,12 @@ export const SubtitleStyled = styled(SecondaryTitle)`
   ${props => props.big && css`
     font-size: 1.9em;
   `}
+
+  ${props => props.summary && css`
+    margin: 0;
+    color: #27AE60;
+    cursor: pointer;
+  `}
 `
 
 export const TextStyled = styled(TextBody)`
