@@ -15,7 +15,7 @@ const EmbedVideo = ({communityData}) => {
     <VideoContainer>
       <TitleOnlyDesktopContainer>
         <CommunitySVG />
-        {/* <h3>{communityData.title}</h3> */}
+        <h3>{communityData.title}</h3>
       </TitleOnlyDesktopContainer>
       <EmbedContainer>
         <VideoCall dataUser={myDataUser} communityData={communityData}/>

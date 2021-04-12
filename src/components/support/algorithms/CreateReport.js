@@ -17,7 +17,6 @@ export const CreateReport = async (data, firestore, imageRecovered, storage, use
             },
             {merge: true}
         )
-    
         return await batch.commit()
         .then(() =>{
             return true
