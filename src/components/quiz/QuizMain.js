@@ -40,6 +40,7 @@ const QuizMain = () => {
             {
               quiz.map(card =>  <QuizCard key={card.id} {...card} quiz={quiz} cartQuiz={cartQuiz} setCartQuiz={setCartQuiz}/>)
             }
+            {/* Holaraasdkasdklas */}
           </CardsContainer>
           <ButtonStyled 
             primary 
