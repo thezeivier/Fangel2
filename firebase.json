@@ -1,7 +1,25 @@
 {
   "functions": {
+<<<<<<< HEAD
     "predeploy": [
       // "npm --prefix functions run lint"
+=======
+    "predeploy": [],
+    "source": "functions"
+  },
+  "hosting": {
+    "public": "build",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+>>>>>>> 6d9d33e (Quiz)
     ]
   }
 }

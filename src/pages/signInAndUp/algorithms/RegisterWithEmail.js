@@ -82,6 +82,7 @@ export const sendDataUser = async (data, uid, type, firestore, firebase) => {
       email: email,
       type: type,
       registerDate: Date.now(),
+      quizComplete: false,
   }).then(()=>{
     // console.log("Send Success")
   }).catch(error =>{
