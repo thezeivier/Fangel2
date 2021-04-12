@@ -6,7 +6,7 @@ import QuizCard from './QuizCard'
 import { AppContext } from '../../App'
 import { sendPreferences } from './algorithms/SendPreferences' 
 import { listQuiz } from './ListQuiz.json'
-import { ExternalsWrapper } from './../../themes/externalRecyclableStyles'
+import { ExternalsWrapper, TextBody } from './../../themes/externalRecyclableStyles'
 import { SubtitleStyled } from './../../pages/signInAndUp/styles/sGlobalForm'
 import { CardsContainer, ButtonStyled } from './styles/sQuizMain'
 
@@ -35,6 +35,7 @@ const QuizMain = () => {
         <ExternalsWrapper>
         <form>
           <SubtitleStyled>Escoge tus gustos e intereses</SubtitleStyled>
+          <TextBody>5 categorias como máximo</TextBody>
           <CardsContainer>
             {
               quiz.map(card =>  <QuizCard key={card.id} {...card} quiz={quiz} cartQuiz={cartQuiz} setCartQuiz={setCartQuiz}/>)

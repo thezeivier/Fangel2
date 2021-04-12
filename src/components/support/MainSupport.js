@@ -20,6 +20,9 @@ const MainSupport = () => {
           <BoxOption color="#27AE60" as={Link} to="/politics-privacy">
             <span>Políticas y privacidad de datos</span>
           </BoxOption>
+          <BoxOption color="#BF8E02" as={Link} to="/report">
+            <span>Reportar un problema</span>
+          </BoxOption>
         </ListBoxOptions>
       </Wrapper>
       <ReturnPage/>

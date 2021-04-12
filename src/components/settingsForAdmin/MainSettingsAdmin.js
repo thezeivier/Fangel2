@@ -41,12 +41,12 @@ const MainSettingsAdmin = ({ inDesktop }) => {
     <Wrapper>
       <DisplayContainer inDesktop={inDesktop}>
         <SectionContainer>
-          <SubtitleStyled as="h4">Personas <span>(4)</span></SubtitleStyled>
+          <SubtitleStyled as="h4">Personas <span>(0)</span></SubtitleStyled>
           <div>
+{/*             <UserConnect />
             <UserConnect />
             <UserConnect />
-            <UserConnect />
-            <UserConnect />
+            <UserConnect /> */}
           </div>
         </SectionContainer>
         <div>

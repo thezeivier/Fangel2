@@ -43,7 +43,7 @@ const MainReport = () => {
             <SubtitleStyled>Detalles</SubtitleStyled>
             <TextAreaStyled border4 type="text" placeholder="Descripcion" name="reportDescription" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
             <ButtonsContainer>
-              <ButtonStyled onClick={recoverReportImage} secondary left type="button">¿Adjuntar una imagen?</ButtonStyled>
+              <ButtonStyled onClick={recoverReportImage} secondary left type="button">Adjuntar una imagen</ButtonStyled>
               <input type="file" accept="image/*" style={{display: "none"}} id="reportImage"/>
               <ButtonStyled primary right type="submit">Enviar</ButtonStyled>
             </ButtonsContainer>
