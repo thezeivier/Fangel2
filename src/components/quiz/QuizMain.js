@@ -22,7 +22,7 @@ const QuizMain = () => {
   const isDisableButton = cartQuiz.length > 2 ? false: true
 
   const redirectToHome = () => {
-    history.push("/home")
+    history.push("/")
   }
 
   const dataCategory = cartQuiz.map(item => {
