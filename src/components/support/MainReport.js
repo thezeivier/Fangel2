@@ -57,7 +57,7 @@ const MainReport = () => {
           </TextStyled>
         </OnlyDesktop>
       </Wrapper>
-      <ReturnPage to={"#"} />
+      <ReturnPage/>
     </main>
   );
 }

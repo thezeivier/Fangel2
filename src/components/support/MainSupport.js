@@ -22,7 +22,7 @@ const MainSupport = () => {
           </BoxOption>
         </ListBoxOptions>
       </Wrapper>
-      <ReturnPage to={"#"} />
+      <ReturnPage/>
     </main>
   );
 }

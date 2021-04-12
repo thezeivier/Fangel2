@@ -60,7 +60,7 @@ const MainProfile = () => {
           }
         </ListTags>
       </Wrapper> 
-      <ReturnPage to={"/"}/> 
+      <ReturnPage/> 
     </main>
   );
 }

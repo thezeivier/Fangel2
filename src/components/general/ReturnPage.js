@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import { ReactComponent as ArrowLeftSVG } from './icons/arrowLeft.svg'
 
 const LinkContainer = styled.div`
@@ -31,9 +30,12 @@ const LinkContainer = styled.div`
   }
 `
 
-const ReturnPage = ({ to }) => {
+const ReturnPage = () => {
+  const returnToBack = () =>{
+    window.history.back()
+  }
   return (
-    <LinkContainer as={Link} to={to}>
+    <LinkContainer onClick={returnToBack}>
       <ArrowLeftSVG />
       <span>Regresar</span>
     </LinkContainer>
