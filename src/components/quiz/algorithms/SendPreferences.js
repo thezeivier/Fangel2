@@ -1,7 +1,8 @@
 export const sendPreferences = async (id, firestore, dataCategory, redirect) => {
     const refUser = await firestore.collection("users").doc(id)
     return refUser.update({
-      preferences: dataCategory
+      preferences: dataCategory,
+      quizComplete: true,
     })
     .then(() => {
       console.log("Document successfully created")
