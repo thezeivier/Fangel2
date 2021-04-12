@@ -122,6 +122,7 @@ export const DetailsContainer = styled.details`
   padding: 10px 4px;
   margin: 15px 0 10px 0;
   border-radius: 4px;
+  transition: all .2s;
 
   @media(min-width:768px) {
     padding: 20px 12px;
