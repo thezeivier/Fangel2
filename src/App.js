@@ -3,6 +3,7 @@ import {Switch, Route, Redirect} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import {useAuth, useFirestore} from 'reactfire'
 import { RecoverUser} from './algorithmsToApp/RecoverUser'
+import { UpdateUserStatus } from './algorithmsToApp/UpdateUserStatus'
 import GlobalStyles from './themes/GlobalStyles'
 import theme from './themes/Theme'
 //Import Page components
