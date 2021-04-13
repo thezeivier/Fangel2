@@ -19,11 +19,11 @@ const MainCreateCOne = () => {
   const {register, handleSubmit, errors } = useForm()
   const onSubmit = async data => {
     setCommunityCreated("test")
-    const result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage)
+    let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage)
     setCommunityCreated(result)
   }
   
-  const recoverCommunityImage = async (e) =>{
+  const recoverCommunityImage = (e) =>{
     e.preventDefault()
     const communityImage = document.getElementById("communityImage")
     e = communityImage.click()

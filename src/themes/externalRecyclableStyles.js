@@ -66,7 +66,7 @@ export const svgMixin = css`
 export const PrimaryTitle = styled.h1`
   font-style: normal;
   font-weight: ${props => props.theme.weight.semiMedium};
-  font-size: 2em;
+  font-size: 2.35em;
   line-height: 1.45em;
   margin: ${props => props.margin};
   cursor: default;

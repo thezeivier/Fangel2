@@ -21,9 +21,9 @@ const Main404 = () => {
             </TextBodyStyled>
             <div>
               <Link to="/">
-                <ButtonStyled secondary>Regresar al inicio</ButtonStyled>          
+                <ButtonStyled secondary onClick={()=>{}}>Regresar al inicio</ButtonStyled>          
               </Link>
-              <SmallTextStyled as={Link} to="/support">Ir al centro de soporte y ayuda</SmallTextStyled>
+              <SmallTextStyled as={Link} to="/support">Ir al Centro de soporte y ayuda</SmallTextStyled>
             </div>
           </DescriptionErrorContainer>
         </GirdOnlyDesktop>

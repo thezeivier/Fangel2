@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Switch, Route, Redirect} from 'react-router-dom'
+import {Switch, Route, Redirect, useHistory} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import {useAuth, useFirestore} from 'reactfire'
 import { RecoverUser} from './algorithmsToApp/RecoverUser'
@@ -28,6 +28,7 @@ const {Provider, Consumer} = AppContext
 function App() {
   const auth = useAuth()
   const firestore = useFirestore()
+  const history = useHistory()
   const [loading, setLoading] = useState(true)
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
@@ -49,6 +50,7 @@ function App() {
           if(dataUser.type === "admin"){
             setIsAdmin(true)
           }
+          !dataUser.quizComplete && history.push("/quiz")
         }
       }
       setLoading(false)

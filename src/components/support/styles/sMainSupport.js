@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { Button, SecondaryTitle, TextBody } from './../../../themes/externalRecyclableStyles'
+import { Button, SecondaryTitle, TextBody, PrimaryTitle } from './../../../themes/externalRecyclableStyles'
 
 //Support
 export const ListBoxOptions = styled.ul`
@@ -97,14 +97,49 @@ export const ButtonStyled = styled(Button)`
 
 //Faqs
 export const TextContainer = styled.div`
-  margin: 20px 0 0 0;
+  margin: 23px 0 0 0;
+
+  @media(min-width:768px) {
+    margin: 25px 0 0 0;
+  }
+
+  @media(min-width:1200px) {
+    margin: 22px 0 0 0;
+  }
+
+  ${props => props.top10 && css`
+    margin: 10px 0 0 0;
+
+    @media(min-width:768px) {
+      margin: 10px 0 0 0;
+    }
+  `}
+
+`
+
+export const DetailsContainer = styled.details`
+  background: ${props => props.theme.inputForm};
+  padding: 10px 4px;
+  margin: 15px 0 10px 0;
+  border-radius: 4px;
+  transition: all .2s;
+
+  @media(min-width:768px) {
+    padding: 20px 12px;
+  }
+
+  @media(min-width:1024px) {
+    padding: 20px;
+    margin: 15px 0 20px 0;
+  }
 `
 
 export const SubtitleSmallStyled = styled(SecondaryTitle)`
-  font-size: 1.45em;
+  font-size: 1.19em;
   color: ${props => props.theme.colorbrandSolid};
   position: relative;
   padding: 0 0 0 25px;
+  margin: 0 0 9px 0;
 
   @media(min-width:768px) {
     padding: 0 0 0 30px;
@@ -112,6 +147,7 @@ export const SubtitleSmallStyled = styled(SecondaryTitle)`
 
   @media(min-width:1200px) {
     padding: 0 0 0 32px;
+    margin: 0 0 1px 0;
   }
 
   ${props => props.question && css`
@@ -124,16 +160,50 @@ export const SubtitleSmallStyled = styled(SecondaryTitle)`
     }
   `}
 
-  @media(min-width:1024px) {
+/*   @media(min-width:1024px) {
     margin: 30px 0 0 0;
-  }
+  } */
 `
 
 export const TextStyled = styled(TextBody)`
   margin: 0;
   font-size: 1.08em;
 
+  b {
+    font-weight: ${props => props.theme.weight.semiMedium};
+  }
+
+  span {
+    color: ${props => props.theme.colorbrandSolid};
+    
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+
+  ${props => props.secondParagraph && css`
+    margin: 10px 0 0 0;
+  `}
+
   @media(min-width:1024px) {
     font-size: 1.1em;
   }
+`
+
+export const TextList = styled.ul`
+  li {
+    list-style: disc;
+    margin: 0 0 5px 15px;
+
+    @media(min-width:1200px) {
+      margin: 0 0 7px 15px;
+    }
+  }
+`
+
+//Terms
+export const ContainerSection = styled.section`
+  margin: 23px 0 0 0;
 `

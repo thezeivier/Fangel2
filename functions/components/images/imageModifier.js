@@ -21,12 +21,16 @@ exports.imageModifier = functions.storage.object().onFinalize(async (object) => 
   if (!contentType.startsWith('image/')) {
     return console.log('This is not an image.');
   }
-
+  
   // Get the file name.
   const fileName = path.basename(filePath);
   // Exit if the image is already a thumbnail.
   if (fileName.startsWith('thumb_')) {
     return console.log('Already a Thumbnail.');
+  }
+
+  if (fileName.startsWith('report_')) {
+    return console.log('This is a repot image.');
   }
   // [END stopConditions]
   const uid = fileName.substr(0, 28);//Recover uid from file name

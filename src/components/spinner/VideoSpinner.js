@@ -43,12 +43,33 @@ const Move3 = keyframes`
 
 
 const Container = styled.div`
-  width: 88%;
-  height: 100%;
+  width: 100vw;
+  height: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #1F1F24;
+
+  @media(min-width:375px) {
+    height: 53%;
+  }
+
+  @media(min-width:410px) {
+    height: 58%;
+  }
+
+  @media(min-width:768px) {
+    height: 108%;
+  }
+
+  @media(min-width:768px) {
+    height: 144%;
+  }
+
+  @media(min-width:1200px) {
+    width: 88%;
+    height: 100%;
+  }
 `
 
 const Loader = styled.div`
