@@ -22,7 +22,7 @@ export const emailFValidator = {
 export const passwordFValidator = {
   required: true,
   pattern: {
-    value: /(?=(.[0-9]))((?=.[A-Za-z0-9])(?=.[a-z]))^.{8,}$/,
+    value: /^(?=.*[A-Za-z])[A-Za-z@$!%*#?&\d]{8,}$/,
     message: "Tu contraseña es insegura*"
   }
 }
