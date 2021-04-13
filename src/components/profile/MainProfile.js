@@ -1,17 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useRouteMatch } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import ReturnPage from './../general/ReturnPage'
 import UserTag from './UserTag'
+import {useStorage} from 'reactfire'
 import { useMatchRouteUserData } from './algorithms/useMatchRouteUserData'
 import { AppContext } from '../../App'
 import { UserContainer, ListTags, AddPhotoContainer } from './styles/sMainProfile'
 import { colorGenerator } from './algorithms/colorGenerator'
+import {newProfilePhoto} from './algorithms/newProfilePhoto'
 
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import { ReactComponent as AddPhotoSVG } from './icons/addPhoto.svg'
 
 const MainProfile = () => {
+  const storage = useStorage()
+  const [profileThumb, setProfileThumb] = useState()
   const {userFromDB, authState} = useContext(AppContext)
   const match = useRouteMatch("/u/:id")
   const nameUserRoute = match.params.id
@@ -26,7 +30,9 @@ const MainProfile = () => {
   const {
     id, 
     preferences,
-    username
+    username,
+    bucket,
+    route,
   } = userData[0]
 
 /*   const {
@@ -38,20 +44,42 @@ const MainProfile = () => {
     uid, 
     username
   } = userData[0] */
-
   const isMyUser = authState.uid === id
+
+  if(bucket && route){
+    const profileImageReference = storage.refFromURL(`gs://${bucket}/${route}`)
+    profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
+      setProfileThumb(url)
+    })
+  }
+
+  const changeProfileImage = (e) => {
+    e.preventDefault()
+    const profileImage = document.getElementById("profileImage")
+    e = profileImage.click()
+    profileImage.addEventListener('change', e => {
+      newProfilePhoto(storage, e.target.files[0], authState.uid)
+    })
+    document.getElementById("profileImage").value = null
+  }
 
   return (
     <main>
       <Wrapper>
         <UserContainer>
-          <ProfileSVG />
+          {
+            profileThumb?
+            <img src={profileThumb} alt="Imagen de perfil" />:
+            <ProfileSVG />
+
+          }
           {isMyUser &&
-            <AddPhotoContainer>
+            <AddPhotoContainer onClick={changeProfileImage}>
               <AddPhotoSVG />
               <span>Cambiar foto</span>
             </AddPhotoContainer>
           }
+          <input type="file" accept="image/*" style={{display: "none"}} id="profileImage"/>
           <h4>{username}</h4>
         </UserContainer>
         <ListTags>

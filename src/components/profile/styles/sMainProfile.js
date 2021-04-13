@@ -8,6 +8,12 @@ export const UserContainer = styled.div`
     margin: 0 0 30px 0;
   }
 
+  img {
+    border-radius: 100%;
+    height: 76px;
+    margin: auto;
+  }
+
   svg {
     height: 80px;
     fill: ${props => props.theme.colorIcon};

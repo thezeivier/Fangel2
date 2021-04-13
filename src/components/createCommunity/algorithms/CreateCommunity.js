@@ -1,6 +1,7 @@
 export const CreateCommunity = async (data, firestore, userApp, communityImage, storage) => {
   const {nameCommunity, descriptionCommunity} = data
   let uid = userApp.authState.uid
+  let profileRoute = userApp.userFromDB.route ? userApp.userFromDB.route : false
   let batch = firestore.batch()
   const hashName = digestName();
   let communitiesRef = firestore.collection('communities').doc(uid)
@@ -43,6 +44,7 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
         username: userApp.authState.displayName
       },
     ],
+    profileRoute,
   },
   {merge:true}
   )
