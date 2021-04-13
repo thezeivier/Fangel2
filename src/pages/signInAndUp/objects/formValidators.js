@@ -5,8 +5,8 @@ export const usernameFValidator = {
     message: "El usuario debe ser menor a 30 caracteres*",
   },
   pattern: {
-    value: /^[a-z0-9_]{5,}[a-z]+[0-9]*$/,
-    message: "Usuario debe ser mayor a cinco caracteres y en minúsculas*"
+    value: /^(?={4,}$)(?![_.])(?!.*[_.]{2})[a-z0-9._]+(?<![_.])$/,
+    message: "Usuario debe ser mayor a cuatro caracteres, en minúsculas y sin espacios*"
   }
 }
 
@@ -22,7 +22,7 @@ export const emailFValidator = {
 export const passwordFValidator = {
   required: true,
   pattern: {
-    value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+    value: /(?=(.[0-9]))((?=.[A-Za-z0-9])(?=.[a-z]))^.{8,}$/,
     message: "Tu contraseña es insegura*"
   }
 }
