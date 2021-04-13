@@ -30,7 +30,7 @@ const CardCommunity = ({communityData}) => {
         <li>
           <CardContainer>
             <ContainerTextTop>
-              <TextCommunity>Comunidad creada por por:</TextCommunity>
+              <TextCommunity>Comunidad creada por:</TextCommunity>
               <UserContainer>
                 <Link to={`/u/${communityData.username}`}>
                   <ProfileSVG />
