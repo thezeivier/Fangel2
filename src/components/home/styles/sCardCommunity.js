@@ -31,10 +31,17 @@ export const UserContainer = styled.div`
   align-items: center;
   margin: -8px 0 0 0;
 
+  
+  
   a {
     width: 28px;
     margin: 4px 8px 0 0;
-
+    
+    img {
+      border-radius: 100%;
+      height: 26.6px;
+    }
+    
     svg {
       fill: ${props => props.theme.textColor};
     }

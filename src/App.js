@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Switch, Route, Redirect, useHistory} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import {useAuth, useFirestore} from 'reactfire'
+import {useAuth, useFirestore, useStorage} from 'reactfire'
 import { RecoverUser} from './algorithmsToApp/RecoverUser'
 import GlobalStyles from './themes/GlobalStyles'
 import theme from './themes/Theme'
@@ -27,12 +27,14 @@ const {Provider, Consumer} = AppContext
 function App() {
   const auth = useAuth()
   const firestore = useFirestore()
+  const storage = useStorage()
   const history = useHistory()
   const [loading, setLoading] = useState(true)
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
   const [userFromDB, setUserFromDB] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
+  const [profileThumb, setProfileThumb] = useState(false)
   
   useEffect(()=>{
     if(localStorage.mode){
@@ -48,6 +50,12 @@ function App() {
         if(dataUser){
           if(dataUser.type === "admin"){
             setIsAdmin(true)
+            if(dataUser.bucket && dataUser.route){
+              const profileImageReference = storage.refFromURL(`gs://${dataUser.bucket}/${dataUser.route}`)
+              profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
+                setProfileThumb(url)
+              })
+            }
           }
           !dataUser.quizComplete && history.push("/quiz")
         }
@@ -70,6 +78,7 @@ function App() {
   const userValue = {
     authState: (authState? authState: false),
     userFromDB: (userFromDB? userFromDB: false),
+    profileThumb,
     isAdmin,
     changeTheme,
   }
