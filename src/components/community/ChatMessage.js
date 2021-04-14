@@ -10,9 +10,9 @@ export const ChatMessage = ({msg, myUid}) => {
     return (
         <>
             {isMyMessage ?
-                <SelfComments /* color={getColorLightMode()}  */{...msg}/>
+                <SelfComments /* color={getColorDarkMode()} */ {...msg}/>
                 : 
-                <OtherComments /* color={getColorLightMode()} */ {...msg}/>
+                <OtherComments /* color={getColorDarkMode()} */ {...msg}/>
             }
         </>
     )

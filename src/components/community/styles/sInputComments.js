@@ -11,11 +11,10 @@ export const InputContainer = styled.div`
 
   @media(min-width:768px) {
     margin: 10px 0 20px 0;
-    width: 95%;
   }
 
   @media(min-width:768px) {
-    margin: 10px 0;
+    margin: 10px 0 15px 0;
   }
 
   @media(min-width:1200px) {
@@ -60,14 +59,19 @@ export const Form = styled.form`
   svg {
     fill: ${props => props.theme.colorbrandSolid};
   }
+
+  @media(min-width:1200px) {
+    margin: 0 15px;
+  }
 `
 
 export const InputStyled = styled(Input)`
   border-radius: 4px;
   font-size: 1em;
-  width: calc(100% - 28px);
   padding: 0 10px;
-
+  flex: 0 1 auto;
+  margin: 0 10px 0 0;
+ 
   @media(min-width:768px) {
     padding: 0 20px;
     margin: 0 10px 0 0;
@@ -77,4 +81,5 @@ export const InputStyled = styled(Input)`
 export const Button = styled.button`
   background: transparent;
   border: none;
+  flex: 1 0 auto;
 `

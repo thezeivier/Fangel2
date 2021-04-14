@@ -38,10 +38,10 @@ const InputComments = ({userFromDB, lastMsgRef, roomName}) => {
 
   return (
     <InputContainer>
-      <SvgsContainer>
+{/*       <SvgsContainer>
         <MicrophoneDisableSVG className="microphone"/>
         <CameraVideoDisableSVG className="cameraVideo"/>
-      </SvgsContainer>
+      </SvgsContainer> */}
       <Form onSubmit={sendMessage}>
         <InputStyled placeholder="Escribe un comentario" value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
         <Button type="submit" disabled={((formValue.trim().length == 0) || (formValue.length > 140)) ? true : false }>

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const MainOnlyDesktop = styled.main`
   .mainWrapper {
     @media(min-width:1200px) {
-      width: 31%;
+      width: 90%;
       margin: 0;
     }
   }
