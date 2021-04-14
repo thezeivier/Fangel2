@@ -15,7 +15,7 @@
     }, {
       "id": 4,
       "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Feducation.png?alt=media&token=275e79a3-b136-4b9c-a87f-c1402fb6489a",
-      "category": "Educacion"
+      "category": "Educación"
     }, {
       "id": 5,
       "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Ffinances.png?alt=media&token=916ed40f-0bda-48c4-bc8a-d34bd07d3c89",
@@ -27,7 +27,7 @@
     }, {
       "id": 7,
       "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fchacota.png?alt=media&token=fca48cd4-4867-4e1c-8ba9-3ecfc3e175a9",
-      "category": "Hacer chacota"
+      "category": "Ocio"
     }, {
       "id": 8,
       "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fhealthy.png?alt=media&token=33158e18-1ffd-4634-8139-a69b0823ef2e",
@@ -47,7 +47,7 @@
     }, {
       "id": 12,
       "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fmusic.png?alt=media&token=3446a500-724e-4798-9b43-9dc9ff5c1284",
-      "category": "Musica"
+      "category": "Música"
     }, {
       "id": 13,
       "background": "https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/quiz%2Fnature.png?alt=media&token=dd7ea2ee-358a-47f7-b947-5f5c9bb4cb49",
