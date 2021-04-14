@@ -19,6 +19,8 @@ const VideoAdmin = ({communityData}) => {
     setModalIsOpen(false)
   }
 
+  console.log(modalIsOpen)
+
   return (
     <>
       {
@@ -27,9 +29,9 @@ const VideoAdmin = ({communityData}) => {
         <ContainerForCommunity> {/* Sin margenes en moviles y tablets ni footer ni regHeader,
           wrapper sin paddign en moviles y tablet*/}
           <RegHeader /> {/* Solo para moviles */}
-          <VideoHeader communityData={communityData} isSettings="none" open={openMoldal} closeModal={closeModal} modalIsOpen={modalIsOpen} />
-          <MainVideoUser communityData={communityData}/>
-          <MainSettingsAdmin inDesktop="grid" />
+          <VideoHeader communityData={communityData} isSettings="none" closeModal={closeModal} modalIsOpen={modalIsOpen} />
+          <MainVideoUser communityData={communityData} open={openMoldal} />
+          <MainSettingsAdmin inDesktop="grid"/>
           <Footer noMobile/>
         </ContainerForCommunity>
       }

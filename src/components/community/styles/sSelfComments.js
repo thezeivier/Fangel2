@@ -21,7 +21,7 @@ export const CommentContainerStyled = styled(CommentContainer)`
 `
 
 export const UserName = styled.h6`
-  text-align: end;
+  text-align: end !important;
   color: ${props => props.color};
   font-weight: ${props => props.theme.weight.medium};
 

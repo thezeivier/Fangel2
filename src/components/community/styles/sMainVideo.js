@@ -1,9 +1,10 @@
 import styled from 'styled-components'
+import { Button } from './../../../themes/externalRecyclableStyles'
 
 export const MainOnlyDesktop = styled.main`
   .mainWrapper {
     @media(min-width:1200px) {
-      width: 90%;
+      width: 100%;
       margin: 0;
     }
   }
@@ -18,5 +19,31 @@ export const ContainerResponsive = styled.div`
 
   @media(min-width:1024px) and (orientation : portrait) {
     margin: 0 15%;
+  }
+`
+
+export const ButtonConfiguration = styled(Button)`
+  width: initial;
+  margin: 10px auto;
+  padding: 11px 35px;
+  display: ${props => props.display || 'flex'};
+
+  svg {
+    fill: ${props => props.theme.colorbrandSolid};
+    width: 22px;
+    margin: 0 10px 0 0;
+  }
+
+  @media(min-width:1200px) {
+    display: none;
+  }
+`
+
+export const ButtonLeaveContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  @media(min-width:1200px) {
+    margin: 15px 0 0 0;
   }
 `

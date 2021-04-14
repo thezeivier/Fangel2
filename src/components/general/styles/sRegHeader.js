@@ -57,8 +57,10 @@ export const IconsContainer = styled.div`
   }
 
   img {
+    transition: .2s;
+
     &:hover {
-      border-radius: 1px solid ${props => props.theme.colorbrandSolid};
+      border: 1px solid ${props => props.theme.colorbrandSolid};
     }
   }
 

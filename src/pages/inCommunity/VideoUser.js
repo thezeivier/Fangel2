@@ -16,8 +16,8 @@ const VideoUser = ({communityData}) => {
         <ContainerForCommunity> {/* Sin margenes en moviles y tablets ni footer ni regHeader,
           wrapper sin paddign en moviles y tablet*/}
           <RegHeader /> {/* Solo para moviles */}
-          <VideoHeader communityData={communityData} displayNoAdmin="none" isSettings="none" />
-          <MainVideoUser communityData={communityData}/>
+          <VideoHeader communityData={communityData} displayNoAdmin="none" isSettings="none" onlyUsers="block" />
+          <MainVideoUser communityData={communityData} displayNoAdmin="none" />
           <Footer noMobile/>
         </ContainerForCommunity>
       }

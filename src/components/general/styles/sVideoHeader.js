@@ -12,6 +12,8 @@ export const HeaderContainer = styled.div`
 
   svg {
     fill: ${props => props.theme.textColor};
+    width: 30px;
+    margin: 0 0 5px 0;
   }
 
   @media(min-width:410px) {
@@ -40,6 +42,10 @@ export const TitleCommunityStyled = styled(SecondaryTitle)`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;  
   overflow: hidden;
+`
+
+export const OnlyUsersContainer = styled.div`
+  display: ${props => props.onlyUsers || 'none'} !important;
 `
 
 export const ContainerSVG = styled.div`

@@ -3,14 +3,16 @@ import Wrapper from './../general/Wrapper'
 import EmbedVideo from './EmbedVideo'
 import CommentsBox from './CommentsBox'
 import InputComments from './InputComments'
-import { ContainerResponsive, MainOnlyDesktop } from './styles/sMainVideo'
-
-import { CommentsContainer, Transperent } from './styles/sCommentsBox'
+import ButtonLeaveCom from './../general/ButtonLeaveCom'
+import ModalSettingsAdmin from './../../pages/inCommunity/ModalSettingsAdmin'
+import { ContainerResponsive, MainOnlyDesktop, ButtonLeaveContainer, ButtonConfiguration } from './styles/sMainVideo'
+import { CommentsContainer } from './styles/sCommentsBox'
+import { ReactComponent as VideoSettingsSVG } from './../general/icons/videoSettings.svg'
 import { AppContext } from '../../App'
 
 import { GetChatRoomMessages } from './algorithms/GetChatRoomMessages'
 
-const VideoUser = ({communityData}) => {
+const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, closeModal }) => {
   const { userFromDB } = useContext(AppContext)
   const {data, status, error} = GetChatRoomMessages(communityData.roomName)
   const lastMsgRef = useRef()
@@ -23,12 +25,21 @@ const VideoUser = ({communityData}) => {
       <EmbedVideo communityData={communityData} />
       <Wrapper height="100%">
         <ContainerResponsive>
+          <ButtonConfiguration secondary display={displayNoAdmin} onClick={open}>
+            <VideoSettingsSVG />
+            Configuraciones
+          </ButtonConfiguration>
           <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef}/>
           <InputComments userFromDB={userFromDB} lastMsgRef={lastMsgRef} roomName={communityData.roomName}/>
         </ContainerResponsive>
       </Wrapper>
+      <div></div>
+      <ButtonLeaveContainer>
+        <ButtonLeaveCom displayDesktop="flex" />
+      </ButtonLeaveContainer>
+      <ModalSettingsAdmin modalIsOpen={modalIsOpen} closeModal={closeModal} />
     </MainOnlyDesktop>
   );
 }
 
-export default VideoUser;
+export default MainVideoUser;

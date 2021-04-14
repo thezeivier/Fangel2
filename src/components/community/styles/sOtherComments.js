@@ -22,6 +22,7 @@ export const CommentContainer = styled.div`
     margin: 0 0 3px 0;
     font-size: 1em;
     font-weight: ${props => props.theme.weight.medium};
+    text-align: start;
 
     @media(min-width:1200px) {
       font-size: 0.95em;
