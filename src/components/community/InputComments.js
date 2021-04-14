@@ -13,6 +13,7 @@ const InputComments = ({userFromDB, lastMsgRef, roomName}) => {
   // Send new message
   const sendMessage = async (e) => {
     e.preventDefault()
+    setFormValue('')
     await messageRef.add({
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       photoUrl: "",
@@ -20,9 +21,6 @@ const InputComments = ({userFromDB, lastMsgRef, roomName}) => {
       userUid: userFromDB.uid,
       username: userFromDB.username
     })
-
-    setFormValue('')
-
     // Scroll into last message
     lastMsgRef.current.scrollIntoView({ behavior: 'smooth'})  
   }
@@ -46,7 +44,7 @@ const InputComments = ({userFromDB, lastMsgRef, roomName}) => {
       </SvgsContainer>
       <Form onSubmit={sendMessage}>
         <InputStyled placeholder="Escribe un comentario" value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
-        <Button type="submit" disabled={(formValue.trim().length == 0) ? true : false }>
+        <Button type="submit" disabled={((formValue.trim().length == 0) || (formValue.length > 140)) ? true : false }>
           <SendCommentsSVG className="sendCommentsSVG" />
         </Button>
       </Form>

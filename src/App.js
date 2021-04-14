@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import {Switch, Route, Redirect, useHistory} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import {useAuth, useFirestore} from 'reactfire'
+import {useAuth, useFirestore, useDatabase, useDatabaseObjectData} from 'reactfire'
 import { RecoverUser} from './algorithmsToApp/RecoverUser'
 import { UpdateUserStatus } from './algorithmsToApp/UpdateUserStatus'
 import GlobalStyles from './themes/GlobalStyles'
 import theme from './themes/Theme'
 //Import Page components
+import 'firebase/database'
 import Container from './styles/sApp'
 import ExternalLayoutRoute from './components/general/ExternalLayoutRoute'
 import Landing from './pages/Landing'
@@ -27,6 +28,7 @@ const {Provider, Consumer} = AppContext
 
 function App() {
   const auth = useAuth()
+  const database = useDatabase()
   const firestore = useFirestore()
   const history = useHistory()
   const [loading, setLoading] = useState(true)

@@ -5,7 +5,6 @@ import { AppContext } from '../../App'
 import { GetCommunityVideoData } from './algorithms/GetCommunityVideoData'
 import { GetAdminCommunity } from './algorithms/GetAdminCommunity'
 import { useDatabase, useDatabaseObjectData, useFirestore } from 'reactfire'
-import { SetUserOnlineState } from './algorithms/SetUserOnlineState'
 import { OnDisconnectUser } from './algorithms/OnDisconnectUser'
 
 import VideoAdmin from './VideoAdmin'
@@ -18,20 +17,19 @@ const SwitchCommunityVideo = () => {
     const [data, status, error] = GetCommunityVideoData(idRoomRoute)
     const firestore = useFirestore()
     const database = useDatabase()
+    const refData = database.ref(`/users/${userFromDB.uid}`)
+    const userData = useDatabaseObjectData(refData) 
 
     if(status) return <p>Pending...</p>
     if(error) return null
     
     let communityData = data[0]
     const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)
-
-    // Set to user Online
-    SetUserOnlineState(userFromDB.uid, database)
-
-    // Update to user offline
-    OnDisconnectUser(userFromDB.uid, database, firestore)
-    console.count("render")
     
+    // Update to user offline
+    OnDisconnectUser(userFromDB.uid, database, firestore, idRoomRoute, communityData.roomName)
+    console.count("render")
+
     return (
         <>
             {

@@ -19,7 +19,7 @@ const EmailSended = () => {
         case "register":
           setSelectedText({
             title: 'Confirma tu correo electrónico',
-            informationText: 'Haz clic en el enlace que aparece en el correo para poder iniciar sesión.'
+            informationText: 'Haz clic en el enlace que aparece en el correo para poder iniciar sesión. Si no encuentras el correo, puedes buscarlo en correos no deseados.'
           })
           break
         case "passwordRecover":

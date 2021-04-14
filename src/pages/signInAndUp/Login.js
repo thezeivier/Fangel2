@@ -22,7 +22,6 @@ const Login = () => {
   if(contextFromApp.authState){
     history.push("/")//Cancel render if the user is logged in.
   }
-
   const onSubmit = async data => {
     let confirmToLogin = await LoginWithEmail(data, auth)
     setIsLoginCorrect(confirmToLogin)
@@ -52,9 +51,14 @@ const Login = () => {
               <TextStyled>Inicia Sesión para unirte o crear comunidades</TextStyled>
               <Form center onSubmit={handleSubmit(onSubmit)}>
                   <InputStyled type="text" placeholder="Correo electrónico" name="email" ref={register(emailFValidator)} />
-                  <ErrorAlert>{errors.email? "Correo inválido*":""}</ErrorAlert>
+                  <ErrorAlert>
+                    {errors.email? "Correo inválido*":""}
+                  </ErrorAlert>
                   <InputStyled type="password" placeholder="Contraseña" name="password" ref={register(passwordFValidator)} />
-                  <ErrorAlert>{errors.Password? "Correo incorrecta*":""}</ErrorAlert>
+                  <ErrorAlert>
+                    {errors.password? "Correo incorrecta*":""}
+                    {isLoginCorrect === false? "Contraseña incorrecta*":""}
+                  </ErrorAlert>
                 <LinkRecoveryPasssword>
                   <Link to={"/recover-password"}>¿Olvidate tu contraseña?</Link>
                 </LinkRecoveryPasssword>
