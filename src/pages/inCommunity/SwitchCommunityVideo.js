@@ -1,42 +1,60 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useRouteMatch, useHistory } from 'react-router-dom'
 import 'firebase/database'
 import { AppContext } from '../../App'
 import { GetCommunityVideoData } from './algorithms/GetCommunityVideoData'
 import { GetAdminCommunity } from './algorithms/GetAdminCommunity'
-import { useDatabase, useDatabaseObjectData, useFirestore } from 'reactfire'
+import { useDatabase, useFirestore } from 'reactfire'
 import { OnDisconnectUser } from './algorithms/OnDisconnectUser'
 
 import VideoAdmin from './VideoAdmin'
 import VideoUser from './VideoUser'
 
+const SwitchVideoContext =  React.createContext()
+const {Provider, Consumer} = SwitchVideoContext
+
 const SwitchCommunityVideo = () => {
+    const firestore = useFirestore()
     const { userFromDB }  = useContext(AppContext)
+    const [activeCommunity, setActiveCommunity] = useState(false)
     const match = useRouteMatch("/room/:idRoom")
     const idRoomRoute = match.params.idRoom
     const [data, status, error] = GetCommunityVideoData(idRoomRoute)
-    const firestore = useFirestore()
     const database = useDatabase()
-    const refData = database.ref(`/users/${userFromDB.uid}`)
-    const userData = useDatabaseObjectData(refData) 
+
+    useEffect(()=>{
+        if(!status){
+            let communityData = data[0]
+            firestore
+            .collection('activeCommunities')
+            .doc(communityData.creatorUid)
+            .onSnapshot((doc) => {
+                setActiveCommunity(doc.data());
+            })
+        }
+    },[])
 
     if(status) return <p>Pending...</p>
     if(error) return null
-    
     let communityData = data[0]
     const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)
+
+    const activeCommunityValue = {
+        activeCommunity,
+    }
     
     // Update to user offline
     OnDisconnectUser(userFromDB.uid, database, firestore, idRoomRoute, communityData.roomName)
-    console.count("render")
 
     return (
         <>
-            {
-                isAdmin ? <VideoAdmin communityData={communityData}/> : <VideoUser communityData={communityData}/>
-            }
+            <Provider value={activeCommunityValue}>
+                {
+                    isAdmin ? <VideoAdmin communityData={communityData}/> : <VideoUser communityData={communityData}/>
+                }
+            </Provider>
         </>
     )
 }
 
-export default SwitchCommunityVideo
+export {SwitchCommunityVideo, Consumer as SwitchVideoConsumer, SwitchVideoContext}

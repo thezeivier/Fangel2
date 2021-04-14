@@ -1,5 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {AppContext} from '../../App'
+import {SwitchVideoContext} from '../../pages/inCommunity/SwitchCommunityVideo'
 import {useFirestore} from 'reactfire'
 import useHover from './../../hook/use-hover'
 import Wrapper from './../general/Wrapper'
@@ -14,8 +15,8 @@ import {AddHour} from './algorithms/AddHour'
 const MainSettingsAdmin = ({ inDesktop }) => {
   const [hoverRef, isHovered] = useHover();
   const firestore = useFirestore()
+  const { activeCommunity }  = useContext(SwitchVideoContext)
   const [code, setCode] = useState(false);
-  const [activeCommunity, setActiveCommunity] = useState()
   const contextFromApp = useContext(AppContext)
   useEffect(()=> {
     contextFromApp.userFromDB.userCodesRef
@@ -25,12 +26,6 @@ const MainSettingsAdmin = ({ inDesktop }) => {
           setCode(result.data().code)
         }  
       })
-      firestore
-      .collection('activeCommunities')
-      .doc(contextFromApp.userFromDB.uid)
-      .onSnapshot((doc) => {
-        setActiveCommunity(doc.data());
-    });
   },[])
 
   const addHour = async () => {

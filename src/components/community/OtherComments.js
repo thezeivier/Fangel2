@@ -1,12 +1,12 @@
 import React from 'react';
-import { CommentContainer, Comment } from './styles/sOtherComments'
+import { CommentContainer, Comment, UserName } from './styles/sOtherComments'
 
-const OtherComments = ({text, username}) => {
+const OtherComments = ({ text, username, color }) => {
   return (
     <CommentContainer>
       {/* <img alt="foto de perfil" /> */}
-      <Comment>
-        <h6>{username}</h6>
+      <Comment color={color}>
+        <UserName color={color}>{username}</UserName>
         <p>{text}</p>
       </Comment>
     </CommentContainer>

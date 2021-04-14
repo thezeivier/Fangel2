@@ -28,12 +28,13 @@ exports.imageModifier = functions.storage.object().onFinalize(async (object) => 
   if (fileName.startsWith('thumb_')) {
     return console.log('Already a Thumbnail.');
   }
-
+  //Exit if the image is from report.
   if (fileName.startsWith('report_')) {
     return console.log('This is a repot image.');
   }
+
   // [END stopConditions]
-  const uid = fileName.substr(0, 28);//Recover uid from file name
+  var uid = fileName.substr(0, 28);//Recover uid from file name
   // [START thumbnailGeneration]
   // Download file from bucket.
   const bucket = admin.storage().bucket(fileBucket);
@@ -57,25 +58,36 @@ exports.imageModifier = functions.storage.object().onFinalize(async (object) => 
     metadata: metadata,
   });
 
+  //Object repeated.
+  const routAndBucket = {
+    route: newThumbFilePath,
+    bucket: fileBucket,
+  }
+
   //Send information from thumb to communities.
   const batch = db.batch();
-  batch.set(
-    db.collection("communities").doc(uid),
-    {
-      route: newThumbFilePath,
-      bucket: fileBucket,
-    },
-    {merge: true}
-  )
-  
-  batch.set(
-    db.collection("activeCommunities").doc(uid),
-    {
-      route: newThumbFilePath,
-      bucket: fileBucket,
-    },
-    {merge: true}
-  )
+  if(fileName.startsWith('profile_')){
+    //Information from profile
+    uid = fileName.substr(8, 28)
+    batch.set(
+      db.collection("users").doc(uid),
+      routAndBucket,
+      {merge: true}
+    )
+  }else{
+    //Information from communities
+    batch.set(
+      db.collection("communities").doc(uid),
+      routAndBucket,
+      {merge: true}
+    )
+    
+    batch.set(
+      db.collection("activeCommunities").doc(uid),
+      routAndBucket,
+      {merge: true}
+    )
+  }
 
   batch.commit();//Sending information to firestore.
 

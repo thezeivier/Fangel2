@@ -11,11 +11,19 @@ const CardCommunity = ({communityData}) => {
   const storage = useStorage()
   const [thumb, setThumb] = useState()//State for thumbnail.
   const [enterCommunity, setEnterComunity] = useState(false)
+  const [profileThumb, setProfileThumb] = useState(false)
+
   useEffect(()=>{
     const gsReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.route}`)
     gsReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
       setThumb(url)
     })
+    if(communityData.profileRoute){
+      const profileImageReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.profileRoute}`)
+      profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
+        setProfileThumb(url)
+      })
+    }
   }, [])
 
   const ChangeCommunity = () =>{
@@ -33,7 +41,11 @@ const CardCommunity = ({communityData}) => {
               <TextCommunity>Comunidad creada por:</TextCommunity>
               <UserContainer>
                 <Link to={`/u/${communityData.username}`}>
-                  <ProfileSVG />
+                  {
+                    profileThumb?
+                    <img src={profileThumb} className="profile" alt="Imagen de perfil"/>:
+                    <ProfileSVG />
+                  }
                 </Link>
                 <User as="h4">{communityData.username}</User>
               </UserContainer>

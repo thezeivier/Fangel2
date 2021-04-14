@@ -44,8 +44,21 @@ export const IconsContainer = styled.div`
       width: 30px;
     }
 
+    .profileImg {
+      margin: 0 10px 2px 5px;
+      width: 25px;
+      height: 25px;
+      object-fit: cover;
+    }
+
     .settings {
       width: 27px;
+    }
+  }
+
+  img {
+    &:hover {
+      border-radius: 1px solid ${props => props.theme.colorbrandSolid};
     }
   }
 
@@ -54,6 +67,12 @@ export const IconsContainer = styled.div`
       .profile {
         margin: 0 14px 0 5px;
         width: 35px;
+      }
+
+      .profileImg {
+        margin: 0 14px 2px 5px;
+        width: 29px;
+        height: 29px;
       }
 
       .settings {
@@ -68,6 +87,12 @@ export const IconsContainer = styled.div`
         margin: 0 17px 0 8px;
         width: 36px;
       }
+
+      .profileImg {
+        margin: 0 17px 5px 8px;
+        width: 31px;
+        height: 31px;
+      }
     }
   }
 
@@ -76,6 +101,12 @@ export const IconsContainer = styled.div`
       .profile {
         margin: 0 19px 0 8px;
         width: 37px;
+      }
+
+      .profileImg {
+        margin: 0 19px 3px 8px;
+        width: 30px;
+        height: 30px;
       }
     }
   }

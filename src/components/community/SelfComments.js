@@ -1,11 +1,11 @@
 import React from 'react';
-import { CommentContainerStyled, CommentStyled } from './styles/sSelfComments'
+import { CommentContainerStyled, CommentStyled, UserName } from './styles/sSelfComments'
 
-const SelfComments = ({text, username}) => {
+const SelfComments = ({ text, username, color }) => {
   return (
     <CommentContainerStyled>
-      <CommentStyled>
-        <h6>{username}</h6>
+      <CommentStyled color={color}>
+        <UserName color={color}>{username}</UserName>
         <p>{text}</p>
       </CommentStyled>
       {/* <img alt="foto de perfil" /> */}
