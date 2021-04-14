@@ -19,18 +19,18 @@ export const CommentContainer = styled.div`
   }
 
   h6 {
-    margin: 0 0 2px 0;
+    margin: 0 0 3px 0;
     font-size: 1em;
     font-weight: ${props => props.theme.weight.medium};
 
     @media(min-width:1200px) {
       font-size: 0.95em;
-      margin: 0 0 4px 0;
     }
   }
 
   p {
     line-height: 1.67em;
+    text-align: start;
 
     @media(min-width:1024px) {
       font-weight: ${props => props.theme.weight.light};
