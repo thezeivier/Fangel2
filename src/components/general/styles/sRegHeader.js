@@ -42,7 +42,13 @@ export const IconsContainer = styled.div`
     .profile {
       margin: 0 10px 0 5px;
       width: 30px;
-      height: 30px;
+    }
+
+    .profileImg {
+      margin: 0 10px 2px 5px;
+      width: 25px;
+      height: 25px;
+      object-fit: cover;
     }
 
     .settings {
@@ -51,10 +57,8 @@ export const IconsContainer = styled.div`
   }
 
   img {
-    object-fit: cover;
-
     &:hover {
-      border: 1px solid ${props => props.theme.colorbrandSolid};
+      border-radius: 1px solid ${props => props.theme.colorbrandSolid};
     }
   }
 
@@ -63,7 +67,12 @@ export const IconsContainer = styled.div`
       .profile {
         margin: 0 14px 0 5px;
         width: 35px;
-        height: 35px;
+      }
+
+      .profileImg {
+        margin: 0 14px 2px 5px;
+        width: 29px;
+        height: 29px;
       }
 
       .settings {
@@ -77,7 +86,12 @@ export const IconsContainer = styled.div`
       .profile {
         margin: 0 17px 0 8px;
         width: 36px;
-        height: 36px;
+      }
+
+      .profileImg {
+        margin: 0 17px 5px 8px;
+        width: 31px;
+        height: 31px;
       }
     }
   }
@@ -85,9 +99,14 @@ export const IconsContainer = styled.div`
   @media(min-width: 1024px){
     a {
       .profile {
-        margin: 0 19px 1px 8px;
-        width: 34px;
-        height: 34px;
+        margin: 0 19px 0 8px;
+        width: 37px;
+      }
+
+      .profileImg {
+        margin: 0 19px 3px 8px;
+        width: 30px;
+        height: 30px;
       }
     }
   }

@@ -21,7 +21,6 @@ const InputComments = ({userFromDB, lastMsgRef, roomName}) => {
       userUid: userFromDB.uid,
       username: userFromDB.username
     })
-
     // Scroll into last message
     lastMsgRef.current.scrollIntoView({ behavior: 'smooth'})  
   }
@@ -40,12 +39,12 @@ const InputComments = ({userFromDB, lastMsgRef, roomName}) => {
   return (
     <InputContainer>
       <SvgsContainer>
-        {/* <MicrophoneDisableSVG className="microphone"/>
-        <CameraVideoDisableSVG className="cameraVideo"/> */}
+        <MicrophoneDisableSVG className="microphone"/>
+        <CameraVideoDisableSVG className="cameraVideo"/>
       </SvgsContainer>
       <Form onSubmit={sendMessage}>
         <InputStyled placeholder="Escribe un comentario" value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
-        <Button type="submit" disabled={(formValue.trim().length == 0) ? true : false }>
+        <Button type="submit" disabled={((formValue.trim().length == 0) || (formValue.length > 140)) ? true : false }>
           <SendCommentsSVG className="sendCommentsSVG" />
         </Button>
       </Form>

@@ -22,7 +22,7 @@ const RegHeader = () => {
             <Link to={`/u/${userFromDB.username}`}>
               {
                 profileThumb?
-                <img src={profileThumb} className="profile" alt="Imagen de perfil" style={{borderRadius: "100%"}} />:
+                <img src={profileThumb} className="profileImg" alt="Imagen de perfil" style={{borderRadius: "100%"}} />:
                 <ProfileSVG  className="profile" />
               }
             </Link>
