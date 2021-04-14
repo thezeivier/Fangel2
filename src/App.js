@@ -16,7 +16,7 @@ import CreateCommunityTwo from './pages/CreateCommunityTwo'
 import ReportAProblem from './pages/ReportAProblem'
 import Settings from './pages/Settings'
 import Profile from './pages/Profile'
-import SwitchCommunityVideo from './pages/inCommunity/SwitchCommunityVideo'
+import {SwitchCommunityVideo} from './pages/inCommunity/SwitchCommunityVideo'
 //List of routers and loading
 import ListOfRoutes from './pages/objects/ListOfRoutes' 
 import Spinner from './components/spinner/MainSpinner'
