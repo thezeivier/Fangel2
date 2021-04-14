@@ -64,7 +64,7 @@ const Register = () => {
                     type="text"
                     placeholder="Usuario"
                     name="username"
-                    ref={register(usernameFValidator)} 
+                    ref={register(usernameFValidator)}
                   />
                   <ErrorAlert>
                     {errors.username? errors.username.message: ""}

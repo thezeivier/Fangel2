@@ -23,7 +23,7 @@ export const passwordFValidator = {
   required: true,
   pattern: {
     value: /^(?=.*[A-Za-z])[A-Za-z@$!%*#?&\d]{8,}$/,
-    message: "Tu contraseña es insegura*"
+    message: "Tu contraseña es insegura, prueba a usar mayúsculas, minúsculas y números*"
   }
 }
 

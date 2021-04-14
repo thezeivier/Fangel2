@@ -9,7 +9,7 @@ import MainSpinner from '../../components/spinner/MainSpinner'
 
 const VideoUser = ({activeCommunity, communityData}) => {
 
-  const [transcurredTimeOfCommunity, setTranscurredTimeOfCommunity] = useState("hola")
+  const [transcurredTimeOfCommunity, setTranscurredTimeOfCommunity] = useState()
   const [lastTranscurredTime, setLastTranscurredTime] = useState(false)
   const [localTimerCounter, setLocalTimerCounter] = useState(0)
   
