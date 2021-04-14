@@ -31,8 +31,6 @@ export const UserContainer = styled.div`
   align-items: center;
   margin: -8px 0 0 0;
 
-  
-  
   a {
     width: 28px;
     margin: 4px 8px 0 0;
@@ -40,13 +38,15 @@ export const UserContainer = styled.div`
     img {
       border-radius: 100%;
       height: 26.6px;
+      width: 26.6px;
+      object-fit: cover;
+      line-height: 0;
     }
     
     svg {
       fill: ${props => props.theme.textColor};
     }
   }
-
 `
 
 export const TextCommunity = styled(SmallText)`

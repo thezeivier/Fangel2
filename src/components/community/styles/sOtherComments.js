@@ -19,17 +19,22 @@ export const CommentContainer = styled.div`
   }
 
   h6 {
-    margin: 0 0 6px 0;
+    margin: 0 0 2px 0;
     font-size: 1em;
     font-weight: ${props => props.theme.weight.medium};
 
     @media(min-width:1200px) {
       font-size: 0.95em;
+      margin: 0 0 4px 0;
     }
   }
 
   p {
     line-height: 1.67em;
+
+    @media(min-width:1024px) {
+      font-weight: ${props => props.theme.weight.light};
+    }
 
     @media(min-width:1200px) {
       font-size: 0.88em;
@@ -38,8 +43,21 @@ export const CommentContainer = styled.div`
 `
 
 export const Comment = styled.div`
-  background: ${props =>props.theme.inputForm};
+  background: ${props => props.color + '10'};
   border-radius: 4px;
-  padding: 8px 15px;
+  padding: 10px 15px;
   width: max-content;
+
+  @media(min-width:1200px) {
+    padding: 13px 16px;
+  }
+`
+
+export const UserName = styled.h6`
+  text-align: end;
+  color: ${props => props.color};
+
+  @media(min-width:1200px) {
+    font-size: 0.95em;
+  }
 `
