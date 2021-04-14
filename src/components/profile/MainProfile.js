@@ -71,7 +71,6 @@ const MainProfile = () => {
             profileThumb?
             <img src={profileThumb} alt="Imagen de perfil" />:
             <ProfileSVG />
-
           }
           {isMyUser &&
             <AddPhotoContainer onClick={changeProfileImage}>

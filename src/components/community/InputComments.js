@@ -13,6 +13,7 @@ const InputComments = ({userFromDB, lastMsgRef, roomName}) => {
   // Send new message
   const sendMessage = async (e) => {
     e.preventDefault()
+    setFormValue('')
     await messageRef.add({
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       photoUrl: "",
@@ -20,8 +21,6 @@ const InputComments = ({userFromDB, lastMsgRef, roomName}) => {
       userUid: userFromDB.uid,
       username: userFromDB.username
     })
-
-    setFormValue('')
 
     // Scroll into last message
     lastMsgRef.current.scrollIntoView({ behavior: 'smooth'})  

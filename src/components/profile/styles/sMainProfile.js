@@ -11,6 +11,7 @@ export const UserContainer = styled.div`
   img {
     border-radius: 100%;
     height: 76px;
+    width: 76px;
     margin: auto;
   }
 

@@ -40,6 +40,7 @@ export const UserContainer = styled.div`
     img {
       border-radius: 100%;
       height: 26.6px;
+      width: 26.6px;
     }
     
     svg {
