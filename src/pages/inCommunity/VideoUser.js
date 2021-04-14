@@ -7,7 +7,42 @@ import { ContainerForCommunity } from './../../components/general/InternalLayout
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
-const VideoUser = ({communityData}) => {
+const VideoUser = ({activeCommunity, communityData}) => {
+
+  const [transcurredTimeOfCommunity, setTranscurredTimeOfCommunity] = useState("hola")
+  const [lastTranscurredTime, setLastTranscurredTime] = useState(false)
+  const [localTimerCounter, setLocalTimerCounter] = useState(0)
+  
+  
+  
+  useEffect(()=>{
+    setTranscurredTimeOfCommunity(activeCommunity? activeCommunity.transcurred: false)
+    console.log(activeCommunity)
+    timer()
+  }, [])
+
+  const timer = () => {
+    let localTimer = setInterval(() =>{
+      setLastTranscurredTime(transcurredTimeOfCommunity)
+      console.log(transcurredTimeOfCommunity)
+      console.log("timer")
+      if(transcurredTimeOfCommunity && lastTranscurredTime){
+        setLocalTimerCounter(localTimerCounter + 1)
+        console.log(localTimerCounter)
+        if(localTimerCounter >= 9){
+          if(transcurredTimeOfCommunity === lastTranscurredTime){
+            console.log(communityData.creatorUid)
+            setLocalTimerCounter(0)
+          }
+        }
+      }
+    }, 10000)
+
+    if(transcurredTimeOfCommunity !== lastTranscurredTime){
+      setInterval(localTimer)
+    }
+  }
+  
   return (
     <>
       {
