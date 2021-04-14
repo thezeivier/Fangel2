@@ -13,6 +13,7 @@ export const UserContainer = styled.div`
     height: 76px;
     width: 76px;
     margin: auto;
+    object-fit: cover;
   }
 
   svg {

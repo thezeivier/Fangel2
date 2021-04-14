@@ -42,10 +42,19 @@ export const IconsContainer = styled.div`
     .profile {
       margin: 0 10px 0 5px;
       width: 30px;
+      height: 30px;
     }
 
     .settings {
       width: 27px;
+    }
+  }
+
+  img {
+    object-fit: cover;
+
+    &:hover {
+      border: 1px solid ${props => props.theme.colorbrandSolid};
     }
   }
 
@@ -54,6 +63,7 @@ export const IconsContainer = styled.div`
       .profile {
         margin: 0 14px 0 5px;
         width: 35px;
+        height: 35px;
       }
 
       .settings {
@@ -67,6 +77,7 @@ export const IconsContainer = styled.div`
       .profile {
         margin: 0 17px 0 8px;
         width: 36px;
+        height: 36px;
       }
     }
   }
@@ -74,8 +85,9 @@ export const IconsContainer = styled.div`
   @media(min-width: 1024px){
     a {
       .profile {
-        margin: 0 19px 0 8px;
-        width: 37px;
+        margin: 0 19px 1px 8px;
+        width: 34px;
+        height: 34px;
       }
     }
   }

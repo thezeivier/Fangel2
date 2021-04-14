@@ -11,14 +11,6 @@ export const CommentContainerStyled = styled(CommentContainer)`
     height: 30px;
   }
 
-  h6 {
-    text-align: end;
-
-    @media(min-width:1200px) {
-      font-size: 0.95em;
-    }
-  }
-
   p {
     @media(min-width:1200px) {
       font-size: 0.88em;
@@ -26,6 +18,17 @@ export const CommentContainerStyled = styled(CommentContainer)`
   }
 `
 
+export const UserName = styled.h6`
+  text-align: end;
+  color: ${props => props.color};
+  font-weight: ${props => props.theme.weight.medium};
+
+  @media(min-width:1200px) {
+    font-size: 0.95em;
+  }
+`
+
 export const CommentStyled = styled(Comment)`
   flex: 0 1 auto;
+  background: ${props => props.color + '08'};
 `
