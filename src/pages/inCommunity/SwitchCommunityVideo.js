@@ -21,18 +21,18 @@ const SwitchCommunityVideo = () => {
     const idRoomRoute = match.params.idRoom
     const [data, status, error] = GetCommunityVideoData(idRoomRoute)
     const database = useDatabase()
+    const activeCommunityRef = firestore.collection('activeCommunities')
 
-    useEffect(()=>{
-        if(!status){
-            let communityData = data[0]
-            firestore
-            .collection('activeCommunities')
-            .doc(communityData.creatorUid)
+    useEffect(async ()=>{
+        let communityData = data[0]
+        if(communityData){
+            console.log("entrós")
+            activeCommunityRef.doc(communityData.creatorUid)
             .onSnapshot((doc) => {
-                setActiveCommunity(doc.data());
+                if(doc.data() !== activeCommunity) setActiveCommunity(doc.data());
             })
         }
-    },[status])
+    },[data])
 
     if(status) return <p>Pending...</p>
     if(error) return null
@@ -45,6 +45,7 @@ const SwitchCommunityVideo = () => {
     
     // Update to user offline
     OnDisconnectUser(userFromDB.uid, database, firestore, idRoomRoute, communityData.roomName)
+    console.log(activeCommunity)
 
     return (
         <>
