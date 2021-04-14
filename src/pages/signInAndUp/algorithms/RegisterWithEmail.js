@@ -45,7 +45,7 @@ export const RegisterWithEmail = async (data, auth, type, firestore, firebase) =
   const {username, password, email} = data 
   let value = await auth
   .createUserWithEmailAndPassword(email, password)
-  .then(async result => {    
+  .then(async result => {
     result.user.updateProfile({
       displayName: `${username}`
     })

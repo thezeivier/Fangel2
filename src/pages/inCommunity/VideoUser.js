@@ -7,7 +7,10 @@ import { ContainerForCommunity } from './../../components/general/InternalLayout
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
-const VideoUser = ({communityData}) => {
+const VideoUser = ({activeCommunity, communityData}) => {
+
+  console.log(activeCommunity)
+
   return (
     <>
       {

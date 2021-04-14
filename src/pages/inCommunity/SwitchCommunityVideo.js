@@ -31,7 +31,7 @@ const SwitchCommunityVideo = () => {
                 setActiveCommunity(doc.data());
             })
         }
-    },[])
+    },[status])
 
     if(status) return <p>Pending...</p>
     if(error) return null
@@ -47,7 +47,9 @@ const SwitchCommunityVideo = () => {
         <>
             <Provider value={activeCommunityValue}>
                 {
-                    isAdmin ? <VideoAdmin communityData={communityData}/> : <VideoUser communityData={communityData}/>
+                    isAdmin ? 
+                    <VideoAdmin activeCommunity={activeCommunity} communityData={communityData}/> : 
+                    <VideoUser activeCommunity={activeCommunity} communityData={communityData}/>
                 }
             </Provider>
         </>

@@ -24,7 +24,7 @@ const MainSettingsAdmin = ({ inDesktop }) => {
       .then(result =>{
         if(result.data().users.length < 20){
           setCode(result.data().code)
-        }  
+        }
       })
   },[])
 
@@ -38,7 +38,7 @@ const MainSettingsAdmin = ({ inDesktop }) => {
         <SectionContainer>
           <SubtitleStyled as="h4">Personas <span>(0)</span></SubtitleStyled>
           <div>
-{/*             <UserConnect />
+            {/*<UserConnect />
             <UserConnect />
             <UserConnect />
             <UserConnect /> */}
