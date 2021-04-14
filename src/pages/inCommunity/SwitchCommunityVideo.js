@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useRouteMatch, useHistory } from 'react-router-dom'
 import {useFirestore} from 'reactfire'
 
@@ -20,19 +20,24 @@ const SwitchCommunityVideo = () => {
     const idRoomRoute = match.params.idRoom
     const history = useHistory()
     const [data, status, error] = GetCommunityVideoData(idRoomRoute)
+    
+    useEffect(()=>{
+        if(!status){
+            let communityData = data[0]
+            firestore
+            .collection('activeCommunities')
+            .doc(communityData.creatorUid)
+            .onSnapshot((doc) => {
+                setActiveCommunity(doc.data());
+            })
+        }
+    },[])
 
     if(status) return <p>Pending...</p>
     if(error) return null
-
-    
     let communityData = data[0]
     const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)
-    firestore
-    .collection('activeCommunities')
-    .doc(communityData.creatorUid)
-    .onSnapshot((doc) => {
-        setActiveCommunity(doc.data());
-    });
+
 
     const activeCommunityValue = {
         activeCommunity,

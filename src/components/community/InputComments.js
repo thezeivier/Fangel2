@@ -40,8 +40,8 @@ const InputComments = ({userFromDB, lastMsgRef, roomName}) => {
   return (
     <InputContainer>
       <SvgsContainer>
-        <MicrophoneDisableSVG className="microphone"/>
-        <CameraVideoDisableSVG className="cameraVideo"/>
+        {/* <MicrophoneDisableSVG className="microphone"/>
+        <CameraVideoDisableSVG className="cameraVideo"/> */}
       </SvgsContainer>
       <Form onSubmit={sendMessage}>
         <InputStyled placeholder="Escribe un comentario" value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
