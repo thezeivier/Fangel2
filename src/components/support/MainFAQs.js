@@ -21,7 +21,7 @@ const MainFAQs = () => {
             <TextContainer>
               <SubtitleSmallStyled as="h4" question>¿Cómo funciona Fangel?</SubtitleSmallStyled>
               <TextStyled>
-                Crea una comunidad de cualquier tema. ¿Te gusta el cine, la tecnología o simplemente hacer chacota? Fangel te ofrece el espacio para hacerlo.
+                Crea o únete a una comunidad de cualquier tema. ¿Te gusta el cine, la tecnología o simplemente hacer chacota? Fangel te ofrece el espacio para hacerlo.
               </TextStyled>
             </TextContainer>
             <TextContainer>
@@ -33,7 +33,7 @@ const MainFAQs = () => {
             <TextContainer>
               <SubtitleSmallStyled as="h4" question>¿Qué es una Comunidad en Fangel?</SubtitleSmallStyled>
               <TextStyled>
-                Una comunidad en Fangel es un espacio efímero; es decir, una comunidad puede estar activa por un máximo de una hora (tiempo de vida), luego será eliminada automáticamente, haciendo que estas comunidades sean únicas y que no exista otra igual después de ella.
+                Una comunidad en Fangel es un espacio temporal y privado; es decir, una comunidad puede estar activa por un máximo de una hora (tiempo de vida), luego será eliminada automáticamente, haciendo que estas comunidades sean únicas y que no exista otra igual después de ella.
               </TextStyled>
             </TextContainer>
             <TextContainer>
