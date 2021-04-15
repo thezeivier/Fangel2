@@ -6,7 +6,7 @@ import { InputStyled, InputContainer, SvgsContainer, Form, Button } from './styl
 
 import firebase from 'firebase/app'
 
-const InputComments = ({userFromDB, lastMsgRef, roomName}) => {
+const InputComments = ({userFromDB, lastMsgRef, roomName, data}) => {
   const [formValue, setFormValue] = useState('')
   const messageRef = firebase.firestore().collection('chatroom').doc(roomName).collection('messages')
   
@@ -22,20 +22,20 @@ const InputComments = ({userFromDB, lastMsgRef, roomName}) => {
       username: userFromDB.username
     })
     // Scroll into last message
-    lastMsgRef.current.scrollIntoView({ behavior: 'smooth'})  
+    lastMsgRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'end' })  
   }
 
   // Scroll into last message
   const scrollIntoLastMessage = () => {
-    lastMsgRef.current.scrollIntoView({ behavior: 'smooth'})
+    lastMsgRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'end' })
   }
 
   useEffect(() => {
     const handler = scrollIntoLastMessage()
     window.addEventListener('scroll', handler)
     return () => window.removeEventListener('scroll', handler)
-  }, [])
-
+  }, [data])
+  
   return (
     <InputContainer>
 {/*       <SvgsContainer>

@@ -19,7 +19,7 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, close
   
   if(status === "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>
-
+  
   return (
     <MainOnlyDesktop>
       <EmbedVideo communityData={communityData} />
@@ -30,7 +30,7 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, close
             Configuraciones
           </ButtonConfiguration>
           <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef}/>
-          <InputComments userFromDB={userFromDB} lastMsgRef={lastMsgRef} roomName={communityData.roomName}/>
+          <InputComments userFromDB={userFromDB} data={data} lastMsgRef={lastMsgRef} roomName={communityData.roomName}/>
         </ContainerResponsive>
       </Wrapper>
       <div></div>
