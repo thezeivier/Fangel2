@@ -14,6 +14,7 @@ const theme = (type)=> {
     /* Contant hovers */
     colorHoverDarkPrimary: colors.color.hover.button.dark.primary,
     colorHoverDarkSecondary: colors.color.hover.button.dark.secondary,
+    colorHoverIcon: mode ? colors.color.brand.solidDark : colors.color.black.solid,
   
     /*variable colors*/  
     background: mode ? colors.background.gradientDark : colors.background.gradientLight,
@@ -33,7 +34,6 @@ const theme = (type)=> {
     colorBar: mode ? colors.color.bar.dark : colors.color.bar.light,
     colorShadow: mode ? colors.color.shadow.dark : colors.color.shadow.light,
     colorIcon: mode ? colors.color.white.solid : colors.color.brand.solidLight,
-    colorHoverIcon: mode ? colors.color.brand.solidDark : colors.color.black.solid,
     colorLine: mode ? colors.color.line.dark : colors.color.line.light,
     colorAddCard: mode ? colors.color.hover.input.dark : colors.color.white.solid,
     colorAddCardHover: mode ? colors.color.hover.addCard.shadowDark : colors.color.hover.addCard.shadowLight,

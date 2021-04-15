@@ -1,5 +1,51 @@
 import styled, { css } from 'styled-components'
 import { Button } from './../../../themes/externalRecyclableStyles'
+import { SubtitleStyled } from './../../../pages/signInAndUp/styles/sGlobalForm'
+
+export const NumberCheckContainer = styled.div`
+  position: sticky;
+  border-radius: 20px;
+  padding: 8px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background: #ff0000c7;
+  color: white;
+  top: 20px;
+  font-family: ${props => props.theme.secondaryFont};
+  font-weight: ${props => props.theme.weight.medium};
+  font-size: 1.05em;
+
+  span {
+    font-weight: ${props => props.theme.weight.regular};
+    margin: 0 4px 0 0
+  }
+
+  p {
+    margin: 2px 0 0 0;
+  }
+
+  @media(min-width:786px) {
+    font-size: 1.17em;
+    padding: 8px 10px;
+  }
+`
+
+export const SubtitleStyledBackground = styled(SubtitleStyled) `
+  margin: -140px 0 10px 0;
+  text-align: center;
+  padding: 100px 0 0 0;
+  position: relative;
+  background: ${props => props.theme.backgroundHeader};
+  z-index: 2000;
+
+  @media(min-width:786px) {
+    background: transparent;
+  }
+`
+
 
 export const CardsContainer = styled.div`
   margin: 40px 0 0 0;
@@ -31,9 +77,15 @@ export const LabelStyled = styled.label`
       active &&
       css`
         [type="checkbox"]:checked + .cardQuiz {
-          filter: drop-shadow(0px 0px 8px ${props => props.theme.colorShadow});
-          transform: scale(1.075);
+          /* filter: drop-shadow(0px 0px 8px ${props => props.theme.colorShadow}); */
+          transform: scale(1.055);
+          border: 5px solid #2aa0c3;
           font-size: 1.182em;
+          filter: none;
+
+          h5 {
+            background: #1a94b908;
+          }
         }
       `
   }

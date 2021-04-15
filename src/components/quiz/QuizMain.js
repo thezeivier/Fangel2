@@ -8,7 +8,7 @@ import { sendPreferences } from './algorithms/SendPreferences'
 import { listQuiz } from './ListQuiz.json'
 import { ExternalsWrapper, TextBody } from './../../themes/externalRecyclableStyles'
 import { SubtitleStyled } from './../../pages/signInAndUp/styles/sGlobalForm'
-import { CardsContainer, ButtonStyled } from './styles/sQuizMain'
+import { CardsContainer, ButtonStyled, NumberCheckContainer, SubtitleStyledBackground } from './styles/sQuizMain'
 
 const QuizMain = () => {
   const [quiz, setQuiz] = useState(listQuiz);
@@ -29,16 +29,23 @@ const QuizMain = () => {
     return item.category
   })
 
+  const [countQuiz, setCountQuiz] = useState(0);
+
+  const addCount = () => setCountQuiz(countQuiz + 1)
+
+  const subtractCount = () => setCountQuiz(countQuiz - 1)
+
   return (
     <>
       <Wrapper>
+        <NumberCheckContainer><span>Categorias:</span><p>{countQuiz}</p></NumberCheckContainer>
         <ExternalsWrapper>
         <form>
-          <SubtitleStyled>Escoge tus gustos e intereses</SubtitleStyled>
+          <SubtitleStyledBackground>Escoge tus gustos e intereses</SubtitleStyledBackground>
           <TextBody>5 categorias como máximo</TextBody>
           <CardsContainer>
             {
-              quiz.map(card =>  <QuizCard key={card.id} {...card} quiz={quiz} cartQuiz={cartQuiz} setCartQuiz={setCartQuiz}/>)
+              quiz.map(card =>  <QuizCard key={card.id} {...card} quiz={quiz} cartQuiz={cartQuiz} setCartQuiz={setCartQuiz} addCount={addCount} subtractCount={subtractCount} />)
             }
           </CardsContainer>
           <ButtonStyled 

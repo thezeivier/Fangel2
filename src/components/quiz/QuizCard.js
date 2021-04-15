@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, LabelStyled } from './styles/sQuizMain'
 
-const QuizCard = ({ background, id, category, quiz, cartQuiz, setCartQuiz }) => {
+const QuizCard = ({ background, id, category, quiz, cartQuiz, setCartQuiz, addCount, subtractCount }) => {
   const [checkState, setCheckState] = useState(false)
   const [isActiveCard, setIsActiveCard] = useState(true)
   const maxLengthQuiz = cartQuiz.length >= 5
@@ -19,6 +19,7 @@ const QuizCard = ({ background, id, category, quiz, cartQuiz, setCartQuiz }) => 
       ])
       isDisabled()
     }
+    addCount()
   }
 
   // Remueve del cartQuiz el Card no deseado y luego lo actualiza
@@ -26,6 +27,7 @@ const QuizCard = ({ background, id, category, quiz, cartQuiz, setCartQuiz }) => 
       const quizObject = cartQuiz.filter(itemCart => itemCart.id !== id)
       setCartQuiz(quizObject)
       isDisabled()
+      subtractCount()
   }
 
   // Invierte el estado al añadir y remover en el cartQuiz
@@ -51,7 +53,7 @@ const QuizCard = ({ background, id, category, quiz, cartQuiz, setCartQuiz }) => 
         />
       }
       <Card className="cardQuiz">
-        <img src={background} alt={category} />
+        <img src={background} loading="lazy" alt={category} />
         <h5>{category}</h5>
       </Card>
 
