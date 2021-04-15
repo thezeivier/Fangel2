@@ -38,12 +38,3 @@ export const ButtonConfiguration = styled(Button)`
     display: none;
   }
 `
-
-export const ButtonLeaveContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-
-  @media(min-width:1200px) {
-    margin: 15px 0 0 0;
-  }
-`

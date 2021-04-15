@@ -1,6 +1,8 @@
 import React, {useContext} from 'react';
 import { AppContext } from '../../App'
-import { VideoContainer, EmbedContainer, CountContainer, TitleOnlyDesktopContainer } from './styles/sEmbedVideo'
+import ButtonLeaveCom from './../general/ButtonLeaveCom'
+import { VideoContainer, EmbedContainer, CountContainer, TitleOnlyDesktopContainer,
+         DescripcionContainer, ButtonLeaveContainer } from './styles/sEmbedVideo'
 import { ReactComponent as NumberPeopleSVG } from './icons/numberPeople.svg'
 import { ReactComponent as CommunitySVG } from './../general/icons/community.svg'
 
@@ -14,8 +16,13 @@ const EmbedVideo = ({ communityData }) => {
   return (
     <VideoContainer>
       <TitleOnlyDesktopContainer>
-        <CommunitySVG />
-        <h3>{communityData.title}</h3>
+        <DescripcionContainer>
+          <CommunitySVG />
+          <h3>{communityData.title}</h3>
+        </DescripcionContainer>
+        <ButtonLeaveContainer>
+          <ButtonLeaveCom displayDesktop="flex" />
+        </ButtonLeaveContainer>
       </TitleOnlyDesktopContainer>
       <EmbedContainer>
         <VideoCall dataUser={myDataUser} communityData={communityData}/>
