@@ -38,6 +38,8 @@ exports.roomTimerController = functions.firestore.document("activeCommunities/{d
         console.log("Thumbnail deleted");
         await db.collection("activeCommunities").doc(uid).delete();//Delete acitveCommunity document from firestore.
         console.log("activeCommunity deleted");
+        await db.collection("chatroom").where("creatorUid" == uid).delete();
+        console.log("chatroom deleted");
         await db.collection("communities").doc(uid).delete();//Delete community document from firestore.
         console.log("Community deleted");
       }

@@ -28,7 +28,7 @@ const LadingPage = () => {
               />
               <TitleStyledCover standar>Crea comunidades únicas</TitleStyledCover>
               <TextStyledCover standar>
-                ¿Te gusta el cine, la tecnología o hacer chacota? Conoce a personas con los mismos gustos y comparte ideas.
+                ¿Te gusta el cine, la tecnología o quizás el espacio? Conoce a personas con los mismos gustos y comparte ideas.
               </TextStyledCover>
               <ButtonsContainer>
                 <Link to={"/register"}>
