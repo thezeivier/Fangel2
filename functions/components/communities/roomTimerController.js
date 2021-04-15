@@ -9,6 +9,7 @@ exports.roomTimerController = functions.firestore.document("activeCommunities/{d
     let duration = document.duration;
     let transcurred = document.transcurred;
     let route = document.route;
+    let roomName = document.roomName
     let fileBucket = document.bucket;
     let oldTranscurred = oldDocument? oldDocument.transcurred : oldDocument;
     let uid = document.uid
@@ -38,7 +39,7 @@ exports.roomTimerController = functions.firestore.document("activeCommunities/{d
         console.log("Thumbnail deleted");
         await db.collection("activeCommunities").doc(uid).delete();//Delete acitveCommunity document from firestore.
         console.log("activeCommunity deleted");
-        await db.collection("chatroom").where("creatorUid" == uid).delete();
+        await db.collection("chatroom").doc(roomName).delete();
         console.log("chatroom deleted");
         await db.collection("communities").doc(uid).delete();//Delete community document from firestore.
         console.log("Community deleted");
