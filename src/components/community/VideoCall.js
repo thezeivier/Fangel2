@@ -24,6 +24,7 @@ const interfaceConfig = {
     "microphone",
     "camera",
     "fullscreen",
+    'desktop',
     // "fodeviceselection",
     // "hangup",
     // "profile",
@@ -35,6 +36,12 @@ const interfaceConfig = {
     // "help",
     "mute-everyone",
     'mute-video-everyone',
+    'raisehand'
+    // 'etherpad'
+    // 'livestreaming'
+    // 'closedcaptions'
+    // 'feedback'
+    // 'sharedvideo'
     // 'security'
   ]
 };
