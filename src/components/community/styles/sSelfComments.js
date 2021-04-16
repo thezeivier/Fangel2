@@ -13,6 +13,7 @@ export const CommentContainerStyled = styled(CommentContainer)`
 
   p {
     text-align: end;
+    word-break: break-word;
 
     @media(min-width:1200px) {
       font-size: 0.88em;
