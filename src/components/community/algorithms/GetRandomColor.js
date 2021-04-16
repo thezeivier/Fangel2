@@ -1,4 +1,4 @@
-const getColorDarkMode = () => {
+export const getColorDarkMode = () => {
   let letters = '0123456789ABCDEF'.split('')
   let color = '#'
 
@@ -23,7 +23,7 @@ const getColorDarkMode = () => {
   return color;
 }
 
-const getColorLightMode = () => {
+export const getColorLightMode = () => {
   let letters = '0123456789ABCDEF'.split('')
   let digits = ''
   let colorInitial = '000000'
@@ -43,9 +43,4 @@ const getColorLightMode = () => {
 
   color += newColorInitial
   return color
-}
-
-module.exports = {
-  getColorDarkMode,
-  getColorLightMode
 }
