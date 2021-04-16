@@ -7,8 +7,9 @@ import {useStorage} from 'reactfire'
 import { useMatchRouteUserData } from './algorithms/useMatchRouteUserData'
 import { AppContext } from '../../App'
 import { UserContainer, ListTags, AddPhotoContainer } from './styles/sMainProfile'
-import { colorGenerator } from './algorithms/colorGenerator'
+// import { colorGenerator } from './algorithms/colorGenerator'
 import {newProfilePhoto} from './algorithms/newProfilePhoto'
+import { getColorDarkMode, getColorLightMode} from '../community/algorithms/GetRandomColor'
 
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import { ReactComponent as AddPhotoSVG } from './icons/addPhoto.svg'
@@ -54,6 +55,8 @@ const MainProfile = () => {
     document.getElementById("profileImage").value = null
   }
 
+  const themeMode = localStorage.mode && localStorage.getItem("mode")
+
   return (
     <main>
       <Wrapper>
@@ -74,7 +77,10 @@ const MainProfile = () => {
         </UserContainer>
         <ListTags>
           {preferences &&
-            preferences.map((tag) => <UserTag key={`${tag}_${id}`} category={tag} color={colorGenerator()} />)
+            preferences.map((tag) => {
+              const colorText = themeMode == "light" ? getColorLightMode() : getColorDarkMode()
+              return <UserTag key={`${tag}_${id}`} category={tag} color={colorText} />}
+            )
           }
         </ListTags>
       </Wrapper> 

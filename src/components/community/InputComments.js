@@ -9,7 +9,7 @@ import firebase from 'firebase/app'
 const InputComments = ({userFromDB, lastMsgRef, roomName, data}) => {
   const [formValue, setFormValue] = useState('')
   const messageRef = firebase.firestore().collection('chatroom').doc(roomName).collection('messages')
-  
+  console.log(userFromDB.colorsUser)
   // Send new message
   const sendMessage = async (e) => {
     e.preventDefault()
@@ -19,10 +19,11 @@ const InputComments = ({userFromDB, lastMsgRef, roomName, data}) => {
       photoUrl: "",
       text: formValue,
       userUid: userFromDB.uid,
-      username: userFromDB.username
+      username: userFromDB.username,
+      colorMessage: userFromDB.colorsUser
     })
     // Scroll into last message
-    lastMsgRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'end' })  
+    // lastMsgRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'end' })  
   }
 
   // Scroll into last message
@@ -44,7 +45,7 @@ const InputComments = ({userFromDB, lastMsgRef, roomName, data}) => {
       </SvgsContainer> */}
       <Form onSubmit={sendMessage}>
         <InputStyled placeholder="Escribe un comentario" value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
-        <Button type="submit" disabled={((formValue.trim().length == 0) || (formValue.length > 140)) ? true : false }>
+        <Button type="submit" disabled={((formValue.trim().length == 0) || (formValue.length > 180)) ? true : false }>
           <SendCommentsSVG className="sendCommentsSVG" />
         </Button>
       </Form>
