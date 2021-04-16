@@ -19,7 +19,7 @@ const MainSettingsAdmin = ({ inDesktop }) => {
   const { activeCommunity }  = useContext(SwitchVideoContext)
   const [code, setCode] = useState(false);
   const [alertTimer, setAlertTimer] = useState(false)
-  const [restTime, setRestTime] = useState(activeCommunity.duration - activeCommunity.transcurred)
+
   const contextFromApp = useContext(AppContext)
   useEffect(()=> {
     contextFromApp.userFromDB.userCodesRef
@@ -29,29 +29,23 @@ const MainSettingsAdmin = ({ inDesktop }) => {
           setCode(result.data().code)
         }
       })
-      setRestTime(activeCommunity.duration - activeCommunity.transcurred)
-
-      if(restTime < 10) setAlertTimer(true)
+      if(((activeCommunity.duration - activeCommunity.transcurred) <= 10)){
+        setAlertTimer(true)
+      }
   },[activeCommunity])
 
   const addHour = async () => {
     await AddHour(firestore, contextFromApp.userFromDB.uid)
   }
-
-  const changeAlertTimer = () => {
-    setAlertTimer(false)
-  }
-
-  const extendTime = () => {
-    setAlertTimer(false)
-    addHour()
-  }
   
   return (
     <Wrapper>
       {
-        alertTimer &&
-        <AlertWarning extendTime={extendTime} closeModal={changeAlertTimer}/>
+        (alertTimer) &&
+        <AlertWarning extendTime={()=>{
+          addHour()
+          setAlertTimer(false)
+        }} closeModal={()=>setAlertTimer(false)}/>
       }
       <DisplayContainer inDesktop={inDesktop}>
         <SectionContainer>
@@ -81,9 +75,9 @@ const MainSettingsAdmin = ({ inDesktop }) => {
             <SubtitleStyled as="h4">Configuraciones</SubtitleStyled>
             <TimerDescripcion>
               <p>Tiempo de vida sobrante</p>
-              <span>{activeCommunity? `Apróx. ${restTime} min.`: "Cargando"}</span>
+              <span>{activeCommunity? `Apróx. ${activeCommunity.duration - activeCommunity.transcurred} min.`: "Cargando"}</span>
             </TimerDescripcion>
-            {restTime >= 120?
+            {(activeCommunity.duration - activeCommunity.transcurred) >= 120?
               <ButtonStyled secondary onClick={addHour} disabled>Extender 1 hora más</ButtonStyled>:
               <ButtonStyled secondary onClick={addHour}>Extender 1 hora más</ButtonStyled>
             }
