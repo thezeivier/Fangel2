@@ -45,7 +45,7 @@ const InputComments = ({userFromDB, lastMsgRef, roomName, data}) => {
       </SvgsContainer> */}
       <Form onSubmit={sendMessage}>
         <InputStyled placeholder="Escribe un comentario" value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
-        <Button type="submit" disabled={((formValue.trim().length == 0) || (formValue.length > 140)) ? true : false }>
+        <Button type="submit" disabled={((formValue.trim().length == 0) || (formValue.length > 180)) ? true : false }>
           <SendCommentsSVG className="sendCommentsSVG" />
         </Button>
       </Form>

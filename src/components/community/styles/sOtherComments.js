@@ -32,6 +32,7 @@ export const CommentContainer = styled.div`
   p {
     line-height: 1.67em;
     text-align: start;
+    word-break: break-word;
 
     @media(min-width:1024px) {
       font-weight: ${props => props.theme.weight.light};
