@@ -7,7 +7,7 @@ import { ReactComponent as CommunitySVG } from './../general/icons/community.svg
 
 import VideoCall from './VideoCall'
 
-const EmbedVideo = ({ communityData }) => {
+const EmbedVideo = ({ communityData, isAdmin }) => {
   const userFromDB = useContext(AppContext)
   const myDataUser = userFromDB.userFromDB
   
@@ -18,7 +18,7 @@ const EmbedVideo = ({ communityData }) => {
         <h3>{communityData.title}</h3>
       </TitleOnlyDesktopContainer>
       <EmbedContainer>
-        <VideoCall dataUser={myDataUser} communityData={communityData}/>
+        <VideoCall dataUser={myDataUser} communityData={communityData} isAdmin={isAdmin}/>
       </EmbedContainer>
 {/*       <CountContainer>
         <span>18</span>

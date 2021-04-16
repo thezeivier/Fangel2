@@ -13,8 +13,6 @@ const VideoUser = ({activeCommunity, communityData}) => {
   const [lastTranscurredTime, setLastTranscurredTime] = useState(false)
   const [localTimerCounter, setLocalTimerCounter] = useState(0)
   
-  
-  
   useEffect(()=>{
     setTranscurredTimeOfCommunity(activeCommunity? activeCommunity.transcurred: false)
     console.log(activeCommunity)

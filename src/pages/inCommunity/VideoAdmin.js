@@ -8,7 +8,7 @@ import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsA
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
-const VideoAdmin = ({communityData}) => {
+const VideoAdmin = ({communityData, isAdmin}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openMoldal = () => {
@@ -30,7 +30,7 @@ const VideoAdmin = ({communityData}) => {
           wrapper sin paddign en moviles y tablet*/}
           <RegHeader /> {/* Solo para moviles */}
           <VideoHeader communityData={communityData} isSettings="none" closeModal={closeModal} modalIsOpen={modalIsOpen} />
-          <MainVideoUser communityData={communityData} open={openMoldal} />
+          <MainVideoUser communityData={communityData} open={openMoldal} isAdmin={isAdmin}/>
           <MainSettingsAdmin inDesktop="grid"/>
           <Footer noMobile/>
         </ContainerForCommunity>

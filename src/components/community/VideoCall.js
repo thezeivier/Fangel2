@@ -36,16 +36,26 @@ const interfaceConfig = {
     // "help",
     "mute-everyone",
     'mute-video-everyone',
-    'raisehand'
+    'raisehand',
+    'sharedvideo'
     // 'etherpad'
     // 'livestreaming'
     // 'closedcaptions'
     // 'feedback'
-    // 'sharedvideo'
     // 'security'
   ]
 };
 
+const userToolBarButtons = [
+  "microphone",
+  "camera",
+  "fullscreen",
+  'desktop',
+  "videoquality",
+  "tileview",
+  'raisehand',
+  'sharedvideo'
+]
 const config = {
   defaultLanguage: "es",
   prejoinPageEnabled: false,
@@ -57,12 +67,14 @@ const config = {
   interfaceConfigOverwrite: { DISABLE_DOMINANT_SPEAKER_INDICATOR: true }, */
 };
 
-const VideoCall = ({dataUser, communityData}) => {
+const VideoCall = ({dataUser, communityData, isAdmin}) => {
   const handleAPI = JitsiMeetAPI => {
     JitsiMeetAPI.executeCommand("toggleVideo");
     JitsiMeetAPI.executeCommand("toggleAudio");
-
   };
+
+  const {TOOLBAR_BUTTONS, ...restConf} = interfaceConfig
+  const interfaceUserConf = {...restConf, TOOLBAR_BUTTONS: userToolBarButtons}
 
   return (
     <>
@@ -72,7 +84,7 @@ const VideoCall = ({dataUser, communityData}) => {
         roomName={communityData.roomName}
         displayName={dataUser.username}
         loadingComponent={VideoSpinner}
-        interfaceConfig={interfaceConfig}
+        interfaceConfig={isAdmin ? interfaceConfig : interfaceUserConf}
         config={config}
       />
     </>

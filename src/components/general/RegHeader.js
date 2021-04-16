@@ -11,7 +11,6 @@ import { ReactComponent as SettingsSVG } from './icons/settings.svg'
 const RegHeader = () => {
   const contextFromApp = useContext(AppContext)
   const { userFromDB, profileThumb } = contextFromApp 
-  
   return (
     <Header className="regHeader">
       <Wrapper>

@@ -45,14 +45,13 @@ const SwitchCommunityVideo = () => {
     
     // Update to user offline
     OnDisconnectUser(userFromDB.uid, database, firestore, idRoomRoute, communityData.roomName)
-    console.log(activeCommunity)
 
     return (
         <>
             <Provider value={activeCommunityValue}>
                 {
                     isAdmin ? 
-                    <VideoAdmin activeCommunity={activeCommunity} communityData={communityData}/> : 
+                    <VideoAdmin activeCommunity={activeCommunity} isAdmin={isAdmin} communityData={communityData}/> : 
                     <VideoUser activeCommunity={activeCommunity} communityData={communityData}/>
                 }
             </Provider>

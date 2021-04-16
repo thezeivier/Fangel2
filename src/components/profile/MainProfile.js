@@ -35,15 +35,6 @@ const MainProfile = () => {
     route,
   } = userData[0]
 
-/*   const {
-    id, 
-    email, 
-    preferences, 
-    registerDate, 
-    type, 
-    uid, 
-    username
-  } = userData[0] */
   const isMyUser = authState.uid === id
 
   if(bucket && route){

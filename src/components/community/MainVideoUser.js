@@ -12,7 +12,7 @@ import { AppContext } from '../../App'
 
 import { GetChatRoomMessages } from './algorithms/GetChatRoomMessages'
 
-const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, closeModal }) => {
+const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, closeModal, isAdmin }) => {
   const { userFromDB } = useContext(AppContext)
   const {data, status, error} = GetChatRoomMessages(communityData.roomName)
   const lastMsgRef = useRef()
@@ -22,7 +22,7 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, close
   
   return (
     <MainOnlyDesktop>
-      <EmbedVideo communityData={communityData} />
+      <EmbedVideo communityData={communityData} isAdmin={isAdmin}/>
       <Wrapper height="100%">
         <ContainerResponsive>
           <ButtonConfiguration secondary display={displayNoAdmin} onClick={open}>
