@@ -31,6 +31,10 @@ export const NumberCheckContainer = styled.div`
     font-size: 1.17em;
     padding: 8px 10px;
   }
+
+  @media(min-width:1024px) {
+    top: 30px;
+  }
 `
 
 export const SubtitleStyledBackground = styled(SubtitleStyled) `

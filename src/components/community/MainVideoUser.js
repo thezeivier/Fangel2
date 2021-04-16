@@ -3,9 +3,8 @@ import Wrapper from './../general/Wrapper'
 import EmbedVideo from './EmbedVideo'
 import CommentsBox from './CommentsBox'
 import InputComments from './InputComments'
-import ButtonLeaveCom from './../general/ButtonLeaveCom'
 import ModalSettingsAdmin from './../../pages/inCommunity/ModalSettingsAdmin'
-import { ContainerResponsive, MainOnlyDesktop, ButtonLeaveContainer, ButtonConfiguration } from './styles/sMainVideo'
+import { ContainerResponsive, MainOnlyDesktop, ButtonConfiguration } from './styles/sMainVideo'
 import { CommentsContainer } from './styles/sCommentsBox'
 import { ReactComponent as VideoSettingsSVG } from './../general/icons/videoSettings.svg'
 import { AppContext } from '../../App'
@@ -33,10 +32,6 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, close
           <InputComments userFromDB={userFromDB} data={data} lastMsgRef={lastMsgRef} roomName={communityData.roomName}/>
         </ContainerResponsive>
       </Wrapper>
-      <div></div>
-      <ButtonLeaveContainer>
-        <ButtonLeaveCom displayDesktop="flex" />
-      </ButtonLeaveContainer>
       <ModalSettingsAdmin modalIsOpen={modalIsOpen} closeModal={closeModal} />
     </MainOnlyDesktop>
   );

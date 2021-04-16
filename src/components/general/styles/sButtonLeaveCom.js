@@ -3,16 +3,16 @@ import { Button } from './../../../themes/externalRecyclableStyles'
 
 export const ButtonStyled = styled(Button)`
   width: auto;
-  background: #7d757547;
-  color: ${props => props.theme.smallText};
+  background: #eb444436;
+  color: #eb4444e0;
   padding: 10px 14px;
   font-size: 1.1em;
   display: ${props => props.displayDesktop ? 'none' : 'flex'};
   transition: .2s;
 
   &:hover {
-    color: ${props => props.theme.textColor};
-    /* background: ${props => props.theme.inputForm}; */
+    background: #eb444440;
+    color: ${props => props.theme.colorAlert};
   }
 
   @media(min-width:768px) {
@@ -21,7 +21,7 @@ export const ButtonStyled = styled(Button)`
 
   @media(min-width:1200px) {
     display: ${props => props.displayDesktop ? 'flex' : 'none'};
-    padding: 14px 27px;
+    padding: 12px 26px;
     height: max-content;
   }
 

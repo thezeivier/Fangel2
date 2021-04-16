@@ -44,6 +44,7 @@ export const Container = styled.div`
   animation-delay: .2s;
   animation: ${FadedContainer} .5s linear;
   will-change: transition, opacity;
+  height: 100vh;
 
   @media(min-width:768px) {
     padding: 35% 0 0 0;
@@ -59,11 +60,12 @@ export const Container = styled.div`
 
   @media screen and (min-width: 1024px) and (orientation : landscape) {
     padding: 22% 0 0 0;
+    height: auto;
   }
 
   @media(min-width:1200px) {
-    padding: 2% 0 0 0;
     height: 100vh;
+    padding: 2% 0 0 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,12 +74,15 @@ export const Container = styled.div`
 `
 
 export const TitleStyledCover = styled(PrimaryTitle) `
-  margin: 0 0 30px 0;
+  margin: 0px 0px 30px;
   text-align: center;
+  font-size: 2.2em;
+  font-family: ${props => props.theme.secondaryFont};
 
   @media(min-width:1200px) {
     margin: 0 0 20px 0;
     text-align: start;
+    font-size: 3.021em;
   }
 `
 

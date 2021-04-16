@@ -6,6 +6,7 @@ export const TitleOnlyDesktopContainer = styled.div`
   @media(min-width:1200px) {
     display: flex;
     margin: 0 0 20px 0;
+    position: relative;
 
     svg {
       margin: 0 10px 0 0;
@@ -21,6 +22,16 @@ export const TitleOnlyDesktopContainer = styled.div`
       overflow: hidden;
     }
   }
+`
+
+export const DescripcionContainer = styled.div`
+  margin: 5px 0 0 0;
+  display: flex;
+`
+
+export const ButtonLeaveContainer = styled.div`
+  position: absolute;
+  right: 0;
 `
 
 export const VideoContainer = styled.div`
