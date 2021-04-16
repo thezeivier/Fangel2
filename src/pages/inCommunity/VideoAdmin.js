@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MainVideoUser from './../../components/community/MainVideoUser'
 import RegHeader from './../../components/general/RegHeader'
 import VideoHeader from './../../components/general/VideoHeader'
@@ -25,7 +25,7 @@ const VideoAdmin = ({communityData, isAdmin}) => {
         !communityData?
         <MainSpinner/>:
         <ContainerForCommunity> {/* Sin margenes en moviles y tablets ni footer ni regHeader,
-          wrapper sin paddign en moviles y tablet*/}
+        wrapper sin paddign en moviles y tablet*/}
           <RegHeader /> {/* Solo para moviles */}
           <VideoHeader communityData={communityData} isSettings="none" closeModal={closeModal} modalIsOpen={modalIsOpen} />
           <MainVideoUser communityData={communityData} open={openMoldal} isAdmin={isAdmin}/>

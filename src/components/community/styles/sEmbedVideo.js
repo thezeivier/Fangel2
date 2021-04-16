@@ -25,7 +25,7 @@ export const TitleOnlyDesktopContainer = styled.div`
 `
 
 export const DescripcionContainer = styled.div`
-  margin: 5px 0 0 0;
+  margin: 6px 0 0 0;
   display: flex;
 `
 
@@ -56,7 +56,7 @@ export const EmbedContainer = styled.div`
   }
 
   @media(min-width:1200px) {
-    border-radius: 4px;
+    border-radius: 10px;
   }
 
   iframe {

@@ -23,7 +23,7 @@ const SettingsAdmin = ({ closeModal }) => {
 
   let communityData = data[0]
   const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)
-  console.log(isAdmin)
+  // console.log(isAdmin)
   return (
     <>
       {

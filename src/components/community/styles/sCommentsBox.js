@@ -26,7 +26,6 @@ export const CommentsContainer = styled.section`
     position: relative;
     z-index: 50;
     padding: 0 10px;
-    border-radius: 4px;
   }
 
   @media(min-width:1200px) {
@@ -73,5 +72,6 @@ export const Transperent = styled.div`
     height: inherit;
     z-index: 1;
     background: #5456710d;
+    border-radius: 10px;
   }
 `

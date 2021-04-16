@@ -20,6 +20,10 @@ export const ContainerResponsive = styled.div`
   @media(min-width:1024px) and (orientation : portrait) {
     margin: 0 15%;
   }
+
+  @media(min-width:1200px) {
+    border-radius: 10px;
+  }
 `
 
 export const ButtonConfiguration = styled(Button)`
@@ -27,6 +31,7 @@ export const ButtonConfiguration = styled(Button)`
   margin: 10px auto;
   padding: 11px 35px;
   display: ${props => props.display || 'flex'};
+  z-index: 1000;
 
   svg {
     fill: ${props => props.theme.colorbrandSolid};

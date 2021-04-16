@@ -5,7 +5,6 @@ import CommentsBox from './CommentsBox'
 import InputComments from './InputComments'
 import ModalSettingsAdmin from './../../pages/inCommunity/ModalSettingsAdmin'
 import { ContainerResponsive, MainOnlyDesktop, ButtonConfiguration } from './styles/sMainVideo'
-import { CommentsContainer } from './styles/sCommentsBox'
 import { ReactComponent as VideoSettingsSVG } from './../general/icons/videoSettings.svg'
 import { AppContext } from '../../App'
 
