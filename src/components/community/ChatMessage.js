@@ -4,10 +4,11 @@ import OtherComments from './OtherComments'
 import { getColorDarkMode } from './algorithms/GetRandomColor'
 import { getColorLightMode } from './algorithms/GetRandomColor'
 
-export const ChatMessage = ({msg, myUid, colorsUser}) => {
+export const ChatMessage = ({msg, myUid}) => {
     const isMyMessage = msg.userUid === myUid ? true : false
     const themeMode = localStorage.mode && localStorage.getItem("mode")
-    const commentColor = themeMode == "light" ? colorsUser.light : colorsUser.dark
+    const commentColor = themeMode == "light" ? msg.colors.dark : msg.colors.light
+    
     return (
         <>
             {isMyMessage ?

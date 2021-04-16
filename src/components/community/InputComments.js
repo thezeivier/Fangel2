@@ -19,10 +19,11 @@ const InputComments = ({userFromDB, lastMsgRef, roomName, data}) => {
       photoUrl: "",
       text: formValue,
       userUid: userFromDB.uid,
-      username: userFromDB.username
+      username: userFromDB.username,
+      colors: userFromDB.colorsUser
     })
     // Scroll into last message
-    lastMsgRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'end' })  
+    // lastMsgRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'end' })  
   }
 
   // Scroll into last message
