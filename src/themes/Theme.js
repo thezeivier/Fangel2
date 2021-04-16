@@ -18,7 +18,7 @@ const theme = (type)=> {
   
     /*variable colors*/  
     background: mode ? colors.background.gradientDark : colors.background.gradientLight,
-    backgroundHeader : mode ? colors.background.dark : colors.background.light,
+    backgroundHeader : mode ? colors.background.header.dark : colors.background.header.light,
     textColor: mode ? colors.color.white.solid : colors.color.black.solid,
     logoColor: mode ? colors.color.white.solid : colors.color.brand.solidLight,
     colorbrandSolid: mode ? colors.color.brand.solidDark : colors.color.brand.solidLight,
