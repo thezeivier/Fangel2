@@ -7,7 +7,7 @@ import { getColorLightMode } from './algorithms/GetRandomColor'
 export const ChatMessage = ({msg, myUid}) => {
     const isMyMessage = msg.userUid === myUid ? true : false
     const themeMode = localStorage.mode && localStorage.getItem("mode")
-    const commentColor = themeMode == "light" ? msg.colors.dark : msg.colors.light
+    const commentColor = themeMode == "light" ? msg.colorMessage.light : msg.colorMessage.dark
     
     return (
         <>

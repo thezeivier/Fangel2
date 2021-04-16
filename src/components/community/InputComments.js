@@ -9,7 +9,7 @@ import firebase from 'firebase/app'
 const InputComments = ({userFromDB, lastMsgRef, roomName, data}) => {
   const [formValue, setFormValue] = useState('')
   const messageRef = firebase.firestore().collection('chatroom').doc(roomName).collection('messages')
-  
+  console.log(userFromDB.colorsUser)
   // Send new message
   const sendMessage = async (e) => {
     e.preventDefault()
@@ -20,7 +20,7 @@ const InputComments = ({userFromDB, lastMsgRef, roomName, data}) => {
       text: formValue,
       userUid: userFromDB.uid,
       username: userFromDB.username,
-      colors: userFromDB.colorsUser
+      colorMessage: userFromDB.colorsUser
     })
     // Scroll into last message
     // lastMsgRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'end' })  
