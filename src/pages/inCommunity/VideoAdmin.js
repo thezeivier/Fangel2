@@ -3,12 +3,9 @@ import MainVideoUser from './../../components/community/MainVideoUser'
 import RegHeader from './../../components/general/RegHeader'
 import VideoHeader from './../../components/general/VideoHeader'
 import Footer from './../../components/general/Footer'
-import { AlertContainer } from './../../components/community/styles/sMainVideo'
+import AlertWarning from './../../components/general/AlertWarning'
 import { ContainerForCommunity } from './../../components/general/InternalLayout'
 import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsAdmin'
-
-import { ReactComponent as WarningSVG } from './../../components/community/icons/warning.svg'
-import { ReactComponent as CloseSVG } from './../../components/general/icons/close.svg'
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
@@ -27,14 +24,7 @@ const VideoAdmin = ({communityData, isAdmin}) => {
     <>
       {
         modalIsOpen ? 
-        <AlertContainer>
-          <WarningSVG onClick={closeModal} />
-          <div className="alertDescriptionContainer">
-            <p>Quedan 5 minutos para que se cierre tu comunidad</p>
-            <a>Extender una hora más</a>
-          </div>
-          <CloseSVG className="closeAlertWarning" />
-        </AlertContainer>
+        <AlertWarning closeModal={closeModal} />
         : <></>
       }
       {
