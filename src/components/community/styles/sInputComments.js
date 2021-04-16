@@ -66,7 +66,7 @@ export const Form = styled.form`
 `
 
 export const InputStyled = styled(Input)`
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 1em;
   padding: 0 10px;
   flex: 0 1 auto;

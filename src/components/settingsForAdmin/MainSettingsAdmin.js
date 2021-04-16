@@ -50,9 +50,8 @@ const MainSettingsAdmin = ({ inDesktop }) => {
   return (
     <Wrapper>
       {
-        alertTimer?
-        <AlertWarning extendTime={extendTime} closeModal={changeAlertTimer}/>:
-        <></>
+        alertTimer &&
+        <AlertWarning extendTime={extendTime} closeModal={changeAlertTimer}/>
       }
       <DisplayContainer inDesktop={inDesktop}>
         <SectionContainer>
