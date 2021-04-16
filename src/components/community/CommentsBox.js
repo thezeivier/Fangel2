@@ -9,7 +9,7 @@ const CommentsBox = ({data, userFromDB, lastMsgRef}) => {
     <>
       <Transperent /> {/* Cuadro transparente */}
       <CommentsContainer>
-        {data && data.map(msg => <ChatMessage key={`${msg.id}`} msg={msg} myUid={userFromDB.uid}/>) }
+        {data && data.map(msg => <ChatMessage key={`${msg.id}`} msg={msg} myUid={userFromDB.uid} colorsUser={userFromDB.colorsUser}/>)}
         <span ref={lastMsgRef}></span>
       </CommentsContainer>
     </>

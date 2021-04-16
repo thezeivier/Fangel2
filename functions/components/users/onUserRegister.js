@@ -1,3 +1,8 @@
+const functions = require('firebase-functions')
+const admin = require('firebase-admin')
+
+const db = admin.firestore()
+
 const getColorDarkMode = () => {
   let letters = '0123456789ABCDEF'.split('')
   let color = '#'
@@ -45,7 +50,14 @@ const getColorLightMode = () => {
   return color
 }
 
-module.exports = {
-  getColorDarkMode,
-  getColorLightMode
-}
+exports.onUserRegister = functions.auth.user().onCreate((user) => {
+    const dark = getColorDarkMode()
+    const light = getColorLightMode()
+    db.collection('users').doc(user.uid)
+        .update({
+            colorsUser: { dark, light}}, 
+            {merge: true}
+        )
+    return true
+})
+
