@@ -69,6 +69,14 @@ export const colors = {
       dark: 'rgba(239, 240, 247, 0.1)',
       light: 'rgba(20, 56, 149, 0.2)',
     },
+    commentBox: {
+      dark: '#0000002e',
+      light: '#5456710d',
+    },
+    scrollCommentBar: {
+      dark: '#1F1F24',
+      light: '#a9a9b1',
+    },
     shadowBox: {
       gradientDark: 'linear-gradient(180deg, #04061C 28.16%, rgba(4,6,28,0) 100%)',
       gradientLight: 'linear-gradient(180deg, #dedede 28.16%, rgba(4,6,28,0) 100%)',

@@ -34,8 +34,8 @@ export const CommentsContainer = styled.section`
     }
 
     &::-webkit-scrollbar:vertical {
-      width:1px;
-      background: #1F1F24;
+      width:3px;
+      background: ${props => props.theme.colorScrollCommentBar};
     }
 
     &::-webkit-scrollbar-button:increment,
@@ -44,17 +44,17 @@ export const CommentsContainer = styled.section`
     } 
 
     &::-webkit-scrollbar:horizontal {
-      height: 1px;
-      background: #1F1F24;
+      height: 3px;
+      background: ${props => props.theme.colorScrollCommentBar};
     }
 
     &::-webkit-scrollbar-thumb {
       background-color: ${props => props.theme.colorBar};
-      border-radius: 5px;
+      border-radius:10px;
     }
 
     &::-webkit-scrollbar-track {
-      border-radius: 1px;  
+      border-radius: 3px;  
     }
   }
 `
@@ -71,7 +71,7 @@ export const Transperent = styled.div`
   @media(min-width:1200px) {
     height: inherit;
     z-index: 1;
-    background: #5456710d;
+    background: ${props => props.theme.colorCommetBox};
     border-radius: 10px;
   }
 `
