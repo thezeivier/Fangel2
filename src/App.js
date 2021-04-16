@@ -35,6 +35,7 @@ function App() {
   const [userFromDB, setUserFromDB] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
   const [profileThumb, setProfileThumb] = useState(false)
+  const [verified, setVerified] = useState({verified: true, email: ""})
   
   useEffect(()=>{
     if(localStorage.mode){
@@ -43,26 +44,31 @@ function App() {
       localStorage.setItem("mode","light")
     }
     auth.onAuthStateChanged(async user => {
-      if (user) {
-        setAuthState(user)
-        let dataUser = await RecoverUser(firestore, user.uid)
-        setUserFromDB(dataUser)
-        if(dataUser){
-          if(dataUser.type === "admin"){
-            setIsAdmin(true)
-            if(dataUser.bucket && dataUser.route){
-              const profileImageReference = storage.refFromURL(`gs://${dataUser.bucket}/${dataUser.route}`)
-              profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
-                setProfileThumb(url)
-              })
+      if(user){
+        if (user.emailVerified) {
+          console.log(user)
+          setAuthState(user)
+          let dataUser = await RecoverUser(firestore, user.uid)
+          setUserFromDB(dataUser)
+          if(dataUser){
+            if(dataUser.type === "admin"){
+              setIsAdmin(true)
+              if(dataUser.bucket && dataUser.route){
+                const profileImageReference = storage.refFromURL(`gs://${dataUser.bucket}/${dataUser.route}`)
+                profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
+                  setProfileThumb(url)
+                })
+              }
             }
+            !dataUser.quizComplete && history.push("/quiz")
           }
-          !dataUser.quizComplete && history.push("/quiz")
+        }else{
+          setVerified({verified: false, email: user.email})
         }
       }
       setLoading(false)
     });
-  },[auth, firestore])
+  },[])
 
 
   const changeTheme = () =>{
@@ -89,22 +95,31 @@ function App() {
     <ThemeProvider theme={theme(mode)}>
       <Provider value={userValue}>
         <GlobalStyles />
-        <Container>
-          <Switch>
-            <Route exact path={"/"} component={authState ? Home : Landing}/>
-            <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/>
-            <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/>
-            <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
-            <Route exact path={"/settings"} component={authState ? Settings : Landing}/>
-            <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
-            <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>        
-            <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
-            {ListOfRoutes.map((route)=>{
-              return <ExternalLayoutRoute key={route.path} authState={authState} {...route}/>
-            })}
-            <Redirect from="*" to="/404"/>
-          </Switch>
-        </Container>
+        {!verified?
+          <Redirect to={{
+            pathname: "/email-sended",
+            state: { 
+              email: verified.email,
+              origin: "register"
+            }
+          }}/>:
+          <Container>
+            <Switch>
+              <Route exact path={"/"} component={authState ? Home : Landing}/>
+              <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/>
+              <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/>
+              <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
+              <Route exact path={"/settings"} component={authState ? Settings : Landing}/>
+              <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
+              <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>
+              <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
+              {ListOfRoutes.map((route)=>{
+                return <ExternalLayoutRoute key={route.path} authState={authState} {...route}/>
+              })}
+              <Redirect from="*" to="/404"/>
+            </Switch>
+          </Container>
+        }
       </Provider>
     </ThemeProvider>
   );
