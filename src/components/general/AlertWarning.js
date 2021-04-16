@@ -5,15 +5,15 @@ import { ReactComponent as WarningSVG } from './../community/icons/warning.svg'
 import { ReactComponent as CloseSVG } from './icons/close.svg'
 
 
-const AlertWarning = ({ closeModal }) => {
+const AlertWarning = ({ closeModal, extendTime }) => {
   return (
     <AlertContainer>
-      <WarningSVG onClick={closeModal} />
+      <WarningSVG/>
       <div className="alertDescriptionContainer">
-        <p>Quedan 5 minutos para que se cierre tu comunidad</p>
-        <a>Extender una hora más</a>
+        <p>Quedan menos de 10 min. para que se cierre tu comunidad</p>
+        <a onClick={extendTime}>Extender una hora más</a>
       </div>
-      <CloseSVG className="closeAlertWarning" />
+      <CloseSVG onClick={closeModal} className="closeAlertWarning" />
     </AlertContainer>
   );
 }

@@ -46,7 +46,6 @@ function App() {
     auth.onAuthStateChanged(async user => {
       if(user){
         if (user.emailVerified) {
-          console.log(user)
           setAuthState(user)
           let dataUser = await RecoverUser(firestore, user.uid)
           setUserFromDB(dataUser)

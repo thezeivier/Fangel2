@@ -7,7 +7,7 @@ export const AlertContainer = styled.div`
   position: fixed;
   bottom: 40px;
   left: 20px;
-  z-index: 2000;
+  z-index: 3000;
   display: flex;
   transition: .2s;
 

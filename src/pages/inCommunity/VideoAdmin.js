@@ -3,7 +3,6 @@ import MainVideoUser from './../../components/community/MainVideoUser'
 import RegHeader from './../../components/general/RegHeader'
 import VideoHeader from './../../components/general/VideoHeader'
 import Footer from './../../components/general/Footer'
-import AlertWarning from './../../components/general/AlertWarning'
 import { ContainerForCommunity } from './../../components/general/InternalLayout'
 import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsAdmin'
 
@@ -22,11 +21,6 @@ const VideoAdmin = ({communityData, isAdmin}) => {
 
   return (
     <>
-      {
-        modalIsOpen ? 
-        <AlertWarning closeModal={closeModal} />
-        : <></>
-      }
       {
         !communityData?
         <MainSpinner/>:
