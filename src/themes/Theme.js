@@ -18,7 +18,7 @@ const theme = (type)=> {
   
     /*variable colors*/  
     background: mode ? colors.background.gradientDark : colors.background.gradientLight,
-    backgroundHeader : mode ? colors.background.dark : colors.background.light,
+    backgroundHeader : mode ? colors.background.header.dark : colors.background.header.light,
     textColor: mode ? colors.color.white.solid : colors.color.black.solid,
     logoColor: mode ? colors.color.white.solid : colors.color.brand.solidLight,
     colorbrandSolid: mode ? colors.color.brand.solidDark : colors.color.brand.solidLight,
@@ -37,7 +37,9 @@ const theme = (type)=> {
     colorLine: mode ? colors.color.line.dark : colors.color.line.light,
     colorAddCard: mode ? colors.color.hover.input.dark : colors.color.white.solid,
     colorAddCardHover: mode ? colors.color.hover.addCard.shadowDark : colors.color.hover.addCard.shadowLight,
+    colorScrollCommentBar: mode ? colors.color.scrollCommentBar.dark : colors.color.scrollCommentBar.light,
     colorShadowBox: mode ? colors.color.shadowBox.gradientDark : colors.color.shadowBox.gradientLight,
+    colorCommetBox: mode ? colors.color.commentBox.dark : colors.color.commentBox.light,
 
     /*Fonts*/
     primaryFont: fonts.primaryFont,

@@ -1,6 +1,4 @@
 import React from 'react';
-import SelfComments from './SelfComments'
-import OtherComments from './OtherComments'
 import { CommentsContainer, Transperent } from './styles/sCommentsBox'
 import { ChatMessage } from './ChatMessage'
 

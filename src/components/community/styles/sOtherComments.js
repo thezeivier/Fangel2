@@ -46,7 +46,7 @@ export const CommentContainer = styled.div`
 
 export const Comment = styled.div`
   background: ${props => props.color + '10'};
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 10px 15px;
   width: max-content;
 
