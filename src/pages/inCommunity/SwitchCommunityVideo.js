@@ -26,7 +26,6 @@ const SwitchCommunityVideo = () => {
     useEffect(async ()=>{
         let communityData = data[0]
         if(communityData){
-            console.log("entrós")
             activeCommunityRef.doc(communityData.creatorUid)
             .onSnapshot((doc) => {
                 if(doc.data() !== activeCommunity) setActiveCommunity(doc.data());

@@ -56,7 +56,6 @@ const CardCommunity = ({communityData}) => {
   }
 
   ShowMore()
-
   /* CardCommunity v1.0 */
   return (
     <>
