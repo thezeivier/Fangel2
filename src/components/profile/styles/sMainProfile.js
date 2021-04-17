@@ -92,3 +92,8 @@ export const ButtonStyled = styled(Button)`
     background: ${props => props.color + '15'};
   }
 `
+
+export const CodeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`

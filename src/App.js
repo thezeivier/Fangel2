@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Switch, Route, Redirect, useHistory} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import {useAuth, useFirestore, useStorage, useFirebaseApp} from 'reactfire'
+import {useAuth, useFirestore, useStorage} from 'reactfire'
 import { RecoverUser} from './algorithmsToApp/RecoverUser'
 import GlobalStyles from './themes/GlobalStyles'
 import theme from './themes/Theme'
