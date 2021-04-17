@@ -18,19 +18,23 @@ const MainCreateCOne = () => {
   const [imageRecovered, setImageRecovered] = useState()
   const {register, handleSubmit, errors } = useForm()
   const onSubmit = async data => {
-    setCommunityCreated("test")
+    setCommunityCreated("sending") 
     let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage)
     setCommunityCreated(result)
   }
   
   const recoverCommunityImage = (e) =>{
     e.preventDefault()
+    const eventButton = e.target
+    console.log(e)
     const communityImage = document.getElementById("communityImage")
     e = communityImage.click()
-    communityImage.addEventListener('change', e => {
-      setImageRecovered(e.target.files[0])
+    communityImage.addEventListener('change', async e => {
+      await setImageRecovered(e.target.files[0])
+      eventButton.textContent = "¡Imagen cargada!"
+      eventButton.disabled = true
     })
-    document.getElementById("communityImage").value = null
+    communityImage.value = null
   }
 
   return (
@@ -39,6 +43,8 @@ const MainCreateCOne = () => {
       pathname: "/create-community-2"
     }}/>:
     <main>
+      {communityCreated === "sending"?
+      "CREANDO COMUNIDAD...":
       <Wrapper>
         <TitleStyled bottom>Crear una comunidad</TitleStyled>
         <OnlyDesktop>
@@ -60,6 +66,7 @@ const MainCreateCOne = () => {
           </form>
         </OnlyDesktop>
       </Wrapper>
+    }
     </main>
   );
 }
