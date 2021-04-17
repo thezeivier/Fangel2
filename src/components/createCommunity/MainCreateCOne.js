@@ -17,6 +17,8 @@ const MainCreateCOne = () => {
   const [communityCreated, setCommunityCreated] = useState()
   const [imageRecovered, setImageRecovered] = useState()
   const {register, handleSubmit, errors } = useForm()
+  const [disable, setDisable] = useState(false);
+
   const onSubmit = async data => {
     setCommunityCreated("sending") 
     let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage)
@@ -30,11 +32,13 @@ const MainCreateCOne = () => {
     e = communityImage.click()
     communityImage.addEventListener('change', async e => {
       await setImageRecovered(e.target.files[0])
-      eventButton.textContent = "¡Imagen cargada!"
-      eventButton.disabled = true
+      setDisable(true)
     })
     communityImage.value = null
   }
+
+  console.log(disable)
+
 
   return (
     <main>
@@ -55,7 +59,10 @@ const MainCreateCOne = () => {
                 <ErrorAlert>{errors.descriptionCommunity? errors.descriptionCommunity.message: ""}</ErrorAlert>
                 <div>
                   <input type="file" accept="image/*" style={{display: "none"}} id="communityImage"/>
-                  <ButtonStyled onClick={recoverCommunityImage} secondary bottom30>Subir imagen</ButtonStyled>
+                  {(disable) ?
+                    <ButtonStyled onClick={recoverCommunityImage} secondary bottom30 disabled>¡Imagen cargada!</ButtonStyled> :
+                    <ButtonStyled onClick={recoverCommunityImage} secondary bottom30>Subir imagen</ButtonStyled>
+                  }
                 </div>
                 <TextBody>
                   Las comunidades tiene vida solo por 1 hora, esto significa que esta comunidad sera única y especial.

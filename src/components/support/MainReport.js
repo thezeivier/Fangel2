@@ -16,6 +16,7 @@ const MainReport = () => {
   const [imageRecovered, setImageRecovered] = useState()
   const [reportCreated, setReportCreated] = useState(false)
   const { register, handleSubmit, errors } = useForm()
+  const [disabled, setDisabled] = useState(false);
   const onSubmit = async data => {
     setReportCreated("sending")
     const result = await CreateReport(data, firestore, imageRecovered, storage, contextFromApp.userFromDB)
@@ -30,7 +31,7 @@ const MainReport = () => {
     reportImage.addEventListener('change', async e => {
       await setImageRecovered(e.target.files[0])
       eventButton.textContent = "¡Imagen cargada!"
-      eventButton.disabled = true
+      setDisabled(true)
     })
     reportImage.value = null
   }
@@ -54,7 +55,10 @@ const MainReport = () => {
                 <SubtitleStyled>Detalles</SubtitleStyled>
                 <TextAreaStyled border4 type="text" placeholder="Descripcion" name="reportDescription" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
                 <ButtonsContainer>
-                  <ButtonStyled onClick={recoverReportImage} secondary left type="button">Adjuntar una imagen</ButtonStyled>
+                  {(disabled) ?
+                    <ButtonStyled onClick={recoverReportImage} secondary left disabled type="button">Imagen cargada</ButtonStyled> :
+                    <ButtonStyled onClick={recoverReportImage} secondary left type="button">Adjuntar una imagen</ButtonStyled>
+                  }
                   <input type="file" accept="image/*" style={{display: "none"}} id="reportImage"/>
                   <ButtonStyled primary right type="submit">Enviar</ButtonStyled>
                 </ButtonsContainer>

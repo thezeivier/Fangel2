@@ -62,7 +62,7 @@ export const TextAreaStyled = styled(TextArea)`
   margin: 0 0 20px 0;
 
   ${props => props.border4 && css`
-    border-radius: 4px;
+    border-radius: 10px;
     padding: 9px 15px;
     margin: 0 0 12px 0;
   `}

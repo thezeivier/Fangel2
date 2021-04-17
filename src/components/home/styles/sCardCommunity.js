@@ -155,7 +155,7 @@ export const DescriptionContainer = styled.div`
     ${wrapperMixin};
   }
 
-  &:focus > .truncate .showMore {
+  &:focus > .truncate {
     -webkit-box-orient: initial;
   }
 

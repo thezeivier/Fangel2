@@ -178,6 +178,17 @@ export const Button = styled.button`
       background: ${props => props.theme.colorHoverSecondary};
     }
   `}
+  
+  ${props => props.disabled && css`
+    border: 1px solid grey;
+    color: grey;
+
+    &:hover,
+    &:active {
+      background: #80808014;
+      cursor: default;
+    }
+  `}
 
   ${props => props.standarP && css`
     background: ${props => props.theme.colorBrandDark};
