@@ -15,16 +15,13 @@ import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import { ReactComponent as AddPhotoSVG } from './icons/addPhoto.svg'
 
 //Import components from code Box
-import { Form, CommentSVGContainer, CommentStyled } from '../createCommunity/styles/sMainCreateCommunity'
-import { InputStyled } from '../../pages/signInAndUp/styles/sGlobalForm'
+import { Form, CommentSVGContainer, InputStyled } from './styles/sMainProfile'
 import { ReactComponent as CopySVG } from '../createCommunity/icons/copy.svg'
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'
-import useHover from '../../hook/use-hover'
 
 const MainProfile = () => {
   const storage = useStorage()
   const [profileThumb, setProfileThumb] = useState()
-  const [hoverRef, isHovered] = useHover();
   const {userFromDB, authState} = useContext(AppContext)
   const match = useRouteMatch("/u/:id")
   const nameUserRoute = match.params.id
@@ -108,16 +105,15 @@ const MainProfile = () => {
           (userFromDB.type === "admin" )&&
             (authState.uid === id)&&
             <CodeContainer>
-              <Form>
+              <Form profile>
+                <label>Código de invitación </label>
                 <InputStyled id="copyCode" special invitationCode type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
-                <CommentSVGContainer onClick={()=>CopyCode("copyCode")} ref={hoverRef}>
+                <CommentSVGContainer onClick={()=>CopyCode("copyCode")}>
                   <CopySVG/>
-                  {isHovered &&<CommentStyled>Copiar código</CommentStyled>}
                 </CommentSVGContainer>
               </Form>
             </CodeContainer>
         }
-
       </Wrapper> 
       <ReturnPage/> 
     </main>

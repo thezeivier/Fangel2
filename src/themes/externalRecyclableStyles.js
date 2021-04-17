@@ -1,4 +1,12 @@
-import styled, { css } from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
+
+export const Faded = keyframes`
+  0% {
+    opacity: 0;
+  } 100% {
+    opacity: 1;
+  }
+`
 
 export const ExternalsWrapper = styled.main`
   text-align: center;

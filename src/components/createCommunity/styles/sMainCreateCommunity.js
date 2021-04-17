@@ -6,7 +6,7 @@ export const InputStyled = styled(Input)`
   margin: 0 0 20px 0;
 
   ${props => props.primary && css`
-    margin:  0 20px 0;
+    margin: 0 20px 0;
   `}
 `
 
@@ -15,6 +15,10 @@ export const Form = styled.form`
   align-items: center;
 
   ${svgMixin};
+
+  label {
+    margin: 0 10px 0 0;
+  }
 
   svg {
     margin: 0 0 15px 0;

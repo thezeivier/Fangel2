@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { Button } from './../../../themes/externalRecyclableStyles'
+import styled, { css } from 'styled-components'
+import { Button, Input, svgMixin  } from './../../../themes/externalRecyclableStyles'
 
 export const UserContainer = styled.div`
   margin: 0 0 20px 0;
@@ -96,4 +96,56 @@ export const ButtonStyled = styled(Button)`
 export const CodeContainer = styled.div`
   display: flex;
   justify-content: center;
+  margin: 40px 0 50px 0;
+
+  @media(min-width:768px) {
+    margin: 40px 0 0 0;
+  }
+`
+
+export const InputStyled = styled(Input)`
+  margin: 0 10px;
+  width: fit-content;
+  text-align: center;
+  letter-spacing: 1px;
+  padding: 20px 21px;
+`
+
+export const Form = styled.form`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @media(min-width:768px) {
+    flex-direction: row;
+  }
+
+  ${svgMixin};
+
+  label {
+    margin: 0 0 10px 0;
+
+    @media(min-width:768px) {
+      margin: 0 10px 0 0;
+      width: max-content;
+    }
+  }
+
+  svg {
+    width: 34px;
+    display: none;
+
+    @media(min-width:768px) {
+      display: block;
+    }
+  }
+`
+
+export const CommentSVGContainer = styled.div`
+  position: relative;
+`
+
+export const CommentStyled = styled(Comment)`
+  font-size: 0.8em;
+  top: 40px;
 `

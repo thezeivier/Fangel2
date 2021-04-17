@@ -154,14 +154,14 @@ export const DescriptionContainer = styled.div`
     outline:none;
     background: linear-gradient(180deg, rgb(1 2 14 / 0%) 0%,
                 rgb(1 3 14 / 68%) 39.58%,rgb(2 4 14 / 92%) 81.78%);
-    ${wrapperMixin};
+    padding: 0 10px 10px 10px;
   }
 
   &:focus > .truncate {
     -webkit-box-orient: initial;
   }
 
-  &:focus > .truncate .showMore:after {
+  &:focus > .truncate .showMore::after {
     display: none;
     opacity: 0;
   }
@@ -197,7 +197,7 @@ export const Truncate = styled.div`
   -webkit-box-orient: vertical;  
   overflow: hidden;
 
-  .showMore:after {
+  .showMore::after {
     content:'Mostrar más';
     color: white;
     position: absolute;

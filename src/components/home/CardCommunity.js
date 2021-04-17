@@ -29,13 +29,25 @@ const CardCommunity = ({communityData}) => {
   const ChangeCommunity = () =>{
     setEnterComunity(true)
   }
-
+  
+  const cardRef = useRef()
   const textRef = useRef()
   const buttonRef = useRef()
 
   const ShowMore = () => {
+    if (cardRef.current) {
+      if (cardRef.current.clientHeight < 530) {
+        if (textRef.current.innerText.length > 65) {
+          textRef.current.classList.add('showMore')
+        }
+      } else if(cardRef.current.clientHeight < 547) {
+        if (textRef.current.innerText.length > 155) {
+          textRef.current.classList.add('showMore')
+        }
+      }
+    } 
     if (textRef.current) {
-      if (textRef.current.clientHeight > 41) {
+      if (textRef.current.innerText.length > 81) {
         textRef.current.classList.add('showMore')
       } else {
         buttonRef.current.classList.add('buttonNotMargin')
@@ -52,7 +64,7 @@ const CardCommunity = ({communityData}) => {
         enterCommunity?
         <Redirect to={`/room/${communityData.roomName}`}/>:
         <li>
-          <CardContainer>
+          <CardContainer ref={cardRef}>
             <ContainerTextTop>
               <TextCommunity>Comunidad creada por:</TextCommunity>
               <UserContainer>
@@ -72,7 +84,7 @@ const CardCommunity = ({communityData}) => {
               <DescriptionContainer as="button" ref={buttonRef}>
                 <h3>{communityData.title}</h3>
                 <Truncate className="truncate">
-                  <TextDescription ref={textRef} >
+                  <TextDescription ref={textRef}>
                     {communityData.description}
                   </TextDescription>
                 </Truncate>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Faded } from './../../../themes/externalRecyclableStyles'
 
 export const AlertContainer = styled.div`
   background: ${props => props.theme.colorAlert + 'db'};
@@ -14,6 +15,7 @@ export const AlertContainer = styled.div`
   right: 10px;
   bottom: 40px;
 
+  animation: ${Faded} .5s ease-in;
 
   &:hover {
     background: ${props => props.theme.colorAlert};
