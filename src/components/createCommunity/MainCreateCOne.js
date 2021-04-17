@@ -26,7 +26,6 @@ const MainCreateCOne = () => {
   const recoverCommunityImage = (e) =>{
     e.preventDefault()
     const eventButton = e.target
-    console.log(e)
     const communityImage = document.getElementById("communityImage")
     e = communityImage.click()
     communityImage.addEventListener('change', async e => {
@@ -38,35 +37,35 @@ const MainCreateCOne = () => {
   }
 
   return (
-    communityCreated === true?
-    <Redirect to={{
-      pathname: "/create-community-2"
-    }}/>:
     <main>
-      {communityCreated === "sending"?
-      "CREANDO COMUNIDAD...":
-      <Wrapper>
-        <TitleStyled bottom>Crear una comunidad</TitleStyled>
-        <OnlyDesktop>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <InputStyled type="text" placeholder="Nombre de la comunidad" name="nameCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
-            <ErrorAlert>{errors.nameCommunity? errors.nameCommunity.message: ""}</ErrorAlert>
-            <TextAreaStyled type="text" placeholder="Descripcion" name="descriptionCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
-            <ErrorAlert>{errors.descriptionCommunity? errors.descriptionCommunity.message: ""}</ErrorAlert>
-            <div>
-              <input type="file" accept="image/*" style={{display: "none"}} id="communityImage"/>
-              <ButtonStyled onClick={recoverCommunityImage} secondary bottom30>Subir imagen</ButtonStyled>
-            </div>
-            <TextBody>
-              Las comunidades tiene vida solo por 1 hora, esto significa que esta comunidad sera única y especial.
-            </TextBody>
-            {
-              (!communityCreated || communityCreated !== "test") && <ButtonStyled primary type="submit">Crear comunidad</ButtonStyled>
-            }
-          </form>
-        </OnlyDesktop>
-      </Wrapper>
-    }
+      {
+        communityCreated === true?
+        <Redirect to={{
+          pathname: "/create-community-2"
+        }}/>:
+        (communityCreated === "sending"?
+          "CREANDO COMUNIDAD...":
+          <Wrapper>
+            <TitleStyled bottom>Crear una comunidad</TitleStyled>
+            <OnlyDesktop>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <InputStyled type="text" placeholder="Nombre de la comunidad" name="nameCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
+                <ErrorAlert>{errors.nameCommunity? errors.nameCommunity.message: ""}</ErrorAlert>
+                <TextAreaStyled type="text" placeholder="Descripcion" name="descriptionCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
+                <ErrorAlert>{errors.descriptionCommunity? errors.descriptionCommunity.message: ""}</ErrorAlert>
+                <div>
+                  <input type="file" accept="image/*" style={{display: "none"}} id="communityImage"/>
+                  <ButtonStyled onClick={recoverCommunityImage} secondary bottom30>Subir imagen</ButtonStyled>
+                </div>
+                <TextBody>
+                  Las comunidades tiene vida solo por 1 hora, esto significa que esta comunidad sera única y especial.
+                </TextBody>
+                <ButtonStyled primary type="submit">Crear comunidad</ButtonStyled>
+              </form>
+            </OnlyDesktop>
+          </Wrapper>
+        )
+      }
     </main>
   );
 }
