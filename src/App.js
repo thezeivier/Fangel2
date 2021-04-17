@@ -16,6 +16,7 @@ import CreateCommunityTwo from './pages/CreateCommunityTwo'
 import ReportAProblem from './pages/ReportAProblem'
 import Settings from './pages/Settings'
 import Profile from './pages/Profile'
+import ThanksReport from './pages/ThanksReport'
 import {SwitchCommunityVideo} from './pages/inCommunity/SwitchCommunityVideo'
 //List of routers and loading
 import ListOfRoutes from './pages/objects/ListOfRoutes' 
@@ -112,6 +113,7 @@ function App() {
               <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
               <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>
               <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
+              <Route exact path={"/thank-you"} component={authState? ThanksReport : Landing}/>
               {ListOfRoutes.map((route)=>{
                 return <ExternalLayoutRoute key={route.path} authState={authState} {...route}/>
               })}

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const AddCardContainer = styled.li`
   background: ${props => props.theme.colorAddCard};
-  border-radius: 4px;
+  border-radius: 10px;
   box-shadow: 0px 0px 8px ${props => props.theme.colorAddCardHover};
   display: flex;
   flex-direction: column;

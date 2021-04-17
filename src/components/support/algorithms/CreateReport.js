@@ -4,7 +4,10 @@ export const CreateReport = async (data, firestore, imageRecovered, storage, use
     const type = userFromDB.type
     const reportRef = firestore.collection("reports").doc(uid)
     if(data.reportDescription){
-        let resultOfImage = await reportImageSender(storage, uid, imageRecovered, type)
+        var resultOfImage = false
+        if(imageRecovered){
+            var resultOfImage = await reportImageSender(storage, uid, imageRecovered, type)
+        }
         batch.set(
             reportRef,
             {
@@ -13,7 +16,7 @@ export const CreateReport = async (data, firestore, imageRecovered, storage, use
                 uid,
                 user: userFromDB.username,
                 type: userFromDB.type,
-                capture: resultOfImage,
+                capture: resultOfImage? resultOfImage: "",
             },
             {merge: true}
         )

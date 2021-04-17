@@ -4,11 +4,15 @@ export const colors = {
     gradientLight: 'linear-gradient(180deg, #F6F3EF 0%, #D7DBFC 100%)',
     dark: '#02131F',
     light: '#F6F3EF',
+    header: {
+      dark: '#021725',
+      light: '#EAE8E4',
+    }
   },
   color: {
     danger: '#EB4444',
     green: '#19BF16',
-    smallText:{
+    smallText: {
       grayDark: '#AEAEAE',
       grayLight: '#333333',
     },
@@ -22,7 +26,7 @@ export const colors = {
       solid: '#EFF0F7',
       transparent: 'rgba(239, 240, 247, 0.8)',
     },
-    black :{
+    black: {
       solid:'#1F1F24',
       transparent:'rgba(31, 31, 36, 0.8)',
     },
@@ -64,6 +68,14 @@ export const colors = {
     line: {
       dark: 'rgba(239, 240, 247, 0.1)',
       light: 'rgba(20, 56, 149, 0.2)',
+    },
+    commentBox: {
+      dark: '#0000002e',
+      light: '#5456710d',
+    },
+    scrollCommentBar: {
+      dark: '#1F1F24',
+      light: '#a9a9b1',
     },
     shadowBox: {
       gradientDark: 'linear-gradient(180deg, #04061C 28.16%, rgba(4,6,28,0) 100%)',

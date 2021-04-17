@@ -42,7 +42,7 @@ const MainSettings = () => {
           </ListOptions>
         </div>
       </Wrapper>
-      <ReturnPage/>
+      <ReturnPage />
     </main>
   );
 }
