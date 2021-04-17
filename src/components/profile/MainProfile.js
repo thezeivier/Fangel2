@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import ReturnPage from './../general/ReturnPage'
@@ -6,7 +6,7 @@ import UserTag from './UserTag'
 import {useStorage} from 'reactfire'
 import { useMatchRouteUserData } from './algorithms/useMatchRouteUserData'
 import { AppContext } from '../../App'
-import { UserContainer, ListTags, AddPhotoContainer } from './styles/sMainProfile'
+import { UserContainer, ListTags, AddPhotoContainer, CodeContainer } from './styles/sMainProfile'
 // import { colorGenerator } from './algorithms/colorGenerator'
 import {newProfilePhoto} from './algorithms/newProfilePhoto'
 import { getColorDarkMode, getColorLightMode} from '../community/algorithms/GetRandomColor'
@@ -14,13 +14,34 @@ import { getColorDarkMode, getColorLightMode} from '../community/algorithms/GetR
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import { ReactComponent as AddPhotoSVG } from './icons/addPhoto.svg'
 
+//Import components from code Box
+import { Form, CommentSVGContainer, CommentStyled } from '../createCommunity/styles/sMainCreateCommunity'
+import { InputStyled } from '../../pages/signInAndUp/styles/sGlobalForm'
+import { ReactComponent as CopySVG } from '../createCommunity/icons/copy.svg'
+import {CopyCode} from '../createCommunity/algorithms/CopyCode'
+import useHover from '../../hook/use-hover'
+
 const MainProfile = () => {
   const storage = useStorage()
   const [profileThumb, setProfileThumb] = useState()
+  const [hoverRef, isHovered] = useHover();
   const {userFromDB, authState} = useContext(AppContext)
   const match = useRouteMatch("/u/:id")
   const nameUserRoute = match.params.id
   const [userData, loading, error] = useMatchRouteUserData("users", nameUserRoute)
+  const [code, setCode] = useState()
+
+  useEffect(()=>{
+    if(userFromDB.type === "admin" && userFromDB.userCodesRef){
+      userFromDB.userCodesRef
+      .get()
+      .then(result =>{
+        if(result.data().users.length < 20){
+          setCode(result.data().code)
+        }
+      })
+    }
+  })
 
   if(loading) return <p>Pending..</p> // Aquí va un loader
     
@@ -83,6 +104,20 @@ const MainProfile = () => {
             )
           }
         </ListTags>
+        {
+          (userFromDB.type === "admin" )&&
+            (authState.uid === id)&&
+            <CodeContainer>
+              <Form>
+                <InputStyled id="copyCode" special invitationCode type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
+                <CommentSVGContainer onClick={()=>CopyCode("copyCode")} ref={hoverRef}>
+                  <CopySVG/>
+                  {isHovered &&<CommentStyled>Copiar código</CommentStyled>}
+                </CommentSVGContainer>
+              </Form>
+            </CodeContainer>
+        }
+
       </Wrapper> 
       <ReturnPage/> 
     </main>
