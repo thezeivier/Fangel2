@@ -146,6 +146,34 @@ const GlobalStyles = createGlobalStyle`
     display: none !important;
     visibility: hidden !important;
   }
+
+  .buttonNotMargin {
+    padding: 0 10px 10px 10px !important;
+  }
+
+  .showMore:after {
+    content:'Mostrar más';
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-family: ${props => props.theme.secondaryFont};
+    color: #8f8f92;
+    font-size: 0.97em;
+    cursor: pointer;
+    transition: .05s;
+    will-change: opacity;
+    letter-spacing: 0.02em;
+    font-weight: ${props => props.theme.weight.light};
+
+    @media(min-width:410px) {
+      font-size: 1.04em;
+    }
+
+    @media(min-width:1200px) {
+      font-size: 1em;
+    }
+  }
 `
 
 export default GlobalStyles
