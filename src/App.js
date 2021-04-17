@@ -98,7 +98,7 @@ function App() {
         {!verified?
           <Redirect to={{
             pathname: "/email-sended",
-            state: { 
+            state: {
               email: verified.email,
               origin: "register"
             }

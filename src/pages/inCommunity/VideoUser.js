@@ -14,16 +14,14 @@ const VideoUser = ({activeCommunity, communityData}) => {
   const [localTimerCounter, setLocalTimerCounter] = useState(0)
   
   useEffect(()=>{
-    setTranscurredTimeOfCommunity(activeCommunity? activeCommunity.transcurred: false)
-    console.log(activeCommunity)
-    timer()
+    // setTranscurredTimeOfCommunity(activeCommunity? activeCommunity.transcurred: false)
+    // console.log(activeCommunity)
+    // timer()
   }, [])
 
   const timer = () => {
     let localTimer = setInterval(() =>{
       setLastTranscurredTime(transcurredTimeOfCommunity)
-      console.log(transcurredTimeOfCommunity)
-      console.log("timer")
       if(transcurredTimeOfCommunity && lastTranscurredTime){
         setLocalTimerCounter(localTimerCounter + 1)
         console.log(localTimerCounter)

@@ -68,7 +68,7 @@ export const ButtonsContainer = styled.div`
 `
 
 export const ButtonStyled = styled(Button)`
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 11px 14px;
 
   ${props => props.left && css`
@@ -121,7 +121,7 @@ export const DetailsContainer = styled.details`
   background: ${props => props.theme.inputForm};
   padding: 10px 4px;
   margin: 15px 0 10px 0;
-  border-radius: 4px;
+  border-radius: 10px;
   transition: all .2s;
 
   @media(min-width:768px) {

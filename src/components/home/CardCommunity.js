@@ -35,7 +35,7 @@ const CardCommunity = ({communityData}) => {
 
   const ShowMore = () => {
     if (textRef.current) {
-      if (textRef.current.clientHeight > 41) {
+      if (textRef.current.clientHeight > 38) {
         textRef.current.classList.add('showMore')
       } else {
         buttonRef.current.classList.add('buttonNotMargin')
@@ -44,7 +44,6 @@ const CardCommunity = ({communityData}) => {
   }
 
   ShowMore()
-
   /* CardCommunity v1.0 */
   return (
     <>

@@ -1,6 +1,14 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components'
 
+const Faded = keyframes`
+  0% {
+    opacity: 0;
+  } 100% {
+    opacity: 1;
+  }
+`
+
 const Ellipsis1 = keyframes`
   0% {
     transform: scale(0);
@@ -35,12 +43,20 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  background: linear-gradient(180deg, #02131F 0%, #04061C 100%);
+`
+
+const FadedContainer = styled.div`
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: auto;
-  position: absolute;
-  background: linear-gradient(180deg, #02131F 0%, #04061C 100%);
+
+  animation: ${Faded} .3s ease-in-out;
 `
 
 const Name = styled.div`
@@ -106,13 +122,15 @@ const Loader = styled.div`
 const MainSpinner = () => {
   return (
     <Container>
-      <Name>fangel</Name>
-      <Loader>
-        <div className="box-1"></div>
-        <div className="box-2"></div>
-        <div className="box-3"></div>
-        <div className="box-4"></div>
-      </Loader>
+      <FadedContainer>
+        <Name>fangel</Name>
+        <Loader>
+          <div className="box-1"></div>
+          <div className="box-2"></div>
+          <div className="box-3"></div>
+          <div className="box-4"></div>
+        </Loader>
+      </FadedContainer>
     </Container>
   );
 }
