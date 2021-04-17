@@ -78,10 +78,7 @@ const MainSettingsAdmin = ({ inDesktop }) => {
               <span>{activeCommunity? `Apróx. ${activeCommunity.duration - activeCommunity.transcurred} min.`: "Cargando"}</span>
             </TimerDescripcion>
             {(activeCommunity.duration - activeCommunity.transcurred) >= 120?
-              <>
-                <ButtonStyled secondary onClick={addHour} disabled ref={hoverRef}>Extender 1 hora más</ButtonStyled>
-                {isHovered} && <Comment>Se habilitará cuando te queden pocos minutos</Comment>
-              </> :
+              <ButtonStyled secondary onClick={addHour} disabled>Extender 1 hora más</ButtonStyled> :
               <ButtonStyled secondary onClick={addHour}>Extender 1 hora más</ButtonStyled>
             }
           </SectionContainer>

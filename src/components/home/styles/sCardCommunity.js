@@ -134,6 +134,7 @@ export const DescriptionContainer = styled.div`
     font-weight: ${props => props.theme.weight.semiMedium};
     font-size: 1.5em;
     margin: 0 0 5px 0;
+    text-transform: capitalize;
 
     @media(min-width:410px) {
       font-size: 1.8em;
@@ -141,6 +142,7 @@ export const DescriptionContainer = styled.div`
 
     @media(min-width:1200px) {
       font-size: 1.9em;
+      line-height: 1.1em;
     }
   }
 
@@ -185,7 +187,7 @@ export const TextDescription = styled(TextBody)`
   }
 
   @media(min-width:1200px) {
-    line-height: 1.51em;
+    line-height: 1.50em;
   }
 `
 

@@ -43,7 +43,7 @@ const MainCreateCTwo = () => {
     }}/>:
     <main>
       <Wrapper>
-        <TitleStyled bottom>Crear una comunidad</TitleStyled>
+        <TitleStyled bottom>Inivita a personas</TitleStyled>
         <OnlyDesktop>
           <SubtitleStyled>Código de invitación</SubtitleStyled>
           <TextStyled bottom20>

@@ -4,6 +4,7 @@ import {AppContext} from '../../App'
 import { useForm } from 'react-hook-form'
 import {useFirestore, useStorage} from 'reactfire'
 import Wrapper from './../general/Wrapper'
+import LoadServSpinner from './../spinner/LoadServSpinner'
 import { TitleStyled, TextAreaStyled, ButtonStyled,
          OnlyDesktop } from './../../themes/internalRecyclableStyles'
 import { InputStyled, ErrorAlert } from './../../pages/signInAndUp/styles/sGlobalForm'
@@ -39,38 +40,41 @@ const MainCreateCOne = () => {
 
   console.log(disable)
 
-
   return (
     <main>
       {
         communityCreated === true?
         <Redirect to={{
           pathname: "/create-community-2"
-        }}/>:
-        (communityCreated === "sending"?
-          "CREANDO COMUNIDAD...":
-          <Wrapper>
-            <TitleStyled bottom>Crear una comunidad</TitleStyled>
-            <OnlyDesktop>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <InputStyled type="text" placeholder="Nombre de la comunidad" name="nameCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
-                <ErrorAlert>{errors.nameCommunity? errors.nameCommunity.message: ""}</ErrorAlert>
-                <TextAreaStyled type="text" placeholder="Descripcion" name="descriptionCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
-                <ErrorAlert>{errors.descriptionCommunity? errors.descriptionCommunity.message: ""}</ErrorAlert>
-                <div>
-                  <input type="file" accept="image/*" style={{display: "none"}} id="communityImage"/>
-                  {(disable) ?
-                    <ButtonStyled onClick={recoverCommunityImage} secondary bottom30 disabled>¡Imagen cargada!</ButtonStyled> :
-                    <ButtonStyled onClick={recoverCommunityImage} secondary bottom30>Subir imagen</ButtonStyled>
-                  }
-                </div>
-                <TextBody>
-                  Las comunidades tiene vida solo por 1 hora, esto significa que esta comunidad sera única y especial.
-                </TextBody>
-                <ButtonStyled primary type="submit">Crear comunidad</ButtonStyled>
-              </form>
-            </OnlyDesktop>
-          </Wrapper>
+        }}/>:(
+          <>
+            {
+              (communityCreated === "sending") &&
+              <LoadServSpinner title="Preparando el espacio para tu comunidad" />
+            }
+            <Wrapper>
+              <TitleStyled bottom>Crear una comunidad</TitleStyled>
+              <OnlyDesktop>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <InputStyled type="text" placeholder="Nombre de la comunidad" name="nameCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
+                  <ErrorAlert>{errors.nameCommunity? errors.nameCommunity.message: ""}</ErrorAlert>
+                  <TextAreaStyled type="text" placeholder="Descripcion" name="descriptionCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
+                  <ErrorAlert>{errors.descriptionCommunity? errors.descriptionCommunity.message: ""}</ErrorAlert>
+                  <div>
+                    <input type="file" accept="image/*" style={{display: "none"}} id="communityImage"/>
+                    {(disable) ?
+                      <ButtonStyled onClick={recoverCommunityImage} secondary bottom30 disabled>Imagen cargada</ButtonStyled> :
+                      <ButtonStyled onClick={recoverCommunityImage} secondary bottom30>Subir imagen</ButtonStyled>
+                    }
+                  </div>
+                  <TextBody>
+                    Las comunidades tiene vida solo por 1 hora, esto significa que esta comunidad sera única y especial.
+                  </TextBody>
+                  <ButtonStyled primary type="submit">Crear comunidad</ButtonStyled>
+                </form>
+              </OnlyDesktop>
+            </Wrapper>
+          </>
         )
       }
     </main>

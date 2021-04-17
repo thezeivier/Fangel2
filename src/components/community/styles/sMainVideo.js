@@ -28,7 +28,7 @@ export const ContainerResponsive = styled.div`
 
 export const ButtonConfiguration = styled(Button)`
   width: initial;
-  margin: 10px auto;
+  margin: 5px auto;
   padding: 11px 35px;
   display: ${props => props.display || 'flex'};
   z-index: 1000;
@@ -37,6 +37,11 @@ export const ButtonConfiguration = styled(Button)`
     fill: ${props => props.theme.colorbrandSolid};
     width: 22px;
     margin: 0 10px 0 0;
+  }
+
+  @media(min-width:768px) {
+    border-radius: 10px;
+    margin: 10px auto;
   }
 
   @media(min-width:1200px) {
