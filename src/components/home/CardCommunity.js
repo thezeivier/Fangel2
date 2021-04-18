@@ -47,7 +47,7 @@ const CardCommunity = ({communityData}) => {
                   <ProfileSVG />
                 }
               </Link>
-              <User as="h4">{communityData.name? communityData.name: username }</User>
+              <User as="h4">{communityData.name? communityData.name: communityData.username }</User>
             </UserContainer>
           </ContainerTextTop>
           <ImageContainer>
