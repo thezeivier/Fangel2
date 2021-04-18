@@ -30,6 +30,10 @@ exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").
       },
       {merge: true}
     );
+
+    batch.commit()
+    .then(console.log("Generado de código exitoso"))
+    .catch(error => console.error("Error al generar código", error));
   } else if(data.type === "user") {
     batch.set(
       db.collection("users").doc(uid),
@@ -38,12 +42,14 @@ exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").
       },
       {merge: true}
     );
+
+    batch.commit()
+    .then(console.log("usuario creado"))
+    .catch(error => console.error("Error al crar usuario", error));
   }else{
     return false
   }
 
-  batch.commit()
-  .then(console.log("Generado de código exitoso"))
-  .catch(error => console.error("Error al generar código", error));
+  
 });
 
