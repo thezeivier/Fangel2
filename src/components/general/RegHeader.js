@@ -17,7 +17,7 @@ const RegHeader = () => {
         <Container>
           <Logo />
           <IconsContainer>
-            {contextFromApp? (contextFromApp.authState? contextFromApp.authState.displayName:"Cargando..."):"Cargando..."}{/*Falta maquillar*/}
+              {contextFromApp? (contextFromApp.authState? contextFromApp.authState.displayName:"Cargando..."):"Cargando..."}{/*Falta maquillar*/}
             <Link to={`/u/${userFromDB.username}`}>
               {
                 profileThumb?

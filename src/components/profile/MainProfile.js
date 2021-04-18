@@ -38,7 +38,7 @@ const MainProfile = () => {
         }
       })
     }
-  })
+  },[])
 
   if(loading) return <p>Pending..</p> // Aquí va un loader
     
@@ -106,7 +106,7 @@ const MainProfile = () => {
           (userFromDB.type === "admin" )&&
             (authState.uid === id)&&
             <CodeContainer>
-              <Form profile>
+              <Form>
                 <label>Código de invitación </label>
                 <InputStyled id="copyCode" special invitationCode type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
                 <CommentSVGContainer onClick={()=>CopyCode("copyCode")}>
