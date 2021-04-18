@@ -1,12 +1,25 @@
-export const usernameFValidator = {
+
+export const firstNameFValidator = {
   required: true,
   maxLength: {
-    value: 30,
-    message: "El usuario debe ser menor a 30 caracteres*",
+    value: 60,
+    message: "El nombre debe ser menor a 60 caracteres*",
   },
   pattern: {
-    value: /^(?=.{4,}$)(?!.*[_.])(?!.*[_.]{2})[a-z0-9._]+(?<![_.])$/,
-    message: "Usuario debe ser mayor a cuatro caracteres, en minúsculas y sin espacios*"
+    value: /^[a-záéíóú '-]+$/i,
+    message: "Nombre inválido*"
+  }
+}
+
+export const lastNameFValidator = {
+  required: false,
+  maxLength: {
+    value: 60,
+    message: "El apellido debe ser menor a 60 caracteres*",
+  },
+  pattern: {
+    value: /^[a-záéíóú '-]+$/i,
+    message: "Apellido inválido*"
   }
 }
 

@@ -53,9 +53,13 @@ const getColorLightMode = () => {
 exports.onUserRegister = functions.auth.user().onCreate((user) => {
     const dark = getColorDarkMode()
     const light = getColorLightMode()
+    const hashtagNumber = Math.floor(Math.random() * 99999)
+    const username = `${(user.name.firstName.split(" ")[0].concat(user.name.lastName.split(" ")[0])).toLowerCase()}#${hashtagNumber}`
     db.collection('users').doc(user.uid)
         .update({
-            colorsUser: { dark, light}}, 
+            colorsUser: { dark, light},
+            username,
+        },
             {merge: true}
         )
     return true
