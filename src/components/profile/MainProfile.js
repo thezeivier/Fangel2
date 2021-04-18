@@ -39,7 +39,7 @@ const MainProfile = () => {
         }
       })
     }
-  })
+  },[])
 
   if(loading) return <p>Pending..</p> // Aquí va un loader
     

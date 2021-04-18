@@ -47,7 +47,7 @@ export const RegisterWithEmail = async (data, auth, type, firestore, firebase) =
   .createUserWithEmailAndPassword(email, password)
   .then(async result => {
     result.user.updateProfile({
-      displayName: `${firstName}${lastName.length !== 0 ? " ".concat(lastName): ""}`
+      displayName: `${firstName.split(" ")[0]}${(lastName.length !== 0) ? " ".concat(lastName.split(" ")[0]): ""}`
     })
 
     const finalConfirmation = await sendDataUser(data, result.user.uid, type, firestore, firebase)
