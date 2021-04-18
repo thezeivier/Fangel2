@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useRouteMatch } from 'react-router-dom'
+import { useRouteMatch, useLocation } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import ReturnPage from './../general/ReturnPage'
 import UserTag from './UserTag'
@@ -23,8 +23,10 @@ const MainProfile = () => {
   const storage = useStorage()
   const [profileThumb, setProfileThumb] = useState()
   const {userFromDB, authState} = useContext(AppContext)
+  const location = useLocation()
   const match = useRouteMatch("/u/:id")
-  const nameUserRoute = match.params.id
+  const nameUserRoute = match.params.id.concat(location.hash)
+  console.log(nameUserRoute)
   const [userData, loading, error] = useMatchRouteUserData("users", nameUserRoute)
   const [code, setCode] = useState()
 
@@ -105,7 +107,7 @@ const MainProfile = () => {
           (userFromDB.type === "admin" )&&
             (authState.uid === id)&&
             <CodeContainer>
-              <Form profile>
+              <Form>
                 <label>Código de invitación </label>
                 <InputStyled id="copyCode" special invitationCode type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
                 <CommentSVGContainer onClick={()=>CopyCode("copyCode")}>
