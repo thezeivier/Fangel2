@@ -50,6 +50,7 @@ const MainProfile = () => {
     id, 
     preferences,
     username,
+    name,
     bucket,
     route,
   } = userData[0]
@@ -91,7 +92,7 @@ const MainProfile = () => {
             </AddPhotoContainer>
           }
           <input type="file" accept="image/*" style={{display: "none"}} id="profileImage"/>
-          <h4>{username}</h4>
+          <h4>{name? `${name.firstName} ${name.lastName}`: username}</h4>
         </UserContainer>
         <ListTags>
           {preferences &&
