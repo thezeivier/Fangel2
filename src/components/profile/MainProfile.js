@@ -26,7 +26,6 @@ const MainProfile = () => {
   const location = useLocation()
   const match = useRouteMatch("/u/:id")
   const nameUserRoute = match.params.id.concat(location.hash)
-  console.log(nameUserRoute)
   const [userData, loading, error] = useMatchRouteUserData("users", nameUserRoute)
   const [code, setCode] = useState()
 
