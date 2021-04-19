@@ -23,7 +23,7 @@ const VideoHeader = ({ displayNoAdmin, isSettings, modalIsOpen, communityData, c
           <CloseSVG className="svgCloseOnlyMobile" onClick={closeModalSA} />
         </ContainerSVG>
       </HeaderContainer>
-      <ModalSettingsAdmin modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <ModalSettingsAdmin communityData={communityData} modalIsOpen={modalIsOpen} closeModal={closeModal} />
     </>
   );
 }

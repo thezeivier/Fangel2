@@ -12,28 +12,24 @@ import MainSpinner from '../../components/spinner/MainSpinner'
 import { GetCommunityVideoData } from '../../pages/inCommunity/algorithms/GetCommunityVideoData'
 import { GetAdminCommunity } from '../../pages/inCommunity/algorithms/GetAdminCommunity'
 
-const SettingsAdmin = ({ closeModal }) => {
+const SettingsAdmin = ({ closeModal, communityData }) => {
   const { userFromDB }  = useContext(AppContext)
-  const match = useRouteMatch("/room/:idRoom")
-  const idRoomSettings = match.params.idRoom
-  const [data, loading, error] = GetCommunityVideoData(idRoomSettings)
 
-  if(loading) return <p>Pending...</p>
-  if(error) return null
-
-  let communityData = data[0]
+  console.log(communityData)
   const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)
-  // console.log(isAdmin)
+
   return (
     <>
       {
         !communityData?
         <MainSpinner/>:
+        (isAdmin && 
         <ContainerForCommunity> {/* Sin margenes en moviles y tablets ni footer ni regHeader,
           wrapper sin paddign en moviles y tablet*/}
-          <VideoHeader communityData={communityData} displayNoAdmin="none" closeModalSA={closeModal} />
+          <VideoHeader displayNoAdmin="none" closeModalSA={closeModal} />
           <MainSettingsAdmin />
         </ContainerForCommunity>
+        )
       }
     </>
   );

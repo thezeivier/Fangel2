@@ -1,11 +1,9 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {AppContext} from '../../App'
-import {SwitchVideoContext} from '../../pages/inCommunity/SwitchCommunityVideo'
 import {useFirestore} from 'reactfire'
 import useHover from './../../hook/use-hover'
 import Wrapper from './../general/Wrapper'
 import UserConnect from './UserConnect'
-import AlertWarning from '../general/AlertWarning'
 import { SubtitleStyled, InputStyled, InputContainer, SectionContainer,
          TimerDescripcion, ButtonStyled, DisplayContainer, Comment } from './styles/sMainSettings'
 import { ReactComponent as CodeCopySVG } from './icons/codeCopy.svg'
@@ -13,13 +11,11 @@ import { ReactComponent as CodeCopySVG } from './icons/codeCopy.svg'
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'
 import {AddHour} from './algorithms/AddHour'
 
-const MainSettingsAdmin = ({ inDesktop }) => {
+const MainSettingsAdmin = ({ inDesktop, communityData }) => {
   const [hoverRef, isHovered] = useHover();
   const firestore = useFirestore()
-  const { activeCommunity, communityData }  = useContext(SwitchVideoContext)
   const [code, setCode] = useState(false);
-  const [alertTimer, setAlertTimer] = useState(false)
-
+  const [activeCommunity, setActiveCommunity] = useState()
   const contextFromApp = useContext(AppContext)
   useEffect(()=> {
     contextFromApp.userFromDB.userCodesRef
@@ -27,36 +23,30 @@ const MainSettingsAdmin = ({ inDesktop }) => {
       .then(result =>{
         if(result.data().users.length < 20){
           setCode(result.data().code)
-        }
+        }  
       })
-      if(activeCommunity){
-        if(((activeCommunity.duration - activeCommunity.transcurred) <= 10)){
-          setAlertTimer(true)
-        }
-      }
-  },[activeCommunity])
+      firestore
+      .collection('activeCommunities')
+      .doc(communityData.roomName)
+      .onSnapshot((doc) => {
+        setActiveCommunity(doc.data());
+    });
+  },[])
 
   const addHour = async () => {
-    await AddHour(firestore, contextFromApp.userFromDB.uid)
+    await AddHour(firestore, communityData.roomName)
   }
   
   return (
     <Wrapper>
-      {
-        (alertTimer) &&
-        <AlertWarning extendTime={()=>{
-          addHour()
-          setAlertTimer(false)
-        }} closeModal={()=>setAlertTimer(false)}/>
-      }
       <DisplayContainer inDesktop={inDesktop}>
         <SectionContainer>
-          {/* <SubtitleStyled as="h4">Personas <span>(0)</span></SubtitleStyled> */}
+          <SubtitleStyled as="h4">Personas <span>(4)</span></SubtitleStyled>
           <div>
-            {/*<UserConnect />
             <UserConnect />
             <UserConnect />
-            <UserConnect /> */}
+            <UserConnect />
+            <UserConnect />
           </div>
         </SectionContainer>
         <div>
@@ -73,20 +63,14 @@ const MainSettingsAdmin = ({ inDesktop }) => {
                 </InputContainer>
               </SectionContainer>
           }
-          {
-            communityData.privacy === "public" &&
-              <SectionContainer>
-                <SubtitleStyled as="h4">Configuraciones</SubtitleStyled>
-                <TimerDescripcion>
-                  <p>Tiempo de vida sobrante</p>
-                  <span>{activeCommunity? `Apróx. ${activeCommunity.duration - activeCommunity.transcurred} min.`: "Cargando"}</span>
-                </TimerDescripcion>
-                {(activeCommunity.duration - activeCommunity.transcurred) >= 120?
-                  <ButtonStyled secondary onClick={addHour} disabled>Extender 1 hora más</ButtonStyled> :
-                  <ButtonStyled secondary onClick={addHour}>Extender 1 hora más</ButtonStyled>
-                }
-              </SectionContainer>
-          }
+          <SectionContainer>
+            <SubtitleStyled as="h4">Configuraciones</SubtitleStyled>
+            <TimerDescripcion>
+              <p>Tiempo de vida sobrante</p>
+              <span>{activeCommunity? `Apróx.  ${activeCommunity.duration - activeCommunity.transcurred} min.`: "Cargando"}</span>
+            </TimerDescripcion>
+            <ButtonStyled secondary onClick={addHour}>Extender 1 hora más</ButtonStyled>
+          </SectionContainer>
         </div>
       </DisplayContainer>
     </Wrapper>
