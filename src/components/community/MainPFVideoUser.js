@@ -10,7 +10,7 @@ const MainPFVideoUser = () => {
   return (
     <VideoContainer>
       <SvgsContainer className="svgsContainer">
-        <FullSreenSVG className="fullScreenSvg" />
+        <FullSreenSVG className="fullScreenSvg"/>
         <CloseSVG />
       </SvgsContainer>
       <EmbedContainer hover>

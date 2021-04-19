@@ -2,9 +2,13 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const db = admin.firestore();
 exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").onCreate((snap) =>{
-  if (snap.data().type === "admin") {
-    const batch = db.batch();
-    const uid = snap.data().uid;
+  const data = snap.data()
+  const hashtagNumber = Math.floor(Math.random() * 99999)
+  const username = `${(data.name.firstName.split(" ")[0].concat(data.name.lastName.split(" ")[0])).toLowerCase()}#${hashtagNumber}`
+  const batch = db.batch();
+  const uid = data.uid;
+
+  if (data.type === "admin") {
     const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     let code = "";
     while (code.length < 12) {
@@ -21,15 +25,31 @@ exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").
     batch.set(
       db.collection("users").doc(uid),
       {
-        userCodesRef: db.doc(`userCodes/${code}`)
+        userCodesRef: db.doc(`userCodes/${code}`),
+        username,
       },
       {merge: true}
     );
+
     batch.commit()
     .then(console.log("Generado de código exitoso"))
     .catch(error => console.error("Error al generar código", error));
-  } else {
-    return false;
+  } else if(data.type === "user") {
+    batch.set(
+      db.collection("users").doc(uid),
+      {
+        username,
+      },
+      {merge: true}
+    );
+
+    batch.commit()
+    .then(console.log("usuario creado"))
+    .catch(error => console.error("Error al crar usuario", error));
+  }else{
+    return false
   }
+
+  
 });
 

@@ -11,7 +11,7 @@ import { AppContext } from '../../App'
 import { GetChatRoomMessages } from './algorithms/GetChatRoomMessages'
 
 const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, closeModal, isAdmin }) => {
-  const { userFromDB } = useContext(AppContext)
+  const { userFromDB, authState } = useContext(AppContext)
   const {data, status, error} = GetChatRoomMessages(communityData.roomName)
   const lastMsgRef = useRef()
   
@@ -28,7 +28,7 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, close
             Configuraciones
           </ButtonConfiguration>
           <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef}/>
-          <InputComments userFromDB={userFromDB} data={data} lastMsgRef={lastMsgRef} roomName={communityData.roomName}/>
+          <InputComments userFromDB={userFromDB} data={data} lastMsgRef={lastMsgRef} name={authState.displayName} roomName={communityData.roomName}/>
         </ContainerResponsive>
       </Wrapper>
       <ModalSettingsAdmin modalIsOpen={modalIsOpen} closeModal={closeModal} />

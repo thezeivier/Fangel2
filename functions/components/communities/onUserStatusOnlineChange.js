@@ -15,7 +15,7 @@ exports.onUserStatusOnlineChange = functions.database
                     if(!statusOnline.online) {
                         userRef.doc(statusOnline.uid)
                         .update({
-                            online: false, 
+                            online: false,
                             lastActive: Date.now()
                         }, {merge: true})
                     }

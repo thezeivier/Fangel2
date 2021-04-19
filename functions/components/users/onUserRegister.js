@@ -55,7 +55,8 @@ exports.onUserRegister = functions.auth.user().onCreate((user) => {
     const light = getColorLightMode()
     db.collection('users').doc(user.uid)
         .update({
-            colorsUser: { dark, light}}, 
+            colorsUser: { dark, light},
+        },
             {merge: true}
         )
     return true

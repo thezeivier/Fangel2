@@ -5,7 +5,7 @@ import Footer from './../../components/general/Footer'
 import { Link, Redirect, useHistory } from "react-router-dom"
 import { useForm } from 'react-hook-form'
 import { RegisterWithEmail, codeValidator } from './algorithms/RegisterWithEmail'
-import {usernameFValidator, emailFValidator, passwordFValidator, codeFValidator} from './objects/formValidators'
+import {firstNameFValidator, lastNameFValidator, emailFValidator, passwordFValidator, codeFValidator} from './objects/formValidators'
 import 'firebase/auth'
 import {useAuth, useFirestore, useFirebaseApp} from 'reactfire'
 import { Description, Contract } from './styles/sRegister'
@@ -62,12 +62,22 @@ const Register = () => {
                 <Form center onSubmit={handleSubmit(onSubmit)}>
                   <InputStyled 
                     type="text"
-                    placeholder="Usuario"
-                    name="username"
-                    ref={register(usernameFValidator)}
+                    placeholder="Nombres"
+                    name="firstName"
+                    ref={register(firstNameFValidator)}
                   />
                   <ErrorAlert>
-                    {errors.username? errors.username.message: ""}
+                    {errors.firstName? errors.firstName.message: ""}
+                  </ErrorAlert>
+                  
+                  <InputStyled 
+                    type="text"
+                    placeholder="Apellidos (opcional)"
+                    name="lastName"
+                    ref={register(lastNameFValidator)}
+                  />
+                  <ErrorAlert>
+                    {errors.lastName? errors.lastName.message: ""}
                   </ErrorAlert>
 
                   <InputStyled 

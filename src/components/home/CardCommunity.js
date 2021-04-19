@@ -6,11 +6,12 @@ import { CardContainer, UserContainer, ContainerTextTop, TextCommunity,
          Truncate, ButtonStyled, TransparentContainer } from './styles/sCardCommunity'
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import communityThumb from '../general/images/thumb_community_s1.svg'
+//Import algorithms
+import {ShowMore} from './algorithms/ShowMore'
 
 const CardCommunity = ({communityData}) => {
   const storage = useStorage()
   const [thumb, setThumb] = useState()//State for thumbnail.
-  const [enterCommunity, setEnterComunity] = useState(false)
   const [profileThumb, setProfileThumb] = useState(false)
 
   useEffect(()=>{
@@ -25,116 +26,49 @@ const CardCommunity = ({communityData}) => {
       })
     }
   }, [])
-
-  const ChangeCommunity = () =>{
-    setEnterComunity(true)
-  }
   
   const cardRef = useRef()
   const textRef = useRef()
   const buttonRef = useRef()
 
-  const ShowMore = () => {
-    if (cardRef.current) {
-      if (cardRef.current.clientHeight < 530) {
-        if (textRef.current.innerText.length > 65) {
-          textRef.current.classList.add('showMore')
-        }
-      } else if(cardRef.current.clientHeight < 547) {
-        if (textRef.current.innerText.length > 155) {
-          textRef.current.classList.add('showMore')
-        }
-      }
-    } 
-    if (textRef.current) {
-      if (textRef.current.innerText.length > 81) {
-        textRef.current.classList.add('showMore')
-      } else {
-        buttonRef.current.classList.add('buttonNotMargin')
-      }
-    }
-  }
-
-  ShowMore()
+  ShowMore(cardRef, textRef, buttonRef)
   /* CardCommunity v1.0 */
   return (
     <>
-      {
-        enterCommunity?
-        <Redirect to={`/room/${communityData.roomName}`}/>:
-        <li>
-          <CardContainer ref={cardRef}>
-            <ContainerTextTop>
-              <TextCommunity>Comunidad creada por:</TextCommunity>
-              <UserContainer>
-                <Link to={`/u/${communityData.username}`}>
-                  {
-                    profileThumb?
-                    <img src={profileThumb} className="profile" alt="Imagen de perfil"/>:
-                    <ProfileSVG />
-                  }
-                </Link>
-                <User as="h4">{communityData.username}</User>
-              </UserContainer>
-            </ContainerTextTop>
-            <ImageContainer>
-              <TransparentContainer />
-              <img src={thumb? thumb: communityThumb} alt="Imagen de referencia de la comunidad" />
-              <DescriptionContainer as="button" ref={buttonRef}>
-                <h3>{communityData.title}</h3>
-                <Truncate className="truncate">
-                  <TextDescription ref={textRef}>
-                    {communityData.description}
-                  </TextDescription>
-                </Truncate>
-              </DescriptionContainer>
-            </ImageContainer>
-            <ButtonStyled secondary onClick={ChangeCommunity}>Entrar</ButtonStyled>
-          </CardContainer>
-        </li>
-      }
+      <li>
+        <CardContainer ref={cardRef}>
+          <ContainerTextTop>
+            <TextCommunity>Comunidad creada por:</TextCommunity>
+            <UserContainer>
+              <Link to={`/u/${communityData.username}`}>
+                {
+                  profileThumb?
+                  <img src={profileThumb} className="profile" alt="Imagen de perfil"/>:
+                  <ProfileSVG />
+                }
+              </Link>
+              <User as="h4">{communityData.name? communityData.name: communityData.username }</User>
+            </UserContainer>
+          </ContainerTextTop>
+          <ImageContainer>
+            <TransparentContainer />
+            <img src={thumb? thumb: communityThumb} alt="Imagen de referencia de la comunidad" />
+            <DescriptionContainer as="button" ref={buttonRef}>
+              <h3>{communityData.title}</h3>
+              <Truncate className="truncate">
+                <TextDescription ref={textRef}>
+                  {communityData.description}
+                </TextDescription>
+              </Truncate>
+            </DescriptionContainer>
+          </ImageContainer>
+          <Link to={`/room/${communityData.roomName}`}>
+            <ButtonStyled secondary >Entrar</ButtonStyled>
+          </Link>
+        </CardContainer>
+      </li>
     </>
   );
 }
 
 export default CardCommunity;
-
-  /* CardCommunity v2.0 */
-/*   return (
-    <>
-      {
-        enterCommunity?
-        <Redirect to={`/room/${communityData.roomName}`}/>:
-        <li>
-          <CardContainer>
-            <ContainerTextTop>
-              <TextCommunity>Creado por:</TextCommunity>
-              <UserContainer>
-                <Link to={`/u/${communityData.username}`}>
-                  {
-                    profileThumb?
-                    <img src={profileThumb} className="profile" alt="Imagen de perfil"/>:
-                    <ProfileSVG />
-                  }
-                </Link>
-                <User as="h4">{communityData.username}</User>
-              </UserContainer>
-            </ContainerTextTop>
-            <ImageContainer>
-              <TransparentContainer />
-              <img src={thumb? thumb: communityThumb} alt="Imagen de referencia de la comunidad" />
-              <DescriptionContainer as="button">
-                <h3>{communityData.title}</h3>
-                <Truncate className="truncate">
-                  <TextDescription className="textCardCommunity">
-                    {communityData.description}
-                  </TextDescription>
-                </Truncate>
-              </DescriptionContainer>
-            </ImageContainer>
-            <ButtonStyled secondary onClick={ChangeCommunity}>Entrar</ButtonStyled>
-          </CardContainer>
-        </li>
-      }
-    </>
-  ); */
