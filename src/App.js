@@ -13,6 +13,7 @@ import Quiz from './pages/Quiz'
 import Home from './pages/Home'
 import CreateCommunityOne from './pages/CreateCommunityOne'
 import CreateCommunityTwo from './pages/CreateCommunityTwo'
+import PrivateChat from './pages/PrivateChat'
 import ReportAProblem from './pages/ReportAProblem'
 import Settings from './pages/Settings'
 import Profile from './pages/Profile'
@@ -108,6 +109,7 @@ function App() {
               <Route exact path={"/"} component={authState ? Home : Landing}/>
               <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/>
               <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/>
+              <Route exact path={"/inbox"} component={authState ? PrivateChat : Landing}/>
               <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
               <Route exact path={"/settings"} component={authState ? Settings : Landing}/>
               <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>

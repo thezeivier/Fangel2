@@ -7,6 +7,8 @@ import { Header, Container, IconsContainer } from './styles/sRegHeader'
 
 import { ReactComponent as ProfileSVG } from './icons/profile.svg'
 import { ReactComponent as SettingsSVG } from './icons/settings.svg'
+import { ReactComponent as ChatSVG } from './icons/chat.svg'
+import { ReactComponent as HomeSVG } from './icons/home.svg'
 
 const RegHeader = () => {
   const contextFromApp = useContext(AppContext)
@@ -17,7 +19,9 @@ const RegHeader = () => {
         <Container>
           <Logo />
           <IconsContainer>
-            {contextFromApp? (contextFromApp.authState? contextFromApp.authState.displayName:"Cargando..."):"Cargando..."}{/*Falta maquillar*/}
+            <div className="nameUserProfile">
+              {contextFromApp? (contextFromApp.authState? contextFromApp.authState.displayName:"Cargando..."):"Cargando..."}{/*Falta maquillar*/}
+            </div>
             <Link to={`/u/${userFromDB.username}`}>
               {
                 profileThumb?
@@ -25,8 +29,14 @@ const RegHeader = () => {
                 <ProfileSVG  className="profile" />
               }
             </Link>
+            <Link to={"/"}>
+              <HomeSVG  className="iconsRegHeader homeIconRegHeader" />
+            </Link>
+{/*             <Link to={"/inbox"}>
+              <ChatSVG  className="iconsRegHeader" />
+            </Link> */}
             <Link to={"/settings"}>
-              <SettingsSVG  className="settings" />
+              <SettingsSVG  className="iconsRegHeader" />
             </Link>
           </IconsContainer>
         </Container>

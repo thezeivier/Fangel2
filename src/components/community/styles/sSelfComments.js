@@ -34,4 +34,5 @@ export const UserName = styled.h6`
 export const CommentStyled = styled(Comment)`
   flex: 0 1 auto;
   background: ${props => props.color + '08'};
+  border-radius: 15px 15px 0 15px;
 `

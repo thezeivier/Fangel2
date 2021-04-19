@@ -24,9 +24,14 @@ export const Container = styled.div`
   }
 `
 
-export const IconsContainer = styled.div`
+export const IconsContainer = styled.nav`
   display: flex;
   align-items: center;
+
+  .nameUserProfile {
+    display: none;
+  }
+  
   a {
     svg {
       fill: ${props => props.theme.colorIcon};
@@ -40,19 +45,24 @@ export const IconsContainer = styled.div`
     }
 
     .profile {
-      margin: 0 10px 0 5px;
+      margin: 0 0 0 5px;
       width: 30px;
     }
 
     .profileImg {
-      margin: 0 10px 2px 5px;
+      margin: 0 0 2px 5px;
       width: 25px;
       height: 25px;
       object-fit: cover;
     }
 
-    .settings {
+    .iconsRegHeader {
       width: 27px;
+      margin: 0 0 0 15px;
+    }
+
+    .homeIconRegHeader {
+      display: none;
     }
   }
 
@@ -67,33 +77,48 @@ export const IconsContainer = styled.div`
   @media(min-width: 400px){
     a {
       .profile {
-        margin: 0 14px 0 5px;
+        margin: 0 0 0 5px;
         width: 35px;
       }
 
       .profileImg {
-        margin: 0 14px 2px 5px;
-        width: 29px;
-        height: 29px;
+        width: 27px;
+        height: 27px;
       }
 
-      .settings {
-        width: 32px;
+      .iconsRegHeader {
+        width: 30px;
+        margin: 0 0 0 17px;
       }
     }
   }
 
   @media(min-width: 768px){
+    .nameUserProfile {
+      display: block;
+    }
+
     a {
       .profile {
-        margin: 0 17px 0 8px;
+        margin: 0 0 0 8px;
         width: 36px;
       }
 
       .profileImg {
-        margin: 0 17px 5px 8px;
-        width: 31px;
-        height: 31px;
+        margin: 0 0 7px 8px;
+        width: 30px;
+        height: 30px;
+      }
+
+      .iconsRegHeader {
+        width: 32px;
+        margin: 0 0 0 18px;
+      }
+
+      .homeIconRegHeader {
+        display: block;
+        width: 30px;
+        margin-bottom: 4px;
       }
     }
   }
@@ -101,14 +126,22 @@ export const IconsContainer = styled.div`
   @media(min-width: 1024px){
     a {
       .profile {
-        margin: 0 19px 0 8px;
+        margin: 0 0 0 8px;
         width: 37px;
       }
 
       .profileImg {
-        margin: 0 19px 3px 8px;
+        margin: 0 0 3px 8px;
         width: 30px;
         height: 30px;
+      }
+
+      .iconsRegHeader {
+        margin: 0 0 0 20px;
+      }
+
+      .homeIconRegHeader {
+        margin-bottom: 4px;
       }
     }
   }

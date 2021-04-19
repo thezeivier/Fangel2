@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components'
 /* import VideoCall from './VideoCall' */
 import { EmbedContainer } from './styles/sEmbedVideo'
 import { VideoContainer, TitleStyled, SvgsContainer, Transparent } from './styles/sMainPFVideo'

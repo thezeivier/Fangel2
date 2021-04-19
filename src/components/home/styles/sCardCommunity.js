@@ -85,27 +85,27 @@ export const ImageContainer = styled.div`
     
     @media(min-width:410px) {
       width: 100%;
-      min-height: 360px;
+      height: 360px;
     }
 
     @media(min-width:768px) {
       width: 100%;
-      min-height: 370px;
+      height: 370px;
     }
 
     @media(min-width:1024px) {
       width: 100%;
-      min-height: 380px;
+      height: 380px;
     }
 
     @media(min-width:1200px) {
-      min-height: 400px;
+      height: 400px;
     }
   }
 `
 
 export const TransparentContainer = styled.div`
-  background: linear-gradient(180deg,rgb(16 16 17 / 6%) 0%,rgb(16 16 17 / 35%) 61.98%,#040404eb 100%);
+  background: linear-gradient(180deg,rgb(16 16 17 / 3%) 0%,rgb(16 16 17 / 28%) 61.98%,#040404eb 100%);
   width: 100%;
   height: 100%;
   position: absolute;
