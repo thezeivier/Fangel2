@@ -16,6 +16,7 @@ const MainCreateCOne = () => {
   const storage = useStorage()
   const userApp = useContext(AppContext)
   const [communityCreated, setCommunityCreated] = useState()
+  const [roomName, setRoomName] = useState()
   const [imageRecovered, setImageRecovered] = useState()
   const {register, handleSubmit, errors } = useForm()
   const [disable, setDisable] = useState(false);
@@ -23,7 +24,8 @@ const MainCreateCOne = () => {
   const onSubmit = async data => {
     setCommunityCreated("sending") 
     let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage)
-    setCommunityCreated(result)
+    setCommunityCreated(result.result)
+    setRoomName(result.hashName)
   }
   
   const recoverCommunityImage = (e) =>{
@@ -40,11 +42,11 @@ const MainCreateCOne = () => {
   return (
     <main>
       {
-        communityCreated.result === true?
+        communityCreated === true?
         <Redirect to={{
           pathname: "/create-community-2",
           state: { 
-            room: communityCreated.hashName
+            room: roomName
           },
         }}/>:(
           <>
