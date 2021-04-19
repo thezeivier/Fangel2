@@ -20,12 +20,13 @@ const MainCreateCOne = () => {
   const [imageRecovered, setImageRecovered] = useState()
   const {register, handleSubmit, errors } = useForm()
   const [disable, setDisable] = useState(false);
+  const [roomPrivacy, setRoomPrivacy] = useState("public")
 
   const onSubmit = async data => {
-    setCommunityCreated("sending") 
-    let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage)
+    setCommunityCreated("sending")
+    let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage, roomPrivacy)
+    setRoomName(result.hashName)//Este debe ir primero para que se pueda pasar el roomName, de lo contrario habrá error.
     setCommunityCreated(result.result)
-    setRoomName(result.hashName)
   }
   
   const recoverCommunityImage = (e) =>{
@@ -38,6 +39,15 @@ const MainCreateCOne = () => {
     })
     communityImage.value = null
   }
+
+  const checkPublic = (e) => {
+    setRoomPrivacy("public")
+  }
+
+  const checkPrivate = (e) =>{
+    setRoomPrivacy("private")
+  }
+
 
   return (
     <main>
@@ -58,17 +68,25 @@ const MainCreateCOne = () => {
               <TitleStyled bottom>Crear una comunidad</TitleStyled>
               <OnlyDesktop>
                 <form onSubmit={handleSubmit(onSubmit)}>
+                  <input type="radio" defaultChecked onClick={checkPublic} id="public" name="privacy" value="public" />
+                  <label htmlFor="public">Pública</label><br/>
+                  <input type="radio" onClick={checkPrivate} name="privacy" value="private"/>
+                  <label htmlFor="private">Privada</label><br/>
                   <InputStyled type="text" placeholder="Nombre de la comunidad" name="nameCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
                   <ErrorAlert>{errors.nameCommunity? errors.nameCommunity.message: ""}</ErrorAlert>
-                  <TextAreaStyled type="text" placeholder="Descripcion" name="descriptionCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
-                  <ErrorAlert>{errors.descriptionCommunity? errors.descriptionCommunity.message: ""}</ErrorAlert>
-                  <div>
-                    <input type="file" accept="image/*" style={{display: "none"}} id="communityImage"/>
-                    {(disable) ?
-                      <ButtonStyled onClick={recoverCommunityImage} secondary bottom30 disabled>Imagen cargada</ButtonStyled> :
-                      <ButtonStyled onClick={recoverCommunityImage} secondary bottom30>Subir imagen</ButtonStyled>
-                    }
-                  </div>
+                  {roomPrivacy === "public" && 
+                    <>
+                      <TextAreaStyled type="text" placeholder="Descripcion" name="descriptionCommunity" ref={register()}/>
+                      <ErrorAlert>{errors.descriptionCommunity? errors.descriptionCommunity.message: ""}</ErrorAlert>
+                      <div>
+                        <input type="file" accept="image/*" style={{display: "none"}} id="communityImage"/>
+                        {(disable) ?
+                          <ButtonStyled onClick={recoverCommunityImage} secondary bottom30 disabled>Imagen cargada</ButtonStyled> :
+                          <ButtonStyled onClick={recoverCommunityImage} secondary bottom30>Subir imagen</ButtonStyled>
+                        }
+                      </div>
+                    </>
+                  }
                   <TextBody>
                     Las comunidades tiene vida solo por 1 hora, esto significa que esta comunidad sera única y especial.
                   </TextBody>

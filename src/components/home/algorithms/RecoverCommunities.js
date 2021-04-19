@@ -1,6 +1,7 @@
 export const RecoverCommunities = async (firestore) => {
   return await firestore
   .collection("communities")
+  .where("privacy", "==", "public")
   .orderBy("numberOfUsersConnected", "desc")
   .limit(10)
   .get()

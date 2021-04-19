@@ -36,11 +36,12 @@ const MainCreateCTwo = () => {
       history.push("/")
     }
   },[])
+  console.log(location.state)
 
   return (
     end?
     <Redirect to={{
-      pathname: `/${location.state? location.state.room: ""}`
+      pathname: `/${location.state? 'room/' + location.state.room: ""}`
     }}/>:
     <main>
       <Wrapper>

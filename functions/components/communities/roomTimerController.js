@@ -19,9 +19,19 @@ exports.roomTimerController = functions.firestore.document("activeCommunities/{d
       if(transcurred < duration){
         let leftTime = duration - transcurred
         var addTime = 8
-        if(leftTime < 8){
+        if(0 < leftTime && leftTime < 8){
           time = leftTime * 60 * 1000
           addTime = Math.ceil(8 - leftTime)
+        }else if(leftTime <= 0){
+          await admin.storage().bucket(fileBucket).file(route).delete(); //Delete community thumb.
+          console.log("Thumbnail deleted");
+          await db.collection("activeCommunities").doc(uid).delete();//Delete acitveCommunity document from firestore.
+          console.log("activeCommunity deleted");
+          await db.collection("chatroom").doc(roomName).delete();
+          console.log("chatroom deleted");
+          await db.collection("communities").doc(uid).delete();//Delete community document from firestore.
+          console.log("Community deleted");
+          return false
         }
         setTimeout(()=>{
           batch.set(

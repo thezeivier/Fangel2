@@ -75,15 +75,16 @@ exports.imageModifier = functions.storage.object().onFinalize(async (object) => 
       {merge: true}
     )
   }else{
+    const roomName = fileName.replace(".jpeg", "")
     //Information from communities
     batch.set(
-      db.collection("communities").doc(uid),
+      db.collection("communities").doc(roomName),
       routAndBucket,
       {merge: true}
     )
     
     batch.set(
-      db.collection("activeCommunities").doc(uid),
+      db.collection("activeCommunities").doc(roomName),
       routAndBucket,
       {merge: true}
     )
