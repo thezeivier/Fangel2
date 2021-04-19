@@ -6,10 +6,11 @@ import {useFirestore, useStorage} from 'reactfire'
 import Wrapper from './../general/Wrapper'
 import LoadServSpinner from './../spinner/LoadServSpinner'
 import { TitleStyled, TextAreaStyled, ButtonStyled,
-         OnlyDesktop } from './../../themes/internalRecyclableStyles'
+         OnlyDesktop, SubtitleStyled } from './../../themes/internalRecyclableStyles'
 import { InputStyled, ErrorAlert } from './../../pages/signInAndUp/styles/sGlobalForm'
 import { TextBody } from './../../themes/externalRecyclableStyles'
-import {CreateCommunity} from './algorithms/CreateCommunity'
+import { FieldSet } from './styles/sMainCreateCommunity'
+import { CreateCommunity } from './algorithms/CreateCommunity'
 
 const MainCreateCOne = () => {
   const firestore = useFirestore()
@@ -68,10 +69,21 @@ const MainCreateCOne = () => {
               <TitleStyled bottom>Crear una comunidad</TitleStyled>
               <OnlyDesktop>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <input type="radio" defaultChecked onClick={checkPublic} id="public" name="privacy" value="public" />
-                  <label htmlFor="public">Pública</label><br/>
-                  <input type="radio" onClick={checkPrivate} name="privacy" value="private"/>
-                  <label htmlFor="private">Privada</label><br/>
+                  <div>
+                    <SubtitleStyled>Elige el tipo de comunidad</SubtitleStyled>
+                    <FieldSet>
+                      <label className="radiosContainerFlex__item">
+                        <input type="radio" defaultChecked onClick={checkPublic} id="public" name="privacy" value="public" />
+                        <span className="rCCheckmark"></span>
+                        Pública <span>(Visible para todos en el feed)</span>
+                      </label>
+                      <label className="radiosContainerFlex__item">
+                        <input type="radio" onClick={checkPrivate} name="privacy" value="private"/>
+                        <span className="rCCheckmark"></span>
+                        Privada <span>(No visible en el feed, solo se accede con un link)</span>
+                      </label>
+                    </FieldSet>
+                  </div>
                   <InputStyled type="text" placeholder="Nombre de la comunidad" name="nameCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
                   <ErrorAlert>{errors.nameCommunity? errors.nameCommunity.message: ""}</ErrorAlert>
                   {roomPrivacy === "public" && 

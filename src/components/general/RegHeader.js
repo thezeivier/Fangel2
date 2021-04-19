@@ -30,7 +30,7 @@ const RegHeader = () => {
               }
             </Link>
             <Link to={"/"}>
-              <HomeSVG  className="iconsRegHeader homeIconRegHeader" />
+              <HomeSVG  className="iconsRegHeader" />
             </Link>
             <Link to={"/inbox"}>
               <ChatSVG  className="iconsRegHeader" />

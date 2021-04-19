@@ -61,7 +61,7 @@ const MainCreateCTwo = () => {
             <TextStyled>
               Despues que las personas se registren con una invitacion, podrán entrar a otras comunidades.
             </TextStyled>
-            <ButtonStyled primary onClick={()=>{setEnd(true)}}>¡Ya acabé!</ButtonStyled>
+            <ButtonStyled primary onClick={()=>{setEnd(true)}}>Ir a mi comunidad</ButtonStyled>
         </OnlyDesktop>
       </Wrapper>
     </main>

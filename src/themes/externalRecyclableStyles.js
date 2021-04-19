@@ -119,11 +119,11 @@ export const TextBody = styled.p`
   cursor: default;
 
   @media(min-width:768px) {
-    font-size: 1.2em;
+    font-size: 1.17em;
   }
 
   @media(min-width:1200px) {
-    font-size: 1.15em;
+    font-size: 1.13em;
   }
 
   ${standarTextMixin}

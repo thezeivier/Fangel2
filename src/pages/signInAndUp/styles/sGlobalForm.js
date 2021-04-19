@@ -39,7 +39,7 @@ export const FormStyled = styled(Form) `
 `
 
 export const InputStyled = styled(Input) `
-  margin: 0 0 16px 0;
+  margin: 0 0 14px 0;
 
   ${props => props.invitationCode && css`
     font-weight: ${props => props.theme.weight.semiMedium};
