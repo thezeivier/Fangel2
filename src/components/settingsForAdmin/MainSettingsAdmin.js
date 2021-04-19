@@ -16,7 +16,7 @@ import {AddHour} from './algorithms/AddHour'
 const MainSettingsAdmin = ({ inDesktop }) => {
   const [hoverRef, isHovered] = useHover();
   const firestore = useFirestore()
-  const { activeCommunity }  = useContext(SwitchVideoContext)
+  const { activeCommunity, communityData }  = useContext(SwitchVideoContext)
   const [code, setCode] = useState(false);
   const [alertTimer, setAlertTimer] = useState(false)
 
@@ -71,17 +71,20 @@ const MainSettingsAdmin = ({ inDesktop }) => {
                 </InputContainer>
               </SectionContainer>
           }
-          <SectionContainer>
-            <SubtitleStyled as="h4">Configuraciones</SubtitleStyled>
-            <TimerDescripcion>
-              <p>Tiempo de vida sobrante</p>
-              <span>{activeCommunity? `Apróx. ${activeCommunity.duration - activeCommunity.transcurred} min.`: "Cargando"}</span>
-            </TimerDescripcion>
-            {(activeCommunity.duration - activeCommunity.transcurred) >= 120?
-              <ButtonStyled secondary onClick={addHour} disabled>Extender 1 hora más</ButtonStyled> :
-              <ButtonStyled secondary onClick={addHour}>Extender 1 hora más</ButtonStyled>
-            }
-          </SectionContainer>
+          {
+            communityData.privacy === "public" &&
+              <SectionContainer>
+                <SubtitleStyled as="h4">Configuraciones</SubtitleStyled>
+                <TimerDescripcion>
+                  <p>Tiempo de vida sobrante</p>
+                  <span>{activeCommunity? `Apróx. ${activeCommunity.duration - activeCommunity.transcurred} min.`: "Cargando"}</span>
+                </TimerDescripcion>
+                {(activeCommunity.duration - activeCommunity.transcurred) >= 120?
+                  <ButtonStyled secondary onClick={addHour} disabled>Extender 1 hora más</ButtonStyled> :
+                  <ButtonStyled secondary onClick={addHour}>Extender 1 hora más</ButtonStyled>
+                }
+              </SectionContainer>
+          }
         </div>
       </DisplayContainer>
     </Wrapper>

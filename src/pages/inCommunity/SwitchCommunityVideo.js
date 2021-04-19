@@ -40,6 +40,7 @@ const SwitchCommunityVideo = () => {
 
     const activeCommunityValue = {
         activeCommunity,
+        communityData
     }
     
     // Update to user offline

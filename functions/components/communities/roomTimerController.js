@@ -25,17 +25,17 @@ exports.roomTimerController = functions.firestore.document("activeCommunities/{d
         }else if(leftTime <= 0){
           await admin.storage().bucket(fileBucket).file(route).delete(); //Delete community thumb.
           console.log("Thumbnail deleted");
-          await db.collection("activeCommunities").doc(uid).delete();//Delete acitveCommunity document from firestore.
+          await db.collection("activeCommunities").doc(roomName).delete();//Delete acitveCommunity document from firestore.
           console.log("activeCommunity deleted");
           await db.collection("chatroom").doc(roomName).delete();
           console.log("chatroom deleted");
-          await db.collection("communities").doc(uid).delete();//Delete community document from firestore.
+          await db.collection("communities").doc(roomName).delete();//Delete community document from firestore.
           console.log("Community deleted");
           return false
         }
         setTimeout(()=>{
           batch.set(
-            db.collection("activeCommunities").doc(uid),
+            db.collection("activeCommunities").doc(roomName),
             {
               transcurred: transcurred + addTime
             },
@@ -47,11 +47,11 @@ exports.roomTimerController = functions.firestore.document("activeCommunities/{d
       }else{
         await admin.storage().bucket(fileBucket).file(route).delete(); //Delete community thumb.
         console.log("Thumbnail deleted");
-        await db.collection("activeCommunities").doc(uid).delete();//Delete acitveCommunity document from firestore.
+        await db.collection("activeCommunities").doc(roomName).delete();//Delete acitveCommunity document from firestore.
         console.log("activeCommunity deleted");
         await db.collection("chatroom").doc(roomName).delete();
         console.log("chatroom deleted");
-        await db.collection("communities").doc(uid).delete();//Delete community document from firestore.
+        await db.collection("communities").doc(roomName).delete();//Delete community document from firestore.
         console.log("Community deleted");
       }
     }else{

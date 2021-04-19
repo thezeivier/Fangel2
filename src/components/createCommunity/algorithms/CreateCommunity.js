@@ -41,7 +41,7 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
     batch.set(
       communitiesRef,
     {
-      title: nameCommunity,
+      title: `${nameCommunity} (Privado)`,
       roomName: hashName,
       privacy: roomPrivacy,
       creatorUid: uid,
