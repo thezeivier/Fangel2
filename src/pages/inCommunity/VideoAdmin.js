@@ -18,7 +18,6 @@ const VideoAdmin = ({communityData, isAdmin}) => {
   const closeModal = () => {
     setModalIsOpen(false)
   }
-
   return (
     <>
       {
@@ -29,7 +28,7 @@ const VideoAdmin = ({communityData, isAdmin}) => {
           <RegHeader /> {/* Solo para moviles */}
           <VideoHeader communityData={communityData} isSettings="none" closeModal={closeModal} modalIsOpen={modalIsOpen} />
           <MainVideoUser communityData={communityData} open={openMoldal} isAdmin={isAdmin}/>
-          <MainSettingsAdmin inDesktop="grid"/>
+          <MainSettingsAdmin communityData={communityData} inDesktop="grid"/>
           <Footer noMobile/>
         </ContainerForCommunity>
       }

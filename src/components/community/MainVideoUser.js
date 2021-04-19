@@ -8,11 +8,11 @@ import { ContainerResponsive, MainOnlyDesktop, ButtonConfiguration } from './sty
 import { ReactComponent as VideoSettingsSVG } from './../general/icons/videoSettings.svg'
 import { AppContext } from '../../App'
 
-import { GetChatRoomMessages } from './algorithms/GetChatRoomMessages'
+import { GetDataFromCollection } from './algorithms/GetDataFromCollection'
 
 const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, closeModal, isAdmin }) => {
   const { userFromDB, authState } = useContext(AppContext)
-  const {data, status, error} = GetChatRoomMessages(communityData.roomName)
+  const {data, status, error} = GetDataFromCollection(communityData.roomName, 'chatroom', 'messages')
   const lastMsgRef = useRef()
   
   if(status === "loading") return <p>Pending...</p>
@@ -31,7 +31,7 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, close
           <InputComments userFromDB={userFromDB} data={data} lastMsgRef={lastMsgRef} name={authState.displayName} roomName={communityData.roomName}/>
         </ContainerResponsive>
       </Wrapper>
-      <ModalSettingsAdmin modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <ModalSettingsAdmin communityData={communityData} modalIsOpen={modalIsOpen} closeModal={closeModal} />
     </MainOnlyDesktop>
   );
 }
