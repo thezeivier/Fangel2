@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {Redirect, useHistory} from 'react-router-dom'
+import {Redirect, useHistory, useLocation} from 'react-router-dom'
 import useHover from './../../hook/use-hover'
 import {AppContext} from '../../App'
 import Wrapper from './../general/Wrapper'
@@ -15,6 +15,7 @@ import { ReactComponent as CopySVG } from './icons/copy.svg'
 const MainCreateCTwo = () => {
   const [hoverRef, isHovered] = useHover();
   const history = useHistory()
+  const location = useLocation()
   const [end, setEnd] = useState(false)
 
   const contextFromApp = useContext(AppContext)
@@ -39,7 +40,7 @@ const MainCreateCTwo = () => {
   return (
     end?
     <Redirect to={{
-      pathname: "/"
+      pathname: `/${location.state? location.state.room: ""}`
     }}/>:
     <main>
       <Wrapper>

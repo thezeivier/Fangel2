@@ -96,7 +96,7 @@ function App() {
     <ThemeProvider theme={theme(mode)}>
       <Provider value={userValue}>
         <GlobalStyles />
-        {!verified?
+        {!verified.verified?
           <Redirect to={{
             pathname: "/email-sended",
             state: {

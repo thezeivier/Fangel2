@@ -62,7 +62,7 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
       console.error(error)
       return false
     })
-  return result
+  return {result, hashName}
 }
 
 const communityImageSender = async (communityImage, storage, uid) => {

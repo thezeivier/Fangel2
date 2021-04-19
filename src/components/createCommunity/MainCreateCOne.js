@@ -28,7 +28,6 @@ const MainCreateCOne = () => {
   
   const recoverCommunityImage = (e) =>{
     e.preventDefault()
-    const eventButton = e.target
     const communityImage = document.getElementById("communityImage")
     e = communityImage.click()
     communityImage.addEventListener('change', async e => {
@@ -38,14 +37,15 @@ const MainCreateCOne = () => {
     communityImage.value = null
   }
 
-  console.log(disable)
-
   return (
     <main>
       {
-        communityCreated === true?
+        communityCreated.result === true?
         <Redirect to={{
-          pathname: "/create-community-2"
+          pathname: "/create-community-2",
+          state: { 
+            room: communityCreated.hashName
+          },
         }}/>:(
           <>
             {
