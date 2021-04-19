@@ -29,8 +29,10 @@ const MainSettingsAdmin = ({ inDesktop }) => {
           setCode(result.data().code)
         }
       })
-      if(((activeCommunity.duration - activeCommunity.transcurred) <= 10)){
-        setAlertTimer(true)
+      if(activeCommunity){
+        if(((activeCommunity.duration - activeCommunity.transcurred) <= 10)){
+          setAlertTimer(true)
+        }
       }
   },[activeCommunity])
 
