@@ -32,9 +32,9 @@ const RegHeader = () => {
             <Link to={"/"}>
               <HomeSVG  className="iconsRegHeader homeIconRegHeader" />
             </Link>
-{/*             <Link to={"/inbox"}>
+            <Link to={"/inbox"}>
               <ChatSVG  className="iconsRegHeader" />
-            </Link> */}
+            </Link>
             <Link to={"/settings"}>
               <SettingsSVG  className="iconsRegHeader" />
             </Link>

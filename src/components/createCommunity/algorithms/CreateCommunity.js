@@ -34,7 +34,7 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
   batch.set(
     communitiesRef,
   {
-    username: userApp.authState.displayName,
+    username: userApp.userFromDB.username,
     name: displayName,
     title: nameCommunity,
     roomName: hashName,
