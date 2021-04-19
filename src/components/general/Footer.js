@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { FooterContainer, SupportLinksContainer, SmallTextStyled, Fangel,
          OnlyDesktop } from './styles/sFooter'
 
-const Footer = () => {
+const Footer = ({ mobile }) => {
   return (
-    <FooterContainer>
+    <FooterContainer mobile={mobile}>
       <Wrapper>
         <OnlyDesktop>
           <SupportLinksContainer>

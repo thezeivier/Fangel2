@@ -11,7 +11,26 @@ export const GridOnlyDesktop = styled.div`
 `
 
 export const ChatsContainer = styled.div`
-  border: 1px solid ${props => props.theme.colorLine};
+  @media(min-width:1200px) {
+    border: 1px solid ${props => props.theme.colorLine};
+  }
+`
+
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: baseline;
+
+  svg {
+    width: 34px;
+    fill: ${props => props.theme.textColor};
+    margin: 0 10px 0 0;
+  }
+
+  @media(min-width:1200px) {
+    svg {
+      display: none;
+    }
+  }
 `
 
 export const TitleStyled = styled(PrimaryTitle)`
@@ -23,6 +42,7 @@ export const TitleStyled = styled(PrimaryTitle)`
     margin: 0 0 10px 0;
     padding: 15px 20px;
     border-bottom: 1px solid ${props => props.theme.colorLine};
+    width: 100%;
   }
 `
 
