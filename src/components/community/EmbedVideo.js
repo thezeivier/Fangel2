@@ -11,7 +11,7 @@ import VideoCall from './VideoCall'
 
 const EmbedVideo = ({ communityData, isAdmin }) => {
   const userFromDB = useContext(AppContext)
-  const myDataUser = userFromDB.userFromDB
+  const {myDataUser, authState} = userFromDB
   
   return (
     <VideoContainer>
@@ -25,7 +25,7 @@ const EmbedVideo = ({ communityData, isAdmin }) => {
         </ButtonLeaveContainer>
       </TitleOnlyDesktopContainer>
       <EmbedContainer>
-        <VideoCall dataUser={myDataUser} communityData={communityData} isAdmin={isAdmin}/>
+        <VideoCall dataUser={myDataUser} authState={authState} communityData={communityData} isAdmin={isAdmin}/>
       </EmbedContainer>
 {/*       <CountContainer>
         <span>18</span>

@@ -5,10 +5,10 @@ exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").
   const data = snap.data()
   const hashtagNumber = Math.floor(Math.random() * 99999)
   const username = `${(data.name.firstName.split(" ")[0].concat(data.name.lastName.split(" ")[0])).toLowerCase()}#${hashtagNumber}`
+  const batch = db.batch();
+  const uid = data.uid;
 
   if (data.type === "admin") {
-    const batch = db.batch();
-    const uid = data.uid;
     const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     let code = "";
     while (code.length < 12) {

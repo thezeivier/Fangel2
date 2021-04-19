@@ -67,7 +67,7 @@ const config = {
   interfaceConfigOverwrite: { DISABLE_DOMINANT_SPEAKER_INDICATOR: true }, */
 };
 
-const VideoCall = ({dataUser, communityData, isAdmin}) => {
+const VideoCall = ({dataUser, authState, communityData, isAdmin}) => {
   const handleAPI = JitsiMeetAPI => {
     JitsiMeetAPI.executeCommand("toggleVideo");
     JitsiMeetAPI.executeCommand("toggleAudio");
@@ -82,7 +82,7 @@ const VideoCall = ({dataUser, communityData, isAdmin}) => {
         domain="meet.jit.si"
         onAPILoad={handleAPI}
         roomName={communityData.roomName}
-        displayName={dataUser.username}
+        displayName={authState.displayName}
         loadingComponent={VideoSpinner}
         interfaceConfig={isAdmin ? interfaceConfig : interfaceUserConf}
         config={config}
