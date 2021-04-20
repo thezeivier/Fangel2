@@ -38,10 +38,10 @@ const MainHome = () => {
         <CardsList>
         {
           contextFromApp.isAdmin && //If the user is an admin, activate the "AddCardContainer" button.
-          <AddCardContainer as={Link} to="/create-community-1" >
-            <AddCardSVG />
-            <span>Crear comunidad</span>
-          </AddCardContainer>  
+            <AddCardContainer as={Link} to="/create-community-1" >
+              <AddCardSVG />
+              <span>Crear comunidad</span>
+            </AddCardContainer>
         }
           <Suspense fallback={<p>Cargando...</p>}>
             {
@@ -53,7 +53,7 @@ const MainHome = () => {
 					</Suspense>
         </CardsList>
       </Wrapper>
-      <EndCercle />
+      <EndCercle/>
     </main>
   );
 }
