@@ -75,12 +75,12 @@ const MainCreateCOne = () => {
                       <label className="radiosContainerFlex__item">
                         <input type="radio" defaultChecked onClick={checkPublic} id="public" name="privacy" value="public" />
                         <span className="rCCheckmark"></span>
-                        Pública <span>(Visible para todos en el feed)</span>
+                        Pública <span className="spanRadiosDescription">(Visible para todos en el feed)</span>
                       </label>
                       <label className="radiosContainerFlex__item">
                         <input type="radio" onClick={checkPrivate} name="privacy" value="private"/>
                         <span className="rCCheckmark"></span>
-                        Privada <span>(No visible en el feed, solo se accede con un link)</span>
+                        Privada <span className="spanRadiosDescription">(No visible en el feed, solo se accede con un link)</span>
                       </label>
                     </FieldSet>
                   </div>
@@ -100,7 +100,8 @@ const MainCreateCOne = () => {
                     </>
                   }
                   <TextBody>
-                    Las comunidades tiene vida solo por 1 hora, esto significa que esta comunidad sera única y especial.
+                    Las comunidades públicas están activas por 1 hora, pero tambien puedes extenderlas por mas horas.
+                    El tiempo de las comunidades privadas es ilimitado o hasta que no quede ninguna personas dentro de ella.
                   </TextBody>
                   <ButtonStyled primary type="submit">Crear comunidad</ButtonStyled>
                 </form>

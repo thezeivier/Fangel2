@@ -3,8 +3,10 @@ import { TextBody } from './../../../themes/externalRecyclableStyles'
 
 export const Chat = styled.li`
   @media(min-width:1200px) {
+    cursor: pointer;
+
     &:hover {
-      background: rgba(39, 174, 96, 0.05);
+      background: ${props => props.theme.colorbrandSolid + '0d'};
     }
   }
 `
@@ -37,6 +39,7 @@ export const UserDescription = styled.div`
   h5 {
     font-size: 1.1em;
     margin: 0 0 3px 0;
+    font-weight: ${props => props.theme.weight.semiMedium};
   }
 
   span {
@@ -49,7 +52,6 @@ export const UserDescription = styled.div`
   @media(min-width:1200px) {
     h5 {
       font-size: 1.03em;
-      font-weight: ${props => props.theme.weight.semiMedium};
     }
 
     span {

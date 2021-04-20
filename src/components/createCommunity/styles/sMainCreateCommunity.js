@@ -61,14 +61,18 @@ export const FieldSet = styled.fieldset`
     
     .rCCheckmark {
       position: absolute;
-      top: -1px;
+      top: 1px;
       left: 4px;
       height: 1.2em;
       width: 1.2em;
-      background-color: #00000045;
+      background-color: ${props => props.theme.inputForm};
       border-radius: 50%;
       border: 1px solid ${props => props.theme.colorBrandTransparent};
       transition: all .25s;
+
+      @media(min-width:768px) {
+        top: 2px;
+      }
     }
 
     &:hover input ~ .rCCheckmark {
@@ -116,6 +120,12 @@ export const FieldSet = styled.fieldset`
 
     &:nth-child(1) {
       margin: 0 0 10px 0;
+    }
+
+    @media(min-width:768px) {
+      .spanRadiosDescription {
+        margin: 0 0 0 5px;
+      }
     }
   }
 `

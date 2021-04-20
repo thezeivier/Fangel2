@@ -96,6 +96,7 @@ export const IconsContainer = styled.nav`
 
     .nameUserProfile {
       display: block;
+      margin: 0 -12px 0 0;
     }
 
     a {

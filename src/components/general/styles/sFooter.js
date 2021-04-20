@@ -4,9 +4,14 @@ import { SmallText } from './../../../themes/externalRecyclableStyles'
 export const FooterContainer = styled.footer`
   padding: 80px 0 30px;
   flex: 0 0 auto;
+  display: ${props => props.mobile || 'block'};
 
   @media(min-width:1024px) {
     padding: 100px 0 25px;
+  }
+
+  @media(min-width:1200px) {
+    display: block;
   }
 `
 
