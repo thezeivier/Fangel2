@@ -14,7 +14,7 @@ export const useMatchRouteUserData = (collection, nameUserRoute) => {
     const unsubscribe = firestore.collection(collection).where("username", "==", nameUserRoute).onSnapshot(userInfo => {
         if(userInfo.empty) {
           console.error("No existen datos")
-          history.push("/404")
+          history.push("/register")
           return null 
         } else {
           const collectionData = userInfo.docs.map(doc => {
@@ -29,7 +29,7 @@ export const useMatchRouteUserData = (collection, nameUserRoute) => {
     }, err => {
       setError(true)
       console.error("Error", err.message)
-      history.push("/404")
+      history.push("/register")
     })
       
     return () => unsubscribe()

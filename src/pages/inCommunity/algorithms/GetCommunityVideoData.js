@@ -29,7 +29,7 @@ export const GetCommunityVideoData = (roomId) => {
     }, err => {
       setError(true)
       console.error("Error", err.message)
-      history.push("/404")
+      history.push("/register")
     })
       
     return () => unsubscribe()
