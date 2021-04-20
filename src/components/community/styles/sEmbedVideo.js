@@ -21,6 +21,7 @@ export const TitleOnlyDesktopContainer = styled.div`
       -webkit-box-orient: vertical;  
       overflow: hidden;
       text-transform: capitalize;
+      width: 85%;
     }
   }
 `
