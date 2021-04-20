@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import Wrapper from './../general/Wrapper'
 import ChatFriends from './ChatFriends'
+import MainIndividualChat from './MainIndividualChat'
 import { TitleStyled, GridOnlyDesktop, ChatsContainer, ChatList,
          TitleContainer } from './styles/sMainPrivateChat'
 import { ReactComponent as ArrowBackSVG } from './../general/icons/arrowBack.svg'
@@ -36,7 +37,9 @@ const MainPFVideoUser = () => {
               {getInbox.data.map(usr => <ChatFriends key={usr.idInbox} {...usr}/>)}
             </ChatList>
           </ChatsContainer>
-          <div></div>
+          <>
+            <MainIndividualChat inGridDesktop="block" />
+          </>
         </GridOnlyDesktop>
       </Wrapper>
     </main>

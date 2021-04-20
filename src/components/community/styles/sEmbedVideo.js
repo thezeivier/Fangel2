@@ -20,8 +20,7 @@ export const TitleOnlyDesktopContainer = styled.div`
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;  
       overflow: hidden;
-      text-transform: capitalize;
-      width: 85%;
+      width: 530px;
     }
   }
 `

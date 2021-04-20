@@ -42,7 +42,6 @@ export const TitleCommunityStyled = styled(SecondaryTitle)`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;  
   overflow: hidden;
-  text-transform: capitalize;
 `
 
 export const OnlyUsersContainer = styled.div`

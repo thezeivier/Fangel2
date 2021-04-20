@@ -35,14 +35,14 @@ const MainHome = () => {
       <Wrapper>
         <TitleStyled>Comunidades</TitleStyled>
         <TextStyled main>Conoce a personas con los mismos gustos y comparte ideas.</TextStyled>
-        <CardsList>
-          {
-            contextFromApp.isAdmin && //If the user is an admin, activate the "AddCardContainer" button.
-            <AddCardContainer as={Link} to="/create-community-1" >
-              <AddCardSVG />
-              <span>Crear comunidad</span>
-            </AddCardContainer>  
-          }
+        <CardsList isAdmin={contextFromApp.isAdmin}>
+        {
+          contextFromApp.isAdmin && //If the user is an admin, activate the "AddCardContainer" button.
+          <AddCardContainer as={Link} to="/create-community-1" >
+            <AddCardSVG />
+            <span>Crear comunidad</span>
+          </AddCardContainer>  
+        }
           <Suspense fallback={<p>Cargando...</p>}>
             {
               communities &&
