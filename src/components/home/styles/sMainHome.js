@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
 export const AddCardContainer = styled.li`
   background: ${props => props.theme.colorAddCard};
@@ -61,9 +61,14 @@ export const CardsList = styled.ul`
       margin: 0 !important;
     }
 
-    li:nth-child(2n + 1) {
-      margin: -240px 0 0 0;
+    ${({isAdmin}) => 
+      isAdmin &&
+      css`
+        li:nth-child(2n + 1) {
+        margin: -240px 0 0 0;
+      }`
     }
+
   }
 
   @media(min-width:1200px) {
@@ -75,8 +80,13 @@ export const CardsList = styled.ul`
       margin: 0;
     }
 
-    li:nth-child(3n + 1) {
-      margin: -260px 0 0 0;
+    ${({isAdmin}) => 
+      isAdmin &&
+      css`
+        li:nth-child(3n + 1) {
+         margin: -260px 0 0 0;
+        }
+      `
     }
   }
 `
