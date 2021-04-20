@@ -101,6 +101,8 @@ const MainCreateCOne = () => {
                   }
                   <TextBody>
                     Las comunidades públicas están activas por 1 hora, pero tambien puedes extenderlas por mas horas.
+                  </TextBody>
+                  <TextBody secondParagraph>
                     El tiempo de las comunidades privadas es ilimitado o hasta que no quede ninguna personas dentro de ella.
                   </TextBody>
                   <ButtonStyled primary type="submit">Crear comunidad</ButtonStyled>

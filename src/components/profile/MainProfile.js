@@ -107,6 +107,9 @@ const MainProfile = () => {
           (userFromDB.type === "admin" )&&
             (authState.uid === id)&&
             <CodeContainer>
+              <p>
+                Brinda este código a otras personas que quieran registrarse en fangel
+              </p>
               <Form>
                 <label>Código de invitación </label>
                 <InputStyled id="copyCode" special invitationCode type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
@@ -115,7 +118,7 @@ const MainProfile = () => {
                 </CommentSVGContainer>
               </Form>
             </CodeContainer>
-        }
+        } 
       </Wrapper> 
       <ReturnPage/> 
     </main>
