@@ -35,7 +35,7 @@ const MainHome = () => {
       <Wrapper>
         <TitleStyled>Comunidades</TitleStyled>
         <TextStyled main>Conoce a personas con los mismos gustos y comparte ideas.</TextStyled>
-        <CardsList>
+        <CardsList isAdmin={contextFromApp.isAdmin}>
         {
           contextFromApp.isAdmin && //If the user is an admin, activate the "AddCardContainer" button.
           <AddCardContainer as={Link} to="/create-community-1" >
