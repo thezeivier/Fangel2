@@ -1,6 +1,6 @@
 import React from 'react';
 import Wrapper from '../general/Wrapper'
-import { Link } from 'react-router-dom'
+import { Link, useRouteMatch } from 'react-router-dom'
 /* import OtherComments from './../community/OtherComments' */
 /* import SelfComments from './../community/SelfComments' */
 /* import InputComments from './../community/InputComments' */
@@ -10,7 +10,7 @@ import { ChatContainer, HeaderChat, MainChat, FooterChat,
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import { ReactComponent as ArrowBackSVG } from './../general/icons/arrowBack.svg'
 
-const MainIndividualChat = ({ inGridDesktop }) => {
+const MainIndividualChat = ({ inGridDesktop, getInbox, data}) => {
   return (
     <Section>
       <Wrapper height="100%">
@@ -18,10 +18,10 @@ const MainIndividualChat = ({ inGridDesktop }) => {
           <HeaderChat>
             <TitleContainerStyled>
               <ArrowBackSVG />
-              <UserChating as={Link}>
+              {/* <UserChating as={Link}>
                 <ProfileSVG />
                 <TitleStyled>Useryang</TitleStyled>
-              </UserChating>
+              </UserChating> */}
             </TitleContainerStyled>
           </HeaderChat>
           <MainChat>
