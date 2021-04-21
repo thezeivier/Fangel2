@@ -6,16 +6,35 @@ export const LogoBox = styled.div`
   color: ${props => props.theme.colorbrandSolid};
 
   svg {
-    height: 2em;
-    margin-right: 8px;
     fill: ${props => props.theme.colorbrandSolid};
+  }
+
+  .iconFangel {
+    height: 2em;
+    margin-right: 4px;
     width: auto;
   }
 
-  h3 {
-    font-family: ${props => props.theme.primaryFont};
-    font-weight: ${props => props.theme.weight.semiMedium};
-    font-size: 1.55em;
-    padding-top: 0.1em;
+  .fangelLetters {
+    height: 1.9em;
+    margin: 3px 0 0 0;
+  }
+
+  @media(min-width:768px) {
+    .iconFangel {
+      margin-right: 9px;
+    }
+  }
+
+  @media(min-width:1200px) {
+    .iconFangel {
+      height: 2.05em;
+      margin-right: 10px;
+    }
+
+    .fangelLetters {
+      height: 2.02em;
+      margin: 1px 0 0 0;
+    }
   }
 `

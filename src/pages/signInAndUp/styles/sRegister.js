@@ -46,3 +46,8 @@ export const Contract = styled.p`
     }
   }
 `
+
+export const InputPasswordContainer = styled.div`
+  width: -webkit-fill-available;
+  position: relative;
+`

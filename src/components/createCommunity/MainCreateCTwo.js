@@ -49,12 +49,12 @@ const MainCreateCTwo = () => {
         <OnlyDesktop>
           <SubtitleStyled>Código de invitación</SubtitleStyled>
           <TextStyled bottom20>
-            Puedes compartir este código con 20 personas para que puedan unirse a tu comunidad.
+            Comparte este código con 20 personas para que puedan registrarse en Fangel y unirse a tu comunidad.
           </TextStyled>
             <Form>
-              <InputStyled id="copyCode" special invitationCode type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
+              <InputStyled id="copyCode" special invitationCode widthComplete type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
               <CommentSVGContainer onClick={()=>CopyCode("copyCode")} ref={hoverRef}>
-                <CopySVG/>
+                <CopySVG className="copySVG"/>
                 {isHovered &&<CommentStyled>Copiar código</CommentStyled>}
               </CommentSVGContainer>
             </Form>

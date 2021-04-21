@@ -2,16 +2,20 @@ import React, { useState, useContext } from 'react';
 import {AppContext} from '../../App'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
+import ButtonViewPassword from './ButtonViewPassword'
 import { Link, Redirect, useHistory } from "react-router-dom"
 import { useForm } from 'react-hook-form'
 import { RegisterWithEmail, codeValidator } from './algorithms/RegisterWithEmail'
 import {firstNameFValidator, lastNameFValidator, emailFValidator, passwordFValidator, codeFValidator} from './objects/formValidators'
 import 'firebase/auth'
 import {useAuth, useFirestore, useFirebaseApp} from 'reactfire'
-import { Description, Contract } from './styles/sRegister'
+import { Description, Contract, InputPasswordContainer } from './styles/sRegister'
 import { SubtitleStyled, TextStyled, InputStyled,
-  ButtonStyled, ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
+        ButtonStyled, ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
 import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
+
+import { ReactComponent as ViewSVG } from './icons/view.svg'
+import { ReactComponent as ViewOffSVG } from './icons/viewOff.svg'
 
 const Register = () => {
   const contextFromApp = useContext(AppContext)
@@ -39,6 +43,22 @@ const Register = () => {
     setEmailRegistered(noRepeatEmail)
     codeValidated? setCodeBValiated(codeValidated.confirm): setCodeBValiated(codeValidated)
   }
+  
+  const [view, setView] = useState(false);
+  const password = document.getElementById('password')
+  
+  const ViewPassword = () => {
+    if (password) {
+      if(!view) {
+        password.setAttribute('type', 'text')
+        setView(true)
+      } else {
+        password.setAttribute('type', 'password')
+        setView(false)
+      }
+    }
+  }
+
 
   return (
     <>
@@ -90,13 +110,17 @@ const Register = () => {
                     {errors.email? errors.email.message: ""} 
                   </ErrorAlert>
 
-                  <InputStyled 
-                    type="password"
-                    placeholder="Contraseña"
-                    name="password"
-                    autocomplete="new-password"
-                    ref={register(passwordFValidator)} 
-                  />
+                  <InputPasswordContainer>
+                    <InputStyled
+                      id="password"
+                      type="password"
+                      placeholder="Contraseña"
+                      name="password"
+                      autocomplete="new-password"
+                      ref={register(passwordFValidator)} 
+                    />
+                    <ButtonViewPassword viewPassword={ViewPassword} view={view} />
+                  </InputPasswordContainer>
                   <ErrorAlert>
                     {errors.password? errors.password.message: ""}
                   </ErrorAlert>

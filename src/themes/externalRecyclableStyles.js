@@ -118,6 +118,10 @@ export const TextBody = styled.p`
   margin: ${props => props.margin};
   cursor: default;
 
+  ${props => props.secondParagraph && css`
+    margin: 10px 0 0 0;
+  `}
+
   @media(min-width:768px) {
     font-size: 1.17em;
   }
@@ -125,7 +129,7 @@ export const TextBody = styled.p`
   @media(min-width:1200px) {
     font-size: 1.13em;
   }
-
+  
   ${standarTextMixin}
 `
 
