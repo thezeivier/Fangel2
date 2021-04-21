@@ -40,7 +40,7 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
   return (
     <Wrapper>
       <DisplayContainer inDesktop={inDesktop}>
-        <SectionContainer>
+        {/* <SectionContainer>
           <SubtitleStyled as="h4">Personas <span>(4)</span></SubtitleStyled>
           <div>
             <UserConnect />
@@ -48,7 +48,7 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
             <UserConnect />
             <UserConnect />
           </div>
-        </SectionContainer>
+        </SectionContainer> */}
         <div>
           {
             code &&
