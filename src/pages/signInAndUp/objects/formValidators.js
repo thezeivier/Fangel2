@@ -6,7 +6,7 @@ export const firstNameFValidator = {
     message: "El nombre debe ser menor a 60 caracteres*",
   },
   pattern: {
-    value: /^[a-záéíóú '-]+$/i,
+    value: /^[a-záéíóúñ '-]+$/i,
     message: "Nombre inválido*"
   }
 }
@@ -18,7 +18,7 @@ export const lastNameFValidator = {
     message: "El apellido debe ser menor a 60 caracteres*",
   },
   pattern: {
-    value: /^[a-záéíóú '-]+$/i,
+    value: /^[a-záéíóúñ '-]+$/i,
     message: "Apellido inválido*"
   }
 }
@@ -27,7 +27,7 @@ export const emailFValidator = {
     required: true,
     max: 45,
     pattern: {
-      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,45}$/i,
+      value: /^[A-Z0-9._%+-]+@[A-Z0-9. -]+\.[A-Z ]{2,45}$/i,
       message: "Correo electrónico inválido*",
     }
 }
