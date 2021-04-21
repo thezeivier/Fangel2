@@ -49,4 +49,10 @@ export const TitleStyled = styled(PrimaryTitle)`
 export const ChatList = styled.ul`
   padding: 0;
   height: 62vh;
+  a {
+    color: inherit;
+    &:hover {
+      color: inherit;
+    }
+  }
 `

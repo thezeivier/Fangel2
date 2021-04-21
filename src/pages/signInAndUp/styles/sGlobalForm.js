@@ -54,6 +54,16 @@ export const InputStyled = styled(Input) `
       font-size: 1.35em;
     }
   `}
+
+  ${props => props.widthComplete && css`
+    width: -webkit-fill-available;
+
+    @media(min-width:1200px) {
+      .copySVG {
+        width: initial;
+      }
+    }
+  `}
 `
 
 export const ButtonStyled = styled(Button) `

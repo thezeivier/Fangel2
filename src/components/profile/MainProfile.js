@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useRouteMatch, useLocation } from 'react-router-dom'
+import { useRouteMatch, useLocation, useHistory } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import ReturnPage from './../general/ReturnPage'
 import UserTag from './UserTag'
-import {useStorage} from 'reactfire'
+import {useStorage, useFirestore} from 'reactfire'
 import { useMatchRouteUserData } from './algorithms/useMatchRouteUserData'
 import { AppContext } from '../../App'
-import { UserContainer, ListTags, AddPhotoContainer, CodeContainer } from './styles/sMainProfile'
+import { UserContainer, ListTags, AddPhotoContainer, CodeContainer, ButtonSendMessage } from './styles/sMainProfile'
 // import { colorGenerator } from './algorithms/colorGenerator'
 import {newProfilePhoto} from './algorithms/newProfilePhoto'
 import { getColorDarkMode, getColorLightMode} from '../community/algorithms/GetRandomColor'
@@ -18,16 +18,20 @@ import { ReactComponent as AddPhotoSVG } from './icons/addPhoto.svg'
 import { Form, CommentSVGContainer, InputStyled } from './styles/sMainProfile'
 import { ReactComponent as CopySVG } from '../createCommunity/icons/copy.svg'
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'
+import { createDocInbox } from './algorithms/createDocInbox'
 
 const MainProfile = () => {
   const storage = useStorage()
+  const firestore = useFirestore()
+  const history = useHistory()
   const [profileThumb, setProfileThumb] = useState()
+  const [code, setCode] = useState()
+  const [activeButton, setActiveButton] = useState(false)
   const {userFromDB, authState} = useContext(AppContext)
   const location = useLocation()
   const match = useRouteMatch("/u/:id")
   const nameUserRoute = match.params.id.concat(location.hash)
   const [userData, loading, error] = useMatchRouteUserData("users", nameUserRoute)
-  const [code, setCode] = useState()
 
   useEffect(()=>{
     if(userFromDB.type === "admin" && userFromDB.userCodesRef){
@@ -49,6 +53,7 @@ const MainProfile = () => {
 
   const {
     id, 
+    uid,
     preferences,
     username,
     name,
@@ -76,7 +81,7 @@ const MainProfile = () => {
   }
 
   const themeMode = localStorage.mode && localStorage.getItem("mode")
-
+  // console.log(authState.uid, uid)
   return (
     <main>
       <Wrapper>
@@ -93,6 +98,10 @@ const MainProfile = () => {
             </AddPhotoContainer>
           }
           <input type="file" accept="image/*" style={{display: "none"}} id="profileImage"/>
+          {
+            !isMyUser &&
+            <ButtonSendMessage secondary onClick={() => createDocInbox(authState.uid, uid, firestore, setActiveButton, history)} disabled={activeButton}>Enviar mensaje</ButtonSendMessage>
+          }
           <h4>{name? `${name.firstName} ${name.lastName}`: username}</h4>
         </UserContainer>
         <ListTags>
@@ -107,6 +116,9 @@ const MainProfile = () => {
           (userFromDB.type === "admin" )&&
             (authState.uid === id)&&
             <CodeContainer>
+              <p>
+                Brinda este código a otras personas que quieran registrarse en fangel
+              </p>
               <Form>
                 <label>Código de invitación </label>
                 <InputStyled id="copyCode" special invitationCode type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
@@ -115,7 +127,7 @@ const MainProfile = () => {
                 </CommentSVGContainer>
               </Form>
             </CodeContainer>
-        }
+        } 
       </Wrapper> 
       <ReturnPage/> 
     </main>

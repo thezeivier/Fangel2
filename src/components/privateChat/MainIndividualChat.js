@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Wrapper from '../general/Wrapper'
 import { Link, useRouteMatch } from 'react-router-dom'
-/* import OtherComments from './../community/OtherComments' */
-/* import SelfComments from './../community/SelfComments' */
-/* import InputComments from './../community/InputComments' */
+import OtherComments from './../community/OtherComments'
+import SelfComments from './../community/SelfComments'
+import InputComments from './../community/InputComments'
 import { ChatContainer, HeaderChat, MainChat, FooterChat,
          TitleStyled, UserChating, TitleContainerStyled, Section } from './styles/sMainIndividualChat'
 
+import firebase from 'firebase/app'
+
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import { ReactComponent as ArrowBackSVG } from './../general/icons/arrowBack.svg'
+import { GetDataFromUsers } from './algorithms/GetDataFromUsers'
+import { ChatMessage } from '../community/ChatMessage'
+import CommentsBox from '../community/CommentsBox'
 
-const MainIndividualChat = ({ inGridDesktop, getInbox, data}) => {
+const MainIndividualChat = ({ inGridDesktop, message, idTransmitter, idReceiver, idInbox, userFromDB, authState}) => {
+  const lastMsgRef = useRef(null)
+  const {data, status, error} = GetDataFromUsers('users', idTransmitter, idReceiver, userFromDB.uid)
+  const messageRef = firebase.firestore().collection('inbox').doc(idInbox).collection('messagesInbox')
+  
+  if(status === "loading") return <p>Pending...</p>
+  if(error) return <p>Error</p>
+  
+  const transmitterData = data[0]
   return (
     <Section>
       <Wrapper height="100%">
@@ -18,20 +31,17 @@ const MainIndividualChat = ({ inGridDesktop, getInbox, data}) => {
           <HeaderChat>
             <TitleContainerStyled>
               <ArrowBackSVG />
-              {/* <UserChating as={Link}>
+              <UserChating as={Link} to={`/u/${transmitterData.username}`}>
                 <ProfileSVG />
-                <TitleStyled>Useryang</TitleStyled>
-              </UserChating> */}
+                <TitleStyled>{`${transmitterData.name.firstName}${transmitterData.name.lastName}`}</TitleStyled>
+              </UserChating>
             </TitleContainerStyled>
           </HeaderChat>
           <MainChat>
-            {/* <OtherComments /> */}
-            {/* <SelfComments /> */}
-            main
+            <CommentsBox data={message} userFromDB={userFromDB} lastMsgRef={lastMsgRef}/>
           </MainChat>
           <FooterChat>
-            {/* <InputComments /> */}
-            Input
+            <InputComments lastMsgRef={lastMsgRef} messageRef={messageRef} userFromDB={userFromDB} data={message} name={authState.displayName}/>
           </FooterChat>
         </ChatContainer>
       </Wrapper>

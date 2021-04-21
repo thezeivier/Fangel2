@@ -28,6 +28,16 @@ export const Form = styled.form`
 
 export const CommentSVGContainer = styled.div`
   position: relative;
+
+  .copySVG {
+    display: none;
+  }
+
+  @media(min-width:1200px) {
+    .copySVG {
+      display: block;
+    }
+  }
 `
 
 export const CommentStyled = styled(Comment)`

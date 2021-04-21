@@ -26,7 +26,7 @@ const SettingsAdmin = ({ closeModal, communityData }) => {
         (isAdmin && 
         <ContainerForCommunity> {/* Sin margenes en moviles y tablets ni footer ni regHeader,
           wrapper sin paddign en moviles y tablet*/}
-          <VideoHeader displayNoAdmin="none" closeModalSA={closeModal} />
+          <VideoHeader displayNoAdmin="none" closeModalSA={closeModal} communityData={communityData} />
           <MainSettingsAdmin />
         </ContainerForCommunity>
         )

@@ -93,10 +93,24 @@ export const ButtonStyled = styled(Button)`
   }
 `
 
+export const ButtonSendMessage = styled(Button)`
+  margin: 10px auto 20px;
+  width: max-content;
+  padding: 10px 30px;
+`
+
 export const CodeContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin: 40px 0 50px 0;
+
+  p {
+    margin: 0 0 20px 0;
+    text-align: center;
+    line-height: 1.7em;
+  }
 
   @media(min-width:768px) {
     margin: 40px 0 0 0;

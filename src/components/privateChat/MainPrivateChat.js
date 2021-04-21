@@ -8,11 +8,12 @@ import { TitleStyled, GridOnlyDesktop, ChatsContainer, ChatList,
 import { ReactComponent as ArrowBackSVG } from './../general/icons/arrowBack.svg'
 import {GetDataFromMessagesInbox} from './algorithms/GetDataFromMessagesInbox'
 
-const MainPFVideoUser = ({getInboxDoc, getRouteInbox}) => {
+const MainPFVideoUser = ({getInboxDoc, getRouteInbox, userFromDB, authState}) => {
   const {data, status, error} = getRouteInbox && GetDataFromMessagesInbox(getRouteInbox, 'inbox', 'messagesInbox')
+  
   if(status === "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>
-  console.log(data)
+
   return (
     <main>
       <Wrapper>
@@ -24,14 +25,18 @@ const MainPFVideoUser = ({getInboxDoc, getRouteInbox}) => {
             </TitleContainer>
             <ChatList>
               {getInboxDoc.data.map(usr => 
-                <Link key={usr.idInbox} to={`/inbox/${usr.idInbox}`}>
-                  <ChatFriends key={usr.idInbox} {...usr}/>
+                <Link key={usr.idInbox} to={`/inbox/t/${usr.idInbox}`}>
+                  <ChatFriends key={usr.idInbox} {...usr} uidCurrentUser={userFromDB.uid}/>
                 </Link>
               )}
             </ChatList>
           </ChatsContainer>
           <>
-            <MainIndividualChat data={data} inGridDesktop="block" />
+            {/* {!getRouteInbox && <p>Tus Mensajes</p> } */}
+            {getInboxDoc.data.map(usr => (
+              getRouteInbox == usr.idInbox &&
+              <MainIndividualChat key={usr.idInbox} message={data} {...usr} userFromDB={userFromDB} authState={authState} inGridDesktop="block" />
+            ))}
           </>
         </GridOnlyDesktop>
       </Wrapper>
