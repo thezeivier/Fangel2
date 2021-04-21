@@ -43,7 +43,7 @@ const MainIndividualChat = ({ inGridDesktop, message, idTransmitter, idReceiver,
               <UserChating as={Link} to={`/u/${transmitterData.username}`}>
                 {/* {profileThumb ? <img src={profileThumb} alt="Imagen de perfil" /> : <ProfileSVG /> } */} {/* Añadirle estilos */}
                 <ProfileSVG />
-                <TitleStyled>{`${transmitterData.name.firstName}${transmitterData.name.lastName}`}</TitleStyled>
+                <TitleStyled>{transmitterData.name && `${transmitterData.name.firstName}${transmitterData.name.lastName}`}</TitleStyled>
               </UserChating>
             </TitleContainerStyled>
           </HeaderChat>
