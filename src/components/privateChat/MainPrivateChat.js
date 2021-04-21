@@ -32,7 +32,7 @@ const MainPFVideoUser = ({getInboxDoc, getRouteInbox, userFromDB, authState}) =>
             </ChatList>
           </ChatsContainer>
           <>
-            {/* {!getRouteInbox && <p>Tus Mensajes</p> } */}
+            {/* {!getRouteInbox && <p>Tus Mensajes</p>}*/} {/* Vista inicial del inbox */}  
             {getInboxDoc.data.map(usr => (
               getRouteInbox == usr.idInbox &&
               <MainIndividualChat key={usr.idInbox} message={data} {...usr} userFromDB={userFromDB} authState={authState} inGridDesktop="block" />

@@ -19,7 +19,6 @@ export const createDocInbox = async (idTransmitter, idReceiver, firestore, setAc
         //     idReceiver,
         //     idTransmitter,
         // }
-        console.log("myIdid", idTransmitter)
         const listOfInboxDocNormal =  await firestore.collection('inbox').where("idReceiver","==",idReceiver).where("idTransmitter","==", idTransmitter).get()
         const listOfInboxDocReverse =  await firestore.collection('inbox').where("idReceiver","==",idTransmitter).where("idTransmitter","==", idReceiver).get()
         const resultNormal = listOfInboxDocNormal.docs.map(doc => doc.id)
