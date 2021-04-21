@@ -42,15 +42,16 @@ export const codeValidator = async (code, firestore) => {
 
 
 export const RegisterWithEmail = async (data, auth, type, firestore, firebase) => {
-  const {firstName, lastName, password, email} = data 
+  const {firstName, lastName, password, email} = data
+  const emailRepaired = email.replace(" ", "") 
   let value = await auth
-  .createUserWithEmailAndPassword(email, password)
+  .createUserWithEmailAndPassword(emailRepaired, password)
   .then(async result => {
     result.user.updateProfile({
       displayName: `${firstName.split(" ")[0]}${(lastName.length !== 0) ? " ".concat(lastName.split(" ")[0]): ""}`
     })
 
-    const finalConfirmation = await sendDataUser(data, result.user.uid, type, firestore, firebase)
+    const finalConfirmation = await sendDataUser(data, result.user.uid, type, firestore, firebase, emailRepaired)
 
     result.user
     .sendEmailVerification()
@@ -69,8 +70,8 @@ export const RegisterWithEmail = async (data, auth, type, firestore, firebase) =
 }
 
 
-export const sendDataUser = async (data, uid, type, firestore, firebase) => {
-  const {firstName, lastName, email, code} = data
+export const sendDataUser = async (data, uid, type, firestore, firebase, email) => {
+  const {firstName, lastName, code} = data
   let batch = firestore.batch()
 
   firestore
