@@ -1,6 +1,6 @@
 import 'firebase/database'
 
-export const OnDisconnectUser = (uid, database, firestore, idRoomRoute, idRoom) => {
+export const OnDisconnectUser = (uid, database, firestore) => {
   const onlineRef = database.ref('.info/connected')
     onlineRef.on('value', snap => {
       database

@@ -15,12 +15,12 @@ const {Provider, Consumer} = SwitchVideoContext
 
 const SwitchCommunityVideo = () => {
     const firestore = useFirestore()
+    const database = useDatabase()
     const { userFromDB }  = useContext(AppContext)
     const [activeCommunity, setActiveCommunity] = useState(false)
     const match = useRouteMatch("/room/:idRoom")
     const idRoomRoute = match.params.idRoom
     const [data, status, error] = GetCommunityVideoData(idRoomRoute)
-    const database = useDatabase()
     const activeCommunityRef = firestore.collection('activeCommunities')
 
     useEffect(async ()=>{
@@ -42,9 +42,6 @@ const SwitchCommunityVideo = () => {
         activeCommunity,
         communityData
     }
-    
-    // Update to user offline
-    OnDisconnectUser(userFromDB.uid, database, firestore, idRoomRoute, communityData.roomName)
 
     return (
         <>
