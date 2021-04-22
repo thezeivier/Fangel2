@@ -22,7 +22,7 @@ export const CommentsContainer = styled.section`
   }
 
   @media(min-width:1200px) {
-    height: 350px;
+    height: ${props => props.heightBox || '350px'};
     position: relative;
     z-index: 50;
     padding: 0 10px;

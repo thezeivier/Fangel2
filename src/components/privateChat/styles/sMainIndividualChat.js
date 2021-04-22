@@ -28,6 +28,8 @@ export const ChatContainer = styled.div`
     display: ${props => props.inGridDesktop || 'none'};
     border: 1px solid ${props => props.theme.colorLine};
     border-left: none;
+    display: flex;
+    flex-direction: column;
   }
 `
 
@@ -46,6 +48,7 @@ export const HeaderChat = styled.div`
     align-items: center;
     height: 70px;
     padding: 0;
+    flex: 0 0 auto;
   }
 `
 
@@ -113,6 +116,7 @@ export const MainChat = styled.div`
 
   @media(min-width:1200px) {
     margin: 15px 20px;
+    flex: 1 0 auto;
   }
 `
 

@@ -45,7 +45,7 @@ const MainIndividualChat = ({ inGridDesktop, message, idTransmitter, idReceiver,
             </TitleContainerStyled>
           </HeaderChat>
           <MainChat>
-            <CommentsBox data={message} userFromDB={userFromDB} lastMsgRef={lastMsgRef}/>
+            <CommentsBox data={message} userFromDB={userFromDB} lastMsgRef={lastMsgRef} heightBox="100%"/>
           </MainChat>
           <FooterChat>
             <InputComments lastMsgRef={lastMsgRef} messageRef={messageRef} userFromDB={userFromDB} data={message} name={authState.displayName}/>
