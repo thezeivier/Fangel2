@@ -1,10 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {AppContext} from '../../App'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import ButtonViewPassword from './ButtonViewPassword'
 import { Link, Redirect, useHistory } from "react-router-dom"
 import { useForm } from 'react-hook-form'
+import { useStateIfMounted } from 'use-state-if-mounted'
 import { RegisterWithEmail, codeValidator } from './algorithms/RegisterWithEmail'
 import {firstNameFValidator, lastNameFValidator, emailFValidator, passwordFValidator, codeFValidator} from './objects/formValidators'
 import 'firebase/auth'
@@ -13,9 +14,7 @@ import { Description, Contract, InputPasswordContainer } from './styles/sRegiste
 import { SubtitleStyled, TextStyled, InputStyled,
         ButtonStyled, ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
 import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
-
-import { ReactComponent as ViewSVG } from './icons/view.svg'
-import { ReactComponent as ViewOffSVG } from './icons/viewOff.svg'
+import MainSpinner from '../../components/spinner/MainSpinner'
 
 const Register = () => {
   const contextFromApp = useContext(AppContext)
@@ -24,9 +23,11 @@ const Register = () => {
   const firestore = useFirestore()
   const firebase = useFirebaseApp()
   const { register, handleSubmit, errors } = useForm()
-  const [emailRegistered, setEmailRegistered] = useState(null)
-  const [codeBValidated, setCodeBValiated] = useState(null)
-  const [dataRegister, setDataRegister] = useState(null)
+  const [dataRegister, setDataRegister] = useStateIfMounted(null)
+  const [emailRegistered, setEmailRegistered] = useStateIfMounted(null)
+  const [codeBValidated, setCodeBValiated] = useStateIfMounted(null)
+  const [loading, setLoading] = useState(false)
+  const [view, setView] = useState(false);
 
   if(contextFromApp.authState){
     if(!dataRegister){
@@ -34,20 +35,24 @@ const Register = () => {
     }
   }
 
+  useEffect(()=>{
+
+  },[])
+
   const onSubmit = async data => {
     setDataRegister(data)
+    setLoading(true)
     let codeValidated = await codeValidator(data.code, firestore)
-    if(codeValidated.confirm){
-      var noRepeatEmail = await RegisterWithEmail(data, auth, codeValidated.type, firestore, firebase)
-    }
-    setEmailRegistered(noRepeatEmail)
     codeValidated? setCodeBValiated(codeValidated.confirm): setCodeBValiated(codeValidated)
+    if(codeValidated.confirm){
+      let noRepeatEmail = await RegisterWithEmail(data, auth, codeValidated.type, firestore, firebase)
+      setEmailRegistered(noRepeatEmail)
+    }
+    setLoading(false)
   }
   
-  const [view, setView] = useState(false);
-  const password = document.getElementById('password')
-  
   const ViewPassword = () => {
+    const password = document.getElementById('password')
     if (password) {
       if(!view) {
         password.setAttribute('type', 'text')
@@ -59,11 +64,17 @@ const Register = () => {
     }
   }
 
+  if(loading){
+    return <MainSpinner/>
+  }
+
+  console.log(emailRegistered)
+  console.log(codeBValidated)
 
   return (
     <>
       {emailRegistered && codeBValidated ?
-        <Redirect to={{
+        <Redirect push to={{
           pathname: "/email-sended",
           state: { 
             email: dataRegister.email,
@@ -119,7 +130,7 @@ const Register = () => {
                       autocomplete="new-password"
                       ref={register(passwordFValidator)} 
                     />
-                    <ButtonViewPassword viewPassword={ViewPassword} view={view} />
+                    {/* <ButtonViewPassword viewPassword={ViewPassword} view={view} /> */}
                   </InputPasswordContainer>
                   <ErrorAlert>
                     {errors.password? errors.password.message: ""}

@@ -14,6 +14,7 @@ const EmailSended = () => {
   })
 
   useEffect(()=>{
+    console.log("useEffect", location)
     if(location.state){
       switch(location.state.origin){
         case "register":
@@ -35,6 +36,8 @@ const EmailSended = () => {
       setSelectedText(null)
     }
   },[location])
+
+  console.log("outLocation", location)
   
   return(
     !location.state?
