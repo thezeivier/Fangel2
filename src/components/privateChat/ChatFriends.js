@@ -25,13 +25,12 @@ const ChatFriends = ({idTransmitter, idReceiver, uidCurrentUser}) => {
     <Chat>
       <ChatContainer>
         <ProfileContainer>
-          {/* {profileThumb ? <img src={profileThumb} alt="Imagen de perfil" /> : <ProfileSVG /> } */} {/* Añadirle estilos */}
-          <ProfileSVG />
+          {profileThumb ? <img src={profileThumb} alt="Imagen de perfil" /> : <ProfileSVG /> }
         </ProfileContainer>
         <UserDescription>
-          <h5>{`${name.firstName}${name.lastName}`}</h5>
+          <h5>{`${name.firstName} ${name.lastName}`}</h5>
           <TextContainer>
-            <TextStyled>{isOnline}</TextStyled>
+            <TextStyled isOnline={online}>{isOnline}</TextStyled>
             {/* <span>1h</span> */} {/* En espera a definir el formato */}
           </TextContainer>
         </UserDescription>

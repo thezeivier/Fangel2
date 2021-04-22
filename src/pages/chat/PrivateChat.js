@@ -2,7 +2,6 @@ import React, {useContext} from 'react';
 import { useRouteMatch, useParams } from 'react-router-dom'
 import MainPrivateChat from '../../components/privateChat/MainPrivateChat'
 import Header from '../../components/general/RegHeader'
-import Footer from '../../components/general/Footer'
 import { Container } from '../../components/general/InternalLayout'
 
 import { GetDataFromInbox } from '../../components/privateChat/algorithms/GetDataFromInbox'
@@ -22,7 +21,6 @@ const PrivateChat = () => {
     <Container>
       <Header />
       <MainPrivateChat getInboxDoc={getInboxDoc} getRouteInbox={getRouteInbox} userFromDB={userFromDB} authState={authState}/>
-      <Footer mobile="none"/>
     </Container>
   );
 }

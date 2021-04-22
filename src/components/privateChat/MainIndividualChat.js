@@ -15,6 +15,7 @@ import { ReactComponent as ArrowBackSVG } from './../general/icons/arrowBack.svg
 import { GetDataFromUsers } from './algorithms/GetDataFromUsers'
 import { ChatMessage } from '../community/ChatMessage'
 import CommentsBox from '../community/CommentsBox'
+import MainSpinner from './../spinner/MainSpinner'
 
 const MainIndividualChat = ({ inGridDesktop, message, idTransmitter, idReceiver, idInbox, userFromDB, authState}) => {
   const storage = useStorage()
@@ -23,7 +24,7 @@ const MainIndividualChat = ({ inGridDesktop, message, idTransmitter, idReceiver,
   const {data, status, error} = GetDataFromUsers('users', idTransmitter, idReceiver, userFromDB.uid)
   const messageRef = firebase.firestore().collection('inbox').doc(idInbox).collection('messagesInbox')
   
-  if(status === "loading") return <p>Pending...</p>
+  if(status === "loading") return <MainSpinner />
   if(error) return <p>Error</p>
   
   const transmitterData = data[0]
@@ -41,9 +42,8 @@ const MainIndividualChat = ({ inGridDesktop, message, idTransmitter, idReceiver,
             <TitleContainerStyled>
               <ArrowBackSVG />
               <UserChating as={Link} to={`/u/${transmitterData.username}`}>
-                {/* {profileThumb ? <img src={profileThumb} alt="Imagen de perfil" /> : <ProfileSVG /> } */} {/* Añadirle estilos */}
-                <ProfileSVG />
-                <TitleStyled>{`${transmitterData.name.firstName}${transmitterData.name.lastName}`}</TitleStyled>
+                {profileThumb ? <img src={profileThumb} alt="Imagen de perfil" /> : <ProfileSVG /> }
+                <TitleStyled>{`${transmitterData.name.firstName} ${transmitterData.name.lastName}`}</TitleStyled>
               </UserChating>
             </TitleContainerStyled>
           </HeaderChat>

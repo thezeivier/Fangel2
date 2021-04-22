@@ -6,7 +6,7 @@ import UserTag from './UserTag'
 import {useStorage, useFirestore} from 'reactfire'
 import { useMatchRouteUserData } from './algorithms/useMatchRouteUserData'
 import { AppContext } from '../../App'
-import { UserContainer, ListTags, AddPhotoContainer, CodeContainer, ButtonSendMessage } from './styles/sMainProfile'
+import { UserContainer, ListTags, ButtonAccion, CodeContainer } from './styles/sMainProfile'
 // import { colorGenerator } from './algorithms/colorGenerator'
 import {newProfilePhoto} from './algorithms/newProfilePhoto'
 import { getColorDarkMode, getColorLightMode} from '../community/algorithms/GetRandomColor'
@@ -19,6 +19,8 @@ import { Form, CommentSVGContainer, InputStyled } from './styles/sMainProfile'
 import { ReactComponent as CopySVG } from '../createCommunity/icons/copy.svg'
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'
 import { createDocInbox } from './algorithms/createDocInbox'
+
+import MainSpinner from './../spinner/MainSpinner'
 
 const MainProfile = () => {
   const storage = useStorage()
@@ -45,7 +47,7 @@ const MainProfile = () => {
     }
   },[])
 
-  if(loading) return <p>Pending..</p> // Aquí va un loader
+  if(loading) return <MainSpinner />
     
   if(error) {
     return false // Mostrar mensaje de error o redirección
@@ -92,15 +94,17 @@ const MainProfile = () => {
             <ProfileSVG />
           }
           {isMyUser &&
-            <AddPhotoContainer onClick={changeProfileImage}>
+            <ButtonAccion onClick={changeProfileImage}>
               <AddPhotoSVG />
               <span>Cambiar foto</span>
-            </AddPhotoContainer>
+            </ButtonAccion>
           }
           <input type="file" accept="image/*" style={{display: "none"}} id="profileImage"/>
           {
             !isMyUser &&
-            <ButtonSendMessage secondary onClick={() => createDocInbox(authState.uid, uid, firestore, setActiveButton, history)} disabled={activeButton}>Enviar mensaje</ButtonSendMessage>
+            <ButtonAccion onClick={() => createDocInbox(authState.uid, uid, firestore, setActiveButton, history)} disabled={activeButton}>
+              <span>Enviar mensaje</span>
+            </ButtonAccion>
           }
           <h4>{name? `${name.firstName} ${name.lastName}`: username}</h4>
         </UserContainer>

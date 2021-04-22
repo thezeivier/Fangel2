@@ -29,6 +29,13 @@ export const ProfileContainer = styled.div`
     width: auto;
     height: 50px;
     fill: ${props => props.theme.textColor};
+        margin: 0 0 0 -2px;
+  }
+
+  img {
+    width: 47px;
+    height: 47px;
+    border-radius: 50%;
   }
 `
 
@@ -40,6 +47,11 @@ export const UserDescription = styled.div`
     font-size: 1.1em;
     margin: 0 0 3px 0;
     font-weight: ${props => props.theme.weight.semiMedium};
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    width: 100%;
   }
 
   span {
@@ -66,6 +78,7 @@ export const TextStyled = styled(TextBody)`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;  
   overflow: hidden;
+  color: ${props => props.isOnline ? `${props.theme.colorSuccess}` : `${props.theme.colorAlert}`};
 
   @media(min-width:1200px) {
     font-size: .9em;
