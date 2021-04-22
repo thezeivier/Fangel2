@@ -33,6 +33,7 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
       .onSnapshot((doc) => {
         setActiveCommunity(doc.data());
     });
+    
     if(activeCommunity){
       if(activeCommunity.duration - activeCommunity.transcurred <= 10){
         setAlertTimer(true)

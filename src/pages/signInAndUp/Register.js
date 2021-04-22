@@ -39,7 +39,7 @@ const Register = () => {
 
   },[auth, firestore, firebase])
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     setDataRegister(data)
     setLoading(true)
     let codeValidated = await codeValidator(data.code, firestore)

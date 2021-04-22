@@ -40,7 +40,6 @@ function App() {
   const [userFromDB, setUserFromDB] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
   const [profileThumb, setProfileThumb] = useState(false)
-  const [verified, setVerified] = useState({verified: true, email: ""})
   
   useEffect(()=>{
     if(localStorage.mode){
@@ -66,8 +65,6 @@ function App() {
             }
             !dataUser.quizComplete && history.push("/quiz")
           }
-        }else{
-          setVerified({verified: false, email: user.email})
         }
       }
       setLoading(false)
@@ -96,20 +93,14 @@ function App() {
   if(loading) return <Spinner />
 
   // Update to user offline or Online
-  // OnDisconnectUser(userFromDB.uid, database, firestore)
+  if(userFromDB) {
+    OnDisconnectUser(userFromDB.uid, database, firestore)
+  }
   
   return (
     <ThemeProvider theme={theme(mode)}>
       <Provider value={userValue}>
         <GlobalStyles />
-        {!verified.verified?
-          <Redirect to={{
-            pathname: "/email-sended",
-            state: {
-              email: verified.email,
-              origin: "register"
-            }
-          }}/>:
           <Container>
             <Switch>
               <Route exact path={"/"} component={authState ? Home : Landing}/>
@@ -129,7 +120,6 @@ function App() {
               <Redirect from="*" to="/404"/>
             </Switch>
           </Container>
-        }
       </Provider>
     </ThemeProvider>
   );

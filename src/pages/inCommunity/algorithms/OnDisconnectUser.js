@@ -8,15 +8,15 @@ export const OnDisconnectUser = (uid, database, firestore) => {
       .onDisconnect()
       .update({online: false})
       .then(() => {
-        // console.info("User disconnected") 
-        // firestore.collection("users").doc(uid)
-        // .update({online: true})
-        // .then(() => {
-        //   return true
-        // })
-        // .catch(error => {
-        //   console.error(error)
-        // })
+        // console.info("User Connected") 
+        firestore.collection("users").doc(uid)
+        .update({online: true})
+        .then(() => {
+          return true
+        })
+        .catch(error => {
+          console.error(error)
+        })
         database.ref(`/users/${uid}`).set({online: true, uid})
       })
       .catch(err => {
