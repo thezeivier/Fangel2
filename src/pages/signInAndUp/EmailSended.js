@@ -36,8 +36,6 @@ const EmailSended = () => {
       setSelectedText(null)
     }
   },[location])
-
-  console.log("outLocation", location)
   
   return(
     !location.state?

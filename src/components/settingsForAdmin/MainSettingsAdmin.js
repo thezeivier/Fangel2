@@ -3,6 +3,7 @@ import {AppContext} from '../../App'
 import {useFirestore} from 'reactfire'
 import useHover from './../../hook/use-hover'
 import Wrapper from './../general/Wrapper'
+import AlertWarning from '../general/AlertWarning'
 import UserConnect from './UserConnect'
 import { SubtitleStyled, InputStyled, InputContainer, SectionContainer,
          TimerDescripcion, ButtonStyled, DisplayContainer, Comment } from './styles/sMainSettings'
@@ -15,6 +16,7 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
   const [hoverRef, isHovered] = useHover();
   const firestore = useFirestore()
   const [code, setCode] = useState(false);
+  const [alertTimer, setAlertTimer] = useState(false)
   const [activeCommunity, setActiveCommunity] = useState()
   const contextFromApp = useContext(AppContext)
   useEffect(()=> {
@@ -31,7 +33,12 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
       .onSnapshot((doc) => {
         setActiveCommunity(doc.data());
     });
-  },[])
+    if(activeCommunity){
+      if(activeCommunity.duration - activeCommunity.transcurred <= 10){
+        setAlertTimer(true)
+      }
+    }
+  },[activeCommunity])
 
   const addHour = async () => {
     await AddHour(firestore, communityData.roomName)
@@ -39,6 +46,13 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
   
   return (
     <Wrapper>
+      {
+        (alertTimer) &&
+        <AlertWarning extendTime={()=>{
+          addHour(firestore, communityData.roomName)
+          setAlertTimer(false)
+        }} closeModal={()=>setAlertTimer(false)}/>
+      }
       <DisplayContainer inDesktop={inDesktop}>
         {/* <SectionContainer>
           <SubtitleStyled as="h4">Personas <span>(4)</span></SubtitleStyled>
@@ -62,15 +76,21 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
                   </button>
                 </InputContainer>
               </SectionContainer>
+          }{
+            communityData.privacy === "public" &&
+              <SectionContainer>
+                <SubtitleStyled as="h4">Configuraciones</SubtitleStyled>
+                <TimerDescripcion>
+                  <p>Tiempo de vida sobrante</p>
+                  <span>{activeCommunity? `Apróx. ${activeCommunity.duration - activeCommunity.transcurred} min.`: "Cargando"}</span>
+                </TimerDescripcion>
+                {activeCommunity &&
+                  ((activeCommunity.duration - activeCommunity.transcurred) >= 120?
+                  <ButtonStyled secondary onClick={addHour} disabled>Extender 1 hora más</ButtonStyled> :
+                  <ButtonStyled secondary onClick={addHour}>Extender 1 hora más</ButtonStyled>)
+                }
+              </SectionContainer>
           }
-          <SectionContainer>
-            <SubtitleStyled as="h4">Configuraciones</SubtitleStyled>
-            <TimerDescripcion>
-              <p>Tiempo de vida sobrante</p>
-              <span>{activeCommunity? `Apróx.  ${activeCommunity.duration - activeCommunity.transcurred} min.`: "Cargando"}</span>
-            </TimerDescripcion>
-            <ButtonStyled secondary onClick={addHour}>Extender 1 hora más</ButtonStyled>
-          </SectionContainer>
         </div>
       </DisplayContainer>
     </Wrapper>
