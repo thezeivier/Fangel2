@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import Wrapper from './../general/Wrapper'
 import EmbedVideo from './EmbedVideo'
 import CommentsBox from './CommentsBox'
@@ -15,6 +15,12 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, close
   const { userFromDB, authState } = useContext(AppContext)
   const {data, status, error} = GetDataFromCollection(communityData.roomName, 'chatroom', 'messages')
   const messageRef = firebase.firestore().collection('chatroom').doc(communityData.roomName).collection('messages')
+
+  useEffect(()=>{
+    return ()=>{
+      lastMsgRef.current = false;
+    }
+  },[])
   
   if(status === "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>

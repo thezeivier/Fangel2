@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {useStorage} from 'reactfire'
 import { CardContainer, UserContainer, ContainerTextTop, TextCommunity,
          User, ImageContainer, DescriptionContainer, TextDescription,
@@ -13,6 +13,9 @@ const CardCommunity = ({communityData}) => {
   const storage = useStorage()
   const [thumb, setThumb] = useState()//State for thumbnail.
   const [profileThumb, setProfileThumb] = useState(false)
+  const cardRef = useRef()
+  const textRef = useRef()
+  const buttonRef = useRef()
 
   useEffect(()=>{
     const gsReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.route}`)
@@ -25,11 +28,14 @@ const CardCommunity = ({communityData}) => {
         setProfileThumb(url)
       })
     }
+    return ()=>{
+      return ()=>{
+        cardRef.current = false;
+        textRef.current = false;
+        buttonRef.current = false;
+      }
+    }
   }, [])
-  
-  const cardRef = useRef()
-  const textRef = useRef()
-  const buttonRef = useRef()
 
   ShowMore(cardRef, textRef, buttonRef)
   /* CardCommunity v1.0 */

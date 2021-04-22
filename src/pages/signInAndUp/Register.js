@@ -130,7 +130,7 @@ const Register = () => {
                       autocomplete="new-password"
                       ref={register(passwordFValidator)} 
                     />
-                    {/* <ButtonViewPassword viewPassword={ViewPassword} view={view} /> */}
+                    <ButtonViewPassword viewPassword={ViewPassword} view={view} />
                   </InputPasswordContainer>
                   <ErrorAlert>
                     {errors.password? errors.password.message: ""}

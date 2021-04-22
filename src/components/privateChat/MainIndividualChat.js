@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Wrapper from '../general/Wrapper'
 import { Link, useRouteMatch } from 'react-router-dom'
 import InputComments from './../community/InputComments'
@@ -20,6 +20,12 @@ const MainIndividualChat = ({ inGridDesktop, message, idTransmitter, idReceiver,
   const lastMsgRef = useRef(null)
   const {data, status, error} = GetDataFromUsers('users', idTransmitter, idReceiver, userFromDB.uid)
   const messageRef = firebase.firestore().collection('inbox').doc(idInbox).collection('messagesInbox')
+
+  useEffect(()=>{
+    return ()=>{
+      lastMsgRef.current = false;
+    }
+  },[])
   
   if(status === "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>
