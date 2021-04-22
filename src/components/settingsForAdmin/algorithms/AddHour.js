@@ -1,6 +1,6 @@
-export const AddHour = async (firestore, uid) => {
+export const AddHour = async (firestore, roomName) => {
     let batch = firestore.batch()
-    let activeCommunitiesRef = firestore.collection("activeCommunities").doc(uid)
+    let activeCommunitiesRef = firestore.collection("activeCommunities").doc(roomName)
     let result = await activeCommunitiesRef.get()
     .then(result =>{
         return result.data()

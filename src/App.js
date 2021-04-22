@@ -59,7 +59,7 @@ function App() {
               setIsAdmin(true)
               if(dataUser.bucket && dataUser.route){
                 const profileImageReference = storage.refFromURL(`gs://${dataUser.bucket}/${dataUser.route}`)
-                profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
+                profileImageReference.getDownloadURL().then(url => {//Recover thumbnail of profile from storage.
                   setProfileThumb(url)
                 })
               }
