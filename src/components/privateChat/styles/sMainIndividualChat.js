@@ -30,6 +30,7 @@ export const ChatContainer = styled.div`
     border-left: none;
     display: flex;
     flex-direction: column;
+    height: 510px;
   }
 `
 

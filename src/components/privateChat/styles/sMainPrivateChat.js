@@ -59,6 +59,7 @@ export const ChatList = styled.ul`
 
   @media(min-width:1200px) {
     overflow: auto;
+    height: 400px;
 
     &::-webkit-scrollbar {
       -webkit-appearance: none;
