@@ -72,7 +72,7 @@ function App() {
       }
       setLoading(false)
     });
-  },[])
+  },[firestore, auth, storage, history])
 
 
   const changeTheme = () =>{

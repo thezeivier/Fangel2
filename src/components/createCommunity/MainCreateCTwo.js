@@ -35,8 +35,8 @@ const MainCreateCTwo = () => {
     }else{
       history.push("/")
     }
-  },[])
-  console.log(location.state)
+  },[history, contextFromApp])
+  // console.log(location.state)
 
   return (
     end?
