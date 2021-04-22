@@ -34,6 +34,7 @@ const ReturnPage = () => {
   const returnToBack = () =>{
     window.history.back()
   }
+  
   return (
     <LinkContainer onClick={returnToBack}>
       <ArrowLeftSVG />

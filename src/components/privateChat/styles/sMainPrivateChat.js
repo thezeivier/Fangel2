@@ -49,4 +49,67 @@ export const TitleStyled = styled(PrimaryTitle)`
 export const ChatList = styled.ul`
   padding: 0;
   height: 62vh;
+
+  a {
+    color: inherit;
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  @media(min-width:1200px) {
+    overflow: auto;
+    height: 400px;
+
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+
+    &::-webkit-scrollbar:vertical {
+      width:3px;
+      background: ${props => props.theme.colorScrollCommentBar};
+    }
+
+    &::-webkit-scrollbar-button:increment,
+    &::-webkit-scrollbar-button {
+      display: none;
+    } 
+
+    &::-webkit-scrollbar:horizontal {
+      height: 3px;
+      background: ${props => props.theme.colorScrollCommentBar};
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: ${props => props.theme.colorBar};
+      border-radius:10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 3px;  
+    }
+  }
+`
+
+export const OthersContainer = styled.div`
+  display: none;
+
+  @media(min-width:1200px) {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    svg {
+      width: 350px;
+      height: auto;
+      fill: ${props => props.theme.colorbrandSolid};
+    }
+
+    p {
+      margin: 20px 0 0 0;
+      font-size: .95em;
+    }
+  }
 `

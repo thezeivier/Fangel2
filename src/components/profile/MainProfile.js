@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useRouteMatch, useLocation } from 'react-router-dom'
+import { useRouteMatch, useLocation, useHistory } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import ReturnPage from './../general/ReturnPage'
 import UserTag from './UserTag'
-import {useStorage} from 'reactfire'
+import {useStorage, useFirestore} from 'reactfire'
 import { useMatchRouteUserData } from './algorithms/useMatchRouteUserData'
 import { AppContext } from '../../App'
-import { UserContainer, ListTags, AddPhotoContainer, CodeContainer } from './styles/sMainProfile'
+import { UserContainer, ListTags, ButtonAccion, CodeContainer } from './styles/sMainProfile'
 // import { colorGenerator } from './algorithms/colorGenerator'
 import {newProfilePhoto} from './algorithms/newProfilePhoto'
 import { getColorDarkMode, getColorLightMode} from '../community/algorithms/GetRandomColor'
@@ -18,16 +18,20 @@ import { ReactComponent as AddPhotoSVG } from './icons/addPhoto.svg'
 import { Form, CommentSVGContainer, InputStyled } from './styles/sMainProfile'
 import { ReactComponent as CopySVG } from '../createCommunity/icons/copy.svg'
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'
+import { createDocInbox } from './algorithms/createDocInbox'
 
 const MainProfile = () => {
   const storage = useStorage()
+  const firestore = useFirestore()
+  const history = useHistory()
   const [profileThumb, setProfileThumb] = useState()
+  const [code, setCode] = useState()
+  const [activeButton, setActiveButton] = useState(false)
   const {userFromDB, authState} = useContext(AppContext)
   const location = useLocation()
   const match = useRouteMatch("/u/:id")
   const nameUserRoute = match.params.id.concat(location.hash)
   const [userData, loading, error] = useMatchRouteUserData("users", nameUserRoute)
-  const [code, setCode] = useState()
 
   useEffect(()=>{
     if(userFromDB.type === "admin" && userFromDB.userCodesRef){
@@ -41,7 +45,7 @@ const MainProfile = () => {
     }
   },[])
 
-  if(loading) return <p>Pending..</p> // Aquí va un loader
+  if(loading) return <p>Pending...</p>
     
   if(error) {
     return false // Mostrar mensaje de error o redirección
@@ -49,6 +53,7 @@ const MainProfile = () => {
 
   const {
     id, 
+    uid,
     preferences,
     username,
     name,
@@ -76,7 +81,7 @@ const MainProfile = () => {
   }
 
   const themeMode = localStorage.mode && localStorage.getItem("mode")
-
+  // console.log(authState.uid, uid)
   return (
     <main>
       <Wrapper>
@@ -87,12 +92,18 @@ const MainProfile = () => {
             <ProfileSVG />
           }
           {isMyUser &&
-            <AddPhotoContainer onClick={changeProfileImage}>
+            <ButtonAccion onClick={changeProfileImage}>
               <AddPhotoSVG />
               <span>Cambiar foto</span>
-            </AddPhotoContainer>
+            </ButtonAccion>
           }
           <input type="file" accept="image/*" style={{display: "none"}} id="profileImage"/>
+          {
+            !isMyUser &&
+            <ButtonAccion onClick={() => createDocInbox(authState.uid, uid, firestore, setActiveButton, history)} disabled={activeButton}>
+              <span>Enviar mensaje</span>
+            </ButtonAccion>
+          }
           <h4>{name? `${name.firstName} ${name.lastName}`: username}</h4>
         </UserContainer>
         <ListTags>

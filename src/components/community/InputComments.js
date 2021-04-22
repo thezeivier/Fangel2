@@ -6,9 +6,8 @@ import { InputStyled, InputContainer, SvgsContainer, Form, Button } from './styl
 
 import firebase from 'firebase/app'
 
-const InputComments = ({userFromDB, lastMsgRef, roomName, data, name}) => {
+const InputComments = ({userFromDB, lastMsgRef, data, name, messageRef}) => {
   const [formValue, setFormValue] = useState('')
-  const messageRef = firebase.firestore().collection('chatroom').doc(roomName).collection('messages')
   
   // Send new message
   const sendMessage = async (e) => {
@@ -23,8 +22,6 @@ const InputComments = ({userFromDB, lastMsgRef, roomName, data, name}) => {
       colorMessage: userFromDB.colorsUser,
       name
     })
-    // Scroll into last message
-    // lastMsgRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'end' })  
   }
 
   // Scroll into last message

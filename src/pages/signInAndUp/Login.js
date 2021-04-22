@@ -85,7 +85,7 @@ const Login = () => {
                 </ErrorAlert>
                                     
                 <LinkRecoveryPasssword>
-                  <Link to={"/recover-password"}>¿Olvidate tu contraseña?</Link>
+                  <Link to={"/recover-password"}>¿Olvidaste tu contraseña?</Link>
                 </LinkRecoveryPasssword>
                 <ButtonStyled primary type="submit">Iniciar sesión</ButtonStyled>
                 <LinkOtherPage>

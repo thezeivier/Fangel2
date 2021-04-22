@@ -3,6 +3,9 @@ import { Button, Input, svgMixin  } from './../../../themes/externalRecyclableSt
 
 export const UserContainer = styled.div`
   margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media(min-width:1024px) {
     margin: 0 0 30px 0;
@@ -18,6 +21,7 @@ export const UserContainer = styled.div`
 
   svg {
     height: 80px;
+    width: 80px;
     fill: ${props => props.theme.colorIcon};
   }
 
@@ -28,7 +32,7 @@ export const UserContainer = styled.div`
   }
 `
 
-export const AddPhotoContainer = styled(Button)`
+export const ButtonAccion = styled(Button)`
   padding: 10px 15px;
   width: initial;
   background: ${props => props.theme.inputForm};
@@ -44,6 +48,8 @@ export const AddPhotoContainer = styled(Button)`
   svg {
     fill: ${props => props.theme.colorIcon};
     margin: 0 10px 0 0;
+    width: 21px;
+    height: 21px;
   }
 
   &:active,

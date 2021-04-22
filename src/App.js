@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Switch, Route, Redirect, useHistory} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import {useAuth, useFirestore, useStorage} from 'reactfire'
+import {useAuth, useFirestore, useStorage, useDatabase} from 'reactfire'
 import { RecoverUser} from './algorithmsToApp/RecoverUser'
 import GlobalStyles from './themes/GlobalStyles'
 import theme from './themes/Theme'
@@ -14,7 +14,7 @@ import Home from './pages/Home'
 import CreateCommunityOne from './pages/CreateCommunityOne'
 import CreateCommunityTwo from './pages/CreateCommunityTwo'
 import PrivateChat from './pages/chat/PrivateChat'
-import InvidualChat from './pages/chat/InvidualChat'
+// import InvidualChat from './pages/chat/InvidualChat'
 import ReportAProblem from './pages/ReportAProblem'
 import Settings from './pages/Settings'
 import Profile from './pages/Profile'
@@ -23,6 +23,7 @@ import {SwitchCommunityVideo} from './pages/inCommunity/SwitchCommunityVideo'
 //List of routers and loading
 import ListOfRoutes from './pages/objects/ListOfRoutes' 
 import Spinner from './components/spinner/MainSpinner'
+import { OnDisconnectUser } from './pages/inCommunity/algorithms/OnDisconnectUser'
 
 const AppContext =  React.createContext()
 const {Provider, Consumer} = AppContext
@@ -32,6 +33,7 @@ function App() {
   const firestore = useFirestore()
   const storage = useStorage()
   const history = useHistory()
+  const database = useDatabase()
   const [loading, setLoading] = useState(true)
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
@@ -93,6 +95,9 @@ function App() {
 
   if(loading) return <Spinner />
 
+  // Update to user offline or Online
+  OnDisconnectUser(userFromDB.uid, database, firestore)
+  
   return (
     <ThemeProvider theme={theme(mode)}>
       <Provider value={userValue}>
@@ -111,7 +116,7 @@ function App() {
               <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/>
               <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/>
               <Route exact path={"/inbox"} component={authState ? PrivateChat : Landing}/>
-              <Route exact path={"/inbox/individual-chat"} component={authState ? InvidualChat : Landing}/>
+              <Route exact path={"/inbox/t/:idInbox"} component={authState ? PrivateChat : Landing}/>
               <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
               <Route exact path={"/settings"} component={authState ? Settings : Landing}/>
               <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
