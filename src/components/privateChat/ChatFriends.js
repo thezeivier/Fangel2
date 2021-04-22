@@ -13,7 +13,7 @@ const ChatFriends = ({idTransmitter, idReceiver, uidCurrentUser}) => {
   if(status === "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>
 
-  const {name, online, bucket, route} = data[0]
+  const {name, online, bucket, route, username} = data[0]
   const isOnline = online ? 'Online' : 'Offline'
   if(bucket && route){
     const profileImageReference = storage.refFromURL(`gs://${bucket}/${route}`)
@@ -28,9 +28,7 @@ const ChatFriends = ({idTransmitter, idReceiver, uidCurrentUser}) => {
           {profileThumb ? <img src={profileThumb} alt="Imagen de perfil" /> : <ProfileSVG /> }
         </ProfileContainer>
         <UserDescription>
-          {name &&
-            <h5>{`${name.firstName}${name.lastName}`}</h5>
-          }
+          {name ? <h5>{`${name.firstName}${name.lastName}`}</h5> : <h5>{username}</h5>}
           <TextContainer>
             <TextStyled isOnline={online}>{isOnline}</TextStyled>
             {/* <span>1h</span> */} {/* En espera a definir el formato */}
