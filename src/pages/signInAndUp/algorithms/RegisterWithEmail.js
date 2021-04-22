@@ -1,8 +1,8 @@
 export const codeValidator = async (code, firestore) => {
 
   if(code.startsWith("admin")){
-    let ref = firestore.collection("adminCodes")
-    let validate = await ref
+    let adminCodesRef = firestore.collection("adminCodes")
+    let validate = await adminCodesRef
     .where("disponibleCodes", "array-contains", code)
     .get()
     .then((result)=>{
@@ -18,8 +18,8 @@ export const codeValidator = async (code, firestore) => {
 
     return validate
   }else{
-    let ref = firestore.collection("userCodes")
-    let validate = await ref
+    let userCodesRef = firestore.collection("userCodes")
+    let validate = await userCodesRef
     .doc(code)
     .get()
     .then(result => {
@@ -47,13 +47,13 @@ export const RegisterWithEmail = async (data, auth, type, firestore, firebase) =
   let value = await auth
   .createUserWithEmailAndPassword(emailRepaired, password)
   .then(async result => {
-    result.user.updateProfile({
+    await result.user.updateProfile({
       displayName: `${firstName.split(" ")[0]}${(lastName.length !== 0) ? " ".concat(lastName.split(" ")[0]): ""}`
     })
 
     const finalConfirmation = await sendDataUser(data, result.user.uid, type, firestore, firebase, emailRepaired)
 
-    result.user
+    await result.user
     .sendEmailVerification()
     .then(()=>{
       auth.signOut()

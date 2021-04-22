@@ -37,7 +37,7 @@ const Register = () => {
 
   useEffect(()=>{
 
-  },[])
+  },[auth, firestore, firebase])
 
   const onSubmit = async data => {
     setDataRegister(data)
