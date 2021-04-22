@@ -9,12 +9,10 @@ import { ReactComponent as ArrowBackSVG } from './../general/icons/arrowBack.svg
 import {GetDataFromMessagesInbox} from './algorithms/GetDataFromMessagesInbox'
 import { ReactComponent as SocialInteractionSVG } from './images/socialInteraction.svg'
 
-import MainSpinner from './../spinner/MainSpinner'
-
 const MainPFVideoUser = ({getInboxDoc, getRouteInbox, userFromDB, authState}) => {
   const {data, status, error} = getRouteInbox && GetDataFromMessagesInbox(getRouteInbox, 'inbox', 'messagesInbox')
   
-  if(status === "loading") return <MainSpinner />
+  if(status === "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>
 
   const returnToBack = () =>{

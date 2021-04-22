@@ -20,8 +20,6 @@ import { ReactComponent as CopySVG } from '../createCommunity/icons/copy.svg'
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'
 import { createDocInbox } from './algorithms/createDocInbox'
 
-import MainSpinner from './../spinner/MainSpinner'
-
 const MainProfile = () => {
   const storage = useStorage()
   const firestore = useFirestore()
@@ -47,7 +45,7 @@ const MainProfile = () => {
     }
   },[])
 
-  if(loading) return <MainSpinner />
+  if(loading) return <p>Pending...</p>
     
   if(error) {
     return false // Mostrar mensaje de error o redirección

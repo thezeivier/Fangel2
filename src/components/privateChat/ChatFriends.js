@@ -28,7 +28,9 @@ const ChatFriends = ({idTransmitter, idReceiver, uidCurrentUser}) => {
           {profileThumb ? <img src={profileThumb} alt="Imagen de perfil" /> : <ProfileSVG /> }
         </ProfileContainer>
         <UserDescription>
-          <h5>{`${name.firstName} ${name.lastName}`}</h5>
+          {name &&
+            <h5>{`${name.firstName}${name.lastName}`}</h5>
+          }
           <TextContainer>
             <TextStyled isOnline={online}>{isOnline}</TextStyled>
             {/* <span>1h</span> */} {/* En espera a definir el formato */}

@@ -1,8 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Wrapper from '../general/Wrapper'
 import { Link, useRouteMatch } from 'react-router-dom'
-import OtherComments from './../community/OtherComments'
-import SelfComments from './../community/SelfComments'
 import InputComments from './../community/InputComments'
 import { ChatContainer, HeaderChat, MainChat, FooterChat,
          TitleStyled, UserChating, TitleContainerStyled, Section } from './styles/sMainIndividualChat'
@@ -15,7 +13,6 @@ import { ReactComponent as ArrowBackSVG } from './../general/icons/arrowBack.svg
 import { GetDataFromUsers } from './algorithms/GetDataFromUsers'
 import { ChatMessage } from '../community/ChatMessage'
 import CommentsBox from '../community/CommentsBox'
-import MainSpinner from './../spinner/MainSpinner'
 
 const MainIndividualChat = ({ inGridDesktop, message, idTransmitter, idReceiver, idInbox, userFromDB, authState}) => {
   const storage = useStorage()
@@ -24,7 +21,7 @@ const MainIndividualChat = ({ inGridDesktop, message, idTransmitter, idReceiver,
   const {data, status, error} = GetDataFromUsers('users', idTransmitter, idReceiver, userFromDB.uid)
   const messageRef = firebase.firestore().collection('inbox').doc(idInbox).collection('messagesInbox')
   
-  if(status === "loading") return <MainSpinner />
+  if(status === "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>
   
   const transmitterData = data[0]

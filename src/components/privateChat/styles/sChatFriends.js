@@ -36,6 +36,7 @@ export const ProfileContainer = styled.div`
     width: 47px;
     height: 47px;
     border-radius: 50%;
+    object-fit: cover;
   }
 `
 

@@ -72,6 +72,7 @@ export const UserChating = styled.div`
     height: 24px;
     border-radius: 50%;
     margin: 0 8px 0 0;
+    object-fit: cover;
   }
 
   @media(min-width:1200px) {
