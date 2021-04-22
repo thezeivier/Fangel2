@@ -19,6 +19,7 @@
     "react-scripts": "4.0.3",
     "reactfire": "^3.0.0-rc.0",
     "styled-components": "^5.2.1",
+    "use-state-if-mounted": "^1.0.4",
     "wasm-imagemagick": "^1.2.8",
     "web-vitals": "^1.1.1"
   },

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import useOnScreen from './../../hook/use-on-screen'
 import { Link } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
@@ -10,6 +10,11 @@ import { CoverPage, TitleStyledCover, TextStyledCover, ButtonsContainer,
 
 const LadingPage = () => {
   const ref = useRef()
+  useEffect(()=> {
+    return ()=>{
+      ref.current = false
+    }
+  },[])
 
   const onScreen = useOnScreen(ref, "300px")
   const onScreenDesktop = useOnScreen(ref, "-150px")
