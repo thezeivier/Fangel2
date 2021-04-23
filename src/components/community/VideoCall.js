@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Jitsi from 'react-jitsi'
 import VideoSpinner from '../spinner/VideoSpinner'
 
@@ -62,12 +62,11 @@ const config = {
   enableWelcomePage: false,
   disableProfile: true,
   enableInsecureRoomNameWarning: false,
-
-/*   configOverwrite: { startWithAudioMuted: true },
-  interfaceConfigOverwrite: { DISABLE_DOMINANT_SPEAKER_INDICATOR: true }, */
+  disableDeepLinking: true,
 };
 
 const VideoCall = ({dataUser, authState, communityData, isAdmin}) => {
+
   const handleAPI = JitsiMeetAPI => {
     JitsiMeetAPI.executeCommand("toggleVideo");
     JitsiMeetAPI.executeCommand("toggleAudio");

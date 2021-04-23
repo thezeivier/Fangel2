@@ -34,15 +34,14 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
       .onSnapshot((doc) => {
         setActiveCommunity(doc.data());
     });
-    
   },[])
-
+  
   if(activeCommunity){
     if(activeCommunity.duration - activeCommunity.transcurred <= 10){
       setAlertTimer(true)
     }
-  }
-
+  } 
+  
   const addHour = async () => {
     await AddHour(firestore, communityData.roomName)
   }
@@ -80,10 +79,10 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
                 </InputContainer>
                 <SubtitleStyled as="h4">Link de la Sala</SubtitleStyled>
                 <InputContainer>
-                  <InputStyled id="urlRoomCode" special invitationCode placeholder="Código de invitación" value={communityData.roomName? `https://fangelweb.com/room/${communityData.roomName}` : "Cargando..."} readOnly/>
+                  <InputStyled id="urlRoomCode" special invitationCode placeholder="Link de la sala" value={communityData.roomName? `https://fangelweb.com/room/${communityData.roomName}` : "Cargando..."} readOnly/>
                   <button onClick={()=>CopyCode("urlRoomCode")} ref={hoverRef}>
                     <CodeCopySVG/>
-                    {isHovered && <Comment>Copiar código</Comment>}
+                    {isHovered && <Comment>Copiar link</Comment>}
                   </button>
                 </InputContainer>
               </SectionContainer>

@@ -91,6 +91,7 @@ const MainCreateCOne = () => {
                       <TextAreaStyled type="text" placeholder="Descripcion" name="descriptionCommunity" ref={register()}/>
                       <ErrorAlert>{errors.descriptionCommunity? errors.descriptionCommunity.message: ""}</ErrorAlert>
                       <div>
+                        <FieldSet>Se recomienda usar imágenes en formato gif de 400 x 400px</FieldSet>
                         <input type="file" accept="image/*" style={{display: "none"}} id="communityImage"/>
                         {(disable) ?
                           <ButtonStyled onClick={recoverCommunityImage} secondary bottom30 disabled>Imagen cargada</ButtonStyled> :
