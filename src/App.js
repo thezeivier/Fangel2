@@ -93,7 +93,9 @@ function App() {
   if(loading) return <Spinner />
 
   // Update to user offline or Online
-  // OnDisconnectUser(userFromDB.uid, database, firestore)
+  if(userFromDB) {
+    OnDisconnectUser(userFromDB.uid, database, firestore)
+  }
   
   return (
     <ThemeProvider theme={theme(mode)}>
