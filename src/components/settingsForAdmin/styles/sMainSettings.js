@@ -22,7 +22,7 @@ export const SectionContainer = styled.section`
 `
 
 export const SubtitleStyled = styled(SecondaryTitle)`
-  margin: 0 0 20px 0;
+  margin: 10px 0 15px 0;
   font-size: 1.4em;
 
   span {

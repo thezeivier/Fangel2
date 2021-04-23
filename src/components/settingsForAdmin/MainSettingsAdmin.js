@@ -1,4 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
+import { useHistory } from 'react-router-dom'
 import {AppContext} from '../../App'
 import {useFirestore} from 'reactfire'
 import useHover from './../../hook/use-hover'
@@ -34,12 +35,13 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
         setActiveCommunity(doc.data());
     });
     
-    if(activeCommunity){
-      if(activeCommunity.duration - activeCommunity.transcurred <= 10){
-        setAlertTimer(true)
-      }
+  },[])
+
+  if(activeCommunity){
+    if(activeCommunity.duration - activeCommunity.transcurred <= 10){
+      setAlertTimer(true)
     }
-  },[activeCommunity])
+  }
 
   const addHour = async () => {
     await AddHour(firestore, communityData.roomName)
@@ -72,6 +74,14 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
                 <InputContainer>
                   <InputStyled id="adminCopyCode" special invitationCode placeholder="Código de invitación" value={code? code: "Cargando..."} readOnly/>
                   <button onClick={()=>CopyCode("adminCopyCode")} ref={hoverRef}>
+                    <CodeCopySVG/>
+                    {isHovered && <Comment>Copiar código</Comment>}
+                  </button>
+                </InputContainer>
+                <SubtitleStyled as="h4">Link de la Sala</SubtitleStyled>
+                <InputContainer>
+                  <InputStyled id="urlRoomCode" special invitationCode placeholder="Código de invitación" value={communityData.roomName? `https://fangelweb.com/room/${communityData.roomName}` : "Cargando..."} readOnly/>
+                  <button onClick={()=>CopyCode("urlRoomCode")} ref={hoverRef}>
                     <CodeCopySVG/>
                     {isHovered && <Comment>Copiar código</Comment>}
                   </button>
