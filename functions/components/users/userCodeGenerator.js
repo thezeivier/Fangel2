@@ -34,7 +34,7 @@ exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").
     batch.commit()
     .then(console.log("Generado de código exitoso"))
     .catch(error => console.error("Error al generar código", error));
-  } else if(data.type === "user") {
+  } else {
     batch.set(
       db.collection("users").doc(uid),
       {
@@ -46,10 +46,6 @@ exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").
     batch.commit()
     .then(console.log("usuario creado"))
     .catch(error => console.error("Error al crar usuario", error));
-  }else{
-    return false
   }
-
-  
 });
 
