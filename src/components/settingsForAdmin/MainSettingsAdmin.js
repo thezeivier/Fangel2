@@ -33,14 +33,14 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
       .onSnapshot((doc) => {
         setActiveCommunity(doc.data());
     });
-    
-    if(activeCommunity){
-      if(activeCommunity.duration - activeCommunity.transcurred <= 10){
-        setAlertTimer(true)
-      }
+  },[])
+  
+  if(activeCommunity){
+    if(activeCommunity.duration - activeCommunity.transcurred <= 10){
+      setAlertTimer(true)
     }
-  },[activeCommunity])
-
+  } 
+  
   const addHour = async () => {
     await AddHour(firestore, communityData.roomName)
   }

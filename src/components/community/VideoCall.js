@@ -62,9 +62,7 @@ const config = {
   enableWelcomePage: false,
   disableProfile: true,
   enableInsecureRoomNameWarning: false,
-
-/*   configOverwrite: { startWithAudioMuted: true },
-  interfaceConfigOverwrite: { DISABLE_DOMINANT_SPEAKER_INDICATOR: true }, */
+  disableDeepLinking: true,
 };
 
 const VideoCall = ({dataUser, authState, communityData, isAdmin}) => {
@@ -93,40 +91,3 @@ const VideoCall = ({dataUser, authState, communityData, isAdmin}) => {
 };
 
 export default VideoCall
-
-
-
-// const DOMAIN = "meet.jit.si"
-
-// const VideoCall = () =>{
-//   useEffect(()=>{
-
-//   },[])
-//   const options = {
-//     roomName: "RoomDePruebaFangel",
-//     width: "600",
-//     height: "500",
-//     parentNode: document.querySelector('#iframeContainer'),
-//     configOverwrite: { startWithAudioMuted: true },
-//     interfaceConfigOverwrite: { DISABLE_DOMINANT_SPEAKER_INDICATOR: true },
-//     devices: {
-//       audioInput: '<deviceLabel>',
-//       audioOutput: '<deviceLabel>',
-//       videoInput: '<deviceLabel>'
-//     },
-//     userInfo: {
-//       email: 'email@jitsiexamplemail.com',
-//       displayName: 'John Doe'
-//     }
-//   }
-//   const api = new window.JitsiMeetExternalAPI(DOMAIN, options)
-//   console.log(api)
-
-//   return (
-//     <div id="iframeContainer">
-//       {/* {api} */}
-//     </div>
-//   )
-// }
-
-// export default VideoCall
