@@ -29,7 +29,6 @@ const MainHome = () => {
       })
     }
   },[])
-
   return (
     <main>
       <Wrapper>

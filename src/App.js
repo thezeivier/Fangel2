@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useMemo} from 'react'
 import ReactDOM from 'react-dom';
 import {Switch, Route, Redirect, useHistory} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
@@ -40,11 +40,13 @@ function App() {
   const database = useDatabase()
   const firebase = useFirebaseApp()
   const [loading, setLoading] = useState(true)
+  const [communityGlobalData, setCommunityGlobalData] = useState(false)
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
   const [userFromDB, setUserFromDB] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
   const [profileThumb, setProfileThumb] = useState(false)
+  const communityProvider = useMemo(() => ({communityGlobalData, setCommunityGlobalData}), [communityGlobalData, setCommunityGlobalData])
   const [videoCall, setVideoCall] = useState(false)
   
   useEffect(()=>{
@@ -106,6 +108,7 @@ function App() {
     profileThumb,
     isAdmin,
     changeTheme,
+    communityProvider,
     videoCall: (videoCall? videoCall: false),
   }
 

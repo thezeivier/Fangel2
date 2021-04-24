@@ -16,7 +16,7 @@ const {Provider, Consumer} = SwitchVideoContext
 const SwitchCommunityVideo = () => {
     const firestore = useFirestore()
     const database = useDatabase()
-    const { userFromDB }  = useContext(AppContext)
+    const { userFromDB, communityProvider }  = useContext(AppContext)
     const [activeCommunity, setActiveCommunity] = useState(false)
     const match = useRouteMatch("/room/:idRoom")
     const idRoomRoute = match.params.idRoom
@@ -35,7 +35,9 @@ const SwitchCommunityVideo = () => {
 
     if(status) return <p>Pending...</p>
     if(error) return null
+
     let communityData = data[0]
+    communityProvider.setCommunityGlobalData(communityData)
     const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)
 
     const activeCommunityValue = {

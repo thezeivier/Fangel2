@@ -10,7 +10,7 @@ import VideoCall from './VideoCall'
 
 const EmbedVideo = ({ communityData, isAdmin }) => {
   const contextFromApp = useContext(AppContext)
-  const {myDataUser, authState, videoCall} = contextFromApp
+  const {myDataUser, authState, videoCall, communityProvider} = contextFromApp
   
   
   
@@ -22,7 +22,7 @@ const EmbedVideo = ({ communityData, isAdmin }) => {
           <h3>{communityData.title}</h3>
         </DescripcionContainer>
         <ButtonLeaveContainer>
-          <ButtonLeaveCom displayDesktop="flex" />
+          <ButtonLeaveCom displayDesktop="flex" communityProvider={communityProvider}/>
         </ButtonLeaveContainer>
       </TitleOnlyDesktopContainer>
       <EmbedContainer>

@@ -33,7 +33,7 @@ export const useMatchRouteUserData = (collection, nameUserRoute) => {
     })
       
     return () => unsubscribe()
-  }, [collection])
+  }, [collection, nameUserRoute])
 
   return [userData, loading, error]
 }
