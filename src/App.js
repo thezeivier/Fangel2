@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useMemo} from 'react'
 import {Switch, Route, Redirect, useHistory} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import {useAuth, useFirestore, useStorage, useDatabase, useFirebaseApp} from 'reactfire'
@@ -39,11 +39,13 @@ function App() {
   const database = useDatabase()
   const firebase = useFirebaseApp()
   const [loading, setLoading] = useState(true)
+  const [communityGlobalData, setCommunityGlobalData] = useState(false)
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
   const [userFromDB, setUserFromDB] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
   const [profileThumb, setProfileThumb] = useState(false)
+  const communityProvider = useMemo(() => ({communityGlobalData, setCommunityGlobalData}), [communityGlobalData, setCommunityGlobalData])
   
   useEffect(()=>{
     if(localStorage.mode){
@@ -113,6 +115,7 @@ function App() {
     profileThumb,
     isAdmin,
     changeTheme,
+    communityProvider
   }
 
   if(loading) return <Spinner />
@@ -127,7 +130,7 @@ function App() {
       <Provider value={userValue}>
         <GlobalStyles />
           <Container>
-            {/* <PFVideo/> */}
+            <PFVideo/>
             <Switch>
               <Route exact path={"/"} component={authState ? Home : Landing}/>
               <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/>

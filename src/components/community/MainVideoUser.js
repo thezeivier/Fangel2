@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useEffect } from 'react';
 import Wrapper from './../general/Wrapper'
-import {EmbedVideo} from './EmbedVideo'
+import EmbedVideo from './EmbedVideo'
 import CommentsBox from './CommentsBox'
 import InputComments from './InputComments'
 import ModalSettingsAdmin from './../../pages/inCommunity/ModalSettingsAdmin'
