@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import ReactDOM from 'react-dom';
 import {Switch, Route, Redirect, useHistory} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import {useAuth, useFirestore, useStorage, useDatabase, useFirebaseApp} from 'reactfire'
@@ -37,13 +38,14 @@ function App() {
   const storage = useStorage()
   const history = useHistory()
   const database = useDatabase()
-  const firebase = useFirebaseApp()
+  // const firebase = useFirebaseApp()
   const [loading, setLoading] = useState(true)
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
   const [userFromDB, setUserFromDB] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
   const [profileThumb, setProfileThumb] = useState(false)
+  const [videoCall, setVideoCall] = useState(false)
   
   useEffect(()=>{
     if(localStorage.mode){
@@ -58,26 +60,6 @@ function App() {
           let dataUser = await RecoverUser(firestore, user.uid)
           setUserFromDB(dataUser)
           if(dataUser){
-            // const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            // let listOfCodes = []
-            // while(listOfCodes.length < 20){
-            //   let code = "admin";
-            //   while (code.length < 12) {
-            //     code = code.concat(model.charAt(Math.round(Math.random()*model.length)));
-            //   }
-            //   listOfCodes.push(code)
-            // }
-            // console.log(listOfCodes)
-            // var i = 0
-            // while(i < (listOfCodes.length - 1)){
-            //   firestore
-            //   .collection("adminCodes")
-            //   .doc("listOfCodes")
-            //   .update({ 
-            //       disponibleCodes: firebase.firebase_.firestore.FieldValue.arrayUnion(listOfCodes[i]),
-            //   })
-            //   i++
-            // }
             
             if(dataUser.type === "admin"){
               setIsAdmin(true)
@@ -89,6 +71,17 @@ function App() {
               }
             }
             !dataUser.quizComplete && history.push("/quiz")
+
+            if(true){
+              setVideoCall(
+                <VideoCall 
+                  dataUser={dataUser} 
+                  authState={user} 
+                  // communityData={communityData} 
+                  isAdmin={isAdmin}
+                />
+              )
+            }
           }
         }
       }
@@ -113,6 +106,7 @@ function App() {
     profileThumb,
     isAdmin,
     changeTheme,
+    videoCall: (videoCall? videoCall: false),
   }
 
   if(loading) return <Spinner />
@@ -127,7 +121,9 @@ function App() {
       <Provider value={userValue}>
         <GlobalStyles />
           <Container>
-            {/* <PFVideo/> */}
+            { false &&
+              <PFVideo children={videoCall}/>
+            }
             <Switch>
               <Route exact path={"/"} component={authState ? Home : Landing}/>
               <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/>
@@ -152,3 +148,27 @@ function App() {
 }
 
 export {App, Consumer as AppConsumer, AppContext}
+
+
+// const createAdminCodes = () => {
+//   const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+//   let listOfCodes = []
+//   while(listOfCodes.length < 20){
+//     let code = "admin";
+//     while (code.length < 12) {
+//       code = code.concat(model.charAt(Math.round(Math.random()*model.length)));
+//     }
+//     listOfCodes.push(code)
+//   }
+//   console.log(listOfCodes)
+//   var i = 0
+//   while(i < (listOfCodes.length - 1)){
+//     firestore
+//     .collection("adminCodes")
+//     .doc("listOfCodes")
+//     .update({ 
+//         disponibleCodes: firebase.firebase_.firestore.FieldValue.arrayUnion(listOfCodes[i]),
+//     })
+//     i++
+//   }
+// }

@@ -8,12 +8,9 @@ import { ReactComponent as CommunitySVG } from './../general/icons/community.svg
 
 import VideoCall from './VideoCall'
 
-const VideoContext =  React.createContext()
-const {Provider, Consumer} = VideoContext
-
 const EmbedVideo = ({ communityData, isAdmin }) => {
-  const userFromDB = useContext(AppContext)
-  const {myDataUser, authState} = userFromDB
+  const contextFromApp = useContext(AppContext)
+  const {myDataUser, authState, videoCall} = contextFromApp
   
   
   
@@ -29,7 +26,8 @@ const EmbedVideo = ({ communityData, isAdmin }) => {
         </ButtonLeaveContainer>
       </TitleOnlyDesktopContainer>
       <EmbedContainer>
-        <VideoCall dataUser={myDataUser} authState={authState} communityData={communityData} isAdmin={isAdmin}/>
+        {/* <VideoCall dataUser={myDataUser} authState={authState} communityData={communityData} isAdmin={isAdmin}/> */}
+        {videoCall}
       </EmbedContainer>
       {/*<CountContainer>
         <span>18</span>
@@ -39,4 +37,4 @@ const EmbedVideo = ({ communityData, isAdmin }) => {
   );
 }
 
-export {EmbedVideo, Consumer as VideoConsumer, VideoContext}
+export default EmbedVideo
