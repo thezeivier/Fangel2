@@ -74,7 +74,7 @@ function App() {
             }
             !dataUser.quizComplete && history.push("/quiz")
 
-            if(true){
+            if(communityGlobalData){
               setVideoCall(
                 <VideoCall 
                   dataUser={dataUser} 
@@ -125,7 +125,7 @@ function App() {
       <Provider value={userValue}>
         <GlobalStyles />
           <Container>
-            { false &&
+            { communityGlobalData &&
               <PFVideo children={videoCall}/>
             }
             <Switch>
