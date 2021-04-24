@@ -6,7 +6,7 @@ import { VideoContainer, TitleStyled, SvgsContainer, Transparent } from './style
 import { ReactComponent as CloseSVG } from './../general/icons/close.svg'
 import { ReactComponent as FullSreenSVG } from './icons/fullScreen.svg'
 
-const MainPFVideoUser = () => {
+const MainPFVideoUser = ({children}) => {
   return (
     <VideoContainer>
       <SvgsContainer className="svgsContainer">
@@ -14,7 +14,7 @@ const MainPFVideoUser = () => {
         <CloseSVG />
       </SvgsContainer>
       <EmbedContainer hover>
-        <iframe width="853" height="480" src="https://www.youtube.com/embed/QaXhVryxVBk" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        {children}
       </EmbedContainer>
       <TitleStyled as="h3">Title community</TitleStyled>
     </VideoContainer>

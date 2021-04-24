@@ -13,6 +13,8 @@ const EmbedVideo = ({ communityData, isAdmin }) => {
   const userFromDB = useContext(AppContext)
   const {myDataUser, authState} = userFromDB
   
+  
+  
   return (
     <VideoContainer>
       <TitleOnlyDesktopContainer>

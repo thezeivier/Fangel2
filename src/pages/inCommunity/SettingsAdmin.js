@@ -15,7 +15,7 @@ import { GetAdminCommunity } from '../../pages/inCommunity/algorithms/GetAdminCo
 const SettingsAdmin = ({ closeModal, communityData }) => {
   const { userFromDB }  = useContext(AppContext)
 
-  console.log(communityData)
+  // console.log(communityData)
   const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)
 
   return (
@@ -27,7 +27,7 @@ const SettingsAdmin = ({ closeModal, communityData }) => {
         <ContainerForCommunity> {/* Sin margenes en moviles y tablets ni footer ni regHeader,
           wrapper sin paddign en moviles y tablet*/}
           <VideoHeader displayNoAdmin="none" closeModalSA={closeModal} communityData={communityData} />
-          <MainSettingsAdmin />
+          <MainSettingsAdmin communityData={communityData}/>
         </ContainerForCommunity>
         )
       }

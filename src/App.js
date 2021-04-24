@@ -25,6 +25,8 @@ import ListOfRoutes from './pages/objects/ListOfRoutes'
 import Spinner from './components/spinner/MainSpinner'
 import { OnDisconnectUser } from './pages/inCommunity/algorithms/OnDisconnectUser'
 
+import PFVideo from './pages/inCommunity/PFVideo'
+
 const AppContext =  React.createContext()
 const {Provider, Consumer} = AppContext
 
@@ -102,6 +104,7 @@ function App() {
       <Provider value={userValue}>
         <GlobalStyles />
           <Container>
+            {/* <PFVideo/> */}
             <Switch>
               <Route exact path={"/"} component={authState ? Home : Landing}/>
               <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/>
