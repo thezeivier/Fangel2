@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Switch, Route, Redirect, useHistory} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import {useAuth, useFirestore, useStorage, useDatabase} from 'reactfire'
+import {useAuth, useFirestore, useStorage, useDatabase, useFirebaseApp} from 'reactfire'
 import { RecoverUser} from './algorithmsToApp/RecoverUser'
 import GlobalStyles from './themes/GlobalStyles'
 import theme from './themes/Theme'
@@ -25,6 +25,7 @@ import ListOfRoutes from './pages/objects/ListOfRoutes'
 import Spinner from './components/spinner/MainSpinner'
 import { OnDisconnectUser } from './pages/inCommunity/algorithms/OnDisconnectUser'
 
+import VideoCall from './components/community/VideoCall'
 import PFVideo from './pages/inCommunity/PFVideo'
 
 const AppContext =  React.createContext()
@@ -36,6 +37,7 @@ function App() {
   const storage = useStorage()
   const history = useHistory()
   const database = useDatabase()
+  const firebase = useFirebaseApp()
   const [loading, setLoading] = useState(true)
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
@@ -56,6 +58,27 @@ function App() {
           let dataUser = await RecoverUser(firestore, user.uid)
           setUserFromDB(dataUser)
           if(dataUser){
+            // const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            // let listOfCodes = []
+            // while(listOfCodes.length < 20){
+            //   let code = "admin";
+            //   while (code.length < 12) {
+            //     code = code.concat(model.charAt(Math.round(Math.random()*model.length)));
+            //   }
+            //   listOfCodes.push(code)
+            // }
+            // console.log(listOfCodes)
+            // var i = 0
+            // while(i < (listOfCodes.length - 1)){
+            //   firestore
+            //   .collection("adminCodes")
+            //   .doc("listOfCodes")
+            //   .update({ 
+            //       disponibleCodes: firebase.firebase_.firestore.FieldValue.arrayUnion(listOfCodes[i]),
+            //   })
+            //   i++
+            // }
+            
             if(dataUser.type === "admin"){
               setIsAdmin(true)
               if(dataUser.bucket && dataUser.route){
