@@ -80,7 +80,8 @@ const VideoCall = ({dataUser, authState, communityData, isAdmin}) => {
       <Jitsi
         domain="meet.jit.si"
         onAPILoad={handleAPI}
-        roomName={communityData.roomName}
+        // roomName={communityData.roomName}
+        roomName="7L2gEnvzAqYsQNVUdyvyhMbD1BW4gCXodDWczaufrbL2dNKFr73cOUMN5WuHuNtypmX8zjKpqNuV1DpNs7nuWXbgv3PSnBxiZ7uZiSfvGPc0ibI8smUAVvBaYsCiINJh"
         displayName={authState.displayName}
         loadingComponent={VideoSpinner}
         interfaceConfig={isAdmin ? interfaceConfig : interfaceUserConf}
