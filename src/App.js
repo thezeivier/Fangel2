@@ -38,7 +38,7 @@ function App() {
   const storage = useStorage()
   const history = useHistory()
   const database = useDatabase()
-  // const firebase = useFirebaseApp()
+  const firebase = useFirebaseApp()
   const [loading, setLoading] = useState(true)
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
@@ -60,7 +60,7 @@ function App() {
           let dataUser = await RecoverUser(firestore, user.uid)
           setUserFromDB(dataUser)
           if(dataUser){
-            
+            // createAdminCodes(firestore, firebase) //CREADOR DE CÓDIGOS DE TIPO ADMIN.
             if(dataUser.type === "admin"){
               setIsAdmin(true)
               if(dataUser.bucket && dataUser.route){
@@ -115,6 +115,7 @@ function App() {
   if(userFromDB) {
     OnDisconnectUser(userFromDB.uid, database, firestore)
   }
+  console.log(history)
   
   return (
     <ThemeProvider theme={theme(mode)}>
@@ -150,10 +151,10 @@ function App() {
 export {App, Consumer as AppConsumer, AppContext}
 
 
-// const createAdminCodes = () => {
+// const createAdminCodes = (firestore, firebase) => {
 //   const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 //   let listOfCodes = []
-//   while(listOfCodes.length < 20){
+//   while(listOfCodes.length < 50){
 //     let code = "admin";
 //     while (code.length < 12) {
 //       code = code.concat(model.charAt(Math.round(Math.random()*model.length)));
