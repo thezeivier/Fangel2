@@ -6,13 +6,13 @@ import { VideoContainer, EmbedContainer, CountContainer, TitleOnlyDesktopContain
 import { ReactComponent as NumberPeopleSVG } from './icons/numberPeople.svg'
 import { ReactComponent as CommunitySVG } from './../general/icons/community.svg'
 
-import VideoCall from './VideoCall'
+// import VideoCall from './VideoCall'
 
 const EmbedVideo = ({ communityData, isAdmin }) => {
   const contextFromApp = useContext(AppContext)
   const {myDataUser, authState, videoCall, communityProvider} = contextFromApp
   
-  
+  console.log(videoCall)
   
   return (
     <VideoContainer>

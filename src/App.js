@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useMemo} from 'react'
 import ReactDOM from 'react-dom';
-import {Switch, Route, Redirect, useHistory} from 'react-router-dom'
+import {Switch, Route, Redirect, useHistory, useLocation} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import {useAuth, useFirestore, useStorage, useDatabase, useFirebaseApp} from 'reactfire'
 import { RecoverUser} from './algorithmsToApp/RecoverUser'
@@ -37,6 +37,7 @@ function App() {
   const firestore = useFirestore()
   const storage = useStorage()
   const history = useHistory()
+  const location = useLocation()
   const database = useDatabase()
   const firebase = useFirebaseApp()
   const [loading, setLoading] = useState(true)
@@ -79,7 +80,7 @@ function App() {
                 <VideoCall 
                   dataUser={dataUser} 
                   authState={user} 
-                  // communityData={communityData} 
+                  communityData={communityGlobalData} 
                   isAdmin={isAdmin}
                 />
               )
@@ -89,7 +90,7 @@ function App() {
       }
       setLoading(false)
     });
-  },[firestore, auth, storage, history])
+  },[firestore, auth, storage, history, communityGlobalData])
 
 
   const changeTheme = () =>{
@@ -109,7 +110,7 @@ function App() {
     isAdmin,
     changeTheme,
     communityProvider,
-    videoCall: (videoCall? videoCall: false),
+    videoCall,
   }
 
   if(loading) return <Spinner />
@@ -118,15 +119,15 @@ function App() {
   if(userFromDB) {
     OnDisconnectUser(userFromDB.uid, database, firestore)
   }
-  console.log(history)
+  console.log(communityGlobalData)
   
   return (
     <ThemeProvider theme={theme(mode)}>
       <Provider value={userValue}>
         <GlobalStyles />
           <Container>
-            { communityGlobalData &&
-              <PFVideo children={videoCall}/>
+            { (communityGlobalData && !location.pathname.startsWith("/room"))&&
+              <PFVideo children={videoCall} communityGlobalData={communityGlobalData}/>
             }
             <Switch>
               <Route exact path={"/"} component={authState ? Home : Landing}/>
