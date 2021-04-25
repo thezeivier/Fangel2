@@ -14,7 +14,6 @@ const EmailSended = () => {
   })
 
   useEffect(()=>{
-    console.log("useEffect", location)
     if(location.state){
       switch(location.state.origin){
         case "register":

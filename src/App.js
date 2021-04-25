@@ -119,7 +119,6 @@ function App() {
   if(userFromDB) {
     OnDisconnectUser(userFromDB.uid, database, firestore)
   }
-  console.log(communityGlobalData)
   
   return (
     <ThemeProvider theme={theme(mode)}>

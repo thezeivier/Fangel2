@@ -24,10 +24,8 @@ const VideoUser = ({activeCommunity, communityData}) => {
       setLastTranscurredTime(transcurredTimeOfCommunity)
       if(transcurredTimeOfCommunity && lastTranscurredTime){
         setLocalTimerCounter(localTimerCounter + 1)
-        console.log(localTimerCounter)
         if(localTimerCounter >= 9){
           if(transcurredTimeOfCommunity === lastTranscurredTime){
-            console.log(communityData.creatorUid)
             setLocalTimerCounter(0)
           }
         }
