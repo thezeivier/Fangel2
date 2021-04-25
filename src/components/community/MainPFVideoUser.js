@@ -7,13 +7,19 @@ import { VideoContainer, TitleStyled, SvgsContainer, Transparent } from './style
 import { ReactComponent as CloseSVG } from './../general/icons/close.svg'
 import { ReactComponent as FullSreenSVG } from './icons/fullScreen.svg'
 
-const MainPFVideoUser = ({children, communityGlobalData}) => {
+const MainPFVideoUser = ({children, communityGlobalData, setCommunityGlobalData}) => {
   const history = useHistory()
+
+  const handleLeaveCommunity = () => {
+    setCommunityGlobalData && setCommunityGlobalData(false)
+    window.location.reload()
+  }
+
   return (
     <VideoContainer>
       <SvgsContainer className="svgsContainer">
         <FullSreenSVG className="fullScreenSvg" onClick={()=>{history.push(`/room/${communityGlobalData.roomName}`)}}/>
-        <CloseSVG />
+        <CloseSVG onClick={handleLeaveCommunity}/>
       </SvgsContainer>
       <EmbedContainer hover>
         {children}

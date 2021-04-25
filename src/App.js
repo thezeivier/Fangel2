@@ -127,7 +127,7 @@ function App() {
         <GlobalStyles />
           <Container>
             { (communityGlobalData && !location.pathname.startsWith("/room"))&&
-              <PFVideo children={videoCall} communityGlobalData={communityGlobalData}/>
+              <PFVideo children={videoCall} communityGlobalData={communityGlobalData} setCommunityGlobalData={setCommunityGlobalData}/>
             }
             <Switch>
               <Route exact path={"/"} component={authState ? Home : Landing}/>
