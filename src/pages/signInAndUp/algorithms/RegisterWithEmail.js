@@ -80,8 +80,8 @@ export const sendDataUser = async (data, uid, type, firestore, firebase, email) 
   .set({
       uid: uid,
       name: {
-        firstName,
-        lastName
+        firstName: wordsCapitalizer(firstName),
+        lastName: wordsCapitalizer(lastName),
       },
       email: email,
       type: type,
@@ -129,4 +129,29 @@ export const sendDataUser = async (data, uid, type, firestore, firebase, email) 
     })
     return updateUCodes
   }
+}
+
+
+//Capitalizador de palabras.
+const wordsCapitalizer = (word) =>{
+  if(word.length === 0){
+    return word
+  }
+  
+  let newWord = spacerReestruct(word)  
+  return newWord.toLowerCase()
+          .trim()
+          .split(' ')
+          .map( character => character[0].toUpperCase() + character.substr(1) )
+          .join(' ');  
+}
+//Reestructurador en caso de tener doble o triple espacio.
+const spacerReestruct = (word) =>{
+  var resWord
+  if(word.includes("   ")){
+    resWord = word.replace("   ", " ")
+  }else if(word.includes("  ")){
+    resWord = word.replace("  ", " ")
+  }
+  return resWord
 }

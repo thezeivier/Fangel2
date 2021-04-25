@@ -9,7 +9,6 @@ import { ReactComponent as FullSreenSVG } from './icons/fullScreen.svg'
 
 const MainPFVideoUser = ({children, communityGlobalData}) => {
   const history = useHistory()
-
   return (
     <VideoContainer>
       <SvgsContainer className="svgsContainer">
