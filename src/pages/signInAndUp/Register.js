@@ -68,8 +68,8 @@ const Register = () => {
     return <MainSpinner/>
   }
 
-  console.log(emailRegistered)
-  console.log(codeBValidated)
+  // console.log(emailRegistered)
+  // console.log(codeBValidated)
 
   return (
     <>

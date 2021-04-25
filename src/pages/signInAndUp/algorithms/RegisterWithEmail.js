@@ -152,6 +152,8 @@ const spacerReestruct = (word) =>{
     resWord = word.replace("   ", " ")
   }else if(word.includes("  ")){
     resWord = word.replace("  ", " ")
+  }else{
+    return word
   }
   return resWord
 }
