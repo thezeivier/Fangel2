@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom'
 import {useStorage} from 'reactfire'
+import { useStateIfMounted } from 'use-state-if-mounted'
 import { CardContainer, UserContainer, ContainerTextTop, TextCommunity,
          User, ImageContainer, DescriptionContainer, TextDescription,
          Truncate, ButtonStyled, TransparentContainer } from './styles/sCardCommunity'
@@ -11,8 +12,8 @@ import {ShowMore} from './algorithms/ShowMore'
 
 const CardCommunity = ({communityData}) => {
   const storage = useStorage()
-  const [thumb, setThumb] = useState()//State for thumbnail.
-  const [profileThumb, setProfileThumb] = useState(false)
+  const [thumb, setThumb] = useStateIfMounted()//State for thumbnail.
+  const [profileThumb, setProfileThumb] = useStateIfMounted(false)
   const cardRef = useRef()
   const textRef = useRef()
   const buttonRef = useRef()

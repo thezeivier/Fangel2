@@ -3,6 +3,7 @@ import {AppContext} from '../../App'
 import {useFirestore} from 'reactfire'
 import Wrapper from './../general/Wrapper'
 import { Link } from 'react-router-dom'
+import { useStateIfMounted } from 'use-state-if-mounted'
 import { TitleStyled, TextStyled } from './../../themes/internalRecyclableStyles'
 import { AddCardContainer, EndCercle, CardsList } from './styles/sMainHome'
 import { ReactComponent as AddCardSVG } from './icons/addCard.svg'
@@ -16,7 +17,7 @@ const CardCommunity = lazy(()=> import('./CardCommunity'))
 const MainHome = () => {
   const contextFromApp = useContext(AppContext)
   const firestore = useFirestore()
-  const [communities, setCommunities] = useState([]) //Communities recovered array.
+  const [communities, setCommunities] = useStateIfMounted([]) //Communities recovered array.
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async ()=>{
