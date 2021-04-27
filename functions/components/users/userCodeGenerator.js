@@ -4,21 +4,31 @@ const db = admin.firestore();
 exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").onCreate((snap) =>{
   const data = snap.data()
   const hashtagNumber = Math.floor(Math.random() * 99999)
-  const username = `${(data.name.firstName.split(" ")[0].concat(data.name.lastName.split(" ")[0])).toLowerCase()}#${hashtagNumber}`
+  const dark = getColorDarkMode()
+  const light = getColorLightMode()
   const batch = db.batch();
   const uid = data.uid;
 
   try{
-    userAndCodeGenerator(data, uid, username)
+    userAndCodeGenerator(data, uid, hashtagNumber, batch, dark, light)
     return console.log("Primera ejecución")
-  } catch(e){
-    userAndCodeGenerator(data, uid, username)
+  } catch{
+    setTimeout(() =>{
+      db
+      .collection("users")
+      .uid(uid)
+      .get()
+      .then(result => {
+        data = result.data()
+        userAndCodeGenerator(data, uid, hashtagNumber, batch, dark, light)
+      })
+    }, 4000)
   } 
 
 });
 
-
-const userAndCodeGenerator = (data, uid, username) => {
+const userAndCodeGenerator = (data, uid, hashtagNumber, batch, dark, light) => {
+  const username = `${(data.name.firstName.split(" ")[0].concat(data.name.lastName.split(" ")[0])).toLowerCase()}#${hashtagNumber}`
   if (data.type === "admin") {
     const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     let code = "";
@@ -38,6 +48,7 @@ const userAndCodeGenerator = (data, uid, username) => {
       {
         userCodesRef: db.doc(`userCodes/${code}`),
         username,
+        colorsUser: { dark, light},
       },
       {merge: true}
     );
@@ -50,6 +61,7 @@ const userAndCodeGenerator = (data, uid, username) => {
       db.collection("users").doc(uid),
       {
         username,
+        colorsUser: { dark, light},
       },
       {merge: true}
     );
@@ -58,4 +70,51 @@ const userAndCodeGenerator = (data, uid, username) => {
     .then(console.log("usuario creado"))
     .catch(error => console.error("Error al crar usuario", error));
   }
+}
+
+const getColorDarkMode = () => {
+  let letters = '0123456789ABCDEF'.split('')
+  let color = '#'
+
+  for (let i = 0; i < 3; i++ ) {
+    if (i==2){
+      let lastcolor = letters[Math.floor(Math.random() * 16)]
+
+      if ( color.search(lastcolor) >= 0 ){
+        color += letters[Math.floor(Math.random() * 16)]
+        color += color[i + 3]
+      } else{
+        i--;
+      }
+    } else{
+      color += letters[Math.floor(Math.random() * 16)]
+
+      if (i == 0) color += color[i + 1]
+      else color += color[ i + 2]
+    }
+  }
+  
+  return color;
+}
+
+const getColorLightMode = () => {
+  let letters = '0123456789ABCDEF'.split('')
+  let digits = ''
+  let colorInitial = '000000'
+  let color = '#'
+
+  for (let i = 0; i < 2; i++) {
+    digits += letters[Math.floor(Math.random() * 16)]
+  }
+
+  let randomNumber = Math.floor((Math.random() * (4 - 1 + 1)) + 1)
+  let newColorInitial = colorInitial.slice(- randomNumber)
+  newColorInitial += digits
+
+  while (newColorInitial.length < 6) {
+    newColorInitial += '0'
+  }
+
+  color += newColorInitial
+  return color
 }

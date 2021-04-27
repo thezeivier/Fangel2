@@ -52,10 +52,10 @@ const LadingPage = () => {
           <DesktopGridRight>
             <DescriptionContainer ref={ref} onScreen={onScreen} onScreenDesktop={onScreenDesktop} >
               <SubtitleStyled>
-                Cada comunidad es un espacio unico para compartir momentos
+                Cada comunidad es un espacio único para compartir momentos
               </SubtitleStyled>
               <TextStyled>
-                Las comunidades creadas son efímeras haciendo que no exista despues otra igual a ella. Cada comunidad se eliminará automaticamente despues de unas horas, haciendo que estas sean únicas. Las personas pueden compartir y disfrutar sobre un tema, conocer nuevas personas y establecer conexiones con ellas.
+                Las comunidades creadas son efímeras haciendo que no exista después otra igual a ella. Cada comunidad se eliminará automaticamente despues de unas horas, haciendo que estas sean únicas. Las personas pueden compartir y disfrutar sobre un tema, conocer nuevas personas y establecer conexiones con ellas.
               </TextStyled>
               <ListContainer>
                 <li>Crea discuciones y debates sobre un tema</li>
@@ -72,7 +72,7 @@ const LadingPage = () => {
                 ¿Como crear  comunidades?
               </SubtitleStyled>
               <TextStyled>
-                Necesitas tener una invitacion del equipo de Fangel para crear comunidades. Una ves que crees una o varias comunidades  puedes invitar a cualquier persona.
+                Necesitas tener una invitación del equipo de Fangel para crear comunidades. Una vez que crees una o varias comunidades  puedes invitar a cualquier persona.
               </TextStyled>
               <ButtonStyled primary desktop>¡Quiero una invitación!</ButtonStyled>
             </div>

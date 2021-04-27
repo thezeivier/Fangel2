@@ -73,25 +73,24 @@ export const RegisterWithEmail = async (data, auth, type, firestore, firebase) =
 export const sendDataUser = async (data, uid, type, firestore, firebase, email) => {
   const {firstName, lastName, code} = data
   let batch = firestore.batch()
+  let usersRef = firestore.collection("users").doc(uid)
 
-  firestore
-  .collection('users')
-  .doc(uid)
-  .set({
+  batch
+  .set(
+    usersRef,
+    {
       uid: uid,
       name: {
-        firstName: wordsCapitalizer(firstName),
-        lastName: wordsCapitalizer(lastName),
+        firstName: await wordsCapitalizer(firstName),
+        lastName: await wordsCapitalizer(lastName),
       },
       email: email,
       type: type,
       registerDate: Date.now(),
       quizComplete: false,
-  }).then(()=>{
-    // console.log("Send Success")
-  }).catch(error =>{
-    console.error('Error de envío', error)
-  })
+    },
+    {merge: true}
+  )
 
   if(type === "admin"){
     let codeDBRef = firestore.collection("adminCodes").doc("listOfCodes")
