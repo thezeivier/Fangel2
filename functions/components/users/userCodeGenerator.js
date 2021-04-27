@@ -8,6 +8,17 @@ exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").
   const batch = db.batch();
   const uid = data.uid;
 
+  try{
+    userAndCodeGenerator(data, uid, username)
+    return console.log("Primera ejecución")
+  } catch(e){
+    userAndCodeGenerator(data, uid, username)
+  } 
+
+});
+
+
+const userAndCodeGenerator = (data, uid, username) => {
   if (data.type === "admin") {
     const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     let code = "";
@@ -47,5 +58,4 @@ exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").
     .then(console.log("usuario creado"))
     .catch(error => console.error("Error al crar usuario", error));
   }
-});
-
+}
