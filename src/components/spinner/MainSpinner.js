@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components'
+import { ReactComponent as FangelLettersSVG } from './../general/icons/fangelLetters.svg'
 
 const Faded = keyframes`
   0% {
@@ -57,17 +58,11 @@ const FadedContainer = styled.div`
   flex-direction: column;
 
   animation: ${Faded} .3s ease-in-out;
-`
 
-const Name = styled.div`
-  color: #F6F3EF;
-  font-family: 'Spartan';
-  font-size: 2.1em;
-  font-weight: 500;
-  cursor: default;
-
-  @media (min-width: 768px) {
-    font-size: 2.5em;
+  svg {
+    fill: #F6F3EF;
+    height: 4em;
+    width: 8em;
   }
 `
 
@@ -75,7 +70,7 @@ const Loader = styled.div`
   display: inline-block;
   position: relative;
   width: 70px;
-  height: 70px;
+  margin: -5px 0 0 8px;
 
   div {
     position: absolute;
@@ -123,7 +118,7 @@ const MainSpinner = () => {
   return (
     <Container>
       <FadedContainer>
-        <Name>fangel</Name>
+        <FangelLettersSVG />
         <Loader>
           <div className="box-1"></div>
           <div className="box-2"></div>
