@@ -49,7 +49,7 @@ const MainCreateCTwo = () => {
         <OnlyDesktop>
           <SubtitleStyled>Código de invitación</SubtitleStyled>
           <TextStyled bottom20>
-            Comparte este código con 20 personas para que puedan registrarse en Fangel y unirse a tu comunidad.
+            Comparte este código con 20 personas para que puedan registrarse en Fangel y unirse a tu espacio social.
           </TextStyled>
             <Form>
               <InputStyled id="copyCode" special invitationCode widthComplete type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
@@ -59,9 +59,9 @@ const MainCreateCTwo = () => {
               </CommentSVGContainer>
             </Form>
             <TextStyled>
-              Despues que las personas se registren con una invitacion, podrán entrar a otras comunidades.
+              Despues que las personas se registren con una invitacion, podrán entrar a otros espacios sociales.
             </TextStyled>
-            <ButtonStyled primary onClick={()=>{setEnd(true)}}>Ir a mi comunidad</ButtonStyled>
+            <ButtonStyled primary onClick={()=>{setEnd(true)}}>Ir a mi espacio social</ButtonStyled>
         </OnlyDesktop>
       </Wrapper>
     </main>

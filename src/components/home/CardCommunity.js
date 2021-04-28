@@ -45,7 +45,7 @@ const CardCommunity = ({communityData}) => {
       <li>
         <CardContainer ref={cardRef}>
           <ContainerTextTop>
-            <TextCommunity>Comunidad creada por:</TextCommunity>
+            <TextCommunity>Espacio creado por:</TextCommunity>
             <UserContainer>
               <Link to={`/u/${communityData.username}`}>
                 {

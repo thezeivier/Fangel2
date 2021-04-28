@@ -86,7 +86,7 @@ const Register = () => {
             <ExternalsWrapper>
               <ContainerDesktop>
                 <SubtitleStyled>Regístrate para empezar</SubtitleStyled>
-                <TextStyled>A unirte o crear comunidades</TextStyled>
+                <TextStyled>A unirte o crear espacios sociales</TextStyled>
                 <ErrorAlert>
                   {emailRegistered === false? "Ya existe una cuenta con este correo*": ""}
                 </ErrorAlert>

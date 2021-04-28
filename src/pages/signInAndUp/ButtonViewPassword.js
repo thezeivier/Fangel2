@@ -36,7 +36,7 @@ const ButtonViewPassword = ({ viewPassword, view }) => {
     <ButtonsViewContainer>
       <button onClick={viewPassword}>
         {
-          view ? <ViewOffSVG /> : <ViewSVG />
+          view ? <ViewSVG /> : <ViewOffSVG />
         }
       </button>
     </ButtonsViewContainer>

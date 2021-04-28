@@ -31,9 +31,9 @@ const LadingPage = () => {
                 src="https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/landingPage%2Fundraw_video_call_kxyp.svg?alt=media&token=3588a07e-b292-4822-8e3c-b22a93fd3d7d"
                 alt="Comundidades en fangel"
               />
-              <TitleStyledCover standar>Crea comunidades únicas</TitleStyledCover>
+              <TitleStyledCover standar>Espacios sociales únicos</TitleStyledCover>
               <TextStyledCover standar>
-                ¿Te gusta el cine, la tecnología o quizás el espacio? Conoce a personas con los mismos gustos y comparte ideas.
+                ¿Te gusta el cine, la tecnología o quizás la música? Conoce a personas con los mismos gustos y comparte ideas.
               </TextStyledCover>
               <ButtonsContainer>
                 <Link to={"/register"}>
@@ -52,10 +52,10 @@ const LadingPage = () => {
           <DesktopGridRight>
             <DescriptionContainer ref={ref} onScreen={onScreen} onScreenDesktop={onScreenDesktop} >
               <SubtitleStyled>
-                Cada comunidad es un espacio único para compartir momentos
+                Cada espacio social es único para compartir momentos
               </SubtitleStyled>
               <TextStyled>
-                Las comunidades creadas son efímeras haciendo que no exista después otra igual a ella. Cada comunidad se eliminará automaticamente despues de unas horas, haciendo que estas sean únicas. Las personas pueden compartir y disfrutar sobre un tema, conocer nuevas personas y establecer conexiones con ellas.
+                Los espacios creados son efímeras haciendo que no exista después otra igual a ella. Cada espacio social se eliminará automaticamente despues de unas horas, haciendo que estas sean únicas. Las personas pueden compartir y disfrutar sobre un tema, conocer nuevas personas y establecer conexiones con ellas.
               </TextStyled>
               <ListContainer>
                 <li>Crea discuciones y debates sobre un tema</li>
@@ -69,10 +69,10 @@ const LadingPage = () => {
           <DesktopGridLeft>
             <div className="left">
               <SubtitleStyled>
-                ¿Como crear  comunidades?
+                ¿Como crear espacios sociales?
               </SubtitleStyled>
               <TextStyled>
-                Necesitas tener una invitación del equipo de Fangel para crear comunidades. Una vez que crees una o varias comunidades  puedes invitar a cualquier persona.
+                Necesitas tener una invitación del equipo de Fangel para crear espacios sociales. Una vez que crees uno o varios espacios puedes invitar a cualquier persona.
               </TextStyled>
               <ButtonStyled primary desktop>¡Quiero una invitación!</ButtonStyled>
             </div>

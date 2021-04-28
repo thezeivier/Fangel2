@@ -69,22 +69,26 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
           {
             code &&
               <SectionContainer>
-                <SubtitleStyled as="h4">Código de invitación</SubtitleStyled>
-                <InputContainer>
-                  <InputStyled id="adminCopyCode" special invitationCode placeholder="Código de invitación" value={code? code: "Cargando..."} readOnly/>
-                  <button onClick={()=>CopyCode("adminCopyCode")} ref={hoverRef}>
-                    <CodeCopySVG/>
-                    {isHovered && <Comment>Copiar código</Comment>}
-                  </button>
-                </InputContainer>
-                <SubtitleStyled as="h4">Link de la Sala</SubtitleStyled>
-                <InputContainer>
-                  <InputStyled id="urlRoomCode" special invitationCode placeholder="Link de la sala" value={communityData.roomName? `https://fangelweb.com/room/${communityData.roomName}` : "Cargando..."} readOnly/>
-                  <button onClick={()=>CopyCode("urlRoomCode")} ref={hoverRef}>
-                    <CodeCopySVG/>
-                    {isHovered && <Comment>Copiar link</Comment>}
-                  </button>
-                </InputContainer>
+                <div>
+                  <SubtitleStyled as="h4">Código de invitación</SubtitleStyled>
+                  <InputContainer>
+                    <InputStyled id="adminCopyCode" special invitationCode placeholder="Código de invitación" value={code? code: "Cargando..."} readOnly/>
+                    <button onClick={()=>CopyCode("adminCopyCode")} ref={hoverRef}>
+                      <CodeCopySVG/>
+                      {isHovered && <Comment>Copiar código</Comment>}
+                    </button>
+                  </InputContainer>
+                </div>
+                <div className="invitationLinkContainer">
+                  <SubtitleStyled as="h4">Link del espacio social</SubtitleStyled>
+                  <InputContainer>
+                    <InputStyled id="urlRoomCode" special invitationCode placeholder="Link de la sala" value={communityData.roomName? `https://fangelweb.com/room/${communityData.roomName}` : "Cargando..."} readOnly/>
+                    <button onClick={()=>CopyCode("urlRoomCode")} ref={hoverRef}>
+                      <CodeCopySVG/>
+                      {isHovered && <Comment>Copiar link</Comment>}
+                    </button>
+                  </InputContainer>
+                </div>
               </SectionContainer>
           }{
             communityData.privacy === "public" &&

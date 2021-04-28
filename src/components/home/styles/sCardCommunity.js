@@ -51,6 +51,9 @@ export const UserContainer = styled.div`
     
     svg {
       fill: ${props => props.theme.textColor};
+      width: 30px;
+      height: 30px;
+      margin: 7px 0 3px 0;
     }
   }
 `

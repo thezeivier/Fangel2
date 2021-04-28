@@ -16,6 +16,10 @@ export const DisplayContainer = styled.div`
 export const SectionContainer = styled.section`
   margin: 30px 0;
 
+  .invitationLinkContainer {
+    margin: 40px 0 0 0;
+  }
+
   @media(min-width:1200px) {
     margin: 0 0 40px 0;
   }
@@ -38,7 +42,7 @@ export const InputContainer = styled.div`
     background: transparent;
     border: none;
     margin: 0 0 0 10px;
-
+    display: none;
 
     svg {
       fill: ${props => props.theme.textColor};
@@ -49,6 +53,12 @@ export const InputContainer = styled.div`
         cursor: pointer;
         fill: ${props => props.theme.colorbrandSolid};
       }
+    }
+  }
+
+  @media(min-width:1200px) {
+    button {
+      display: block;
     }
   }
 `
@@ -78,6 +88,10 @@ export const TimerDescripcion = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 0 25px 0;
+  
+  p, span {
+    line-height: 1.55em;
+  }
 
   span {
     color: ${props => props.theme.colorbrandSolid};

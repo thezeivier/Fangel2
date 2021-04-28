@@ -15,7 +15,7 @@ const Main404 = () => {
           </SVGContainer>
           <DescriptionErrorContainer>
             <PrimaryTitleStyled as="h3">Lo sentimos. Esta página se perdió</PrimaryTitleStyled>
-            <TextBodyStyled>Si quisiste entrar a una comunidad, es posible que esta ya no exista.</TextBodyStyled>
+            <TextBodyStyled>Si quisiste entrar a un Espacio social, es posible que este ya no exista.</TextBodyStyled>
             <TextBodyStyled>
               Si es otro caso, por favor informa este problema en <Link to="/report">Reportar un problema</Link>. Lo solucionaremos rápidamente.
             </TextBodyStyled>

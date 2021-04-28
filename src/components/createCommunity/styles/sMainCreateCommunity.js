@@ -139,3 +139,9 @@ export const FieldSet = styled.fieldset`
     }
   }
 `
+
+export const OtherInformation = styled.p`
+  margin: -10px 0 20px 0;
+  color: ${props => props.theme.smallText};
+  font-size: .95em;
+`

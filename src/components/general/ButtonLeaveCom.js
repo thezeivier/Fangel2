@@ -11,7 +11,7 @@ const ButtonLeaveCom = ({ displayDesktop, communityProvider }) => {
     <ButtonStyled displayDesktop={displayDesktop} onClick={handleLeaveCommunity} as={Link} to="/">
       {/* <ButtonLeaveComSVG /> */}
       {
-        displayDesktop ? 'Salir de la comunidad ': 'Salir'
+        displayDesktop ? 'Salir del espacio social ': 'Salir'
       }
     </ButtonStyled>
   );

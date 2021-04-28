@@ -9,7 +9,7 @@ import { TitleStyled, TextAreaStyled, ButtonStyled,
          OnlyDesktop, SubtitleStyled } from './../../themes/internalRecyclableStyles'
 import { InputStyled, ErrorAlert } from './../../pages/signInAndUp/styles/sGlobalForm'
 import { TextBody } from './../../themes/externalRecyclableStyles'
-import { FieldSet } from './styles/sMainCreateCommunity'
+import { FieldSet, OtherInformation } from './styles/sMainCreateCommunity'
 import { CreateCommunity } from './algorithms/CreateCommunity'
 
 const MainCreateCOne = () => {
@@ -63,14 +63,14 @@ const MainCreateCOne = () => {
           <>
             {
               (communityCreated === "sending") &&
-              <LoadServSpinner title="Preparando el espacio para tu comunidad" />
+              <LoadServSpinner title="Creando tu espacio social" />
             }
             <Wrapper>
-              <TitleStyled bottom>Crear una comunidad</TitleStyled>
+              <TitleStyled bottom>Crear un espacio social</TitleStyled>
               <OnlyDesktop>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div>
-                    <SubtitleStyled>Elige el tipo de comunidad</SubtitleStyled>
+                    <SubtitleStyled>Elige el tipo de espacio social</SubtitleStyled>
                     <FieldSet>
                       <label className="radiosContainerFlex__item">
                         <input type="radio" defaultChecked onClick={checkPublic} id="public" name="privacy" value="public" />
@@ -84,14 +84,14 @@ const MainCreateCOne = () => {
                       </label>
                     </FieldSet>
                   </div>
-                  <InputStyled type="text" placeholder="Nombre de la comunidad" name="nameCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
+                  <InputStyled type="text" placeholder="Nombre del espacio social" name="nameCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
                   <ErrorAlert>{errors.nameCommunity? errors.nameCommunity.message: ""}</ErrorAlert>
                   {roomPrivacy === "public" && 
                     <>
                       <TextAreaStyled type="text" placeholder="Descripcion" name="descriptionCommunity" ref={register()}/>
                       <ErrorAlert>{errors.descriptionCommunity? errors.descriptionCommunity.message: ""}</ErrorAlert>
                       <div>
-                        <FieldSet>Se recomienda usar imágenes en formato gif de 400 x 400px</FieldSet>
+                        <OtherInformation>Se recomienda usar imágenes en formato gif de 400px x 400px</OtherInformation>
                         <input type="file" accept="image/*" style={{display: "none"}} id="communityImage"/>
                         {(disable) ?
                           <ButtonStyled onClick={recoverCommunityImage} secondary bottom30 disabled>Imagen cargada</ButtonStyled> :
@@ -101,12 +101,12 @@ const MainCreateCOne = () => {
                     </>
                   }
                   <TextBody>
-                    Las comunidades públicas están activas por 1 hora, pero tambien puedes extenderlas por mas horas.
+                    Los espacios sociales públicos están activas por 1 hora, pero tambien puedes extenderlos por mas horas.
                   </TextBody>
                   <TextBody secondParagraph>
-                    El tiempo de las comunidades privadas es ilimitado o hasta que no quede ninguna personas dentro de ella.
+                    El tiempo de los espacios sociales privados es ilimitado o hasta que no quede ninguna personas dentro de ella.
                   </TextBody>
-                  <ButtonStyled primary type="submit">Crear comunidad</ButtonStyled>
+                  <ButtonStyled primary type="submit">Crear espacio social</ButtonStyled>
                 </form>
               </OnlyDesktop>
             </Wrapper>
