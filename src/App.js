@@ -157,7 +157,7 @@ export {App, Consumer as AppConsumer, AppContext}
 // const createAdminCodes = (firestore, firebase) => {
 //   const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 //   let listOfCodes = []
-//   while(listOfCodes.length < 50){
+//   while(listOfCodes.length < 5){
 //     let code = "admin";
 //     while (code.length < 12) {
 //       code = code.concat(model.charAt(Math.round(Math.random()*model.length)));

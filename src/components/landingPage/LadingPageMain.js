@@ -1,14 +1,19 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import useOnScreen from './../../hook/use-on-screen'
 import { Link } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import Footer from './../general/Footer'
+import {useFirestore, useFirebaseApp} from  'reactfire'
+import {createAdminCodes} from './algorithms/createAdminCodes'
 import { CoverPage, TitleStyledCover, TextStyledCover, ButtonsContainer,
          ButtonStyledCover, Container, ListContainer, Box,
          SubtitleStyled, TextStyled, ButtonStyled, DesktopGridRight,
          DesktopGridLeft, DescriptionContainer } from './styles/sLanding'
 
 const LadingPage = () => {
+  const firestore = useFirestore()
+  const firebase = useFirebaseApp()
+  const [codeAdmin, setCodeAdmin] = useState()
   const ref = useRef()
   useEffect(()=> {
     return ()=>{
@@ -18,6 +23,10 @@ const LadingPage = () => {
 
   const onScreen = useOnScreen(ref, "300px")
   const onScreenDesktop = useOnScreen(ref, "-150px")
+
+  const createCode = async () =>{
+    setCodeAdmin(await createAdminCodes(firestore, firebase))
+  }
 
   return (
     <>
@@ -78,7 +87,8 @@ const LadingPage = () => {
             </div>
             <div className="right">
               <Box></Box>
-              <ButtonStyled primary mobile>¡Quiero una invitación!</ButtonStyled>
+              {codeAdmin && <h3>{codeAdmin}</h3>}
+              <ButtonStyled primary mobile onClick={createCode}>¡Quiero una invitación!</ButtonStyled>
             </div>
           </DesktopGridLeft>
         </Wrapper>
