@@ -70,7 +70,7 @@ export const SmallTextStyled = styled(SmallText) `
   }
 `
 
-export const Fangel = styled.h6`
+export const Fangel = styled.span`
   font-style: normal;
   font-weight: ${props => props.theme.weight.regular};
   font-size: 0.92em;

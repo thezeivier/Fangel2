@@ -164,26 +164,31 @@ export const ListContainer = styled.ul`
   }
 `
 
-export const Box = styled.div`
-  width: 100%;
-  height: 300px;
-  background: peru;
-  transition-delay: 1s;
-  transition: all ease-in .2s;
-  will-change: opacity, transform;
+export const FangelPromotionContainer = styled.div`
+  img {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
 
-  ${props => props.translateRight && css`
-    opacity: ${props => props.onScreen ? '1' : '0'};
-    transform: ${props => props.onScreen ? 'translateX(0)' : 'translateX(10px)'};
-
-    @media(min-width:1200px) {
-      opacity: ${props => props.onScreenDesktop ? '1' : '0'};
-      transform: ${props => props.onScreenDesktop ? 'translateX(0)' : 'translateX(10px)'};
+  @media(min-width:768px) {
+    img {
+      width: 54%;
     }
-  `}
+  }
+
+  @media(min-width:1024px) {
+    img {
+      width: 34%;
+    }
+  }
 
   @media(min-width:1200px) {
     margin: 60px 0 0 0;
+
+    img {
+      width: 61%;
+    }
   }
 `
 
@@ -232,14 +237,7 @@ export const ButtonStyled = styled(Button) `
 export const DescriptionContainer = styled.div`
   transition-delay: 1s;
   transition: all ease-in .2s;
-  opacity: ${props => props.onScreen ? '1' : '0'};
-  transform: ${props => props.onScreen ? 'translateX(0)' : 'translateX(-10px)'};
   will-change: opacity, transform;
-
-  @media(min-width:1200px) {
-    opacity: ${props => props.onScreenDesktop ? '1' : '0'};
-    transform: ${props => props.onScreenDesktop ? 'translateX(0)' : 'translateX(-10px)'};
-  }
 `
 
 /* Desktop */

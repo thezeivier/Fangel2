@@ -1,29 +1,21 @@
 import React, { useRef, useEffect, useState } from 'react';
-import useOnScreen from './../../hook/use-on-screen'
 import { Link } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import Footer from './../general/Footer'
 import {useFirestore, useFirebaseApp} from  'reactfire'
 import {createAdminCodes} from './algorithms/createAdminCodes'
 import { CoverPage, TitleStyledCover, TextStyledCover, ButtonsContainer,
-         ButtonStyledCover, Container, ListContainer, Box,
-         SubtitleStyled, TextStyled, ButtonStyled, DesktopGridRight,
-         DesktopGridLeft, DescriptionContainer } from './styles/sLanding'
-import fangelg from './images/fangelg.jpg'
+         ButtonStyledCover, Container, ListContainer, SubtitleStyled,
+         TextStyled, ButtonStyled, DesktopGridRight, DesktopGridLeft,
+         DescriptionContainer, FangelPromotionContainer } from './styles/sLanding'
+
+import criptoImage from './images/gifFangel.gif'
+import yesImage from './images/yes.gif'
 
 const LadingPage = () => {
   const firestore = useFirestore()
   const firebase = useFirebaseApp()
   const [codeAdmin, setCodeAdmin] = useState()
-  const ref = useRef()
-  useEffect(()=> {
-    return ()=>{
-      ref.current = false
-    }
-  },[])
-
-  const onScreen = useOnScreen(ref, "300px")
-  const onScreenDesktop = useOnScreen(ref, "-150px")
 
   const createCode = async () =>{
     setCodeAdmin(await createAdminCodes(firestore, firebase))
@@ -60,7 +52,7 @@ const LadingPage = () => {
         {/* Body page */}
         <Wrapper>
           <DesktopGridRight>
-            <DescriptionContainer ref={ref} onScreen={onScreen} onScreenDesktop={onScreenDesktop} >
+            <DescriptionContainer >
               <SubtitleStyled>
                 Cada espacio social es único para compartir momentos
               </SubtitleStyled>
@@ -74,9 +66,9 @@ const LadingPage = () => {
                 <li>O simplemente haz una fiesta</li>
               </ListContainer>
             </DescriptionContainer>
-            <Box ref={ref} onScreen={onScreen} onScreenDesktop={onScreenDesktop} translateRight>
-            </Box>
-            <img scr="https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/landingPage%2Fhuman.png?alt=media&token=8e3befd0-1662-4b97-80ee-2f63ea1d39b6" alt="fangel social" />
+            <FangelPromotionContainer>
+              <img src={criptoImage}/>
+            </FangelPromotionContainer>
           </DesktopGridRight>
           <DesktopGridLeft>
             <div className="left">
@@ -88,10 +80,14 @@ const LadingPage = () => {
               </TextStyled>
               <ButtonStyled primary desktop>¡Quiero una invitación!</ButtonStyled>
             </div>
-            <div className="right">
-            <iframe src="https://media1.giphy.com/media/LSvB8JdEf4yascdXf1/200.gif" width="350 " height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-              {codeAdmin && <h3>{codeAdmin}</h3>}
-              <ButtonStyled primary mobile onClick={createCode}>¡Quiero una invitación!</ButtonStyled>
+            <div>
+              <FangelPromotionContainer>
+                <img src={yesImage}/>
+              </FangelPromotionContainer>
+              <div className="right">
+                {codeAdmin && <h3>{codeAdmin}</h3>}
+                <ButtonStyled primary mobile onClick={createCode}>¡Quiero una invitación!</ButtonStyled>
+              </div>
             </div>
           </DesktopGridLeft>
         </Wrapper>
