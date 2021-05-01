@@ -107,7 +107,7 @@ const LadingPage = () => {
               </div>
               <CodeContainer mobile>
                 {codeAdmin && <>
-                  <p>Usa este código para regístrate</p>
+                  <p>Usa este código para registrarte</p>
                   <h3>{codeAdmin}</h3>
                 </>}
               </CodeContainer>
