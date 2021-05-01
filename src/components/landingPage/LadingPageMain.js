@@ -9,6 +9,7 @@ import { CoverPage, TitleStyledCover, TextStyledCover, ButtonsContainer,
          ButtonStyledCover, Container, ListContainer, Box,
          SubtitleStyled, TextStyled, ButtonStyled, DesktopGridRight,
          DesktopGridLeft, DescriptionContainer } from './styles/sLanding'
+import fangelg from './images/fangelg.jpg'
 
 const LadingPage = () => {
   const firestore = useFirestore()
@@ -73,7 +74,9 @@ const LadingPage = () => {
                 <li>O simplemente haz una fiesta</li>
               </ListContainer>
             </DescriptionContainer>
-            <Box ref={ref} onScreen={onScreen} onScreenDesktop={onScreenDesktop} translateRight></Box>
+            <Box ref={ref} onScreen={onScreen} onScreenDesktop={onScreenDesktop} translateRight>
+            </Box>
+            <img scr="https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/landingPage%2Fhuman.png?alt=media&token=8e3befd0-1662-4b97-80ee-2f63ea1d39b6" alt="fangel social" />
           </DesktopGridRight>
           <DesktopGridLeft>
             <div className="left">
@@ -86,7 +89,7 @@ const LadingPage = () => {
               <ButtonStyled primary desktop>¡Quiero una invitación!</ButtonStyled>
             </div>
             <div className="right">
-              <Box></Box>
+            <iframe src="https://media1.giphy.com/media/LSvB8JdEf4yascdXf1/200.gif" width="350 " height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
               {codeAdmin && <h3>{codeAdmin}</h3>}
               <ButtonStyled primary mobile onClick={createCode}>¡Quiero una invitación!</ButtonStyled>
             </div>
