@@ -10,6 +10,8 @@ import { CoverPage, TitleStyledCover, TextStyledCover, ButtonsContainer,
          SubtitleStyled, TextStyled, ButtonStyled, DesktopGridRight,
          DesktopGridLeft, DescriptionContainer } from './styles/sLanding'
 
+import criptoImage from './images/gifFangel.gif'
+
 const LadingPage = () => {
   const firestore = useFirestore()
   const firebase = useFirebaseApp()
@@ -59,7 +61,7 @@ const LadingPage = () => {
         {/* Body page */}
         <Wrapper>
           <DesktopGridRight>
-            <DescriptionContainer ref={ref} onScreen={onScreen} onScreenDesktop={onScreenDesktop} >
+            <DescriptionContainer onScreen={onScreen} onScreenDesktop={onScreenDesktop} >
               <SubtitleStyled>
                 Cada espacio social es único para compartir momentos
               </SubtitleStyled>
@@ -73,7 +75,8 @@ const LadingPage = () => {
                 <li>O simplemente haz una fiesta</li>
               </ListContainer>
             </DescriptionContainer>
-            <Box ref={ref} onScreen={onScreen} onScreenDesktop={onScreenDesktop} translateRight></Box>
+            <img src={criptoImage}/>
+            <Box onScreen={onScreen} onScreenDesktop={onScreenDesktop} translateRight></Box>
           </DesktopGridRight>
           <DesktopGridLeft>
             <div className="left">
