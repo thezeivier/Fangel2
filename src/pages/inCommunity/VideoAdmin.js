@@ -18,6 +18,7 @@ const VideoAdmin = ({communityData, isAdmin}) => {
   const closeModal = () => {
     setModalIsOpen(false)
   }
+  
   return (
     <>
       {

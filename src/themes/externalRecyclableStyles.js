@@ -202,6 +202,18 @@ export const Button = styled.button`
     }
   `}
 
+  ${props => props.disabledPrimary && css`
+    border: 1px solid grey;
+    color: grey;
+    background: #2929299c;
+
+    &:hover,
+    &:active {
+      background: #80808014;
+      cursor: default;
+    }
+  `}
+
   ${props => props.standarP && css`
     background: ${props => props.theme.colorBrandDark};
     color: ${props => props.theme.colorDark};

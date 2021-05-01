@@ -135,6 +135,10 @@ const GlobalStyles = createGlobalStyle`
     padding: 0 !important;
   }
 
+  .ReactModal__Overlay {
+    background: rgb(10 10 10 / 87%) !important;
+  }
+
   @media (orientation : landscape) {
     .ReactModal__Content {
       height: 100%;

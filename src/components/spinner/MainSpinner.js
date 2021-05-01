@@ -70,7 +70,7 @@ const Loader = styled.div`
   display: inline-block;
   position: relative;
   width: 70px;
-  margin: -5px 0 0 8px;
+  margin: -5px 0 0 0;
 
   div {
     position: absolute;

@@ -7,7 +7,7 @@ import {createAdminCodes} from './algorithms/createAdminCodes'
 import { CoverPage, TitleStyledCover, TextStyledCover, ButtonsContainer,
          ButtonStyledCover, Container, ListContainer, SubtitleStyled,
          TextStyled, ButtonStyled, DesktopGridRight, DesktopGridLeft,
-         DescriptionContainer, FangelPromotionContainer } from './styles/sLanding'
+         DescriptionContainer, FangelPromotionContainer, CodeContainer } from './styles/sLanding'
 
 import criptoImage from './images/gifFangel.gif'
 import yesImage from './images/yes.gif'
@@ -16,10 +16,14 @@ const LadingPage = () => {
   const firestore = useFirestore()
   const firebase = useFirebaseApp()
   const [codeAdmin, setCodeAdmin] = useState()
+  const [disableButton, setDisableButton] = useState(false);
 
   const createCode = async () =>{
     setCodeAdmin(await createAdminCodes(firestore, firebase))
+    setDisableButton(true)
   }
+
+
 
   return (
     <>
@@ -78,16 +82,35 @@ const LadingPage = () => {
               <TextStyled>
                 Necesitas tener una invitación del equipo de Fangel para crear espacios sociales. Una vez que crees uno o varios espacios puedes invitar a cualquier persona.
               </TextStyled>
-              <ButtonStyled primary desktop>¡Quiero una invitación!</ButtonStyled>
+              {
+                disableButton ? 
+                  <ButtonStyled primary desktop disabled disabledPrimary onClick={createCode}>¡Quiero una invitación!</ButtonStyled> :
+                  <ButtonStyled primary desktop onClick={createCode}>¡Quiero una invitación!</ButtonStyled>
+              }
+              <CodeContainer desktop>
+                {codeAdmin && <>
+                  <p>Usa este código para regístrate</p>
+                  <h3>{codeAdmin}</h3>
+                </>}
+              </CodeContainer>
             </div>
             <div>
               <FangelPromotionContainer>
                 <img src={yesImage}/>
               </FangelPromotionContainer>
               <div className="right">
-                {codeAdmin && <h3>{codeAdmin}</h3>}
-                <ButtonStyled primary mobile onClick={createCode}>¡Quiero una invitación!</ButtonStyled>
+                {
+                  disableButton ? 
+                    <ButtonStyled primary mobile disabled disabledPrimary onClick={createCode}>¡Quiero una invitación!</ButtonStyled> :
+                    <ButtonStyled primary mobile onClick={createCode}>¡Quiero una invitación!</ButtonStyled>
+                }
               </div>
+              <CodeContainer mobile>
+                {codeAdmin && <>
+                  <p>Usa este código para regístrate</p>
+                  <h3>{codeAdmin}</h3>
+                </>}
+              </CodeContainer>
             </div>
           </DesktopGridLeft>
         </Wrapper>
