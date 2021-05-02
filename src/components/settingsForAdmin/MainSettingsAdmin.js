@@ -11,14 +11,14 @@ import { SubtitleStyled, InputStyled, InputContainer, SectionContainer,
 import { ReactComponent as CodeCopySVG } from './icons/codeCopy.svg'
 //Import copy Code.
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'
-import {AddHour} from './algorithms/AddHour'
+// import {AddHour} from './algorithms/AddHour'
 
 const MainSettingsAdmin = ({ inDesktop, communityData }) => {
   const [hoverRef, isHovered] = useHover();
-  const firestore = useFirestore()
+  // const firestore = useFirestore()
   const [code, setCode] = useState(false);
-  const [alertTimer, setAlertTimer] = useState(false)
-  const [activeCommunity, setActiveCommunity] = useState()
+  // const [alertTimer, setAlertTimer] = useState(false)
+  // const [activeCommunity, setActiveCommunity] = useState()
   const contextFromApp = useContext(AppContext)
   useEffect(()=> {
     contextFromApp.userFromDB.userCodesRef
@@ -28,33 +28,33 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
           setCode(result.data().code)
         }  
       })
-      firestore
-      .collection('activeCommunities')
-      .doc(communityData.roomName)
-      .onSnapshot((doc) => {
-        setActiveCommunity(doc.data());
-    });
+      // firestore
+      // .collection('activeCommunities')
+      // .doc(communityData.roomName)
+      // .onSnapshot((doc) => {
+      //   setActiveCommunity(doc.data());
+      // });
   },[])
   
-  if(activeCommunity){
-    if(activeCommunity.duration - activeCommunity.transcurred <= 10){
-      setAlertTimer(true)
-    }
-  } 
+  // if(activeCommunity){
+  //   if(activeCommunity.duration - activeCommunity.transcurred <= 10){
+  //     setAlertTimer(true)
+  //   }
+  // } 
   
-  const addHour = async () => {
-    await AddHour(firestore, communityData.roomName)
-  }
+  // const addHour = async () => {
+  //   await AddHour(firestore, communityData.roomName)
+  // }
   
   return (
     <Wrapper>
-      {
+      {/* {
         (alertTimer) &&
         <AlertWarning extendTime={()=>{
           addHour(firestore, communityData.roomName)
           setAlertTimer(false)
         }} closeModal={()=>setAlertTimer(false)}/>
-      }
+      } */}
       <DisplayContainer inDesktop={inDesktop}>
         {/* <SectionContainer>
           <SubtitleStyled as="h4">Personas <span>(4)</span></SubtitleStyled>
@@ -94,7 +94,7 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
             communityData.privacy === "public" &&
               <SectionContainer>
                 <SubtitleStyled as="h4">Configuraciones</SubtitleStyled>
-                <TimerDescripcion>
+                {/* <TimerDescripcion>
                   <p>Tiempo de vida sobrante</p>
                   <span>{activeCommunity? `Apróx. ${activeCommunity.duration - activeCommunity.transcurred} min.`: "Cargando"}</span>
                 </TimerDescripcion>
@@ -102,7 +102,7 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
                   ((activeCommunity.duration - activeCommunity.transcurred) >= 120?
                   <ButtonStyled secondary onClick={addHour} disabled>Extender 1 hora más</ButtonStyled> :
                   <ButtonStyled secondary onClick={addHour}>Extender 1 hora más</ButtonStyled>)
-                }
+                } */}
               </SectionContainer>
           }
         </div>
