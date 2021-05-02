@@ -3,7 +3,7 @@ import {AppContext} from '../../App'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import ButtonViewPassword from './ButtonViewPassword'
-import { Link, Redirect, useHistory } from "react-router-dom"
+import { Link, Redirect, useHistory, useLocation } from "react-router-dom"
 import { useForm } from 'react-hook-form'
 import { useStateIfMounted } from 'use-state-if-mounted'
 import { RegisterWithEmail, codeValidator } from './algorithms/RegisterWithEmail'
@@ -19,6 +19,7 @@ import MainSpinner from '../../components/spinner/MainSpinner'
 const Register = () => {
   const contextFromApp = useContext(AppContext)
   const history = useHistory()
+  const location = useLocation()
   const auth = useAuth()
   const firestore = useFirestore()
   const firebase = useFirebaseApp()
@@ -70,6 +71,7 @@ const Register = () => {
 
   // console.log(emailRegistered)
   // console.log(codeBValidated)
+  console.log(location)
 
   return (
     <>
@@ -140,6 +142,7 @@ const Register = () => {
                     special
                     type="text" 
                     placeholder="Código de invitación" 
+                    value={location? (location.state? location.state.code:""):""}
                     name="code" 
                     ref={register(codeFValidator)} 
                   />

@@ -286,6 +286,12 @@ export const CodeContainer = styled.div`
     color: ${props => props.theme.colorbrandSolid};
   }
 
+  a {
+    display: inline-block;
+    text-decoration: underline;
+    color: ${props => props.theme.colorbrandSolid};
+  }
+
   ${props => props.desktop && css`
     display: none;
 
@@ -302,3 +308,5 @@ export const CodeContainer = styled.div`
     }
   `}
 `
+
+

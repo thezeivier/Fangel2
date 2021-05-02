@@ -89,7 +89,14 @@ const LadingPage = () => {
               }
               <CodeContainer desktop>
                 {codeAdmin && <>
-                  <p>Usa este código para regístrate</p>
+                  <p>Usa este código para <Link
+                    to={
+                      {
+                        pathname: "/register",
+                        state: { code: codeAdmin? codeAdmin: false }
+                      }
+                    }
+                  >registrarte</Link></p>
                   <h3>{codeAdmin}</h3>
                 </>}
               </CodeContainer>
@@ -107,7 +114,14 @@ const LadingPage = () => {
               </div>
               <CodeContainer mobile>
                 {codeAdmin && <>
-                  <p>Usa este código para registrarte</p>
+                  <p>Usa este código para <Link
+                    to={
+                      {
+                        pathname: "/register",
+                        state: { code: codeAdmin? codeAdmin: false }
+                      }
+                    }
+                  >registrarte</Link></p>
                   <h3>{codeAdmin}</h3>
                 </>}
               </CodeContainer>
