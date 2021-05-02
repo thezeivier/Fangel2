@@ -142,7 +142,7 @@ const Register = () => {
                     special
                     type="text" 
                     placeholder="Código de invitación" 
-                    value={location? (location.state? location.state.code:""):""}
+                    value={location? (location.state? location.state.code: null):null}
                     name="code" 
                     ref={register(codeFValidator)} 
                   />
