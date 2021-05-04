@@ -101,10 +101,10 @@ const MainCreateCOne = () => {
                     </>
                   }
                   <TextBody>
-                    Los espacios sociales públicos están activas por 1 hora, pero tambien puedes extenderlos por mas horas.
+                    Los espacios sociales públicos son visibles para todo los usuarios registrados en Fangel.
                   </TextBody>
                   <TextBody secondParagraph>
-                    El tiempo de los espacios sociales privados es ilimitado o hasta que no quede ninguna personas dentro de ella.
+                    Los espacios privados solo son accedidos medinate un link.
                   </TextBody>
                   <ButtonStyled primary type="submit">Crear espacio social</ButtonStyled>
                 </form>

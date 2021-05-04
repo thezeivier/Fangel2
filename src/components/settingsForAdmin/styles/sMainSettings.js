@@ -6,27 +6,34 @@ export const DisplayContainer = styled.div`
 
   @media(min-width:1200px) {
     display: ${props => props.inDesktop ? `${props.inDesktop}` : 'none'}; //grid
-    display: grid;
+/*     display: grid;
     grid-template-columns: 51% 1fr;
-    column-gap: calc(7% + 40px);
+    column-gap: calc(7% + 40px); */
     margin: 100px 0 0 0;
   }
 `
 
 export const SectionContainer = styled.section`
-  margin: 30px 0;
-
+  margin: 15px 0 30px 0;
+  
   .invitationLinkContainer {
-    margin: 40px 0 0 0;
+    margin: 30px 0 0 0;
   }
 
   @media(min-width:1200px) {
     margin: 0 0 40px 0;
   }
+
+
+  ${props => props.width50ptg && css`
+    @media(min-width:1200px) {
+      width: 50%;
+    }
+  `}
 `
 
 export const SubtitleStyled = styled(SecondaryTitle)`
-  margin: 10px 0 15px 0;
+  margin: 0 0 10px 0;
   font-size: 1.4em;
 
   span {

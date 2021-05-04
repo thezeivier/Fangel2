@@ -30,12 +30,12 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, close
       <EmbedVideo communityData={communityData} isAdmin={isAdmin}/>
       <Wrapper height="100%">
         <ContainerResponsive>
-          <ButtonConfiguration secondary display={displayNoAdmin} onClick={open}>
+{/*           <ButtonConfiguration secondary display={displayNoAdmin} onClick={open}>
             <VideoSettingsSVG />
             Configuraciones
-          </ButtonConfiguration>
+          </ButtonConfiguration> */}
           <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef}/>
-          <InputComments userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName}/>
+          <InputComments userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} />
         </ContainerResponsive>
       </Wrapper>
       <ModalSettingsAdmin communityData={communityData} modalIsOpen={modalIsOpen} closeModal={closeModal} />

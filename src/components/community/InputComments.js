@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { ReactComponent as MicrophoneDisableSVG } from './icons/microphoneDisable.svg'
-import { ReactComponent as CameraVideoDisableSVG } from './icons/cameraVideoDisable.svg'
+/* import { ReactComponent as MicrophoneDisableSVG } from './icons/microphoneDisable.svg'
+import { ReactComponent as CameraVideoDisableSVG } from './icons/cameraVideoDisable.svg' */
 import { ReactComponent as SendCommentsSVG } from './icons/sendComments.svg'
+import { ReactComponent as MoreSVG } from './../home/icons/addCard.svg'
 import { InputStyled, InputContainer, SvgsContainer, Form, Button } from './styles/sInputComments'
 
 import firebase from 'firebase/app'
 
-const InputComments = ({userFromDB, lastMsgRef, data, name, messageRef}) => {
+const InputComments = ({userFromDB, lastMsgRef, data, name, messageRef,open }) => {
   const [formValue, setFormValue] = useState('')
   
   // Send new message
@@ -37,10 +38,11 @@ const InputComments = ({userFromDB, lastMsgRef, data, name, messageRef}) => {
   
   return (
     <InputContainer>
-{/*       <SvgsContainer>
-        <MicrophoneDisableSVG className="microphone"/>
-        <CameraVideoDisableSVG className="cameraVideo"/>
-      </SvgsContainer> */}
+      <SvgsContainer>
+{/*         <MicrophoneDisableSVG className="microphone"/>
+        <CameraVideoDisableSVG className="cameraVideo"/> */}
+        <MoreSVG className="moreSVG" onClick={open} />
+      </SvgsContainer>
       <Form onSubmit={sendMessage}>
         <InputStyled placeholder="Escribe un comentario" value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
         <Button type="submit" disabled={((formValue.trim().length == 0) || (formValue.length > 180)) ? true : false }>

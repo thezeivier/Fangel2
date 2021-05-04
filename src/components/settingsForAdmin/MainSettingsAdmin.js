@@ -6,6 +6,7 @@ import useHover from './../../hook/use-hover'
 import Wrapper from './../general/Wrapper'
 import AlertWarning from '../general/AlertWarning'
 import UserConnect from './UserConnect'
+import SubSpaceMain from './../subSpace/SubSpaceMain'
 import { SubtitleStyled, InputStyled, InputContainer, SectionContainer,
          TimerDescripcion, ButtonStyled, DisplayContainer, Comment } from './styles/sMainSettings'
 import { ReactComponent as CodeCopySVG } from './icons/codeCopy.svg'
@@ -68,7 +69,7 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
         <div>
           {
             code &&
-              <SectionContainer>
+              <SectionContainer width50ptg>
                 <div>
                   <SubtitleStyled as="h4">Código de invitación</SubtitleStyled>
                   <InputContainer>
@@ -92,9 +93,9 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
               </SectionContainer>
           }{
             communityData.privacy === "public" &&
-              <SectionContainer>
+/*               <SectionContainer>
                 <SubtitleStyled as="h4">Configuraciones</SubtitleStyled>
-                {/* <TimerDescripcion>
+                <TimerDescripcion>
                   <p>Tiempo de vida sobrante</p>
                   <span>{activeCommunity? `Apróx. ${activeCommunity.duration - activeCommunity.transcurred} min.`: "Cargando"}</span>
                 </TimerDescripcion>
@@ -102,7 +103,11 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
                   ((activeCommunity.duration - activeCommunity.transcurred) >= 120?
                   <ButtonStyled secondary onClick={addHour} disabled>Extender 1 hora más</ButtonStyled> :
                   <ButtonStyled secondary onClick={addHour}>Extender 1 hora más</ButtonStyled>)
-                } */}
+                }
+              </SectionContainer> */
+              <SectionContainer>
+                <SubtitleStyled as="h4">Subespacios</SubtitleStyled>
+                <SubSpaceMain />
               </SectionContainer>
           }
         </div>

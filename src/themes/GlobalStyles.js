@@ -127,7 +127,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .ReactModal__Content {
-    background: ${props => props.theme.background} !important;
+    background: transparent !important;
     color: ${props => props.theme.textColor};
     border-radius: unset !important;
     border: none !important;
@@ -136,7 +136,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .ReactModal__Overlay {
-    background: rgb(10 10 10 / 87%) !important;
+    background: rgba(2, 4, 14, 0.82) !important;
+    backdrop-filter: blur(10px);
   }
 
   @media (orientation : landscape) {

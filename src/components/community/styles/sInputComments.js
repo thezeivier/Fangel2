@@ -30,23 +30,28 @@ export const InputContainer = styled.div`
 
 export const SvgsContainer = styled.div`
   flex: 0 0 auto;
-  margin: 0 5px 0 0;
+  margin: 0 10px 0 0;
 
   svg {
     height: 24px;
+    width: 24px;
     fill: ${props => props.theme.textColor};
   }
 
-  .microphone {
+/*   .microphone {
     margin: 0 5px 0 0;
-  }
+  } */
 
   @media(min-width:768px) {
     margin: 0 10px 0 0;
 
-    .microphone {
+/*     .microphone {
       margin: 0 10px 0 0;
-    }
+    } */
+  }
+
+  @media(min-width:1200px) {
+    display: none;
   }
 `
 
