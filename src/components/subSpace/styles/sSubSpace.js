@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 const CardMixin = css`
   border-radius: 10px;
   display: flex;
-  height: 80px;
+  height: 95px;
   transition: .2s;
   cursor: pointer;
 
@@ -93,20 +93,36 @@ export const SubSpaceCardContainer = styled.li`
   flex-direction: column;
   align-items: start;
   justify-content: center;
+  position: relative;
   ${CardMixin}
 
   h4 {
     font-size: 1.1em;
     font-weight: ${props => props.theme.weight.semiMedium};
     margin: 0 0 8px 0;
+    font-family: ${props => props.theme.secondaryFont};
     ${ClampMixin}
   }
 
-  p {
-    color: ${props => props.theme.textColor + 'd6'};
-    font-weight: ${props => props.theme.weight.light};
-    font-size: 0.98em;
-    ${ClampMixin}
+  span {
+    font-size: 0.9em;
+    color: ${props => props.theme.smallText};
+  }
+
+  .numberPeopleSVG {
+    margin: 0 5px 0 0;
+    fill: ${props => props.theme.smallText};
+  }
+
+  .menuCardSVG {
+    position: absolute;
+    fill: ${props => props.theme.textColor};
+    top: 14px;
+    right: 12px;
+  }
+
+  .activeMenuCard {
+    fill: ${props => props.theme.textColorInvert};
   }
 
   @media(min-width:768px) {
@@ -114,14 +130,38 @@ export const SubSpaceCardContainer = styled.li`
     padding: 20px 15px;
   }
 
-   @media(min-width:1200px) {
+  @media(min-width:1200px) {
     h4 {
       font-size: 1.08em;
       margin: 0 0 10px 0;
     }
-
-    p {
-      font-size: 0.95em;
-    }
   }
+`
+
+export const MenuCardContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: ${props => props.theme.textColor};
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 70%;
+  height: 57%;
+  display: flex;
+  align-items: center;
+  font-size: 1.05em;
+
+  p {
+    color: ${props => props.theme.textColorInvert};
+  }
+`
+
+export const SaveContainer = styled.div`
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  font-size: 0.95em;
+  color: rgba(39, 174, 96);
+  font-weight: ${props => props.theme.weight.semiMedium};
 `

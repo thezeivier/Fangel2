@@ -20,6 +20,7 @@ const theme = (type)=> {
     background: mode ? colors.background.gradientDark : colors.background.gradientLight,
     backgroundHeader : mode ? colors.background.header.dark : colors.background.header.light,
     textColor: mode ? colors.color.white.solid : colors.color.black.solid,
+    textColorInvert: mode ? colors.color.black.solid : colors.color.white.solid,
     logoColor: mode ? colors.color.white.solid : colors.color.brand.solidLight,
     colorbrandSolid: mode ? colors.color.brand.solidDark : colors.color.brand.solidLight,
     colorBrandTransparent: mode ? colors.color.brand.transparentDark : colors.color.brand.transparentLight,
