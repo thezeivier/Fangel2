@@ -82,12 +82,23 @@ const LadingPage = () => {
               <TextStyled>
                 Necesitas tener una invitación del equipo de Fangel para crear espacios sociales. Una vez que crees uno o varios espacios puedes invitar a cualquier persona.
               </TextStyled>
-              {
+              {/* {
                 disableButton ? 
-                  <ButtonStyled primary desktop disabled disabledPrimary onClick={createCode}>¡Quiero una invitación!</ButtonStyled> :
-                  <ButtonStyled primary desktop onClick={createCode}>¡Quiero una invitación!</ButtonStyled>
-              }
-              <CodeContainer desktop>
+                  <ButtonStyled primary desktop disabled disabledPrimary onClick={createCode}>¡Quiero una invitación!</ButtonStyled> : */}
+                  <Link
+                    to={
+                      {
+                        pathname: "/register",
+                        state: { code: codeAdmin? codeAdmin: false }
+                      }
+                    }
+                  >
+                    <ButtonStyled primary desktop 
+                      // onClick={createCode}
+                    >¡Regístrate!</ButtonStyled>
+                  </Link>
+              {/* } */}
+              {/* <CodeContainer desktop>
                 {codeAdmin && <>
                   <p>Usa este código para <Link
                     to={
@@ -99,20 +110,31 @@ const LadingPage = () => {
                   >registrarte</Link></p>
                   <h3>{codeAdmin}</h3>
                 </>}
-              </CodeContainer>
+              </CodeContainer> */}
             </div>
             <div>
               <FangelPromotionContainer>
                 <img src={yesImage}/>
               </FangelPromotionContainer>
               <div className="right">
-                {
-                  disableButton ? 
-                    <ButtonStyled primary mobile disabled disabledPrimary onClick={createCode}>¡Quiero una invitación!</ButtonStyled> :
-                    <ButtonStyled primary mobile onClick={createCode}>¡Quiero una invitación!</ButtonStyled>
-                }
+                {/* {
+                  disableButton ?  */}
+                    {/* <ButtonStyled primary mobile disabled disabledPrimary onClick={createCode}>¡Quiero una invitación!</ButtonStyled> : */}
+                    <Link
+                      to={
+                        {
+                          pathname: "/register",
+                          state: { code: codeAdmin? codeAdmin: false }
+                        }
+                      }
+                    >
+                      <ButtonStyled primary mobile 
+                      // onClick={createCode}
+                      >¡Regístrate!</ButtonStyled>
+                    </Link>
+                {/* } */}
               </div>
-              <CodeContainer mobile>
+              {/* <CodeContainer mobile>
                 {codeAdmin && <>
                   <p>Usa este código para <Link
                     to={
@@ -124,7 +146,7 @@ const LadingPage = () => {
                   >registrarte</Link></p>
                   <h3>{codeAdmin}</h3>
                 </>}
-              </CodeContainer>
+              </CodeContainer> */}
             </div>
           </DesktopGridLeft>
         </Wrapper>
