@@ -93,15 +93,15 @@ export const sendDataUser = async (data, uid, type, firestore, firebase, email) 
   )
 
   if(type === "admin"){
-    let codeDBRef = firestore.collection("adminCodes").doc("listOfCodes")
-    batch.set(
-      codeDBRef,
-      {
-        disponibleCodes: firebase.firebase_.firestore.FieldValue.arrayRemove(code),
-        usedCodes: firebase.firebase_.firestore.FieldValue.arrayUnion(code),
-      },
-      {merge: true}
-    )
+    // let codeDBRef = firestore.collection("adminCodes").doc("listOfCodes")
+    // batch.set(
+    //   codeDBRef,
+    //   {
+    //     disponibleCodes: firebase.firebase_.firestore.FieldValue.arrayRemove(code),
+    //     usedCodes: firebase.firebase_.firestore.FieldValue.arrayUnion(code),
+    //   },
+    //   {merge: true}
+    // )
     const updateACodes = await batch.commit().then(()=>{
       // console.log("éxito")
       return true

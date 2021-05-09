@@ -26,7 +26,7 @@ const Register = () => {
   const { register, handleSubmit, errors } = useForm()
   const [dataRegister, setDataRegister] = useStateIfMounted(null)
   const [emailRegistered, setEmailRegistered] = useStateIfMounted(null)
-  const [codeBValidated, setCodeBValiated] = useStateIfMounted(null)
+  // const [codeBValidated, setCodeBValiated] = useStateIfMounted(null)
   const [loading, setLoading] = useState(false)
   const [view, setView] = useState(false);
 
@@ -43,12 +43,12 @@ const Register = () => {
   const onSubmit = async (data) => {
     setDataRegister(data)
     setLoading(true)
-    let codeValidated = await codeValidator(data.code, firestore)
-    codeValidated? setCodeBValiated(codeValidated.confirm): setCodeBValiated(codeValidated)
-    if(codeValidated.confirm){
-      let noRepeatEmail = await RegisterWithEmail(data, auth, codeValidated.type, firestore, firebase)
+    // let codeValidated = await codeValidator(data.code, firestore)
+    // codeValidated? setCodeBValiated(codeValidated.confirm): setCodeBValiated(codeValidated)
+    // if(codeValidated.confirm){
+      let noRepeatEmail = await RegisterWithEmail(data, auth,"admin" , firestore, firebase)//codeValidated.type en lugar de "admin"
       setEmailRegistered(noRepeatEmail)
-    }
+    // }
     setLoading(false)
   }
   
@@ -75,7 +75,8 @@ const Register = () => {
 
   return (
     <>
-      {emailRegistered && codeBValidated ?
+      {emailRegistered ?
+      //&& codeBValidated
         <Redirect push to={{
           pathname: "/email-sended",
           state: { 
@@ -138,7 +139,7 @@ const Register = () => {
                     {errors.password? errors.password.message: ""}
                   </ErrorAlert>
 
-                  <InputStyled 
+                  {/* <InputStyled 
                     special
                     type="text" 
                     placeholder="Código de invitación" 
@@ -148,7 +149,7 @@ const Register = () => {
                   />
                   <ErrorAlert>
                     {errors.code? errors.code.message: "" || codeBValidated === false? "Código inválido o expirado*":""}
-                  </ErrorAlert>
+                  </ErrorAlert> */}
 
                   <Description>
                     Usa el codigo que te proporcionó la persona que te invito a su comunidad
