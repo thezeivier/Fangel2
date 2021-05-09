@@ -8,7 +8,7 @@ const SubSpaceCard = () => {
         Space in space One
       </h4>
       <p>
-        Lorem ipsum dolo is amet
+        Primer Subespacio
       </p>
     </SubSpaceCardContainer>
   );

@@ -40,7 +40,7 @@ const interfaceConfig = {
     "mute-everyone",
     'mute-video-everyone',
     'raisehand',
-    'sharedvideo'
+    'sharedvideo',
     // 'etherpad'
     // 'livestreaming'
     // 'closedcaptions'
