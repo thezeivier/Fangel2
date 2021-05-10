@@ -82,12 +82,6 @@ exports.imageModifier = functions.storage.object().onFinalize(async (object) => 
       routAndBucket,
       {merge: true}
     )
-    
-    batch.set(
-      db.collection("activeCommunities").doc(roomName),
-      routAndBucket,
-      {merge: true}
-    )
   }
 
   batch.commit();//Sending information to firestore.

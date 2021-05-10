@@ -23,10 +23,10 @@ const CreateSubSpace = () => {
           <TitleStyled as="h3" bottom>Crear un subespacio</TitleStyled>
           <OnlyDesktop>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <InputStyled type="text" placeholder="Número de subespacios a crear" name="nameCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
+              <InputStyled type="number" placeholder="Número de subespacios a crear" name="nameCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
               <ErrorAlert>{errors.nameCommunity? errors.nameCommunity.message: ""}</ErrorAlert>
               <TextStyled>Una vez creados los subespacios podras modificar el nombre de cada uno de ellos.</TextStyled>
-              <ButtonStyledSP primary type="submit">Crear subespacio</ButtonStyledSP>
+              <ButtonStyledSP primary type="submit">Crear subespacios</ButtonStyledSP>
             </form>
           </OnlyDesktop>
         </CreateContainer>
