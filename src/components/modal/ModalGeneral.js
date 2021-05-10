@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components'
 import Modal from 'react-modal';
+import { ReactComponent as CloseSVG } from './../general/icons/close.svg'
 
 const customStyles = {
   content : {
@@ -9,24 +11,46 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    width: '70%',
-    height: '200px',
-    padding: '20px !important'
   }
 };
 
 Modal.setAppElement('#modal')
 
-const ModalSettingsAdmin = (props) => {
+const SVGContainer = styled.div`
+  svg {
+    fill: ${props => props.theme.textColor};
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transition: .2s;
+    cursor: pointer;
+
+    &:hover {
+      fill: ${props => props.theme.colorbrandSolid};
+    }
+  }
+
+  @media(min-width:1200px) {
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+`
+
+const ModalGeneral = (props) => {
   return (
     <Modal
-      isOpen={props.modalIsOpen}
-      onRequestClose={props.closeModal}
+      isOpen={props.modalOpen}
+      onRequestClose={props.isNotclose}
       style={customStyles}
     >
       {props.children}
+      <SVGContainer>
+        <CloseSVG onClick={props.modalIsOpen} />
+      </SVGContainer>
     </Modal>
   );
 }
 
-export default ModalSettingsAdmin;
+export default ModalGeneral;

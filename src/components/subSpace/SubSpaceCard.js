@@ -5,7 +5,6 @@ import { ReactComponent as MenuCardSVG } from './../community/icons/menuCard.svg
 
 const SubSpaceCard = () => {
   const [openCardMenu, setOpenCardMenu] = useState(false);
-
   const OpenMenu = () => setOpenCardMenu(!openCardMenu)
 
   return (

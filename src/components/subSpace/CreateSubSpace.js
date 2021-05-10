@@ -5,11 +5,37 @@ import { useForm } from 'react-hook-form'
 import {useFirestore, useStorage} from 'reactfire'
 import Wrapper from './../general/Wrapper'
 import LoadServSpinner from './../spinner/LoadServSpinner'
-import { TitleStyled, TextAreaStyled, ButtonStyled,
-         OnlyDesktop } from './../../themes/internalRecyclableStyles'
-import { InputStyled, ErrorAlert } from './../../pages/signInAndUp/styles/sGlobalForm'
+import { TitleStyled, TextAreaStyled, OnlyDesktop } from './../../themes/internalRecyclableStyles'
+import { InputStyled, ErrorAlert, TextStyled } from './../../pages/signInAndUp/styles/sGlobalForm'
+import { CreateContainer, ButtonStyledSP } from './styles/sSubSpace'
 
 const CreateSubSpace = () => {
+  const {register, handleSubmit, errors } = useForm()
+  
+  const onSubmit = async data => {
+
+  }
+
+  return (
+    <main>
+      <Wrapper>
+        <CreateContainer>
+          <TitleStyled as="h3" bottom>Crear un subespacio</TitleStyled>
+          <OnlyDesktop>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <InputStyled type="text" placeholder="Número de subespacios a crear" name="nameCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
+              <ErrorAlert>{errors.nameCommunity? errors.nameCommunity.message: ""}</ErrorAlert>
+              <TextStyled>Una vez creados los subespacios podras modificar el nombre de cada uno de ellos.</TextStyled>
+              <ButtonStyledSP primary type="submit">Crear subespacio</ButtonStyledSP>
+            </form>
+          </OnlyDesktop>
+        </CreateContainer>
+      </Wrapper>
+    </main>
+  );
+}
+
+/* const CreateSubSpace = () => {
   return (
         <main>
       {
@@ -46,6 +72,7 @@ const CreateSubSpace = () => {
       }
     </main>
   );
-}
+} */
+
 
 export default CreateSubSpace;

@@ -123,7 +123,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .ReactModalPortal {
-    z-index: 1000;
+    z-index: 2000;
   }
 
   .ReactModal__Content {

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { ButtonStyled } from './../../../pages/signInAndUp/styles/sGlobalForm'
 
 const CardMixin = css`
   border-radius: 10px;
@@ -164,4 +165,24 @@ export const SaveContainer = styled.div`
   font-size: 0.95em;
   color: rgba(39, 174, 96);
   font-weight: ${props => props.theme.weight.semiMedium};
+`
+
+//CreateSubSpace
+
+export const CreateContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  h3 {
+    text-align: center;
+  }
+`
+
+
+export const ButtonStyledSP = styled(ButtonStyled) `
+  margin: 0 auto;
 `
