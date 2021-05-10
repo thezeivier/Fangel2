@@ -47,7 +47,7 @@ const MainHome = () => {
             {
               communities &&
                 communities.map((community)=>{ //Render list of "CardCommunity".
-                  return <CardCommunity key={community.roomName} communityData={community}/>
+                  return <CardCommunity key={community.roomName} communityData={community} communityProvider={contextFromApp.communityProvider}/>
                 })
             }
 					</Suspense>
