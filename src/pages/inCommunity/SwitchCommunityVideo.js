@@ -32,10 +32,12 @@ const SwitchCommunityVideo = () => {
             })
         }
     },[data])
-
+    
     if(status) return <p>Pending...</p>
     if(error) return null
-
+    
+    // console.log(communityProvider)
+    
     let communityData = data[0]
     communityProvider.setCommunityGlobalData(communityData)
     const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)

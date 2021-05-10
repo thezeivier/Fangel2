@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import {useStorage} from 'reactfire'
 import { useStateIfMounted } from 'use-state-if-mounted'
 import { CardContainer, UserContainer, ContainerTextTop, TextCommunity,
@@ -10,13 +10,14 @@ import communityThumb from '../general/images/thumb_community_s1.svg'
 //Import algorithms
 import {ShowMore} from './algorithms/ShowMore'
 
-const CardCommunity = ({communityData}) => {
+const CardCommunity = ({communityData, communityProvider}) => {
   const storage = useStorage()
   const [thumb, setThumb] = useStateIfMounted()//State for thumbnail.
   const [profileThumb, setProfileThumb] = useStateIfMounted(false)
   const cardRef = useRef()
   const textRef = useRef()
   const buttonRef = useRef()
+  const history = useHistory()
 
   useEffect(()=>{
     const gsReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.route}`)
@@ -38,6 +39,11 @@ const CardCommunity = ({communityData}) => {
     }
   }, [])
 
+  const handleLeaveCommunity = () => {
+    communityProvider.communityGlobalData && communityProvider.setCommunityGlobalData(false)
+    history.push(`/room/${communityData.roomName}`)
+    window.location.reload()
+  } 
   ShowMore(cardRef, textRef, buttonRef)
   /* CardCommunity v1.0 */
   return (
@@ -69,9 +75,7 @@ const CardCommunity = ({communityData}) => {
               </Truncate>
             </DescriptionContainer>
           </ImageContainer>
-          <Link to={`/room/${communityData.roomName}`}>
-            <ButtonStyled secondary >Entrar</ButtonStyled>
-          </Link>
+          <ButtonStyled secondary onClick={handleLeaveCommunity}>Entrar</ButtonStyled>
         </CardContainer>
       </li>
     </>
