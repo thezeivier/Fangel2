@@ -107,7 +107,7 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
               </SectionContainer> */
               <SectionContainer>
                 <SubtitleStyled as="h4">Subespacios</SubtitleStyled>
-                <SubSpaceMain />
+                <SubSpaceMain communityData={communityData}/>
               </SectionContainer>
           }
         </div>
