@@ -109,6 +109,15 @@ export const SubSpaceCardContainer = styled.li`
   .numberPeopleSVG {
     margin: 0 5px 0 0;
     fill: ${props => props.theme.smallText};
+
+    @media(min-width:768px) {
+      width: 10px;
+      height: 11px;
+    }
+
+    @media(min-width:1200px) {
+      margin: 0 7px 0 0;
+    }
   }
 
   .menuCardSVG {
@@ -124,7 +133,6 @@ export const SubSpaceCardContainer = styled.li`
 
   @media(min-width:768px) {
     margin: 0;
-    padding: 20px 15px;
   }
 
   @media(min-width:1200px) {
@@ -142,6 +150,11 @@ export const SubspaceDescriptionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 20px 0 20px 20px;
+
+   @media(min-width:768px) {
+    margin: 0;
+    padding: 15px 20px;
+  }
 }
 `
 
@@ -161,6 +174,11 @@ export const MenuCardContainer = styled.div`
 
   p {
     color: ${props => props.theme.textColorInvert};
+    transition: .2s;
+
+    &:hover {
+      color: ${props => props.theme.colorbrandSolid};
+    }
   }
 `
 
