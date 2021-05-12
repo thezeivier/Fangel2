@@ -36,6 +36,7 @@ const ContainerGeneral = styled.div`
   left: 0;
   background: ${props => props.theme.colorModalBackground};
   backdrop-filter: blur(8px);
+  overflow-y: none;
 
   animation: ${Faded} .3s linear;
 `

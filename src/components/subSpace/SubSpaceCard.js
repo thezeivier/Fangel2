@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { SubSpaceCardContainer, MenuCardContainer, SaveContainer } from './styles/sSubSpace'
+import { SubSpaceCardContainer, MenuCardContainer, SaveContainer, SubspaceDescriptionContainer } from './styles/sSubSpace'
 import { ReactComponent as NumberPeopleSVG } from './../community/icons/numberPeople.svg'
 import { ReactComponent as MenuCardSVG } from './../community/icons/menuCard.svg'
 
@@ -20,14 +20,17 @@ const SubSpaceCard = ({nameOfSpace, id, communityData}) => {
     
   }
   return (
-    <SubSpaceCardContainer  onClick={enterToSubSpace}>
-      <h4>
-        {nameOfSpace}
-      </h4>
+    <SubSpaceCardContainer>
+      <SubspaceDescriptionContainer onClick={enterToSubSpace}>
+        <h4>
+          {nameOfSpace}
+        </h4>
+        <div>
+          <NumberPeopleSVG className="numberPeopleSVG" />
+          <span>3</span>
+        </div>
+      </SubspaceDescriptionContainer>
       <div>
-        <NumberPeopleSVG className="numberPeopleSVG" />
-        <span>3</span>
-      </div>
         <MenuCardSVG className="menuCardSVG" onClick={OpenMenu} />
         {
           openCardMenu &&
@@ -36,10 +39,11 @@ const SubSpaceCard = ({nameOfSpace, id, communityData}) => {
               <MenuCardSVG className="menuCardSVG activeMenuCard" onClick={OpenMenu} />
             </MenuCardContainer>
         }
-      {/* Solo se activa cuando le da en cambiar */}
-      {/* <SaveContainer>
-        <p>Guardar</p>
-      </SaveContainer> */}
+        {/* Solo se activa cuando le da en cambiar */}
+        {/* <SaveContainer>
+          <p>Guardar</p>
+        </SaveContainer> */}
+      </div>
     </SubSpaceCardContainer>
   );
 }

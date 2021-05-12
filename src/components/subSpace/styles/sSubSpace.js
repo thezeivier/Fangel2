@@ -90,10 +90,6 @@ export const SubSpaceCardContainer = styled.li`
   filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1));
   margin: 20px 0 0 0;
   border-left: 10px solid rgba(39, 174, 96);
-  padding: 20px 14px;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
   position: relative;
   ${CardMixin}
 
@@ -139,6 +135,16 @@ export const SubSpaceCardContainer = styled.li`
   }
 `
 
+export const SubspaceDescriptionContainer = styled.div`
+  height: inherit;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 0 20px 20px;
+}
+`
+
 export const MenuCardContainer = styled.div`
   position: absolute;
   top: 0;
@@ -179,6 +185,14 @@ export const CreateContainer = styled.div`
 
   h3 {
     text-align: center;
+  }
+
+  form {
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
   }
 `
 
