@@ -17,9 +17,10 @@ import CreateCommunityTwo from './pages/CreateCommunityTwo'
 import PrivateChat from './pages/chat/PrivateChat'
 // import InvidualChat from './pages/chat/InvidualChat'
 import ReportAProblem from './pages/ReportAProblem'
-import Settings from './pages/Settings'
+import MoreOptions from './pages/MoreOptions'
 import Profile from './pages/Profile'
 import ThanksReport from './pages/ThanksReport'
+import DashboardSpaces from './pages/DashboardSpaces'
 import {SwitchCommunityVideo} from './pages/inCommunity/SwitchCommunityVideo'
 //List of routers and loading
 import ListOfRoutes from './pages/objects/ListOfRoutes' 
@@ -135,11 +136,12 @@ function App() {
               <Route exact path={"/inbox"} component={authState ? PrivateChat : Landing}/>
               <Route exact path={"/inbox/t/:idInbox"} component={authState ? PrivateChat : Landing}/>
               <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
-              <Route exact path={"/settings"} component={authState ? Settings : Landing}/>
+              <Route exact path={"/more-options"} component={authState ? MoreOptions : Landing}/>
               <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
               <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>
               <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
               <Route exact path={"/thank-you"} component={authState? ThanksReport : Landing}/>
+              <Route exact path={"/dashboard/my-spaces"} component={authState? DashboardSpaces : Landing}/>
               {ListOfRoutes.map((route)=>{
                 return <ExternalLayoutRoute key={route.path} authState={authState} {...route}/>
               })}

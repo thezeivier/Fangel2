@@ -214,6 +214,20 @@ export const Button = styled.button`
     }
   `}
 
+  ${props => props.danger && css`
+    width: auto;
+    background: #eb444436;
+    color: #eb4444e0;
+    padding: 10px 14px;
+    font-size: 1.1em;
+    transition: .2s;
+
+    &:hover {
+      background: #eb444440;
+      color: ${props => props.theme.colorAlert};
+    }
+  `}
+
   ${props => props.standarP && css`
     background: ${props => props.theme.colorBrandDark};
     color: ${props => props.theme.colorDark};

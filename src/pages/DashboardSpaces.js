@@ -1,17 +1,17 @@
 import React from 'react';
-import MainSettings from './../components/settings/MainSettings'
 import Header from './../components/general/RegHeader'
+import MainDashboard from './../components/dashboard/MainDashboardSpaces'
 import Footer from './../components/general/Footer'
 import { Container } from './../components/general/InternalLayout'
 
-const Settings = () => {
+const DashBoardSpaces = () => {
   return (
-    <Container padding40>
+    <Container>
       <Header />
-      <MainSettings/>
+      <MainDashboard />
       <Footer />
     </Container>
   );
 }
 
-export default Settings;
+export default DashBoardSpaces;

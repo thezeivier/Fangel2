@@ -11,7 +11,7 @@ const ButtonLeaveCom = ({ displayDesktop, communityProvider }) => {
     window.location.reload()
   } 
   return (
-    <ButtonStyled displayDesktop={displayDesktop} onClick={handleLeaveCommunity} as={Link}>
+    <ButtonStyled danger displayDesktop={displayDesktop} onClick={handleLeaveCommunity} as={Link}>
       {/* <ButtonLeaveComSVG /> */}
       {
         displayDesktop ? 'Salir del espacio social ': 'Salir'

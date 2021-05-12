@@ -136,7 +136,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .ReactModal__Overlay {
-    background: rgba(2, 4, 14, 0.82) !important;
+    background: ${props => props.theme.colorModalBackground} !important;
     backdrop-filter: blur(10px);
   }
 

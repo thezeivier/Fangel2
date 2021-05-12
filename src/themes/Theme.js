@@ -28,6 +28,7 @@ const theme = (type)=> {
     smallText: mode ? colors.color.smallText.grayDark : colors.color.smallText.grayLight,
     inputPlaceholder: mode ? colors.color.white.transparent : colors.color.black.transparent,
     cardComunity: mode ? colors.color.card.transparentDark : colors.color.card.transparentLight,
+    cardHoverComunity: mode ? colors.color.hover.card.transparentDark : colors.color.hover.card.transparentLight,
     textButton: mode ? colors.color.black.solid : colors.color.white.solid,
     colorHoverPrimary: mode ? colors.color.hover.button.dark.primary : colors.color.hover.button.light.primary,
     colorHoverSecondary: mode ? colors.color.hover.button.dark.secondary : colors.color.card.transparentLight, //falta
@@ -41,6 +42,7 @@ const theme = (type)=> {
     colorScrollCommentBar: mode ? colors.color.scrollCommentBar.dark : colors.color.scrollCommentBar.light,
     colorShadowBox: mode ? colors.color.shadowBox.gradientDark : colors.color.shadowBox.gradientLight,
     colorCommetBox: mode ? colors.color.commentBox.dark : colors.color.commentBox.light,
+    colorModalBackground: mode ? colors.color.modalBackground.dark : colors.color.modalBackground.light,
 
     /*Fonts*/
     primaryFont: fonts.primaryFont,

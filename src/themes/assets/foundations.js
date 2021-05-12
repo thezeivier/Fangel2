@@ -35,8 +35,8 @@ export const colors = {
       transparentLight: 'rgba(27, 29, 51, 0.08)',
     },
     card: {
-      transparentDark: 'rgba(27, 29, 51, 0.35)',
-      transparentLight: 'rgba(27, 29, 51, 0.05)',
+      transparentDark: '#1b1d3359',
+      transparentLight: '#1b1d330d',
     },
     hover: {
       button: {
@@ -55,7 +55,11 @@ export const colors = {
       addCard: {
         shadowDark: 'rgb(117 130 197 / 12%)',
         shadowLight: 'rgb(70 70 74 / 12%)',
-      }
+      },
+      card: {
+        transparentDark: '#1b1d3367',
+        transparentLight: '#1b1d3312',
+      },
     },
     bar: {
       dark: 'rgba(233, 118, 13, 0.5)',
@@ -81,6 +85,10 @@ export const colors = {
       gradientDark: 'linear-gradient(180deg, #04061C 28.16%, rgba(4,6,28,0) 100%)',
       gradientLight: 'linear-gradient(180deg, #dedede 28.16%, rgba(4,6,28,0) 100%)',
     },
+    modalBackground: {
+      dark: 'rgba(2, 4, 14, 0.82)',
+      light: 'rgba(239, 240, 247, 0.8)',
+    }
   },
 }
 

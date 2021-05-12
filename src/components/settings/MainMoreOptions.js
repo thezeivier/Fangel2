@@ -4,12 +4,13 @@ import DarkMode from './../general/DarkMode'
 import SettingsOption from './SettingsOption'
 import ReturnPage from './../general/ReturnPage'
 import { TitleStyled, SubtitleStyled } from './../../themes/internalRecyclableStyles'
-import { Top, ListOptions } from './styles/sMainSettings'
+import { Top, ListOptions, CategoryOptionsContainer } from './styles/sMainSettings'
 
 import { ReactComponent as ExitSVG } from './icons/exit.svg'
 import { ReactComponent as ReportProblemSVG } from './icons/reportProblem.svg'
+import { ReactComponent as DashboardSVG } from './icons/dashboard.svg'
 
-const listOptions = [
+const listOptionsGeneral = [
   {
     id: 1,
     svg: <ReportProblemSVG />,
@@ -23,24 +24,41 @@ const listOptions = [
   }
 ]
 
+const listOptionsDashBoard = [
+  {
+    id: 1,
+    svg: <DashboardSVG className="dashboardSVG" />,
+    name: 'Espacios creados',
+    to: '/dashboard/my-spaces'
+  },
+]
+
 const MainSettings = () => {
   
   return (
     <main>
       <Wrapper>
-        <TitleStyled bottom>Configuración</TitleStyled>
+        <TitleStyled bottom>Más opciones</TitleStyled>
         <Top>
           <SubtitleStyled bottom15>Tema</SubtitleStyled>
           <DarkMode textExtend/>
         </Top>
-        <div>
+        <CategoryOptionsContainer>
+          <SubtitleStyled bottom14>DashBoard</SubtitleStyled>
+          <ListOptions>
+            {
+              listOptionsDashBoard.map((option) => <SettingsOption key={option.id} {...option} />)
+            }
+          </ListOptions>
+        </CategoryOptionsContainer>
+        <CategoryOptionsContainer>
           <SubtitleStyled bottom14>General</SubtitleStyled>
           <ListOptions>
             {
-              listOptions.map((option) => <SettingsOption key={option.id} {...option} />)
+              listOptionsGeneral.map((option) => <SettingsOption key={option.id} {...option} />)
             }
           </ListOptions>
-        </div>
+        </CategoryOptionsContainer>
       </Wrapper>
       <ReturnPage />
     </main>

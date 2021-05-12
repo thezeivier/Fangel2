@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom'
 import { Header, Container, IconsContainer } from './styles/sRegHeader'
 
 import { ReactComponent as ProfileSVG } from './icons/profile.svg'
-import { ReactComponent as SettingsSVG } from './icons/settings.svg'
 import { ReactComponent as ChatSVG } from './icons/chat.svg'
 import { ReactComponent as HomeSVG } from './icons/home.svg'
+import { ReactComponent as MenuSVG } from './icons/menu.svg'
 
 const RegHeader = () => {
   const contextFromApp = useContext(AppContext)
@@ -35,8 +35,8 @@ const RegHeader = () => {
             <Link to={"/inbox"}>
               <ChatSVG  className="iconsRegHeader" />
             </Link>
-            <Link to={"/settings"}>
-              <SettingsSVG  className="iconsRegHeader" />
+            <Link to={"/more-options"}>
+              <MenuSVG  className="iconsRegHeader" />
             </Link>
           </IconsContainer>
         </Container>
