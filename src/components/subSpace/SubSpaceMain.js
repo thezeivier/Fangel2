@@ -8,7 +8,7 @@ const SubSpaceMain = ({communityData}) => {
   const firestore = useFirestore()
   const [subSpaces, setSubSpaces] = useState([])
   useEffect(async()=>{
-    await firestore.collection("communities").doc(communityData.roomName).collection("subSpace").get().then(result =>{
+    await firestore.collection("communities").doc(communityData.roomName).collection("subSpace").orderBy("numberOfSpace","asc").get().then(result =>{
       if(result.docs.length !== 0){
         setSubSpaces(result.docs.map(doc=>{
           return {
@@ -18,13 +18,12 @@ const SubSpaceMain = ({communityData}) => {
       }
   })
   },[firestore])
-  console.log(subSpaces)
   return (
     <GridCardsContainer>
       <SubSpaceAddCard communityData={communityData}/>
       {subSpaces.length !== 0 &&
         subSpaces.map(subSpace =>{
-          return <SubSpaceCard key={subSpace.numberOfSpace} {...subSpace}/>
+          return <SubSpaceCard communityData={communityData} key={subSpace.numberOfSpace} {...subSpace}/>
         })
         
       }
