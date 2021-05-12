@@ -8,6 +8,11 @@ export const CardContainer = styled.div`
   background: ${props => props.theme.cardComunity};
   border-radius: 10px;
   padding: 10px 0 15px 0;
+  transition: .4s;
+
+  &:hover {
+    background: ${props => props.theme.cardHoverComunity};
+  }
 
   @media(min-width:1024px) {
     margin: 0;

@@ -34,7 +34,7 @@ const ContainerGeneral = styled.div`
   height: 100vh;
   top: 0;
   left: 0;
-  background: rgba(31, 31, 36, 0.8);
+  background: ${props => props.theme.colorModalBackground};
   backdrop-filter: blur(8px);
 
   animation: ${Faded} .3s linear;
@@ -55,7 +55,7 @@ const SpinnerContainer = styled.div`
     display: inline-block;
     position: absolute;
     top: 0;
-    background-color: ${props => props.theme.colorWhite};
+    background-color: ${props => props.theme.textColor};
     border-radius: 100%;
     
     animation: ${SkBounce} 1.8s infinite ease-in-out;

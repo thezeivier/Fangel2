@@ -31,11 +31,21 @@ export const Option = styled.li`
   svg {
     margin: 0 16px 0 0;
   }
+
+  .dashboardSVG {
+    width: 21px;
+    height: 21px;
+    margin-left: 5px;
+  }
 `
 
 const inlineFlexMixin = css`
   display: inline-flex;
   flex-direction: column;
+`
+
+export const CategoryOptionsContainer = styled.div`
+  margin: 10px 0 0 0;
 `
 
 export const Top = styled.div`

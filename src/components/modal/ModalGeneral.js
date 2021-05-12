@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Modal from 'react-modal';
 import { ReactComponent as CloseSVG } from './../general/icons/close.svg'
 
@@ -15,6 +15,18 @@ const customStyles = {
 };
 
 Modal.setAppElement('#modal')
+
+const Faded = keyframes`
+  0% {
+    opacity: 0;
+  } 100% {
+    opacity: 1;
+  }
+`
+
+const Container = styled.div`
+  animation: ${Faded} .3s ease-in;
+`
 
 const SVGContainer = styled.div`
   svg {
@@ -45,10 +57,12 @@ const ModalGeneral = (props) => {
       onRequestClose={props.isNotclose}
       style={customStyles}
     >
-      {props.children}
-      <SVGContainer>
-        <CloseSVG onClick={props.modalIsOpen} />
-      </SVGContainer>
+      <Container>
+        {props.children}
+        <SVGContainer>
+          <CloseSVG onClick={props.modalIsOpen} />
+        </SVGContainer>
+      </Container>
     </Modal>
   );
 }
