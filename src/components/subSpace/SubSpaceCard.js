@@ -3,14 +3,14 @@ import { SubSpaceCardContainer, MenuCardContainer, SaveContainer } from './style
 import { ReactComponent as NumberPeopleSVG } from './../community/icons/numberPeople.svg'
 import { ReactComponent as MenuCardSVG } from './../community/icons/menuCard.svg'
 
-const SubSpaceCard = () => {
+const SubSpaceCard = ({nameOfSpace, id}) => {
   const [openCardMenu, setOpenCardMenu] = useState(false);
   const OpenMenu = () => setOpenCardMenu(!openCardMenu)
 
   return (
     <SubSpaceCardContainer>
       <h4>
-        Space in space One
+        {nameOfSpace}
       </h4>
       <div>
         <NumberPeopleSVG className="numberPeopleSVG" />
