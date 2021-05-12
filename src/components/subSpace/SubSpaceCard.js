@@ -1,9 +1,11 @@
 import React, { useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom'
 import { SubSpaceCardContainer, MenuCardContainer, SaveContainer, SubspaceDescriptionContainer } from './styles/sSubSpace'
 import { ReactComponent as NumberPeopleSVG } from './../community/icons/numberPeople.svg'
 import { ReactComponent as MenuCardSVG } from './../community/icons/menuCard.svg'
 
 const SubSpaceCard = ({nameOfSpace, id, communityData}) => {
+  const history = useHistory()
   const [openCardMenu, setOpenCardMenu] = useState(false);
   const [subSpaceData, setSubSpaceData] = useState(null)
   const OpenMenu = () => setOpenCardMenu(!openCardMenu)
@@ -15,9 +17,8 @@ const SubSpaceCard = ({nameOfSpace, id, communityData}) => {
   },[])
 
   const enterToSubSpace = () => {
-
-    console.log(subSpaceData)
-    
+    history.push(`/room/${subSpaceData.subSpaceId}`)
+    window.location.reload()
   }
   return (
     <SubSpaceCardContainer>
