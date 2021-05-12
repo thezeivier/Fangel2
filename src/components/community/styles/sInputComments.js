@@ -76,6 +76,10 @@ export const InputStyled = styled(Input)`
   padding: 0 10px;
   flex: 0 1 auto;
   margin: 0 10px 0 0;
+
+  @media(max-width:320px) {
+    width: 100%;
+  }
  
   @media(min-width:768px) {
     padding: 0 20px;
