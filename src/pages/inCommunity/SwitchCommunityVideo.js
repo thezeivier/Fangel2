@@ -4,8 +4,7 @@ import 'firebase/database'
 import { AppContext } from '../../App'
 import { GetCommunityVideoData } from './algorithms/GetCommunityVideoData'
 import { GetAdminCommunity } from './algorithms/GetAdminCommunity'
-import { useDatabase, useFirestore } from 'reactfire'
-import { OnDisconnectUser } from './algorithms/OnDisconnectUser'
+import { useFirestore } from 'reactfire'
 
 import VideoAdmin from './VideoAdmin'
 import VideoUser from './VideoUser'
@@ -15,7 +14,6 @@ const {Provider, Consumer} = SwitchVideoContext
 
 const SwitchCommunityVideo = () => {
     const firestore = useFirestore()
-    const database = useDatabase()
     const { userFromDB, communityProvider }  = useContext(AppContext)
     const [activeCommunity, setActiveCommunity] = useState(false)
     const match = useRouteMatch("/room/:idRoom")
@@ -30,16 +28,14 @@ const SwitchCommunityVideo = () => {
             .onSnapshot((doc) => {
                 if(doc.data() !== activeCommunity) setActiveCommunity(doc.data());
             })
+            communityProvider.setCommunityGlobalData(communityData)
         }
     },[data])
     
     if(status) return <p>Pending...</p>
     if(error) return null
     
-    // console.log(communityProvider)
-    
     let communityData = data[0]
-    communityProvider.setCommunityGlobalData(communityData)
     const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)
 
     const activeCommunityValue = {

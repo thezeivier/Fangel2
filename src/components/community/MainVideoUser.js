@@ -10,11 +10,13 @@ import { AppContext } from '../../App'
 import firebase from 'firebase/app'
 import { GetDataFromCollection } from './algorithms/GetDataFromCollection'
 
-const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, closeModal, isAdmin }) => {
+const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, closeModal, isAdmin, isSubSpace, communityDataSubSpace }) => {
   const lastMsgRef = useRef()
   const { userFromDB, authState } = useContext(AppContext)
-  const {data, status, error} = GetDataFromCollection(communityData.roomName, 'chatroom', 'messages')
-  const messageRef = firebase.firestore().collection('chatroom').doc(communityData.roomName).collection('messages')
+  const {data, status, error} = !isSubSpace ? GetDataFromCollection(communityData.roomName, 'chatroom', 'messages') : 
+    GetDataFromCollection(communityData.roomName, 'chatroom', 'messages', 'subMessages' , communityDataSubSpace.id, isSubSpace)
+  const messageRef = !isSubSpace ? firebase.firestore().collection('chatroom').doc(communityData.roomName).collection('messages') : 
+    firebase.firestore().collection('chatroom').doc(communityData.roomName).collection('subMessages').doc(communityDataSubSpace.id).collection('messages')
 
   useEffect(()=>{
     return ()=>{
@@ -24,10 +26,9 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, close
   
   if(status === "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>
-  
   return (
     <MainOnlyDesktop>
-      <EmbedVideo communityData={communityData} isAdmin={isAdmin}/>
+      <EmbedVideo communityData={communityData} isAdmin={isAdmin} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace}/>
       <Wrapper height="100%">
         <ContainerResponsive>
 {/*           <ButtonConfiguration secondary display={displayNoAdmin} onClick={open}>
@@ -35,7 +36,7 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, close
             Configuraciones
           </ButtonConfiguration> */}
           <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef}/>
-          <InputComments userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} />
+          <InputComments userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} /> 
         </ContainerResponsive>
       </Wrapper>
       <ModalSettingsAdmin communityData={communityData} modalIsOpen={modalIsOpen} closeModal={closeModal} />

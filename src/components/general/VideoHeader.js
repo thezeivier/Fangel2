@@ -6,12 +6,12 @@ import { ReactComponent as CommunitySVG } from './icons/community.svg'
 import { ReactComponent as VideoSettingsSVG } from './icons/videoSettings.svg'
 import { ReactComponent as CloseSVG } from './icons/close.svg'
 
-const VideoHeader = ({ displayNoAdmin, isSettings, modalIsOpen, communityData, closeModal, closeModalSA, onlyUsers }) => {
+const VideoHeader = ({ displayNoAdmin, isSettings, modalIsOpen, communityData, closeModal, closeModalSA, onlyUsers, communityDataSubSpace, isSubSpace }) => {
   return (
     <>
       <HeaderContainer>
         <CommunitySVG />
-        <TitleCommunityStyled as="h3">{communityData.title}</TitleCommunityStyled>
+        <TitleCommunityStyled as="h3">{!isSubSpace ? communityData.title : communityDataSubSpace.nameOfSpace}</TitleCommunityStyled>
         <OnlyUsersContainer onlyUsers={onlyUsers}>
           <ButtonLeaveCom className="buttonOnlyMobile" />
         </OnlyUsersContainer>

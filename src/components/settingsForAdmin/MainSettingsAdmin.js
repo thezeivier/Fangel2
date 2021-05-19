@@ -14,7 +14,7 @@ import { ReactComponent as CodeCopySVG } from './icons/codeCopy.svg'
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'
 // import {AddHour} from './algorithms/AddHour'
 
-const MainSettingsAdmin = ({ inDesktop, communityData }) => {
+const MainSettingsAdmin = ({ inDesktop, communityData, isSubSpace, communityDataSubSpace }) => {
   const [hoverRef, isHovered] = useHover();
   // const firestore = useFirestore()
   const [code, setCode] = useState(false);
@@ -83,7 +83,12 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
                 <div className="invitationLinkContainer">
                   <SubtitleStyled as="h4">Link del espacio social</SubtitleStyled>
                   <InputContainer>
-                    <InputStyled id="urlRoomCode" special invitationCode placeholder="Link de la sala" value={communityData.roomName? `https://fangelweb.com/room/${communityData.roomName}` : "Cargando..."} readOnly/>
+                    <InputStyled 
+                      id="urlRoomCode" 
+                      special 
+                      invitationCode 
+                      placeholder="Link de la sala" 
+                      value={!isSubSpace ?  (communityData.roomName ? `https://fangelweb.com/room/${communityData.roomName}` : "Cargando...") : `https://fangelweb.com/room/${communityData.roomName}/${communityDataSubSpace.id}` } readOnly/>
                     <button onClick={()=>CopyCode("urlRoomCode")} ref={hoverRef}>
                       <CodeCopySVG/>
                       {isHovered && <Comment>Copiar link</Comment>}
@@ -92,7 +97,7 @@ const MainSettingsAdmin = ({ inDesktop, communityData }) => {
                 </div>
               </SectionContainer>
           }{
-            communityData.privacy === "public" &&
+            communityData.privacy === "public" && !isSubSpace &&
 /*               <SectionContainer>
                 <SubtitleStyled as="h4">Configuraciones</SubtitleStyled>
                 <TimerDescripcion>

@@ -8,9 +8,8 @@ import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsA
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
-const VideoAdmin = ({communityData, isAdmin}) => {
+const VideoAdmin = ({communityData, isAdmin, communityDataSubSpace, isSubSpace}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
   const openMoldal = () => {
     setModalIsOpen(true)
   }
@@ -27,9 +26,24 @@ const VideoAdmin = ({communityData, isAdmin}) => {
         <ContainerForCommunity> {/* Sin margenes en moviles y tablets ni footer ni regHeader,
         wrapper sin paddign en moviles y tablet*/}
           <RegHeader /> {/* Solo para moviles */}
-          <VideoHeader communityData={communityData} isSettings="none" closeModal={closeModal} modalIsOpen={modalIsOpen} />
-          <MainVideoUser communityData={communityData} open={openMoldal} isAdmin={isAdmin}/>
-          <MainSettingsAdmin communityData={communityData} inDesktop="grid"/>
+          <VideoHeader 
+            communityData={communityData} 
+            isSettings="none" 
+            closeModal={closeModal} 
+            modalIsOpen={modalIsOpen} 
+            isSubSpace={isSubSpace} 
+            communityDataSubSpace={communityDataSubSpace}/>
+          <MainVideoUser 
+            communityData={communityData} 
+            open={openMoldal} 
+            isAdmin={isAdmin} 
+            isSubSpace={isSubSpace} 
+            communityDataSubSpace={communityDataSubSpace}/>
+          <MainSettingsAdmin 
+            communityData={communityData} 
+            inDesktop="grid"
+            isSubSpace={isSubSpace} 
+            communityDataSubSpace={communityDataSubSpace}/>
           <Footer noMobile/>
         </ContainerForCommunity>
       }

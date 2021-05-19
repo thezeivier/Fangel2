@@ -17,7 +17,8 @@ const SubSpaceCard = ({nameOfSpace, id, communityData}) => {
   },[])
 
   const enterToSubSpace = () => {
-    history.push(`/room/${subSpaceData.subSpaceId}`)
+    history.push(`/room/${communityData.roomName}/${id}`)
+    // history.push(`/room/${subSpaceData.subSpaceId}`)
     window.location.reload()
   }
   return (

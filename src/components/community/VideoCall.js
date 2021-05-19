@@ -68,7 +68,7 @@ const config = {
   disableDeepLinking: true,
 };
 
-const VideoCall = ({dataUser, authState, communityData, isAdmin}) => {
+const VideoCall = ({dataUser, authState, communityDataRoom, isAdmin}) => {
 
   const handleAPI = JitsiMeetAPI => {
     JitsiMeetAPI.executeCommand("toggleVideo");
@@ -77,13 +77,12 @@ const VideoCall = ({dataUser, authState, communityData, isAdmin}) => {
 
   const {TOOLBAR_BUTTONS, ...restConf} = interfaceConfig
   const interfaceUserConf = {...restConf, TOOLBAR_BUTTONS: userToolBarButtons}
-
   return (
     <>
       <Jitsi
         domain="meet.jit.si"
         onAPILoad={handleAPI}
-        roomName={communityData.roomName}
+        roomName={ !communityDataRoom.communityDataSubSpace ? communityDataRoom.roomName : `${communityDataRoom.communityData.roomName}${communityDataRoom.communityDataSubSpace.id}`}
         // roomName="7L2gEnvzAqYsQNVUdyvyhMbD1BW4gCXodDWczaufrbL2dNKFr73cOUMN5WuHuNtypmX8zjKpqNuV1DpNs7nuWXbgv3PSnBxiZ7uZiSfvGPc0ibI8smUAVvBaYsCiINJh"
         displayName={authState.displayName}
         loadingComponent={VideoSpinner}

@@ -15,16 +15,22 @@ const MainPFVideoUser = ({children, communityGlobalData, setCommunityGlobalData}
     window.location.reload()
   }
 
+  const handleClickToCommunity = () => {
+    !communityGlobalData.communityDataSubSpace ?
+      history.push(`/room/${communityGlobalData.roomName}`) :
+      history.push(`/room/${communityGlobalData.communityData.roomName}/${communityGlobalData.communityDataSubSpace.id}`)
+  }
+
   return (
     <VideoContainer>
       <SvgsContainer className="svgsContainer">
-        <FullSreenSVG className="fullScreenSvg" onClick={()=>{history.push(`/room/${communityGlobalData.roomName}`)}}/>
+        <FullSreenSVG className="fullScreenSvg" onClick={handleClickToCommunity}/>
         <CloseSVG onClick={handleLeaveCommunity}/>
       </SvgsContainer>
       <EmbedContainer hover>
         {children}
       </EmbedContainer>
-      <TitleStyled as="h3">{communityGlobalData.title}</TitleStyled>
+      <TitleStyled as="h3">{!communityGlobalData.communityDataSubSpace ? communityGlobalData.title : `${communityGlobalData.communityData.title} - ${communityGlobalData.communityDataSubSpace.nameOfSpace}`}</TitleStyled>
     </VideoContainer>
   );
 }

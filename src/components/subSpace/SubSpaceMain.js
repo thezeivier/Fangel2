@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import {useFirestore} from 'reactfire'
 import SubSpaceAddCard from './SubSpaceAddCard'
 import SubSpaceCard from './SubSpaceCard'
@@ -18,14 +19,12 @@ const SubSpaceMain = ({communityData}) => {
       }
   })
   },[firestore])
+  // console.log(subSpaces && subSpaces)
   return (
     <GridCardsContainer>
       <SubSpaceAddCard communityData={communityData}/>
       {subSpaces.length !== 0 &&
-        subSpaces.map(subSpace =>{
-          return <SubSpaceCard communityData={communityData} key={subSpace.numberOfSpace} {...subSpace}/>
-        })
-        
+        subSpaces.map(subSpace => <SubSpaceCard communityData={communityData} key={subSpace.numberOfSpace} {...subSpace}/>)
       }
     </GridCardsContainer>
   );

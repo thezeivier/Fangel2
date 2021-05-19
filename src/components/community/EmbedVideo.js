@@ -8,7 +8,7 @@ import { ReactComponent as CommunitySVG } from './../general/icons/community.svg
 
 // import VideoCall from './VideoCall'
 
-const EmbedVideo = ({ communityData, isAdmin }) => {
+const EmbedVideo = ({ communityData, isAdmin, communityDataSubSpace, isSubSpace }) => {
   const contextFromApp = useContext(AppContext)
   const {videoCall, communityProvider} = contextFromApp
   
@@ -17,7 +17,7 @@ const EmbedVideo = ({ communityData, isAdmin }) => {
       <TitleOnlyDesktopContainer>
         <DescripcionContainer>
           <CommunitySVG />
-          <h3>{communityData.title}</h3>
+          <h3>{!isSubSpace ? communityData.title :  communityDataSubSpace.nameOfSpace}</h3>
         </DescripcionContainer>
         <ButtonLeaveContainer>
           <ButtonLeaveCom displayDesktop="flex" communityProvider={communityProvider}/>

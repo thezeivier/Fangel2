@@ -22,6 +22,7 @@ import Profile from './pages/Profile'
 import ThanksReport from './pages/ThanksReport'
 import DashboardSpaces from './pages/DashboardSpaces'
 import {SwitchCommunityVideo} from './pages/inCommunity/SwitchCommunityVideo'
+import {SwitchCommunitySubSpace} from './pages/inCommunity/SwitchCommunitySubSpace'
 //List of routers and loading
 import ListOfRoutes from './pages/objects/ListOfRoutes' 
 import Spinner from './components/spinner/MainSpinner'
@@ -50,7 +51,6 @@ function App() {
   const [profileThumb, setProfileThumb] = useState(false)
   const communityProvider = useMemo(() => ({communityGlobalData, setCommunityGlobalData}), [communityGlobalData, setCommunityGlobalData])
   const [videoCall, setVideoCall] = useState(false)
-  
   useEffect(()=>{
     if(localStorage.mode){
       setMode(localStorage.getItem("mode"))
@@ -81,7 +81,7 @@ function App() {
                 <VideoCall 
                   dataUser={dataUser} 
                   authState={user} 
-                  communityData={communityGlobalData} 
+                  communityDataRoom={communityProvider.communityGlobalData} 
                   isAdmin={isAdmin}
                 />
               )
@@ -91,7 +91,7 @@ function App() {
       }
       setLoading(false)
     });
-  },[firestore, auth, storage, history, communityGlobalData])
+  },[firestore, auth, storage, history, communityProvider])
 
 
   const changeTheme = () =>{
@@ -139,6 +139,7 @@ function App() {
               <Route exact path={"/more-options"} component={authState ? MoreOptions : Landing}/>
               <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
               <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>
+              <Route exact path={"/room/:idRoom/:idSubSpace"} component={SwitchCommunitySubSpace}/>
               <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
               <Route exact path={"/thank-you"} component={authState? ThanksReport : Landing}/>
               <Route exact path={"/dashboard/my-spaces"} component={authState? DashboardSpaces : Landing}/>

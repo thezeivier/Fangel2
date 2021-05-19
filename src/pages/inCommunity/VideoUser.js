@@ -7,7 +7,7 @@ import { ContainerForCommunity } from './../../components/general/InternalLayout
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
-const VideoUser = ({activeCommunity, communityData}) => {
+const VideoUser = ({activeCommunity, communityData, isSubSpace, communityDataSubSpace}) => {
 
   const [transcurredTimeOfCommunity, setTranscurredTimeOfCommunity] = useState()
   const [lastTranscurredTime, setLastTranscurredTime] = useState(false)
@@ -45,8 +45,8 @@ const VideoUser = ({activeCommunity, communityData}) => {
         <ContainerForCommunity> {/* Sin margenes en moviles y tablets ni footer ni regHeader,
           wrapper sin paddign en moviles y tablet*/}
           <RegHeader /> {/* Solo para moviles */}
-          <VideoHeader communityData={communityData} displayNoAdmin="none" isSettings="none" onlyUsers="block" />
-          <MainVideoUser communityData={communityData} displayNoAdmin="none" />
+          <VideoHeader communityData={communityData} communityDataSubSpace={communityDataSubSpace} isSubSpace={isSubSpace} displayNoAdmin="none" isSettings="none" onlyUsers="block" />
+          <MainVideoUser communityData={communityData} communityDataSubSpace={communityDataSubSpace} isSubSpace={isSubSpace} displayNoAdmin="none" />
           <Footer noMobile/>
         </ContainerForCommunity>
       }
