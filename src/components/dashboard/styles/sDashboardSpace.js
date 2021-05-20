@@ -58,7 +58,6 @@ export const SpaceCard = styled.div`
     height: inherit;
     width: 80px;
     border-radius: 10px 0 0 10px;
-    background: green;
     object-fit: cover;
     flex: 0 0 auto;
   }

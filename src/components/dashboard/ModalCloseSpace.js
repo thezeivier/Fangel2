@@ -10,10 +10,10 @@ const ModalCloseSpace = ({ modalIsOpen }) => {
         <ModalCloseContainer>
           <div>
             <SubtitleStyled as="p">¿Estás seguro(a) de eliminar este espacio?</SubtitleStyled>
-            <TextStyled as="span">Ya no se podra recuperar despues</TextStyled>
+            <TextStyled as="span">También se eliminarán los subespacios y no se podrán recuperar después</TextStyled>
           </div>
           <ButtonsContainer>
-            <a onCLick={modalIsOpen}>No, gracias</a>
+            <a onClick={modalIsOpen}>No, gracias</a>
             <ButtonStyled secondary>Si, porfavor</ButtonStyled>
           </ButtonsContainer>
         </ModalCloseContainer>

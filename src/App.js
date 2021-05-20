@@ -75,7 +75,7 @@ function App() {
               }
             }
             !dataUser.quizComplete && history.push("/quiz")
-
+            
             if(communityGlobalData){
               setVideoCall(
                 <VideoCall 
