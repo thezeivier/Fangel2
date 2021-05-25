@@ -1,7 +1,7 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const db = admin.firestore();
-exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").onCreate((snap) =>{
+exports.colorAndUsernameGenerator = functions.firestore.document("/users/{documentId}").onCreate((snap) =>{
   const data = snap.data()
   const hashtagNumber = Math.floor(Math.random() * 99999)
   const dark = getColorDarkMode()
@@ -29,47 +29,19 @@ exports.userCodeGenerator = functions.firestore.document("/users/{documentId}").
 
 const userAndCodeGenerator = (data, uid, hashtagNumber, batch, dark, light) => {
   const username = `${(data.name.firstName.split(" ")[0].concat(data.name.lastName.split(" ")[0])).toLowerCase()}#${hashtagNumber}`
-  if (data.type === "admin") {
-    const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-    let code = "";
-    while (code.length < 12) {
-      code = code.concat(model.charAt(Math.round(Math.random()*model.length)));
-    }
-    batch.set(
-        db.collection("userCodes").doc(code),
-        {
-          code,
-          uid,
-          users: [],
-        }
-    );
-    batch.set(
-      db.collection("users").doc(uid),
-      {
-        userCodesRef: db.doc(`userCodes/${code}`),
-        username,
-        colorsUser: { dark, light},
-      },
-      {merge: true}
-    );
 
-    batch.commit()
-    .then(console.log("Generado de código exitoso"))
-    .catch(error => console.error("Error al generar código", error));
-  } else {
-    batch.set(
-      db.collection("users").doc(uid),
-      {
-        username,
-        colorsUser: { dark, light},
-      },
-      {merge: true}
-    );
+  batch.set(
+    db.collection("users").doc(uid),
+    {
+      username,
+      colorsUser: { dark, light},
+    },
+    {merge: true}
+  );
 
-    batch.commit()
-    .then(console.log("usuario creado"))
-    .catch(error => console.error("Error al crar usuario", error));
-  }
+  batch.commit()
+  .then(console.log("Generación de color y username exitosa"))
+  .catch(error => console.error("Error al generar color y username", error));
 }
 
 const getColorDarkMode = () => {

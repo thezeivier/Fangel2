@@ -29,7 +29,7 @@ const DashboardSpaces = () => {
                   <ul>
                     {
                       listOfSpaces.public.map((space)=>{
-                        return <DbSpaceCard key={space.roomName} {...space}/>
+                        return <DbSpaceCard key={space.roomName} {...space} uid={authState.uid}/>
                       })
                     }
                   </ul>

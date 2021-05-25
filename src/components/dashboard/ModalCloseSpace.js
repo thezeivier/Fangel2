@@ -2,8 +2,16 @@ import React from 'react';
 import Wrapper from './../general/Wrapper'
 import { ModalCloseContainer, SubtitleStyled, TextStyled, ButtonsContainer,
          ButtonStyled } from './styles/sModalCloseSpace'
+import {deleteSpaceAndMessages} from './algorithms/deleteSpace' //Recordar que hay que migrar a una cloudFunction por motivos de rendimiento.
 
-const ModalCloseSpace = ({ modalIsOpen }) => {
+const ModalCloseSpace = ({ modalIsOpen, roomName, uid, creatorUid }) => {
+  const handleDeleteSpace = async() =>{
+    if(creatorUid === uid){ //Corrobora si el que elimina es el creador de los espacios.
+      await deleteSpaceAndMessages(roomName) //Ejecución de borrado de espacio social, subespacios y mensajes de los mismos.
+    }else{
+      modalIsOpen()//Cierra el Modal en caso de ser un pirata que intenta eliminar el espacio.
+    }
+  }
   return (
     <main>
       <Wrapper>
@@ -14,7 +22,7 @@ const ModalCloseSpace = ({ modalIsOpen }) => {
           </div>
           <ButtonsContainer>
             <a onClick={modalIsOpen}>No, gracias</a>
-            <ButtonStyled secondary>Si, porfavor</ButtonStyled>
+            <ButtonStyled secondary onClick={handleDeleteSpace}>Sí, porfavor</ButtonStyled>{/*Llamado a la ejecución de eliminación de espacio*/}
           </ButtonsContainer>
         </ModalCloseContainer>
       </Wrapper>

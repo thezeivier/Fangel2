@@ -5,7 +5,7 @@ import ModalCloseSpace from './ModalCloseSpace'
 import { SpaceCard, DescriptionContainer, ButtonStyled, CardContainer } from './styles/sDashboardSpace'
 import spaceThumb from '../general/images/thumb_community_s1.svg'
 
-const DbSpaceCard = ({bucket, route, title, description, privacy, roomName}) => {
+const DbSpaceCard = ({bucket, route, title, description, privacy, roomName, creatorUid , uid}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const modalOpen = () => setModalIsOpen(!modalIsOpen)
   const [thumb, setThumb] = useState(null)
@@ -37,7 +37,7 @@ const DbSpaceCard = ({bucket, route, title, description, privacy, roomName}) => 
         <ButtonStyled danger onClick={modalOpen} >Cerrar espacio</ButtonStyled>
       </CardContainer>
       <ModalGeneral modalIsOpen={modalOpen} modalOpen={modalIsOpen} >
-        <ModalCloseSpace modalIsOpen={modalOpen} />
+        <ModalCloseSpace modalIsOpen={modalOpen} roomName={roomName} creatorUid={creatorUid} uid={uid}/>
       </ModalGeneral>
     </>
   );

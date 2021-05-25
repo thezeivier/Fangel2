@@ -123,7 +123,7 @@ const setChatRoom = (batch, firestore, chatroomRef, hashName, uid) => {
 const hashRoomGenerator  = () => {
   const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
   let code = "";
-  while (code.length < 128) {
+  while (code.length < 15) {
     code = code.concat(model.charAt(Math.round(Math.random()*model.length)));
   }
   return code;
