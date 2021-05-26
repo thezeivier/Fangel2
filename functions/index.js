@@ -4,3 +4,4 @@ exports.colorAndUsernameGenerator = require("./components/users/colorAndUsername
 exports.imageModifier = require("./components/images/imageModifier");
 exports.onUserStatusOnlineChange = require("./components/communities/onUserStatusOnlineChange")
 exports.detectBadWords = require("./components/communities/detectBadWords")
+exports.deleteSocialSpaces = require("./components/users/deleteSocialSpaces")

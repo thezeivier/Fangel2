@@ -1,12 +1,14 @@
 const firebase_tools = require("firebase-tools");
+const functions = require("firebase-functions");
 
-exports.recursiveDelete = functions
+exports.deleteSocialSpaces = functions
   .runWith({
     timeoutSeconds: 540,
     memory: '2GB'
   })
   .https.onCall(async (data, context) => {
     // Only allow admin users to execute this function.
+    console.log(context)
     if (!(context.auth && context.auth.token && context.auth.token.admin)) {
       throw new functions.https.HttpsError(
         'permission-denied',

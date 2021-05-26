@@ -42,7 +42,7 @@ const DashboardSpaces = () => {
                   <ul>
                     {
                       listOfSpaces.private.map((space)=>{
-                        return <DbSpaceCard key={space.roomName} {...space}/>
+                        return <DbSpaceCard key={space.roomName} {...space} uid={authState.uid}/>
                       })
                     }
                   </ul>
