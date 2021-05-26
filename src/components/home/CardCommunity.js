@@ -20,10 +20,12 @@ const CardCommunity = ({communityData, communityProvider}) => {
   const history = useHistory()
 
   useEffect(()=>{
-    const gsReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.route}`)
-    gsReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
-      setThumb(url)
-    })
+    if(communityData.bucket){
+      const gsReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.route}`)
+      gsReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
+        setThumb(url)
+      })
+    }
     if(communityData.profileRoute){
       const profileImageReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.profileRoute}`)
       profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.

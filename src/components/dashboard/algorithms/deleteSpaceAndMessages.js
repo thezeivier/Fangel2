@@ -1,6 +1,9 @@
-export const  deleteSpaceAndMessages = (path, firebase) => {
-    var deleteFn = firebase.functions().httpsCallable('deleteSocialSpaces-deleteSocialSpaces');
-    deleteFn({ path: path })
+export const  deleteSpaceAndMessages = (path, creatorUid, firebase) => {
+    var deleteFn = firebase.functions().httpsCallable('deleteSocialSpaces');
+    deleteFn({ 
+        path: path,
+        creatorUid,
+    })
         .then(function(result) {
             // logMessage('Delete success: ' + JSON.stringify(result));
             console.warn('Delete success: ' + JSON.stringify(result))

@@ -9,9 +9,12 @@ import "firebase/functions";
 const ModalCloseSpace = ({ modalIsOpen, roomName, uid, creatorUid }) => {
 
   const handleDeleteSpace = async() =>{
-    const path = `/communities/${roomName}/`
+    const path = {
+      space: `/communities/${roomName}`,
+      chatRoom: `/chatroom/${roomName}`,
+    }
     if(creatorUid === uid){ //Corrobora si el que elimina es el creador de los espacios.
-      await deleteSpaceAndMessages(path, firebase) //Ejecución de borrado de espacio social, subespacios y mensajes de los mismos.
+      await deleteSpaceAndMessages(path, creatorUid, firebase) //Ejecución de borrado de espacio social, subespacios y mensajes de los mismos.
     }else{
       modalIsOpen()//Cierra el Modal en caso de ser un pirata que intenta eliminar el espacio.
     }

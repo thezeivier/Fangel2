@@ -8,7 +8,10 @@ const fs = require('fs');
 // [END import]
 
 // [START imageModifier]
-exports.imageModifier = functions.storage.object().onFinalize(async (object) => {
+exports.imageModifier = functions.runWith({
+  timeoutSeconds: 60,
+  memory: '1GB'
+}).storage.object().onFinalize(async (object) => {
 // [END imageModifier]
   // [START eventAttributes]
   const fileBucket = object.bucket; // The Storage bucket that contains the file.
