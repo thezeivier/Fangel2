@@ -42,6 +42,32 @@ export const CardContainer = styled.li`
   }
 `
 
+export const SVGContainerComPrivate = styled.div`
+  background: #393F4E;
+  border-radius: 10px 0px 0px 10px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+
+  svg {
+    width: 38px;
+  }
+
+  @media(min-width:768px) {
+    width: 115px;
+
+    svg {
+      width: 48px;
+    }
+  }
+
+  @media(min-width:1200px) {
+    width: 150px;
+  }
+`
+
 export const SpaceCard = styled.div`
   width: 100%;
   background: ${props => props.theme.cardComunity};
@@ -54,7 +80,7 @@ export const SpaceCard = styled.div`
     background: ${props => props.theme.cardHoverComunity};
   }
 
-  img, svg {
+  img {
     height: inherit;
     width: 80px;
     border-radius: 10px 0 0 10px;
