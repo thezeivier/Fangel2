@@ -9,10 +9,8 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
   
   if ( roomPrivacy === "public") {
     const {descriptionCommunity} = data
-    // let activeCommunitiesRef = firestore.collection('activeCommunities').doc(hashName)
     let profileRoute = userApp.userFromDB.route ? userApp.userFromDB.route : false
     setChatRoom(batch, firestore, chatroomRef, hashName, uid)
-    // setActiveCommunity(batch, firestore, activeCommunitiesRef, hashName, uid)
 
     batch.set(
       communitiesRef,
@@ -103,21 +101,6 @@ const setChatRoom = (batch, firestore, chatroomRef, hashName, uid) => {
     {merge:true}
   )
 }
-
-//Preenvío de activeCommunity
-// const setActiveCommunity = (batch, firestore, activeCommunitiesRef, hashName, uid) => {
-//   return batch.set(
-//     activeCommunitiesRef,
-//     {
-//       uid,
-//       duration: 60,
-//       transcurred: 0,
-//       communitiesRef: firestore.doc(`communities/${uid}`),
-//       roomName: hashName,
-//     },
-//     {merge:true}
-//   )
-// }
 
 //Generador de hash para roomName
 const hashRoomGenerator  = () => {

@@ -1,16 +1,24 @@
 import React from 'react';
 import Wrapper from './../general/Wrapper'
 import { ModalCloseContainer, SubtitleStyled, TextStyled, ButtonsContainer,
-         ButtonStyled } from './styles/sModalCloseSpace'
-import {deleteSpaceAndMessages} from './algorithms/deleteSpace' //Recordar que hay que migrar a una cloudFunction por motivos de rendimiento.
+  ButtonStyled } from './styles/sModalCloseSpace'
+import {deleteSpaceAndMessages} from './algorithms/deleteSpaceAndMessages' //Recordar que hay que migrar a una cloudFunction por motivos de rendimiento.
+import firebase from "firebase/app";
+import "firebase/functions";
 
 const ModalCloseSpace = ({ modalIsOpen, roomName, uid, creatorUid }) => {
+  // const firebase = useFirebaseApp()
   const handleDeleteSpace = async() =>{
+    const path = `communities/${roomName}`
     if(creatorUid === uid){ //Corrobora si el que elimina es el creador de los espacios.
-      await deleteSpaceAndMessages(roomName) //Ejecución de borrado de espacio social, subespacios y mensajes de los mismos.
+      await deleteSpaceAndMessages(path, firebase) //Ejecución de borrado de espacio social, subespacios y mensajes de los mismos.
     }else{
       modalIsOpen()//Cierra el Modal en caso de ser un pirata que intenta eliminar el espacio.
     }
+    // console.log(firebase)
+    // firestore.collection("communities").doc(roomName).get().then(result=>{
+    //   console.log(result)
+    // })
   }
   return (
     <main>
