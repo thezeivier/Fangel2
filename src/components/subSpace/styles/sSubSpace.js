@@ -49,7 +49,7 @@ export const SubSpaceAddCardContainer = styled.li`
   ${CardMixin}
 
   svg {
-    fill: ${props => props.theme.colorWhite};
+    fill: ${props => props.theme.textColor};
     width: 25px;
     height: 25px;
     margin: 0 5px 4px 0;
@@ -155,7 +155,6 @@ export const SubspaceDescriptionContainer = styled.div`
     margin: 0;
     padding: 15px 20px;
   }
-}
 `
 
 export const MenuCardContainer = styled.div`
@@ -175,10 +174,6 @@ export const MenuCardContainer = styled.div`
   p {
     color: ${props => props.theme.textColorInvert};
     transition: .2s;
-
-    &:hover {
-      color: ${props => props.theme.colorbrandSolid};
-    }
   }
 `
 

@@ -114,7 +114,7 @@ const MainProfile = () => {
             )
           }
         </ListTags>
-        {
+{/*         {
           (userFromDB.type === "admin" )&&
             (authState.uid === id)&&
             <CodeContainer>
@@ -129,7 +129,7 @@ const MainProfile = () => {
                 </CommentSVGContainer>
               </Form>
             </CodeContainer>
-        } 
+        }  */}
       </Wrapper> 
       <ReturnPage/> 
     </main>
