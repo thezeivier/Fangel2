@@ -122,6 +122,14 @@ export const TextBody = styled.p`
     margin: 10px 0 0 0;
   `}
 
+  ${props => props.top34 && css`
+    margin: 34px 0 0 0;
+  `}
+
+  ${props => props.bottom8 && css`
+    margin: 0 0 8px 0;
+  `}
+
   ${props => props.bottom20 && css`
     margin: 0 0 20px 0;
   `}
@@ -272,6 +280,7 @@ export const Form = styled.form`
 export const Input = styled.input`
   height: 44px;
   padding: 0 21px;
+  cursor: pointer;
   ${inputMixin};
 
   ${props => props.special && css`

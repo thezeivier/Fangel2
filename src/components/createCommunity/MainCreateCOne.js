@@ -5,8 +5,8 @@ import { useForm } from 'react-hook-form'
 import {useFirestore, useStorage} from 'reactfire'
 import Wrapper from './../general/Wrapper'
 import LoadServSpinner from './../spinner/LoadServSpinner'
-import { TitleStyled, TextAreaStyled, ButtonStyled,
-         OnlyDesktop, SubtitleStyled } from './../../themes/internalRecyclableStyles'
+import { TitleStyled, TextAreaStyled, ButtonStyled, OnlyDesktop,
+         SubtitleStyled } from './../../themes/internalRecyclableStyles'
 import { InputStyled, ErrorAlert } from './../../pages/signInAndUp/styles/sGlobalForm'
 import { TextBody } from './../../themes/externalRecyclableStyles'
 import { FieldSet, OtherInformation } from './styles/sMainCreateCommunity'

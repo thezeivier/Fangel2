@@ -40,11 +40,11 @@ const MainHome = () => {
         {
           contextFromApp.isAdmin && //If the user is an admin, activate the "AddCardContainer" button.
             <CardsContainer>
-              <AddCardContainer colorBackground="#2F80ED" as={Link} to="/create-community-1" >
+              <AddCardContainer colorBackground="#2D9CDB" colorHover="#2277A7" as={Link} to="/create-community-1" >
                 <SpacesSVG />
                 <span>Crear espacio social</span>
               </AddCardContainer>
-              <AddCardContainer colorBackground="#2D9CDB" as={Link} to="#" >
+              <AddCardContainer colorBackground="#E9760D" colorHover="#C56610" as={Link} to="/fangel-connect" >
                 <FangelConnectSVG />
                 <span>Fangel Connect</span>
               </AddCardContainer>

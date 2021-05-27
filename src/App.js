@@ -20,6 +20,7 @@ import MoreOptions from './pages/MoreOptions'
 import Profile from './pages/Profile'
 import ThanksReport from './pages/ThanksReport'
 import DashboardSpaces from './pages/DashboardSpaces'
+import FangelConnect from './pages/FangelConnect'
 import {SwitchCommunityVideo} from './pages/inCommunity/SwitchCommunityVideo'
 import {SwitchCommunitySubSpace} from './pages/inCommunity/SwitchCommunitySubSpace'
 //List of routers and loading
@@ -130,6 +131,7 @@ function App() {
             <Switch>
               <Route exact path={"/"} component={authState ? Home : Landing}/>
               <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/>
+              <Route exact path={"/fangel-connect"} component={authState ? FangelConnect : Landing}/>
               <Route exact path={"/inbox"} component={authState ? PrivateChat : Landing}/>
               <Route exact path={"/inbox/t/:idInbox"} component={authState ? PrivateChat : Landing}/>
               <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>

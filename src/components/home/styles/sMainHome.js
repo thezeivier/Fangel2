@@ -4,6 +4,10 @@ export const CardsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 10px;
+
+  @media(min-width:768px) {
+    column-gap:15px;
+  }
 `
 
 export const AddCardContainer = styled.li`
@@ -19,6 +23,7 @@ export const AddCardContainer = styled.li`
   max-height: 305px;
   cursor: pointer;
   padding: 10px;
+  transition: .2s;
   
   svg {
     transition: all .2s;
@@ -30,12 +35,21 @@ export const AddCardContainer = styled.li`
 
   span {
     transition: all .2s;
-    color: ${props => props.theme.textColor};
+    color: ${props => props.theme.colorWhite};
     font-style: normal;
     font-weight: ${props => props.theme.weight.regular};
     font-size: 1.15em;
     line-height: 1.5em;
     text-align: center;
+  }
+
+  &:hover {
+    background: ${props => props.colorHover};
+
+    svg {
+      fill: ${props => props.theme.colorbrandSolid};
+      transform: scale(1.14);
+    }
   }
 
   @media(min-width:768px) {
@@ -44,17 +58,6 @@ export const AddCardContainer = styled.li`
 
   @media(min-width:1200px) {
     min-height: 220px;
-  }
-
-  &:hover {
-    svg {
-      fill: ${props => props.theme.colorbrandSolid};
-      transform: scale(1.14);
-    }
-
-    span {
-      color: ${props => props.theme.colorbrandSolid};
-    }
   }
 `
 
