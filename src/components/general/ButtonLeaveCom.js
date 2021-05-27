@@ -1,20 +1,32 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { ButtonStyled } from './styles/sButtonLeaveCom'
 /* import { ReactComponent as ButtonLeaveComSVG } from './icons/leaveCommunity.svg'
  */
 const ButtonLeaveCom = ({ displayDesktop, communityProvider }) => {
   const history = useHistory()
+  const [subSpaceState, setSubSpaceState] = useState(false)
   const handleLeaveCommunity = () => {
     communityProvider && communityProvider.setCommunityGlobalData(false)
     history.push('/')
     window.location.reload()
   } 
+
+  useEffect(() => {
+    if(communityProvider && communityProvider.communityGlobalData && communityProvider.communityGlobalData.communityDataSubSpace){
+      setSubSpaceState(true)
+    }
+  },[])
+
+  console.log(displayDesktop)
+  
   return (
     <ButtonStyled danger displayDesktop={displayDesktop} onClick={handleLeaveCommunity} as={Link}>
       {/* <ButtonLeaveComSVG /> */}
       {
-        displayDesktop ? 'Salir del espacio social ': 'Salir'
+        subSpaceState ? 
+          (displayDesktop? 'Regresar al espacio principal': 'Regresar'):
+          (displayDesktop? 'Salir del espacio social': 'Salir')
       }
     </ButtonStyled>
   );
