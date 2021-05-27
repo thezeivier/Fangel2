@@ -25,7 +25,6 @@ const MainProfile = () => {
   const firestore = useFirestore()
   const history = useHistory()
   const [profileThumb, setProfileThumb] = useState()
-  const [code, setCode] = useState()
   const [activeButton, setActiveButton] = useState(false)
   const {userFromDB, authState} = useContext(AppContext)
   const location = useLocation()
@@ -34,15 +33,7 @@ const MainProfile = () => {
   const [userData, loading, error] = useMatchRouteUserData("users", nameUserRoute)
 
   useEffect(()=>{
-    if(userFromDB.type === "admin" && userFromDB.userCodesRef){
-      userFromDB.userCodesRef
-      .get()
-      .then(result =>{
-        if(result.data().users.length < 20){
-          setCode(result.data().code)
-        }
-      })
-    }
+
   },[])
 
   if(loading) return <p>Pending...</p>
@@ -114,22 +105,6 @@ const MainProfile = () => {
             )
           }
         </ListTags>
-{/*         {
-          (userFromDB.type === "admin" )&&
-            (authState.uid === id)&&
-            <CodeContainer>
-              <p>
-                Brinda este código a otras personas que quieran registrarse en fangel
-              </p>
-              <Form>
-                <label>Código de invitación </label>
-                <InputStyled id="copyCode" special invitationCode type="text" value={code? code: "Cargando..."} placeholder="Código de invitación" readOnly/>
-                <CommentSVGContainer onClick={()=>CopyCode("copyCode")}>
-                  <CopySVG/>
-                </CommentSVGContainer>
-              </Form>
-            </CodeContainer>
-        }  */}
       </Wrapper> 
       <ReturnPage/> 
     </main>
