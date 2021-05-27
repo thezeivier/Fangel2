@@ -55,10 +55,7 @@ const MainCreateCOne = () => {
       {
         communityCreated === true?
         <Redirect to={{
-          pathname: "/create-community-2",
-          state: { 
-            room: roomName
-          },
+          pathname: `/room/${roomName}`,
         }}/>:(
           <>
             {

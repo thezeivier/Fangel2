@@ -17,8 +17,6 @@ const ButtonLeaveCom = ({ displayDesktop, communityProvider }) => {
       setSubSpaceState(true)
     }
   },[])
-
-  console.log(displayDesktop)
   
   return (
     <ButtonStyled danger displayDesktop={displayDesktop} onClick={handleLeaveCommunity} as={Link}>
