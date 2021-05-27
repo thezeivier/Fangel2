@@ -13,7 +13,6 @@ import Landing from './pages/Landing'
 import Quiz from './pages/Quiz'
 import Home from './pages/Home'
 import CreateCommunityOne from './pages/CreateCommunityOne'
-import CreateCommunityTwo from './pages/CreateCommunityTwo'
 import PrivateChat from './pages/chat/PrivateChat'
 // import InvidualChat from './pages/chat/InvidualChat'
 import ReportAProblem from './pages/ReportAProblem'
@@ -64,7 +63,6 @@ function App() {
           let dataUser = await RecoverUser(firestore, user.uid)
           setUserFromDB(dataUser)
           if(dataUser){
-            // createAdminCodes(firestore, firebase) //CREADOR DE CÓDIGOS DE TIPO ADMIN.
             if(dataUser.type === "admin"){
               setIsAdmin(true)
               if(dataUser.bucket && dataUser.route){
@@ -132,7 +130,6 @@ function App() {
             <Switch>
               <Route exact path={"/"} component={authState ? Home : Landing}/>
               <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/>
-              <Route exact path={"/create-community-2"} component={authState ? CreateCommunityTwo : Landing}/>
               <Route exact path={"/inbox"} component={authState ? PrivateChat : Landing}/>
               <Route exact path={"/inbox/t/:idInbox"} component={authState ? PrivateChat : Landing}/>
               <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
@@ -155,27 +152,3 @@ function App() {
 }
 
 export {App, Consumer as AppConsumer, AppContext}
-
-
-// const createAdminCodes = (firestore, firebase) => {
-//   const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-//   let listOfCodes = []
-//   while(listOfCodes.length < 5){
-//     let code = "admin";
-//     while (code.length < 12) {
-//       code = code.concat(model.charAt(Math.round(Math.random()*model.length)));
-//     }
-//     listOfCodes.push(code)
-//   }
-//   console.log(listOfCodes)
-//   var i = 0
-//   while(i < (listOfCodes.length - 1)){
-//     firestore
-//     .collection("adminCodes")
-//     .doc("listOfCodes")
-//     .update({ 
-//         disponibleCodes: firebase.firebase_.firestore.FieldValue.arrayUnion(listOfCodes[i]),
-//     })
-//     i++
-//   }
-// }
