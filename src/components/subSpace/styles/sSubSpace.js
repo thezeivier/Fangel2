@@ -46,6 +46,7 @@ export const SubSpaceAddCardContainer = styled.li`
   box-shadow: 0px 0px 8px ${props => props.theme.colorAddCardHover};
   justify-content: center;
   align-items: center;
+  position: relative;
   ${CardMixin}
 
   svg {
@@ -96,7 +97,7 @@ export const SubSpaceCardContainer = styled.li`
   h4 {
     font-size: 1.1em;
     font-weight: ${props => props.theme.weight.semiMedium};
-    margin: 0 0 8px 0;
+    /* margin: 0 0 8px 0; */
     font-family: ${props => props.theme.secondaryFont};
     ${ClampMixin}
   }
@@ -138,7 +139,7 @@ export const SubSpaceCardContainer = styled.li`
   @media(min-width:1200px) {
     h4 {
       font-size: 1.08em;
-      margin: 0 0 10px 0;
+      /* margin: 0 0 10px 0; */
     }
   }
 `
@@ -186,6 +187,12 @@ export const SaveContainer = styled.div`
   font-weight: ${props => props.theme.weight.semiMedium};
 `
 
+export const InputFormContainer = styled.form`
+  position: absolute;
+  left: 20px;
+  top: 25%;
+`
+
 //CreateSubSpace
 
 export const CreateContainer = styled.div`
@@ -208,7 +215,6 @@ export const CreateContainer = styled.div`
     }
   }
 `
-
 
 export const ButtonStyledSP = styled(ButtonStyled) `
   margin: 0 auto;

@@ -4,7 +4,8 @@ import { useFirestore } from 'reactfire'
 import { useForm } from 'react-hook-form';
 import { otherTextValidator } from '../../pages/signInAndUp/objects/formValidators'
 import { InputStyled } from '../../pages/signInAndUp/styles/sGlobalForm'
-import { SubSpaceCardContainer, MenuCardContainer, SaveContainer, SubspaceDescriptionContainer } from './styles/sSubSpace'
+import { SubSpaceCardContainer, MenuCardContainer, SaveContainer, SubspaceDescriptionContainer,
+         InputFormContainer } from './styles/sSubSpace'
 import { ReactComponent as NumberPeopleSVG } from './../community/icons/numberPeople.svg'
 import { ReactComponent as MenuCardSVG } from './../community/icons/menuCard.svg'
 
@@ -64,21 +65,21 @@ const SubSpaceCard = ({nameOfSpace, id, communityData}) => {
         {
           openCardMenu &&
           <MenuCardContainer>
-              <p onClick={ChangeName}>Cambiar nombre</p>
-              <MenuCardSVG className="menuCardSVG activeMenuCard" onClick={OpenMenu} />
-            </MenuCardContainer>
+            <p onClick={ChangeName}>Cambiar nombre</p>
+            <MenuCardSVG className="menuCardSVG activeMenuCard" onClick={OpenMenu} />
+          </MenuCardContainer>
         }
         {/* Solo se activa cuando le da en cambiar */}
         {
           saveSubSpaceChangeButton &&
           <SaveContainer onClick={handleChangeSubSpace}>
-              <p>Guardar</p>
-            </SaveContainer>
+            <p>Guardar</p>
+          </SaveContainer>
         }
       </div>
       {
         saveSubSpaceChangeButton &&
-        <form center>
+        <InputFormContainer center>
           <InputStyled 
             type="text" 
             onChange={(e)=>{
@@ -88,7 +89,7 @@ const SubSpaceCard = ({nameOfSpace, id, communityData}) => {
             name="subSpaceName" 
             ref={register(otherTextValidator)}
           />
-        </form>
+        </InputFormContainer>
       }
     </SubSpaceCardContainer>
   );
