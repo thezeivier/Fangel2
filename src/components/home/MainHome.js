@@ -5,8 +5,9 @@ import Wrapper from './../general/Wrapper'
 import { Link } from 'react-router-dom'
 import { useStateIfMounted } from 'use-state-if-mounted'
 import { TitleStyled, TextStyled } from './../../themes/internalRecyclableStyles'
-import { AddCardContainer, EndCercle, CardsList } from './styles/sMainHome'
-import { ReactComponent as AddCardSVG } from './icons/addCard.svg'
+import { AddCardContainer, EndCercle, CardsList, CardsContainer } from './styles/sMainHome'
+import { ReactComponent as SpacesSVG } from './icons/spaces.svg'
+import { ReactComponent as FangelConnectSVG } from './icons/fangelConnect.svg'
 
 //Import Algorithms
 import { RecoverCommunities } from './algorithms/RecoverCommunities'
@@ -34,14 +35,20 @@ const MainHome = () => {
     <main>
       <Wrapper>
         <TitleStyled>Espacios sociales</TitleStyled>
-        <TextStyled main>Conoce a personas con los mismos gustos y comparte ideas.</TextStyled>
+        <TextStyled main>Conoce a personas y construye relaciones duraderas en base a tus intereses.</TextStyled>
         <CardsList isAdmin={contextFromApp.isAdmin}>
         {
           contextFromApp.isAdmin && //If the user is an admin, activate the "AddCardContainer" button.
-            <AddCardContainer as={Link} to="/create-community-1" >
-              <AddCardSVG />
-              <span>Crear espacio social</span>
-            </AddCardContainer>
+            <CardsContainer>
+              <AddCardContainer colorBackground="#2F80ED" as={Link} to="/create-community-1" >
+                <SpacesSVG />
+                <span>Crear espacio social</span>
+              </AddCardContainer>
+              <AddCardContainer colorBackground="#2D9CDB" as={Link} to="#" >
+                <FangelConnectSVG />
+                <span>Fangel Connect</span>
+              </AddCardContainer>
+            </CardsContainer>
         }
           <Suspense fallback={<p>Cargando...</p>}>
             {

@@ -67,6 +67,9 @@ const MainCreateCOne = () => {
             }
             <Wrapper>
               <TitleStyled bottom>Crear un espacio social</TitleStyled>
+              <TextBody bottom20>
+                En los espacios sociales podras hablar de cualquier tema con cualquier persona. ¡Invita a tus amigos!
+              </TextBody>
               <OnlyDesktop>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div>

@@ -19,7 +19,6 @@ const VideoHeader = ({ displayNoAdmin, isSettings, modalIsOpen, communityData, c
           <div className="svgOnlyMobile">
             <ButtonLeaveCom className="buttonOnlyMobile" />
           </div>
-          {/* <VideoSettingsSVG className="svgOnlyMobile" onClick={open} /> */}
           <CloseSVG className="svgCloseOnlyMobile" onClick={closeModalSA} />
         </ContainerSVG>
       </HeaderContainer>

@@ -1,9 +1,14 @@
 import styled, {css} from 'styled-components'
 
+export const CardsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+`
+
 export const AddCardContainer = styled.li`
-  background: ${props => props.theme.colorAddCard};
+  background: ${props => props.colorBackground};
   border-radius: 10px;
-  box-shadow: 0px 0px 8px ${props => props.theme.colorAddCardHover};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +18,25 @@ export const AddCardContainer = styled.li`
   min-height: 172px;
   max-height: 305px;
   cursor: pointer;
+  padding: 10px;
+  
+  svg {
+    transition: all .2s;
+    will-change: transform;
+    fill: ${props => props.theme.textColor};
+    width: 38px;
+    margin: 0 0 14px 0;
+  }
+
+  span {
+    transition: all .2s;
+    color: ${props => props.theme.textColor};
+    font-style: normal;
+    font-weight: ${props => props.theme.weight.regular};
+    font-size: 1.15em;
+    line-height: 1.5em;
+    text-align: center;
+  }
 
   @media(min-width:768px) {
     min-height: 210px;
@@ -31,21 +55,6 @@ export const AddCardContainer = styled.li`
     span {
       color: ${props => props.theme.colorbrandSolid};
     }
-  }
-
-  svg {
-    transition: all .2s;
-    will-change: transform;
-    fill: ${props => props.theme.textColor};
-    width: initial;
-  }
-
-  span {
-    transition: all .2s;
-    color: ${props => props.theme.textColor};
-    font-style: normal;
-    font-weight: ${props => props.theme.weight.semiMedium};
-    font-size: 1.5em;
   }
 `
 

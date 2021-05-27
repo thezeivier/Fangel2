@@ -122,6 +122,10 @@ export const TextBody = styled.p`
     margin: 10px 0 0 0;
   `}
 
+  ${props => props.bottom20 && css`
+    margin: 0 0 20px 0;
+  `}
+
   @media(min-width:768px) {
     font-size: 1.17em;
   }
