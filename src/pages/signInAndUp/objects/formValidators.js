@@ -47,3 +47,9 @@ export const codeFValidator = {
       message: "Rectifica tu código de invitación*"
     }
 }
+
+export const otherTextValidator = {
+  pattern: {
+    value: /^[a-záéíóúñ0-9 ',-.]+$/i,
+  }
+}

@@ -7,7 +7,7 @@ export const  deleteSpaceAndMessages = (path, creatorUid, firebase) => {
         .then(function(result) {
             // logMessage('Delete success: ' + JSON.stringify(result));
             window.location.reload()
-            console.warn('Delete success: ' + JSON.stringify(result))
+            // console.warn('Delete success: ' + JSON.stringify(result))
         })
         .catch(function(err) {
             console.warn('Delete failed, see console');

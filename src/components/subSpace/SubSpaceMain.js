@@ -9,9 +9,9 @@ const SubSpaceMain = ({communityData}) => {
   const firestore = useFirestore()
   const [subSpaces, setSubSpaces] = useState([])
   useEffect(async()=>{
-    await firestore.collection("communities").doc(communityData.roomName).collection("subSpace").orderBy("numberOfSpace","asc").get().then(result =>{
-      if(result.docs.length !== 0){
-        setSubSpaces(result.docs.map(doc=>{
+    await firestore.collection("communities").doc(communityData.roomName).collection("subSpace").orderBy("numberOfSpace","asc").onSnapshot(snapshot =>{
+      if(snapshot.docs.length !== 0){
+        setSubSpaces(snapshot.docs.map(doc=>{
           return {
             ...doc.data()
           }
