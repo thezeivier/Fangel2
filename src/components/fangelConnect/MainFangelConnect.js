@@ -31,7 +31,7 @@ const MainFangelConnect = () => {
             <InputStyled type="time" name="finishHourFangelConnect" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
             <ErrorAlert></ErrorAlert>
             <TextBody top34>
-              Cuando una persona coincida con tu mismo horario, intereses y preferencias, agendaremos un espacio, luego te notificaremos al correo electrónico y en la sección de mensajes.
+              Cuando una persona coincida con tu mismo horario, intereses y preferencias, agendaremos un espacio, luego te notificaremos al correo electrónico y en la <span>sección de mensajes</span>.
             </TextBody>
             <ButtonStyled primary type="submit">Iniciar Connect</ButtonStyled>
           </form>

@@ -118,6 +118,10 @@ export const TextBody = styled.p`
   margin: ${props => props.margin};
   cursor: default;
 
+  span {
+    font-weight: ${props => props.theme.weight.semiMedium};
+  }
+
   ${props => props.secondParagraph && css`
     margin: 10px 0 0 0;
   `}

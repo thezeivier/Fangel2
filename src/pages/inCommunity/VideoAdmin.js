@@ -4,7 +4,6 @@ import RegHeader from './../../components/general/RegHeader'
 import VideoHeader from './../../components/general/VideoHeader'
 import Footer from './../../components/general/Footer'
 import { ContainerForCommunity } from './../../components/general/InternalLayout'
-import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsAdmin'
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
@@ -34,17 +33,12 @@ const VideoAdmin = ({communityData, isAdmin, communityDataSubSpace, isSubSpace})
             isSubSpace={isSubSpace} 
             communityDataSubSpace={communityDataSubSpace}/>
           <MainVideoUser 
-            communityData={communityData} 
+            communityData={communityData}
             open={openMoldal} 
             isAdmin={isAdmin} 
             isSubSpace={isSubSpace} 
             communityDataSubSpace={communityDataSubSpace}/>
-          <MainSettingsAdmin 
-            communityData={communityData} 
-            inDesktop="grid"
-            isSubSpace={isSubSpace} 
-            communityDataSubSpace={communityDataSubSpace}/>
-          <Footer noMobile/>
+          <Footer noMobile />
         </ContainerForCommunity>
       }
     </>

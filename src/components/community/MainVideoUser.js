@@ -10,7 +10,7 @@ import { AppContext } from '../../App'
 import firebase from 'firebase/app'
 import { GetDataFromCollection } from './algorithms/GetDataFromCollection'
 
-const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, closeModal, isAdmin, isSubSpace, communityDataSubSpace }) => {
+const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, isSubSpace, communityDataSubSpace }) => {
   const lastMsgRef = useRef()
   const { userFromDB, authState } = useContext(AppContext)
   const {data, status, error} = !isSubSpace ? GetDataFromCollection(communityData.roomName, 'chatroom', 'messages') : 
@@ -26,16 +26,13 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, displayNoAdmin, close
   
   if(status === "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>
+  
   return (
     <MainOnlyDesktop>
-      <EmbedVideo communityData={communityData} isAdmin={isAdmin} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace}/>
+      <EmbedVideo communityData={communityData} isAdmin={isAdmin} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace} />
       <Wrapper height="100%">
         <ContainerResponsive>
-{/*           <ButtonConfiguration secondary display={displayNoAdmin} onClick={open}>
-            <VideoSettingsSVG />
-            Configuraciones
-          </ButtonConfiguration> */}
-          <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef}/>
+          <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef} />
           <InputComments userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} /> 
         </ContainerResponsive>
       </Wrapper>
