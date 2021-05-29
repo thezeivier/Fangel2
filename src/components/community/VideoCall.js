@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import Jitsi from 'react-jitsi'
 import VideoSpinner from '../spinner/VideoSpinner'
+import { GetAdminCommunity } from '../../pages/inCommunity/algorithms/GetAdminCommunity'
 
 const interfaceConfig = {
   LANG_DETECTION: false,
@@ -68,8 +69,8 @@ const config = {
   disableDeepLinking: true,
 };
 
-const VideoCall = ({dataUser, authState, communityDataRoom, isAdmin}) => {
-
+const VideoCall = ({dataUser, authState, communityDataRoom}) => {
+  const isAdmin = communityDataRoom.creatorUid ? GetAdminCommunity(communityDataRoom.creatorUid, dataUser.uid) : false
   const handleAPI = JitsiMeetAPI => {
     JitsiMeetAPI.executeCommand("toggleVideo");
     JitsiMeetAPI.executeCommand("toggleAudio");

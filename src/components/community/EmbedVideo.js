@@ -8,7 +8,7 @@ import { ReactComponent as CommunitySVG } from './../general/icons/community.svg
 
 // import VideoCall from './VideoCall'
 
-const EmbedVideo = ({ communityData, isAdmin, communityDataSubSpace, isSubSpace }) => {
+const EmbedVideo = ({ communityData, communityDataSubSpace, isSubSpace }) => {
   const contextFromApp = useContext(AppContext)
   const {videoCall, communityProvider} = contextFromApp
   

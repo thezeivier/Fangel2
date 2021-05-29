@@ -4,10 +4,11 @@ import RegHeader from './../../components/general/RegHeader'
 import VideoHeader from './../../components/general/VideoHeader'
 import Footer from './../../components/general/Footer'
 import { ContainerForCommunity } from './../../components/general/InternalLayout'
+import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsAdmin'
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
-const VideoUser = ({communityData, isSubSpace, communityDataSubSpace, isAdmin}) => {
+const VideoUser = ({communityData, isSubSpace, communityDataSubSpace}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openMoldal = () => {
     setModalIsOpen(true)
@@ -44,8 +45,12 @@ const VideoUser = ({communityData, isSubSpace, communityDataSubSpace, isAdmin}) 
             communityDataSubSpace={communityDataSubSpace}
             isSubSpace={isSubSpace}
             displayNoAdmin="none"
-            isAdmin={isAdmin} 
           />
+          <MainSettingsAdmin 
+            communityData={communityData}
+            inDesktop="grid"
+            isSubSpace={isSubSpace} 
+            communityDataSubSpace={communityDataSubSpace}/>
           <Footer noMobile/>
         </ContainerForCommunity>
       }

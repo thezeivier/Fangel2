@@ -13,16 +13,16 @@ const VideoHeader = ({ displayNoAdmin, isSettings, modalIsOpen, communityData, c
         <CommunitySVG />
         <TitleCommunityStyled as="h3">{!isSubSpace ? communityData.title : communityDataSubSpace.nameOfSpace}</TitleCommunityStyled>
         <OnlyUsersContainer onlyUsers={onlyUsers}>
-          <ButtonLeaveCom className="buttonOnlyMobile" />
+          <ButtonLeaveCom className="buttonOnlyMobile"/>
         </OnlyUsersContainer>
-        <ContainerSVG display={displayNoAdmin} isSettings={isSettings}>
+        <ContainerSVG display={displayNoAdmin} isSettings={isSettings} communityData={communityData}>
           <div className="svgOnlyMobile">
-            <ButtonLeaveCom className="buttonOnlyMobile" />
+            <ButtonLeaveCom className="buttonOnlyMobile"/>
           </div>
           <CloseSVG className="svgCloseOnlyMobile" onClick={closeModalSA} />
         </ContainerSVG>
       </HeaderContainer>
-      <ModalSettingsAdmin communityData={communityData} modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <ModalSettingsAdmin communityData={communityData} modalIsOpen={modalIsOpen} isSubSpace={isSubSpace} closeModal={closeModal} communityDataSubSpace={communityDataSubSpace}/>
     </>
   );
 }

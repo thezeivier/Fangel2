@@ -42,6 +42,7 @@ const VideoAdmin = ({communityData, isAdmin, communityDataSubSpace, isSubSpace})
           {/* Solo para desktop */}
           <MainSettingsAdmin 
             communityData={communityData}
+            isAdmin={isAdmin}
             inDesktop="grid"
             isSubSpace={isSubSpace} 
             communityDataSubSpace={communityDataSubSpace}/>

@@ -15,14 +15,14 @@ const customStyles = {
 
 Modal.setAppElement('#modal')
 
-const ModalSettingsAdmin = ({ closeModal, modalIsOpen, communityData }) => {
+const ModalSettingsAdmin = ({ closeModal, modalIsOpen, communityData, isSubSpace, communityDataSubSpace}) => {
   return (
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={customStyles}
     >
-      <SettingsAdmin closeModal={closeModal} communityData={communityData}/>
+      <SettingsAdmin closeModal={closeModal} communityData={communityData} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace}/>
     </Modal>
   );
 }

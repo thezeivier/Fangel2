@@ -81,7 +81,6 @@ function App() {
                   dataUser={dataUser} 
                   authState={user} 
                   communityDataRoom={communityProvider.communityGlobalData} 
-                  isAdmin={isAdmin}
                 />
               )
             }

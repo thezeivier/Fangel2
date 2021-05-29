@@ -26,7 +26,6 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
   
   if(status === "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>
-  
   return (
     <MainOnlyDesktop>
       <EmbedVideo communityData={communityData} isAdmin={isAdmin} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace} />
@@ -36,7 +35,7 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
           <InputComments userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} /> 
         </ContainerResponsive>
       </Wrapper>
-      <ModalSettingsAdmin communityData={communityData} modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <ModalSettingsAdmin communityData={communityData} modalIsOpen={modalIsOpen} isSubSpace={isSubSpace} closeModal={closeModal} communityDataSubSpace={communityDataSubSpace}/>
     </MainOnlyDesktop>
   );
 }

@@ -16,7 +16,6 @@ import {CopyCode} from '../createCommunity/algorithms/CopyCode'
 const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, communityDataSubSpace }) => {
   const [hoverRef, isHovered] = useHover();
   const contextFromApp = useContext(AppContext)
-
   return (
     <Wrapper>
       <DisplayContainer inDesktop={inDesktop}>
@@ -39,10 +38,10 @@ const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, commu
             </div>
           </SectionContainer>
           {
-            communityData.privacy === "public" && !isSubSpace &&
+            communityData.privacy === "public" && isAdmin && !isSubSpace &&
               <SectionContainer>
                 <SubtitleStyled as="h4">Subespacios</SubtitleStyled>
-                <SubSpaceMain isAdmin={isAdmin} communityData={communityData}/>
+                <SubSpaceMain isAdmin={isAdmin} communityData={communityData} isSubSpace={isSubSpace}/>
               </SectionContainer>
           }
         </div>
