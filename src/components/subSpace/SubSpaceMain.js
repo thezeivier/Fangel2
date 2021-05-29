@@ -5,7 +5,7 @@ import SubSpaceAddCard from './SubSpaceAddCard'
 import SubSpaceCard from './SubSpaceCard'
 import { GridCardsContainer } from './styles/sSubSpace'
 
-const SubSpaceMain = ({communityData}) => {
+const SubSpaceMain = ({isAdmin, communityData}) => {
   const firestore = useFirestore()
   const [subSpaces, setSubSpaces] = useState([])
   useEffect(async()=>{
@@ -22,7 +22,10 @@ const SubSpaceMain = ({communityData}) => {
   // console.log(subSpaces && subSpaces)
   return (
     <GridCardsContainer>
-      <SubSpaceAddCard communityData={communityData}/>
+      {
+        isAdmin && 
+          <SubSpaceAddCard communityData={communityData}/>
+      }
       {subSpaces.length !== 0 &&
         subSpaces.map(subSpace => <SubSpaceCard communityData={communityData} key={subSpace.numberOfSpace} {...subSpace}/>)
       }

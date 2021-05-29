@@ -13,7 +13,7 @@ import { ReactComponent as CodeCopySVG } from './icons/codeCopy.svg'
 //Import copy Code.
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'
 
-const MainSettingsAdmin = ({ inDesktop, communityData, isSubSpace, communityDataSubSpace }) => {
+const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, communityDataSubSpace }) => {
   const [hoverRef, isHovered] = useHover();
   const contextFromApp = useContext(AppContext)
 
@@ -42,7 +42,7 @@ const MainSettingsAdmin = ({ inDesktop, communityData, isSubSpace, communityData
             communityData.privacy === "public" && !isSubSpace &&
               <SectionContainer>
                 <SubtitleStyled as="h4">Subespacios</SubtitleStyled>
-                <SubSpaceMain communityData={communityData}/>
+                <SubSpaceMain isAdmin={isAdmin} communityData={communityData}/>
               </SectionContainer>
           }
         </div>

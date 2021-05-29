@@ -7,7 +7,7 @@ import { ContainerForCommunity } from './../../components/general/InternalLayout
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
-const VideoUser = ({activeCommunity, communityData, isSubSpace, communityDataSubSpace, isAdmin}) => {
+const VideoUser = ({communityData, isSubSpace, communityDataSubSpace, isAdmin}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openMoldal = () => {
     setModalIsOpen(true)
@@ -17,33 +17,8 @@ const VideoUser = ({activeCommunity, communityData, isSubSpace, communityDataSub
     setModalIsOpen(false)
   }
 
-  const [transcurredTimeOfCommunity, setTranscurredTimeOfCommunity] = useState()
-  const [lastTranscurredTime, setLastTranscurredTime] = useState(false)
-  const [localTimerCounter, setLocalTimerCounter] = useState(0)
-  
   useEffect(()=>{
-    // setTranscurredTimeOfCommunity(activeCommunity? activeCommunity.transcurred: false)
-    // console.log(activeCommunity)
-    // timer()
   }, [])
-
-  const timer = () => {
-    let localTimer = setInterval(() =>{
-      setLastTranscurredTime(transcurredTimeOfCommunity)
-      if(transcurredTimeOfCommunity && lastTranscurredTime){
-        setLocalTimerCounter(localTimerCounter + 1)
-        if(localTimerCounter >= 9){
-          if(transcurredTimeOfCommunity === lastTranscurredTime){
-            setLocalTimerCounter(0)
-          }
-        }
-      }
-    }, 10000)
-
-    if(transcurredTimeOfCommunity !== lastTranscurredTime){
-      setInterval(localTimer)
-    }
-  }
   
   return (
     <>
