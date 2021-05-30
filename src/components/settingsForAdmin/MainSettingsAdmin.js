@@ -38,7 +38,7 @@ const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, commu
             </div>
           </SectionContainer>
           {
-            communityData.privacy === "public" && isAdmin && !isSubSpace &&
+            communityData.privacy === "public" && !isSubSpace &&
               <SectionContainer>
                 <SubtitleStyled as="h4">Subespacios</SubtitleStyled>
                 <SubSpaceMain isAdmin={isAdmin} communityData={communityData} isSubSpace={isSubSpace}/>
