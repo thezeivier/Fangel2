@@ -126,8 +126,8 @@ export const TextBody = styled.p`
     margin: 10px 0 0 0;
   `}
 
-  ${props => props.top34 && css`
-    margin: 34px 0 0 0;
+  ${props => props.top24 && css`
+    margin: 24px 0 0 0;
   `}
 
   ${props => props.bottom8 && css`

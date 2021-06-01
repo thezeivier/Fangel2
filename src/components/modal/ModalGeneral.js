@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { keyframes } from 'styled-components'
 import Modal from 'react-modal';
 import { ReactComponent as CloseSVG } from './../general/icons/close.svg'

@@ -31,6 +31,7 @@ export const ButtonsContainer = styled.div`
   a {
     color: ${props => props.theme.colorbrandSolid};
     cursor: pointer;
+    font-weight: ${props => props.theme.weight.semiMedium};
 
     &:hover {
       text-decoration: underline;

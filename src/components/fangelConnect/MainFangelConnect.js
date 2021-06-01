@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import Wrapper from './../general/Wrapper'
+import ModalGeneral from './../modal/ModalGeneral'
+import SearchPeople from './SearchPeople'
 import { TitleStyled, ButtonStyled, OnlyDesktop, SubtitleStyled } from './../../themes/internalRecyclableStyles'
-import { InputStyled, ErrorAlert } from './../../pages/signInAndUp/styles/sGlobalForm'
 import { TextBody } from './../../themes/externalRecyclableStyles'
+import { FieldSet } from './../createCommunity/styles/sMainCreateCommunity'
 
 const MainFangelConnect = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const modalOpen = () => setModalIsOpen(!modalIsOpen)
+
   const { register, handleSubmit, errors } = useForm()
 
   const onSubmit = async data => {
@@ -20,22 +25,25 @@ const MainFangelConnect = () => {
         </TextBody>
         <OnlyDesktop>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <SubtitleStyled>Ingresa un día y horario deseado</SubtitleStyled>
-            <TextBody bottom8>Fecha</TextBody>
-            <InputStyled type="date" min="2021-06-01" max="2021-06-31" value="2021-05-27" name="dateFangelConnect" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
-            <ErrorAlert></ErrorAlert>
-            <TextBody bottom8>Hora de inicio</TextBody>
-            <InputStyled type="time"  name="startHourFangelConnect" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
-            <ErrorAlert></ErrorAlert>
-            <TextBody bottom8>Hora de término</TextBody>
-            <InputStyled type="time" name="finishHourFangelConnect" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
-            <ErrorAlert></ErrorAlert>
-            <TextBody top34>
-              Cuando una persona coincida con tu mismo horario, intereses y preferencias, agendaremos un espacio, luego te notificaremos al correo electrónico y en la <span>sección de mensajes</span>.
+            <div>
+              <SubtitleStyled>Escoge una modalidad</SubtitleStyled>
+              <FieldSet>
+                <label className="radiosContainerFlex__item">
+                  <input type="radio" defaultChecked id="public" name="privacy" value="public" />
+                  <span className="rCCheckmark"></span>
+                  Individual <span className="spanRadiosDescription">(Con una persona)</span>
+                </label>
+              </FieldSet>
+            </div>
+            <TextBody top24>
+              Cuando una persona o varias personas coincidan con tus mismos gustos y preferencias ingresaran a un espacio social.
             </TextBody>
-            <ButtonStyled primary type="submit">Iniciar Connect</ButtonStyled>
+            <ButtonStyled primary type="submit" onClick={modalOpen}>Iniciar Connect</ButtonStyled>
           </form>
         </OnlyDesktop>
+        <ModalGeneral modalIsOpen={modalOpen} modalOpen={modalIsOpen}>
+          <SearchPeople  modalIsOpen={modalOpen} />
+        </ModalGeneral>
       </Wrapper>
     </main>
   );
