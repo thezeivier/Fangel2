@@ -21,7 +21,7 @@ export const fangelConnectAnalizer = (firestore, userFromDB) =>{
                 },
                 {merge: true}
             ).then(()=>{
-                return result.docs[0].data()
+                return docName
             })
         }else{//En caso contrario crear una espacio en espera
             const spaceId = hashRoomGenerator();
@@ -35,7 +35,7 @@ export const fangelConnectAnalizer = (firestore, userFromDB) =>{
                 creatorPreferences: userFromDB.preferences,
                 dataFromCreator: userFromDB
             }).then(()=>{
-                return spaceId
+                return userFromDB.uid
             })
         }
     })

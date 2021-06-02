@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
+import { useStateIfMounted } from 'use-state-if-mounted'
 import { AppContext } from '../../App';
 import {useFirestore, useStorage} from 'reactfire'
 import Wrapper from './../general/Wrapper'
@@ -10,20 +11,16 @@ import { ReactComponent as CloseSVG } from '../general/icons/close.svg'
 const SearchPeople = ({ modalIsOpen }) => {
   const firestore = useFirestore()
   const storage =  useStorage()
-  const [newUserConnected, setNewUserConnected] = useState(null)
-  const [socialSpaceId, setSocialSpaceId] = useState(null)//Identificador especial del espacio social en el que estarán conectados
-  const [joinnerProfileThumb, setjoinnerProfileThumb] = useState(null)
+  const [newUserConnected, setNewUserConnected] = useStateIfMounted(null)
+  const [joinnerProfileThumb, setjoinnerProfileThumb] = useStateIfMounted(null)
   const { userFromDB, authState, profileThumb } = useContext(AppContext)
   useEffect(async()=>{
-    const result = await fangelConnectAnalizer(firestore, userFromDB) //Si retorna wait, este usuario es el creador
+    const idOfSpace = await fangelConnectAnalizer(firestore, userFromDB) //Si retorna wait, este usuario es el creador
     var unsubscribe = null
-    if(typeof result === "string"){
-      setSocialSpaceId(result)
-      unsubscribe = firestore.collection("fangelConnect").doc(userFromDB.uid).onSnapshot(querySnapshot=>{
+    if(idOfSpace){
+      unsubscribe = firestore.collection("fangelConnect").doc(idOfSpace).onSnapshot(querySnapshot=>{
         setNewUserConnected(querySnapshot.data())
       })
-    }else{//Si retorna el usuario del creador, entonces este usuario es el joinner
-      setNewUserConnected(result)
     }
 
     return () =>{
@@ -34,7 +31,11 @@ const SearchPeople = ({ modalIsOpen }) => {
   },[])
 
   const cancelFangelConnect = () => {
-    firestore.collection("fangelConnect").doc(userFromDB.uid).delete()
+    try {
+      firestore.collection("fangelConnect").doc(userFromDB.uid).delete()
+    }catch{
+      throw console.log("Ya no existe")
+    }
   }
 
   if(newUserConnected){
@@ -78,12 +79,20 @@ const SearchPeople = ({ modalIsOpen }) => {
               <img src={joinnerProfileThumb}/>:
               <ProfileSVG />
             }
-            {(newUserConnected && newUserConnected.dataFromJoinner) &&
+            {(newUserConnected && newUserConnected.dataFromCreator && (newUserConnected.dataFromCreator.uid === userFromDB.uid))?
               <p>
-                {newUserConnected.dataFromJoinner.name? 
+                {(newUserConnected && newUserConnected.dataFromJoinner)&& (
+                  newUserConnected.dataFromJoinner.name? 
                   `${newUserConnected.dataFromJoinner.name.firstName} ${newUserConnected.dataFromJoinner.name.lastName? newUserConnected.dataFromJoinner.name.lastName: ""}`:
                    newUserConnected.dataFromJoinner.username
-                }
+                )}
+              </p>:
+              <p>
+                {(newUserConnected && newUserConnected.dataFromCreator)&& (
+                newUserConnected.dataFromCreator.name? 
+                  `${newUserConnected.dataFromCreator.name.firstName} ${newUserConnected.dataFromCreator.name.lastName? newUserConnected.dataFromCreator.name.lastName: ""}`:
+                  newUserConnected.dataFromCreator.username
+                )}
               </p>
             }
           </PeopleContainer>
