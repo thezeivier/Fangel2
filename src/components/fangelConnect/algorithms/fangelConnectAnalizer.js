@@ -31,6 +31,7 @@ export const fangelConnectAnalizer = (firestore, userFromDB) =>{
                 fangelScoreFromCreator: fangelScore,
                 state: "open",
                 socialSpaceId: spaceId,
+                docName: userFromDB.uid,
                 creatorPreferences: userFromDB.preferences,
                 dataFromCreator: userFromDB
             }).then(()=>{
