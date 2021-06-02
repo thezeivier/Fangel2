@@ -38,7 +38,7 @@ const SearchPeople = ({ modalIsOpen }) => {
     } ;
   },[firestore, storage])
   
-  const existAnUserMatchingWithMe = fangelConnectFromBB?.dataFromJoinner //Corroboración de la existencia de un usuario unido.
+  const existAnUserMatchingWithMe = fangelConnectFromDB?.dataFromJoinner //Corroboración de la existencia de un usuario unido.
   const cancelFangelConnect = async() => {
     try {
       const fangelConnectRef = firestore.collection("fangelConnect")
