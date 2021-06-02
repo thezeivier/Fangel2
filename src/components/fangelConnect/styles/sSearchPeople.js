@@ -91,6 +91,11 @@ export const PeopleContainer = styled.div`
     cursor: default;
   }
 
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
   @media(min-width:1200px) {
     flex-direction: row;
 

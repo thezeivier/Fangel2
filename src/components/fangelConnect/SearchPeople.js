@@ -7,6 +7,7 @@ import { PeopleContainer, TextBodyStyled, SearchPeopleContainer } from './styles
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import { fangelConnectAnalizer } from './algorithms/fangelConnectAnalizer'
 import { ReactComponent as CloseSVG } from '../general/icons/close.svg'
+import { ButtonAccion } from '../../components/profile/styles/sMainProfile'
 
 const SearchPeople = ({ modalIsOpen }) => {
   const firestore = useFirestore()
@@ -36,11 +37,12 @@ const SearchPeople = ({ modalIsOpen }) => {
       }
     } ;
   },[firestore, storage])
-
+  
+  const existAnUserMatchingWithMe = fangelConnectFromBB?.dataFromJoinner //Corroboración de la existencia de un usuario unido.
   const cancelFangelConnect = async() => {
     try {
       const fangelConnectRef = firestore.collection("fangelConnect")
-      if(fangelConnectFromDB && fangelConnectFromDB.dataFromJoinner && fangelConnectFromDB.dataFromJoinner.uid === userFromDB.uid){
+      if(fangelConnectFromDB && existAnUserMatchingWithMe && existAnUserMatchingWithMe.uid === userFromDB.uid){
         await fangelConnectRef.doc(idOfFangelConnect).set(
           {
             dataFromJoinner: firestore.app.firebase_.firestore.FieldValue.delete(),
@@ -57,12 +59,12 @@ const SearchPeople = ({ modalIsOpen }) => {
     }
   }
 
-  if(fangelConnectFromDB && fangelConnectFromDB.dataFromJoinner){
+  if(fangelConnectFromDB && existAnUserMatchingWithMe){
     var dataFromUser = null
-    if(fangelConnectFromDB.dataFromJoinner.uid === userFromDB.uid){
+    if(existAnUserMatchingWithMe.uid === userFromDB.uid){
       dataFromUser = fangelConnectFromDB.dataFromCreator
     }else{
-      dataFromUser = fangelConnectFromDB.dataFromJoinner
+      dataFromUser = existAnUserMatchingWithMe
     }
     if(dataFromUser && dataFromUser.bucket && dataFromUser.route){
       const profileImageReference = storage.refFromURL(`gs://${dataFromUser.bucket}/${dataFromUser.route}`)
@@ -71,6 +73,7 @@ const SearchPeople = ({ modalIsOpen }) => {
       })
     }
   } 
+
 
   return (
     <main>
@@ -96,9 +99,13 @@ const SearchPeople = ({ modalIsOpen }) => {
                 </p>
               }
             </div>
-            {fangelConnectFromDB?
-              <span>Conectando</span>:
-              <span>Estableciendo conexión</span>
+            {existAnUserMatchingWithMe?
+              (<section>
+                <span>Encontraste una conexión</span>
+                <ButtonAccion>Conectar</ButtonAccion>
+                <ButtonAccion>Ignorar</ButtonAccion>
+              </section>):
+              <span>Conectando</span>
             }
             {joinnerProfileThumb?
               <img src={joinnerProfileThumb}/>:
@@ -106,10 +113,10 @@ const SearchPeople = ({ modalIsOpen }) => {
             }
             {(fangelConnectFromDB && fangelConnectFromDB.dataFromCreator && (fangelConnectFromDB.dataFromCreator.uid === userFromDB.uid))?
               <p>
-                {(fangelConnectFromDB && fangelConnectFromDB.dataFromJoinner)&& (
-                  fangelConnectFromDB.dataFromJoinner.name? 
-                  `${fangelConnectFromDB.dataFromJoinner.name.firstName} ${fangelConnectFromDB.dataFromJoinner.name.lastName? fangelConnectFromDB.dataFromJoinner.name.lastName: ""}`:
-                   fangelConnectFromDB.dataFromJoinner.username
+                {(fangelConnectFromDB && existAnUserMatchingWithMe)&& (
+                  existAnUserMatchingWithMe.name? 
+                  `${existAnUserMatchingWithMe.name.firstName} ${existAnUserMatchingWithMe.name.lastName? existAnUserMatchingWithMe.name.lastName: ""}`:
+                   existAnUserMatchingWithMe.username
                 )}
               </p>:
               <p>
