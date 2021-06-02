@@ -12,15 +12,17 @@ import { ButtonAccion } from '../../components/profile/styles/sMainProfile'
 const SearchPeople = ({ modalIsOpen }) => {
   const firestore = useFirestore()
   const storage =  useStorage()
-  const [newUserConnected, setNewUserConnected] = useStateIfMounted(null)
+  const [fangelConnectFromBB, setFangelConnectFromDB] = useStateIfMounted(null)
+  const [idOfFangelConnect, setIdOfFangelConnect] = useStateIfMounted(null)
   const [joinnerProfileThumb, setjoinnerProfileThumb] = useStateIfMounted(null)
   const { userFromDB, authState, profileThumb } = useContext(AppContext)
   useEffect(async()=>{
-    const idOfSpace = await fangelConnectAnalizer(firestore, userFromDB) //Si retorna wait, este usuario es el creador
+    const idOfConnect = await fangelConnectAnalizer(firestore, userFromDB) //Si retorna wait, este usuario es el creador
+    setIdOfFangelConnect(idOfConnect)
     var unsubscribe = null
-    if(idOfSpace){
-      unsubscribe = firestore.collection("fangelConnect").doc(idOfSpace).onSnapshot(querySnapshot=>{
-        setNewUserConnected(querySnapshot.data())
+    if(idOfConnect){
+      unsubscribe = firestore.collection("fangelConnect").doc(idOfConnect).onSnapshot(querySnapshot=>{
+        setFangelConnectFromDB(querySnapshot.data())
       })
     }
 
@@ -31,20 +33,32 @@ const SearchPeople = ({ modalIsOpen }) => {
     } ;
   },[])
 
-  const cancelFangelConnect = () => {
+  const cancelFangelConnect = async() => {
     try {
-      firestore.collection("fangelConnect").doc(userFromDB.uid).delete()
+      const fangelConnectRef = firestore.collection("fangelConnect")
+      if(fangelConnectFromBB && fangelConnectFromBB.dataFromJoinner && fangelConnectFromBB.dataFromJoinner.uid === userFromDB.uid){
+        await fangelConnectRef.doc(idOfFangelConnect).set(
+          {
+            dataFromJoinner: firestore.app.firebase_.firestore.FieldValue.delete(),
+            joinnerPreferences: firestore.app.firebase_.firestore.FieldValue.delete(),
+            state: "open"
+          },
+          {merge: true}
+        )
+      }else{
+        await fangelConnectRef.doc(userFromDB.uid).delete()
+      }
     }catch{
       throw console.log("Ya no existe")
     }
   }
 
-  if(newUserConnected && newUserConnected.dataFromJoinner){
+  if(fangelConnectFromBB && fangelConnectFromBB.dataFromJoinner){
     var dataFromUser = null
-    if(newUserConnected.dataFromJoinner.uid === userFromDB.uid){
-      dataFromUser = newUserConnected.dataFromCreator
+    if(fangelConnectFromBB.dataFromJoinner.uid === userFromDB.uid){
+      dataFromUser = fangelConnectFromBB.dataFromCreator
     }else{
-      dataFromUser = newUserConnected.dataFromJoinner
+      dataFromUser = fangelConnectFromBB.dataFromJoinner
     }
     if(dataFromUser && dataFromUser.bucket && dataFromUser.route){
       const profileImageReference = storage.refFromURL(`gs://${dataFromUser.bucket}/${dataFromUser.route}`)
@@ -54,7 +68,7 @@ const SearchPeople = ({ modalIsOpen }) => {
     }
   } 
 
-  const existAnUserMatchingWithMe = newUserConnected?.dataFromJoinner 
+  const existAnUserMatchingWithMe = fangelConnectFromBB?.dataFromJoinner 
 
   return (
     <main>
@@ -81,30 +95,30 @@ const SearchPeople = ({ modalIsOpen }) => {
               }
             </div>
             {existAnUserMatchingWithMe?
-              (<main>
+              (<section>
                 <span>Encontraste una conexión</span>
                 <ButtonAccion>Conectar</ButtonAccion>
                 <ButtonAccion>Ignorar</ButtonAccion>
-              </main>):
-              <span>Estableciendo conexión</span>
+              </section>):
+              <span>Conectando</span>
             }
             {joinnerProfileThumb?
               <img src={joinnerProfileThumb}/>:
               <ProfileSVG />
             }
-            {(newUserConnected && newUserConnected.dataFromCreator && (newUserConnected.dataFromCreator.uid === userFromDB.uid))?
+            {(fangelConnectFromBB && fangelConnectFromBB.dataFromCreator && (fangelConnectFromBB.dataFromCreator.uid === userFromDB.uid))?
               <p>
-                {(newUserConnected && newUserConnected.dataFromJoinner)&& (
-                  newUserConnected.dataFromJoinner.name? 
-                  `${newUserConnected.dataFromJoinner.name.firstName} ${newUserConnected.dataFromJoinner.name.lastName? newUserConnected.dataFromJoinner.name.lastName: ""}`:
-                   newUserConnected.dataFromJoinner.username
+                {(fangelConnectFromBB && fangelConnectFromBB.dataFromJoinner)&& (
+                  fangelConnectFromBB.dataFromJoinner.name? 
+                  `${fangelConnectFromBB.dataFromJoinner.name.firstName} ${fangelConnectFromBB.dataFromJoinner.name.lastName? fangelConnectFromBB.dataFromJoinner.name.lastName: ""}`:
+                   fangelConnectFromBB.dataFromJoinner.username
                 )}
               </p>:
               <p>
-                {(newUserConnected && newUserConnected.dataFromCreator)&& (
-                newUserConnected.dataFromCreator.name? 
-                  `${newUserConnected.dataFromCreator.name.firstName} ${newUserConnected.dataFromCreator.name.lastName? newUserConnected.dataFromCreator.name.lastName: ""}`:
-                  newUserConnected.dataFromCreator.username
+                {(fangelConnectFromBB && fangelConnectFromBB.dataFromCreator)&& (
+                  fangelConnectFromBB.dataFromCreator.name? 
+                  `${fangelConnectFromBB.dataFromCreator.name.firstName} ${fangelConnectFromBB.dataFromCreator.name.lastName? fangelConnectFromBB.dataFromCreator.name.lastName: ""}`:
+                  fangelConnectFromBB.dataFromCreator.username
                 )}
               </p>
             }
