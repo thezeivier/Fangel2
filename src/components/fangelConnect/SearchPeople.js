@@ -12,13 +12,15 @@ const SearchPeople = ({ modalIsOpen }) => {
   const firestore = useFirestore()
   const storage =  useStorage()
   const [newUserConnected, setNewUserConnected] = useStateIfMounted(null)
+  const [idOfFangelConnect, setIdOfFangelConnect] = useStateIfMounted(null)
   const [joinnerProfileThumb, setjoinnerProfileThumb] = useStateIfMounted(null)
   const { userFromDB, authState, profileThumb } = useContext(AppContext)
   useEffect(async()=>{
-    const idOfSpace = await fangelConnectAnalizer(firestore, userFromDB) //Si retorna wait, este usuario es el creador
+    const idOfConnect = await fangelConnectAnalizer(firestore, userFromDB) //Si retorna wait, este usuario es el creador
+    setIdOfFangelConnect(idOfConnect)
     var unsubscribe = null
-    if(idOfSpace){
-      unsubscribe = firestore.collection("fangelConnect").doc(idOfSpace).onSnapshot(querySnapshot=>{
+    if(idOfConnect){
+      unsubscribe = firestore.collection("fangelConnect").doc(idOfConnect).onSnapshot(querySnapshot=>{
         setNewUserConnected(querySnapshot.data())
       })
     }
@@ -30,9 +32,21 @@ const SearchPeople = ({ modalIsOpen }) => {
     } ;
   },[])
 
-  const cancelFangelConnect = () => {
+  const cancelFangelConnect = async() => {
     try {
-      firestore.collection("fangelConnect").doc(userFromDB.uid).delete()
+      const fangelConnectRef = firestore.collection("fangelConnect")
+      if(newUserConnected && newUserConnected.dataFromJoinner && newUserConnected.dataFromJoinner.uid === userFromDB.uid){
+        await fangelConnectRef.doc(idOfFangelConnect).set(
+          {
+            dataFromJoinner: firestore.app.firebase_.firestore.FieldValue.delete(),
+            joinnerPreferences: firestore.app.firebase_.firestore.FieldValue.delete(),
+            state: "open"
+          },
+          {merge: true}
+        )
+      }else{
+        await fangelConnectRef.doc(userFromDB.uid).delete()
+      }
     }catch{
       throw console.log("Ya no existe")
     }
@@ -95,7 +109,7 @@ const SearchPeople = ({ modalIsOpen }) => {
               </p>:
               <p>
                 {(newUserConnected && newUserConnected.dataFromCreator)&& (
-                newUserConnected.dataFromCreator.name? 
+                  newUserConnected.dataFromCreator.name? 
                   `${newUserConnected.dataFromCreator.name.firstName} ${newUserConnected.dataFromCreator.name.lastName? newUserConnected.dataFromCreator.name.lastName: ""}`:
                   newUserConnected.dataFromCreator.username
                 )}

@@ -1,7 +1,7 @@
-export const fangelConnectAnalizer = (firestore, userFromDB) =>{
+export const fangelConnectAnalizer = async(firestore, userFromDB) =>{
     const fangelScore = userFromDB.score? userFromDB.score.fangelScore : 65
     const fangelConnectRef = firestore.collection("fangelConnect")
-    return fangelConnectRef
+    return await fangelConnectRef
     .where("fangelScoreFromCreator", "<=", fangelScore + 30) //Consulta para emparejar con el más cercano, modificar aquí si es premium.
     .where("state", "==", "open")
     .where("creatorPreferences", "array-contains-any", userFromDB.preferences)
@@ -11,7 +11,7 @@ export const fangelConnectAnalizer = (firestore, userFromDB) =>{
     .then(async result =>{
         if(!result.empty){ //Si hay espacios en espera, entonces traer las 5 mejores opciones
             const docName = result.docs[0].data().docName //Id del documento (fangelConnect) al que se unirá el usuario
-            return fangelConnectRef
+            return await fangelConnectRef
             .doc(docName)
             .set(
                 {
@@ -25,7 +25,7 @@ export const fangelConnectAnalizer = (firestore, userFromDB) =>{
             })
         }else{//En caso contrario crear una espacio en espera
             const spaceId = hashRoomGenerator();
-            return fangelConnectRef
+            return await fangelConnectRef
             .doc(userFromDB.uid)
             .set({
                 fangelScoreFromCreator: fangelScore,
