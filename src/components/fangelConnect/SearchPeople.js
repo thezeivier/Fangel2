@@ -29,7 +29,7 @@ const SearchPeople = ({ modalIsOpen }) => {
         if(!querySnapshot.exists){
           setjoinnerProfileThumb(null)
         }
-        if(querySnapshot.exists && !querySnapshot.data().fangelScoreFromCreator){
+        if(querySnapshot.exists && querySnapshot.data() && !querySnapshot.data().fangelScoreFromCreator){
           setReRenderComponet(reRenderComponent + 1)
         }
       })
