@@ -11,7 +11,7 @@ import { ReactComponent as CloseSVG } from '../general/icons/close.svg'
 const SearchPeople = ({ modalIsOpen }) => {
   const firestore = useFirestore()
   const storage =  useStorage()
-  const [newUserConnected, setNewUserConnected] = useStateIfMounted(null)
+  const [fangelConnectFromBB, setFangelConnectFromDB] = useStateIfMounted(null)
   const [idOfFangelConnect, setIdOfFangelConnect] = useStateIfMounted(null)
   const [joinnerProfileThumb, setjoinnerProfileThumb] = useStateIfMounted(null)
   const { userFromDB, authState, profileThumb } = useContext(AppContext)
@@ -21,7 +21,7 @@ const SearchPeople = ({ modalIsOpen }) => {
     var unsubscribe = null
     if(idOfConnect){
       unsubscribe = firestore.collection("fangelConnect").doc(idOfConnect).onSnapshot(querySnapshot=>{
-        setNewUserConnected(querySnapshot.data())
+        setFangelConnectFromDB(querySnapshot.data())
       })
     }
 
@@ -35,7 +35,7 @@ const SearchPeople = ({ modalIsOpen }) => {
   const cancelFangelConnect = async() => {
     try {
       const fangelConnectRef = firestore.collection("fangelConnect")
-      if(newUserConnected && newUserConnected.dataFromJoinner && newUserConnected.dataFromJoinner.uid === userFromDB.uid){
+      if(fangelConnectFromBB && fangelConnectFromBB.dataFromJoinner && fangelConnectFromBB.dataFromJoinner.uid === userFromDB.uid){
         await fangelConnectRef.doc(idOfFangelConnect).set(
           {
             dataFromJoinner: firestore.app.firebase_.firestore.FieldValue.delete(),
@@ -52,12 +52,12 @@ const SearchPeople = ({ modalIsOpen }) => {
     }
   }
 
-  if(newUserConnected && newUserConnected.dataFromJoinner){
+  if(fangelConnectFromBB && fangelConnectFromBB.dataFromJoinner){
     var dataFromUser = null
-    if(newUserConnected.dataFromJoinner.uid === userFromDB.uid){
-      dataFromUser = newUserConnected.dataFromCreator
+    if(fangelConnectFromBB.dataFromJoinner.uid === userFromDB.uid){
+      dataFromUser = fangelConnectFromBB.dataFromCreator
     }else{
-      dataFromUser = newUserConnected.dataFromJoinner
+      dataFromUser = fangelConnectFromBB.dataFromJoinner
     }
     if(dataFromUser && dataFromUser.bucket && dataFromUser.route){
       const profileImageReference = storage.refFromURL(`gs://${dataFromUser.bucket}/${dataFromUser.route}`)
@@ -91,7 +91,7 @@ const SearchPeople = ({ modalIsOpen }) => {
                 </p>
               }
             </div>
-            {newUserConnected?
+            {fangelConnectFromBB?
               <span>Conectando</span>:
               <span>Estableciendo conexión</span>
             }
@@ -99,19 +99,19 @@ const SearchPeople = ({ modalIsOpen }) => {
               <img src={joinnerProfileThumb}/>:
               <ProfileSVG />
             }
-            {(newUserConnected && newUserConnected.dataFromCreator && (newUserConnected.dataFromCreator.uid === userFromDB.uid))?
+            {(fangelConnectFromBB && fangelConnectFromBB.dataFromCreator && (fangelConnectFromBB.dataFromCreator.uid === userFromDB.uid))?
               <p>
-                {(newUserConnected && newUserConnected.dataFromJoinner)&& (
-                  newUserConnected.dataFromJoinner.name? 
-                  `${newUserConnected.dataFromJoinner.name.firstName} ${newUserConnected.dataFromJoinner.name.lastName? newUserConnected.dataFromJoinner.name.lastName: ""}`:
-                   newUserConnected.dataFromJoinner.username
+                {(fangelConnectFromBB && fangelConnectFromBB.dataFromJoinner)&& (
+                  fangelConnectFromBB.dataFromJoinner.name? 
+                  `${fangelConnectFromBB.dataFromJoinner.name.firstName} ${fangelConnectFromBB.dataFromJoinner.name.lastName? fangelConnectFromBB.dataFromJoinner.name.lastName: ""}`:
+                   fangelConnectFromBB.dataFromJoinner.username
                 )}
               </p>:
               <p>
-                {(newUserConnected && newUserConnected.dataFromCreator)&& (
-                  newUserConnected.dataFromCreator.name? 
-                  `${newUserConnected.dataFromCreator.name.firstName} ${newUserConnected.dataFromCreator.name.lastName? newUserConnected.dataFromCreator.name.lastName: ""}`:
-                  newUserConnected.dataFromCreator.username
+                {(fangelConnectFromBB && fangelConnectFromBB.dataFromCreator)&& (
+                  fangelConnectFromBB.dataFromCreator.name? 
+                  `${fangelConnectFromBB.dataFromCreator.name.firstName} ${fangelConnectFromBB.dataFromCreator.name.lastName? fangelConnectFromBB.dataFromCreator.name.lastName: ""}`:
+                  fangelConnectFromBB.dataFromCreator.username
                 )}
               </p>
             }
