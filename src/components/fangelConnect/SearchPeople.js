@@ -15,13 +15,14 @@ const SearchPeople = ({ modalIsOpen }) => {
   const { userFromDB, authState, profileThumb } = useContext(AppContext)
   useEffect(async()=>{
     const result = await fangelConnectAnalizer(firestore, userFromDB) //Si retorna wait, este usuario es el creador
-    const unsubscribe = null
+    var unsubscribe = null
     if(typeof result === "string"){
-        unsubscribe = firestore.collection("fangelConnect").doc(userFromDB.uid).onSnapshot(querySnapshot=>{
+      setSocialSpaceId(result)
+      unsubscribe = firestore.collection("fangelConnect").doc(userFromDB.uid).onSnapshot(querySnapshot=>{
         setNewUserConnected(querySnapshot.data())
       })
     }else{//Si retorna el usuario del creador, entonces este usuario es el joinner
-      setSocialSpaceId(result)
+      setNewUserConnected(result)
     }
 
     return () =>{
