@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { AppContext } from '../../App';
-import {useFirestore} from 'reactfire'
+import {useFirestore, useStorage} from 'reactfire'
 import Wrapper from './../general/Wrapper'
 import { PeopleContainer, TextBodyStyled, SearchPeopleContainer } from './styles/sSearchPeople'
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
@@ -8,6 +8,7 @@ import { fangelConnectAnalizer } from './algorithms/fangelConnectAnalizer'
 
 const SearchPeople = ({ modalIsOpen }) => {
   const firestore = useFirestore()
+  const storage =  useStorage()
   const [newUserConnected, setNewUserConnected] = useState(null)
   const [socialSpaceId, setSocialSpaceId] = useState(null)//Identificador especial del espacio social en el que estarán conectados
   const [joinnerProfileThumb, setjoinnerProfileThumb] = useState(null)
@@ -30,7 +31,7 @@ const SearchPeople = ({ modalIsOpen }) => {
     } ;
   },[])
 
-  if(!newUserConnected){
+  if(newUserConnected){
     if(newUserConnected.dataFromJoinner && newUserConnected.dataFromJoinner.bucket && newUserConnected.dataFromJoinner.route){
       const profileImageReference = storage.refFromURL(`gs://${newUserConnected.dataFromJoinner.bucket}/${newUserConnected.dataFromJoinner.route}`)
         profileImageReference.getDownloadURL().then(url => {//Recuperar foto de perfil del usuario que se unirá a la llamada.
@@ -49,6 +50,14 @@ const SearchPeople = ({ modalIsOpen }) => {
               <img src={profileThumb}/>:
               <ProfileSVG />
             }
+            {userFromDB &&
+              <p>
+                {userFromDB.name? 
+                  `${userFromDB.name.firstName} ${userFromDB.name.lastName? userFromDB.name.lastName: ""}`: 
+                  userFromDB.username
+                }
+              </p>
+            }
             {newUserConnected?
               <span>Conectando</span>:
               <span>Estableciendo conexión</span>
@@ -56,6 +65,14 @@ const SearchPeople = ({ modalIsOpen }) => {
             {joinnerProfileThumb?
               <img src={joinnerProfileThumb}/>:
               <ProfileSVG />
+            }
+            {(newUserConnected && newUserConnected.dataFromJoinner) &&
+              <p>
+                {newUserConnected.dataFromJoinner.name? 
+                  `${newUserConnected.dataFromJoinner.name.firstName} ${newUserConnected.dataFromJoinner.name.lastName? newUserConnected.dataFromJoinner.name.lastName: ""}`:
+                   newUserConnected.dataFromJoinner.username
+                }
+              </p>
             }
           </PeopleContainer>
           <a onClick={modalIsOpen}>Cancelar busqueda</a>
