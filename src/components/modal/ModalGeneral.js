@@ -60,7 +60,9 @@ const ModalGeneral = (props) => {
       <Container>
         {props.children}
         <SVGContainer>
-          <CloseSVG onClick={props.modalIsOpen} />
+          {!(props.needRender === "n") &&
+            <CloseSVG onClick={props.modalIsOpen} />
+          }
         </SVGContainer>
       </Container>
     </Modal>

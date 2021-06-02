@@ -41,7 +41,7 @@ const MainFangelConnect = () => {
             <ButtonStyled primary type="submit" onClick={modalOpen}>Iniciar Connect</ButtonStyled>
           </form>
         </OnlyDesktop>
-        <ModalGeneral modalIsOpen={modalOpen} modalOpen={modalIsOpen}>
+        <ModalGeneral needRender={"n"} modalIsOpen={modalOpen} modalOpen={modalIsOpen}>
           <SearchPeople  modalIsOpen={modalOpen} />
         </ModalGeneral>
       </Wrapper>

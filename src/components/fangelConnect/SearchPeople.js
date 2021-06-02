@@ -5,6 +5,7 @@ import Wrapper from './../general/Wrapper'
 import { PeopleContainer, TextBodyStyled, SearchPeopleContainer } from './styles/sSearchPeople'
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import { fangelConnectAnalizer } from './algorithms/fangelConnectAnalizer'
+import { ReactComponent as CloseSVG } from '../general/icons/close.svg'
 
 const SearchPeople = ({ modalIsOpen }) => {
   const firestore = useFirestore()
@@ -32,6 +33,10 @@ const SearchPeople = ({ modalIsOpen }) => {
     } ;
   },[])
 
+  const cancelFangelConnect = () => {
+    firestore.collection("fangelConnect").doc(userFromDB.uid).delete()
+  }
+
   if(newUserConnected){
     if(newUserConnected.dataFromJoinner && newUserConnected.dataFromJoinner.bucket && newUserConnected.dataFromJoinner.route){
       const profileImageReference = storage.refFromURL(`gs://${newUserConnected.dataFromJoinner.bucket}/${newUserConnected.dataFromJoinner.route}`)
@@ -43,6 +48,10 @@ const SearchPeople = ({ modalIsOpen }) => {
 
   return (
     <main>
+      <CloseSVG onClick={()=>{
+            modalIsOpen();
+            cancelFangelConnect();
+      }}/>
       <Wrapper>
         <SearchPeopleContainer>
           <TextBodyStyled>Buscando personas con tus mismos intereses</TextBodyStyled>
@@ -76,7 +85,10 @@ const SearchPeople = ({ modalIsOpen }) => {
               </p>
             }
           </PeopleContainer>
-          <a onClick={modalIsOpen}>Cancelar busqueda</a>
+          <a onClick={()=>{
+            modalIsOpen();
+            cancelFangelConnect();
+          }}>Cancelar busqueda</a>
         </SearchPeopleContainer>
       </Wrapper>
     </main>
