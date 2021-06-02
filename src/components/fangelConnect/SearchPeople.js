@@ -13,10 +13,13 @@ const SearchPeople = ({ modalIsOpen }) => {
   const firestore = useFirestore()
   const storage =  useStorage()
   const [fangelConnectFromDB, setFangelConnectFromDB] = useStateIfMounted(null)
+  const [reRenderComponent, setReRenderComponet] = useStateIfMounted(0)
   const [idOfFangelConnect, setIdOfFangelConnect] = useStateIfMounted(null)
   const [joinnerProfileThumb, setjoinnerProfileThumb] = useStateIfMounted(null)
   const { userFromDB, authState, profileThumb } = useContext(AppContext)
+
   useEffect(async()=>{
+    var unsubscribe = null
     const idOfConnect = await fangelConnectAnalizer(firestore, userFromDB) //Si retorna wait, este usuario es el creador
     setIdOfFangelConnect(idOfConnect)
     var unsubscribe = null
@@ -26,8 +29,9 @@ const SearchPeople = ({ modalIsOpen }) => {
         if(!querySnapshot.exists){
           setjoinnerProfileThumb(null)
         }
-      }, (error) => {
-        console.log(error)
+        if(querySnapshot.exists && !querySnapshot.data().fangelScoreFromCreator){
+          setReRenderComponet(reRenderComponent + 1)
+        }
       })
     }
 
@@ -36,9 +40,10 @@ const SearchPeople = ({ modalIsOpen }) => {
         unsubscribe()
       }
     } ;
-  },[firestore, storage])
+  },[firestore, storage, reRenderComponent])
   
   const existAnUserMatchingWithMe = fangelConnectFromDB?.dataFromJoinner //Corroboración de la existencia de un usuario unido.
+
   const cancelFangelConnect = async() => {
     try {
       const fangelConnectRef = firestore.collection("fangelConnect")
