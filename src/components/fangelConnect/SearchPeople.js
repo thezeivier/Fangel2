@@ -38,14 +38,20 @@ const SearchPeople = ({ modalIsOpen }) => {
     }
   }
 
-  if(newUserConnected){
-    if(newUserConnected.dataFromJoinner && newUserConnected.dataFromJoinner.bucket && newUserConnected.dataFromJoinner.route){
-      const profileImageReference = storage.refFromURL(`gs://${newUserConnected.dataFromJoinner.bucket}/${newUserConnected.dataFromJoinner.route}`)
-        profileImageReference.getDownloadURL().then(url => {//Recuperar foto de perfil del usuario que se unirá a la llamada.
-          setjoinnerProfileThumb(url)
-        })
+  if(newUserConnected && newUserConnected.dataFromJoinner){
+    var dataFromUser = null
+    if(newUserConnected.dataFromJoinner.uid === userFromDB.uid){
+      dataFromUser = newUserConnected.dataFromCreator
+    }else{
+      dataFromUser = newUserConnected.dataFromJoinner
     }
-  }
+    if(dataFromUser && dataFromUser.bucket && dataFromUser.route){
+      const profileImageReference = storage.refFromURL(`gs://${dataFromUser.bucket}/${dataFromUser.route}`)
+      profileImageReference.getDownloadURL().then(url => {//Recuperar foto de perfil del usuario que se unirá a la llamada.
+        setjoinnerProfileThumb(url)
+      })
+    }
+  } 
 
   return (
     <main>
