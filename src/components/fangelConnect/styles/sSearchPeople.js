@@ -32,9 +32,25 @@ export const SearchPeopleContainer = styled.div`
     }
   }
 
+  .closeSVGSearchPeople {
+    fill: ${props => props.theme.textColor};
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transition: .2s;
+    cursor: pointer;
+  }
+
   @media(min-width:768px) {
     a {
       margin: 0 0 40px 0;
+    }
+  }
+
+  @media(min-width:768px) {
+    .closeSVGSearchPeople {
+      width: 40px;
+      height: 40px;
     }
   }
 `
@@ -50,6 +66,15 @@ export const PeopleContainer = styled.div`
     height: 100px;
     border-radius: 50%;
     background: gray;
+    object-fit: cover;
+
+    &:nth-child(1) {
+      margin: 0 0 15px 0;
+    }
+  }
+
+  p {
+    text-align: center;
   }
 
   svg {
@@ -60,7 +85,7 @@ export const PeopleContainer = styled.div`
 
   span {
     display: block;
-    margin: 40px 0;
+    margin: 35px 0;
     color: ${props => props.theme.smallText};
     animation: ${Faded} 2s ease-out infinite;
     cursor: default;
@@ -72,6 +97,10 @@ export const PeopleContainer = styled.div`
     img {
       width: 120px;
       height: 120px;
+
+      &:nth-child(1) {
+        margin: 0 0 20px 0;
+      }
     }
 
     svg {

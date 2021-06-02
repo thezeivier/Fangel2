@@ -48,26 +48,28 @@ const SearchPeople = ({ modalIsOpen }) => {
 
   return (
     <main>
-      <CloseSVG onClick={()=>{
-            modalIsOpen();
-            cancelFangelConnect();
-      }}/>
       <Wrapper>
         <SearchPeopleContainer>
+          <CloseSVG className="closeSVGSearchPeople" onClick={()=>{
+                modalIsOpen();
+                cancelFangelConnect();
+          }}/>
           <TextBodyStyled>Buscando personas con tus mismos intereses</TextBodyStyled>
           <PeopleContainer>
-            {profileThumb?
-              <img src={profileThumb}/>:
-              <ProfileSVG />
-            }
-            {userFromDB &&
-              <p>
-                {userFromDB.name? 
-                  `${userFromDB.name.firstName} ${userFromDB.name.lastName? userFromDB.name.lastName: ""}`: 
-                  userFromDB.username
-                }
-              </p>
-            }
+            <div>
+              {profileThumb?
+                <img src={profileThumb}/>:
+                <ProfileSVG />
+              }
+              {userFromDB &&
+                <p>
+                  {userFromDB.name? 
+                    `${userFromDB.name.firstName} ${userFromDB.name.lastName? userFromDB.name.lastName: ""}`: 
+                    userFromDB.username
+                  }
+                </p>
+              }
+            </div>
             {newUserConnected?
               <span>Conectando</span>:
               <span>Estableciendo conexión</span>
