@@ -7,6 +7,7 @@ import { PeopleContainer, TextBodyStyled, SearchPeopleContainer } from './styles
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import { fangelConnectAnalizer } from './algorithms/fangelConnectAnalizer'
 import { ReactComponent as CloseSVG } from '../general/icons/close.svg'
+import { ButtonAccion } from '../../components/profile/styles/sMainProfile'
 
 const SearchPeople = ({ modalIsOpen }) => {
   const firestore = useFirestore()
@@ -53,6 +54,8 @@ const SearchPeople = ({ modalIsOpen }) => {
     }
   } 
 
+  const existAnUserMatchingWithMe = newUserConnected?.dataFromJoinner 
+
   return (
     <main>
       <Wrapper>
@@ -77,8 +80,12 @@ const SearchPeople = ({ modalIsOpen }) => {
                 </p>
               }
             </div>
-            {newUserConnected?
-              <span>Conectando</span>:
+            {existAnUserMatchingWithMe?
+              (<main>
+                <span>Encontraste una conexión</span>
+                <ButtonAccion>Conectar</ButtonAccion>
+                <ButtonAccion>Ignorar</ButtonAccion>
+              </main>):
               <span>Estableciendo conexión</span>
             }
             {joinnerProfileThumb?
