@@ -3,7 +3,7 @@ export const getColorDarkMode = () => {
   let color = '#'
 
   for (let i = 0; i < 3; i++ ) {
-    if (i==2){
+    if (i===2){
       let lastcolor = letters[Math.floor(Math.random() * 16)]
 
       if ( color.search(lastcolor) >= 0 ){
@@ -15,7 +15,7 @@ export const getColorDarkMode = () => {
     } else{
       color += letters[Math.floor(Math.random() * 16)]
 
-      if (i == 0) color += color[i + 1]
+      if (i === 0) color += color[i + 1]
       else color += color[ i + 2]
     }
   }
