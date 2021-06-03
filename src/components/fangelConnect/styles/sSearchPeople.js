@@ -67,14 +67,20 @@ export const PeopleContainer = styled.div`
     border-radius: 50%;
     background: gray;
     object-fit: cover;
+    margin: 0 auto;
 
     &:nth-child(1) {
-      margin: 0 0 15px 0;
+      margin: 0 auto 15px auto;
     }
   }
 
   p {
     text-align: center;
+    max-width: 150px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
   }
 
   svg {
