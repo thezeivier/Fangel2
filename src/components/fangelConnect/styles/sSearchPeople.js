@@ -21,6 +21,10 @@ export const SearchPeopleContainer = styled.div`
   ${FlexMixin}
   height: 100vh;
 
+  img{
+    margin-bottom: 15px;
+  }
+
   a {
     color: ${props => props.theme.colorbrandSolid};
     cursor: pointer;
