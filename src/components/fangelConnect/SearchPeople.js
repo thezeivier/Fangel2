@@ -66,16 +66,18 @@ const SearchPeople = ({ modalIsOpen }) => {
           }}/>
           <TextBodyStyled>Buscando personas con tus mismos intereses</TextBodyStyled>
           <PeopleContainer>
-            {profileThumb? //Foto de perfil de usuario local
-              <img src={profileThumb}/>:
-              <ProfileSVG />
-            }
-            <p>
-              {userFromDB.name? //Nombre completo de usuario local
-                `${userFromDB.name.firstName} ${userFromDB.name.lastName? userFromDB.name.lastName: ""}`: 
-                userFromDB.username
+            <div>
+              {profileThumb? //Foto de perfil de usuario local
+                <img src={profileThumb}/>:
+                <ProfileSVG />
               }
-            </p>
+              <p>
+                {userFromDB.name? //Nombre completo de usuario local
+                  `${userFromDB.name.firstName} ${userFromDB.name.lastName? userFromDB.name.lastName: ""}`: 
+                  userFromDB.username
+                }
+              </p>
+            </div>
             {existJoinner && existCreator?
               (<section>
                 {/* <span>Encontraste una conexión</span> */}

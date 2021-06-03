@@ -114,7 +114,7 @@ export const PeopleContainer = styled.div`
       height: 120px;
 
       &:nth-child(1) {
-        margin: 0 0 20px 0;
+        margin: 0 auto 20px auto;
       }
     }
 
