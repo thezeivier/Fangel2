@@ -78,7 +78,6 @@ const SearchPeople = ({ modalIsOpen }) => {
             </p>
             {existJoinner && existCreator?
               (<section>
-                {/* <span>Encontraste una conexión</span> */}
                 <ButtonAccion>Conectar</ButtonAccion>
                 <ButtonAccion>Ignorar</ButtonAccion>
               </section>):

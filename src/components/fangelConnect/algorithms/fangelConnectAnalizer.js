@@ -11,6 +11,9 @@ export const fangelConnectAnalizer = async(firestore, userFromDB) =>{
     .then(async result =>{
         if(!result.empty){ //Si hay espacios en espera, entonces traer las 5 mejores opciones
             const spaceId = result.docs[0].data().spaceId //Id del documento (fangelConnect) al que se unirá el usuario
+            if(result.docs[0].data().dataFromCreator.uid === userFromDB.uid){
+                return spaceId
+            }
             return await fangelConnectRef
             .doc(spaceId)
             .set(
