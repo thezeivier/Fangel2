@@ -45,6 +45,44 @@ export const fangelConnectCreator = async(firestore, userFromDB) => {
     })
 }
 
+export const cancelFangelConnectRefactorized = async (firestore, userFromDB, existJoinner, existCreator, fangelConnectFromDB, idOfFangelConnect) =>{
+    try {
+        const fangelConnectRef = firestore.collection("fangelConnect")
+        if(existJoinner && existCreator){
+          if(existJoinner.uid === userFromDB.uid){ 
+            //Si el joinner es el usuario que se saldrá, entoces borrará sus datos y actualizará el fangelScoreFromCreator a el del que se queda
+    
+            await fangelConnectRef.doc(idOfFangelConnect).set(
+              {
+                dataFromJoinner: firestore.app.firebase_.firestore.FieldValue.delete(),
+                joinnerPreferences: firestore.app.firebase_.firestore.FieldValue.delete(),
+                state: "open",
+                fangelScoreFromCreator: existCreator.score? existCreator.score.fangelScore: 65,
+              },
+              {merge: true}
+            )
+          }else if(existCreator.uid === userFromDB.uid){
+            //Si el creator es el usuario que se saldrá, entoces borrará sus datos y actualizará el fangelScoreFromCreator a el del que se queda
+            await fangelConnectRef.doc(idOfFangelConnect).set(
+              {
+                dataFromCreator: existJoinner,
+                creatorPreferences: fangelConnectFromDB.joinnerPreferences,
+                dataFromJoinner: firestore.app.firebase_.firestore.FieldValue.delete(),
+                joinnerPreferences: firestore.app.firebase_.firestore.FieldValue.delete(),
+                state: "open",
+                fangelScoreFromCreator:  existJoinner.score? existJoinner.score.fangelScore: 65,
+              },
+              {merge: true}
+            )
+          }
+        }else{
+          fangelConnectRef.doc(idOfFangelConnect).delete()
+        }
+    }catch{
+    throw console.log("Ya no existe")
+    }
+}
+
 const hashRoomGenerator  = () => { //Generador de ids de espacios para fangelConnect
     const model = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     let code = "";
