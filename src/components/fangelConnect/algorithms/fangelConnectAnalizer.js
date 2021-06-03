@@ -70,8 +70,6 @@ export const cancelFangelConnectRefactorized = async (firestore, userFromDB, exi
               {
                 dataFromCreator: existJoinner,
                 creatorPreferences: fangelConnectFromDB.joinnerPreferences,
-                dataFromJoinner: firestore.app.firebase_.firestore.FieldValue.delete(),
-                joinnerPreferences: firestore.app.firebase_.firestore.FieldValue.delete(),
                 state: "open",
                 fangelScoreFromCreator:  existJoinner.score? existJoinner.score.fangelScore: 65,
                 spaceId: idOfFangelConnect,
