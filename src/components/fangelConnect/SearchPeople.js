@@ -3,11 +3,10 @@ import { useStateIfMounted } from 'use-state-if-mounted'
 import { AppContext } from '../../App';
 import {useFirestore, useStorage} from 'reactfire'
 import Wrapper from './../general/Wrapper'
-import { PeopleContainer, TextBodyStyled, SearchPeopleContainer } from './styles/sSearchPeople'
+import { PeopleContainer, TextBodyStyled, SearchPeopleContainer, ButtonAccionStyled } from './styles/sSearchPeople'
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
-import { fangelConnectAnalizer, cancelFangelConnectRefactorized} from './algorithms/fangelConnectAnalizer'
+import { fangelConnectAnalizer, cancelFangelConnectRefactorized, fangelConnectCreator} from './algorithms/fangelConnectAnalizer'
 import { ReactComponent as CloseSVG } from '../general/icons/close.svg'
-import { ButtonAccion } from '../../components/profile/styles/sMainProfile'
 
 const SearchPeople = ({ modalIsOpen }) => {
   const firestore = useFirestore()
@@ -16,6 +15,7 @@ const SearchPeople = ({ modalIsOpen }) => {
   const [idOfFangelConnect, setIdOfFangelConnect] = useStateIfMounted(null)
   const [existJoinner, setExistJoinner] = useStateIfMounted(null)
   const [existCreator, setExistCreator] = useStateIfMounted(null)
+  const [forceRender, setForceRender] = useState(0)
   const [joinnerProfileThumb, setJoinnerProfileThumb] = useStateIfMounted(null)
   const { userFromDB, authState, profileThumb } = useContext(AppContext)
 
@@ -35,10 +35,19 @@ const SearchPeople = ({ modalIsOpen }) => {
     } ;
 
 
-  },[firestore, storage])
+  },[firestore, storage, forceRender])
 
   const cancelFangelConnect = async() => { //Cancelar búsqueda en fangelConnect
     await cancelFangelConnectRefactorized(firestore, userFromDB, existJoinner, existCreator, fangelConnectFromDB, idOfFangelConnect)
+  }
+
+  const ignoreConnection = async() =>{
+    await cancelFangelConnect();
+    setIdOfFangelConnect(await fangelConnectCreator(firestore, userFromDB))
+    setExistJoinner(null)
+    setFangelConnectFromDB(null)
+    setExistCreator(null)
+    setForceRender(forceRender + 1)
   }
 
   if(existCreator && existJoinner){
@@ -79,30 +88,32 @@ const SearchPeople = ({ modalIsOpen }) => {
               </p>
             </div>
             {existJoinner && existCreator?
-              (<section>
-                <ButtonAccion>Conectar</ButtonAccion>
-                <ButtonAccion>Ignorar</ButtonAccion>
+              (<section className="buttonsAccionContainer">
+                <ButtonAccionStyled>Conectar</ButtonAccionStyled>
+                <ButtonAccionStyled onClick={ignoreConnection}>Ignorar</ButtonAccionStyled>
               </section>):
               <span>Buscando...</span>
             }
-            {joinnerProfileThumb && existJoinner? //Foto de perfil de usuario encontrado
-              <img src={joinnerProfileThumb}/>:
-              <ProfileSVG />
-            }
-            <p>
-              {(existCreator && (existCreator.uid === userFromDB.uid))? //Nombre completo de usuario encontrado
-                  (existJoinner && (
-                    existJoinner.name? 
-                    `${existJoinner.name.firstName} ${existJoinner.name.lastName && existJoinner.name.lastName}`:
-                    existJoinner.username
-                  )):
-                  (existCreator && (
-                    existCreator.name? 
-                    `${existCreator.name.firstName} ${existCreator.name.lastName && existCreator.name.lastName}`:
-                    existCreator.username
-                  ))
+            <div>
+              {joinnerProfileThumb && existJoinner? //Foto de perfil de usuario encontrado
+                <img src={joinnerProfileThumb}/>:
+                <ProfileSVG />
               }
-            </p>
+              <p>
+                {(existCreator &&(existCreator.uid === userFromDB.uid))? //Nombre completo de usuario encontrado
+                    (existJoinner && (
+                      existJoinner.name? 
+                      `${existJoinner.name.firstName} ${existJoinner.name.lastName && existJoinner.name.lastName}`:
+                      existJoinner.username
+                    )):
+                    (existCreator && (
+                      existCreator.name? 
+                      `${existCreator.name.firstName} ${existCreator.name.lastName && existCreator.name.lastName}`:
+                      existCreator.username
+                    ))
+                }
+              </p>
+            </div>
           </PeopleContainer>
           <a onClick={()=>{
             modalIsOpen();

@@ -74,8 +74,8 @@ export const cancelFangelConnectRefactorized = async (firestore, userFromDB, exi
                 joinnerPreferences: firestore.app.firebase_.firestore.FieldValue.delete(),
                 state: "open",
                 fangelScoreFromCreator:  existJoinner.score? existJoinner.score.fangelScore: 65,
-              },
-              {merge: true}
+                spaceId: idOfFangelConnect,
+              }
             )
           }
         }else{

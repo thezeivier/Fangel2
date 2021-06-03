@@ -68,7 +68,6 @@ export const ButtonAccion = styled(Button)`
     margin: 15px auto 25px auto;
     font-size: 1em;
   }
-
 `
 
 export const ListTags =styled.ul`
