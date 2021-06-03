@@ -66,48 +66,42 @@ const SearchPeople = ({ modalIsOpen }) => {
           }}/>
           <TextBodyStyled>Buscando personas con tus mismos intereses</TextBodyStyled>
           <PeopleContainer>
-            <div>
-              {profileThumb?
-                <img src={profileThumb}/>:
-                <ProfileSVG />
+            {profileThumb? //Foto de perfil de usuario local
+              <img src={profileThumb}/>:
+              <ProfileSVG />
+            }
+            <p>
+              {userFromDB.name? //Nombre completo de usuario local
+                `${userFromDB.name.firstName} ${userFromDB.name.lastName? userFromDB.name.lastName: ""}`: 
+                userFromDB.username
               }
-              {userFromDB &&
-                <p>
-                  {userFromDB.name? 
-                    `${userFromDB.name.firstName} ${userFromDB.name.lastName? userFromDB.name.lastName: ""}`: 
-                    userFromDB.username
-                  }
-                </p>
-              }
-            </div>
+            </p>
             {existJoinner && existCreator?
               (<section>
-                <span>Encontraste una conexión</span>
+                {/* <span>Encontraste una conexión</span> */}
                 <ButtonAccion>Conectar</ButtonAccion>
                 <ButtonAccion>Ignorar</ButtonAccion>
               </section>):
-              <span>Conectando</span>
+              <span>Buscando...</span>
             }
-            {joinnerProfileThumb && existJoinner?
+            {joinnerProfileThumb && existJoinner? //Foto de perfil de usuario encontrado
               <img src={joinnerProfileThumb}/>:
               <ProfileSVG />
             }
-            {(existCreator && (existCreator.uid === userFromDB.uid))?
-              <p>
-                {existJoinner && (
-                  existJoinner.name? 
-                  `${existJoinner.name.firstName} ${existJoinner.name.lastName? existJoinner.name.lastName: ""}`:
-                  existJoinner.username
-                )}
-              </p>:
-              <p>
-                {existCreator && (
-                  existCreator.name? 
-                  `${existCreator.name.firstName} ${existCreator.name.lastName? existCreator.name.lastName: ""}`:
-                   existCreator.username
-                )}
-              </p>
-            }
+            <p>
+              {(existCreator && (existCreator.uid === userFromDB.uid))? //Nombre completo de usuario encontrado
+                  (existJoinner && (
+                    existJoinner.name? 
+                    `${existJoinner.name.firstName} ${existJoinner.name.lastName && existJoinner.name.lastName}`:
+                    existJoinner.username
+                  )):
+                  (existCreator && (
+                    existCreator.name? 
+                    `${existCreator.name.firstName} ${existCreator.name.lastName && existCreator.name.lastName}`:
+                    existCreator.username
+                  ))
+              }
+            </p>
           </PeopleContainer>
           <a onClick={()=>{
             modalIsOpen();
