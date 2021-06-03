@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from 'styled-components'
 import { TextBody } from './../../../themes/externalRecyclableStyles'
+import { ButtonAccion } from '../../../components/profile/styles/sMainProfile'
 
 const Faded = keyframes`
   0% {
@@ -61,13 +62,13 @@ export const SearchPeopleContainer = styled.div`
 
 export const PeopleContainer = styled.div`
   flex: 1 1 auto;
-  margin: 40px 0;
+  margin: 25px 0;
   ${FlexMixin}
   justify-content: center;
 
   img {
-    width: 100px;
-    height: 100px;
+    width: 85px;
+    height: 85px;
     border-radius: 50%;
     background: gray;
     object-fit: cover;
@@ -101,9 +102,16 @@ export const PeopleContainer = styled.div`
     cursor: default;
   }
 
-  section {
+  .buttonsAccionContainer {
     display: flex;
     flex-direction: column;
+    margin: 20px 0;
+
+    button {
+      &:nth-child(1) {
+        margin: 0 0 10px 0;
+      }
+    }
   }
 
   @media(min-width:1200px) {
@@ -126,12 +134,26 @@ export const PeopleContainer = styled.div`
     span {
       margin: 0 80px;
     }
+
+    .buttonsAccionContainer {
+      margin: 0 80px;
+
+      button {
+        &:nth-child(1) {
+          margin: 0 0 15px 0;
+        }
+      }
+    }
   }
+`
+
+export const ButtonAccionStyled = styled(ButtonAccion)`
+  margin: 0;
 `
 
 export const TextBodyStyled = styled(TextBody)`
   text-align: center;
-  margin-top: 30px;
+  margin-top: 20px;
   width: 70%;
   font-weight: ${props => props.theme.weight.semiMedium};
 

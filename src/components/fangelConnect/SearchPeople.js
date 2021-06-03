@@ -3,11 +3,10 @@ import { useStateIfMounted } from 'use-state-if-mounted'
 import { AppContext } from '../../App';
 import {useFirestore, useStorage} from 'reactfire'
 import Wrapper from './../general/Wrapper'
-import { PeopleContainer, TextBodyStyled, SearchPeopleContainer } from './styles/sSearchPeople'
+import { PeopleContainer, TextBodyStyled, SearchPeopleContainer, ButtonAccionStyled } from './styles/sSearchPeople'
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import { fangelConnectAnalizer, cancelFangelConnectRefactorized} from './algorithms/fangelConnectAnalizer'
 import { ReactComponent as CloseSVG } from '../general/icons/close.svg'
-import { ButtonAccion } from '../../components/profile/styles/sMainProfile'
 
 const SearchPeople = ({ modalIsOpen }) => {
   const firestore = useFirestore()
@@ -79,31 +78,33 @@ const SearchPeople = ({ modalIsOpen }) => {
               </p>
             </div>
             {existJoinner && existCreator?
-              (<section>
+              (<section className="buttonsAccionContainer">
                 {/* <span>Encontraste una conexión</span> */}
-                <ButtonAccion>Conectar</ButtonAccion>
-                <ButtonAccion>Ignorar</ButtonAccion>
+                <ButtonAccionStyled>Conectar</ButtonAccionStyled>
+                <ButtonAccionStyled>Ignorar</ButtonAccionStyled>
               </section>):
               <span>Buscando...</span>
             }
-            {joinnerProfileThumb && existJoinner? //Foto de perfil de usuario encontrado
-              <img src={joinnerProfileThumb}/>:
-              <ProfileSVG />
-            }
-            <p>
-              {(existCreator && (existCreator.uid === userFromDB.uid))? //Nombre completo de usuario encontrado
-                  (existJoinner && (
-                    existJoinner.name? 
-                    `${existJoinner.name.firstName} ${existJoinner.name.lastName && existJoinner.name.lastName}`:
-                    existJoinner.username
-                  )):
-                  (existCreator && (
-                    existCreator.name? 
-                    `${existCreator.name.firstName} ${existCreator.name.lastName && existCreator.name.lastName}`:
-                    existCreator.username
-                  ))
+            <div>
+              {joinnerProfileThumb && existJoinner? //Foto de perfil de usuario encontrado
+                <img src={joinnerProfileThumb}/>:
+                <ProfileSVG />
               }
-            </p>
+              <p>
+                {(existCreator && (existCreator.uid === userFromDB.uid))? //Nombre completo de usuario encontrado
+                    (existJoinner && (
+                      existJoinner.name? 
+                      `${existJoinner.name.firstName} ${existJoinner.name.lastName && existJoinner.name.lastName}`:
+                      existJoinner.username
+                    )):
+                    (existCreator && (
+                      existCreator.name? 
+                      `${existCreator.name.firstName} ${existCreator.name.lastName && existCreator.name.lastName}`:
+                      existCreator.username
+                    ))
+                }
+              </p>
+            </div>
           </PeopleContainer>
           <a onClick={()=>{
             modalIsOpen();
