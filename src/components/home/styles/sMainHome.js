@@ -11,7 +11,7 @@ export const CardsContainer = styled.div`
 `
 
 export const AddCardContainer = styled.li`
-  background: ${props => props.colorBackground};
+  background: ${props => props.colorbackground};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@ export const AddCardContainer = styled.li`
   }
 
   &:hover {
-    background: ${props => props.colorHover};
+    background: ${props => props.colorhover};
 
     svg {
       fill: ${props => props.theme.colorbrandSolid};
