@@ -90,8 +90,13 @@ export const PeopleContainer = styled.div`
 
   svg {
     fill: ${props => props.theme.textColor};
-    width: 100px;
-    height: 100px;
+    width: 85px;
+    height: 85px;
+    margin: 0 auto;
+
+    &:nth-child(1) {
+      margin: 0 auto 15px auto;
+    }
   }
 
   span {
@@ -117,18 +122,13 @@ export const PeopleContainer = styled.div`
   @media(min-width:1200px) {
     flex-direction: row;
 
-    img {
+    img, svg {
       width: 120px;
       height: 120px;
 
       &:nth-child(1) {
         margin: 0 auto 20px auto;
       }
-    }
-
-    svg {
-      width: 120px;
-      height: 120px;
     }
 
     span {
