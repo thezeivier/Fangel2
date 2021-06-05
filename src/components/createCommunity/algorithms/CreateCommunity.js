@@ -23,12 +23,12 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
       description: descriptionCommunity? descriptionCommunity: "",
       creatorUid: uid,
       numberOfUsersConnected: 1,
-      usersConnected: [
-        {
-          uid: uid,
-          username: userApp.userFromDB.username
-        },
-      ],
+      // usersConnected: [
+      //   {
+      //     uid: uid,
+      //     username: userApp.userFromDB.username
+      //   },
+      // ],
       profileRoute,
     },
     {merge:true}
@@ -44,12 +44,12 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
       privacy: roomPrivacy,
       creatorUid: uid,
       numberOfUsersConnected: 1,
-      usersConnected: [
-        {
-          uid: uid,
-          username: userApp.userFromDB.username
-        },
-      ]
+      // usersConnected: [
+      //   {
+      //     uid: uid,
+      //     username: userApp.userFromDB.username
+      //   },
+      // ]
     },
     {merge:true}
     )
