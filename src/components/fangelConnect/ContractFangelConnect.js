@@ -13,7 +13,7 @@ const ContractFangelConnect = () => {
           <TextBodyStyled>Antes de usar Fangel Connect</TextBodyStyled>
           <div>
             <TextBody top24>Te recomendamos que seas tolerante y respetes las opiniones de las demás personas.</TextBody>
-            <TextBody secondParagraph>Esto te permitirá escalar y conseguir mejores conecciones.</TextBody>
+            <TextBody secondParagraph>Esto te permitirá escalar y conseguir mejores conexiones.</TextBody>
           </div>
           <ButtonsContainer>
             <ButtonStyled secondary>Estoy de acuerdo</ButtonStyled>{/*Llamado a la ejecución de eliminación de espacio*/}

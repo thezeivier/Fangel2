@@ -8,6 +8,8 @@ import { useFirestore } from 'reactfire'
 
 import VideoAdmin from './VideoAdmin'
 import VideoUser from './VideoUser'
+import ContractFangelConnect from '../../components/fangelConnect/ContractFangelConnect'
+import ModalGeneral from '../../components/modal/ModalGeneral'
 
 const SwitchVideoContext =  React.createContext()
 const {Provider, Consumer} = SwitchVideoContext
@@ -46,6 +48,9 @@ const SwitchCommunityVideo = () => {
     return (
         <>
             <Provider value={activeCommunityValue}>
+                <ModalGeneral needRender={"n"}>
+                    <ContractFangelConnect/>
+                </ModalGeneral>                
                 {
                     isAdmin ? 
                     <VideoAdmin activeCommunity={activeCommunity} isAdmin={isAdmin} communityData={communityData}/> : 
