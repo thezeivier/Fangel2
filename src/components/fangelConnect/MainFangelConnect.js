@@ -42,7 +42,7 @@ const MainFangelConnect = () => {
           </form>
         </OnlyDesktop>
         <ModalGeneral needRender={"n"} modalIsOpen={modalOpen} modalOpen={modalIsOpen}>
-          <SearchPeople  modalIsOpen={modalOpen} />
+          <SearchPeople modalIsOpen={modalOpen} />
         </ModalGeneral>
       </Wrapper>
     </main>
