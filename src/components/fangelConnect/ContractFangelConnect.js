@@ -16,7 +16,7 @@ const ContractFangelConnect = ({setStateContract}) => {
             <TextBody secondParagraph>Esto te permitirá escalar y conseguir mejores conexiones.</TextBody>
           </div>
           <ButtonsContainer>
-            <ButtonStyled secondary onClick={() => setStateContract(false)}>Estoy de acuerdo</ButtonStyled>{/*Llamado a la ejecución de eliminación de espacio*/}
+            <ButtonStyled secondary onClick={() => setStateContract(false)}>Estoy de acuerdo</ButtonStyled>
           </ButtonsContainer>
         </ContainerFCGeneral>
       </Wrapper>
