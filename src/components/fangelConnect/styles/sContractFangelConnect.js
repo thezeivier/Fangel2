@@ -16,3 +16,8 @@ export const ContainerFCGeneral = styled.div`
     width: 550px;
   }
 `
+
+export const ContainerCards = styled.ul`
+  margin: 30px 0 0 0;
+  width: -webkit-fill-available;
+`

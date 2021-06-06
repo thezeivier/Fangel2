@@ -3,7 +3,7 @@ import Wrapper from './../general/Wrapper'
 import CardScore from './CardScore'
 import { TextBodyStyled } from './styles/sSearchPeople'
 import { TextBody } from './../../themes/externalRecyclableStyles'
-import { ContainerFCGeneral } from './styles/sContractFangelConnect'
+import { ContainerFCGeneral, ContainerCards } from './styles/sContractFangelConnect'
 import { ButtonsContainer, ButtonStyled } from './../dashboard/styles/sModalCloseSpace'
 
 const listCardScore = [
@@ -34,11 +34,11 @@ const ScoreFangelConnect = () => {
           <div>
             <TextBody top24>Esto nos ayudará a conseguirte mejores conecciones. No te tomará mas de 2 minutos.</TextBody>
           </div>
-          <ul>
+          <ContainerCards>
             {
               listCardScore.map((card) => <CardScore key={card.id} hability={card.hability} />)
             }
-          </ul>
+          </ContainerCards>
         </ContainerFCGeneral>
       </Wrapper>
     </main>
