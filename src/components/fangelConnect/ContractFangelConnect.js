@@ -5,7 +5,7 @@ import { TextBody } from './../../themes/externalRecyclableStyles'
 import { ContainerFCGeneral } from './styles/sContractFangelConnect'
 import { ButtonsContainer, ButtonStyled } from './../dashboard/styles/sModalCloseSpace' 
 
-const ContractFangelConnect = () => {
+const ContractFangelConnect = ({setStateContract}) => {
   return (
     <main>
       <Wrapper>
@@ -16,7 +16,7 @@ const ContractFangelConnect = () => {
             <TextBody secondParagraph>Esto te permitirá escalar y conseguir mejores conexiones.</TextBody>
           </div>
           <ButtonsContainer>
-            <ButtonStyled secondary>Estoy de acuerdo</ButtonStyled>{/*Llamado a la ejecución de eliminación de espacio*/}
+            <ButtonStyled secondary onClick={() => setStateContract(false)}>Estoy de acuerdo</ButtonStyled>{/*Llamado a la ejecución de eliminación de espacio*/}
           </ButtonsContainer>
         </ContainerFCGeneral>
       </Wrapper>

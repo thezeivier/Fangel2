@@ -23,9 +23,13 @@ const SwitchCommunityVideo = () => {
     const idRoomRoute = match.params.idRoom
     const [data, status, error] = GetCommunityVideoData(idRoomRoute)
     const activeCommunityRef = firestore.collection('activeCommunities')
+    const [stateLocation, setStateLocation] = useState()
+    const [stateContract, setStateContract] = useState(false)
 
     useEffect(async ()=>{
         let communityData = data[0]
+        setStateLocation(location.state && location.state.origin)
+        setStateContract(location.state && location.state.origin && true)
         if(communityData){
             activeCommunityRef.doc(communityData.creatorUid)
             .onSnapshot((doc) => {
@@ -40,18 +44,18 @@ const SwitchCommunityVideo = () => {
     
     let communityData = data[0]
     const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)
-
+    
     const activeCommunityValue = {
         activeCommunity,
         communityData
     }
-
     return (
         <>
             <Provider value={activeCommunityValue}>
-                {(location.state && location.state.origin === "searchPeople") &&
-                    <ModalGeneral needRender={"n"}>
-                        <ContractFangelConnect/>
+                {
+                    (stateLocation === "searchPeople") &&
+                    <ModalGeneral needRender={"n"} modalOpen={stateContract}>
+                        <ContractFangelConnect setStateContract={setStateContract}/>
                     </ModalGeneral>                
                 }
                 {
