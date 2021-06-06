@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import Wrapper from './../general/Wrapper'
 import ModalGeneral from './../modal/ModalGeneral'
 import SearchPeople from './SearchPeople'
+import ScoreFangelConnect from './ScoreFangelConnect'
 import { TitleStyled, ButtonStyled, OnlyDesktop, SubtitleStyled } from './../../themes/internalRecyclableStyles'
 import { TextBody } from './../../themes/externalRecyclableStyles'
 import { FieldSet } from './../createCommunity/styles/sMainCreateCommunity'
@@ -42,7 +43,8 @@ const MainFangelConnect = () => {
           </form>
         </OnlyDesktop>
         <ModalGeneral needRender={"n"} modalIsOpen={modalOpen} modalOpen={modalIsOpen}>
-          <SearchPeople modalIsOpen={modalOpen} />
+          {/* <SearchPeople modalIsOpen={modalOpen} /> */}
+          <ScoreFangelConnect modalIsOpen={modalOpen} />
         </ModalGeneral>
       </Wrapper>
     </main>
