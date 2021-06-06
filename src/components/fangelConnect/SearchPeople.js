@@ -112,7 +112,7 @@ const SearchPeople = ({ modalIsOpen }) => {
             {existJoinner && existCreator?
               (<section className="buttonsAccionContainer">
                 {roomOfConnectionActive?
-                  <Redirect to={{pathname: `/room/${idOfFangelConnect}`,}}/>:
+                  <Redirect to={{pathname: `/room/${idOfFangelConnect}`, state: {origin: "searchPeople"}}}/>:
                   "Creando un contexto amistoso..."
                 }
               </section>):

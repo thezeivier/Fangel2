@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useRouteMatch, useHistory } from 'react-router-dom'
+import { useRouteMatch, useHistory, useLocation } from 'react-router-dom'
 import 'firebase/database'
 import { AppContext } from '../../App'
 import { GetCommunityVideoData } from './algorithms/GetCommunityVideoData'
@@ -8,11 +8,14 @@ import { useFirestore } from 'reactfire'
 
 import VideoAdmin from './VideoAdmin'
 import VideoUser from './VideoUser'
+import ContractFangelConnect from '../../components/fangelConnect/ContractFangelConnect'
+import ModalGeneral from '../../components/modal/ModalGeneral'
 
 const SwitchVideoContext =  React.createContext()
 const {Provider, Consumer} = SwitchVideoContext
 
 const SwitchCommunityVideo = () => {
+    const location = useLocation()
     const firestore = useFirestore()
     const { userFromDB, communityProvider }  = useContext(AppContext)
     const [activeCommunity, setActiveCommunity] = useState(false)
@@ -46,6 +49,11 @@ const SwitchCommunityVideo = () => {
     return (
         <>
             <Provider value={activeCommunityValue}>
+                {(location.state && location.state.origin === "searchPeople") &&
+                    <ModalGeneral needRender={"n"}>
+                        <ContractFangelConnect/>
+                    </ModalGeneral>                
+                }
                 {
                     isAdmin ? 
                     <VideoAdmin activeCommunity={activeCommunity} isAdmin={isAdmin} communityData={communityData}/> : 
