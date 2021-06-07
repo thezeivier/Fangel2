@@ -96,7 +96,7 @@ const SearchPeople = ({ modalIsOpen }) => {
               }
               <p>
                 {userFromDB.name? //Nombre completo de usuario local
-                  `${userFromDB.name.firstName} ${userFromDB.name.lastName? userFromDB.name.lastName: ""}`: 
+                  `${userFromDB.name.firstName} ${userFromDB.name.lastName? userFromDB.name.lastName: ""}`:
                   userFromDB.username
                 }
               </p>
@@ -112,7 +112,15 @@ const SearchPeople = ({ modalIsOpen }) => {
             {existJoinner && existCreator?
               (<section className="buttonsAccionContainer">
                 {roomOfConnectionActive?
-                  <Redirect to={{pathname: `/room/${idOfFangelConnect}`, state: {origin: "searchPeople"}}}/>:
+                  <Redirect to={{pathname: `/room/${idOfFangelConnect}`, 
+                  state: 
+                  {
+                    origin: "searchPeople",
+                    // existJoinner, 
+                    // existCreator, 
+                    idOfFangelConnect
+                  }
+                }}/>:
                   "Creando un contexto amistoso..."
                 }
               </section>):

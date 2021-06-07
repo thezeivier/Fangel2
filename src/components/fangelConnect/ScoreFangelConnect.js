@@ -41,7 +41,7 @@ const ScoreFangelConnect = ({setStateScore}) => {
         <ContainerFCGeneral withPosition>
           <TextBodyStyled>Califica tu experiencia con Userfangel</TextBodyStyled>
           <div>
-            <TextBody top24>Esto nos ayudará a conseguirte mejores conexiones. No te tomará mas de 1 minuto.</TextBody>
+            <TextBody top24>Esto nos ayudará a conseguirte mejores conexiones. No te tomará más de 1 minuto.</TextBody>
           </div>
           <ContainerCards>
             {
