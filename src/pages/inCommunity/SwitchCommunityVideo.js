@@ -27,12 +27,15 @@ const SwitchCommunityVideo = () => {
     const activeCommunityRef = firestore.collection('activeCommunities')
     const [stateLocation, setStateLocation] = useState()
     const [stateContract, setStateContract] = useState(false)
-    const [stateScore, setStateScore] = useState(false)
+    const [stateScore, setStateScore] = useState(null)
 
     useEffect(async ()=>{
         let communityData = data[0]
-        setStateLocation(location.state && location.state.origin)
-        setStateContract(location.state && location.state.origin && true)
+        if(location.state && location.state.origin){
+            setStateScore(false)
+            setStateLocation(location.state.origin)
+            setStateContract(true)
+        }
         if(communityData){
             activeCommunityRef.doc(communityData.creatorUid)
             .onSnapshot((doc) => {
@@ -56,8 +59,12 @@ const SwitchCommunityVideo = () => {
     }
 
     const handleModalClose = () => {
-        history.push(`/`)
-        window.location.reload()
+        if(history.location.pathname.includes("-")){
+            setStateScore(false)
+        }else{
+            history.push(`/`)
+            window.location.reload()
+        }
     }
     return (
         <>
@@ -66,7 +73,7 @@ const SwitchCommunityVideo = () => {
                     (stateLocation === "searchPeople") &&
                     <ModalGeneral needRender={"n"} modalOpen={stateContract}>
                         <ContractFangelConnect setStateContract={setStateContract}/>
-                    </ModalGeneral>                
+                    </ModalGeneral>
                 }
                 {stateScore &&
                     <ModalGeneral modalOpen={stateScore} modalIsOpen={handleModalClose}>

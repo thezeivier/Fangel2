@@ -20,7 +20,7 @@ const EmbedVideo = ({ communityData, communityDataSubSpace, isSubSpace }) => {
           <h3>{!isSubSpace ? communityData.title :  communityDataSubSpace.nameOfSpace}</h3>
         </DescripcionContainer>
         <ButtonLeaveContainer>
-          <ButtonLeaveCom displayDesktop="flex" communityProvider={communityProvider}/>
+          <ButtonLeaveCom communityProvider={communityProvider}/>
         </ButtonLeaveContainer>
       </TitleOnlyDesktopContainer>
       <EmbedContainer>

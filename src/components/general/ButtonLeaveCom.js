@@ -3,11 +3,13 @@ import { Link, useHistory } from 'react-router-dom'
 import { ButtonStyled } from './styles/sButtonLeaveCom'
 import {SwitchVideoContext} from '../../pages/inCommunity/SwitchCommunityVideo' 
 
-const ButtonLeaveCom = ({ displayDesktop, communityProvider }) => {
+const ButtonLeaveCom = ({ communityProvider }) => {
   const history = useHistory()
-  const {stateScore, setStateScore} = useContext(SwitchVideoContext)
+  const contextOfSwitchVideo = useContext(SwitchVideoContext)
+  const stateScore = contextOfSwitchVideo ?.stateScore
+  const setStateScore = contextOfSwitchVideo ?.setStateScore
   const [subSpaceState, setSubSpaceState] = useState(false)
-  
+
   useEffect(() => {
     if(communityProvider && communityProvider.communityGlobalData && communityProvider.communityGlobalData.communityDataSubSpace){
       setSubSpaceState(true)
@@ -19,16 +21,20 @@ const ButtonLeaveCom = ({ displayDesktop, communityProvider }) => {
     // setStateScore(true)
     if(subSpaceState && communityProvider) {
       history.push(`/room/${communityProvider.communityGlobalData.communityData.roomName}`)
-    } else {
+    } else if(stateScore !== null) {
       setStateScore(true)
+    }else{
+      history.push(`/`)
+      window.location.reload()
     }
   }
+
   return (
-    <ButtonStyled danger displayDesktop={displayDesktop} onClick={handleClickToCommunity}>
+    <ButtonStyled danger onClick={handleClickToCommunity}>
       {
         subSpaceState ? 
-          (displayDesktop ? 'Regresar al espacio principal' : 'Regresar'):
-          (displayDesktop ? 'Salir del espacio social' : 'Salir')
+          (window.innerWidth >= 1200 ? 'Regresar al espacio principal' : 'Regresar'):
+          (window.innerWidth >= 1200 ? 'Salir del espacio social' : 'Salir')
       }
     </ButtonStyled>
   );
