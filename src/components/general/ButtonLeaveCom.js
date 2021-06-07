@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { ButtonStyled } from './styles/sButtonLeaveCom'
+import {SwitchVideoContext} from '../../pages/inCommunity/SwitchCommunityVideo' 
 
 const ButtonLeaveCom = ({ displayDesktop, communityProvider }) => {
   const history = useHistory()
+  const {stateScore, setStateScore} = useContext(SwitchVideoContext)
   const [subSpaceState, setSubSpaceState] = useState(false)
   
   useEffect(() => {
@@ -11,14 +13,14 @@ const ButtonLeaveCom = ({ displayDesktop, communityProvider }) => {
       setSubSpaceState(true)
     }
   },[])
-
+  console.log(stateScore)
   const handleClickToCommunity = () => {
     communityProvider && communityProvider.setCommunityGlobalData(false)
+    // setStateScore(true)
     if(subSpaceState && communityProvider) {
       history.push(`/room/${communityProvider.communityGlobalData.communityData.roomName}`)
     } else {
-      history.push(`/`)
-      window.location.reload()
+      setStateScore(true)
     }
   }
   return (

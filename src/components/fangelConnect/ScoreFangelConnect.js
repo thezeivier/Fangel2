@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import CardScore from './CardScore'
 import { TextBodyStyled } from './styles/sSearchPeople'
@@ -25,14 +26,22 @@ const listCardScore = [
   },
 ]
 
-const ScoreFangelConnect = () => {
+const ScoreFangelConnect = ({setStateScore}) => {
+  const history = useHistory()
+
+  const handleSubmitScore = () => {
+    setStateScore(false)
+    history.push(`/`)
+    window.location.reload()
+  }
+  
   return (
     <main>
       <Wrapper>
         <ContainerFCGeneral withPosition>
           <TextBodyStyled>Califica tu experiencia con Userfangel</TextBodyStyled>
           <div>
-            <TextBody top24>Esto nos ayudará a conseguirte mejores conecciones. No te tomará mas de 1 minuto.</TextBody>
+            <TextBody top24>Esto nos ayudará a conseguirte mejores conexiones. No te tomará mas de 1 minuto.</TextBody>
           </div>
           <ContainerCards>
             {
@@ -40,7 +49,7 @@ const ScoreFangelConnect = () => {
             }
           </ContainerCards>
           <ButtonsContainerStyled>
-            <ButtonStyled secondary>Terminé</ButtonStyled>
+            <ButtonStyled secondary onClick={handleSubmitScore}>Terminé</ButtonStyled>
           </ButtonsContainerStyled>
         </ContainerFCGeneral>
       </Wrapper>

@@ -10,12 +10,14 @@ import VideoAdmin from './VideoAdmin'
 import VideoUser from './VideoUser'
 import ContractFangelConnect from '../../components/fangelConnect/ContractFangelConnect'
 import ModalGeneral from '../../components/modal/ModalGeneral'
+import ScoreFangelConnect from '../../components/fangelConnect/ScoreFangelConnect'
 
 const SwitchVideoContext =  React.createContext()
 const {Provider, Consumer} = SwitchVideoContext
 
 const SwitchCommunityVideo = () => {
     const location = useLocation()
+    const history = useHistory()
     const firestore = useFirestore()
     const { userFromDB, communityProvider }  = useContext(AppContext)
     const [activeCommunity, setActiveCommunity] = useState(false)
@@ -25,6 +27,7 @@ const SwitchCommunityVideo = () => {
     const activeCommunityRef = firestore.collection('activeCommunities')
     const [stateLocation, setStateLocation] = useState()
     const [stateContract, setStateContract] = useState(false)
+    const [stateScore, setStateScore] = useState(false)
 
     useEffect(async ()=>{
         let communityData = data[0]
@@ -47,7 +50,14 @@ const SwitchCommunityVideo = () => {
     
     const activeCommunityValue = {
         activeCommunity,
-        communityData
+        communityData,
+        stateScore,
+        setStateScore
+    }
+
+    const handleModalClose = () => {
+        history.push(`/`)
+        window.location.reload()
     }
     return (
         <>
@@ -58,9 +68,15 @@ const SwitchCommunityVideo = () => {
                         <ContractFangelConnect setStateContract={setStateContract}/>
                     </ModalGeneral>                
                 }
+                {stateScore &&
+                    <ModalGeneral modalOpen={stateScore} modalIsOpen={handleModalClose}>
+                        <ScoreFangelConnect setStateScore={setStateScore}/>
+                    </ModalGeneral>
+                }
+
                 {
                     isAdmin ? 
-                    <VideoAdmin activeCommunity={activeCommunity} isAdmin={isAdmin} communityData={communityData}/> : 
+                    <VideoAdmin activeCommunity={activeCommunity} isAdmin={isAdmin} communityData={communityData} setStateScore={setStateScore}/> : 
                     <VideoUser activeCommunity={activeCommunity} communityData={communityData}/>
                 }
             </Provider>
