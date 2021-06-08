@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const CardContainer = styled.fieldset`
-  background: rgba(4, 6, 28, 0.5);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: ${props => props.theme.cardScore};
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.14);
   border-radius: 10px;
   padding: 28px 10px;
   margin: 0 0 20px 0;

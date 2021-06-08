@@ -28,6 +28,7 @@ const theme = (type)=> {
     smallText: mode ? colors.color.smallText.grayDark : colors.color.smallText.grayLight,
     inputPlaceholder: mode ? colors.color.white.transparent : colors.color.black.transparent,
     cardComunity: mode ? colors.color.card.transparentDark : colors.color.card.transparentLight,
+    cardScore: mode ? colors.color.scoreCard.dark : colors.color.scoreCard.light,
     cardHoverComunity: mode ? colors.color.hover.card.transparentDark : colors.color.hover.card.transparentLight,
     textButton: mode ? colors.color.black.solid : colors.color.white.solid,
     colorHoverPrimary: mode ? colors.color.hover.button.dark.primary : colors.color.hover.button.light.primary,

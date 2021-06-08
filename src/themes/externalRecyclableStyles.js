@@ -232,7 +232,7 @@ export const Button = styled.button`
 
   ${props => props.danger && css`
     width: auto;
-    background: #eb444436;
+    background: #eb444436 !important;
     color: #eb4444e0;
     padding: 10px 14px;
     font-size: 1.1em;
