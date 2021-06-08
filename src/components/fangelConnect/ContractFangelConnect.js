@@ -3,9 +3,10 @@ import Wrapper from './../general/Wrapper'
 import { TextBodyStyled } from './styles/sSearchPeople'
 import { TextBody } from './../../themes/externalRecyclableStyles'
 import { ContainerFCGeneral } from './styles/sContractFangelConnect'
-import { ButtonsContainer, ButtonStyled } from './../dashboard/styles/sModalCloseSpace' 
+import { ButtonsContainer, ButtonStyled } from './../dashboard/styles/sModalCloseSpace'
 
-const ContractFangelConnect = ({setStateContract}) => {
+const ContractFangelConnect = ({setStateContract}) => { 
+
   return (
     <main>
       <Wrapper>

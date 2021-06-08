@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {useFirestore} from 'reactfire'
 import { useHistory } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import CardScore from './CardScore'
@@ -6,33 +7,51 @@ import { TextBodyStyled } from './styles/sSearchPeople'
 import { TextBody } from './../../themes/externalRecyclableStyles'
 import { ContainerFCGeneral, ContainerCards, ButtonsContainerStyled } from './styles/sContractFangelConnect'
 import { ButtonStyled } from './../dashboard/styles/sModalCloseSpace'
+import { sendScoresFromFangelConnect } from './algorithms/sendScoresFromFangelConnect'
 
 const listCardScore = [
   {
     id: 1,
-    hability: 'Puntualidad',
+    hability: 'Tolerancia',
   }, {
     id: 2,
-    hability: 'Empatia',
+    hability: 'Empatía',
   }, {
     id: 3,
     hability: 'Entusiasmo',
   }, {
     id: 4,
-    hability: 'Comunicacion',
+    hability: 'Comunicación',
   }, {
     id: 5,
-    hability: 'Educacion',
+    hability: 'Respeto',
   },
 ]
 
-const ScoreFangelConnect = ({setStateScore}) => {
+const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setStateScore}) => {
   const history = useHistory()
-
+  const firestore = useFirestore()
+  const [uidOfOtherUser, setUidOfOtherUser] = useState(null)
+  const [scores, setScores] = useState({
+    tolerance: "",
+    empathy: "",
+    enthusiasm:"",
+    respect:"",
+    communication:"",
+  })
+  useEffect(()=>{
+    if(fangelConnectProvider && (fangelConnectProvider.dataFromCreator.uid !== userFromDB.uid)){
+      setUidOfOtherUser(fangelConnectProvider.dataFromCreator.uid)
+    }else{
+      setUidOfOtherUser(fangelConnectProvider.dataFromJoinner.uid)
+    }
+  },[])
+  
   const handleSubmitScore = () => {
+    sendScoresFromFangelConnect(firestore, uidOfOtherUser, userFromDB.uid, scores)
     setStateScore(false)
     history.push(`/`)
-    window.location.reload()
+    // window.location.reload()
   }
   
   return (
@@ -46,7 +65,7 @@ const ScoreFangelConnect = ({setStateScore}) => {
           <ContainerCards>
             <ul>
               {
-                listCardScore.map((card) => <CardScore key={card.id} hability={card.hability} />)
+                listCardScore.map((card) => <CardScore scores={scores} setScores={setScores} key={card.id} hability={card.hability} />)
               }
             </ul>
           </ContainerCards>

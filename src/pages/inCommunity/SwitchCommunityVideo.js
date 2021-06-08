@@ -78,7 +78,7 @@ const SwitchCommunityVideo = () => {
                 }
                 {stateScore &&
                     <ModalGeneral modalOpen={stateScore} modalIsOpen={handleModalClose}>
-                        <ScoreFangelConnect fangelConnectProvider={fangelConnectProvider? fangelConnectProvider: false} setStateScore={setStateScore}/>
+                        <ScoreFangelConnect userFromDB={userFromDB} fangelConnectProvider={fangelConnectProvider? fangelConnectProvider: false} setStateScore={setStateScore}/>
                     </ModalGeneral>
                 }
 
