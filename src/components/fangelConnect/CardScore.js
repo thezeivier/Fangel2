@@ -10,21 +10,21 @@ const CardScore = ({ hability }) => {
     <CardContainer>
       <p>{hability}</p>
       <form>
-        <label for="faceAnnoyed">
+        <label htmlFor="faceAnnoyed">
           <input type="radio" id="faceAnnoyed" name={hability} value="annoyed" />
-          <FaceAnnoyedSVG className="annoyed" />
+          <FaceAnnoyedSVG onClick={()=>{console.log(`${hability} faceAnnoyed`)}} className="annoyed" />
         </label>
-        <label for="faceSad">
+        <label htmlFor="faceSad">
           <input type="radio" id="faceSad" name={hability} value="sad" />
-          <FaceSadSVG className="sad" />
+          <FaceSadSVG onClick={()=>{console.log(`${hability} faceSad`)}} className="sad" />
         </label>
-        <label for="faceSceptic">
+        <label htmlFor="faceSceptic">
           <input type="radio" id="faceSceptic" name={hability} value="sceptic" />
-          <FaceSceptic className="sceptic" />
+          <FaceSceptic onClick={()=>{console.log(`${hability} faceSceptic`)}} className="sceptic" />
         </label>
-        <label for="faceHappy">
+        <label htmlFor="faceHappy">
           <input type="radio" id="faceHappy" name={hability} value="happy" />
-          <FaceHappySVG className="happy" />
+          <FaceHappySVG onClick={()=>{console.log(`${hability} faceHappy`)}} className="happy" />
         </label>
       </form>
     </CardContainer>

@@ -20,7 +20,7 @@ const SearchPeople = ({ modalIsOpen }) => {
   const [roomOfConnectionActive, setRoomOfConnectionActive] = useStateIfMounted(false)
   // const [forceRender, setForceRender] = useState(0)
   const [joinnerProfileThumb, setJoinnerProfileThumb] = useStateIfMounted(null)
-  const { userFromDB, authState, profileThumb } = useContext(AppContext)
+  const { userFromDB, setFangelConnectProvider, profileThumb } = useContext(AppContext)
 
   useEffect(async()=>{
     const idOfConnect = !fangelConnectFromDB ? await fangelConnectAnalizer(firestore, userFromDB): idOfFangelConnect//Siempre retorna el id del documento de fangelConnect
@@ -28,6 +28,7 @@ const SearchPeople = ({ modalIsOpen }) => {
     if(idOfConnect){
       var unsubscribeFangelConnect = firestore.collection("fangelConnect").doc(idOfConnect).onSnapshot(querySnapshot=>{
         setFangelConnectFromDB(querySnapshot.data())
+        setFangelConnectProvider(querySnapshot.data())//Envío de datos al AppContext para después recuperarlos en la videollamada.
         setExistJoinner(querySnapshot.data()?.dataFromJoinner) //Corroboración de la existencia del joinner unido.
         setExistCreator(querySnapshot.data()?.dataFromCreator) //Corroboración de la existencia del creator unido.
       })
@@ -115,10 +116,7 @@ const SearchPeople = ({ modalIsOpen }) => {
                   <Redirect to={{pathname: `/room/${idOfFangelConnect}`, 
                   state: 
                   {
-                    origin: "searchPeople",
-                    // existJoinner, 
-                    // existCreator, 
-                    idOfFangelConnect
+                    origin: "searchPeople"
                   }
                 }}/>:
                   "Creando un contexto amistoso..."
