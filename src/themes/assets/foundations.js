@@ -38,6 +38,10 @@ export const colors = {
       transparentDark: '#1b1d3359',
       transparentLight: '#1b1d330d',
     },
+    scoreCard: {
+      dark: 'rgba(4, 6, 28, 0.5)',
+      light: 'rgba(255, 255, 255, 0.5)',
+    },
     hover: {
       button: {
         dark: {
