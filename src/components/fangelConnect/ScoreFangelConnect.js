@@ -13,7 +13,7 @@ const listCardScore = [
     hability: 'Puntualidad',
   }, {
     id: 2,
-    hability: 'Empatía',
+    hability: 'Empatia',
   }, {
     id: 3,
     hability: 'Entusiasmo',
@@ -22,7 +22,7 @@ const listCardScore = [
     hability: 'Comunicacion',
   }, {
     id: 5,
-    hability: 'Comunicacion',
+    hability: 'Educacion',
   },
 ]
 
@@ -44,9 +44,11 @@ const ScoreFangelConnect = ({setStateScore}) => {
             <TextBody top24>Esto nos ayudará a conseguirte mejores conexiones. No te tomará mas de 1 minuto.</TextBody>
           </div>
           <ContainerCards>
-            {
-              listCardScore.map((card) => <CardScore key={card.id} hability={card.hability} />)
-            }
+            <ul>
+              {
+                listCardScore.map((card) => <CardScore key={card.id} hability={card.hability} />)
+              }
+            </ul>
           </ContainerCards>
           <ButtonsContainerStyled>
             <ButtonStyled secondary onClick={handleSubmitScore}>Terminé</ButtonStyled>

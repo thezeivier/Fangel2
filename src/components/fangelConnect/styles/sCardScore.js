@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CardContainer = styled.li`
+export const CardContainer = styled.fieldset`
   background: rgba(4, 6, 28, 0.5);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -9,6 +9,7 @@ export const CardContainer = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: none;
 
   &:nth-child(5) {
     margin: 0;

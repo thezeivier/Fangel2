@@ -35,7 +35,7 @@ export const ContainerFCGeneral = styled.div`
   }
 `
 
-export const ContainerCards = styled.ul`
+export const ContainerCards = styled.form`
   margin: 30px 0 0 0;
   width: -webkit-fill-available;
 

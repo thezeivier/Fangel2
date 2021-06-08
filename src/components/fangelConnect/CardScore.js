@@ -7,27 +7,29 @@ import { ReactComponent as FaceSceptic } from './icons/faceSceptic.svg'
 
 const CardScore = ({ hability }) => {
   return (
-    <CardContainer>
-      <p>{hability}</p>
-      <form>
-        <label for="faceAnnoyed">
-          <input type="radio" id="faceAnnoyed" name={hability} value="annoyed" />
-          <FaceAnnoyedSVG className="annoyed" />
-        </label>
-        <label for="faceSad">
-          <input type="radio" id="faceSad" name={hability} value="sad" />
-          <FaceSadSVG className="sad" />
-        </label>
-        <label for="faceSceptic">
-          <input type="radio" id="faceSceptic" name={hability} value="sceptic" />
-          <FaceSceptic className="sceptic" />
-        </label>
-        <label for="faceHappy">
-          <input type="radio" id="faceHappy" name={hability} value="happy" />
-          <FaceHappySVG className="happy" />
-        </label>
-      </form>
-    </CardContainer>
+    <li>
+      <CardContainer id={hability}>
+        <leyend>{hability}</leyend>
+          <div>
+            <label for={`faceAnnoyed-${hability}`} >
+              <input type="radio" id={`faceAnnoyed-${hability}`} name={hability} value="annoyed" />
+              <FaceAnnoyedSVG className="annoyed" />
+            </label>
+            <label for={`faceSad-${hability}`}>
+              <input type="radio" id={`faceSad-${hability}`} name={hability} value="sad" />
+              <FaceSadSVG className="sad" />
+            </label>
+            <label for={`faceSceptic-${hability}`}>
+              <input type="radio" id={`faceSceptic-${hability}`} name={hability} value="sceptic" />
+              <FaceSceptic className="sceptic" />
+            </label>
+            <label for={`faceHappy-${hability}`}>
+              <input type="radio" id={`faceHappy-${hability}`} name={hability} value="happy" />
+              <FaceHappySVG className="happy" />
+            </label>
+          </div>
+      </CardContainer>
+    </li>
   );
 }
 
