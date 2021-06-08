@@ -44,13 +44,14 @@ function App() {
   const firebase = useFirebaseApp()
   const [loading, setLoading] = useState(true)
   const [communityGlobalData, setCommunityGlobalData] = useState(false)
+  const communityProvider = useMemo(() => ({communityGlobalData, setCommunityGlobalData}), [communityGlobalData, setCommunityGlobalData])
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
   const [userFromDB, setUserFromDB] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
   const [profileThumb, setProfileThumb] = useState(false)
-  const communityProvider = useMemo(() => ({communityGlobalData, setCommunityGlobalData}), [communityGlobalData, setCommunityGlobalData])
   const [videoCall, setVideoCall] = useState(false)
+  const [fangelConnectProvider, setFangelConnectProvider] = useState(null)
   useEffect(()=>{
     if(localStorage.mode){
       setMode(localStorage.getItem("mode"))
@@ -109,6 +110,8 @@ function App() {
     isAdmin,
     changeTheme,
     communityProvider,
+    setFangelConnectProvider,
+    fangelConnectProvider,
     videoCall,
   }
 
