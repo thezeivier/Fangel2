@@ -66,8 +66,8 @@ const SwitchCommunityVideo = () => {
         if(history.location.pathname.includes("-")){
             setStateScore(false)
         }else{
+            setCommunityGlobalData(false)
             history.push(`/`)
-            window.location.reload()
         }
     }
     return (
