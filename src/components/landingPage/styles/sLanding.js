@@ -74,7 +74,7 @@ export const Container = styled.div`
 `
 
 export const TitleStyledCover = styled(PrimaryTitle) `
-  margin: 0px 0px 30px;
+  margin: 0px 0px 9.3vh;
   text-align: center;
   font-size: 2.2em;
   font-family: ${props => props.theme.secondaryFont};
@@ -88,7 +88,7 @@ export const TitleStyledCover = styled(PrimaryTitle) `
 
 
 export const TextStyledCover = styled(TextBody) `
-  margin: 0 0 54px 0;
+  margin: 0 0 10.3vh 0;
   text-align: center;
 
   @media(min-width:1024px) {
@@ -142,28 +142,6 @@ export const ButtonStyledCover = styled(Button) `
 
 /* Body page */
 
-export const ListContainer = styled.ul`
-  margin: 0 0 40px 0;
-  cursor: default;
-
-  li {
-    font-size: 0.97em;
-    margin: 0 0 15px 0;
-    line-height: 1.45em;
-    display: flex;
-
-    &::before {
-      content: '';
-      display: block;
-      width: 0.5em;
-      height: 0.5em;
-      margin: 5px 10px 0 0;
-      background: ${props => props.theme.colorSuccess};
-      border-radius: 50%;
-    }
-  }
-`
-
 export const FangelPromotionContainer = styled.div`
   img {
     width: 100%;
@@ -193,19 +171,14 @@ export const FangelPromotionContainer = styled.div`
 `
 
 export const SubtitleStyled = styled(SecondaryTitle) `
-  margin: 60px 0 25px 0;
+  margin: 0 0 30px 0;
 
   @media(min-width:768px) {
-    margin: 60px 0 35px 0;
+    margin: 0 0 35px 0;
   }
 `
 
 export const TextStyled = styled(TextBody) `
-  margin: 0 0 20px 0;
-
-  @media(min-width:768px) {
-    margin: 0 0 25px 0;
-  }
 `
 
 export const ButtonStyled = styled(Button) `
@@ -234,16 +207,15 @@ export const ButtonStyled = styled(Button) `
   `}
 `
 
-export const DescriptionContainer = styled.div`
-  transition-delay: 1s;
-  transition: all ease-in .2s;
-  will-change: opacity, transform;
+export const SectionContainer = styled.section`
+  margin: 80px 0 40px 0;
 `
 
 /* Desktop */
 
-export const DesktopGridRight = styled.div`
+export const DesktopGridRight = styled.section`
   display: block;
+  margin: 80px 0 40px 0;
 
   @media(min-width:1200px) {
     display: grid;
@@ -252,8 +224,15 @@ export const DesktopGridRight = styled.div`
   }
 `
 
-export const DesktopGridLeft = styled.div`
+export const ListProductsContainer = styled.ul`
+  li:nth-child(1) {
+    margin: 0 0 30px 0;
+  }
+`
+
+export const DesktopGridLeft = styled.section`
   display: block;
+  margin: 80px 0 40px 0;
 
   @media(min-width:1200px) {
     display: grid;
@@ -269,6 +248,40 @@ export const DesktopGridLeft = styled.div`
       grid-area: left;
     }
   }
+`
+
+export const VideoContainer = styled.div`
+  position: relative;
+
+  video {
+    width: 100%;
+    object-fit: cover;
+    height: 63vh;
+    line-height: 0;
+  }
+
+  h3 {
+    position: absolute;
+    top: 38%;
+    font-weight: ${props => props.theme.weight.medium};
+    font-size: 38px;
+    line-height: 53px;
+    left: 20px;
+  }
+
+  .videoDiscover {
+    height: 70vh;
+  }
+
+  .backgroundVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70vh;
+    background: #00000054;
+  }
+
 `
 
 export const CodeContainer = styled.div`
