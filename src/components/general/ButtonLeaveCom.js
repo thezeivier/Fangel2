@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { ButtonStyled } from './styles/sButtonLeaveCom'
 import {SwitchVideoContext} from '../../pages/inCommunity/SwitchCommunityVideo' 
 
-const ButtonLeaveCom = ({ communityProvider }) => {
+const ButtonLeaveCom = ({ communityProvider, setCommunityGlobalData}) => {
   const history = useHistory()
   const contextOfSwitchVideo = useContext(SwitchVideoContext)
   const stateScore = contextOfSwitchVideo ?.stateScore
@@ -25,7 +25,7 @@ const ButtonLeaveCom = ({ communityProvider }) => {
       setStateScore(true)
     }else{
       history.push(`/`)
-      window.location.reload()
+      setCommunityGlobalData(false)
     }
   }
 
