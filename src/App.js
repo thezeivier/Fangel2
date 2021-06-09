@@ -113,6 +113,7 @@ function App() {
     setFangelConnectProvider,
     fangelConnectProvider,
     videoCall,
+    setCommunityGlobalData,
   }
 
   if(loading) return <Spinner />

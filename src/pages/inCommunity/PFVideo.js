@@ -1,10 +1,10 @@
 import React from 'react';
 import MainPFVideoUser from './../../components/community/MainPFVideoUser'
 
-const PFVideo = ({children, communityGlobalData}) => {
+const PFVideo = ({children, communityGlobalData, setCommunityGlobalData}) => {
   return (
     <div>
-      <MainPFVideoUser children={children} communityGlobalData={communityGlobalData}/>
+      <MainPFVideoUser children={children} setCommunityGlobalData={setCommunityGlobalData} communityGlobalData={communityGlobalData}/>
     </div>
   );
 }

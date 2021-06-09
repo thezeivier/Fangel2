@@ -11,8 +11,8 @@ const MainPFVideoUser = ({children, communityGlobalData, setCommunityGlobalData}
   const history = useHistory()
 
   const handleLeaveCommunity = () => {
-    setCommunityGlobalData && setCommunityGlobalData(false)
-    window.location.reload()
+    setCommunityGlobalData(false)
+    // window.location.reload()
   }
 
   const handleClickToCommunity = () => {

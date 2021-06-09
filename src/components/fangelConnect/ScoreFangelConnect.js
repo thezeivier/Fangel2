@@ -28,7 +28,7 @@ const listCardScore = [
   },
 ]
 
-const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setStateScore}) => {
+const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setCommunityGlobalData, setStateScore}) => {
   const history = useHistory()
   const firestore = useFirestore()
   const [uidOfOtherUser, setUidOfOtherUser] = useState(null)
@@ -39,19 +39,19 @@ const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setStateScore}) 
     respect:"",
     communication:"",
   })
-  useEffect(()=>{
+  useEffect(async()=>{
     if(fangelConnectProvider && (fangelConnectProvider.dataFromCreator.uid !== userFromDB.uid)){
       setUidOfOtherUser(fangelConnectProvider.dataFromCreator.uid)
-    }else{
+    }else if(fangelConnectProvider && (fangelConnectProvider.dataFromJoinner.uid !== userFromDB.uid)){
       setUidOfOtherUser(fangelConnectProvider.dataFromJoinner.uid)
     }
-  },[])
+  },[firestore])
   
   const handleSubmitScore = () => {
     sendScoresFromFangelConnect(firestore, uidOfOtherUser, userFromDB.uid, scores)
     setStateScore(false)
+    setCommunityGlobalData(false)
     history.push(`/`)
-    // window.location.reload()
   }
   
   return (

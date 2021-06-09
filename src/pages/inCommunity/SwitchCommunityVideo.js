@@ -19,7 +19,7 @@ const SwitchCommunityVideo = () => {
     const location = useLocation()
     const history = useHistory()
     const firestore = useFirestore()
-    const { userFromDB, communityProvider, fangelConnectProvider }  = useContext(AppContext)
+    const { userFromDB, communityProvider, fangelConnectProvider, setCommunityGlobalData }  = useContext(AppContext)
     const [activeCommunity, setActiveCommunity] = useState(false)
     const match = useRouteMatch("/room/:idRoom")
     const idRoomRoute = match.params.idRoom
@@ -28,6 +28,7 @@ const SwitchCommunityVideo = () => {
     const [stateLocation, setStateLocation] = useState()
     const [stateContract, setStateContract] = useState(false)
     const [stateScore, setStateScore] = useState(null)
+    const [fangelConnectData, setFangelConnectData] = useState(null)
 
     useEffect(async ()=>{
         let communityData = data[0]
@@ -35,7 +36,9 @@ const SwitchCommunityVideo = () => {
             setStateScore(false)
             setStateLocation(location.state.origin)
             setStateContract(true)
-
+            setFangelConnectData(fangelConnectProvider? fangelConnectProvider: await firestore.collection("fangelConnect")
+            .doc(window.location.pathname.substr(-15))
+            .get().then(result => result.data()))
         }
         if(communityData){
             activeCommunityRef.doc(communityData.creatorUid)
@@ -78,7 +81,7 @@ const SwitchCommunityVideo = () => {
                 }
                 {stateScore &&
                     <ModalGeneral modalOpen={stateScore} modalIsOpen={handleModalClose}>
-                        <ScoreFangelConnect userFromDB={userFromDB} fangelConnectProvider={fangelConnectProvider? fangelConnectProvider: false} setStateScore={setStateScore}/>
+                        <ScoreFangelConnect userFromDB={userFromDB} setCommunityGlobalData={setCommunityGlobalData} fangelConnectProvider={fangelConnectData} setStateScore={setStateScore}/>
                     </ModalGeneral>
                 }
 
