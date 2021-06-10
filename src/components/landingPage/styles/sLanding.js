@@ -267,6 +267,7 @@ export const VideoContainer = styled.div`
     color: ${props => props.theme.colorWhite};
     display: block;
     width: 50%;
+    cursor: default;
   }
 
   .videoDiscover {
@@ -324,43 +325,3 @@ export const VideoContainer = styled.div`
     }
   }
 `
-
-export const CodeContainer = styled.div`
-  margin: 40px 0 0 0;
-  flex-direction: column;
-  align-items: center;
-
-  p {
-    margin: 0 0 15px 0;
-  }
-
-  h3 {
-    font-size: 1.2em;
-    font-weight: 600;
-    color: ${props => props.theme.colorbrandSolid};
-  }
-
-  a {
-    display: inline-block;
-    text-decoration: underline;
-    color: ${props => props.theme.colorbrandSolid};
-  }
-
-  ${props => props.desktop && css`
-    display: none;
-
-    @media(min-width:1200px) {
-      display: block;
-    }
-  `}
-
-  ${props => props.mobile && css`
-    display: flex;
-
-    @media(min-width:1200px) {
-      display: none;
-    }
-  `}
-`
-
-
