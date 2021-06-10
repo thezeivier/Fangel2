@@ -12,23 +12,23 @@ const CardScore = ({ hability, scores, setScores }) => {
     switch(hability){
       case "Tolerancia":
         localScores.tolerance = value
-        await setScores(localScores)
+        setScores(localScores)
         break;
       case "Empatía":
         localScores.empathy = value
-        await setScores(localScores)
+        setScores(localScores)
         break;
       case "Entusiasmo":
         localScores.enthusiasm = value
-        await setScores(localScores)
+        setScores(localScores)
         break;
       case "Comunicación":
         localScores.communication = value
-        await setScores(localScores)
+        setScores(localScores)
         break;
       case "Respeto":
         localScores.respect = value
-        await setScores(localScores)
+        setScores(localScores)
         break;
       default:
         console.log("Caso no listado");

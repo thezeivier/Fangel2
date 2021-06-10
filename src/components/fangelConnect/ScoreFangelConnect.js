@@ -55,6 +55,7 @@ const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setCommunityGlob
     }
   },[firestore])
   
+  // console.log(scores)
   const handleSubmitScore = () => {
     const to = scores.tolerance
     const em = scores.empathy
@@ -62,14 +63,16 @@ const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setCommunityGlob
     const re = scores.respect
     const co = scores.communication
 
+    console.log(scores)
     // console.log(to)
     // console.log(em)
     // console.log(en)
     // console.log(co)
     // console.log(re)
-    if(to && em && en && re && co){
-      // console.log("pasa")
+    if((scores?.tolerance) && (scores?.empathy) && (scores?.enthusiasm) && (scores?.respect) && (scores?.communication)){
+      console.log("pasa")
       sendScoresFromFangelConnect(firestore, uidOfOtherUser, userFromDB.uid, scores)
+      setIsScoreVoid(false)
       setStateScore(false)
       setCommunityGlobalData(false)
       history.push(`/`)
@@ -77,7 +80,6 @@ const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setCommunityGlob
       setIsScoreVoid(true)
     }
   }
-  
   return (
     <main>
       <Wrapper>
