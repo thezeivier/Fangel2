@@ -11,7 +11,7 @@ import { CoverPage, TitleStyledCover, TextStyledCover, ButtonsContainer,
          FangelPromotionContainer, CodeContainer, ListProductsContainer, VideoContainer } from './styles/sLanding'
 import { ReactComponent as FangelConnectSVG } from './../home/icons/fangelConnect.svg'
 import { ReactComponent as SpacesSVG } from './../home/icons/spaces.svg'
-import VideoWide from './images/videoWide.mp4'
+import VideoFangelPromo from './images/videoFangelPromo_2.mp4'
 import VideoDiscover from './images/videoDiscover.mp4'
 import SectionOneCreateConnexions from './images/sectionOne-createConnexions.jpg'
 
@@ -124,7 +124,7 @@ const LadingPage = () => {
           </DesktopGridLeft>
         </Wrapper>
         <VideoContainer>
-          <video className="videoWide" src={VideoWide} autoplay controls loop frameborder="0" webkitallowfullscreen mozallowfullscreen></video>
+          <video className="videoWide" src={VideoFangelPromo} autoplay="1" loop="1" muted="1" playsinline="1" frameborder="0" webkitallowfullscreen mozallowfullscreen preload="auto" draggable="true"></video>
         </VideoContainer>
         <Wrapper>
           <SectionContainer>
@@ -138,7 +138,7 @@ const LadingPage = () => {
         </Wrapper>
         <VideoContainer>
           <div className="backgroundVideo"></div>
-          <video className="videoDiscover" src={VideoDiscover} autoplay controls loop frameborder="0" webkitallowfullscreen mozallowfullscreen></video>
+          <video className="videoDiscover" src={VideoDiscover} autoplay="1" loop="1" muted="1" playsinline="1" frameborder="0" webkitallowfullscreen mozallowfullscreen preload="auto" draggable="true"></video>
           <h3>Descubre fangel</h3>
         </VideoContainer>
         <Wrapper>

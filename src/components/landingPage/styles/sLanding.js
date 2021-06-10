@@ -267,6 +267,7 @@ export const VideoContainer = styled.div`
     font-size: 38px;
     line-height: 53px;
     left: 20px;
+    color: ${props => props.theme.colorWhite};
   }
 
   .videoDiscover {
