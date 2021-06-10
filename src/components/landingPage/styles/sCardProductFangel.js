@@ -8,6 +8,7 @@ export const CardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: default;
 
   svg {
     width: 58px;

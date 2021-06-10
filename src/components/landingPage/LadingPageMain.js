@@ -8,7 +8,7 @@ import {createAdminCodes} from './algorithms/createAdminCodes'
 import { CoverPage, TitleStyledCover, TextStyledCover, ButtonsContainer,
          ButtonStyledCover, Container, SubtitleStyled, TextStyled,
          ButtonStyled, DesktopGridRight, DesktopGridLeft, SectionContainer,
-         FangelPromotionContainer, CodeContainer, ListProductsContainer, VideoContainer } from './styles/sLanding'
+         FangelPromotionContainer, ListProductsContainer, VideoContainer } from './styles/sLanding'
 import { ReactComponent as FangelConnectSVG } from './../home/icons/fangelConnect.svg'
 import { ReactComponent as SpacesSVG } from './../home/icons/spaces.svg'
 import { ReactComponent as LandingPageSVG } from './images/onlineMonochromatic.svg'
