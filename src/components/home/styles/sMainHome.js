@@ -37,7 +37,7 @@ export const AddCardContainer = styled.li`
     transition: all .2s;
     color: ${props => props.theme.colorWhite};
     font-style: normal;
-    font-weight: ${props => props.theme.weight.regular};
+    font-weight: ${props => props.theme.weight.semiMedium};
     font-size: 1.15em;
     line-height: 1.5em;
     text-align: center;

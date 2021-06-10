@@ -202,7 +202,7 @@ export const SectionContainer = styled.section`
   margin: 80px 0 40px 0;
 
   @media(min-width:1200px) {
-    margin: ${props => props.margin || '90px 0 0 0'};
+    margin: ${props => props.margin || '95px 0 0 0'};
   }
 `
 
@@ -240,7 +240,7 @@ export const DesktopGridLeft = styled.div`
 
   @media(min-width:1200px) {
     width: 1200px;
-    margin: 90px auto 0 auto;
+    margin: 95px auto 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 100px;
@@ -310,16 +310,16 @@ export const VideoContainer = styled.div`
     }
 
     h3 {
-      top: 50vh;
+      top: 48vh;
     }
 
     .backgroundVideo {
       height: 80vh;
-      top: 90px;
+      top: 95px;
     }
 
     .videoDiscover {
-      margin: 90px 0 0 0;
+      margin: 95px 0 0 0;
       border-radius: 0;
       height: 80vh;
     }
