@@ -7,28 +7,28 @@ import { ReactComponent as FaceSceptic } from './icons/faceSceptic.svg'
 
 const CardScore = ({ hability, scores, setScores }) => {
 
-  const changeScore = (value)=>{
-    const localScores = scores
+  const changeScore = async (value)=>{
+    const localScores = await scores
     switch(hability){
       case "Tolerancia":
         localScores.tolerance = value
-        setScores(localScores)
+        await setScores(localScores)
         break;
       case "Empatía":
         localScores.empathy = value
-        setScores(localScores)
+        await setScores(localScores)
         break;
       case "Entusiasmo":
         localScores.enthusiasm = value
-        setScores(localScores)
+        await setScores(localScores)
         break;
       case "Comunicación":
         localScores.communication = value
-        setScores(localScores)
+        await setScores(localScores)
         break;
       case "Respeto":
         localScores.respect = value
-        setScores(localScores)
+        await setScores(localScores)
         break;
       default:
         console.log("Caso no listado");
