@@ -25,7 +25,10 @@ export const CommentsContainer = styled.section`
     height: ${props => props.heightBox || '350px'};
     position: relative;
     z-index: 50;
-    padding: 0 10px;
+    margin: 0;
+    padding: 10px;
+    background: ${props => props.theme.colorCommetBox};
+    border-radius: 10px 10px 0 0;
   }
 
   @media(min-width:1200px) {
@@ -56,22 +59,5 @@ export const CommentsContainer = styled.section`
     &::-webkit-scrollbar-track {
       border-radius: 3px;  
     }
-  }
-`
-
-export const Transperent = styled.div`
-  position: absolute;
-  height: 50px;
-  width: 100%;
-  top: 0;
-  left: 0;
-/*   background: ${props => props.theme.colorShadowBox}; */
-  z-index: 100;
-
-  @media(min-width:1200px) {
-    height: inherit;
-    z-index: 1;
-    background: ${props => props.theme.colorCommetBox};
-    border-radius: 10px;
   }
 `

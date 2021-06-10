@@ -4,8 +4,9 @@ import EmbedVideo from './EmbedVideo'
 import CommentsBox from './CommentsBox'
 import InputComments from './InputComments'
 import ModalSettingsAdmin from './../../pages/inCommunity/ModalSettingsAdmin'
-import { ContainerResponsive, MainOnlyDesktop, ButtonConfiguration } from './styles/sMainVideo'
-import { ReactComponent as VideoSettingsSVG } from './../general/icons/videoSettings.svg'
+/* import MatchInterest from './MatchInterest' */
+import { ContainerResponsive, MainOnlyDesktop } from './styles/sMainVideo'
+/* import { ReactComponent as VideoSettingsSVG } from './../general/icons/videoSettings.svg' */
 import { AppContext } from '../../App'
 import firebase from 'firebase/app'
 import { GetDataFromCollection } from './algorithms/GetDataFromCollection'
@@ -31,6 +32,7 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
       <EmbedVideo communityData={communityData} isAdmin={isAdmin} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace} />
       <Wrapper height="100%">
         <ContainerResponsive>
+          {/* <MatchInterest /> */}
           <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef} />
           <InputComments userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} /> 
         </ContainerResponsive>
