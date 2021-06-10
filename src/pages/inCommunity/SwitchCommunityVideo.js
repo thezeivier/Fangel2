@@ -29,7 +29,7 @@ const SwitchCommunityVideo = () => {
     const [stateContract, setStateContract] = useState(false)
     const [stateScore, setStateScore] = useState(null)
     const [fangelConnectData, setFangelConnectData] = useState(null)
-
+    
     useEffect(async ()=>{
         let communityData = data[0]
         if(location.state && location.state.origin){
@@ -38,7 +38,8 @@ const SwitchCommunityVideo = () => {
             setStateContract(true)
             setFangelConnectData(fangelConnectProvider? fangelConnectProvider: await firestore.collection("fangelConnect")
             .doc(window.location.pathname.substr(-15))
-            .get().then(result => result.data()))
+            .get().then(result => result.data())
+            )
         }
         if(communityData){
             activeCommunityRef.doc(communityData.creatorUid)
@@ -70,6 +71,7 @@ const SwitchCommunityVideo = () => {
             history.push(`/`)
         }
     }
+
     return (
         <>
             <Provider value={activeCommunityValue}>

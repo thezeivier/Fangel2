@@ -32,6 +32,7 @@ const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setCommunityGlob
   const history = useHistory()
   const firestore = useFirestore()
   const [uidOfOtherUser, setUidOfOtherUser] = useState(null)
+  const [nameOfOtherUser, setNameOfOtherUser] = useState(null)
   const [scores, setScores] = useState({
     tolerance: "",
     empathy: "",
@@ -41,9 +42,14 @@ const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setCommunityGlob
   })
   useEffect(async()=>{
     if(fangelConnectProvider && (fangelConnectProvider.dataFromCreator.uid !== userFromDB.uid)){
-      setUidOfOtherUser(fangelConnectProvider.dataFromCreator.uid)
+      const creator = fangelConnectProvider.dataFromCreator
+      setUidOfOtherUser(creator.uid)
+      setNameOfOtherUser(creator.name? `${creator.name.firstName} ${creator.name.lastName}`: creator.username)
+      
     }else if(fangelConnectProvider && (fangelConnectProvider.dataFromJoinner.uid !== userFromDB.uid)){
-      setUidOfOtherUser(fangelConnectProvider.dataFromJoinner.uid)
+      const joinner = fangelConnectProvider.dataFromJoinner
+      setUidOfOtherUser(joinner.uid)
+      setNameOfOtherUser(joinner.name? `${joinner.name.firstName} ${joinner.name.lastName}`: joinner.username)
     }
   },[firestore])
   
@@ -58,7 +64,7 @@ const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setCommunityGlob
     <main>
       <Wrapper>
         <ContainerFCGeneral withPosition>
-          <TextBodyStyled>Califica tu experiencia con Userfangel</TextBodyStyled>
+          <TextBodyStyled>Califica tu experiencia con {nameOfOtherUser}</TextBodyStyled>
           <div>
             <TextBody top24>Esto nos ayudará a conseguirte mejores conexiones. No te tomará más de 1 minuto.</TextBody>
           </div>
