@@ -96,7 +96,7 @@ export const PrimaryTitle = styled.h1`
 
 export const SecondaryTitle = styled.h2`
   font-style: normal;
-  font-weight: ${props => props.theme.weight.semiMedium};
+  font-weight: ${props => props.theme.weight.medium};
   font-size: 1.75em;
   line-height: 1.5em;
   cursor: default;

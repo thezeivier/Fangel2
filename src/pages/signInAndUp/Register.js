@@ -89,7 +89,7 @@ const Register = () => {
             <ExternalsWrapper>
               <ContainerDesktop>
                 <SubtitleStyled>Regístrate para empezar</SubtitleStyled>
-                <TextStyled>A unirte o crear espacios sociales</TextStyled>
+                <TextStyled>A tener conexiones duraderas con nuevas personas</TextStyled>
                 <ErrorAlert>
                   {emailRegistered === false? "Ya existe una cuenta con este correo*": ""}
                 </ErrorAlert>
@@ -150,10 +150,10 @@ const Register = () => {
                   <ErrorAlert>
                     {errors.code? errors.code.message: "" || codeBValidated === false? "Código inválido o expirado*":""}
                   </ErrorAlert> */}
-
-                  <Description>
+ {/*                  <Description>
                     Usa el codigo que te proporcionó la persona que te invito a su comunidad
-                  </Description>
+                  </Description> */}
+                  
                   <Contract>
                     Al registrarte estas de acuerdo con los <Link to={"/terms-conditions"}>Términos y Condiciones</Link> y <Link to={"/politics-privacy"}>Políticas de privacidad.</Link>
                   </Contract>

@@ -11,7 +11,9 @@ import { CoverPage, TitleStyledCover, TextStyledCover, ButtonsContainer,
          FangelPromotionContainer, CodeContainer, ListProductsContainer, VideoContainer } from './styles/sLanding'
 import { ReactComponent as FangelConnectSVG } from './../home/icons/fangelConnect.svg'
 import { ReactComponent as SpacesSVG } from './../home/icons/spaces.svg'
-import VideoWide from './images/videoWide.mp4'
+import { ReactComponent as LandingPageSVG } from './images/onlineMonochromatic.svg'
+
+import VideoFangelPromo from './images/videoFangelPromo_2.mp4'
 import VideoDiscover from './images/videoDiscover.mp4'
 import SectionOneCreateConnexions from './images/sectionOne-createConnexions.jpg'
 
@@ -50,13 +52,10 @@ const LadingPage = () => {
 
             {/* Cover page */}
             <Container>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/fangelv2-300300.appspot.com/o/landingPage%2Fundraw_video_call_kxyp.svg?alt=media&token=3588a07e-b292-4822-8e3c-b22a93fd3d7d"
-                alt="Comundidades en fangel"
-              />
+              <LandingPageSVG />
               <TitleStyledCover standar>Conexiones efectivas y duraderas </TitleStyledCover>
               <TextStyledCover standar>
-                Amplia tus fronteras culturales y profesionales construyendo relaciones duraderas
+                Amplia tus fronteras culturales y profesionales construyendo relaciones duraderas.
               </TextStyledCover>
               <ButtonsContainer>
                 <Link to={"/register"}>
@@ -81,7 +80,7 @@ const LadingPage = () => {
                 Fangel es un lugar donde podrás ampliar tus fronteras culturales y profesionales, construyendo relaciones efectivas y duraderas con amigos esperando a ser descubiertos.
               </TextStyled>
               <TextStyled secondParagraph>
-                Talvez sea un nuevo socio de negocios, tu próximo compañero trabajo, o tu nuevo ángel de la guarda que te ayudará en un momento crítico.
+                Talvez sea un nuevo socio de negocios, tu próximo compañero de trabajo, o tu nuevo ángel de la guarda que te ayudará en un momento crítico.
               </TextStyled>
             </SectionContainer>
             <FangelPromotionContainer>
@@ -109,8 +108,10 @@ const LadingPage = () => {
               }
             </ListProductsContainer>
           </SectionContainer>
-          <DesktopGridLeft>
-            <div className="left">
+        </Wrapper>
+        <DesktopGridLeft>
+          <Wrapper width="auto">
+            <SectionContainer margin="0">
               <SubtitleStyled>
                 Amplia tus fronteras
               </SubtitleStyled>
@@ -118,18 +119,18 @@ const LadingPage = () => {
                 Amplia tu red de amigos fuera de tu ciudad o país. Descubrirás un mundo diferente al de tu entorno laboral y cultural.
               </TextStyled>
               <TextStyled secondParagraph>
-                Piensa en que talvez la próxima persona con la que establescas una conexión sea tu nuevo socio, compañero de trabajo o mejor amigo.
+                Piensa en que talvez la próxima persona con la que establescas una conexión sea tu nuevo socio, compañero de trabajo o mejor amigo(a).
               </TextStyled>
-            </div>
-          </DesktopGridLeft>
-        </Wrapper>
-        <VideoContainer>
-          <video className="videoWide" src={VideoWide} autoplay controls loop frameborder="0" webkitallowfullscreen mozallowfullscreen></video>
-        </VideoContainer>
+            </SectionContainer>
+          </Wrapper>
+          <VideoContainer>
+            <video className="videoWide" src={VideoFangelPromo} autoplay="1" loop="1" muted="1" playsinline="1" frameborder="0" webkitallowfullscreen mozallowfullscreen preload="auto" draggable="true"></video>
+          </VideoContainer>
+        </DesktopGridLeft>
         <Wrapper>
           <SectionContainer>
             <SubtitleStyled>
-              ¿Qué esperas?
+              ¡Qué esperas!
             </SubtitleStyled>
             <TextStyled>
               La vida empieza con un hola.
@@ -138,12 +139,12 @@ const LadingPage = () => {
         </Wrapper>
         <VideoContainer>
           <div className="backgroundVideo"></div>
-          <video className="videoDiscover" src={VideoDiscover} autoplay controls loop frameborder="0" webkitallowfullscreen mozallowfullscreen></video>
+          <video className="videoDiscover" src={VideoDiscover} autoplay="1" loop="1" muted="1" playsinline="1" frameborder="0" webkitallowfullscreen mozallowfullscreen preload="auto" draggable="true"></video>
           <h3>Descubre fangel</h3>
         </VideoContainer>
         <Wrapper>
           <Link to={"/register"}>
-            <ButtonStyled primary>¡Regístrate!</ButtonStyled>
+            <ButtonStyled primary>Regístrate</ButtonStyled>
           </Link>
         </Wrapper>
       </main>

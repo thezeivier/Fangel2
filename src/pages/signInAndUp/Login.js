@@ -68,7 +68,7 @@ const Login = () => {
           <ExternalsWrapper>
             <ContainerDesktop>
               <SubtitleStyled>¡Bienvenido de nuevo!</SubtitleStyled>
-              <TextStyled>Inicia Sesión para unirte o crear espacios sociales</TextStyled>
+              <TextStyled>Inicia Sesión para crear relaciones efectivas y duraderas</TextStyled>
               <Form center onSubmit={handleSubmit(onSubmit)}>
                 <InputStyled type="text" placeholder="Correo electrónico" name="email" ref={register(emailFValidator)} />
                 <ErrorAlert>

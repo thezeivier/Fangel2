@@ -21,7 +21,7 @@ const MainFangelConnect = () => {
       <Wrapper>
         <TitleStyled bottom>Fangel Connect</TitleStyled>
         <TextBody bottom20>
-          Fangel Connect te impulsa a construir el networking que necesitas.
+          Fangel Connect te impulsa a establecer conexiones con otras personas.
         </TextBody>
         <OnlyDesktop>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -36,7 +36,7 @@ const MainFangelConnect = () => {
               </FieldSet>
             </div>
             <TextBody top24>
-              Cuando una persona o varias personas coincidan con tus mismos gustos y preferencias ingresaran a un espacio social.
+              Cuando una persona o varias personas coincidan con tus mismos gustos y preferencias, todos ingresarán a un espacio social.
             </TextBody>
             <ButtonStyled primary type="submit" onClick={modalOpen}>Iniciar Connect</ButtonStyled>
           </form>
