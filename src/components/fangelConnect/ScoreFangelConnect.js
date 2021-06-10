@@ -61,7 +61,14 @@ const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setCommunityGlob
     const en = scores.enthusiasm
     const re = scores.respect
     const co = scores.communication
+
+    // console.log(to)
+    // console.log(em)
+    // console.log(en)
+    // console.log(co)
+    // console.log(re)
     if(to && em && en && re && co){
+      // console.log("pasa")
       sendScoresFromFangelConnect(firestore, uidOfOtherUser, userFromDB.uid, scores)
       setStateScore(false)
       setCommunityGlobalData(false)
