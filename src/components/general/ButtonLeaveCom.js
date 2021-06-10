@@ -15,7 +15,6 @@ const ButtonLeaveCom = ({ communityProvider, setCommunityGlobalData}) => {
       setSubSpaceState(true)
     }
   },[])
-  console.log(stateScore)
   const handleClickToCommunity = () => {
     communityProvider && communityProvider.setCommunityGlobalData(false)
     // setStateScore(true)
