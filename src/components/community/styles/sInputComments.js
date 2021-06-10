@@ -4,20 +4,23 @@ import { Input } from './../../../themes/externalRecyclableStyles'
 export const InputContainer = styled.div`
   display: flex;
   align-items: center;
-  margin: 10px 0;
+  padding: 10px 0;
   flex: 0 0 auto;
   position: relative;
   z-index: 1000;
 
   @media(min-width:768px) {
-    margin: 10px 0 20px 0;
-  }
-
-  @media(min-width:768px) {
-    margin: 10px 0 15px 0;
+    padding: 0 0 15px 0;
   }
 
   @media(min-width:1200px) {
+    padding: 10px 0;
+  }
+  
+  @media(min-width:1200px) {
+    background: ${props => props.theme.colorCommetBox};
+    border-radius: 0 0 10px 10px;
+
     .microphone,
     .cameraVideo,
     .sendCommentsSVG {
@@ -38,16 +41,8 @@ export const SvgsContainer = styled.div`
     fill: ${props => props.theme.textColor};
   }
 
-/*   .microphone {
-    margin: 0 5px 0 0;
-  } */
-
   @media(min-width:768px) {
     margin: 0 10px 0 0;
-
-/*     .microphone {
-      margin: 0 10px 0 0;
-    } */
   }
 
   @media(min-width:1200px) {

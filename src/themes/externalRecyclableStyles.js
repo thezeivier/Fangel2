@@ -100,6 +100,7 @@ export const SecondaryTitle = styled.h2`
   font-size: 1.75em;
   line-height: 1.5em;
   cursor: default;
+  letter-spacing: -.05em;
 
   @media(min-width: 1100px){
     font-size: 34px;

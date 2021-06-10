@@ -16,19 +16,19 @@ const CardScore = ({ hability, scores, setScores }) => {
         break;
       case "Empatía":
         localScores.empathy = value
-        setScores(localScores)
+        await setScores(localScores)
         break;
       case "Entusiasmo":
         localScores.enthusiasm = value
-        setScores(localScores)
+        await setScores(localScores)
         break;
       case "Comunicación":
         localScores.communication = value
-        setScores(localScores)
+        await setScores(localScores)
         break;
       case "Respeto":
         localScores.respect = value
-        setScores(localScores)
+        await setScores(localScores)
         break;
       default:
         console.log("Caso no listado");
@@ -41,20 +41,20 @@ const CardScore = ({ hability, scores, setScores }) => {
         <leyend>{hability}</leyend>
           <div>
             <label htmlFor={`faceAnnoyed-${hability}`} >
-              <input type="radio" id={`faceAnnoyed-${hability}`} name={hability} value="annoyed" />
-              <FaceAnnoyedSVG onClick={()=>changeScore(1)} className="annoyed" />
+              <input type="radio" id={`faceAnnoyed-${hability}`} name={hability} value="annoyed" onClick={()=>changeScore(1)}/>
+              <FaceAnnoyedSVG className="annoyed" />
             </label>
             <label htmlFor={`faceSad-${hability}`}>
-              <input type="radio" id={`faceSad-${hability}`} name={hability} value="sad" />
-              <FaceSadSVG onClick={()=>changeScore(2)} className="sad" />
+              <input type="radio" id={`faceSad-${hability}`} name={hability} value="sad" onClick={()=>changeScore(2)}/>
+              <FaceSadSVG className="sad" />
             </label>
             <label htmlFor={`faceSceptic-${hability}`}>
-              <input type="radio" id={`faceSceptic-${hability}`} name={hability} value="sceptic" />
-              <FaceSceptic onClick={()=>changeScore(3)} className="sceptic" />
+              <input type="radio" id={`faceSceptic-${hability}`} name={hability} value="sceptic" onClick={()=>changeScore(3)}/>
+              <FaceSceptic className="sceptic" />
             </label>
             <label htmlFor={`faceHappy-${hability}`}>
-              <input type="radio" id={`faceHappy-${hability}`} name={hability} value="happy" />
-              <FaceHappySVG onClick={()=>changeScore(4)} className="happy" />
+              <input type="radio" id={`faceHappy-${hability}`} name={hability} value="happy" onClick={()=>changeScore(4)}/>
+              <FaceHappySVG className="happy" />
             </label>
           </div>
       </CardContainer>

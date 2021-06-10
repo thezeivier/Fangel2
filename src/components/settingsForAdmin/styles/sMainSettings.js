@@ -9,7 +9,7 @@ export const DisplayContainer = styled.div`
 /*     display: grid;
     grid-template-columns: 51% 1fr;
     column-gap: calc(7% + 40px); */
-    margin: 100px 0 0 0;
+    margin: 70px 0 0 0;
   }
 `
 
