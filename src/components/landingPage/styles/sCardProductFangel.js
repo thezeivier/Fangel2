@@ -35,4 +35,22 @@ export const CardContainer = styled.div`
     fill: #56CCF2;
     color: #56CCF2;
   }
+
+  @media(min-width:768px) {
+    height: 290px;
+  }
+
+  @media(min-width:1024px) {
+    svg {
+      margin: 0 0 14px 0;
+    }
+
+    h3 {
+      margin: 0 0 24px 0;
+    }
+
+    p {
+      line-height: 1.55em;
+    }
+  }
 `

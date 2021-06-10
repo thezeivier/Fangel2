@@ -28,7 +28,7 @@ export const AddCardContainer = styled.li`
   svg {
     transition: all .2s;
     will-change: transform;
-    fill: ${props => props.theme.textColor};
+    fill: ${props => props.theme.colorWhite};
     width: 38px;
     margin: 0 0 14px 0;
   }
@@ -47,7 +47,6 @@ export const AddCardContainer = styled.li`
     background: ${props => props.colorhover};
 
     svg {
-      fill: ${props => props.theme.colorbrandSolid};
       transform: scale(1.14);
     }
   }

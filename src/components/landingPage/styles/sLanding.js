@@ -23,14 +23,14 @@ export const CoverPage = styled.div`
   max-height: 100vh;
   background-position-x: center;
 
-  img {
+  svg {
     display: none;
   }
 
   @media(min-width:1200px) {
     min-height: 100vh;
 
-    img {
+    svg {
       display: block;
       position: absolute;
       width: 450px;
@@ -83,6 +83,8 @@ export const TitleStyledCover = styled(PrimaryTitle) `
     margin: 0 0 20px 0;
     text-align: start;
     font-size: 3.021em;
+    line-height: 1.37em;
+    width: 50%;
   }
 `
 
@@ -151,31 +153,20 @@ export const FangelPromotionContainer = styled.div`
 
   @media(min-width:768px) {
     img {
-      width: 54%;
-    }
-  }
-
-  @media(min-width:1024px) {
-    img {
-      width: 34%;
+      width: 65%;
     }
   }
 
   @media(min-width:1200px) {
-    margin: 60px 0 0 0;
-
     img {
-      width: 61%;
+      width: 100%;
+      margin: 90px 0 0 0;
     }
   }
 `
 
 export const SubtitleStyled = styled(SecondaryTitle) `
   margin: 0 0 30px 0;
-
-  @media(min-width:768px) {
-    margin: 0 0 35px 0;
-  }
 `
 
 export const TextStyled = styled(TextBody) `
@@ -209,18 +200,21 @@ export const ButtonStyled = styled(Button) `
 
 export const SectionContainer = styled.section`
   margin: 80px 0 40px 0;
+
+  @media(min-width:1200px) {
+    margin: ${props => props.margin || '90px 0 0 0'};
+  }
 `
 
 /* Desktop */
 
 export const DesktopGridRight = styled.section`
   display: block;
-  margin: 80px 0 40px 0;
 
   @media(min-width:1200px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 100px;
+    column-gap: 100px;
   }
 `
 
@@ -228,25 +222,28 @@ export const ListProductsContainer = styled.ul`
   li:nth-child(1) {
     margin: 0 0 30px 0;
   }
+
+  @media(min-width:768px) {
+    margin: 35px 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+  }
+
+  @media(min-width:1024px) {
+    column-gap: 80px;
+  }
 `
 
-export const DesktopGridLeft = styled.section`
-  display: block;
-  margin: 80px 0 40px 0;
+export const DesktopGridLeft = styled.div`
+  display: initial;
 
   @media(min-width:1200px) {
+    width: 1200px;
+    margin: 90px auto 0 auto;
     display: grid;
-    grid-template-areas: "left right";
     grid-template-columns: 1fr 1fr;
-    gap: 100px;
-
-    .left {
-      grid-area: right;
-    }
-
-    .right {
-      grid-area: left;
-    }
+    column-gap: 100px;
   }
 `
 
@@ -262,12 +259,14 @@ export const VideoContainer = styled.div`
 
   h3 {
     position: absolute;
-    top: 38%;
+    top: 28vh;
     font-weight: ${props => props.theme.weight.medium};
-    font-size: 38px;
-    line-height: 53px;
+    font-size: 2.2em;
+    line-height: 1.5em;
     left: 20px;
     color: ${props => props.theme.colorWhite};
+    display: block;
+    width: 50%;
   }
 
   .videoDiscover {
@@ -283,6 +282,47 @@ export const VideoContainer = styled.div`
     background: #00000054;
   }
 
+
+  @media(min-width:768px) {
+    h3 {
+      font-size: 3.2em;
+      left: 5%;
+      top: 31vh;
+    }
+  }
+
+  @media(min-width:1024px) {
+    video {
+      height: 61vh;
+    }
+
+    .videoDiscover {
+      height: 70vh;
+    }
+  }
+
+  @media(min-width:1200px) {
+
+    video {
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    h3 {
+      top: 50vh;
+    }
+
+    .backgroundVideo {
+      height: 80vh;
+      top: 90px;
+    }
+
+    .videoDiscover {
+      margin: 90px 0 0 0;
+      border-radius: 0;
+      height: 80vh;
+    }
+  }
 `
 
 export const CodeContainer = styled.div`

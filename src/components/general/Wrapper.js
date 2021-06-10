@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const Container = styled.div`
   padding: 0 20px;
@@ -20,13 +20,13 @@ const Container = styled.div`
 
   @media(min-width:1200px) {
     padding: 0;
-    width: 1200px;
+    width: ${props => props.width || '1200px'};
     margin: 0 auto;
   }
 `
 
 const Wrapper = (props) => (
-  <Container display={props.display} height={props.height} className="mainWrapper">
+  <Container display={props.display} height={props.height} width={props.width} className="mainWrapper">
     {props.children}
   </Container>
 )
