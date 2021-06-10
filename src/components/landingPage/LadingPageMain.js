@@ -55,7 +55,7 @@ const LadingPage = () => {
               <LandingPageSVG />
               <TitleStyledCover standar>Conexiones efectivas y duraderas </TitleStyledCover>
               <TextStyledCover standar>
-                Amplia tus fronteras culturales y profesionales construyendo relaciones duraderas.
+                Ampía tus fronteras culturales y profesionales construyendo relaciones duraderas.
               </TextStyledCover>
               <ButtonsContainer>
                 <Link to={"/register"}>
@@ -113,10 +113,10 @@ const LadingPage = () => {
           <Wrapper width="auto">
             <SectionContainer margin="0">
               <SubtitleStyled>
-                Amplia tus fronteras
+                Amplía tus fronteras
               </SubtitleStyled>
               <TextStyled>
-                Amplia tu red de amigos fuera de tu ciudad o país. Descubrirás un mundo diferente al de tu entorno laboral y cultural.
+                Amplía tu red de amigos fuera de tu ciudad o país. Descubrirás un mundo diferente al de tu entorno laboral y cultural.
               </TextStyled>
               <TextStyled secondParagraph>
                 Piensa en que talvez la próxima persona con la que establescas una conexión sea tu nuevo socio, compañero de trabajo o mejor amigo(a).
