@@ -142,7 +142,7 @@ const LadingPage = () => {
           <h3>Descubre fangel</h3>
         </VideoContainer>
         <Wrapper>
-          <Link>
+          <Link to={"/register"}>
             <ButtonStyled primary>¡Regístrate!</ButtonStyled>
           </Link>
         </Wrapper>
