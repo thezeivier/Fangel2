@@ -7,6 +7,7 @@ import { TextBodyStyled } from './styles/sSearchPeople'
 import { TextBody } from './../../themes/externalRecyclableStyles'
 import { ContainerFCGeneral, ContainerCards, ButtonsContainerStyled } from './styles/sContractFangelConnect'
 import { ButtonStyled } from './../dashboard/styles/sModalCloseSpace'
+import { ErrorAlert } from '../../pages/signInAndUp/styles/sGlobalForm'
 import { sendScoresFromFangelConnect } from './algorithms/sendScoresFromFangelConnect'
 
 const listCardScore = [
@@ -33,12 +34,13 @@ const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setCommunityGlob
   const firestore = useFirestore()
   const [uidOfOtherUser, setUidOfOtherUser] = useState(null)
   const [nameOfOtherUser, setNameOfOtherUser] = useState(null)
+  const [isScoreVoid, setIsScoreVoid] = useState(null)
   const [scores, setScores] = useState({
-    tolerance: "",
-    empathy: "",
-    enthusiasm:"",
-    respect:"",
-    communication:"",
+    tolerance: null,
+    empathy: null,
+    enthusiasm: null,
+    respect: null,
+    communication: null,
   })
   useEffect(async()=>{
     if(fangelConnectProvider && (fangelConnectProvider.dataFromCreator.uid !== userFromDB.uid)){
@@ -54,10 +56,19 @@ const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setCommunityGlob
   },[firestore])
   
   const handleSubmitScore = () => {
-    sendScoresFromFangelConnect(firestore, uidOfOtherUser, userFromDB.uid, scores)
-    setStateScore(false)
-    setCommunityGlobalData(false)
-    history.push(`/`)
+    const to = scores.tolerance
+    const em = scores.empathy
+    const en = scores.enthusiasm
+    const re = scores.respect
+    const co = scores.communication
+    if(to && em && en && re && co){
+      sendScoresFromFangelConnect(firestore, uidOfOtherUser, userFromDB.uid, scores)
+      setStateScore(false)
+      setCommunityGlobalData(false)
+      history.push(`/`)
+    }else{
+      setIsScoreVoid(true)
+    }
   }
   
   return (
@@ -76,6 +87,10 @@ const ScoreFangelConnect = ({userFromDB, fangelConnectProvider, setCommunityGlob
             </ul>
           </ContainerCards>
           <ButtonsContainerStyled>
+          {
+            isScoreVoid && 
+              <ErrorAlert>*Por favor termina de evaluar al usuario</ErrorAlert>
+          }
             <ButtonStyled secondary onClick={handleSubmitScore}>Terminé</ButtonStyled>
           </ButtonsContainerStyled>
         </ContainerFCGeneral>
