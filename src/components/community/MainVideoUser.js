@@ -27,12 +27,15 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
   
   if(status === "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>
+  const {creatorPreferences, joinnerPreferences, spaceId} = fangelConnectGlobalDataProvider.fangelConnectGlobalData
+  
+  const preferencesMatch = creatorPreferences.filter((creatorItem, index) => joinnerPreferences.includes(creatorItem))
   return (
     <MainOnlyDesktop>
       <EmbedVideo communityData={communityData} isAdmin={isAdmin} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace} />
       <Wrapper height="100%">
         <ContainerResponsive>
-          <MatchInterest fangelConnectGlobalData={fangelConnectGlobalDataProvider.fangelConnectGlobalData}/>
+          <MatchInterest preferencesMatch={preferencesMatch} spaceId={spaceId}/>
           <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef} />
           <InputComments userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} /> 
         </ContainerResponsive>
