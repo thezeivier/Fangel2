@@ -4,7 +4,7 @@ import EmbedVideo from './EmbedVideo'
 import CommentsBox from './CommentsBox'
 import InputComments from './InputComments'
 import ModalSettingsAdmin from './../../pages/inCommunity/ModalSettingsAdmin'
-/* import MatchInterest from './MatchInterest' */
+import MatchInterest from './MatchInterest'
 import { ContainerResponsive, MainOnlyDesktop } from './styles/sMainVideo'
 /* import { ReactComponent as VideoSettingsSVG } from './../general/icons/videoSettings.svg' */
 import { AppContext } from '../../App'
@@ -32,7 +32,7 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
       <EmbedVideo communityData={communityData} isAdmin={isAdmin} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace} />
       <Wrapper height="100%">
         <ContainerResponsive>
-          {/* <MatchInterest /> */}
+          <MatchInterest />
           <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef} />
           <InputComments userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} /> 
         </ContainerResponsive>
