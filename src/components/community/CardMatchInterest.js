@@ -1,11 +1,11 @@
 import React from 'react';
 import { BoxContainer } from './styles/sMatchInterest'
 
-const CardMatchInterest = () => {
+const CardMatchInterest = ({interest}) => {
   return (
     <li>
       <BoxContainer>
-        <span>Música</span>
+        <span>{interest}</span>
       </BoxContainer>
     </li>
   );

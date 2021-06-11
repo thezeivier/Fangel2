@@ -4,7 +4,7 @@ import EmbedVideo from './EmbedVideo'
 import CommentsBox from './CommentsBox'
 import InputComments from './InputComments'
 import ModalSettingsAdmin from './../../pages/inCommunity/ModalSettingsAdmin'
-/* import MatchInterest from './MatchInterest' */
+import MatchInterest from './MatchInterest'
 import { ContainerResponsive, MainOnlyDesktop } from './styles/sMainVideo'
 /* import { ReactComponent as VideoSettingsSVG } from './../general/icons/videoSettings.svg' */
 import { AppContext } from '../../App'
@@ -13,7 +13,7 @@ import { GetDataFromCollection } from './algorithms/GetDataFromCollection'
 
 const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, isSubSpace, communityDataSubSpace }) => {
   const lastMsgRef = useRef()
-  const { userFromDB, authState } = useContext(AppContext)
+  const { userFromDB, authState, fangelConnectGlobalDataProvider } = useContext(AppContext)
   const {data, status, error} = !isSubSpace ? GetDataFromCollection(communityData.roomName, 'chatroom', 'messages') : 
     GetDataFromCollection(communityData.roomName, 'chatroom', 'messages', 'subMessages' , communityDataSubSpace.id, isSubSpace)
   const messageRef = !isSubSpace ? firebase.firestore().collection('chatroom').doc(communityData.roomName).collection('messages') : 
@@ -32,7 +32,7 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
       <EmbedVideo communityData={communityData} isAdmin={isAdmin} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace} />
       <Wrapper height="100%">
         <ContainerResponsive>
-          {/* <MatchInterest /> */}
+          <MatchInterest fangelConnectGlobalData={fangelConnectGlobalDataProvider.fangelConnectGlobalData}/>
           <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef} />
           <InputComments userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} /> 
         </ContainerResponsive>
