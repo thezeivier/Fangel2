@@ -19,7 +19,7 @@ const SwitchCommunityVideo = () => {
     const location = useLocation()
     const history = useHistory()
     const firestore = useFirestore()
-    const { userFromDB, communityProvider, fangelConnectProvider, setCommunityGlobalData }  = useContext(AppContext)
+    const { userFromDB, communityProvider, fangelConnectProvider, fangelConnectGlobalDataProvider, setCommunityGlobalData }  = useContext(AppContext)
     const [activeCommunity, setActiveCommunity] = useState(false)
     const match = useRouteMatch("/room/:idRoom")
     const idRoomRoute = match.params.idRoom
@@ -52,6 +52,10 @@ const SwitchCommunityVideo = () => {
     
     if(status) return <p>Pending...</p>
     if(error) return null
+    
+    if(fangelConnectData) {
+        fangelConnectGlobalDataProvider.setFangelConnectGlobalData(fangelConnectData)
+    }
     
     let communityData = data[0]
     const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)

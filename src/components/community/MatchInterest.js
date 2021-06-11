@@ -2,12 +2,13 @@ import React from 'react';
 import CardMatchInterest from './CardMatchInterest';
 import { ContainerGeneral, BoxInterestContainer } from './styles/sMatchInterest'
 
-const MatchInterest = () => {
+const MatchInterest = ({fangelConnectGlobalData}) => {
+  const  { joinnerPreferences, spaceId } = fangelConnectGlobalData 
   return (
     <ContainerGeneral>
-      <p>Intereses en comun:</p>
+      <p>Intereses en común:</p>
       <BoxInterestContainer>
-        <CardMatchInterest />
+        {joinnerPreferences.map(interest => <CardMatchInterest key={`${spaceId}-${interest}`} interest={interest}/>)}
       </BoxInterestContainer>
     </ContainerGeneral>
   );
