@@ -55,7 +55,7 @@ const LadingPage = () => {
               <LandingPageSVG />
               <TitleStyledCover standar>Conexiones efectivas y duraderas </TitleStyledCover>
               <TextStyledCover standar>
-                Ampía tus fronteras culturales y profesionales construyendo relaciones duraderas.
+                Amplía tus horizontes culturales y profesionales construyendo relaciones duraderas.
               </TextStyledCover>
               <ButtonsContainer>
                 <Link to={"/register"}>
