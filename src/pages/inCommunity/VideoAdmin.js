@@ -8,7 +8,7 @@ import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsA
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
-const VideoAdmin = ({communityData, isAdmin, communityDataSubSpace, isSubSpace}) => {
+const VideoAdmin = ({communityData, isAdmin, communityDataSubSpace, isSubSpace, fangelConnectData}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openMoldal = () => {
     setModalIsOpen(true)
@@ -38,7 +38,8 @@ const VideoAdmin = ({communityData, isAdmin, communityDataSubSpace, isSubSpace})
             open={openMoldal} 
             isAdmin={isAdmin} 
             isSubSpace={isSubSpace} 
-            communityDataSubSpace={communityDataSubSpace}/>
+            communityDataSubSpace={communityDataSubSpace}
+            fangelConnectData={fangelConnectData}/>
           {/* Solo para desktop */}
           <MainSettingsAdmin 
             communityData={communityData}

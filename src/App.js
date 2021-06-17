@@ -44,9 +44,7 @@ function App() {
   const firebase = useFirebaseApp()
   const [loading, setLoading] = useState(true)
   const [communityGlobalData, setCommunityGlobalData] = useState(false)
-  const [fangelConnectGlobalData, setFangelConnectGlobalData] = useState(null)
   const communityProvider = useMemo(() => ({communityGlobalData, setCommunityGlobalData}), [communityGlobalData, setCommunityGlobalData])
-  const fangelConnectGlobalDataProvider = useMemo(() => ({fangelConnectGlobalData, setFangelConnectGlobalData}), [fangelConnectGlobalData, setFangelConnectGlobalData])
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
   const [userFromDB, setUserFromDB] = useState(false)
@@ -114,7 +112,6 @@ function App() {
     communityProvider,
     setFangelConnectProvider,
     fangelConnectProvider,
-    fangelConnectGlobalDataProvider,
     videoCall,
     setCommunityGlobalData,
   }

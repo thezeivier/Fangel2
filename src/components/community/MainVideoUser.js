@@ -11,9 +11,9 @@ import { AppContext } from '../../App'
 import firebase from 'firebase/app'
 import { GetDataFromCollection } from './algorithms/GetDataFromCollection'
 
-const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, isSubSpace, communityDataSubSpace }) => {
+const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, isSubSpace, communityDataSubSpace, fangelConnectData }) => {
   const lastMsgRef = useRef()
-  const { userFromDB, authState, fangelConnectGlobalDataProvider } = useContext(AppContext)
+  const { userFromDB, authState } = useContext(AppContext)
   const {data, status, error} = !isSubSpace ? GetDataFromCollection(communityData.roomName, 'chatroom', 'messages') : 
     GetDataFromCollection(communityData.roomName, 'chatroom', 'messages', 'subMessages' , communityDataSubSpace.id, isSubSpace)
   const messageRef = !isSubSpace ? firebase.firestore().collection('chatroom').doc(communityData.roomName).collection('messages') : 
@@ -28,15 +28,15 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
   if(status === "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>
   
-  const preferencesMatch = fangelConnectGlobalDataProvider.fangelConnectGlobalData && fangelConnectGlobalDataProvider.fangelConnectGlobalData.creatorPreferences.filter((creatorItem, index) => fangelConnectGlobalDataProvider.fangelConnectGlobalData.joinnerPreferences.includes(creatorItem))
+  const preferencesMatch = fangelConnectData && fangelConnectData.creatorPreferences.filter(creatorItem => fangelConnectData.joinnerPreferences.includes(creatorItem))
   return (
     <MainOnlyDesktop>
       <EmbedVideo communityData={communityData} isAdmin={isAdmin} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace} />
       <Wrapper height="100%">
         <ContainerResponsive>
           {
-            fangelConnectGlobalDataProvider.fangelConnectGlobalData &&
-            <MatchInterest preferencesMatch={preferencesMatch} spaceId={fangelConnectGlobalDataProvider.fangelConnectGlobalData.spaceId}/>
+            fangelConnectData &&
+            <MatchInterest preferencesMatch={preferencesMatch} spaceId={fangelConnectData.spaceId}/>
           }
           <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef} />
           <InputComments userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} /> 

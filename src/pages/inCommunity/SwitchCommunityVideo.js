@@ -52,11 +52,7 @@ const SwitchCommunityVideo = () => {
     
     if(status) return <p>Pending...</p>
     if(error) return null
-    
-    if(fangelConnectData) {
-        fangelConnectGlobalDataProvider.setFangelConnectGlobalData(fangelConnectData)
-    }
-    
+
     let communityData = data[0]
     const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)
     
@@ -93,8 +89,8 @@ const SwitchCommunityVideo = () => {
 
                 {
                     isAdmin ? 
-                    <VideoAdmin activeCommunity={activeCommunity} isAdmin={isAdmin} communityData={communityData} setStateScore={setStateScore}/> : 
-                    <VideoUser activeCommunity={activeCommunity} communityData={communityData}/>
+                    <VideoAdmin activeCommunity={activeCommunity} isAdmin={isAdmin} communityData={communityData} setStateScore={setStateScore} fangelConnectData={fangelConnectData}/> : 
+                    <VideoUser activeCommunity={activeCommunity} communityData={communityData} fangelConnectData={fangelConnectData}/>
                 }
             </Provider>
         </>
