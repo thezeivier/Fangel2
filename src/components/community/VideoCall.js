@@ -73,7 +73,7 @@ const VideoCall = ({dataUser, authState, communityDataRoom}) => {
   const isAdmin = communityDataRoom.creatorUid ? GetAdminCommunity(communityDataRoom.creatorUid, dataUser.uid) : false
   const handleAPI = JitsiMeetAPI => {
     JitsiMeetAPI.executeCommand("toggleVideo");
-    JitsiMeetAPI.executeCommand("toggleAudio");
+    // JitsiMeetAPI.executeCommand("toggleAudio");
   };
 
   const {TOOLBAR_BUTTONS, ...restConf} = interfaceConfig
