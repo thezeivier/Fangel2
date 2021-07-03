@@ -53,12 +53,12 @@ export const ContainerForCommunity = styled.div`
     flex: 1 0 auto;
 
     @media(min-width:1200px) {
-      margin: 120px auto 0 auto;
-      padding: 0;
-      width: 1200px;
+      margin: 90px auto 0px;
+      padding: 0px;
+      max-width: 1200px;
       display: grid;
-      grid-template-columns: 67% calc(33% - 40px);
-      column-gap: 40px;
+      grid-template-columns: 72% calc(28% - 15px);
+      column-gap: 15px;
     }
 
 /*     .mainWrapper {

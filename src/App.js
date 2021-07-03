@@ -65,6 +65,11 @@ function App() {
           let dataUser = await RecoverUser(firestore, user.uid)
           setUserFromDB(dataUser)
           if(dataUser){
+            if(dataUser.userCodesRef){ //Eliminador de userCodesRef por usuario.
+              firestore.collection("users").doc(dataUser.uid).update({
+                userCodesRef: firestore.app.firebase_.firestore.FieldValue.delete()
+              });
+            }
             if(dataUser.type === "admin"){
               setIsAdmin(true)
               if(dataUser.bucket && dataUser.route){
