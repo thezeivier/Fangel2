@@ -9,12 +9,14 @@ import { useStateIfMounted } from 'use-state-if-mounted'
 import { RegisterWithEmail, codeValidator } from './algorithms/RegisterWithEmail'
 import {firstNameFValidator, lastNameFValidator, emailFValidator, passwordFValidator, codeFValidator} from './objects/formValidators'
 import 'firebase/auth'
+import firebase from 'firebase/app'
 import {useAuth, useFirestore, useFirebaseApp} from 'reactfire'
 import { Description, Contract, InputPasswordContainer } from './styles/sRegister'
-import { SubtitleStyled, TextStyled, InputStyled,
+import { SubtitleStyled, TextStyled, SeparatorStyled, InputStyled,
         ButtonStyled, ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
 import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
 import MainSpinner from '../../components/spinner/MainSpinner'
+import { SignInWithGoogle } from './algorithms/SignInWithGoogle'
 
 const Register = () => {
   const contextFromApp = useContext(AppContext)
@@ -22,7 +24,7 @@ const Register = () => {
   const location = useLocation()
   const auth = useAuth()
   const firestore = useFirestore()
-  const firebase = useFirebaseApp()
+  // const firebase = useFirebaseApp()
   const { register, handleSubmit, errors } = useForm()
   const [dataRegister, setDataRegister] = useStateIfMounted(null)
   const [emailRegistered, setEmailRegistered] = useStateIfMounted(null)
@@ -39,6 +41,12 @@ const Register = () => {
   useEffect(()=>{
 
   },[auth, firestore, firebase])
+
+  const onSubmitWithGoogle = async (auth, firebase, firestore) => {
+    setLoading(true)
+    await SignInWithGoogle(auth, firebase, firestore)
+    setLoading(false)
+  }
 
   const onSubmit = async (data) => {
     setDataRegister(data)
@@ -158,6 +166,8 @@ const Register = () => {
                     Al registrarte estas de acuerdo con los <Link to={"/terms-conditions"}>Términos y Condiciones</Link> y <Link to={"/politics-privacy"}>Políticas de privacidad.</Link>
                   </Contract>
                   <ButtonStyled primary type="submit">Registrarse</ButtonStyled>
+                  <SeparatorStyled>o</SeparatorStyled>
+                  <ButtonStyled solidWhite type="button" onClick={() => onSubmitWithGoogle(auth, firebase, firestore)}>Ingresa con Google</ButtonStyled>
                 </Form>
               </ContainerDesktop>
               <LinkOtherPage>

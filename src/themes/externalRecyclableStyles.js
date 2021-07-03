@@ -265,6 +265,16 @@ export const Button = styled.button`
       background: ${props => props.theme.colorHoverDarkSecondary};
     }
   `}
+  
+  ${props => props.solidWhite && css`
+    background: colorWhite;
+    color: ${props => props.theme.colorDark};
+
+    &:hover,
+    &:active {
+      background: ${props => props.theme.colorShadow};
+    }
+  `}
 
   @media(min-width:1024px) {
     font-size: 1.218em;

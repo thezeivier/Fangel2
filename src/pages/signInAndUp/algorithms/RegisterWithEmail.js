@@ -132,7 +132,7 @@ export const sendDataUser = async (data, uid, type, firestore, firebase, email) 
 
 
 //Capitalizador de palabras.
-const wordsCapitalizer = (word) =>{
+export const wordsCapitalizer = (word) =>{
   if(word.length === 0){
     return word
   }
@@ -145,7 +145,7 @@ const wordsCapitalizer = (word) =>{
           .join(' ');  
 }
 //Reestructurador en caso de tener doble o triple espacio.
-const spacerReestruct = (word) =>{
+export const spacerReestruct = (word) =>{
   var resWord
   if(word.includes("   ")){
     resWord = word.replace("   ", " ")

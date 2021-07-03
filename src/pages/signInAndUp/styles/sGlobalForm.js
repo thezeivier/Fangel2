@@ -34,6 +34,15 @@ export const TextStyled = styled(TextBody) `
   }
 `
 
+export const SeparatorStyled = styled(TextBody) `
+  margin: 20px 0 20px 0;
+  text-align: center;
+
+  @media(min-width:1024px) {
+    margin: 30px 0 30px 0;
+  }
+`
+
 export const FormStyled = styled(Form) `
   margin: 0 0 30px 0;
 `
