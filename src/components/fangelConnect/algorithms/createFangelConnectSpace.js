@@ -8,7 +8,7 @@ export const createFangelConnectSpace = (firestore, existCreator, existJoinner, 
                 creator: existCreator,
                 joinner: existJoinner,
                 roomName: idOfFangelConnect,
-                privacy: "private",
+                privacy: "connect",
                 title: "Fangel Connect"
             }
         )

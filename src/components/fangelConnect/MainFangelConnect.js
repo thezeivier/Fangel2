@@ -29,7 +29,7 @@ const MainFangelConnect = () => {
               <SubtitleStyled>Escoge una modalidad</SubtitleStyled>
               <FieldSet>
                 <label className="radiosContainerFlex__item">
-                  <input type="radio" defaultChecked id="public" name="privacy" value="public" />
+                  <input type="radio" defaultChecked id="private" name="privacy" value="private" />
                   <span className="rCCheckmark"></span>
                   Individual <span className="spanRadiosDescription">(Con una persona)</span>
                 </label>
