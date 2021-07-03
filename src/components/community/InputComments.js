@@ -21,7 +21,7 @@ const InputComments = ({userFromDB, lastMsgRef, data, name, messageRef,open }) =
       userUid: userFromDB.uid,
       username: userFromDB.username,
       colorMessage: userFromDB.colorsUser,
-      name
+      name: userFromDB.name? `${userFromDB.name.firstName} ${userFromDB.name.lastName? userFromDB.name.lastName: ""}`: name
     })
   }
 
