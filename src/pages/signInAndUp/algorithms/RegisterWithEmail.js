@@ -48,7 +48,7 @@ export const RegisterWithEmail = async (data, auth, type, firestore, firebase) =
   .createUserWithEmailAndPassword(emailRepaired, password)
   .then(async result => {
     await result.user.updateProfile({
-      displayName: `${firstName.split(" ")[0]}${(lastName.length !== 0) ? " ".concat(lastName.split(" ")[0]): ""}`
+      displayName: await wordsCapitalizer(`${firstName.split(" ")[0]}${(lastName.length !== 0) ? " ".concat(lastName.split(" ")[0]): ""}`)
     })
 
     const finalConfirmation = await sendDataUser(data, result.user.uid, type, firestore, firebase, emailRepaired)
@@ -87,7 +87,7 @@ export const sendDataUser = async (data, uid, type, firestore, firebase, email) 
       email: email,
       type: type,
       registerDate: Date.now(),
-      quizComplete: false,
+      quizComplete: false
     },
     {merge: true}
   )
