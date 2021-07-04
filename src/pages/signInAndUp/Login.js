@@ -1,18 +1,21 @@
 import React, {useState, useContext} from 'react';
 import {AppContext} from '../../App'
+import firebase from 'firebase/app'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import ButtonViewPassword from './ButtonViewPassword'
 import { Link, useHistory, Redirect } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
-import { SubtitleStyled, TextStyled, InputStyled, ButtonStyled,
+import { SubtitleStyled, TextStyled, InputStyled, ButtonStyled, SeparatorStyled,
          ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
 import { InputPasswordContainer } from './styles/sRegister'
 import { ExternalsWrapper, Form } from '../../themes/externalRecyclableStyles'
 import { LinkRecoveryPasssword } from './styles/sLogin'
 import {emailFValidator, passwordFValidator} from './objects/formValidators'
 import {LoginWithEmail} from './algorithms/LoginWithEmail'
-import {useAuth} from 'reactfire'
+import {useAuth, useFirestore} from 'reactfire'
+
+import { SignInWithGoogle } from './algorithms/SignInWithGoogle'
 
 import { ReactComponent as ViewSVG } from './icons/view.svg'
 import { ReactComponent as ViewOffSVG } from './icons/viewOff.svg'
@@ -21,6 +24,7 @@ const Login = () => {
   const contextFromApp = useContext(AppContext)
   const history = useHistory()
   const auth = useAuth()
+  const firestore = useFirestore()
   const { register, handleSubmit, errors } = useForm()
   const [isLoginCorrect, setIsLoginCorrect] = useState(null)
 
@@ -88,6 +92,11 @@ const Login = () => {
                   <Link to={"/recover-password"}>¿Olvidaste tu contraseña?</Link>
                 </LinkRecoveryPasssword>
                 <ButtonStyled primary type="submit">Iniciar sesión</ButtonStyled>
+                <SeparatorStyled>o</SeparatorStyled>
+                <ButtonStyled solidWhite googleIcon type="button" id="google-auth" onClick={() => SignInWithGoogle(auth, firebase, firestore)}>
+                  <span aria-labelledby="google-auth"></span>
+                  Ingresa con Google
+                </ButtonStyled>
                 <LinkOtherPage>
                   <p>¿No tienes una cuenta?</p>
                   <Link to={"/register"}>Regístrate</Link>

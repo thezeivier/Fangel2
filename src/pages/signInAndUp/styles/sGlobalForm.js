@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import { SecondaryTitle, TextBody, Form,
          Input, Button } from '../../../themes/externalRecyclableStyles'
+import GoogleIcon from '../icons/logo-google.svg'
 
 export const ContainerDesktop = styled.div`
   width: inherit;
@@ -89,6 +90,25 @@ export const ButtonStyled = styled(Button) `
       margin: 40px 0 0 0;
     }
   `}
+
+  ${props => props.googleIcon && css`
+    span {
+      padding: 10px;
+      position: relative;
+      &:before {
+        content: "";
+        background-image: url(${GoogleIcon});
+        background-repeat: no-repeat;
+        height:23px;
+        width:23px;
+        background-size: cover;
+        position: absolute;
+        top: -2px;
+        right: 1em;
+      }
+    }
+  `}
+  
 `
 export const ErrorAlert = styled.p`
   color: ${props => props.theme.colorAlert};

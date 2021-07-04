@@ -3,6 +3,7 @@ import {AppContext} from '../../App'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import ButtonViewPassword from './ButtonViewPassword'
+import {ReactComponent as GoogleIcon} from './icons/logo-google.svg'
 import { Link, Redirect, useHistory, useLocation } from "react-router-dom"
 import { useForm } from 'react-hook-form'
 import { useStateIfMounted } from 'use-state-if-mounted'
@@ -42,9 +43,10 @@ const Register = () => {
 
   },[auth, firestore, firebase])
 
-  const onSubmitWithGoogle = async (auth, firebase, firestore) => {
+
+  const onClickWithGoogle = async (auth, firebase, firestore, setLoading) => {
     setLoading(true)
-    await SignInWithGoogle(auth, firebase, firestore)
+    SignInWithGoogle(auth, firebase, firestore, setLoading)
     setLoading(false)
   }
 
@@ -167,7 +169,10 @@ const Register = () => {
                   </Contract>
                   <ButtonStyled primary type="submit">Registrarse</ButtonStyled>
                   <SeparatorStyled>o</SeparatorStyled>
-                  <ButtonStyled solidWhite type="button" onClick={() => onSubmitWithGoogle(auth, firebase, firestore)}>Ingresa con Google</ButtonStyled>
+                  <ButtonStyled solidWhite googleIcon type="button" id="google-auth" onClick={() => onClickWithGoogle(auth, firebase, firestore, setLoading)}>
+                    <span aria-labelledby="google-auth"></span>
+                    Regístrate con Google
+                  </ButtonStyled>
                 </Form>
               </ContainerDesktop>
               <LinkOtherPage>
