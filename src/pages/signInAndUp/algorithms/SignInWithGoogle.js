@@ -39,43 +39,10 @@ export const sendDataUserFromGoogle = async (data, uid, type, firestore, firebas
         },
         {merge: true}
       )
-      
-      if(type === "admin"){
-        // let codeDBRef = firestore.collection("adminCodes").doc("listOfCodes")
-        // batch.set(
-        //   codeDBRef,
-        //   {
-        //     disponibleCodes: firebase.firebase_.firestore.FieldValue.arrayRemove(code),
-        //     usedCodes: firebase.firebase_.firestore.FieldValue.arrayUnion(code),
-        //   },
-        //   {merge: true}
-        // )
-        const updateACodes = await batch.commit().then(()=>{
-          // console.log("éxito")
-          return true
-        }).catch(error =>{
-          console.error(error)
-          return false
-        })
-        return updateACodes
-      }else if (type === "user"){
-        let codeDBRef = firestore.collection("userCodes").doc(code)
-        batch.set(
-          codeDBRef,
-          {
-            users: firebase.firebase_.firestore.FieldValue.arrayUnion(uid),
-          }, 
-          {merge: true}
-        )
-        const updateUCodes = await batch.commit().then(()=>{
-          // console.log("éxito")
-          return true
-        }).catch(error =>{
-          console.error(error)
-          return false
-        })
-        return updateUCodes
-      }
+
+      batch.commit().then(()=>{
+        window.location.reload()
+      })
     }
   })
 }
