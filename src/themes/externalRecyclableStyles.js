@@ -28,7 +28,7 @@ const standarTextMixin = css`
   `}
 `
 
-const inputMixin = css`
+export const inputMixin = css`
   font-family: ${props => props.theme.secondaryFont};
   font-style: normal;
   font-weight: ${props => props.theme.weight.light};

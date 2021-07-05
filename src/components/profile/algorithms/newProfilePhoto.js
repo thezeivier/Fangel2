@@ -11,7 +11,7 @@ export const newProfilePhoto = (storage, profilePhoto, uid) => {
         })
         uploadTask.then(async ()=>{
             // console.log("upload success")
-            window.location.reload()
+            // window.location.reload()
         })
     }
 }

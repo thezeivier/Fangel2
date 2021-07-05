@@ -18,7 +18,6 @@ const SearchPeople = ({ modalIsOpen }) => {
   const [existJoinner, setExistJoinner] = useStateIfMounted(null)
   const [existCreator, setExistCreator] = useStateIfMounted(null)
   const [roomOfConnectionActive, setRoomOfConnectionActive] = useStateIfMounted(false)
-  // const [forceRender, setForceRender] = useState(0)
   const [joinnerProfileThumb, setJoinnerProfileThumb] = useStateIfMounted(null)
   const { userFromDB, setFangelConnectProvider, profileThumb } = useContext(AppContext)
 

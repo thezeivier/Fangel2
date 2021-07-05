@@ -8,7 +8,6 @@ import { useMatchRouteUserData } from './algorithms/useMatchRouteUserData'
 import { AppContext } from '../../App'
 import { UserContainer, ListTags, ButtonAccion, CodeContainer } from './styles/sMainProfile'
 // import { colorGenerator } from './algorithms/colorGenerator'
-import {newProfilePhoto} from './algorithms/newProfilePhoto'
 import { getColorDarkMode, getColorLightMode} from '../community/algorithms/GetRandomColor'
 
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
@@ -19,6 +18,9 @@ import { Form, CommentSVGContainer, InputStyled } from './styles/sMainProfile'
 import { ReactComponent as CopySVG } from '../createCommunity/icons/copy.svg'
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'
 import { createDocInbox } from './algorithms/createDocInbox'
+
+//Import components for edit profile
+import EditProfile from './EditProfile'
 
 const MainProfile = () => {
   const storage = useStorage()
@@ -31,6 +33,7 @@ const MainProfile = () => {
   const match = useRouteMatch("/u/:id")
   const nameUserRoute = match.params.id.concat(location.hash)
   const [userData, loading, error] = useMatchRouteUserData("users", nameUserRoute)
+  const [profileEditor, setProfileEditor] = useState(false)
 
   useEffect(()=>{
 
@@ -60,54 +63,59 @@ const MainProfile = () => {
       setProfileThumb(url)
     })
   }
-
-  const changeProfileImage = (e) => {
+  
+  const changeDataOfProfile = (e) => {
     e.preventDefault()
-    const profileImage = document.getElementById("profileImage")
-    e = profileImage.click()
-    profileImage.addEventListener('change', e => {
-      newProfilePhoto(storage, e.target.files[0], authState.uid)
-    })
-    document.getElementById("profileImage").value = null
+    setProfileEditor(true)
   }
 
   const themeMode = localStorage.mode && localStorage.getItem("mode")
   // console.log(authState.uid, uid)
+  if(profileEditor && isMyUser){
+    return(
+      <EditProfile
+        profileThumb= {profileThumb}
+        authState={authState}
+        storage={storage}
+        name = {name}
+        username = {username}
+        themeMode = {themeMode}
+        preferences = {preferences}
+        id = {id}
+      />
+    )
+  }
   return (
-    <main>
-      <Wrapper>
-        <UserContainer>
-          {
-            profileThumb?
-            <img src={profileThumb} alt="Imagen de perfil" />:
-            <ProfileSVG />
-          }
-          {isMyUser &&
-            <ButtonAccion onClick={changeProfileImage}>
-              <AddPhotoSVG />
-              <span>Cambiar foto</span>
+      <main>
+        <Wrapper>
+          <UserContainer>
+            {
+              profileThumb?
+              <img src={profileThumb} alt="Imagen de perfil" />:
+              <ProfileSVG />
+            }
+            <ButtonAccion onClick={changeDataOfProfile}>
+            <span>Editar perfil</span>
             </ButtonAccion>
-          }
-          <input type="file" accept="image/*" style={{display: "none"}} id="profileImage"/>
-          {
-            !isMyUser &&
-            <ButtonAccion onClick={() => createDocInbox(authState.uid, uid, firestore, setActiveButton, history)} disabled={activeButton}>
-              <span>Enviar mensaje</span>
-            </ButtonAccion>
-          }
-          <h4>{name? `${name.firstName} ${name.lastName}`: username}</h4>
-        </UserContainer>
-        <ListTags>
-          {preferences &&
-            preferences.map((tag) => {
-              const colorText = themeMode == "light" ? getColorLightMode() : getColorDarkMode()
-              return <UserTag key={`${tag}_${id}`} category={tag} color={colorText} />}
-            )
-          }
-        </ListTags>
-      </Wrapper> 
-      <ReturnPage/> 
-    </main>
+            {
+              !isMyUser &&
+              <ButtonAccion onClick={() => createDocInbox(authState.uid, uid, firestore, setActiveButton, history)} disabled={activeButton}>
+                <span>Enviar mensaje</span>
+              </ButtonAccion>
+            }
+            <h4>{name? `${name.firstName} ${name.lastName}`: username}</h4>
+          </UserContainer>
+          <ListTags>
+            {preferences &&
+              preferences.map((tag) => {
+                const colorText = themeMode == "light" ? getColorLightMode() : getColorDarkMode()
+                return <UserTag key={`${tag}_${id}`} category={tag} color={colorText} />}
+              )
+            }
+          </ListTags>
+        </Wrapper> 
+        <ReturnPage/> 
+      </main>
   );
 }
 
