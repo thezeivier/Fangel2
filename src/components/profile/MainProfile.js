@@ -28,12 +28,12 @@ const MainProfile = () => {
   const history = useHistory()
   const [profileThumb, setProfileThumb] = useState()
   const [activeButton, setActiveButton] = useState(false)
+  const [profileEditor, setProfileEditor] = useState(false)
   const {userFromDB, authState} = useContext(AppContext)
   const location = useLocation()
   const match = useRouteMatch("/u/:id")
   const nameUserRoute = match.params.id.concat(location.hash)
   const [userData, loading, error] = useMatchRouteUserData("users", nameUserRoute)
-  const [profileEditor, setProfileEditor] = useState(false)
 
   useEffect(()=>{
 
@@ -65,8 +65,8 @@ const MainProfile = () => {
   }
   
   const changeDataOfProfile = (e) => {
-    e.preventDefault()
     setProfileEditor(true)
+    e.preventDefault()
   }
 
   const themeMode = localStorage.mode && localStorage.getItem("mode")
@@ -76,12 +76,10 @@ const MainProfile = () => {
       <EditProfile
         profileThumb= {profileThumb}
         authState={authState}
-        storage={storage}
-        name = {name}
-        username = {username}
+        userFromDB={userFromDB}
         themeMode = {themeMode}
-        preferences = {preferences}
         id = {id}
+        setProfileEditor={setProfileEditor}
       />
     )
   }

@@ -134,6 +134,10 @@ export const LinkInputContainer = styled.div`
         background: none;
         width: border-box;
     }
+
+    input:hover{
+      background: none;
+    }
 `
 
 
