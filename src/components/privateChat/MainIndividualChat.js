@@ -31,11 +31,15 @@ const MainIndividualChat = ({ inGridDesktop, message, idTransmitter, idReceiver,
   if(error) return <p>Error</p>
   
   const transmitterData = data[0]
-  if(transmitterData.bucket && transmitterData.route){
-    const profileImageReference = storage.refFromURL(`gs://${transmitterData.bucket}/${transmitterData.route}`)
-    profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
-      setProfileThumb(url)
-    })
+  if(!transmitterData.photoUrl){
+    if(transmitterData.bucket && transmitterData.route){
+      const profileImageReference = storage.refFromURL(`gs://${transmitterData.bucket}/${transmitterData.route}`)
+      profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
+        setProfileThumb(url)
+      })
+    }
+  }else{
+    setProfileThumb(transmitterData.photoUrl)
   }
   return (
     <Section>

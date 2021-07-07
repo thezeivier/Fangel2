@@ -22,11 +22,12 @@ import { createDocInbox } from './algorithms/createDocInbox'
 //Import components for edit profile
 import EditProfile from './EditProfile'
 
-const MainProfile = () => {
+const MainProfile = React.memo(() => {
   const storage = useStorage()
   const firestore = useFirestore()
   const history = useHistory()
   const [profileThumb, setProfileThumb] = useState()
+  const [userDataRecovered, setUserDataRecovered] = useState(null)
   const [activeButton, setActiveButton] = useState(false)
   const [profileEditor, setProfileEditor] = useState(false)
   const {userFromDB, authState} = useContext(AppContext)
@@ -34,39 +35,34 @@ const MainProfile = () => {
   const match = useRouteMatch("/u/:id")
   const nameUserRoute = match.params.id.concat(location.hash)
   const [userData, loading, error] = useMatchRouteUserData("users", nameUserRoute)
-
+  
   useEffect(()=>{
-
-  },[])
-
-  if(loading) return <p>Pending...</p>
+    if(userData && userData.length !== 0){
+      setUserDataRecovered(...userData)
+      if(!userData[0].photoUrl){
+        if(userData[0].bucket && userData[0].route){
+          const profileImageReference = storage.refFromURL(`gs://${userData[0].bucket}/${userData[0].route}`)
+          profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
+            setProfileThumb(url)
+          })
+        }
+      }else{
+        setProfileThumb(userData[0].photoUrl)
+      }
+    }
     
+  },[userData])
+  
+  if(loading) return <p>Pending...</p>
+  
   if(error) {
     return false // Mostrar mensaje de error o redirección
   }
-
-  const {
-    id, 
-    uid,
-    preferences,
-    username,
-    name,
-    bucket,
-    route,
-  } = userData[0]
-
-  const isMyUser = authState.uid === id
-
-  if(bucket && route){
-    const profileImageReference = storage.refFromURL(`gs://${bucket}/${route}`)
-    profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
-      setProfileThumb(url)
-    })
-  }
+  const isMyUser = authState.uid === userDataRecovered.id
   
   const changeDataOfProfile = (e) => {
-    setProfileEditor(true)
     e.preventDefault()
+    setProfileEditor(true)
   }
 
   const themeMode = localStorage.mode && localStorage.getItem("mode")
@@ -78,7 +74,7 @@ const MainProfile = () => {
         authState={authState}
         userFromDB={userFromDB}
         themeMode = {themeMode}
-        id = {id}
+        id = {userDataRecovered.id}
         setProfileEditor={setProfileEditor}
       />
     )
@@ -92,22 +88,22 @@ const MainProfile = () => {
               <img src={profileThumb} alt="Imagen de perfil" />:
               <ProfileSVG />
             }
-            <ButtonAccion onClick={changeDataOfProfile}>
-            <span>Editar perfil</span>
-            </ButtonAccion>
             {
-              !isMyUser &&
-              <ButtonAccion onClick={() => createDocInbox(authState.uid, uid, firestore, setActiveButton, history)} disabled={activeButton}>
+              isMyUser ?
+              <ButtonAccion onClick={changeDataOfProfile}>
+              <span>Editar perfil</span>
+              </ButtonAccion>:
+              <ButtonAccion onClick={() => createDocInbox(authState.uid, userDataRecovered.uid, firestore, setActiveButton, history)} disabled={activeButton}>
                 <span>Enviar mensaje</span>
               </ButtonAccion>
             }
-            <h4>{name? `${name.firstName} ${name.lastName}`: username}</h4>
+            <h4>{userDataRecovered && userDataRecovered.name? `${userDataRecovered.name.firstName} ${userDataRecovered.name.lastName}`: userDataRecovered.username}</h4>
           </UserContainer>
           <ListTags>
-            {preferences &&
-              preferences.map((tag) => {
+            {userDataRecovered && userDataRecovered.preferences &&
+              userDataRecovered.preferences.map((tag) => {
                 const colorText = themeMode == "light" ? getColorLightMode() : getColorDarkMode()
-                return <UserTag key={`${tag}_${id}`} category={tag} color={colorText} />}
+                return <UserTag key={`${tag}_${userDataRecovered.id}`} category={tag} color={colorText} />}
               )
             }
           </ListTags>
@@ -115,6 +111,6 @@ const MainProfile = () => {
         <ReturnPage/> 
       </main>
   );
-}
+})
 
 export default MainProfile;

@@ -5,7 +5,7 @@ export const SignInWithGoogle = async (auth, firebase, firestore) => {
   .then(async result => {  
     const user = await result.user
     const data = {firstName: user.displayName, lastName: ''}
-    await sendDataUserFromGoogle(data, user.uid, "admin", firestore, firebase, user.email)
+    await sendDataUserFromGoogle(data, user.uid, "admin", firestore, firebase, user.email, user.photoUrl)
     return {verified: user.emailVerified, username: user.displayName, email: user.email, uid: user.uid}
     console.log("Logged Successfully")
   })
@@ -13,7 +13,7 @@ export const SignInWithGoogle = async (auth, firebase, firestore) => {
 };
 
 
-export const sendDataUserFromGoogle = async (data, uid, type, firestore, firebase, email) => {
+export const sendDataUserFromGoogle = async (data, uid, type, firestore, firebase, email, photoUrl) => {
   const {firstName, lastName, code} = data
   let batch = firestore.batch()
   let usersRef = firestore.collection("users").doc(uid)
@@ -36,6 +36,10 @@ export const sendDataUserFromGoogle = async (data, uid, type, firestore, firebas
           type: type,
           registerDate: Date.now(),
           quizComplete: false,
+          score: {
+            fangelScore: 65,
+          },
+          photoUrl,
         },
         {merge: true}
       )

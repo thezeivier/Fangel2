@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom'
-import {useStorage} from 'reactfire'
+import {useStorage, useFirestore} from 'reactfire'
 import { useStateIfMounted } from 'use-state-if-mounted'
 import { CardContainer, UserContainer, ContainerTextTop, TextCommunity,
          User, ImageContainer, DescriptionContainer, TextDescription,
@@ -12,6 +12,7 @@ import {ShowMore} from './algorithms/ShowMore'
 
 const CardCommunity = ({communityData, communityProvider}) => {
   const storage = useStorage()
+  const firestore = useFirestore()
   const [thumb, setThumb] = useStateIfMounted()//State for thumbnail.
   const [profileThumb, setProfileThumb] = useStateIfMounted(false)
   const cardRef = useRef()
@@ -20,17 +21,37 @@ const CardCommunity = ({communityData, communityProvider}) => {
   const history = useHistory()
 
   useEffect(()=>{
-    if(communityData.bucket){
-      const gsReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.route}`)
-      gsReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
-        setThumb(url)
-      })
+    if(communityData.bucket && communityData.route){
+      if(!communityData.communityPhotoUrl){
+        const gsReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.route}`)
+        gsReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
+          setThumb(url)
+          firestore.collection("users").doc(communityData.roomName).set(
+            {
+              communityPhotoUrl: url
+            }, 
+            { merge: true }
+          )
+        })
+      }else{
+        setThumb(communityData.communityPhotoUrl)
+      }
     }
-    if(communityData.profileRoute){
-      const profileImageReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.profileRoute}`)
-      profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
-        setProfileThumb(url)
-      })
+    if(communityData.profileRoute && communityData.profileRoute){
+      if(!communityData.profilePhotoUrl){
+        const profileImageReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.profileRoute}`)
+        profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
+          setProfileThumb(url)
+          firestore.collection("users").doc(communityData.roomName).set(
+            {
+              profilePhotoUrl: url
+            }, 
+            { merge: true }
+          )
+        })
+      }else{
+        setProfileThumb(communityData.profilePhotoUrl)
+      }
     }
     return ()=>{
       return ()=>{

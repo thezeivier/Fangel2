@@ -72,11 +72,21 @@ function App() {
             }
             if(dataUser.type === "admin"){
               setIsAdmin(true)
-              if(dataUser.bucket && dataUser.route){
-                const profileImageReference = storage.refFromURL(`gs://${dataUser.bucket}/${dataUser.route}`)
-                profileImageReference.getDownloadURL().then(url => {//Recover thumbnail of profile from storage.
-                  setProfileThumb(url)
-                })
+              if(!dataUser.photoUrl){
+                if(dataUser.bucket && dataUser.route){
+                  const profileImageReference = storage.refFromURL(`gs://${dataUser.bucket}/${dataUser.route}`)
+                  profileImageReference.getDownloadURL().then(url => {//Recover thumbnail of profile from storage.
+                    setProfileThumb(url)
+                    firestore.collection("users").doc(user.uid).set(
+                      {
+                        photoUrl: url
+                      }, 
+                      { merge: true }
+                    ).then(window.location.reload())
+                  })
+                }
+              }else{
+                setProfileThumb(dataUser.photoUrl)
               }
             }
             !dataUser.quizComplete && history.push("/quiz")

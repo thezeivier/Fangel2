@@ -110,7 +110,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                         <InputEditStyled 
                             type="text" 
                             placeholder={"usuario"}
-                            defaultValue={((existProfileData && existProfileData.facebook) && existProfileData.facebook.profile) && existProfileData.facebook.profile}
+                            defaultValue={(existProfileData && existProfileData.facebook) && existProfileData.facebook.profile}
                             maxLength="60"
                             name="facebook"
                             ref={register({maxLength: 60})}

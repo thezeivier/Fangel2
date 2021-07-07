@@ -68,11 +68,15 @@ const SearchPeople = ({ modalIsOpen }) => {
     }else{
       dataFromOtherUser = existCreator
     }
-    if(dataFromOtherUser.bucket && dataFromOtherUser.route){
-      const profileImageReference = storage.refFromURL(`gs://${dataFromOtherUser.bucket}/${dataFromOtherUser.route}`)
-      profileImageReference.getDownloadURL().then(url => {//Recuperar foto de perfil del usuario que se unirá a la llamada.
-        setJoinnerProfileThumb(url)
-      })
+    if(!dataFromOtherUser.photoUrl){
+      if(dataFromOtherUser.bucket && dataFromOtherUser.route){
+        const profileImageReference = storage.refFromURL(`gs://${dataFromOtherUser.bucket}/${dataFromOtherUser.route}`)
+        profileImageReference.getDownloadURL().then(url => {//Recuperar foto de perfil del usuario que se unirá a la llamada.
+          setJoinnerProfileThumb(url)
+        })
+      }
+    }else{
+      setJoinnerProfileThumb(dataFromOtherUser.photoUrl)
     }
   }
 
