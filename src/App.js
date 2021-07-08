@@ -82,7 +82,8 @@ function App() {
                         photoUrl: url
                       }, 
                       { merge: true }
-                    ).then(window.location.reload())
+                    )
+                    /* .then(window.location.reload()) */
                   })
                 }
               }else{

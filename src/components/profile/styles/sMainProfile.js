@@ -11,6 +11,16 @@ export const UserContainer = styled.div`
     margin: 0 0 30px 0;
   }
 
+  h4 {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 10px 0 0 0;
+  }
+`
+
+export const ProfileImage = styled.div`
+  width: auto;
+
   img {
     border-radius: 100%;
     height: 76px;
@@ -25,11 +35,9 @@ export const UserContainer = styled.div`
     fill: ${props => props.theme.colorIcon};
   }
 
-  h4 {
-    font-size: 1.5em;
-    text-align: center;
-    margin: 10px 0 0 0;
-  }
+  ${props => props.left && css`
+    width: fit-content;
+  `}
 `
 
 export const ButtonAccion = styled(Button)`
@@ -41,7 +49,7 @@ export const ButtonAccion = styled(Button)`
   font-size: 1.1em;
   font-family: ${props => props.theme.secondaryFont};
   font-weight: ${props => props.theme.weight.light};
-  height: 42px;
+  height: 44px;
   margin: 10px auto 20px auto;
   transition: all .2s;
 

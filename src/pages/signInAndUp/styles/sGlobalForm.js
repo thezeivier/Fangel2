@@ -51,20 +51,6 @@ export const FormStyled = styled(Form) `
 export const InputStyled = styled(Input) `
   margin: 0 0 14px 0;
 
-  ${props => props.invitationCode && css`
-    font-weight: ${props => props.theme.weight.semiMedium};
-    letter-spacing: 1px;
-    font-size: 1.3em;
-    text-align: center;
-    cursor: pointer;
-    width: initial;
-    margin: 20px 10px 40px 0;
-
-    @media screen and (min-width: 375px) and (orientation : landscape) {
-      font-size: 1.35em;
-    }
-  `}
-
   ${props => props.widthComplete && css`
     width: -webkit-fill-available;
 
@@ -73,6 +59,10 @@ export const InputStyled = styled(Input) `
         width: initial;
       }
     }
+  `}
+
+  ${props => props.marginBottom19 && css`
+    margin: 0 0 19px 0;
   `}
 `
 

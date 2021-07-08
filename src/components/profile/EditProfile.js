@@ -7,8 +7,12 @@ import { ReactComponent as AddPhotoSVG } from './icons/addPhoto.svg'
 import { useFirestore, useStorage, useFirebaseApp } from 'reactfire'
 import { useForm } from 'react-hook-form'
 import { ListTags} from './styles/sMainProfile'
-import { InputEditStyled, UserEditContainer, Form, ButtonEditAccion, LinkInputContainer} from './styles/sEditProfile'
-import { TitleStyled, TextStyled, TextAreaStyled, ButtonStyled} from '../../themes/internalRecyclableStyles'
+import { InputEditStyled, ButtonEditAccion, CharacterContainer, SocialMediaContainer,
+         InputSocialMedia } from './styles/sEditProfile'
+import { TitleStyled, TextAreaStyled, ButtonStyled, SubtitleStyled,
+         OnlyDesktop } from '../../themes/internalRecyclableStyles'
+import { ProfileImage } from './styles/sMainProfile'
+import { InputStyled } from './../../pages/signInAndUp/styles/sGlobalForm'
 import { getColorDarkMode, getColorLightMode} from '../community/algorithms/GetRandomColor'
 import { changePofileData } from './algorithms/changePofileData'
 import UserTag from './UserTag'
@@ -52,118 +56,127 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
     const changeAM = e => setAMLength(e.target.value.length)
     if (loading) return <LoadServSpinner title="Actualizando perfil"/>
     return(
-        <main>
-            <Wrapper>
-            <TitleStyled>Editar perfil</TitleStyled>
-            <UserEditContainer>
-                {
-                    profileThumb ?
-                    <img src={profileThumb} alt="Imagen de perfil" />:
-                    <ProfileSVG />
-                }
-                <ButtonEditAccion onClick={changeProfileImage}>
-                    <AddPhotoSVG />
-                    <span>Cambiar foto</span>
-                </ButtonEditAccion>
-                <input type="file" accept="image/*" style={{display: "none"}} id="profileImage"/>
+      <main>
+        <Wrapper>
+          <TitleStyled bottom>Editar perfil</TitleStyled>
+          <OnlyDesktop>
+            <ProfileImage left>
+              {
+                profileThumb?
+                <img src={profileThumb} alt="Imagen de perfil" />:
+                <ProfileSVG />
+              }
+            </ProfileImage>
+            <ButtonEditAccion onClick={changeProfileImage}>
+              <AddPhotoSVG />
+              <span>Cambiar foto</span>
+            </ButtonEditAccion>
+            <input type="file" accept="image/*" style={{display: "none"}} id="profileImage"/>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div>
+                <InputStyled marginBottom19
+                  type="text" placeholder={"Nombres"} 
+                  defaultValue={userFromDB.name && userFromDB.name.firstName} 
+                  name="firstname"
+                  maxLength="60"
+                  ref={register({ required: true, maxLength: 60})}
+                />
+                <InputStyled marginBottom19 
+                  type="text" 
+                  placeholder={"Apellidos"} 
+                  defaultValue={userFromDB.name && userFromDB.name.lastName}
+                  name="lastname" 
+                  maxLength="60"
+                  ref={register({ required: true, maxLength: 60})}
+                />
+                <TextAreaStyled marginBottom7
+                  type="text" 
+                  placeholder="Descripción profesional" 
+                  defaultValue={(existProfileData && existProfileData.professionalDescription) ? existProfileData.professionalDescription : ''}
+                  name="professionalDescription"
+                  maxLength="360"
+                  onChange={changePD}
+                  ref={register({maxLength: 360})}
+                />
+                <CharacterContainer>{`${pDLength}/360`}</CharacterContainer>
+                <TextAreaStyled marginBottom7
+                  type="text" 
+                  placeholder="Acerca de mí"
+                  defaultValue={(existProfileData && existProfileData.aboutMe) ? existProfileData.aboutMe : ''}
+                  name="aboutMe"
+                  maxLength="1000"
+                  onChange={changeAM}
+                  ref={register({maxLength: 1000})}
+                />
+                <CharacterContainer>{`${aMLength}/1000`}</CharacterContainer>
+              </div>
+              <SubtitleStyled>Redes sociales</SubtitleStyled>
+              <div>
+                <SocialMediaContainer>
+                  <img src={facebook}/>
+                  <InputSocialMedia 
+                    type="text" 
+                    placeholder="https://www.facebook.com/"
+                    defaultValue={(existProfileData && existProfileData.facebook) && existProfileData.facebook.profile}
+                    maxLength="60"
+                    name="facebook"
+                    ref={register({maxLength: 60})}
+                  />
+                </SocialMediaContainer>
+                <SocialMediaContainer>
+                  <img src={instagram}/>
+                  <InputSocialMedia 
+                    type="text" 
+                    placeholder="https://www.instagram.com/"
+                    defaultValue={(existProfileData && existProfileData.instagram) && existProfileData.instagram.profile}
+                    maxLength="60"
+                    name="instagram"
+                    ref={register({maxLength: 60})}
+                  /> 
+                </SocialMediaContainer>
+                <SocialMediaContainer>
+                  <img src={linkedin}/>
+                  <InputSocialMedia 
+                    type="text" 
+                    placeholder="https://www.linkedin.com/"
+                    defaultValue={(existProfileData && existProfileData.linkedin) && existProfileData.linkedin.profile}
+                    maxLength="60"
+                    name="linkedin"
+                    ref={register({maxLength: 60})}
+                  />
+                </SocialMediaContainer>
+                <SocialMediaContainer>
+                  <img src={twitter}/>
+                  <InputSocialMedia 
+                    type="text"
+                    placeholder="https://www.twitter.com/"
+                    defaultValue={(existProfileData && existProfileData.twitter) && existProfileData.twitter.profile}
+                    maxLength="60"
+                    name="twitter"
+                    ref={register({maxLength: 60})}
+                  />
+                </SocialMediaContainer>
+                <SocialMediaContainer>
+                  <img src={youtube}/>
+                  <InputSocialMedia 
+                    type="text" 
+                    placeholder="https://www.youtube.com/channel/"
+                    defaultValue={(existProfileData && existProfileData.youtube) && existProfileData.youtube.profile}
+                    maxLength="60"
+                    name="youtube"
+                    ref={register({maxLength: 60})}
+                  />
+                </SocialMediaContainer>
+              </div>
+              <ButtonStyled primary type="submit">Guardar información</ButtonStyled>
+            </form>
+          </OnlyDesktop>
+        </Wrapper> 
+      </main>
+    )
+})
 
-                <Form onSubmit={handleSubmit(onSubmit)}>
-                    <InputEditStyled 
-                        type="text" placeholder={"Nombres"} 
-                        defaultValue={userFromDB.name && userFromDB.name.firstName} 
-                        name="firstname"
-                        maxLength="60"
-                        ref={register({ required: true, maxLength: 60})}
-                    />
-                    <InputEditStyled 
-                        type="text" 
-                        placeholder={"Apellidos"} 
-                        defaultValue={userFromDB.name && userFromDB.name.lastName}
-                        name="lastname" 
-                        maxLength="60"
-                        ref={register({ required: true, maxLength: 60})}
-                    />
-                    <TextAreaStyled 
-                        type="text" 
-                        placeholder="Descripción profesional" 
-                        defaultValue={existProfileData && existProfileData.professionalDescription}
-                        name="professionalDescription"
-                        maxLength="360"
-                        onChange={changePD}
-                        ref={register({maxLength: 360})}
-                    />
-                    <div>{`${pDLength}/360`}</div>
-                    <TextAreaStyled 
-                        type="text" 
-                        placeholder="Acerca de mí"
-                        defaultValue={existProfileData && existProfileData.aboutMe}
-                        name="aboutMe"
-                        maxLength="1000"
-                        onChange={changeAM}
-                        ref={register({maxLength: 1000})}
-                    />
-                    <div>{`${aMLength}/1000`}</div>
-                    <h4>Redes sociales</h4>
-                    <img src={facebook}/>
-                    <LinkInputContainer>
-                        <p>https://www.facebook.com/</p>
-                        <InputEditStyled 
-                            type="text" 
-                            placeholder={"usuario"}
-                            defaultValue={(existProfileData && existProfileData.facebook) && existProfileData.facebook.profile}
-                            maxLength="60"
-                            name="facebook"
-                            ref={register({maxLength: 60})}
-                        />
-                    </LinkInputContainer>
-                    <img src={instagram}/>
-                    <LinkInputContainer>
-                        <p>https://www.instagram.com/</p>
-                        <InputEditStyled 
-                            type="text" 
-                            placeholder={"usuario"}
-                            defaultValue={(existProfileData && existProfileData.instagram) && existProfileData.instagram.profile}
-                            maxLength="60"
-                            name="instagram"
-                            ref={register({maxLength: 60})}
-                        /> 
-                    </LinkInputContainer>
-                    <img src={linkedin}/>
-                    <LinkInputContainer>
-                        <p>https://www.linkedin.com/in/</p>
-                        <InputEditStyled 
-                            type="text" 
-                            placeholder={"usuario"}
-                            defaultValue={(existProfileData && existProfileData.linkedin) && existProfileData.linkedin.profile}
-                            maxLength="60"
-                            name="linkedin"
-                            ref={register({maxLength: 60})}
-                        />
-                    </LinkInputContainer>
-                    <img src={twitter}/>
-                    <LinkInputContainer>
-                        <p>https://twitter.com/</p>
-                        <InputEditStyled 
-                            type="text"
-                            placeholder={"usuario"}
-                            defaultValue={(existProfileData && existProfileData.twitter) && existProfileData.twitter.profile}
-                            maxLength="60"
-                            name="twitter"
-                            ref={register({maxLength: 60})}
-                        />
-                    </LinkInputContainer>
-                    <img src={youtube}/>
-                    <LinkInputContainer>
-                        <p>https://www.youtube.com/channel/</p>
-                        <InputEditStyled 
-                            type="text" 
-                            placeholder={"usuario"}
-                            defaultValue={(existProfileData && existProfileData.youtube) && existProfileData.youtube.profile}
-                            maxLength="60"
-                            name="youtube"
-                            ref={register({maxLength: 60})}
-                        />
-                    </LinkInputContainer>
+export default EditProfile
 
                     {/* <ListTags>
                         {preferences &&
@@ -173,13 +186,3 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                             )
                         }
                     </ListTags> */}
-                    <ButtonStyled primary type="submit">Guardar</ButtonStyled>
-                </Form>
-                
-            </UserEditContainer>
-            </Wrapper> 
-        </main>
-    )
-})
-
-export default EditProfile

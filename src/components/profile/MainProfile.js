@@ -6,7 +6,8 @@ import UserTag from './UserTag'
 import {useStorage, useFirestore} from 'reactfire'
 import { useMatchRouteUserData } from './algorithms/useMatchRouteUserData'
 import { AppContext } from '../../App'
-import { UserContainer, ListTags, ButtonAccion, CodeContainer } from './styles/sMainProfile'
+import { UserContainer, ListTags, ButtonAccion, CodeContainer,
+         ProfileImage } from './styles/sMainProfile'
 // import { colorGenerator } from './algorithms/colorGenerator'
 import { getColorDarkMode, getColorLightMode} from '../community/algorithms/GetRandomColor'
 
@@ -83,15 +84,17 @@ const MainProfile = React.memo(() => {
       <main>
         <Wrapper>
           <UserContainer>
-            {
-              profileThumb?
-              <img src={profileThumb} alt="Imagen de perfil" />:
-              <ProfileSVG />
-            }
+            <ProfileImage>
+              {
+                profileThumb?
+                <img src={profileThumb} alt="Imagen de perfil" />:
+                <ProfileSVG />
+              }
+            </ProfileImage>
             {
               isMyUser ?
               <ButtonAccion onClick={changeDataOfProfile}>
-              <span>Editar perfil</span>
+                <span>Editar perfil</span>
               </ButtonAccion>:
               <ButtonAccion onClick={() => createDocInbox(authState.uid, userDataRecovered.uid, firestore, setActiveButton, history)} disabled={activeButton}>
                 <span>Enviar mensaje</span>

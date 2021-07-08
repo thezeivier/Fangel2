@@ -66,6 +66,10 @@ export const TextAreaStyled = styled(TextArea)`
     padding: 9px 15px;
     margin: 0 0 12px 0;
   `}
+
+  ${props => props.marginBottom7 && css`
+    margin: 0 0 7px 0;
+  `}
 `
 
 export const ButtonStyled = styled(Button)`

@@ -1,68 +1,10 @@
 import styled, { css } from 'styled-components'
-import { Button, Input, svgMixin, inputMixin } from './../../../themes/externalRecyclableStyles'
+import { Button } from './../../../themes/externalRecyclableStyles'
+import { ButtonAccion } from './sMainProfile'
+import { InputStyled } from './../../../pages/signInAndUp/styles/sGlobalForm'
 
-export const UserEditContainer = styled.div`
-  margin: 0 0 20px 0 !important;
-  display: flex;
-  flex-direction: column;
-  align-items: left !important;
-
-  @media(min-width:1024px) {
-    margin: 0 0 30px 0;
-  }
-
-  img {
-    border-radius: 100%;
-    height: 76px;
-    width: 76px;
-    margin: 10px 50px;
-    object-fit: cover;
-  }
-
-  svg {
-    // height: 80px;
-    // width: 80px;
-    fill: ${props => props.theme.colorIcon};
-  }
-
-  h4 {
-    font-size: 1.5em;
-    text-align: center;
-    margin: 10px 0 0 0;
-  }
-`
-
-export const ButtonEditAccion = styled(Button)`
-  padding: 10px 15px;
-  width: initial;
-  background: ${props => props.theme.inputForm};
-  color: ${props => props.theme.textColor};
-  font-weight: ${props => props.theme.weight.regular};
-  font-size: 1.1em;
-  font-family: ${props => props.theme.secondaryFont};
-  font-weight: ${props => props.theme.weight.light};
-  margin: 10px auto 20px 0;
-  height: 42px;
-  transition: all .2s;
-
-  svg {
-    fill: ${props => props.theme.colorIcon};
-    margin: 0 10px 0 0;
-    width: 21px;
-    height: 21px;
-  }
-
-  &:active,
-  &:focus,
-  &:hover {
-    span {
-      color: ${props => props.theme.colorHoverIcon};
-    }
-
-    svg {
-      fill: ${props => props.theme.colorHoverIcon};
-    }
-  }
+export const ButtonEditAccion = styled(ButtonAccion)`
+  margin: 20px auto 19px 0;
 
   @media(min-width:1024px) {
     // margin: 15px auto 25px auto;
@@ -98,97 +40,30 @@ export const ButtonStyled = styled(Button)`
   }
 `
 
-export const CodeContainer = styled.div`
+export const CharacterContainer = styled.div`
+  font-size: 0.84em;
+  margin: 0 21px 19px 0;
+  text-align: right;
+`
+
+export const SocialMediaContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 40px 0 50px 0;
-
-  p {
-    margin: 0 0 20px 0;
-    text-align: center;
-    line-height: 1.7em;
-  }
-
-  @media(min-width:768px) {
-    margin: 40px 0 0 0;
-  }
-`
-
-export const LinkInputContainer = styled.div`
-    display: flex;
-    border-radius: 100%;
-    ${inputMixin};
-    ${props => props.special && css`
-        color: ${props => props.theme.colorbrandSolid};
-    `}
-    p{
-        align-self: center;
-        height: 24px;
-        padding-left: 25px;
-    }
-
-    input{
-        margin: 0;
-        background: none;
-        width: border-box;
-    }
-
-    input:hover{
-      background: none;
-    }
-`
-
-
-export const InputEditStyled = styled(Input)`
-  margin: 10px 0;
-  width: auto;
-  text-align: left;
-  letter-spacing: 1px;
-  padding: 20px 21px;
-`
-
-export const Form = styled.form`
-  display: flex;
-  align-items: left;
-  flex-direction: column;
-
-//   @media(min-width:768px) {
-//     flex-direction: row;
-//   }
-
+  margin: 0 0 20px 0;
+  
   img {
-      flex-direction: row;
-    //   width: 25px;
-  }
-
-  ${svgMixin};
-
-  label {
-    margin: 0 0 10px 0;
-
-    @media(min-width:768px) {
-      margin: 0 10px 0 0;
-      width: max-content;
-    }
-  }
-
-  svg {
-    width: 34px;
-    display: none;
-
-    @media(min-width:768px) {
-      display: block;
-    }
+    margin: 0 10px 0 0;
+    flex: 0 0 auto;
   }
 `
 
-export const CommentSVGContainer = styled.div`
-  position: relative;
-`
+export const InputSocialMedia = styled(InputStyled)`
+  text-align: left;
+  margin: 0;
+  flex: 0 auto;
+  height: 40px;
+  padding: 16px;
 
-export const CommentStyled = styled(Comment)`
-  font-size: 0.8em;
-  top: 40px;
+  @media(min-width:1200px) {
+    height: 44px;
+  }
 `
