@@ -54,11 +54,9 @@ const CardCommunity = ({communityData, communityProvider}) => {
       }
     }
     return ()=>{
-      return ()=>{
-        cardRef.current = false;
-        textRef.current = false;
-        buttonRef.current = false;
-      }
+      cardRef.current = false;
+      textRef.current = false;
+      buttonRef.current = false;
     }
   }, [])
 

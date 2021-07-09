@@ -45,19 +45,19 @@ const sendProfileData = async (uid, firestore, data) => {
                 professionalDescription : professionalDescription.length !== 0 ? professionalDescription: null,
                 aboutMe: aboutMe.length !== 0 ? aboutMe: null,
                 facebook: {
-                    profile: facebook.length !== 0? facebook: null,
+                    profile: facebook.startsWith("https://www.facebook.com/")? facebook: null,
                 },
                 instagram: {
-                    profile: instagram.length !== 0? instagram: null,
+                    profile: instagram.startsWith("https://www.instagram.com/")? instagram: null,
                 },
                 linkedin: {
-                    profile: linkedin.length !== 0? linkedin: null,
+                    profile: linkedin.startsWith("https://www.linkedin.com/in/")? linkedin: null,
                 },
                 twitter: {
-                    profile: twitter.length !== 0? twitter: null,
+                    profile: twitter.startsWith("https://www.twitter.com/")? twitter: null,
                 },
                 youtube: {
-                    profile: youtube.length !== 0? youtube: null,
+                    profile: youtube.startsWith("https://www.youtube.com/channel")? youtube: null,
                 }
             }
         },

@@ -34,7 +34,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
 
     useEffect(() => {
 
-    },[])
+    },[pDLength, aMLength])
     const onSubmit = async (data) => {
         setLoading(true)
         await changePofileData(authState.uid, firestore, data, firebase)//codeValidated.type en lugar de "admin"
@@ -96,6 +96,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                   name="professionalDescription"
                   maxLength="360"
                   onChange={changePD}
+                  onLoad={changePD}
                   ref={register({maxLength: 360})}
                 />
                 <CharacterContainer>{`${pDLength}/360`}</CharacterContainer>
@@ -106,6 +107,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                   name="aboutMe"
                   maxLength="1000"
                   onChange={changeAM}
+                  onLoad={changeAM}
                   ref={register({maxLength: 1000})}
                 />
                 <CharacterContainer>{`${aMLength}/1000`}</CharacterContainer>
@@ -117,7 +119,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                   <InputSocialMedia 
                     type="text" 
                     placeholder="https://www.facebook.com/"
-                    defaultValue={(existProfileData && existProfileData.facebook) && existProfileData.facebook.profile}
+                    defaultValue={(existProfileData && existProfileData.facebook) ? existProfileData.facebook.profile: ''}
                     maxLength="60"
                     name="facebook"
                     ref={register({maxLength: 60})}
@@ -128,7 +130,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                   <InputSocialMedia 
                     type="text" 
                     placeholder="https://www.instagram.com/"
-                    defaultValue={(existProfileData && existProfileData.instagram) && existProfileData.instagram.profile}
+                    defaultValue={(existProfileData && existProfileData.instagram) ? existProfileData.instagram.profile: ''}
                     maxLength="60"
                     name="instagram"
                     ref={register({maxLength: 60})}
@@ -138,8 +140,8 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                   <img src={linkedin}/>
                   <InputSocialMedia 
                     type="text" 
-                    placeholder="https://www.linkedin.com/"
-                    defaultValue={(existProfileData && existProfileData.linkedin) && existProfileData.linkedin.profile}
+                    placeholder="https://www.linkedin.com/in/"
+                    defaultValue={(existProfileData && existProfileData.linkedin) ? existProfileData.linkedin.profile: ''}
                     maxLength="60"
                     name="linkedin"
                     ref={register({maxLength: 60})}
@@ -150,7 +152,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                   <InputSocialMedia 
                     type="text"
                     placeholder="https://www.twitter.com/"
-                    defaultValue={(existProfileData && existProfileData.twitter) && existProfileData.twitter.profile}
+                    defaultValue={(existProfileData && existProfileData.twitter) ? existProfileData.twitter.profile: ''}
                     maxLength="60"
                     name="twitter"
                     ref={register({maxLength: 60})}
@@ -161,7 +163,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                   <InputSocialMedia 
                     type="text" 
                     placeholder="https://www.youtube.com/channel/"
-                    defaultValue={(existProfileData && existProfileData.youtube) && existProfileData.youtube.profile}
+                    defaultValue={(existProfileData && existProfileData.youtube) ? existProfileData.youtube.profile: ''}
                     maxLength="60"
                     name="youtube"
                     ref={register({maxLength: 60})}

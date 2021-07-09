@@ -19,6 +19,11 @@ import { Form, CommentSVGContainer, InputStyled } from './styles/sMainProfile'
 import { ReactComponent as CopySVG } from '../createCommunity/icons/copy.svg'
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'
 import { createDocInbox } from './algorithms/createDocInbox'
+import facebook from './icons/facebook.svg'
+import instagram from './icons/instagram.svg'
+import linkedin from './icons/linkedin.svg'
+import twitter from './icons/twitter.svg'
+import youtube from './icons/youtube.svg'
 
 //Import components for edit profile
 import EditProfile from './EditProfile'
@@ -60,6 +65,7 @@ const MainProfile = React.memo(() => {
     return false // Mostrar mensaje de error o redirección
   }
   const isMyUser = authState.uid === userDataRecovered.id
+  const profileData = (userDataRecovered && userDataRecovered.profileData) ? userDataRecovered.profileData : null
   
   const changeDataOfProfile = (e) => {
     e.preventDefault()
@@ -80,6 +86,7 @@ const MainProfile = React.memo(() => {
       />
     )
   }
+
   return (
       <main>
         <Wrapper>
@@ -101,7 +108,11 @@ const MainProfile = React.memo(() => {
               </ButtonAccion>
             }
             <h4>{userDataRecovered && userDataRecovered.name? `${userDataRecovered.name.firstName} ${userDataRecovered.name.lastName}`: userDataRecovered.username}</h4>
+            <br/>
+            {profileData && <p>{profileData.professionalDescription}</p>}
           </UserContainer>
+          <h4>Fangel Score</h4>
+          <h4>{(userDataRecovered && userDataRecovered.score && userDataRecovered.score.fangelScore) ? userDataRecovered.score.fangelScore : 65}</h4>
           <ListTags>
             {userDataRecovered && userDataRecovered.preferences &&
               userDataRecovered.preferences.map((tag) => {
@@ -110,6 +121,42 @@ const MainProfile = React.memo(() => {
               )
             }
           </ListTags>
+          {profileData && profileData.aboutMe &&
+              <>
+                <h4>Acerca de</h4>
+                <p>{profileData.aboutMe}</p>
+              </>
+          }
+          {profileData && profileData.facebook && profileData.facebook.profile &&
+            <>
+              <img src={facebook}/>
+              <p>{profileData.facebook.profile}</p>
+            </>
+          }
+          {profileData && profileData.instagram && profileData.instagram.profile &&
+            <>
+              <img src={instagram}/>
+              <p>{profileData.instagram.profile}</p>
+            </>
+          }
+          {profileData && profileData.linkedin && profileData.linkedin.profile &&
+            <>
+              <img src={linkedin}/>
+              <p>{profileData.linkedin.profile}</p>
+            </>
+          }
+          {profileData && profileData.twitter && profileData.twitter.profile &&
+            <>
+              <img src={twitter}/>
+              <p>{profileData.twitter.profile}</p>
+            </>
+          }
+          {profileData && profileData.youtube && profileData.youtube.profile &&
+            <>
+              <img src={youtube}/>
+              <p>{profileData.youtube.profile}</p>
+            </>
+          }
         </Wrapper> 
         <ReturnPage/> 
       </main>
