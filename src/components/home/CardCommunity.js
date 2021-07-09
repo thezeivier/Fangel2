@@ -26,7 +26,7 @@ const CardCommunity = ({communityData, communityProvider}) => {
         const gsReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.route}`)
         gsReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
           setThumb(url)
-          firestore.collection("users").doc(communityData.roomName).set(
+          firestore.collection("communities").doc(communityData.roomName).set(
             {
               communityPhotoUrl: url
             }, 
@@ -42,7 +42,7 @@ const CardCommunity = ({communityData, communityProvider}) => {
         const profileImageReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.profileRoute}`)
         profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
           setProfileThumb(url)
-          firestore.collection("users").doc(communityData.roomName).set(
+          firestore.collection("communities").doc(communityData.roomName).set(
             {
               profilePhotoUrl: url
             }, 
