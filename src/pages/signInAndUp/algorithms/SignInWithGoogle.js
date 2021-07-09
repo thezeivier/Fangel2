@@ -40,6 +40,7 @@ export const sendDataUserFromGoogle = async (data, uid, type, firestore, firebas
             fangelScore: 65,
           },
           photoUrl,
+          bucket: "fangelv2-300300.appspot.com",
         },
         {merge: true}
       )

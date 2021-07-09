@@ -37,7 +37,7 @@ const CardCommunity = ({communityData, communityProvider}) => {
         setThumb(communityData.communityPhotoUrl)
       }
     }
-    if(communityData.profileRoute && communityData.profileRoute){
+    if(communityData.bucket && communityData.profileRoute){
       if(!communityData.profilePhotoUrl){
         const profileImageReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.profileRoute}`)
         profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.

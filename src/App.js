@@ -72,6 +72,14 @@ function App() {
             }
             if(dataUser.type === "admin"){
               setIsAdmin(true)
+              if(!dataUser.bucket){// Si el usuario no tiene bucket, automáticamente se le asigna.
+                firestore.collection("users").doc(user.uid).set(
+                  {
+                    bucket: "fangelv2-300300.appspot.com",
+                  }, 
+                  { merge: true }
+                )
+              }
               if(!dataUser.photoUrl){
                 if(dataUser.bucket && dataUser.route){
                   const profileImageReference = storage.refFromURL(`gs://${dataUser.bucket}/${dataUser.route}`)

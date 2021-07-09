@@ -91,6 +91,7 @@ export const sendDataUser = async (data, uid, type, firestore, firebase, email) 
       score: {
         fangelScore: 65,
       },
+      bucket: "fangelv2-300300.appspot.com",
     },
     {merge: true}
   )
