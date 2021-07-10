@@ -5,7 +5,8 @@ export const SignInWithGoogle = async (auth, firebase, firestore) => {
   .then(async result => {  
     const user = await result.user
     const data = {firstName: user.displayName, lastName: ''}
-    await sendDataUserFromGoogle(data, user.uid, "admin", firestore, firebase, user.email, user.photoUrl)
+    console.log(user)
+    await sendDataUserFromGoogle(data, user.uid, "admin", firestore, firebase, user.email, user.photoURL)
     return {verified: user.emailVerified, username: user.displayName, email: user.email, uid: user.uid}
     console.log("Logged Successfully")
   })

@@ -81,7 +81,7 @@ const Register = () => {
 
   // console.log(emailRegistered)
   // console.log(codeBValidated)
-  console.log(location)
+  // console.log(location)
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import Jitsi from 'react-jitsi'
 import VideoSpinner from '../spinner/VideoSpinner'
 import { GetAdminCommunity } from '../../pages/inCommunity/algorithms/GetAdminCommunity'
@@ -19,35 +19,20 @@ const interfaceConfig = {
   ENABLE_DIAL_OUT: false,
   SHOW_CHROME_EXTENSION_BANNER: false,
   TOOLBAR_TIMEOUT: 2000,
-
-  /* SHOW_JITSI_WATERMARK: false,
-  HIDE_DEEP_LINKING_LOGO: true,
-  SHOW_BRAND_WATERMARK: false,
-  SHOW_WATERMARK_FOR_GUESTS: false, */
   TOOLBAR_BUTTONS: [
     "microphone",
     "camera",
     "fullscreen",
     'desktop',
-    // "fodeviceselection",
-    // "hangup",
-    // "profile",
-    // "chat",
-    // "settings",
     "videoquality",
     "tileview",
-    // "download",
-    // "help",
     "mute-everyone",
     'mute-video-everyone',
     'raisehand',
     'sharedvideo',
-    // 'etherpad'
-    // 'livestreaming'
-    // 'closedcaptions'
-    // 'feedback'
-    // 'security'
-  ]
+    'select-background',
+    'shortcuts'
+  ],
 };
 
 const userToolBarButtons = [
@@ -58,7 +43,9 @@ const userToolBarButtons = [
   "videoquality",
   "tileview",
   'raisehand',
-  'sharedvideo'
+  'sharedvideo',
+  'select-background',
+  'shortcuts',
 ]
 const config = {
   defaultLanguage: "es",
@@ -67,15 +54,19 @@ const config = {
   disableProfile: true,
   enableInsecureRoomNameWarning: false,
   disableDeepLinking: true,
+  enableNoAudioDetection: true,
+  enableNoisyMicDetection: true,
 };
 
 const VideoCall = ({dataUser, authState, communityDataRoom}) => {
+
   const isAdmin = communityDataRoom.creatorUid ? GetAdminCommunity(communityDataRoom.creatorUid, dataUser.uid) : false
   const handleAPI = JitsiMeetAPI => {
     JitsiMeetAPI.executeCommand("toggleVideo");
-    // JitsiMeetAPI.executeCommand("toggleAudio");
+    JitsiMeetAPI.executeCommand('avatarUrl', dataUser.photoUrl? dataUser.photoUrl: null);
+    JitsiMeetAPI.executeCommand('subject', communityDataRoom.privacy === "public"? "Espacio social público": "Espacio social privado");
   };
-
+  
   const {TOOLBAR_BUTTONS, ...restConf} = interfaceConfig
   const interfaceUserConf = {...restConf, TOOLBAR_BUTTONS: userToolBarButtons}
   return (
@@ -86,6 +77,7 @@ const VideoCall = ({dataUser, authState, communityDataRoom}) => {
         roomName={ !communityDataRoom.communityDataSubSpace ? communityDataRoom.roomName : `${communityDataRoom.communityData.roomName}${communityDataRoom.communityDataSubSpace.id}`}
         // roomName="7L2gEnvzAqYsQNVUdyvyhMbD1BW4gCXodDWczaufrbL2dNKFr73cOUMN5WuHuNtypmX8zjKpqNuV1DpNs7nuWXbgv3PSnBxiZ7uZiSfvGPc0ibI8smUAVvBaYsCiINJh"
         displayName={authState.displayName}
+        // password={!communityDataRoom.communityDataSubSpace ? communityDataRoom.roomName : `fangel_${communityDataRoom.communityData.roomName}%&@&%${communityDataRoom.communityDataSubSpace.id}_fangel`}
         loadingComponent={VideoSpinner}
         interfaceConfig={isAdmin ? interfaceConfig : interfaceUserConf}
         config={config}
