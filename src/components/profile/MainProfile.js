@@ -152,31 +152,31 @@ const MainProfile = React.memo(() => {
                     {profileData && profileData.facebook && profileData.facebook.profile &&
                       <SocialMediaContainer mainMedia>
                         <img src={facebook}/>
-                        <Link to={profileData.facebook.profile} className="linkSocialMedia">Facebook</Link>
+                        <a href={profileData.facebook.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Facebook</a>
                       </SocialMediaContainer>
                     }
                     {profileData && profileData.instagram && profileData.instagram.profile &&
                       <SocialMediaContainer mainMedia>
                         <img src={instagram}/>
-                        <Link to={profileData.instagram.profile} className="linkSocialMedia">Instagram</Link>
+                        <a href={profileData.instagram.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Instagram</a>
                       </SocialMediaContainer>
                     }
                     {profileData && profileData.linkedin && profileData.linkedin.profile &&
                       <SocialMediaContainer mainMedia>
                         <img src={linkedin}/>
-                        <Link to={profileData.linkedin.profile} className="linkSocialMedia">Likendin</Link>
+                        <a href={profileData.linkedin.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Likendin</a>
                       </SocialMediaContainer>
                     }
                     {profileData && profileData.twitter && profileData.twitter.profile &&
                       <SocialMediaContainer mainMedia>
                         <img src={twitter}/>
-                        <Link to={profileData.twitter.profile} className="linkSocialMedia">Twitter</Link>
+                        <a href={profileData.twitter.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Twitter</a>
                       </SocialMediaContainer>
                     }
                     {profileData && profileData.youtube && profileData.youtube.profile &&
                       <SocialMediaContainer mainMedia last>
                         <img src={youtube}/>
-                        <Link to={profileData.youtube.profile} className="linkSocialMedia">Youtube</Link>
+                        <a href={profileData.youtube.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Youtube</a>
                       </SocialMediaContainer>
                     }
                   </div>
