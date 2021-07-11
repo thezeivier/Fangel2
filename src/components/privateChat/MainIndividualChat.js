@@ -31,16 +31,16 @@ const MainIndividualChat = ({ inGridDesktop, message, idTransmitter, idReceiver,
   if(error) return <p>Error</p>
   
   const transmitterData = data[0]
-  if(!transmitterData.photoUrl){
+
+  if(transmitterData && !transmitterData.photoUrl){
     if(transmitterData.bucket && transmitterData.route){
       const profileImageReference = storage.refFromURL(`gs://${transmitterData.bucket}/${transmitterData.route}`)
       profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
         setProfileThumb(url)
       })
     }
-  }else{
-    setProfileThumb(transmitterData.photoUrl)
   }
+  
   return (
     <Section>
       <Wrapper height="100%">
@@ -49,7 +49,7 @@ const MainIndividualChat = ({ inGridDesktop, message, idTransmitter, idReceiver,
             <TitleContainerStyled>
               <ArrowBackSVG />
               <UserChating as={Link} to={`/u/${transmitterData.username}`}>
-                {profileThumb ? <img src={profileThumb} alt="Imagen de perfil" /> : <ProfileSVG /> }
+                {profileThumb ? <img src={profileThumb} alt="Imagen de perfil" /> : (transmitterData.photoUrl ? <img src={transmitterData.photoUrl} alt="Imagen de perfil" /> : <ProfileSVG />) }
                 <TitleStyled>{transmitterData.name ? `${transmitterData.name.firstName} ${transmitterData.name.lastName}` : transmitterData.username}</TitleStyled>
               </UserChating>
             </TitleContainerStyled>
