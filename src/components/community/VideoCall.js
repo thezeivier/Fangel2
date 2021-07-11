@@ -65,7 +65,11 @@ const VideoCall = ({dataUser, authState, communityDataRoom}) => {
     JitsiMeetAPI.executeCommand("toggleVideo");
     JitsiMeetAPI.executeCommand('avatarUrl', dataUser.photoUrl? dataUser.photoUrl: null);
     JitsiMeetAPI.executeCommand('subject', communityDataRoom.privacy === "public"? "Espacio social público": "Espacio social privado");
+    JitsiMeetAPI.on('passwordRequired', function (){
+      JitsiMeetAPI.executeCommand('password', !communityDataRoom.communityDataSubSpace ? `fangel_${communityDataRoom.roomName}_fangel` : `fangel_${communityDataRoom.communityData.roomName}&@&${communityDataRoom.communityDataSubSpace.id}_fangel`);
+    });
   };
+
   
   const {TOOLBAR_BUTTONS, ...restConf} = interfaceConfig
   const interfaceUserConf = {...restConf, TOOLBAR_BUTTONS: userToolBarButtons}
@@ -74,10 +78,9 @@ const VideoCall = ({dataUser, authState, communityDataRoom}) => {
       <Jitsi
         domain="meet.jit.si"
         onAPILoad={handleAPI}
+        password={!communityDataRoom.communityDataSubSpace ? `fangel_${communityDataRoom.roomName}_fangel` : `fangel_${communityDataRoom.communityData.roomName}&@&${communityDataRoom.communityDataSubSpace.id}_fangel`}
         roomName={ !communityDataRoom.communityDataSubSpace ? communityDataRoom.roomName : `${communityDataRoom.communityData.roomName}${communityDataRoom.communityDataSubSpace.id}`}
-        // roomName="7L2gEnvzAqYsQNVUdyvyhMbD1BW4gCXodDWczaufrbL2dNKFr73cOUMN5WuHuNtypmX8zjKpqNuV1DpNs7nuWXbgv3PSnBxiZ7uZiSfvGPc0ibI8smUAVvBaYsCiINJh"
         displayName={authState.displayName}
-        // password={!communityDataRoom.communityDataSubSpace ? communityDataRoom.roomName : `fangel_${communityDataRoom.communityData.roomName}%&@&%${communityDataRoom.communityDataSubSpace.id}_fangel`}
         loadingComponent={VideoSpinner}
         interfaceConfig={isAdmin ? interfaceConfig : interfaceUserConf}
         config={config}
