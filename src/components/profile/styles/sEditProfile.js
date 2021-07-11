@@ -49,11 +49,20 @@ export const CharacterContainer = styled.div`
 export const SocialMediaContainer = styled.div`
   display: flex;
   margin: 0 0 20px 0;
+  align-items: center;
   
   img {
     margin: 0 10px 0 0;
     flex: 0 0 auto;
   }
+
+  ${props => props.mainMedia && css`
+    margin: 0 0 10px 0;
+  `}
+
+  ${props => props.last && css`
+    margin: 0;
+  `}
 `
 
 export const InputSocialMedia = styled(InputStyled)`

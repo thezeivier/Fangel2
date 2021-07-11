@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useRouteMatch, useLocation, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import ReturnPage from './../general/ReturnPage'
 import UserTag from './UserTag'
@@ -15,7 +16,10 @@ import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
 import { ReactComponent as AddPhotoSVG } from './icons/addPhoto.svg'
 
 //Import components from code Box
-import { Form, CommentSVGContainer, InputStyled } from './styles/sMainProfile'
+import { Form, CommentSVGContainer, InputStyled, ContainerInformation,
+         SmallTextStyled, TextBodyStyled, GridOnlyDesktop } from './styles/sMainProfile'
+import { SubtitleStyled } from './../../themes/internalRecyclableStyles'
+import { SocialMediaContainer } from './styles/sEditProfile'
 import { ReactComponent as CopySVG } from '../createCommunity/icons/copy.svg'
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'
 import { createDocInbox } from './algorithms/createDocInbox'
@@ -98,6 +102,8 @@ const MainProfile = React.memo(() => {
                 <ProfileSVG />
               }
             </ProfileImage>
+            <h4>{userDataRecovered && userDataRecovered.name? `${userDataRecovered.name.firstName} ${userDataRecovered.name.lastName}`: userDataRecovered.username}</h4>
+            {profileData && <p>{profileData.professionalDescription}</p>}
             {
               isMyUser ?
               <ButtonAccion onClick={changeDataOfProfile}>
@@ -107,56 +113,76 @@ const MainProfile = React.memo(() => {
                 <span>Enviar mensaje</span>
               </ButtonAccion>
             }
-            <h4>{userDataRecovered && userDataRecovered.name? `${userDataRecovered.name.firstName} ${userDataRecovered.name.lastName}`: userDataRecovered.username}</h4>
-            <br/>
-            {profileData && <p>{profileData.professionalDescription}</p>}
           </UserContainer>
-          <h4>Fangel Score</h4>
-          <h4>{(userDataRecovered && userDataRecovered.score && userDataRecovered.score.fangelScore) ? userDataRecovered.score.fangelScore : 65}</h4>
-          <ListTags>
-            {userDataRecovered && userDataRecovered.preferences &&
-              userDataRecovered.preferences.map((tag) => {
-                const colorText = themeMode == "light" ? getColorLightMode() : getColorDarkMode()
-                return <UserTag key={`${tag}_${userDataRecovered.id}`} category={tag} color={colorText} />}
-              )
-            }
-          </ListTags>
-          {profileData && profileData.aboutMe &&
-              <>
-                <h4>Acerca de</h4>
-                <p>{profileData.aboutMe}</p>
-              </>
-          }
-          {profileData && profileData.facebook && profileData.facebook.profile &&
-            <>
-              <img src={facebook}/>
-              <p>{profileData.facebook.profile}</p>
-            </>
-          }
-          {profileData && profileData.instagram && profileData.instagram.profile &&
-            <>
-              <img src={instagram}/>
-              <p>{profileData.instagram.profile}</p>
-            </>
-          }
-          {profileData && profileData.linkedin && profileData.linkedin.profile &&
-            <>
-              <img src={linkedin}/>
-              <p>{profileData.linkedin.profile}</p>
-            </>
-          }
-          {profileData && profileData.twitter && profileData.twitter.profile &&
-            <>
-              <img src={twitter}/>
-              <p>{profileData.twitter.profile}</p>
-            </>
-          }
-          {profileData && profileData.youtube && profileData.youtube.profile &&
-            <>
-              <img src={youtube}/>
-              <p>{profileData.youtube.profile}</p>
-            </>
-          }
+          <GridOnlyDesktop>
+            <div>
+              <ContainerInformation>
+                <SubtitleStyled>Fangel Score</SubtitleStyled>
+                <h5>
+                  {(userDataRecovered && userDataRecovered.score && userDataRecovered.score.fangelScore) ? userDataRecovered.score.fangelScore : 65}
+                  <span>
+                    puntos
+                  </span>
+                </h5>
+                <SmallTextStyled>Esta puntución ayuda a mejorar tus conexiones en Fangel.</SmallTextStyled>
+                <Link href="#" className="moreInformationScore">Ver formas de subir la puntuación</Link>
+              </ContainerInformation>
+              <ContainerInformation>
+                <SubtitleStyled>Intereses</SubtitleStyled>
+                <ListTags>
+                  {userDataRecovered && userDataRecovered.preferences &&
+                    userDataRecovered.preferences.map((tag) => {
+                      const colorText = themeMode == "light" ? getColorLightMode() : getColorDarkMode()
+                      return <UserTag key={`${tag}_${userDataRecovered.id}`} category={tag} color={colorText} />}
+                    )
+                  }
+                </ListTags>
+              </ContainerInformation>
+            </div>
+            <div>
+              {profileData && profileData.aboutMe &&
+                <ContainerInformation>
+                  <SubtitleStyled>Acerca de</SubtitleStyled>
+                  <TextBodyStyled>{profileData.aboutMe}</TextBodyStyled>
+                </ContainerInformation>
+              }
+              <ContainerInformation last>
+                <SubtitleStyled>Redes sociales</SubtitleStyled>
+                  <div>
+                    {profileData && profileData.facebook && profileData.facebook.profile &&
+                      <SocialMediaContainer mainMedia>
+                        <img src={facebook}/>
+                        <Link to={profileData.facebook.profile} className="linkSocialMedia">Facebook</Link>
+                      </SocialMediaContainer>
+                    }
+                    {profileData && profileData.instagram && profileData.instagram.profile &&
+                      <SocialMediaContainer mainMedia>
+                        <img src={instagram}/>
+                        <Link to={profileData.instagram.profile} className="linkSocialMedia">Instagram</Link>
+                      </SocialMediaContainer>
+                    }
+                    {profileData && profileData.linkedin && profileData.linkedin.profile &&
+                      <SocialMediaContainer mainMedia>
+                        <img src={linkedin}/>
+                        <Link to={profileData.linkedin.profile} className="linkSocialMedia">Likendin</Link>
+                      </SocialMediaContainer>
+                    }
+                    {profileData && profileData.twitter && profileData.twitter.profile &&
+                      <SocialMediaContainer mainMedia>
+                        <img src={twitter}/>
+                        <Link to={profileData.twitter.profile} className="linkSocialMedia">Twitter</Link>
+                      </SocialMediaContainer>
+                    }
+                    {profileData && profileData.youtube && profileData.youtube.profile &&
+                      <SocialMediaContainer mainMedia last>
+                        <img src={youtube}/>
+                        <Link to={profileData.youtube.profile} className="linkSocialMedia">Youtube</Link>
+                      </SocialMediaContainer>
+                    }
+                  </div>
+              </ContainerInformation>
+            </div>
+          </GridOnlyDesktop>
         </Wrapper> 
         <ReturnPage/> 
       </main>

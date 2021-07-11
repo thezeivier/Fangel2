@@ -1,21 +1,83 @@
 import styled, { css } from 'styled-components'
-import { Button, Input, svgMixin  } from './../../../themes/externalRecyclableStyles'
+import { Button, Input, svgMixin, SmallText, TextBody } from './../../../themes/externalRecyclableStyles'
 
-export const UserContainer = styled.div`
-  margin: 0 0 20px 0;
+export const UserContainer = styled.section`
+  margin: 0 0 30px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  h4 {
+    font-size: 1.35em;
+    text-align: center;
+    margin: 15px 0 0 0;
+  }
+
+  p {
+    font-family: ${props => props.theme.secondaryFont};
+    margin: 10px 0 0 0;
+  }
+
   @media(min-width:1024px) {
     margin: 0 0 30px 0;
   }
+`
 
-  h4 {
-    font-size: 1.5em;
-    text-align: center;
-    margin: 10px 0 0 0;
+export const GridOnlyDesktop = styled.div`
+  display: block;
+
+   @media(min-width:1200px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
   }
+`
+
+export const ContainerInformation = styled.section`
+  margin: 0 0 30px 0;
+
+  h5 {
+    font-size: 1.3em;
+    font-weight: ${props => props.theme.weight.semiMedium};
+    color: ${props => props.theme.colorbrandSolid};
+    margin: 0 0 5px 0;
+
+    span {
+      margin: 0 0 0 3px;
+      display: inline-block;
+      font-size: 0.8em;
+    }
+  }
+
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .moreInformationScore {
+    color: ${props => props.theme.colorbrandSolid};
+    margin: 15px 0 0 0;
+    display: block;
+    font-size: 0.95em;
+  }
+
+  .linkSocialMedia {
+    color: ${props => props.theme.textColor};
+  }
+
+  ${props => props.last && css`
+    margin: 0;
+  `}
+`
+
+export const SmallTextStyled = styled(SmallText)`
+  width: auto;
+  line-height: 1.35em;
+`
+
+export const TextBodyStyled = styled(TextBody)`
+  font-size: 1em;
 `
 
 export const ProfileImage = styled.div`
@@ -50,7 +112,7 @@ export const ButtonAccion = styled(Button)`
   font-family: ${props => props.theme.secondaryFont};
   font-weight: ${props => props.theme.weight.light};
   height: 44px;
-  margin: 10px auto 20px auto;
+  margin: 20px auto 0 auto;
   transition: all .2s;
 
   svg {
@@ -73,7 +135,7 @@ export const ButtonAccion = styled(Button)`
   }
 
   @media(min-width:1024px) {
-    margin: 15px auto 25px auto;
+    margin: 22px auto;
     font-size: 1em;
   }
 `
@@ -81,11 +143,15 @@ export const ButtonAccion = styled(Button)`
 export const ListTags =styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 
   @media(min-width:1024px) {
     width: 400px;
     margin: 0 auto;
+  }
+
+  @media(min-width:1200px) {
+    width: auto;
+    margin: auto;
   }
 `
 
@@ -93,7 +159,7 @@ export const ButtonStyled = styled(Button)`
   padding: 7px 25px;
   width: initial;
   font-size: 1em;
-  margin: 5px;
+  margin: 5px 5px 5px 0;
   font-weight: ${props => props.theme.weight.regular};
   color: ${props => props.color};
   border: 1px solid ${props => props.color};
@@ -104,23 +170,9 @@ export const ButtonStyled = styled(Button)`
   &:focus {
     background: ${props => props.color + '15'};
   }
-`
 
-export const CodeContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 40px 0 50px 0;
-
-  p {
-    margin: 0 0 20px 0;
-    text-align: center;
-    line-height: 1.7em;
-  }
-
-  @media(min-width:768px) {
-    margin: 40px 0 0 0;
+  @media(min-width:1200px) {
+    margin: 5px 10px 5px 0;
   }
 `
 
