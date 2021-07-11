@@ -52,6 +52,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [profileThumb, setProfileThumb] = useState(false)
   const [videoCall, setVideoCall] = useState(false)
+  const memoVideoCall = useMemo(() =>({videoCall, setVideoCall}),[videoCall, setVideoCall])
   const [fangelConnectProvider, setFangelConnectProvider] = useState(null)
   useEffect(()=>{
     if(localStorage.mode){
@@ -145,7 +146,7 @@ function App() {
     communityProvider,
     setFangelConnectProvider,
     fangelConnectProvider,
-    videoCall,
+    videoCall: memoVideoCall.videoCall,
     setCommunityGlobalData,
   }
 
@@ -162,7 +163,7 @@ function App() {
         <GlobalStyles />
           <Container>
             { (communityGlobalData && !location.pathname.startsWith("/room"))&&
-              <PFVideo children={videoCall} communityGlobalData={communityGlobalData} setCommunityGlobalData={setCommunityGlobalData}/>
+              <PFVideo children={memoVideoCall.videoCall} communityGlobalData={communityGlobalData} setCommunityGlobalData={setCommunityGlobalData}/>
             }
             <Switch>
               <Route exact path={"/"} component={authState ? Home : Landing}/>

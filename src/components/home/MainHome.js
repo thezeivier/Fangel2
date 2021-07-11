@@ -57,7 +57,7 @@ const MainHome = () => {
                   <SpacesSVG />
                   <span>Crear espacio social</span>
                 </AddCardContainer>:
-/*                 <AddCardContainer locked="true" colorbackground="#032655" as={Link} to={userFromDB.username ? `/u/${userFromDB.username}`:`#`} >
+                  /*<AddCardContainer locked="true" colorbackground="#032655" as={Link} to={userFromDB.username ? `/u/${userFromDB.username}`:`#`} >
                   <SpacesSVG />
                   <span>Crear espacio social</span>
                   <LockedSVG className="disableIcon" />
@@ -82,7 +82,7 @@ const MainHome = () => {
       </Wrapper>
       <EndCercle/>
       <ModalGeneral modalIsOpen={modalOpen} modalOpen={modalIsOpen} >
-        <ModalUnlockedSpace modalIsOpen={modalOpen}/>
+        <ModalUnlockedSpace modalIsOpen={modalOpen} to={userFromDB.username ? `/u/${userFromDB.username}`:`#`}/>
       </ModalGeneral>
     </main>
   );
