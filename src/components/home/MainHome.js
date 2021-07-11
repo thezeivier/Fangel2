@@ -8,6 +8,7 @@ import { TitleStyled, TextStyled } from './../../themes/internalRecyclableStyles
 import { AddCardContainer, EndCercle, CardsList, CardsContainer } from './styles/sMainHome'
 import { ReactComponent as SpacesSVG } from './icons/spaces.svg'
 import { ReactComponent as FangelConnectSVG } from './icons/fangelConnect.svg'
+import { ReactComponent as LockedSVG } from './icons/locked.svg'
 
 //Import Algorithms
 import { RecoverCommunities } from './algorithms/RecoverCommunities'
@@ -44,9 +45,14 @@ const MainHome = () => {
                 <FangelConnectSVG />
                 <span>Fangel Connect</span>
               </AddCardContainer>
-              <AddCardContainer colorbackground="#2D9CDB" colorhover="#2277A7" as={Link} to="/create-community-1" >
+{/*               <AddCardContainer colorbackground="#2D9CDB" colorhover="#2277A7" as={Link} to="/create-community-1" >
                 <SpacesSVG />
                 <span>Crear espacio social</span>
+              </AddCardContainer> */}
+              <AddCardContainer disable colorbackground="#032655" as={Link} to="/create-community-1" >
+                <SpacesSVG />
+                <span>Crear espacio social</span>
+                <LockedSVG className="disableIcon" />
               </AddCardContainer>
             </CardsContainer>
         }

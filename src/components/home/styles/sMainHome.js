@@ -23,6 +23,7 @@ export const AddCardContainer = styled.li`
   max-height: 305px;
   cursor: pointer;
   padding: 10px;
+  position: relative;
   transition: .2s;
   
   svg {
@@ -43,6 +44,13 @@ export const AddCardContainer = styled.li`
     text-align: center;
   }
 
+  .disableIcon {
+    position: absolute;
+    top: 11px;
+    right: 0;
+    height: 20px;
+  }
+
   &:hover {
     background: ${props => props.colorhover};
 
@@ -50,6 +58,29 @@ export const AddCardContainer = styled.li`
       transform: scale(1.14);
     }
   }
+
+  ${props => props.disable && css`
+    span {
+      color: #828282;
+    }
+
+    svg {
+      fill: #828282;
+    }
+
+    &:hover > .disableIcon {
+      transform: scale(1.15);
+      transform-origin: top right;
+    }
+
+    &:hover {
+      background: #032655;
+
+      svg {
+        transform: scale(1);
+      }
+    }
+  `}
 
   @media(min-width:768px) {
     min-height: 210px;
