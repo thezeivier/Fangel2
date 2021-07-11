@@ -164,7 +164,7 @@ const MainProfile = React.memo(() => {
                     {profileData && profileData.linkedin && profileData.linkedin.profile &&
                       <SocialMediaContainer mainMedia>
                         <img src={linkedin}/>
-                        <a href={profileData.linkedin.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Likendin</a>
+                        <a href={profileData.linkedin.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Linkendin</a>
                       </SocialMediaContainer>
                     }
                     {profileData && profileData.twitter && profileData.twitter.profile &&
