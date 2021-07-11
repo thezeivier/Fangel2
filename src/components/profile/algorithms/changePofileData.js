@@ -63,7 +63,9 @@ const sendProfileData = async (uid, firestore, data) => {
         },
         {merge: true}
     )
-    return await batch.commit().then().catch(error=>{
+    return await batch.commit().then(()=>{
+        window.location.reload()
+    }).catch(error=>{
         // throw console.error(error)
     })
 }
