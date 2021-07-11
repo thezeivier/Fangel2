@@ -18,7 +18,7 @@ export const InputContainer = styled.div`
   }
   
   @media(min-width:1200px) {
-    background: ${props => props.theme.colorCommetBox};
+    background: ${props => props.background ? `${props.theme.colorCommetBox}` : 'transparent' };
     border-radius: 0 0 10px 10px;
 
     .microphone,

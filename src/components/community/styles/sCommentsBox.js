@@ -27,7 +27,7 @@ export const CommentsContainer = styled.section`
     z-index: 50;
     margin: 0;
     padding: 10px;
-    background: ${props => props.theme.colorCommetBox};
+    background: ${props => props.background ? `${props.theme.colorCommetBox}` : 'transparent' };
     border-radius: 10px 10px 0 0;
   }
 

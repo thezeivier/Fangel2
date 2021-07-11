@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components'
-import { ReactComponent as FangelLettersSVG } from './../general/icons/fangelLetters.svg'
+import { ReactComponent as FangelLettersSVG } from './../general/icons/fangelLogoRemaster.svg'
 
 const Faded = keyframes`
   0% {
@@ -61,8 +61,8 @@ const FadedContainer = styled.div`
 
   svg {
     fill: #F6F3EF;
-    height: 4em;
-    width: 8em;
+    height: 7em;
+    width: 10em;
   }
 `
 
@@ -70,7 +70,7 @@ const Loader = styled.div`
   display: inline-block;
   position: relative;
   width: 70px;
-  margin: -5px 0 0 0;
+  margin: -32px 0 0 0;
 
   div {
     position: absolute;

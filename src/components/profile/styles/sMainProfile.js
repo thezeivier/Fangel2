@@ -11,11 +11,14 @@ export const UserContainer = styled.section`
     font-size: 1.35em;
     text-align: center;
     margin: 15px 0 0 0;
+    cursor: default;
   }
 
   p {
     font-family: ${props => props.theme.secondaryFont};
     margin: 10px 0 0 0;
+    cursor: default;
+    color: grey;
   }
 
   @media(min-width:1024px) {
@@ -100,6 +103,14 @@ export const ProfileImage = styled.div`
   ${props => props.left && css`
     width: fit-content;
   `}
+
+  @media(min-width:1200px) {
+    img {
+      height: 92px;
+      width: 92px;
+      margin: 0 0 2px 0;
+    }
+  }
 `
 
 export const ButtonAccion = styled(Button)`

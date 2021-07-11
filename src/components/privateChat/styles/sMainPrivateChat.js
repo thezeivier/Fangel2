@@ -110,6 +110,9 @@ export const OthersContainer = styled.div`
     p {
       margin: 20px 0 0 0;
       font-size: .95em;
+      max-width: 450px;
+      text-align: center;
+      line-height: 1.55em;
     }
   }
 `

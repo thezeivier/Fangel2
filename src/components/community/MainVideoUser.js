@@ -38,8 +38,8 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
             fangelConnectData &&
             <MatchInterest preferencesMatch={preferencesMatch} spaceId={fangelConnectData.spaceId}/>
           }
-          <CommentsBox data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef} />
-          <InputComments userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} /> 
+          <CommentsBox background="true" data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef} />
+          <InputComments background="true" userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} /> 
         </ContainerResponsive>
       </Wrapper>
       <ModalSettingsAdmin communityData={communityData} modalIsOpen={modalIsOpen} isSubSpace={isSubSpace} closeModal={closeModal} communityDataSubSpace={communityDataSubSpace}/>

@@ -116,7 +116,7 @@ export const MainChat = styled.div`
   max-width: 100%;
 
   @media(min-width:1200px) {
-    margin: 15px 20px;
+    margin: 15px 20px 0 20px;
     flex: 1 0 auto;
   }
 `
@@ -125,6 +125,6 @@ export const FooterChat = styled.div`
   flex: 0 0 auto;
 
   @media(min-width:1200px) {
-    margin: 0 20px 15px 20px;
+    margin: 0 20px 5px 20px;
   }
 `

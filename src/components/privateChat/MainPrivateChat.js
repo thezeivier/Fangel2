@@ -40,7 +40,7 @@ const MainPFVideoUser = ({getInboxDoc, getRouteInbox, userFromDB, authState}) =>
             {!getRouteInbox &&
               <OthersContainer>
                 <SocialInteractionSVG />
-                <p>Envia y recibe mensajes</p>
+                <p>Envia y recibe mensajes. Ingresa al perfil de un persona para iniciar una conversación.</p>
               </OthersContainer>
             }
             {getInboxDoc.data.map(usr => (

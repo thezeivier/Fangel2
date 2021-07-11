@@ -7,7 +7,7 @@ import { InputStyled, InputContainer, SvgsContainer, Form, Button } from './styl
 
 import firebase from 'firebase/app'
 
-const InputComments = ({userFromDB, lastMsgRef, data, name, messageRef,open }) => {
+const InputComments = ({userFromDB, lastMsgRef, data, name, messageRef, open, background }) => {
   const [formValue, setFormValue] = useState('')
   
   // Send new message
@@ -37,14 +37,14 @@ const InputComments = ({userFromDB, lastMsgRef, data, name, messageRef,open }) =
   }, [data])
   
   return (
-    <InputContainer>
+    <InputContainer background={background}>
       <SvgsContainer>
 {/*         <MicrophoneDisableSVG className="microphone"/>
         <CameraVideoDisableSVG className="cameraVideo"/> */}
         <MoreSVG className="moreSVG" onClick={open} />
       </SvgsContainer>
       <Form onSubmit={sendMessage}>
-        <InputStyled placeholder="Escribe un comentario" value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
+        <InputStyled placeholder="Escribe un comentario..." value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
         <Button type="submit" disabled={((formValue.trim().length == 0) || (formValue.length > 180)) ? true : false }>
           <SendCommentsSVG className="sendCommentsSVG" />
         </Button>
