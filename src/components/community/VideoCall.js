@@ -64,7 +64,7 @@ const VideoCall = ({dataUser, authState, communityDataRoom}) => {
   const handleAPI = JitsiMeetAPI => {
     JitsiMeetAPI.executeCommand("toggleVideo");
     JitsiMeetAPI.executeCommand('avatarUrl', dataUser.photoUrl? dataUser.photoUrl: null);
-    JitsiMeetAPI.executeCommand('subject', communityDataRoom.privacy === "public"? "Espacio social público": "Espacio social privado");
+    JitsiMeetAPI.executeCommand('subject', communityDataRoom.privacy === "public"? `${communityDataRoom.title} - Público`:  `${communityDataRoom.title} - Privado`);
     JitsiMeetAPI.on('passwordRequired', function (){
       JitsiMeetAPI.executeCommand('password', !communityDataRoom.communityDataSubSpace ? `fangel_${communityDataRoom.roomName}_fangel` : `fangel_${communityDataRoom.communityData.roomName}&@&${communityDataRoom.communityDataSubSpace.id}_fangel`);
     });

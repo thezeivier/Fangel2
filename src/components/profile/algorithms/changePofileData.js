@@ -45,7 +45,7 @@ const sendProfileData = async (uid, firestore, data) => {
                 professionalDescription : professionalDescription.length !== 0 ? professionalDescription: null,
                 aboutMe: aboutMe.length !== 0 ? aboutMe: null,
                 facebook: {
-                    profile: facebook.startsWith("https://www.facebook.com/")? facebook: null,
+                    profile: facebook.startsWith("https://www.facebook.com/") || facebook.startsWith("https://web.facebook.com/")? facebook: null,
                 },
                 instagram: {
                     profile: instagram.startsWith("https://www.instagram.com/")? instagram: null,
@@ -54,7 +54,7 @@ const sendProfileData = async (uid, firestore, data) => {
                     profile: linkedin.startsWith("https://www.linkedin.com/in/")? linkedin: null,
                 },
                 twitter: {
-                    profile: twitter.startsWith("https://www.twitter.com/")? twitter: null,
+                    profile: twitter.startsWith("https://www.twitter.com/") || twitter.startsWith("https://twitter.com/")? twitter: null,
                 },
                 youtube: {
                     profile: youtube.startsWith("https://www.youtube.com/channel")? youtube: null,
