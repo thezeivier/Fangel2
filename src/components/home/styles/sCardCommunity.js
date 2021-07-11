@@ -142,7 +142,11 @@ export const DescriptionContainer = styled.div`
     font-weight: ${props => props.theme.weight.semiMedium};
     font-size: 1.5em;
     margin: 0 0 5px 0;
-    text-transform: capitalize;
+    text-transform: lowercase;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
 
     @media(min-width:410px) {
       font-size: 1.8em;
