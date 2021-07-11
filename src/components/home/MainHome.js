@@ -2,6 +2,8 @@ import React, {useContext, useState, useEffect, lazy, Suspense} from 'react';
 import {AppContext} from '../../App'
 import {useFirestore} from 'reactfire'
 import Wrapper from './../general/Wrapper'
+import ModalGeneral from './../modal/ModalGeneral'
+import ModalUnlockedSpace from './ModalUnlockedSpace'
 import { Link } from 'react-router-dom'
 import { useStateIfMounted } from 'use-state-if-mounted'
 import { TitleStyled, TextStyled } from './../../themes/internalRecyclableStyles'
@@ -33,6 +35,10 @@ const MainHome = () => {
       })
     }
   },[])
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const modalOpen = () => setModalIsOpen(!modalIsOpen)
+
   return (
     <main>
       <Wrapper>
@@ -51,7 +57,12 @@ const MainHome = () => {
                   <SpacesSVG />
                   <span>Crear espacio social</span>
                 </AddCardContainer>:
-                <AddCardContainer locked="true" colorbackground="#032655" as={Link} to={userFromDB.username ? `/u/${userFromDB.username}`:`#`} >
+/*                 <AddCardContainer locked="true" colorbackground="#032655" as={Link} to={userFromDB.username ? `/u/${userFromDB.username}`:`#`} >
+                  <SpacesSVG />
+                  <span>Crear espacio social</span>
+                  <LockedSVG className="disableIcon" />
+                </AddCardContainer> */
+                <AddCardContainer locked="true" colorbackground="#032655" onClick={modalOpen} >
                   <SpacesSVG />
                   <span>Crear espacio social</span>
                   <LockedSVG className="disableIcon" />
@@ -70,6 +81,9 @@ const MainHome = () => {
         </CardsList>
       </Wrapper>
       <EndCercle/>
+      <ModalGeneral modalIsOpen={modalOpen} modalOpen={modalIsOpen} >
+        <ModalUnlockedSpace modalIsOpen={modalOpen}/>
+      </ModalGeneral>
     </main>
   );
 }

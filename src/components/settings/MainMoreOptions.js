@@ -44,7 +44,7 @@ const MainSettings = () => {
           <DarkMode textExtend/>
         </Top>
         <CategoryOptionsContainer>
-          <SubtitleStyled bottom14>DashBoard</SubtitleStyled>
+          <SubtitleStyled bottom14>Dashboard</SubtitleStyled>
           <ListOptions>
             {
               listOptionsDashBoard.map((option) => <SettingsOption key={option.id} {...option} />)

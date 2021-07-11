@@ -18,6 +18,11 @@ export const SubtitleStyled = styled(SecondaryTitle)`
     margin: 0 0 15px 0;
   `}
 
+  ${props => props.small && css`
+    font-size: 1.25em;
+    font-weight: ${props => props.theme.weight.semiMedium};
+  `}
+
   ${props => props.big && css`
     font-size: 1.9em;
   `}
@@ -43,12 +48,20 @@ export const SubtitleStyled = styled(SecondaryTitle)`
 export const TextStyled = styled(TextBody)`
   margin: 0 0 30px 0;
 
+  ${props => props.paragraph && css`
+    margin: 0 0 10px 0;
+  `}
+
   ${props => props.bottom20 && css`
     margin: 0 0 20px 0;
   `}
 
   ${props => props.bottom && css`
     margin: 0 0 25px 0;
+  `}
+
+  ${props => props.bottom0 && css`
+    margin: 0;
   `}
 
   ${props => props.main && css`
