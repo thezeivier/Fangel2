@@ -54,7 +54,7 @@ const sendProfileData = async (uid, firestore, data) => {
                     profile: linkedin.startsWith("https://www.linkedin.com/in/")? linkedin: null,
                 },
                 twitter: {
-                    profile: twitter.startsWith("https://www.twitter.com/")? twitter: null,
+                    profile: twitter.startsWith("https://www.twitter.com/") || twitter.startsWith("https://twitter.com/")? twitter: null,
                 },
                 youtube: {
                     profile: youtube.startsWith("https://www.youtube.com/channel")? youtube: null,
