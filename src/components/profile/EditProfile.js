@@ -24,8 +24,8 @@ import youtube from './icons/youtube.svg'
 
 const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setProfileEditor}) => {
     const [loading, setLoading] = useState(false)
-    const [pDLength, setPDLength]= useState(0)
-    const [aMLength, setAMLength]= useState(0)
+    const [pDLength, setPDLength]= useState(0)// pofessionalDescription Length
+    const [aMLength, setAMLength]= useState(0)// aboutMe Length
     const firebase = useFirebaseApp()
     const firestore = useFirestore()
     const storage = useStorage()
@@ -46,8 +46,10 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
         e.preventDefault()
         const profileImage = document.getElementById("profileImage")
         e = profileImage.click()
-        profileImage.addEventListener('change', e => {
-          newProfilePhoto(storage, e.target.files[0], authState.uid)
+        profileImage.addEventListener('change', async e => {
+          setLoading(true)
+          await newProfilePhoto(storage, e.target.files[0], authState.uid)
+          setLoading(false)
         })
         document.getElementById("profileImage").value = null
     }

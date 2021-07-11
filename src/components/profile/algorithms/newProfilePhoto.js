@@ -1,4 +1,4 @@
-export const newProfilePhoto = (storage, profilePhoto, uid) => {
+export const newProfilePhoto = async(storage, profilePhoto, uid) => {
     let storageRef = storage.ref()
     let initialType = profilePhoto.type.substr(0, 5)
     if(profilePhoto && (initialType === "image" )){
@@ -9,7 +9,7 @@ export const newProfilePhoto = (storage, profilePhoto, uid) => {
             let progress = (result.bytesTransferred/result.totalBytes) * 100
             // console.log('Subido' + progress + '%')
         })
-        uploadTask.then(async ()=>{
+        await uploadTask.then(async ()=>{
             // console.log("upload success")
             // window.location.reload()
         })

@@ -59,7 +59,7 @@ export const AddCardContainer = styled.li`
     }
   }
 
-  ${props => props.disable && css`
+  ${props => props.locked === "true" && css`
     span {
       color: #828282;
     }

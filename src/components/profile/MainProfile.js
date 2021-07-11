@@ -125,7 +125,7 @@ const MainProfile = React.memo(() => {
                   </span>
                 </h5>
                 <SmallTextStyled>Esta puntución ayuda a mejorar tus conexiones en Fangel.</SmallTextStyled>
-                <Link href="#" className="moreInformationScore">Ver formas de subir la puntuación</Link>
+                <Link to="#" className="moreInformationScore">Ver formas de subir la puntuación</Link>
               </ContainerInformation>
               <ContainerInformation>
                 <SubtitleStyled>Intereses</SubtitleStyled>

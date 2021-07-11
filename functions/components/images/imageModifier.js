@@ -1,16 +1,18 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const db = admin.firestore();
+const storage = admin.storage();
 const spawn = require('child-process-promise').spawn;
 const path = require('path');
+const { v4: uuidv4 } = require("uuid");
 const os = require('os');
 const fs = require('fs');
 // [END import]
 
 // [START imageModifier]
 exports.imageModifier = functions.runWith({
-  timeoutSeconds: 60,
-  memory: '1GB'
+  timeoutSeconds: 120,
+  memory: '2GB'
 }).storage.object().onFinalize(async (object) => {
 // [END imageModifier]
   // [START eventAttributes]
@@ -40,7 +42,8 @@ exports.imageModifier = functions.runWith({
   var uid = fileName.substr(0, 28);//Recover uid from file name
   // [START thumbnailGeneration]
   // Download file from bucket.
-  const bucket = admin.storage().bucket(fileBucket);
+  const bucket = storage.bucket(fileBucket);
+
   const tempFilePath = path.join(os.tmpdir(), fileName);
   // Create new file path after test
   const newFilePath = path.dirname(filePath).replace('beforeEvaluation', 'afterEvaluation');
@@ -56,38 +59,48 @@ exports.imageModifier = functions.runWith({
   const thumbFileName = `thumb_${fileName}`;
   const newThumbFilePath = path.join(newFilePath, thumbFileName); //New destination for thumb.
   // Uploading the thumbnail.
-  await bucket.upload(tempFilePath, {
-    destination: newThumbFilePath,
-    metadata: metadata,
-  });
-
+  // await bucket.upload(tempFilePath, {
+    //   destination: newThumbFilePath,
+    //   metadata: metadata,
+    // })
   //Object repeated.
   const routAndBucket = {
     route: newThumbFilePath,
     bucket: fileBucket,
   }
 
-  //Send information from thumb to communities.
-  const batch = db.batch();
-  if(fileName.startsWith('profile_')){
-    //Information from profile
-    uid = fileName.substr(8, 28)
-    batch.set(
-      db.collection("users").doc(uid),
-      routAndBucket,
-      {merge: true}
-    )
-  }else{
-    const roomName = fileName.replace(".jpeg", "")
-    //Information from communities
-    batch.set(
-      db.collection("communities").doc(roomName),
-      routAndBucket,
-      {merge: true}
-    )
-  }
+  const UUID = uuidv4() //create uuidv4
+  await upload(tempFilePath, newThumbFilePath, bucket, UUID).then( downloadURL => {
+      //Send information from thumb to communities.
+      const batch = db.batch();
+      if(fileName.startsWith('profile_')){
+        //Information from profile
+        uid = fileName.substr(8, 28)
+        batch.set(
+          db.collection("users").doc(uid),
+          {
+            routAndBucket,
+            photoUrl: downloadURL,
+          },
+          {merge: true}
+        )
+      }else{
+        const roomName = fileName.replace(".jpeg", "")
+        //Information from communities
+        batch.set(
+          db.collection("communities").doc(roomName),
+          {
+            routAndBucket,
+            photoUrl: downloadURL,
+          },
+          {merge: true}
+        )
+      }
+    
+      batch.commit();//Sending information to firestore.
+  })
+  // console.log(url)
 
-  batch.commit();//Sending information to firestore.
 
   await bucket.file(filePath).delete(); //Delete image from beforeEvaluation folder.
   console.log("Residual file delete")
@@ -96,3 +109,23 @@ exports.imageModifier = functions.runWith({
   return fs.unlinkSync(tempFilePath);
   // [END imageModifier]
 });
+
+
+const upload = (localFile, remoteFile, bucket, uuid) => { //Upload and recover URL to download image
+  return bucket.upload(localFile, {
+        destination: remoteFile,
+        uploadType: "media",
+        metadata: {
+          contentType: 'image/png',
+          metadata: {
+            firebaseStorageDownloadTokens: uuid
+          }
+        }
+      })
+      .then((data) => {
+
+          let file = data[0];
+
+          return Promise.resolve("https://firebasestorage.googleapis.com/v0/b/" + bucket.name + "/o/" + encodeURIComponent(file.name) + "?alt=media&token=" + uuid);
+      });
+}

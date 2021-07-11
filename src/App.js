@@ -48,6 +48,7 @@ function App() {
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
   const [userFromDB, setUserFromDB] = useState(false)
+  const [fangelScore, setFangelScore] = useState(0)
   const [isAdmin, setIsAdmin] = useState(false)
   const [profileThumb, setProfileThumb] = useState(false)
   const [videoCall, setVideoCall] = useState(false)
@@ -70,6 +71,14 @@ function App() {
                 userCodesRef: firestore.app.firebase_.firestore.FieldValue.delete()
               });
             }
+            if(dataUser.score && dataUser.score.fangelScore && dataUser.score.profileScore){
+              setFangelScore(dataUser.score.fangelScore + dataUser.score.profileScore)
+            }else if(dataUser.score && dataUser.score.fangelScore){
+              setFangelScore(dataUser.score.fangelScore)
+            }else{
+              setFangelScore(65)
+            }
+
             if(dataUser.type === "admin"){
               setIsAdmin(true)
               if(!dataUser.bucket){// Si el usuario no tiene bucket, automáticamente se le asigna.
@@ -130,6 +139,7 @@ function App() {
     authState: (authState? authState: false),
     userFromDB: (userFromDB? userFromDB: false),
     profileThumb,
+    fangelScore: (profileThumb? fangelScore + 30: fangelScore),
     isAdmin,
     changeTheme,
     communityProvider,
