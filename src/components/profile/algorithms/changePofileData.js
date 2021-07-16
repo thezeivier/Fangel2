@@ -30,6 +30,7 @@ const updateDisplayName = async (data, firebase) => {
 
 const sendProfileData = async (uid, firestore, data) => {
     const {firstname, lastname, professionalDescription, aboutMe, facebook, instagram, linkedin, twitter, youtube} = data
+    const profileScore = profilePointsCounter(data) 
     const batch = firestore.batch();
     const usersRef = firestore.collection("users").doc(uid)
     const capilizedFirstName = capitalizeAllWords(firstname)
@@ -37,6 +38,9 @@ const sendProfileData = async (uid, firestore, data) => {
     batch.set(
         usersRef,
         {
+            score: {
+                profileScore,
+            },
             name: {
                 firstName: capilizedFirstName,
                 lastName: capilizedLastName,
@@ -73,4 +77,43 @@ const sendProfileData = async (uid, firestore, data) => {
 
 const capitalizeAllWords = (text) => {
     return text.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+}
+
+
+const profilePointsCounter = (data) => {
+    const {firstname, lastname, professionalDescription, aboutMe, facebook, instagram, linkedin, twitter, youtube} = data
+    var scoreFromProfile = 0
+    if(firstname){
+        scoreFromProfile += 5
+    }
+    if(lastname){
+        if(lastname.includes(' ')){
+            scoreFromProfile += 10
+        }else{
+            scoreFromProfile += 5
+        }
+    }
+    if(professionalDescription){
+        scoreFromProfile += Math.ceil(professionalDescription.length * 0.25)
+    }
+    if(aboutMe){
+        scoreFromProfile += Math.ceil(aboutMe.split(' ').length * 0.5)
+    }
+    if(facebook.startsWith("https://www.facebook.com/") || facebook.startsWith("https://web.facebook.com/")){
+        scoreFromProfile += 20
+    }
+    if(instagram.startsWith("https://www.instagram.com/")){
+        scoreFromProfile += 30
+    }
+    if(linkedin.startsWith("https://www.linkedin.com/in/")){
+        scoreFromProfile += 50
+    }
+    if(twitter.startsWith("https://www.twitter.com/") || twitter.startsWith("https://twitter.com/")){
+        scoreFromProfile += 30
+    }
+    if(youtube.startsWith("https://www.youtube.com/channel")){
+        scoreFromProfile += 100
+    }
+
+    return scoreFromProfile
 }

@@ -27,7 +27,7 @@ const MainHome = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async ()=>{
     let diponibleCommunities = await RecoverCommunities(firestore)
-    if(diponibleCommunities){
+    if(diponibleCommunities && communities.length === 0){
       diponibleCommunities.map(com => {
         if(!communities.includes(com)){
           setCommunities(prevState => [...prevState, com]) //Assign communities to state.
@@ -57,11 +57,6 @@ const MainHome = () => {
                   <SpacesSVG />
                   <span>Crear espacio social</span>
                 </AddCardContainer>:
-                  /*<AddCardContainer locked="true" colorbackground="#032655" as={Link} to={userFromDB.username ? `/u/${userFromDB.username}`:`#`} >
-                  <SpacesSVG />
-                  <span>Crear espacio social</span>
-                  <LockedSVG className="disableIcon" />
-                </AddCardContainer> */
                 <AddCardContainer locked="true" colorbackground="#032655" onClick={modalOpen} >
                   <SpacesSVG />
                   <span>Crear espacio social</span>

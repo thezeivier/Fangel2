@@ -29,6 +29,7 @@ import Spinner from './components/spinner/MainSpinner'
 import { OnDisconnectUser } from './pages/inCommunity/algorithms/OnDisconnectUser'
 
 import VideoCall from './components/community/VideoCall'
+import {handleCommunity} from './index'
 import PFVideo from './pages/inCommunity/PFVideo'
 
 const AppContext =  React.createContext()
@@ -111,11 +112,11 @@ function App() {
             
             if(communityGlobalData){
               setVideoCall(
-                <VideoCall 
-                  dataUser={dataUser} 
-                  authState={user} 
-                  communityDataRoom={communityProvider.communityGlobalData} 
-                />
+                  <VideoCall 
+                    dataUser={dataUser} 
+                    authState={user} 
+                    communityDataRoom={communityProvider.communityGlobalData} 
+                  />
               )
             }
           }
