@@ -19,10 +19,10 @@ const SearchPeople = ({ modalIsOpen }) => {
   const [existCreator, setExistCreator] = useStateIfMounted(null)
   const [roomOfConnectionActive, setRoomOfConnectionActive] = useStateIfMounted(false)
   const [joinnerProfileThumb, setJoinnerProfileThumb] = useStateIfMounted(null)
-  const { userFromDB, setFangelConnectProvider, profileThumb } = useContext(AppContext)
+  const { userFromDB, setFangelConnectProvider, profileThumb, fangelScore } = useContext(AppContext)
 
   useEffect(async()=>{
-    const idOfConnect = !fangelConnectFromDB ? await fangelConnectAnalizer(firestore, userFromDB): idOfFangelConnect//Siempre retorna el id del documento de fangelConnect
+    const idOfConnect = !fangelConnectFromDB ? await fangelConnectAnalizer(firestore, userFromDB, fangelScore): idOfFangelConnect//Siempre retorna el id del documento de fangelConnect
     setIdOfFangelConnect(idOfConnect)
     if(idOfConnect){
       var unsubscribeFangelConnect = firestore.collection("fangelConnect").doc(idOfConnect).onSnapshot(querySnapshot=>{
