@@ -83,10 +83,13 @@ function App() {
 
             if(dataUser.type === "admin"){
               setIsAdmin(true)
-              if(!dataUser.bucket){// Si el usuario no tiene bucket, automáticamente se le asigna.
+              if(!dataUser.bucket || !dataUser.score){// Si el usuario no tiene bucket, automáticamente se le asigna.
                 firestore.collection("users").doc(user.uid).set(
                   {
                     bucket: "fangelv2-300300.appspot.com",
+                    score:{
+                      fangelScore: 65,
+                    }
                   }, 
                   { merge: true }
                 )
