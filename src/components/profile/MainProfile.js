@@ -40,6 +40,7 @@ const MainProfile = React.memo(() => {
   const [userDataRecovered, setUserDataRecovered] = useState(null)
   const [activeButton, setActiveButton] = useState(false)
   const [profileEditor, setProfileEditor] = useState(false)
+  const [fangelScore, setFangelScore] = useState(0)
   const {userFromDB, authState} = useContext(AppContext)
   const location = useLocation()
   const match = useRouteMatch("/u/:id")
@@ -59,6 +60,17 @@ const MainProfile = React.memo(() => {
       }else{
         setProfileThumb(userData[0].photoUrl)
       }
+      var localFangelScore = 0
+      if((userData[0].score && userData[0].score.fangelScore)){
+        localFangelScore = userData[0].score.fangelScore
+        if(userData[0].score.profileScore){
+          localFangelScore += userData[0].score.profileScore
+          if(userData[0].photoUrl){
+            localFangelScore += 30
+          }
+        }
+      }
+      setFangelScore(localFangelScore)
     }
     
   },[userData])
@@ -119,7 +131,7 @@ const MainProfile = React.memo(() => {
               <ContainerInformation>
                 <SubtitleStyled>Fangel Score</SubtitleStyled>
                 <h5>
-                  {(userDataRecovered && userDataRecovered.score && userDataRecovered.score.fangelScore) ? userDataRecovered.score.fangelScore : 65}
+                  {fangelScore}
                   <span>
                     puntos
                   </span>

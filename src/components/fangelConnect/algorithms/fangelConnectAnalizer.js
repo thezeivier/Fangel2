@@ -1,6 +1,5 @@
-export const fangelConnectAnalizer = async(firestore, userFromDB) =>{
+export const fangelConnectAnalizer = async(firestore, userFromDB, fangelScore) =>{
     const fangelConnectRef = firestore.collection("fangelConnect")
-    const fangelScore = userFromDB.score? userFromDB.score.fangelScore : 65
     return await fangelConnectRef
     .where("fangelScoreFromCreator", "<=", fangelScore + 30) //Consulta para emparejar con el más cercano, modificar aquí si es premium.
     .where("state", "==", "open")

@@ -29,6 +29,7 @@ import Spinner from './components/spinner/MainSpinner'
 import { OnDisconnectUser } from './pages/inCommunity/algorithms/OnDisconnectUser'
 
 import VideoCall from './components/community/VideoCall'
+import {handleCommunity} from './index'
 import PFVideo from './pages/inCommunity/PFVideo'
 
 const AppContext =  React.createContext()
@@ -82,10 +83,13 @@ function App() {
 
             if(dataUser.type === "admin"){
               setIsAdmin(true)
-              if(!dataUser.bucket){// Si el usuario no tiene bucket, automáticamente se le asigna.
+              if(!dataUser.bucket || !dataUser.score){// Si el usuario no tiene bucket o fangelScore, automáticamente se le asigna.
                 firestore.collection("users").doc(user.uid).set(
                   {
                     bucket: "fangelv2-300300.appspot.com",
+                    score:{
+                      fangelScore: 65,
+                    }
                   }, 
                   { merge: true }
                 )
@@ -111,11 +115,11 @@ function App() {
             
             if(communityGlobalData){
               setVideoCall(
-                <VideoCall 
-                  dataUser={dataUser} 
-                  authState={user} 
-                  communityDataRoom={communityProvider.communityGlobalData} 
-                />
+                  <VideoCall 
+                    dataUser={dataUser} 
+                    authState={user} 
+                    communityDataRoom={communityProvider.communityGlobalData} 
+                  />
               )
             }
           }

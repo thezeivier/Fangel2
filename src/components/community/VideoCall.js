@@ -59,7 +59,6 @@ const config = {
 };
 
 const VideoCall = ({dataUser, authState, communityDataRoom}) => {
-
   const isAdmin = communityDataRoom.creatorUid ? GetAdminCommunity(communityDataRoom.creatorUid, dataUser.uid) : false
   const handleAPI = JitsiMeetAPI => {
     JitsiMeetAPI.executeCommand("toggleVideo");
@@ -73,20 +72,18 @@ const VideoCall = ({dataUser, authState, communityDataRoom}) => {
   
   const {TOOLBAR_BUTTONS, ...restConf} = interfaceConfig
   const interfaceUserConf = {...restConf, TOOLBAR_BUTTONS: userToolBarButtons}
-  return (
-    <>
-      <Jitsi
-        domain="meet.jit.si"
-        onAPILoad={handleAPI}
-        password={!communityDataRoom.communityDataSubSpace ? `fangel_${communityDataRoom.roomName}_fangel` : `fangel_${communityDataRoom.communityData.roomName}&@&${communityDataRoom.communityDataSubSpace.id}_fangel`}
-        roomName={ !communityDataRoom.communityDataSubSpace ? communityDataRoom.roomName : `${communityDataRoom.communityData.roomName}${communityDataRoom.communityDataSubSpace.id}`}
-        displayName={authState.displayName}
-        loadingComponent={VideoSpinner}
-        interfaceConfig={isAdmin ? interfaceConfig : interfaceUserConf}
-        config={config}
-      />
-    </>
-  );
+  return(
+    <Jitsi
+      domain="meet.jit.si"
+      onAPILoad={handleAPI}
+      password={!communityDataRoom.communityDataSubSpace ? `fangel_${communityDataRoom.roomName}_fangel` : `fangel_${communityDataRoom.communityData.roomName}&@&${communityDataRoom.communityDataSubSpace.id}_fangel`}
+      roomName={ !communityDataRoom.communityDataSubSpace ? communityDataRoom.roomName : `${communityDataRoom.communityData.roomName}${communityDataRoom.communityDataSubSpace.id}`}
+      displayName={authState.displayName}
+      loadingComponent={VideoSpinner}
+      interfaceConfig={isAdmin ? interfaceConfig : interfaceUserConf}
+      config={config}
+    />
+  )
 };
 
 export default VideoCall
