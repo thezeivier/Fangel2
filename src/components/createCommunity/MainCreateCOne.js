@@ -28,6 +28,7 @@ const MainCreateCOne = () => {
     let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage, roomPrivacy)
     setRoomName(result.hashName)//Este debe ir primero para que se pueda pasar el roomName, de lo contrario habrá error.
     setCommunityCreated(result.result)
+    window.location.reload()
   }
   
   const recoverCommunityImage = (e) =>{

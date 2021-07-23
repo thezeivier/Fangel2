@@ -13,7 +13,7 @@ import {ShowMore} from './algorithms/ShowMore'
 const CardCommunity = ({communityData, communityProvider}) => {
   const storage = useStorage()
   const firestore = useFirestore()
-  const [thumb, setThumb] = useStateIfMounted()//State for thumbnail.
+  const [thumb, setThumb] = useStateIfMounted(false)//State for thumbnail.
   const [profileThumb, setProfileThumb] = useStateIfMounted(false)
   const cardRef = useRef()
   const textRef = useRef()
@@ -21,38 +21,8 @@ const CardCommunity = ({communityData, communityProvider}) => {
   const history = useHistory()
 
   useEffect(()=>{
-    if(communityData.bucket && communityData.route){
-      if(!communityData.communityPhotoUrl){
-        const gsReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.route}`)
-        gsReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
-          setThumb(url)
-          firestore.collection("communities").doc(communityData.roomName).set(
-            {
-              communityPhotoUrl: url
-            }, 
-            { merge: true }
-          )
-        })
-      }else{
-        setThumb(communityData.communityPhotoUrl)
-      }
-    }
-    if(communityData.bucket && communityData.profileRoute){
-      if(!communityData.profilePhotoUrl){
-        const profileImageReference = storage.refFromURL(`gs://${communityData.bucket}/${communityData.profileRoute}`)
-        profileImageReference.getDownloadURL().then(url => {//Recover thumbnail from storage.
-          setProfileThumb(url)
-          firestore.collection("communities").doc(communityData.roomName).set(
-            {
-              profilePhotoUrl: url
-            }, 
-            { merge: true }
-          )
-        })
-      }else{
-        setProfileThumb(communityData.profilePhotoUrl)
-      }
-    }
+    setProfileThumb(communityData.profilePhotoUrl)
+    setThumb(communityData.communityPhotoUrl)
     return ()=>{
       cardRef.current = false;
       textRef.current = false;
@@ -81,7 +51,9 @@ const CardCommunity = ({communityData, communityProvider}) => {
                   <ProfileSVG />
                 }
               </Link>
-              <User as="h4">{communityData.name? communityData.name: communityData.username }</User>
+              <Link to={`/u/${communityData.username}`}>
+                <User as="h4">{communityData.name? communityData.name: communityData.username }</User>
+              </Link>
             </UserContainer>
           </ContainerTextTop>
           <ImageContainer>

@@ -158,41 +158,43 @@ const MainProfile = React.memo(() => {
                   <TextBodyStyled>{profileData.aboutMe}</TextBodyStyled>
                 </ContainerInformation>
               }
-              <ContainerInformation last>
-                <SubtitleStyled>Redes sociales</SubtitleStyled>
-                  <div>
-                    {profileData && profileData.facebook && profileData.facebook.profile &&
-                      <SocialMediaContainer mainMedia>
-                        <img src={facebook}/>
-                        <a href={profileData.facebook.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Facebook</a>
-                      </SocialMediaContainer>
-                    }
-                    {profileData && profileData.instagram && profileData.instagram.profile &&
-                      <SocialMediaContainer mainMedia>
-                        <img src={instagram}/>
-                        <a href={profileData.instagram.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Instagram</a>
-                      </SocialMediaContainer>
-                    }
-                    {profileData && profileData.linkedin && profileData.linkedin.profile &&
-                      <SocialMediaContainer mainMedia>
-                        <img src={linkedin}/>
-                        <a href={profileData.linkedin.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Linkendin</a>
-                      </SocialMediaContainer>
-                    }
-                    {profileData && profileData.twitter && profileData.twitter.profile &&
-                      <SocialMediaContainer mainMedia>
-                        <img src={twitter}/>
-                        <a href={profileData.twitter.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Twitter</a>
-                      </SocialMediaContainer>
-                    }
-                    {profileData && profileData.youtube && profileData.youtube.profile &&
-                      <SocialMediaContainer mainMedia last>
-                        <img src={youtube}/>
-                        <a href={profileData.youtube.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Youtube</a>
-                      </SocialMediaContainer>
-                    }
-                  </div>
-              </ContainerInformation>
+              {profileData && (profileData.facebook || profileData.instagram || profileData.linkedin || profileData.twitter || profileData.youtube) &&
+                <ContainerInformation last>
+                  <SubtitleStyled>Redes sociales</SubtitleStyled>
+                    <div>
+                      {profileData && profileData.facebook && profileData.facebook.profile &&
+                        <SocialMediaContainer mainMedia>
+                          <img src={facebook}/>
+                          <a href={profileData.facebook.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Facebook</a>
+                        </SocialMediaContainer>
+                      }
+                      {profileData && profileData.instagram && profileData.instagram.profile &&
+                        <SocialMediaContainer mainMedia>
+                          <img src={instagram}/>
+                          <a href={profileData.instagram.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        </SocialMediaContainer>
+                      }
+                      {profileData && profileData.linkedin && profileData.linkedin.profile &&
+                        <SocialMediaContainer mainMedia>
+                          <img src={linkedin}/>
+                          <a href={profileData.linkedin.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Linkendin</a>
+                        </SocialMediaContainer>
+                      }
+                      {profileData && profileData.twitter && profileData.twitter.profile &&
+                        <SocialMediaContainer mainMedia>
+                          <img src={twitter}/>
+                          <a href={profileData.twitter.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Twitter</a>
+                        </SocialMediaContainer>
+                      }
+                      {profileData && profileData.youtube && profileData.youtube.profile &&
+                        <SocialMediaContainer mainMedia last>
+                          <img src={youtube}/>
+                          <a href={profileData.youtube.profile} className="linkSocialMedia" target="_blank" rel="noopener noreferrer">Youtube</a>
+                        </SocialMediaContainer>
+                      }
+                    </div>
+                </ContainerInformation>
+              }
             </div>
           </GridOnlyDesktop>
         </Wrapper> 
