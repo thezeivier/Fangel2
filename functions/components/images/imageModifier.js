@@ -64,7 +64,7 @@ exports.imageModifier = functions.runWith({
     //   metadata: metadata,
     // })
   //Object repeated.
-  const routAndBucket = {
+  const routeAndBucket = {
     route: newThumbFilePath,
     bucket: fileBucket,
   }
@@ -79,7 +79,7 @@ exports.imageModifier = functions.runWith({
         batch.set(
           db.collection("users").doc(uid),
           {
-            routAndBucket,
+            routeAndBucket,
             photoUrl: downloadURL,
           },
           {merge: true}
@@ -90,8 +90,8 @@ exports.imageModifier = functions.runWith({
         batch.set(
           db.collection("communities").doc(roomName),
           {
-            routAndBucket,
-            photoUrl: downloadURL,
+            routeAndBucket,
+            communityPhotoUrl: downloadURL,
           },
           {merge: true}
         )

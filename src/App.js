@@ -127,7 +127,9 @@ function App() {
       }
       setLoading(false)
     });
-  },[firestore, auth, storage, history, communityProvider])
+  },[firestore, auth, storage, communityProvider])
+
+  console.log("render")
 
 
   const changeTheme = () =>{
@@ -175,11 +177,11 @@ function App() {
               <Route exact path={"/fangel-connect"} component={authState ? FangelConnect : Landing}/>
               <Route exact path={"/inbox"} component={authState ? PrivateChat : Landing}/>
               <Route exact path={"/inbox/t/:idInbox"} component={authState ? PrivateChat : Landing}/>
+              <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>
+              <Route exact path={"/room/:idRoom/:idSubSpace"} component={SwitchCommunitySubSpace}/>
               <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>
               <Route exact path={"/more-options"} component={authState ? MoreOptions : Landing}/>
               <Route exact path={"/quiz"} component={authState? Quiz: Landing}/>
-              <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>
-              <Route exact path={"/room/:idRoom/:idSubSpace"} component={SwitchCommunitySubSpace}/>
               <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
               <Route exact path={"/thank-you"} component={authState? ThanksReport : Landing}/>
               <Route exact path={"/dashboard/my-spaces"} component={authState? DashboardSpaces : Landing}/>

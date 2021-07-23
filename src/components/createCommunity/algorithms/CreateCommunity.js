@@ -9,7 +9,7 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
   
   if ( roomPrivacy === "public") {
     const {descriptionCommunity} = data
-    let profileRoute = userApp.userFromDB.route ? userApp.userFromDB.route : false
+    let profilePhotoUrl = userApp.userFromDB.photoUrl ? userApp.userFromDB.photoUrl: false
     setChatRoom(batch, firestore, chatroomRef, hashName, uid)
 
     batch.set(
@@ -23,13 +23,14 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
       description: descriptionCommunity? descriptionCommunity: "",
       creatorUid: uid,
       numberOfUsersConnected: 1,
+      profilePhotoUrl,
+      communityPhotUrl: false,
       // usersConnected: [
       //   {
       //     uid: uid,
       //     username: userApp.userFromDB.username
       //   },
       // ],
-      profileRoute,
     },
     {merge:true}
     )
