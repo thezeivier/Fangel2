@@ -50,8 +50,6 @@ const CardCommunity = ({communityData, communityProvider}) => {
                   <img src={profileThumb} className="profile" alt="Imagen de perfil"/>:
                   <ProfileSVG />
                 }
-              </Link>
-              <Link to={`/u/${communityData.username}`}>
                 <User as="h4">{communityData.name? communityData.name: communityData.username }</User>
               </Link>
             </UserContainer>
