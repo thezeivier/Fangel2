@@ -58,7 +58,6 @@ export const CardsContainer = styled.div`
   gap: 20px;
 
   @media(min-width:768px) {
-    gap: 40px;
   }
 
   @media(min-width:1024px) {
@@ -66,8 +65,7 @@ export const CardsContainer = styled.div`
   }
 
   @media(min-width:1200px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 `
 
@@ -101,17 +99,17 @@ export const Card = styled.div`
   height: -webkit-fill-available;
   border-radius: 4px;
   position: relative;
-  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.45));
+  /* filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.45)); */
   cursor: pointer;
   transition: all .2s;
   will-change: transform;
 
   &:hover,
   &:active {
-    transform: scale(1.075);
-    filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.78));
+    transform: scale(1.035);
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.78));
     color: white;
-    font-size: 1.195em;
+    font-size: 1.075em;
   }
 
   img {
@@ -133,7 +131,7 @@ export const Card = styled.div`
     justify-content: center;
     align-items: center;
     padding: 20px;
-    line-height: 1.701em;
+    line-height: 1.351em;
 
     @media(min-width:1024px) {
       font-size: 1.18em;

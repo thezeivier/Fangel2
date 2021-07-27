@@ -40,21 +40,20 @@ const QuizMain = () => {
       <Wrapper>
         <NumberCheckContainer><span>Categorias:</span><p>{countQuiz}</p></NumberCheckContainer>
         <ExternalsWrapper>
-        <form>
-          <SubtitleStyledBackground>Escoge tus gustos e intereses</SubtitleStyledBackground>
-          <TextBody>5 categorias como máximo</TextBody>
-          <CardsContainer>
+          <form>
+            <SubtitleStyledBackground>Escoge tus gustos e intereses</SubtitleStyledBackground>
+            <TextBody>5 categorias como máximo</TextBody>
+            <CardsContainer>
+              {
+                quiz.map(card =>  <QuizCard key={card.id} {...card} quiz={quiz} cartQuiz={cartQuiz} setCartQuiz={setCartQuiz} addCount={addCount} subtractCount={subtractCount} />)
+              }
+            </CardsContainer>
             {
-              quiz.map(card =>  <QuizCard key={card.id} {...card} quiz={quiz} cartQuiz={cartQuiz} setCartQuiz={setCartQuiz} addCount={addCount} subtractCount={subtractCount} />)
+              isDisableButton ? 
+                <ButtonStyled type="button" disabled onClick={() => sendPreferences(id, firestore, dataCategory, redirectToHome)}>¡Términe!</ButtonStyled> :
+                <ButtonStyled  primary  type="button" onClick={() => sendPreferences(id, firestore, dataCategory, redirectToHome)}>¡Términe!</ButtonStyled>
             }
-          </CardsContainer>
-          <ButtonStyled 
-            primary 
-            type="button"
-            disabled={isDisableButton} 
-            onClick={() => sendPreferences(id, firestore, dataCategory, redirectToHome)}
-          >¡Términe!</ButtonStyled>
-        </form>
+          </form>
         </ExternalsWrapper>
       </Wrapper>
     </>
