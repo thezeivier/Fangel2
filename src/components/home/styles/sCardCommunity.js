@@ -37,12 +37,11 @@ export const ContainerTextTop = styled.div`
 `
 
 export const UserContainer = styled.div`
-  display: flex;
-  align-items: center;
   margin: -12px 0 0 0;
-
+  
   a {
-    width: 28px;
+    display: flex;
+    align-items: center;
     margin: 4px 8px 0 0;
     
     img {
@@ -51,7 +50,7 @@ export const UserContainer = styled.div`
       width: 26px;
       object-fit: cover;
       line-height: 0;
-      margin: 9px 0;
+      margin: 9px 9px 9px 0;
     }
     
     svg {
@@ -142,7 +141,11 @@ export const DescriptionContainer = styled.div`
     font-weight: ${props => props.theme.weight.semiMedium};
     font-size: 1.5em;
     margin: 0 0 5px 0;
-    text-transform: capitalize;
+    text-transform: lowercase;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
 
     @media(min-width:410px) {
       font-size: 1.8em;

@@ -53,33 +53,14 @@ const CardCommunity = ({communityData, communityProvider}) => {
           <ContainerTextTop>
             <TextCommunity>Espacio creado por:</TextCommunity>
             <UserContainer>
-              {
-                communityData.roomName !== "FangelTV"?
-                <>
-                  <Link to={`/u/${communityData.username}`}>
-                    {
-                      profileThumb?
-                      <img src={profileThumb} className="profile" alt="Imagen de perfil"/>:
-                      <ProfileSVG />
-                    }
-                  </Link>
-                  <Link to={`/u/${communityData.username}`}>
-                    <User as="h4">{communityData.name? communityData.name: communityData.username }</User>
-                  </Link>
-                </>:
-                <>
-                  <Link to={"#"} onClick={(e)=>e.preventDefault()}>
-                    {
-                      profileThumb?
-                      <img src={profileThumb} className="profile" alt="Imagen de perfil"/>:
-                      <ProfileSVG />
-                    }
-                  </Link>
-                  <Link to={"#"} onClick={(e)=>e.preventDefault()}>
-                    <User as="h4">{communityData.name? communityData.name: communityData.username }</User>
-                  </Link>
-                </>
-              }
+              <Link to={`/u/${communityData.username}`}>
+                {
+                  profileThumb?
+                  <img src={profileThumb} className="profile" alt="Imagen de perfil"/>:
+                  <ProfileSVG />
+                }
+                <User as="h4">{communityData.name? communityData.name: communityData.username }</User>
+              </Link>
             </UserContainer>
           </ContainerTextTop>
           <ImageContainer>

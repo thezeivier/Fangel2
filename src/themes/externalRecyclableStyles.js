@@ -211,6 +211,7 @@ export const Button = styled.button`
   ${props => props.disabled && css`
     border: 1px solid grey;
     color: grey;
+    background: #80808005;
 
     &:hover,
     &:active {
