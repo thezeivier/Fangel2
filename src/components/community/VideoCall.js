@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Jitsi from 'react-jitsi'
 import VideoSpinner from '../spinner/VideoSpinner'
 import { GetAdminCommunity } from '../../pages/inCommunity/algorithms/GetAdminCommunity'
@@ -60,16 +60,19 @@ const config = {
 
 const VideoCall = ({dataUser, authState, communityDataRoom}) => {
   const isAdmin = communityDataRoom.creatorUid ? GetAdminCommunity(communityDataRoom.creatorUid, dataUser.uid) : false
-  const handleAPI = JitsiMeetAPI => {
+  const handleAPI = async JitsiMeetAPI => {
     JitsiMeetAPI.executeCommand("toggleVideo");
     JitsiMeetAPI.executeCommand("toggleAudio");
     JitsiMeetAPI.executeCommand('avatarUrl', dataUser.photoUrl? dataUser.photoUrl: null);
     JitsiMeetAPI.executeCommand('subject', communityDataRoom.privacy === "public"? `${communityDataRoom.title} - Público`:  `${communityDataRoom.title}`);
-    JitsiMeetAPI.executeCommand('startShareVideo', "https://www.youtube.com/watch?v=ioNng23DkIM");
     JitsiMeetAPI.on('passwordRequired', function (){
       JitsiMeetAPI.executeCommand('password', !communityDataRoom.communityDataSubSpace ? `fangel_${communityDataRoom.roomName}_fangel` : `fangel_${communityDataRoom.communityData.roomName}&@&${communityDataRoom.communityDataSubSpace.id}_fangel`);
     });
-    // console.log("Estos datos son forzados",JitsiMeetAPI)
+
+    // JitsiMeetAPI.addEventListener('videoConferenceJoined', () => {
+    //   JitsiMeetAPI.executeCommand('startShareVideo', "2jmZeLlaCDc")
+    // })
+    console.log("Estos datos son forzados")
   };
 
   

@@ -47,7 +47,7 @@ const MainReport = () => {
           <>
             {
                 (reportCreated === "sending") &&
-                <LoadServSpinner title="Enviando reporte a nuestros desarolladores" />
+                <LoadServSpinner title="Enviando reporte a nuestros desarrolladores" />
             }
             <Wrapper>
               <OnlyDesktop>

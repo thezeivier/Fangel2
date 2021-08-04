@@ -8,6 +8,7 @@ export const CreateReport = async (data, firestore, imageRecovered, storage, use
         if(imageRecovered){
             var resultOfImage = await reportImageSender(storage, uid, imageRecovered, type)
         }
+        
         batch.set(
             reportRef,
             {

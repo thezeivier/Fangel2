@@ -20,9 +20,18 @@ const CardCommunity = ({communityData, communityProvider}) => {
   const buttonRef = useRef()
   const history = useHistory()
 
+  if(communityData === null){
+    var communityData = {
+      profilePhotoUrl: "https://scontent.fcja1-1.fna.fbcdn.net/v/t1.6435-9/122721049_106427804597222_8152376900470817394_n.png?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=KBqagB9dCakAX-5v5TD&_nc_ht=scontent.fcja1-1.fna&oh=0dbc09a36338a92c02ddca781897cae3&oe=612F0C84",
+      roomName: "FangelTV",
+      title: "FangelTV",
+      name: "Fangel"
+    }
+  }
+
   useEffect(()=>{
-    setProfileThumb(communityData.profilePhotoUrl)
-    setThumb(communityData.communityPhotoUrl)
+    setProfileThumb(communityData.profilePhotoUrl? communityData.profilePhotoUrl: false)
+    setThumb(communityData.communityPhotoUrl? communityData.communityPhotoUrl: false)
     return ()=>{
       cardRef.current = false;
       textRef.current = false;
@@ -44,16 +53,33 @@ const CardCommunity = ({communityData, communityProvider}) => {
           <ContainerTextTop>
             <TextCommunity>Espacio creado por:</TextCommunity>
             <UserContainer>
-              <Link to={`/u/${communityData.username}`}>
-                {
-                  profileThumb?
-                  <img src={profileThumb} className="profile" alt="Imagen de perfil"/>:
-                  <ProfileSVG />
-                }
-              </Link>
-              <Link to={`/u/${communityData.username}`}>
-                <User as="h4">{communityData.name? communityData.name: communityData.username }</User>
-              </Link>
+              {
+                communityData.roomName !== "FangelTV"?
+                <>
+                  <Link to={`/u/${communityData.username}`}>
+                    {
+                      profileThumb?
+                      <img src={profileThumb} className="profile" alt="Imagen de perfil"/>:
+                      <ProfileSVG />
+                    }
+                  </Link>
+                  <Link to={`/u/${communityData.username}`}>
+                    <User as="h4">{communityData.name? communityData.name: communityData.username }</User>
+                  </Link>
+                </>:
+                <>
+                  <Link to={"#"} onClick={(e)=>e.preventDefault()}>
+                    {
+                      profileThumb?
+                      <img src={profileThumb} className="profile" alt="Imagen de perfil"/>:
+                      <ProfileSVG />
+                    }
+                  </Link>
+                  <Link to={"#"} onClick={(e)=>e.preventDefault()}>
+                    <User as="h4">{communityData.name? communityData.name: communityData.username }</User>
+                  </Link>
+                </>
+              }
             </UserContainer>
           </ContainerTextTop>
           <ImageContainer>

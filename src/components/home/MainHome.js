@@ -65,8 +65,8 @@ const MainHome = () => {
               }
             </CardsContainer>
         }
-          {/* <CardCommunity key={"FangelTV"} communityData={community} communityProvider={communityProvider}/> */}
           <Suspense fallback={<p>Cargando...</p>}>
+          <CardCommunity communityData={null} communityProvider={communityProvider}/>
             {
               communities &&
                 communities.map((community)=>{ //Render list of "CardCommunity".
