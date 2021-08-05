@@ -29,7 +29,7 @@ import Spinner from './components/spinner/MainSpinner'
 import { OnDisconnectUser } from './pages/inCommunity/algorithms/OnDisconnectUser'
 
 import VideoCall from './components/community/VideoCall'
-import {handleCommunity} from './index'
+import {SetNumberOfParticipants} from './algorithmsToApp/SetNumberOfParticipants'
 import PFVideo from './pages/inCommunity/PFVideo'
 
 const AppContext =  React.createContext()
@@ -118,7 +118,8 @@ function App() {
                   <VideoCall 
                     dataUser={dataUser} 
                     authState={user} 
-                    communityDataRoom={communityProvider.communityGlobalData} 
+                    communityDataRoom={communityProvider.communityGlobalData}
+                    SetNumberOfParticipants={SetNumberOfParticipants}
                   />
               )
             }
