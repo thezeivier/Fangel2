@@ -109,6 +109,12 @@ export const ImageContainer = styled.div`
       height: 400px;
     }
   }
+
+  .imgFangelTv {
+    @media(min-width:1200px) {
+      height: 436px;
+    }
+  }
 `
 
 export const TransparentContainer = styled.div`

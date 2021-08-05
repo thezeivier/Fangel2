@@ -19,7 +19,7 @@ export const Container = styled.div`
     }
 
     @media(min-width:1200px) {
-      margin: 120px 0 0 0;
+      margin: 110px 0 0 0;
     }
   }
 
