@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import Jitsi from 'react-jitsi'
 import VideoSpinner from '../spinner/VideoSpinner'
+import {useFirestore} from 'reactfire'
 import { GetAdminCommunity } from '../../pages/inCommunity/algorithms/GetAdminCommunity'
 
 const interfaceConfig = {
@@ -58,33 +59,37 @@ const config = {
   enableNoisyMicDetection: true,
 };
 
-const VideoCall = ({dataUser, authState, communityDataRoom}) => {
+const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipants}) => {
+  const firestore = useFirestore()
   const isAdmin = communityDataRoom.creatorUid ? GetAdminCommunity(communityDataRoom.creatorUid, dataUser.uid) : false
   const handleAPI = async JitsiMeetAPI => {
 
     JitsiMeetAPI.executeCommands({
       toggleAudio: [],
-      toggleVideo: [],
+      // toggleVideo: [],
       avatarUrl: [dataUser.photoUrl? dataUser.photoUrl: null],
       email: [dataUser.email],
+      toggleVirtualBackgroundDialog: [],
       subject: [communityDataRoom.privacy === "public"? `${communityDataRoom.title} - Público`:  `${communityDataRoom.title}`],
     });
-    // JitsiMeetAPI.executeCommand("toggleVideo");
-    // JitsiMeetAPI.executeCommand("toggleAudio");
-    // JitsiMeetAPI.executeCommand('avatarUrl', dataUser.photoUrl? dataUser.photoUrl: null);
-    // JitsiMeetAPI.executeCommand('email', dataUser.email);
-    // JitsiMeetAPI.executeCommand('subject', communityDataRoom.privacy === "public"? `${communityDataRoom.title} - Público`:  `${communityDataRoom.title}`);
+    
     JitsiMeetAPI.on('passwordRequired', function (){
       JitsiMeetAPI.executeCommand('password', !communityDataRoom.communityDataSubSpace ? `fangel_${communityDataRoom.roomName}_fangel` : `fangel_${communityDataRoom.communityData.roomName}&@&${communityDataRoom.communityDataSubSpace.id}_fangel`);
     });
-
+    
     // JitsiMeetAPI.addEventListener('videoConferenceJoined', () => {
-    //   JitsiMeetAPI.executeCommand('startShareVideo', "2jmZeLlaCDc")
+    //   // console.log(JitsiMeetAPI.getParticipantsInfo())
+    //   const number = JitsiMeetAPI.getNumberOfParticipants() + 1
+    //   SetNumberOfParticipants(firestore, number, communityDataRoom.roomName)
+    //   // JitsiMeetAPI.executeCommand('startShareVideo', "2jmZeLlaCDc")
     // })
 
-    JitsiMeetAPI.addEventListener('participantJoined', () => {
-      console.log(JitsiMeetAPI.getParticipantsInfo())
-    })
+    // JitsiMeetAPI.addEventListener('videoConferenceLeft', () => {
+    //   // console.log(JitsiMeetAPI.getParticipantsInfo())
+    //   const number = JitsiMeetAPI.getNumberOfParticipants() + 1
+    //   SetNumberOfParticipants(firestore, number, communityDataRoom.roomName)
+    //   // JitsiMeetAPI.executeCommand('startShareVideo', "2jmZeLlaCDc")
+    // })
   };
 
   

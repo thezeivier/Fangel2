@@ -22,7 +22,7 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
       roomName: hashName,
       description: descriptionCommunity? descriptionCommunity: "",
       creatorUid: uid,
-      numberOfUsersConnected: 1,
+      numberOfUsersConnected: 0,
       profilePhotoUrl,
       communityPhotUrl: false,
       // usersConnected: [
