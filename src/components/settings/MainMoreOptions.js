@@ -13,12 +13,12 @@ import { ReactComponent as DashboardSVG } from './icons/dashboard.svg'
 const listOptionsGeneral = [
   {
     id: 1,
-    svg: <ReportProblemSVG />,
+    svg: <ReportProblemSVG className="icon" />,
     name: 'Reportar un problema',
     to: '/report'
   }, {
     id: 2,
-    svg: <ExitSVG />,
+    svg: <ExitSVG className="icon" />,
     name: 'Salir de la cuenta',
     to: false
   }
@@ -27,7 +27,7 @@ const listOptionsGeneral = [
 const listOptionsDashBoard = [
   {
     id: 1,
-    svg: <DashboardSVG className="dashboardSVG" />,
+    svg: <DashboardSVG className="icon" />,
     name: 'Espacios creados',
     to: '/dashboard/my-spaces'
   },

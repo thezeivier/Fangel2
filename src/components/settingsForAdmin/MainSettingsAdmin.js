@@ -4,11 +4,9 @@ import {AppContext} from '../../App'
 import {useFirestore} from 'reactfire'
 import useHover from './../../hook/use-hover'
 import Wrapper from './../general/Wrapper'
-import AlertWarning from '../general/AlertWarning'
-import UserConnect from './UserConnect'
 import SubSpaceMain from './../subSpace/SubSpaceMain'
 import { SubtitleStyled, InputStyled, InputContainer, SectionContainer,
-         TimerDescripcion, ButtonStyled, DisplayContainer, Comment } from './styles/sMainSettings'
+         TimerDescripcion, DisplayContainer, Comment } from './styles/sMainSettings'
 import { ReactComponent as CodeCopySVG } from './icons/codeCopy.svg'
 //Import copy Code.
 import {CopyCode} from '../createCommunity/algorithms/CopyCode'

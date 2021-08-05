@@ -33,7 +33,7 @@ export const IconsContainer = styled.nav`
   }
   
   a {
-    margin: 0 0 0 15px;
+    margin: 0 0 0 12px;
 
     svg {
       fill: ${props => props.theme.colorIcon};
@@ -44,22 +44,6 @@ export const IconsContainer = styled.nav`
       &:hover {
         fill: ${props => props.theme.colorHoverIcon};
       }
-    }
-
-    .profile {
-      margin: 0 0 0 5px;
-      width: 30px;
-    }
-
-    .profileImg {
-      margin: 0 0 2px 5px;
-      width: 25px;
-      height: 25px;
-      object-fit: cover;
-    }
-
-    .iconsRegHeader {
-      width: 27px;
     }
   }
 
@@ -72,73 +56,40 @@ export const IconsContainer = styled.nav`
   }
 
   @media(min-width: 400px){
-    margin: 0 0 0 17px;
-
+    
     a {
-      .profile {
-        margin: 0 0 0 5px;
-        width: 35px;
-      }
+      margin: 0 0 0 15px;
 
       .profileImg {
         width: 27px;
         height: 27px;
       }
-
-      .iconsRegHeader {
-        width: 30px;
-      }
     }
   }
 
   @media(min-width: 768px){
-    margin: 0 0 0 18px;
-
     .nameUserProfile {
       display: block;
-      margin: 0 -12px 0 0;
+      cursor: default;
     }
-
+    
     a {
-      .profile {
-        margin: 0 0 0 8px;
-        width: 36px;
-      }
+      margin: 0 0 0 18px;
 
       .profileImg {
-        margin: 0 0 7px 8px;
+        margin: 0 0 7px 0;
         width: 30px;
         height: 30px;
-      }
-
-      .iconsRegHeader {
-        width: 32px;
-      }
-
-      .homeIconRegHeader {
-        width: 30px;
-        margin-bottom: 4px;
       }
     }
   }
 
   @media(min-width: 1024px){
-    margin: 0 0 0 20px;
-
     a {
-      .profile {
-        margin: 0 0 0 8px;
-        width: 37px;
-      }
-
       .profileImg {
-        margin: 0 0 3px 8px;
+        margin: 0 0 3px 0;
         width: 30px;
         height: 30px;
-      }
-
-      .homeIconRegHeader {
-        margin-bottom: 4px;
       }
     }
   }

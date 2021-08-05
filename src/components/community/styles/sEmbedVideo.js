@@ -28,6 +28,7 @@ export const TitleOnlyDesktopContainer = styled.div`
 export const DescripcionContainer = styled.div`
   margin: 6px 0 0 0;
   display: flex;
+  align-items: center;
 `
 
 export const ButtonLeaveContainer = styled.div`

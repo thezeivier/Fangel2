@@ -31,12 +31,6 @@ export const Option = styled.li`
   svg {
     margin: 0 16px 0 0;
   }
-
-  .dashboardSVG {
-    width: 21px;
-    height: 21px;
-    margin-left: 5px;
-  }
 `
 
 const inlineFlexMixin = css`

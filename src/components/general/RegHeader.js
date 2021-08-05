@@ -27,17 +27,17 @@ const RegHeader = () => {
               {
                 profileThumb?
                 <img src={profileThumb} className="profileImg" alt="Imagen de perfil" style={{borderRadius: "100%"}} />:
-                (authState.photoURL ?  <img src={authState.photoURL} className="profileImg" alt="Imagen de perfil" style={{borderRadius: "100%"}} /> : <ProfileSVG  className="profile" />)
+                (authState.photoURL ?  <img src={authState.photoURL} className="profileImg" alt="Imagen de perfil" style={{borderRadius: "100%"}} /> : <ProfileSVG className="icon" />)
               }
             </Link>
             <Link to={"/"}>
-              <HomeSVG  className="iconsRegHeader" />
+              <HomeSVG className="icon" />
             </Link>
             <Link to={"/inbox"}>
-              <ChatSVG  className="iconsRegHeader" />
+              <ChatSVG className="icon" />
             </Link>
             <Link to={"/more-options"}>
-              <MenuSVG  className="iconsRegHeader" />
+              <MenuSVG className="icon" />
             </Link>
           </IconsContainer>
         </Container>

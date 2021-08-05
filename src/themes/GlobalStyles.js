@@ -122,6 +122,21 @@ const GlobalStyles = createGlobalStyle`
     border-radius: 10px;  
   }
 
+  .icon {
+    width: 28px;
+    height: 28px;
+
+    @media(min-width: 768px){
+      width: 30px;
+      height: 30px;
+    }
+
+    @media(min-width: 1200px){
+      width: 31px;
+      height: 31px;
+    }
+  }
+
   .ReactModalPortal {
     z-index: 2000;
   }

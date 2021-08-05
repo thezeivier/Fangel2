@@ -4,7 +4,6 @@ import ButtonLeaveCom from './ButtonLeaveCom'
 import ModalSettingsAdmin from './../../pages/inCommunity/ModalSettingsAdmin'
 import { HeaderContainer, TitleCommunityStyled, ContainerSVG, OnlyUsersContainer } from './styles/sVideoHeader'
 import { ReactComponent as CommunitySVG } from './icons/community.svg'
-import { ReactComponent as VideoSettingsSVG } from './icons/videoSettings.svg'
 import { ReactComponent as CloseSVG } from './icons/close.svg'
 
 const VideoHeader = ({ displayNoAdmin, isSettings, modalIsOpen, communityData, closeModal, closeModalSA, onlyUsers, communityDataSubSpace, isSubSpace }) => {
@@ -12,7 +11,7 @@ const VideoHeader = ({ displayNoAdmin, isSettings, modalIsOpen, communityData, c
   return (
     <>
       <HeaderContainer>
-        <CommunitySVG />
+        <CommunitySVG className="icon" />
         <TitleCommunityStyled as="h3">{!isSubSpace ? communityData.title : communityDataSubSpace.nameOfSpace}</TitleCommunityStyled>
         <OnlyUsersContainer onlyUsers={onlyUsers}>
           <ButtonLeaveCom setCommunityGlobalData={setCommunityGlobalData} className="buttonOnlyMobile"/>
