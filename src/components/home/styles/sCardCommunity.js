@@ -32,6 +32,24 @@ const textSmallMixin = css`
   color: ${props => props.theme.textColor};
 `
 
+const nameContentMixin = css`
+  img {
+    border-radius: 100%;
+    height: 26px;
+    width: 26px;
+    object-fit: cover;
+    line-height: 0;
+    margin: 9px 9px 9px 0;
+  }
+  
+  svg {
+    fill: ${props => props.theme.textColor};
+    width: 30px;
+    height: 30px;
+    margin: 7px 0 3px 0;
+  }
+`
+
 export const ContainerTextTop = styled.div`
   ${wrapperMixin};
 `
@@ -43,23 +61,18 @@ export const UserContainer = styled.div`
     display: flex;
     align-items: center;
     margin: 4px 8px 0 0;
-    
-    img {
-      border-radius: 100%;
-      height: 26px;
-      width: 26px;
-      object-fit: cover;
-      line-height: 0;
-      margin: 9px 9px 9px 0;
-    }
-    
-    svg {
-      fill: ${props => props.theme.textColor};
-      width: 30px;
-      height: 30px;
-      margin: 7px 0 3px 0;
-    }
+
+    ${nameContentMixin}
   }
+`
+
+export const NameFangelTv = styled.div`
+  display: flex;
+  align-items: center;
+  margin: -4px 8px 0 0;
+  cursor: default;
+    
+  ${nameContentMixin}
 `
 
 export const TextCommunity = styled(SmallText)`
@@ -112,7 +125,7 @@ export const ImageContainer = styled.div`
 
   .imgFangelTv {
     @media(min-width:1200px) {
-      height: 436px;
+      height: 432px;
     }
   }
 `
