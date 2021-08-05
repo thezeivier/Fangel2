@@ -78,7 +78,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
               <div>
                 <InputStyled marginBottom19
                   type="text" placeholder={"Nombres"} 
-                  defaultValue={userFromDB.name && userFromDB.name.firstName} 
+                  defaultValue={userFromDB.name && userFromDB.name.firstName}
                   name="firstname"
                   maxLength="60"
                   ref={register({ required: true, maxLength: 60})}
