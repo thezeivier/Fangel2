@@ -46,22 +46,22 @@ const sendProfileData = async (uid, firestore, data) => {
                 lastName: capilizedLastName,
             },
             profileData: {
-                professionalDescription : professionalDescription.length !== 0 ? professionalDescription: null,
-                aboutMe: aboutMe.length !== 0 ? aboutMe: null,
+                professionalDescription : professionalDescription.trim().length != 0 ? professionalDescription: null,
+                aboutMe: aboutMe.trim().length !== 0 ? aboutMe: null,
                 facebook: {
-                    profile: facebook.startsWith("https://www.facebook.com/") || facebook.startsWith("https://web.facebook.com/")? facebook: null,
+                    profile: facebook.startsWith("https://www.facebook.com/") || facebook.startsWith("https://web.facebook.com/") || facebook.trim().length != 0 ? facebook: null,
                 },
                 instagram: {
-                    profile: instagram.startsWith("https://www.instagram.com/")? instagram: null,
+                    profile: instagram.startsWith("https://www.instagram.com/") || instagram.trim().length != 0 ? instagram: null,
                 },
                 linkedin: {
-                    profile: linkedin.startsWith("https://www.linkedin.com/in/")? linkedin: null,
+                    profile: linkedin.startsWith("https://www.linkedin.com/in/") || linkedin.trim().length != 0 ? linkedin: null,
                 },
                 twitter: {
-                    profile: twitter.startsWith("https://www.twitter.com/") || twitter.startsWith("https://twitter.com/")? twitter: null,
+                    profile: twitter.startsWith("https://www.twitter.com/") || twitter.startsWith("https://twitter.com/") || twitter.trim().length != 0 ? twitter: null,
                 },
                 youtube: {
-                    profile: youtube.startsWith("https://www.youtube.com/channel")? youtube: null,
+                    profile: youtube.startsWith("https://www.youtube.com/channel") || youtube.trim().length != 0 ? youtube: null,
                 }
             }
         },
@@ -94,12 +94,12 @@ const profilePointsCounter = (data) => {
         }
     }
     if(professionalDescription){
-        scoreFromProfile += Math.ceil(professionalDescription.length * 0.25)
+        scoreFromProfile += Math.ceil(professionalDescription.trim().length * 0.25)
     }
-    if(aboutMe){
+    if(aboutMe && (aboutMe.trim().length != 0)){
         scoreFromProfile += Math.ceil(aboutMe.split(' ').length * 0.5)
     }
-    if(facebook.startsWith("https://www.facebook.com/") || facebook.startsWith("https://web.facebook.com/")){
+    if(facebook.startsWith("https://www.facebook.com/") || facebook.startsWith("https://web.facebook.com/") ){
         scoreFromProfile += 20
     }
     if(instagram.startsWith("https://www.instagram.com/")){

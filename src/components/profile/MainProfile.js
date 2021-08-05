@@ -82,7 +82,6 @@ const MainProfile = React.memo(() => {
   }
   const isMyUser = authState.uid === userDataRecovered.id
   const profileData = (userDataRecovered && userDataRecovered.profileData) ? userDataRecovered.profileData : null
-  
   const changeDataOfProfile = (e) => {
     e.preventDefault()
     setProfileEditor(true)
@@ -103,6 +102,8 @@ const MainProfile = React.memo(() => {
     )
   }
 
+  const myScore =   userFromDB.score?.fangelScore + userFromDB.score?.profileScore + 30
+  
   return (
       <main>
         <Wrapper>
@@ -120,10 +121,14 @@ const MainProfile = React.memo(() => {
               isMyUser ?
               <ButtonAccion onClick={changeDataOfProfile}>
                 <span>Editar perfil</span>
-              </ButtonAccion>:
-              <ButtonAccion onClick={() => createDocInbox(authState.uid, userDataRecovered.uid, firestore, setActiveButton, history)} disabled={activeButton}>
-                <span>Enviar mensaje</span>
-              </ButtonAccion>
+              </ButtonAccion>: ( myScore >= 100 ?
+                <ButtonAccion onClick={() => createDocInbox(authState.uid, userDataRecovered.uid, firestore, setActiveButton, history)} disabled={activeButton}>
+                  <span>Enviar mensaje</span>
+                </ButtonAccion>: 
+                <ButtonAccion disabled>
+                  <span>+100 puntos para enviar mensaje</span>
+                </ButtonAccion>
+              )
             }
           </UserContainer>
           <GridOnlyDesktop>
