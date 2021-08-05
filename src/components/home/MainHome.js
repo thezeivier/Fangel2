@@ -11,6 +11,7 @@ import { AddCardContainer, EndCercle, CardsList, CardsContainer } from './styles
 import { ReactComponent as SpacesSVG } from './icons/spaces.svg'
 import { ReactComponent as FangelConnectSVG } from './icons/fangelConnect.svg'
 import { ReactComponent as LockedSVG } from './icons/locked.svg'
+import CardFangelTv from './CardFangelTv'
 
 //Import Algorithms
 import { RecoverCommunities } from './algorithms/RecoverCommunities'
@@ -66,13 +67,13 @@ const MainHome = () => {
             </CardsContainer>
         }
           <Suspense fallback={<p>Cargando...</p>}>
-          <CardCommunity communityData={null} communityProvider={communityProvider}/>
-            {
-              communities &&
-                communities.map((community)=>{ //Render list of "CardCommunity".
-                  return <CardCommunity key={community.roomName} communityData={community} communityProvider={communityProvider}/>
-                })
-            }
+          <CardFangelTv />
+          {
+            communities &&
+              communities.map((community)=>{ //Render list of "CardCommunity".
+                return <CardCommunity key={community.roomName} communityData={community} communityProvider={communityProvider}/>
+              })
+          }
 					</Suspense>
         </CardsList>
       </Wrapper>
