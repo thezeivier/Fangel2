@@ -59,12 +59,6 @@ export const ContainerForCommunity = styled.div`
       grid-template-columns: auto max-content;
       column-gap: 15px;
     }
-
-/*     .mainWrapper {
-      @media(min-width:410px) {
-        padding: 0;
-      }
-    } */
   }
 
   footer,
@@ -74,5 +68,11 @@ export const ContainerForCommunity = styled.div`
     @media(min-width:1200px) {
       display: block;
     }
+  }
+`
+
+export const FooterForCommity = styled.div`
+  @media(min-width:1200px) {
+    margin: 15px 140px 0 170px;
   }
 `

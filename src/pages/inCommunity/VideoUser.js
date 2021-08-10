@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import MainVideoUser from './../../components/community/MainVideoUser'
 import RegHeader from './../../components/general/RegHeader'
 import VideoHeader from './../../components/general/VideoHeader'
-import Footer from './../../components/general/Footer'
+import FooterForSpaces from './../../components/general/FooterForSpaces'
 import { ContainerForCommunity } from './../../components/general/InternalLayout'
 import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsAdmin'
 import VerticalHeader from './../../components/general/VerticalHeader'
@@ -52,7 +52,7 @@ const VideoUser = ({communityData, isSubSpace, communityDataSubSpace, fangelConn
             inDesktop="grid"
             isSubSpace={isSubSpace} 
             communityDataSubSpace={communityDataSubSpace}/>
-          <Footer noMobile/>
+          <FooterForSpaces noMobile/>
         </ContainerForCommunity>
       }
     </>

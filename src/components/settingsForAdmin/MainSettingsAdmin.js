@@ -15,36 +15,34 @@ const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, commu
   const [hoverRef, isHovered] = useHover();
   const contextFromApp = useContext(AppContext)
   return (
-    <Wrapper>
-      <DisplayContainer inDesktop={inDesktop}>
-        <div>
-          <SectionContainer width50ptg>
-            <div className="invitationLinkContainer">
-              <SubtitleStyled as="h4">Link del espacio social</SubtitleStyled>
-              <InputContainer>
-                <InputStyled 
-                  id="urlRoomCode" 
-                  special 
-                  invitationCode 
-                  placeholder="Link de la sala" 
-                  value={!isSubSpace ?  (communityData.roomName ? `https://fangelweb.com/room/${communityData.roomName}` : "Cargando...") : `https://fangelweb.com/room/${communityData.roomName}/${communityDataSubSpace.id}` } readOnly/>
-                <button onClick={()=>CopyCode("urlRoomCode")} ref={hoverRef}>
-                  <CodeCopySVG/>
-                  {isHovered && <Comment>Copiar link</Comment>}
-                </button>
-              </InputContainer>
-            </div>
-          </SectionContainer>
-          {
-            communityData.privacy === "private" && !isSubSpace &&
-              <SectionContainer>
-                <SubtitleStyled as="h4">Subespacios</SubtitleStyled>
-                <SubSpaceMain isAdmin={isAdmin} communityData={communityData} isSubSpace={isSubSpace}/>
-              </SectionContainer>
-          }
-        </div>
-      </DisplayContainer>
-    </Wrapper>
+    <DisplayContainer inDesktop={inDesktop}>
+      <div>
+        <SectionContainer width50ptg>
+          <div className="invitationLinkContainer">
+            <SubtitleStyled as="h4">Link del espacio social</SubtitleStyled>
+            <InputContainer>
+              <InputStyled 
+                id="urlRoomCode" 
+                special 
+                invitationCode 
+                placeholder="Link de la sala" 
+                value={!isSubSpace ?  (communityData.roomName ? `https://fangelweb.com/room/${communityData.roomName}` : "Cargando...") : `https://fangelweb.com/room/${communityData.roomName}/${communityDataSubSpace.id}` } readOnly/>
+              <button onClick={()=>CopyCode("urlRoomCode")} ref={hoverRef}>
+                <CodeCopySVG/>
+                {isHovered && <Comment>Copiar link</Comment>}
+              </button>
+            </InputContainer>
+          </div>
+        </SectionContainer>
+        {
+          communityData.privacy === "private" && !isSubSpace &&
+            <SectionContainer>
+              <SubtitleStyled as="h4">Subespacios</SubtitleStyled>
+              <SubSpaceMain isAdmin={isAdmin} communityData={communityData} isSubSpace={isSubSpace}/>
+            </SectionContainer>
+        }
+      </div>
+    </DisplayContainer>
   );
 }
 

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Button } from './../../../themes/externalRecyclableStyles'
 
 export const MainOnlyDesktop = styled.main`
   .mainWrapper {
@@ -32,10 +31,22 @@ export const ButtonComments = styled.button`
 
   @media(min-width:1200px) {
     display: block;
-    padding: 10px;
+    padding: 11px 15px;
     position: absolute;
     bottom: 17px;
     right: 17px;
     z-index: 3000;
+    border: none;
+    border-radius: 20px;
+    font-family: ${props => props.theme.buttonFont};
+    font-weight: ${props => props.theme.weight.semiMedium};
+    cursor: pointer;
+    background: ${props => props.theme.colorWhite};
+    transition: .2s all;
+    font-size: .82em;
+
+    &:hover {
+      background: #d5d6e2;
+    }
   }
 `

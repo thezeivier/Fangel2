@@ -7,6 +7,7 @@ export const GridOnlyDesktop = styled.div`
   @media(min-width:1200px) {
     display: grid;
     grid-template-columns: 40% 1fr;
+    padding: 110px 0 0 0;
   }
 `
 

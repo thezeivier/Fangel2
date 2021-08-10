@@ -3,10 +3,20 @@ import { SecondaryTitle, Input, Button } from './../../../themes/externalRecycla
 
 export const DisplayContainer = styled.div`
   display: ${props => props.inDesktop ? 'none' : `${props.inDesktop}`};
+  padding: 0 20px;
+
+  @media(min-width:410px) {
+    padding: 0 30px;
+  }
+
+  @media(min-width:768px) {
+    padding: 0 5%;
+  }
 
   @media(min-width:1200px) {
     display: ${props => props.inDesktop ? `${props.inDesktop}` : 'none'}; //grid
-    margin: 70px 50px 0 50px;
+    margin: 70px 140px 0 170px;
+    padding: 0;
   }
 `
 
