@@ -31,6 +31,8 @@ import { OnDisconnectUser } from './pages/inCommunity/algorithms/OnDisconnectUse
 import VideoCall from './components/community/VideoCall'
 import {SetNumberOfParticipants} from './algorithmsToApp/SetNumberOfParticipants'
 import PFVideo from './pages/inCommunity/PFVideo'
+import ChatLayout from './components/general/ChatLayout'
+import MatchMessage from './components/privateChat/MatchMessage'
 
 const AppContext =  React.createContext()
 const {Provider, Consumer} = AppContext
@@ -176,8 +178,8 @@ function App() {
               <Route exact path={"/"} component={authState ? Home : Landing}/>
               <Route exact path={"/create-community-1"} component={authState ? CreateCommunityOne : Landing}/>
               <Route exact path={"/fangel-connect"} component={authState ? FangelConnect : Landing}/>
-              <Route exact path={"/inbox"} component={authState ? PrivateChat : Landing}/>
-              <Route exact path={"/inbox/t/:idInbox"} component={authState ? PrivateChat : Landing}/>
+              <ChatLayout exact path={"/inbox"} authState={authState} userFromDB={userFromDB? userFromDB: false} component={authState ? MatchMessage : Landing}/>
+              <ChatLayout exact path={"/inbox/t/:idInbox"} authState={authState} userFromDB={userFromDB? userFromDB: false} component={authState ? MatchMessage : Landing}/>
               <Route exact path={"/room/:idRoom"} component={SwitchCommunityVideo}/>
               <Route exact path={"/room/:idRoom/:idSubSpace"} component={SwitchCommunitySubSpace}/>
               <Route exact path={"/report"} component={authState ? ReportAProblem : Landing}/>

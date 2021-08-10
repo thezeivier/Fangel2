@@ -1,24 +1,22 @@
-import React, { useContext, useState } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom'
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import ChatFriends from './ChatFriends'
-import MainIndividualChat from './MainIndividualChat'
 import { TitleStyled, GridOnlyDesktop, ChatsContainer, ChatList,
-         TitleContainer, OthersContainer } from './styles/sMainPrivateChat'
+         TitleContainer } from './styles/sMainPrivateChat'
 import { ReactComponent as ArrowBackSVG } from './../general/icons/arrowBack.svg'
-import {GetDataFromMessagesInbox} from './algorithms/GetDataFromMessagesInbox'
-import { ReactComponent as SocialInteractionSVG } from './images/socialInteraction.svg'
+import { GetDataFromInbox } from '../../components/privateChat/algorithms/GetDataFromInbox'
 
-const MainPFVideoUser = ({getInboxDoc, getRouteInbox, userFromDB, authState}) => {
-  const {data, status, error} = getRouteInbox && GetDataFromMessagesInbox(getRouteInbox, 'inbox', 'messagesInbox')
+const MainPFVideoUser = ({children, authState, userFromDB}) => {
+  const history = useHistory()
+  const {data, status, error} = authState && GetDataFromInbox('inbox', authState.uid)
   
-  if(status === "loading") return <p>Pending...</p>
+  if(status == "loading") return <p>Pending...</p>
   if(error) return <p>Error</p>
 
   const returnToBack = () =>{
     window.history.back()
   }
-
   return (
     <main>
       <Wrapper>
@@ -29,24 +27,16 @@ const MainPFVideoUser = ({getInboxDoc, getRouteInbox, userFromDB, authState}) =>
               <TitleStyled>Conversaciones</TitleStyled>
             </TitleContainer>
             <ChatList>
-              {getInboxDoc.data.map(usr => 
+              {data ? data.map(usr => 
                 <Link key={usr.idInbox} to={`/inbox/t/${usr.idInbox}`}>
                   <ChatFriends key={usr.idInbox} {...usr} uidCurrentUser={userFromDB.uid}/>
                 </Link>
-              )}
+              ):
+              history.push("/login")}
             </ChatList>
           </ChatsContainer>
           <>
-            {!getRouteInbox &&
-              <OthersContainer>
-                <SocialInteractionSVG />
-                <p>Envia y recibe mensajes. Ingresa al perfil de un persona para iniciar una conversación.</p>
-              </OthersContainer>
-            }
-            {getInboxDoc.data.map(usr => (
-              getRouteInbox == usr.idInbox &&
-              <MainIndividualChat key={usr.idInbox} message={data} {...usr} userFromDB={userFromDB} authState={authState} inGridDesktop="block" />
-            ))}
+            {children}
           </>
         </GridOnlyDesktop>
       </Wrapper>
