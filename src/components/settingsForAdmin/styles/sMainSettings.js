@@ -6,10 +6,7 @@ export const DisplayContainer = styled.div`
 
   @media(min-width:1200px) {
     display: ${props => props.inDesktop ? `${props.inDesktop}` : 'none'}; //grid
-/*     display: grid;
-    grid-template-columns: 51% 1fr;
-    column-gap: calc(7% + 40px); */
-    margin: 70px 0 0 0;
+    margin: 70px 50px 0 50px;
   }
 `
 
