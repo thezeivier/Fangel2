@@ -35,6 +35,7 @@ import PFVideo from './pages/inCommunity/PFVideo'
 const AppContext =  React.createContext()
 const {Provider, Consumer} = AppContext
 
+
 function App() {
   const auth = useAuth()
   const firestore = useFirestore()
@@ -187,7 +188,7 @@ function App() {
               <Route exact path={"/thank-you"} component={authState? ThanksReport : Landing}/>
               <Route exact path={"/dashboard/my-spaces"} component={authState? DashboardSpaces : Landing}/>
               {ListOfRoutes.map((route)=>{
-                return <ExternalLayoutRoute key={route.path} authState={authState} {...route}/>
+                return <ExternalLayoutRoute key={route.path} authState={authState} {...route} />
               })}
               <Redirect from="*" to="/404"/>
             </Switch>

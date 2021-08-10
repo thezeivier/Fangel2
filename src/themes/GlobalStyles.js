@@ -137,6 +137,10 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  .activeCommentsInSpaces {
+    display: flex !important;
+  }
+
   .ReactModalPortal {
     z-index: 2000;
   }

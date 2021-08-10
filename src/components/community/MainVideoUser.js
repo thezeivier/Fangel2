@@ -5,7 +5,7 @@ import CommentsBox from './CommentsBox'
 import InputComments from './InputComments'
 import ModalSettingsAdmin from './../../pages/inCommunity/ModalSettingsAdmin'
 import MatchInterest from './MatchInterest'
-import { ContainerResponsive, MainOnlyDesktop } from './styles/sMainVideo'
+import { ContainerResponsive, MainOnlyDesktop, ButtonComments } from './styles/sMainVideo'
 /* import { ReactComponent as VideoSettingsSVG } from './../general/icons/videoSettings.svg' */
 import { AppContext } from '../../App'
 import firebase from 'firebase/app'
@@ -29,11 +29,20 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
   if(error) return <p>Error</p>
   
   const preferencesMatch = fangelConnectData && fangelConnectData.creatorPreferences.filter(creatorItem => fangelConnectData.joinnerPreferences.includes(creatorItem))
+
+  const buttonComments = () => {
+    const container = document.getElementById('containerComments')
+    container.classList.toggle('activeCommentsInSpaces')
+  }
+
   return (
     <MainOnlyDesktop>
-      <EmbedVideo communityData={communityData} isAdmin={isAdmin} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace} />
+      <div style={{position: "relative"}}>
+        <EmbedVideo communityData={communityData} isAdmin={isAdmin} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace} />
+        <ButtonComments onClick={buttonComments}>Comentarios</ButtonComments>
+      </div>
       <Wrapper height="100%">
-        <ContainerResponsive>
+        <ContainerResponsive id="containerComments">
           {
             fangelConnectData &&
             <MatchInterest preferencesMatch={preferencesMatch} spaceId={fangelConnectData.spaceId}/>

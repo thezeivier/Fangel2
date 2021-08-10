@@ -1,6 +1,7 @@
 import React from 'react'
 import HeaderLP from './HeaderLP'
 import RegHeader from './RegHeader'
+import { useLocation } from 'react-router-dom'
 
 const ExternalLayout = ({children, authState}) => {
   return(
