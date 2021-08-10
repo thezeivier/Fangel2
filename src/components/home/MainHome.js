@@ -67,7 +67,7 @@ const MainHome = () => {
             </CardsContainer>
         }
           <Suspense fallback={<p>Cargando...</p>}>
-          <CardFangelTv />
+          <CardFangelTv communityProvider={communityProvider}/>
           {
             communities &&
               communities.map((community)=>{ //Render list of "CardCommunity".

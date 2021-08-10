@@ -5,6 +5,7 @@ import VideoHeader from './../../components/general/VideoHeader'
 import Footer from './../../components/general/Footer'
 import { ContainerForCommunity } from './../../components/general/InternalLayout'
 import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsAdmin'
+import VerticalHeader from './../../components/general/VerticalHeader'
 
 import MainSpinner from '../../components/spinner/MainSpinner'
 
@@ -28,14 +29,13 @@ const VideoUser = ({communityData, isSubSpace, communityDataSubSpace, fangelConn
         <MainSpinner/>:
         <ContainerForCommunity> {/* Sin margenes en moviles y tablets ni footer ni regHeader,
           wrapper sin paddign en moviles y tablet*/}
-          <RegHeader /> {/* Solo para moviles */}
+          {/* <RegHeader /> */} {/* Solo para moviles */}
+          <VerticalHeader />
           <VideoHeader
             communityData={communityData}
             communityDataSubSpace={communityDataSubSpace}
             isSubSpace={isSubSpace}
             isSettings="none"
-/*             displayNoAdmin="none"
-            onlyUsers="block" */
             closeModal={closeModal} 
             modalIsOpen={modalIsOpen} 
           />

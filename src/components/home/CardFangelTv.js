@@ -8,13 +8,19 @@ import FangelTvGif from './images/fangeltv1.gif'
 //Import algorithms
 import {ShowMore} from './algorithms/ShowMore'
 
-const CardFangelTv = () => {
+const CardFangelTv = ({communityProvider}) => {
+    const history = useHistory()
     const cardRef = useRef()
     const textRef = useRef()
     const buttonRef = useRef()
 
     ShowMore(cardRef, textRef, buttonRef)
-  
+
+    const handleLeaveCommunity = () => {
+      communityProvider.communityGlobalData && communityProvider.setCommunityGlobalData(false)
+      // history.push(`/room/${communityData.roomName}`)
+      window.location.reload()
+    }
   return (
     <>
       <li>
@@ -37,7 +43,7 @@ const CardFangelTv = () => {
               </Truncate>
             </DescriptionContainer>
           </ImageContainer>
-          <ButtonStyled secondary>Entrar</ButtonStyled>
+          <ButtonStyled secondary onClick={handleLeaveCommunity}>Entrar</ButtonStyled>
         </CardContainer>
       </li>
     </>

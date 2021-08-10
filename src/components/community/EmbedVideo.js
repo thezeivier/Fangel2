@@ -1,9 +1,8 @@
 import React, {useContext} from 'react';
 import { AppContext } from '../../App'
 import ButtonLeaveCom from './../general/ButtonLeaveCom'
-import { VideoContainer, EmbedContainer, CountContainer, TitleOnlyDesktopContainer,
+import { VideoContainer, EmbedContainer, TitleOnlyDesktopContainer,
          DescripcionContainer, ButtonLeaveContainer } from './styles/sEmbedVideo'
-import { ReactComponent as NumberPeopleSVG } from './icons/numberPeople.svg'
 import { ReactComponent as CommunitySVG } from './../general/icons/community.svg'
 
 // import VideoCall from './VideoCall'
@@ -26,10 +25,6 @@ const EmbedVideo = ({ communityData, communityDataSubSpace, isSubSpace }) => {
       <EmbedContainer>
         {videoCall}
       </EmbedContainer>
-      {/*<CountContainer>
-        <span>18</span>
-        <NumberPeopleSVG />
-      </CountContainer> */}
     </VideoContainer>
   );
 }

@@ -4,8 +4,6 @@ import HeaderLP from './HeaderLP'
 import RegHeader from './RegHeader'
 
 const ExternalLayout = ({children, authState}) => {
-  const location = useLocation()
-  console.log(location)
   return(
     <React.Fragment>
       {

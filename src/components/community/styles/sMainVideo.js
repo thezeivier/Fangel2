@@ -23,5 +23,19 @@ export const ContainerResponsive = styled.div`
 
   @media(min-width:1200px) {
     border-radius: 10px;
+    display: none;
+  }
+`
+
+export const ButtonComments = styled.button`
+  display: none;
+
+  @media(min-width:1200px) {
+    display: block;
+    padding: 10px;
+    position: absolute;
+    bottom: 17px;
+    right: 17px;
+    z-index: 3000;
   }
 `
