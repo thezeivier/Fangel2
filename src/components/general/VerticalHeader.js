@@ -27,14 +27,14 @@ const VerticalHeader = () => {
               (authState.photoURL ?  <img src={authState.photoURL} className="profileImg" alt="Imagen de perfil" style={{borderRadius: "100%"}} /> : <ProfileSVG className="icon" />)
             }
           </Link>
-          <Link to={"/"}>
-            <HomeSVG className="icon" />
+          <Link to={"/more-options"}>
+            <MenuSVG className="icon" />
           </Link>
           <Link to={"/inbox"}>
             <ChatSVG className="icon" />
           </Link>
-          <Link to={"/more-options"}>
-            <MenuSVG className="icon" />
+          <Link to={"/"}>
+            <HomeSVG className="icon" />
           </Link>
         </IconsContainer>
       </Container>

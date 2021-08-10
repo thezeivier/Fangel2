@@ -4,6 +4,8 @@ import firebase from 'firebase/app'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import ButtonViewPassword from './ButtonViewPassword'
+import ModalGeneral from './../../components/modal/ModalGeneral'
+import ModalSelectProfile from './ModalSelectProfile'
 import { Link, useHistory, Redirect } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { SubtitleStyled, TextStyled, InputStyled, ButtonStyled, SeparatorStyled,
@@ -104,6 +106,9 @@ const Login = () => {
               </Form>
             </ContainerDesktop>
           </ExternalsWrapper>
+{/*           <ModalGeneral>
+            <ModalSelectProfile />
+          </ModalGeneral> */}
         </Wrapper>
         <Footer />
       </>

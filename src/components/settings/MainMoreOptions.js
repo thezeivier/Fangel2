@@ -9,15 +9,22 @@ import { Top, ListOptions, CategoryOptionsContainer } from './styles/sMainSettin
 import { ReactComponent as ExitSVG } from './icons/exit.svg'
 import { ReactComponent as ReportProblemSVG } from './icons/reportProblem.svg'
 import { ReactComponent as DashboardSVG } from './icons/dashboard.svg'
+import { ReactComponent as BusinessSpaceSVG } from './icons/businessSpace.svg'
+import { ReactComponent as BlogSVG } from './icons/blog.svg'
 
 const listOptionsGeneral = [
   {
     id: 1,
+    svg: <BlogSVG className="icon" />,
+    name: 'Blog de Fangel',
+    to: '/#'
+  }, {
+    id: 2,
     svg: <ReportProblemSVG className="icon" />,
     name: 'Reportar un problema',
     to: '/report'
   }, {
-    id: 2,
+    id: 3,
     svg: <ExitSVG className="icon" />,
     name: 'Salir de la cuenta',
     to: false
@@ -30,6 +37,11 @@ const listOptionsDashBoard = [
     svg: <DashboardSVG className="icon" />,
     name: 'Espacios creados',
     to: '/dashboard/my-spaces'
+  }, {
+    id: 2,
+    svg: <BusinessSpaceSVG className="icon" />,
+    name: 'Crear perfil para empresas',
+    to: '/create-business-profile'
   },
 ]
 

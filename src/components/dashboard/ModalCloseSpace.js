@@ -1,7 +1,7 @@
 import React from 'react';
 import Wrapper from './../general/Wrapper'
 import { ModalCloseContainer, SubtitleStyled, TextStyled, ButtonsContainer,
-  ButtonStyled } from './styles/sModalCloseSpace'
+         ButtonStyled } from './styles/sModalCloseSpace'
 import {deleteSpaceAndMessages} from './algorithms/deleteSpaceAndMessages' //Recordar que hay que migrar a una cloudFunction por motivos de rendimiento.
 import firebase from "firebase/app";
 import "firebase/functions";
