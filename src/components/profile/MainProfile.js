@@ -7,21 +7,16 @@ import UserTag from './UserTag'
 import {useStorage, useFirestore} from 'reactfire'
 import { useMatchRouteUserData } from './algorithms/useMatchRouteUserData'
 import { AppContext } from '../../App'
-import { UserContainer, ListTags, ButtonAccion, CodeContainer,
-         ProfileImage } from './styles/sMainProfile'
+import { UserContainer, ListTags, ButtonAccion, ProfileImage } from './styles/sMainProfile'
 // import { colorGenerator } from './algorithms/colorGenerator'
 import { getColorDarkMode, getColorLightMode} from '../community/algorithms/GetRandomColor'
 
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
-import { ReactComponent as AddPhotoSVG } from './icons/addPhoto.svg'
 
 //Import components from code Box
-import { Form, CommentSVGContainer, InputStyled, ContainerInformation,
-         SmallTextStyled, TextBodyStyled, GridOnlyDesktop } from './styles/sMainProfile'
+import { ContainerInformation, SmallTextStyled, TextBodyStyled, GridOnlyDesktop } from './styles/sMainProfile'
 import { SubtitleStyled } from './../../themes/internalRecyclableStyles'
 import { SocialMediaContainer } from './styles/sEditProfile'
-import { ReactComponent as CopySVG } from '../createCommunity/icons/copy.svg'
-import {CopyCode} from '../createCommunity/algorithms/CopyCode'
 import { createDocInbox } from './algorithms/createDocInbox'
 import facebook from './icons/facebook.svg'
 import instagram from './icons/instagram.svg'

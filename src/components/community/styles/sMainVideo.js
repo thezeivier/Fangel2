@@ -35,7 +35,7 @@ export const ButtonComments = styled.button`
     position: absolute;
     bottom: 17px;
     right: 17px;
-    z-index: 3000;
+    z-index: 200;
     border: none;
     border-radius: 20px;
     font-family: ${props => props.theme.buttonFont};

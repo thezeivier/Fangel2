@@ -7,8 +7,7 @@ import { ReactComponent as AddPhotoSVG } from './icons/addPhoto.svg'
 import { useFirestore, useStorage, useFirebaseApp } from 'reactfire'
 import { useForm } from 'react-hook-form'
 import { ListTags} from './styles/sMainProfile'
-import { InputEditStyled, ButtonEditAccion, CharacterContainer, SocialMediaContainer,
-         InputSocialMedia } from './styles/sEditProfile'
+import { ButtonEditAccion, CharacterContainer, SocialMediaContainer, InputSocialMedia } from './styles/sEditProfile'
 import { TitleStyled, TextAreaStyled, ButtonStyled, SubtitleStyled,
          OnlyDesktop } from '../../themes/internalRecyclableStyles'
 import { ProfileImage } from './styles/sMainProfile'
@@ -56,6 +55,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
 
     const changePD = e => setPDLength(e.target.value.length)
     const changeAM = e => setAMLength(e.target.value.length)
+
     if (loading) return <LoadServSpinner title="Actualizando perfil"/>
     return(
       <main>
@@ -75,15 +75,15 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
             </ButtonEditAccion>
             <input type="file" accept="image/*" style={{display: "none"}} id="profileImage"/>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div>
-                <InputStyled marginBottom19
+              <div  style={{margin: '0 0 20px 0'}}>
+                <InputStyled marginBottom7
                   type="text" placeholder={"Nombres"} 
                   defaultValue={userFromDB.name && userFromDB.name.firstName}
                   name="firstname"
                   maxLength="60"
                   ref={register({ required: true, maxLength: 60})}
                 />
-                <InputStyled marginBottom19 
+                <InputStyled marginBottom7 
                   type="text" 
                   placeholder={"Apellidos"} 
                   defaultValue={userFromDB.name && userFromDB.name.lastName}
@@ -117,7 +117,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
               <SubtitleStyled>Redes sociales</SubtitleStyled>
               <div>
                 <SocialMediaContainer>
-                  <img src={facebook}/>
+                  <img src={facebook} alt="Imagen logo Facebook" />
                   <InputSocialMedia 
                     type="text" 
                     placeholder="https://www.facebook.com/"
@@ -128,7 +128,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                   />
                 </SocialMediaContainer>
                 <SocialMediaContainer>
-                  <img src={instagram}/>
+                  <img src={instagram} alt="Imagen logo Instagram" />
                   <InputSocialMedia 
                     type="text" 
                     placeholder="https://www.instagram.com/"
@@ -139,7 +139,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                   /> 
                 </SocialMediaContainer>
                 <SocialMediaContainer>
-                  <img src={linkedin}/>
+                  <img src={linkedin} alt="Imagen logo Linkedin"/>
                   <InputSocialMedia 
                     type="text" 
                     placeholder="https://www.linkedin.com/in/"
@@ -150,7 +150,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                   />
                 </SocialMediaContainer>
                 <SocialMediaContainer>
-                  <img src={twitter}/>
+                  <img src={twitter} alt="Imagen logo Twitter" />
                   <InputSocialMedia 
                     type="text"
                     placeholder="https://www.twitter.com/"
@@ -161,7 +161,7 @@ const EditProfile = React.memo(({profileThumb, authState, userFromDB, id, setPro
                   />
                 </SocialMediaContainer>
                 <SocialMediaContainer>
-                  <img src={youtube}/>
+                  <img src={youtube} alt="Imagen logo Youtube" />
                   <InputSocialMedia 
                     type="text" 
                     placeholder="https://www.youtube.com/channel/"

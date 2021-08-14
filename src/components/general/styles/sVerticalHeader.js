@@ -1,7 +1,6 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const Header = styled.header`
-  width: 80px;
   border-bottom: 1px solid ${props => props.theme.colorLine};
   position: fixed;
   z-index: 2000;
@@ -9,6 +8,7 @@ export const Header = styled.header`
   height: 100%;
   padding: 15px 0;
   display: none;
+  transition: .4s all;
 
   @media(min-width: 1200px){
     display: block;
@@ -16,10 +16,13 @@ export const Header = styled.header`
 `
 
 export const Container = styled.div`
+  width: 80px;
   padding: 8px 0;
   justify-content: space-between;
   align-items: center;
   display: flex;
+  position: relative;
+  z-index: 3050;
 
   a {
     margin: 0 0 30px 0;
