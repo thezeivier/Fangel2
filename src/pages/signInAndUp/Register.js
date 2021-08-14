@@ -32,21 +32,19 @@ const Register = () => {
   // const [codeBValidated, setCodeBValiated] = useStateIfMounted(null)
   const [loading, setLoading] = useState(false)
   const [view, setView] = useState(false);
-
-  if(contextFromApp.authState){
-    if(!dataRegister){
-      history.push("/")//Cancel render if the user is logged in.
-    }
-  }
+  const routeShareRoomPath = contextFromApp.routeProviderRoom.routeShareRoom
 
   useEffect(()=>{
-
+    if(contextFromApp.authState){
+      if(!dataRegister){
+        history.push(routeShareRoomPath ? routeShareRoomPath : "/")//Cancel render if the user is logged in.
+      }
+    }
   },[auth, firestore, firebase])
 
-
-  const onClickWithGoogle = async (auth, firebase, firestore, setLoading) => {
+  const onClickWithGoogle = async (auth, firebase, firestore, nextRoute, history) => {
     setLoading(true)
-    SignInWithGoogle(auth, firebase, firestore, setLoading)
+    SignInWithGoogle(auth, firebase, firestore, nextRoute, history)
     setLoading(false)
   }
 
@@ -169,7 +167,7 @@ const Register = () => {
                   </Contract>
                   <ButtonStyled primary type="submit">Registrarse</ButtonStyled>
                   <SeparatorStyled>o</SeparatorStyled>
-                  <ButtonStyled solidWhite googleIcon type="button" id="google-auth" onClick={() => onClickWithGoogle(auth, firebase, firestore, setLoading)}>
+                  <ButtonStyled solidWhite googleIcon type="button" id="google-auth" onClick={() => onClickWithGoogle(auth, firebase, firestore, contextFromApp.routeProviderRoom.routeShareRoom, history)}>
                     <span aria-labelledby="google-auth"></span>
                     Regístrate con Google
                   </ButtonStyled>

@@ -1,10 +1,10 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {AppContext} from '../../App'
 import firebase from 'firebase/app'
 import Wrapper from './../../components/general/Wrapper'
 import Footer from './../../components/general/Footer'
 import ButtonViewPassword from './ButtonViewPassword'
-import { Link, useHistory, Redirect } from 'react-router-dom'
+import { Link, useHistory, useLocation, Redirect } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { SubtitleStyled, TextStyled, InputStyled, ButtonStyled, SeparatorStyled,
          ContainerDesktop, ErrorAlert, LinkOtherPage } from './styles/sGlobalForm'
@@ -23,14 +23,20 @@ import { ReactComponent as ViewOffSVG } from './icons/viewOff.svg'
 const Login = () => {
   const contextFromApp = useContext(AppContext)
   const history = useHistory()
+  const location = useLocation()
   const auth = useAuth()
   const firestore = useFirestore()
   const { register, handleSubmit, errors } = useForm()
   const [isLoginCorrect, setIsLoginCorrect] = useState(null)
+  const routeShareRoomPath = contextFromApp.routeProviderRoom.routeShareRoom
 
-  if(contextFromApp.authState){
-    history.push("/")//Cancel render if the user is logged in.
-  }
+  useEffect(() => {
+    if(contextFromApp.authState){
+      history.push(routeShareRoomPath ? routeShareRoomPath : "/")//Cancel render if the user is logged in.
+    }
+
+  }, [contextFromApp])
+  
   const onSubmit = async data => {
     let confirmToLogin = await LoginWithEmail(data, auth)
     setIsLoginCorrect(confirmToLogin)
@@ -50,13 +56,12 @@ const Login = () => {
       }
     }
   }
-
   return (
     <>
     {isLoginCorrect?(
       isLoginCorrect.verified?
       <Redirect to={{
-        pathname: "/",
+        pathname: routeShareRoomPath ? routeShareRoomPath : "/",
         state: isLoginCorrect
       }}/>:
       <Redirect to={{

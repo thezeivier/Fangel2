@@ -22,7 +22,7 @@ const QuizMain = () => {
   const isDisableButton = cartQuiz.length > 2 ? false: true
 
   const redirectToHome = () => {
-    history.push("/")
+    history.push(userApp.routeProviderRoom.routeShareRoom ? userApp.routeProviderRoom.routeShareRoom  : "/")
   }
 
   const dataCategory = cartQuiz.map(item => {
@@ -50,7 +50,7 @@ const QuizMain = () => {
             </CardsContainer>
             {
               isDisableButton ? 
-                <ButtonStyled type="button" disabled onClick={() => sendPreferences(id, firestore, dataCategory, redirectToHome)}>¡Términe!</ButtonStyled> :
+                <ButtonStyled type="button" disabled>¡Términe!</ButtonStyled> :
                 <ButtonStyled  primary  type="button" onClick={() => sendPreferences(id, firestore, dataCategory, redirectToHome)}>¡Términe!</ButtonStyled>
             }
           </form>

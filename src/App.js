@@ -49,6 +49,8 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [communityGlobalData, setCommunityGlobalData] = useState(false)
   const communityProvider = useMemo(() => ({communityGlobalData, setCommunityGlobalData}), [communityGlobalData, setCommunityGlobalData])
+  const [routeShareRoom, setRouteShareRoom] = useState(false)
+  const routeProviderRoom = useMemo(() => ({routeShareRoom, setRouteShareRoom}), [routeShareRoom, setRouteShareRoom])
   const [mode, setMode] = useState(localStorage.mode? localStorage.getItem("mode"): "light")
   const [authState, setAuthState] = useState(false)
   const [userFromDB, setUserFromDB] = useState(false)
@@ -133,7 +135,7 @@ function App() {
     });
   },[firestore, auth, storage, communityProvider])
 
-  console.log("render")
+  // console.log("render")
 
 
   const changeTheme = () =>{
@@ -158,6 +160,7 @@ function App() {
     fangelConnectProvider,
     videoCall: memoVideoCall.videoCall,
     setCommunityGlobalData,
+    routeProviderRoom,
   }
 
   if(loading) return <Spinner />

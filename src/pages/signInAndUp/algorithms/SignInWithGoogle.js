@@ -1,14 +1,13 @@
 import {wordsCapitalizer} from './RegisterWithEmail'
 
-export const SignInWithGoogle = async (auth, firebase, firestore) => {
+export const SignInWithGoogle = async (auth, firebase, firestore, nextRoute, history) => {
   await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
   .then(async result => {  
     const user = await result.user
     const data = {firstName: user.displayName, lastName: ''}
-    console.log(user)
     await sendDataUserFromGoogle(data, user.uid, "admin", firestore, firebase, user.email, user.photoURL)
-    return {verified: user.emailVerified, username: user.displayName, email: user.email, uid: user.uid}
     console.log("Logged Successfully")
+    return history.push(nextRoute ? nextRoute : '/')
   })
   .catch(err => console.error(err.message))
 };
