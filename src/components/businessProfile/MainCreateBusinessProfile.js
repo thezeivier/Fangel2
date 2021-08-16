@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import Wrapper from './../general/Wrapper'
 import LoadServSpinner from '../spinner/LoadServSpinner'
 import { ReactComponent as ProfileSVG } from './../general/icons/profile.svg'
@@ -15,34 +15,64 @@ import instagram from './../profile/icons/instagram.svg'
 import linkedin from './../profile/icons/linkedin.svg'
 import twitter from './../profile/icons/twitter.svg'
 import youtube from './../profile/icons/youtube.svg'
+import { newProfilePhoto } from './algorithms/newProfilePhoto'
+import { AppContext } from '../../App'
+import { CreateBussinesProfile } from './algorithms/CreateBussinesProfile'
+import { GetDataFromBussinesProfile } from './algorithms/GetDataFromBussinesProfile'
 
 const MainCreateBusinessProfile = () => {
   const [loading, setLoading] = useState(false)
   const [pDLength, setPDLength]= useState(0)// pofessionalDescription Length
   const [aMLength, setAMLength]= useState(0)// aboutMe Length
+  const [imageRecovered, setImageRecovered] = useState()
+  const [profileTumb, setProfileThumb] = useState()
+  const {authState, userFromDB} = useContext(AppContext)
   const firebase = useFirebaseApp()
   const firestore = useFirestore()
   const storage = useStorage()
-  const { register, handleSubmit, errors } = useForm()
+  const { register, handleSubmit, errors, reset } = useForm()
 
   const changePD = e => setPDLength(e.target.value.length)
   const changeAM = e => setAMLength(e.target.value.length)
 
-  if (loading) return <LoadServSpinner title="Actualizando perfil"/>
+  const {data, status, error} = GetDataFromBussinesProfile(userFromDB.uid, "users", "profileEnterprise")
+
+  if(status == "loading") return <p>Pending...</p>
+  if(error) return <p>Error</p>
+
+  const dataPrfEnterprise = data[0]
+
+  const onSubmit = async (data) => {
+    setLoading(true)
+    const result = await CreateBussinesProfile(data, firestore, imageRecovered, storage, userFromDB)
+    setLoading(false)
+  }
+
+  const changeProfileImage = async (e) => {
+    e.preventDefault()
+    const profileImage = document.getElementById("profileImage")
+    e = profileImage.click()
+    profileImage.addEventListener('change', async e => {
+      await setImageRecovered(e.target.files[0])
+    })
+    document.getElementById("profileImage").value = null
+  }
+
+  if (loading) return <LoadServSpinner title="Creando perfil"/>
   return (
     <main>
       <Wrapper>
       <TitleStyled bottom>Crear perfil empresarial</TitleStyled>
           <OnlyDesktop>
             <ProfileImage left>
-              <ProfileSVG />
+              <ProfileSVG /> 
             </ProfileImage>
-            <ButtonEditAccion>
+            <ButtonEditAccion onClick={changeProfileImage}>
               <AddPhotoSVG />
               <span>Cambiar logotipo</span>
             </ButtonEditAccion>
             <input type="file" accept="image/*" style={{display: "none"}} id="profileImage"/>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div style={{margin: '0 0 20px 0'}}>
                 <InputStyled marginBottom7
                   type="text" placeholder={"Nombre"} 
@@ -75,7 +105,7 @@ const MainCreateBusinessProfile = () => {
                   ref={register({maxLength: 100})}
                 />
                 <InputStyled marginBottom7 
-                  type="email" 
+                  type="text" 
                   placeholder={"Dirección de sitio web"} 
                   name="web" 
                   maxLength="100"

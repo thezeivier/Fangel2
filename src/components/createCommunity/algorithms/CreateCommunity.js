@@ -25,12 +25,7 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
       numberOfUsersConnected: 0,
       profilePhotoUrl,
       communityPhotUrl: false,
-      // usersConnected: [
-      //   {
-      //     uid: uid,
-      //     username: userApp.userFromDB.username
-      //   },
-      // ],
+      allUsersDataConnected: [],
     },
     {merge:true}
     )

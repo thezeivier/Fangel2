@@ -35,6 +35,7 @@ import {SetNumberOfParticipants} from './algorithmsToApp/SetNumberOfParticipants
 import PFVideo from './pages/inCommunity/PFVideo'
 import ChatLayout from './components/general/ChatLayout'
 import MatchMessage from './components/privateChat/MatchMessage'
+import MainBusinessProfile from './components/businessProfile/MainBusinessProfile'
 
 const AppContext =  React.createContext()
 const {Provider, Consumer} = AppContext
@@ -118,7 +119,7 @@ function App() {
                 setProfileThumb(dataUser.photoUrl)
               }
             }
-            !dataUser.quizComplete && history.push("/quiz")
+            (!dataUser.quizComplete && !dataUser?.profileType) && history.push("/quiz")
             
             if(communityGlobalData){
               setVideoCall(

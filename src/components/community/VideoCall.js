@@ -3,6 +3,8 @@ import Jitsi from 'react-jitsi'
 import VideoSpinner from '../spinner/VideoSpinner'
 import {useFirestore} from 'reactfire'
 import { GetAdminCommunity } from '../../pages/inCommunity/algorithms/GetAdminCommunity'
+import { SendParticipants } from './algorithms/SendParticipants'
+import { VerifyIsBusinessProfile } from './algorithms/VerifyIsBusinessProfile'
 
 const interfaceConfig = {
   LANG_DETECTION: false,
@@ -62,6 +64,11 @@ const config = {
 const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipants}) => {
   const firestore = useFirestore()
   const isAdmin = communityDataRoom.creatorUid ? GetAdminCommunity(communityDataRoom.creatorUid, dataUser.uid) : false
+  const userInfoData = {
+    name: dataUser.name,
+    email: dataUser.email
+  }
+
   const handleAPI = async JitsiMeetAPI => {
 
     JitsiMeetAPI.executeCommands({
@@ -77,19 +84,20 @@ const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipa
       JitsiMeetAPI.executeCommand('password', !communityDataRoom.communityDataSubSpace ? `fangel_${communityDataRoom.roomName}_fangel` : `fangel_${communityDataRoom.communityData.roomName}&@&${communityDataRoom.communityDataSubSpace.id}_fangel`);
     });
     
-    // JitsiMeetAPI.addEventListener('videoConferenceJoined', () => {
-    //   // console.log(JitsiMeetAPI.getParticipantsInfo())
-    //   const number = JitsiMeetAPI.getNumberOfParticipants() + 1
-    //   SetNumberOfParticipants(firestore, number, communityDataRoom.roomName)
-    //   // JitsiMeetAPI.executeCommand('startShareVideo', "2jmZeLlaCDc")
-    // })
+    JitsiMeetAPI.addEventListener('videoConferenceJoined', async () => {
+      await SendParticipants(firestore, userInfoData, communityDataRoom.roomName, communityDataRoom.creatorUid)
+      // const number = JitsiMeetAPI.getNumberOfParticipants()
+      // SetNumberOfParticipants(firestore, number, communityDataRoom.roomName)
+      // JitsiMeetAPI.executeCommand('startShareVideo', "2jmZeLlaCDc")
+    })
 
     // JitsiMeetAPI.addEventListener('videoConferenceLeft', () => {
-    //   // console.log(JitsiMeetAPI.getParticipantsInfo())
-    //   const number = JitsiMeetAPI.getNumberOfParticipants() + 1
+    //   console.log(JitsiMeetAPI.getParticipantsInfo())
+    //   const number = JitsiMeetAPI.getNumberOfParticipants() - 1
     //   SetNumberOfParticipants(firestore, number, communityDataRoom.roomName)
-    //   // JitsiMeetAPI.executeCommand('startShareVideo', "2jmZeLlaCDc")
+    // JitsiMeetAPI.executeCommand('startShareVideo', "2jmZeLlaCDc")
     // })
+    
   };
 
   

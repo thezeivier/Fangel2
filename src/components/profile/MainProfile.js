@@ -1,12 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useRouteMatch, useLocation, useHistory } from 'react-router-dom'
+import { useRouteMatch, useLocation, useHistory} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Wrapper from './../general/Wrapper'
 import ReturnPage from './../general/ReturnPage'
 import UserTag from './UserTag'
 import {useStorage, useFirestore} from 'reactfire'
 import { useMatchRouteUserData } from './algorithms/useMatchRouteUserData'
-import { AppContext } from '../../App'
 import { UserContainer, ListTags, ButtonAccion, ProfileImage } from './styles/sMainProfile'
 // import { colorGenerator } from './algorithms/colorGenerator'
 import { getColorDarkMode, getColorLightMode} from '../community/algorithms/GetRandomColor'
@@ -27,7 +26,7 @@ import youtube from './icons/youtube.svg'
 //Import components for edit profile
 import EditProfile from './EditProfile'
 
-const MainProfile = React.memo(() => {
+const MainProfile = React.memo(({nameUserRoute, userFromDB, authState}) => {
   const storage = useStorage()
   const firestore = useFirestore()
   const history = useHistory()
@@ -36,10 +35,6 @@ const MainProfile = React.memo(() => {
   const [activeButton, setActiveButton] = useState(false)
   const [profileEditor, setProfileEditor] = useState(false)
   const [fangelScore, setFangelScore] = useState(0)
-  const {userFromDB, authState} = useContext(AppContext)
-  const location = useLocation()
-  const match = useRouteMatch("/u/:id")
-  const nameUserRoute = match.params.id.concat(location.hash)
   const [userData, loading, error] = useMatchRouteUserData("users", nameUserRoute)
   
   useEffect(()=>{

@@ -10,7 +10,7 @@ import { ReactComponent as ChatSVG } from './icons/chat.svg'
 import { ReactComponent as HomeSVG } from './icons/home.svg'
 import { ReactComponent as MenuSVG } from './icons/menu.svg'
 
-const RegHeader = () => {
+const RegHeader = ({isBusinessAccount}) => {
   const contextFromApp = useContext(AppContext)
   const { userFromDB, profileThumb, authState } = contextFromApp 
   // console.log(contextFromApp)

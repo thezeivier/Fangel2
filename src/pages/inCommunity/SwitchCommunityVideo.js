@@ -50,7 +50,7 @@ const SwitchCommunityVideo = () => {
         }
     },[data])
     
-    if(status) return <p>Pending...</p>
+    if(status) return <p>Cargando....</p>
     if(error) return null
 
     let communityData = data[0]
