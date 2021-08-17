@@ -31,7 +31,7 @@ const Profile = () => {
         <Header isBusinessAccount={isBusinessAccount}/>
         {!isBusinessAccount ?
           <MainProfile nameUserRoute={nameUserRoute} userFromDB={userFromDB} authState={authState}/>:
-          <BusinessProfile/>
+          <BusinessProfile dataGeneralUser={dataGeneralUser}/>
         }
         <Footer />
       </Container> 

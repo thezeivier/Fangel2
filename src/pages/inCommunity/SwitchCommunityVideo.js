@@ -11,6 +11,7 @@ import VideoUser from './VideoUser'
 import ContractFangelConnect from '../../components/fangelConnect/ContractFangelConnect'
 import ModalGeneral from '../../components/modal/ModalGeneral'
 import ScoreFangelConnect from '../../components/fangelConnect/ScoreFangelConnect'
+import MainSpinner from '../../components/spinner/MainSpinner'
 
 const SwitchVideoContext =  React.createContext()
 const {Provider, Consumer} = SwitchVideoContext
@@ -50,7 +51,7 @@ const SwitchCommunityVideo = () => {
         }
     },[data])
     
-    if(status) return <p>Cargando....</p>
+    if(status) return <MainSpinner/>
     if(error) return null
 
     let communityData = data[0]
