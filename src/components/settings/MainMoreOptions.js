@@ -9,7 +9,7 @@ import { Top, ListOptions, CategoryOptionsContainer } from './styles/sMainSettin
 import { ReactComponent as ExitSVG } from './icons/exit.svg'
 import { ReactComponent as ReportProblemSVG } from './icons/reportProblem.svg'
 import { ReactComponent as DashboardSVG } from './icons/dashboard.svg'
-import { ReactComponent as BusinessSpaceSVG } from './icons/businessSpace.svg'
+import { ReactComponent as BusinessProfileSVG } from './icons/businessProfile.svg'
 import { ReactComponent as BlogSVG } from './icons/blog.svg'
 
 const listOptionsGeneral = [
@@ -39,7 +39,7 @@ const listOptionsDashBoard = [
     to: '/dashboard/my-spaces'
   }, {
     id: 2,
-    svg: <BusinessSpaceSVG className="icon" />,
+    svg: <BusinessProfileSVG className="icon" />,
     name: 'Crear perfil para empresas',
     to: '/create-business-profile'
   },
