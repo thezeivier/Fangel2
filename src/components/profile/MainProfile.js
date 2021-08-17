@@ -116,7 +116,7 @@ const MainProfile = React.memo(({nameUserRoute, userFromDB, authState}) => {
                   <span>Enviar mensaje</span>
                 </ButtonAccion>: 
                 <ButtonAccion disabled>
-                  <span>+100 puntos para enviar mensaje</span>
+                  <span>Para enviar mensajes debes tener un Fangel Score mayor a 100</span>
                 </ButtonAccion>
               )
             }

@@ -51,5 +51,6 @@ export const codeFValidator = {
 export const otherTextValidator = {
   pattern: {
     value: /^[a-záéíóúñ0-9 ',-.]+$/i,
+    message: "Campo inválido"
   }
 }
