@@ -14,7 +14,7 @@ const MainBusinessProfile = React.memo(({ dataGeneralUser }) => {
   if(loading) return <p>Loading...</p>
   
   if(error) {
-    return false
+    return error
   }
   return (
     <main>

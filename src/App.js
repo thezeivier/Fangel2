@@ -119,7 +119,7 @@ function App() {
                 setProfileThumb(dataUser.photoUrl)
               }
             }
-            (!dataUser.quizComplete && !dataUser?.profileType) && history.push("/quiz")
+            // (!dataUser.quizComplete && !dataUser?.profileType) && history.push("/quiz")
             
             if(communityGlobalData){
               setVideoCall(

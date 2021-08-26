@@ -9,7 +9,7 @@ const MainCSV = React.memo(({allUsersDataConnected, title, roomName, id}) => {
         { label: "Correo", key: "email"},
     ]
 
-    const newAllData = allUsersDataConnected.map((user, index) => {
+    const newAllData = allUsersDataConnected && allUsersDataConnected.map((user, index) => {
         const {name, ...others} = allUsersDataConnected[index];
         const data = {firstName: name.firstName, lastName: name.lastName, email: others.email}
         return data
@@ -18,8 +18,10 @@ const MainCSV = React.memo(({allUsersDataConnected, title, roomName, id}) => {
 
     return (
         <>
-            {title}
-            <CSVLink data={newAllData} headers={headers} target="_blank">Descargar </CSVLink>
+            {allUsersDataConnected && title}
+            {
+                allUsersDataConnected && <CSVLink data={newAllData} headers={headers} target="_blank">Descargar </CSVLink>
+            }
         </>
     )
 })

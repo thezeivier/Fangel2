@@ -13,8 +13,8 @@ export const GetCommunityUserInfo = (collection, creatorUid) => {
   useEffect(() => {
     const unsubscribe = firestore.collection(collection).where("creatorUid", "==", creatorUid).onSnapshot(userInfo => {
         if(userInfo.empty) {
-          console.error("No existen datos")
-          history.push("/")
+          console.info("No existen datos de una comunidad")
+          setLoading(false)
           return null 
         } else {
           const collectionData = userInfo.docs.map(doc => {
