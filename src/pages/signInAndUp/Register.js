@@ -109,7 +109,7 @@ const Register = () => {
                 {
                   !userPersonal ? (
                     <>
-                      <SubtitleStyled>Regístra tu empresa para empezar</SubtitleStyled>
+                      <SubtitleStyled>Registra tu empresa para empezar</SubtitleStyled>
                       <TextStyled></TextStyled>
                       <ErrorAlert>
                         {emailRegistered === false? "Ya existe una cuenta empresarial con este correo*": ""}
