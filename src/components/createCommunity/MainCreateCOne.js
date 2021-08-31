@@ -67,8 +67,6 @@ const MainCreateCOne = () => {
     document.getElementById("newSpeaker").value = ""
   }
 
-  console.log(speakers)
-
   return (
     <main>
       {
@@ -106,13 +104,15 @@ const MainCreateCOne = () => {
                   <div>
                     <SubtitleStyled>Finalidad del espacio</SubtitleStyled>
                     <FieldSet>
+                      {roomPrivacy === "private" &&
+                        <label className="radiosContainerFlex__item">
+                          <input type="radio" onClick={checkConversation} name="finally" value="conversation" />
+                          <span className="rCCheckmark"></span>
+                          Conversatorio <span className="spanRadiosDescription">(Menor a 30 personas)</span>
+                        </label>
+                      }
                       <label className="radiosContainerFlex__item">
-                        <input type="radio" defaultChecked onClick={checkConversation} id="conversation" name="finally" value="conversation" />
-                        <span className="rCCheckmark"></span>
-                        Conversatorio <span className="spanRadiosDescription">(Menor a 30 personas)</span>
-                      </label>
-                      <label className="radiosContainerFlex__item">
-                        <input type="radio" onClick={checkConference} name="finally" value="conference"/>
+                        <input type="radio" defaultChecked onClick={checkConference} name="finally" value="conference"/>
                         <span className="rCCheckmark"></span>
                         Conferencia <span className="spanRadiosDescription">(Mayor a 30 personas)</span>
                       </label>
