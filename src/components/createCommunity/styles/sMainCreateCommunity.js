@@ -140,6 +140,16 @@ export const FieldSet = styled.fieldset`
   }
 `
 
+export const SpeakersList = styled.ul`
+  margin: -10px 0 25px 0;
+
+  li {
+    margin: 0 0 10px 0;
+    color: ${props => props.theme.smallText};
+    font-size: 0.95em;
+  }
+`
+
 export const OtherInformation = styled.p`
   margin: -10px 0 20px 0;
   color: ${props => props.theme.smallText};
