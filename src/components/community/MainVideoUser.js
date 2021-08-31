@@ -25,7 +25,7 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
     }
   },[])
   
-  if(status === "loading") return <p>Pending...</p>
+  if(status === "loading") return <p>...</p>
   if(error) return <p>Error</p>
   
   const preferencesMatch = fangelConnectData && fangelConnectData.creatorPreferences.filter(creatorItem => fangelConnectData.joinnerPreferences.includes(creatorItem))

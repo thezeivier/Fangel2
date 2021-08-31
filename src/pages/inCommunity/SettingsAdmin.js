@@ -7,8 +7,6 @@ import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsA
 import VideoHeader from './../../components/general/VideoHeader'
 import { ContainerForCommunity } from './../../components/general/InternalLayout'
 
-import MainSpinner from '../../components/spinner/MainSpinner'
-
 import { GetCommunityVideoData } from '../../pages/inCommunity/algorithms/GetCommunityVideoData'
 import { GetAdminCommunity } from '../../pages/inCommunity/algorithms/GetAdminCommunity'
 
@@ -16,9 +14,6 @@ const SettingsAdmin = ({ closeModal, communityData, isSubSpace, communityDataSub
   const { userFromDB }  = useContext(AppContext)
   const isAdmin = communityData.creatorUid && GetAdminCommunity(communityData.creatorUid, userFromDB.uid)
 
-  if(!communityData ) {
-    return <MainSpinner/>
-  }
   return (
     <>
       <ContainerForCommunity> {/* Sin margenes en moviles y tablets ni footer ni regHeader,

@@ -34,7 +34,8 @@ const interfaceConfig = {
     'raisehand',
     'sharedvideo',
     'select-background',
-    'shortcuts'
+    // 'shortcuts',
+    // 'filmstrip',
   ],
 };
 

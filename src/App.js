@@ -27,7 +27,7 @@ import {SwitchCommunityVideo} from './pages/inCommunity/SwitchCommunityVideo'
 import {SwitchCommunitySubSpace} from './pages/inCommunity/SwitchCommunitySubSpace'
 //List of routers and loading
 import ListOfRoutes from './pages/objects/ListOfRoutes' 
-import Spinner from './components/spinner/MainSpinner'
+import MainSpinner from './components/spinner/MainSpinner'
 import { OnDisconnectUser } from './pages/inCommunity/algorithms/OnDisconnectUser'
 
 import VideoCall from './components/community/VideoCall'
@@ -166,7 +166,7 @@ function App() {
     routeProviderRoom,
   }
 
-  if(loading) return <Spinner />
+  if(loading) return <MainSpinner/>
 
   // Update to user offline or Online
   if(userFromDB) {
