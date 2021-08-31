@@ -22,10 +22,11 @@ const MainCreateCOne = () => {
   const {register, handleSubmit, errors } = useForm()
   const [disable, setDisable] = useState(false);
   const [roomPrivacy, setRoomPrivacy] = useState("public")
+  const [typeOfSpace, setTypeOfSpace] = useState("convesation")
 
   const onSubmit = async data => {
     setCommunityCreated("sending")
-    let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage, roomPrivacy)
+    let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage, roomPrivacy, typeOfSpace)
     setRoomName(result.hashName)//Este debe ir primero para que se pueda pasar el roomName, de lo contrario habrá error.
     setCommunityCreated(result.result)
     window.location.reload()
@@ -50,6 +51,13 @@ const MainCreateCOne = () => {
     setRoomPrivacy("private")
   }
 
+  const checkConversation = () => {
+    setTypeOfSpace("convesation")
+  }
+
+  const checkConference = () => {
+    setTypeOfSpace("conference")
+  }
 
   return (
     <main>
@@ -108,15 +116,16 @@ const MainCreateCOne = () => {
                     Los espacios privados solo son accedidos medinate un link.
                   </TextBody>
                   <div>
+                    <br/>
                     <SubtitleStyled>Elige la finalidad del evento</SubtitleStyled>
                     <FieldSet>
                       <label className="radiosContainerFlex__item">
-                        <input type="radio" defaultChecked onClick={checkPublic} id="public" name="privacy" value="public" />
+                        <input type="radio" defaultChecked onClick={checkConversation} id="conversation" name="finally" value="conversation" />
                         <span className="rCCheckmark"></span>
                         Conversatorio <span className="spanRadiosDescription">(Menor a 30 personas)</span>
                       </label>
                       <label className="radiosContainerFlex__item">
-                        <input type="radio" onClick={checkPrivate} name="privacy" value="private"/>
+                        <input type="radio" onClick={checkConference} name="finally" value="conference"/>
                         <span className="rCCheckmark"></span>
                         Conferencia <span className="spanRadiosDescription">(Mayor o igual a 30 personas)</span>
                       </label>
