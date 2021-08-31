@@ -12,7 +12,6 @@ const MainPFVideoUser = ({children, communityGlobalData, setCommunityGlobalData}
 
   const handleLeaveCommunity = () => {
     setCommunityGlobalData(false)
-    // window.location.reload()
   }
 
   const handleClickToCommunity = () => {

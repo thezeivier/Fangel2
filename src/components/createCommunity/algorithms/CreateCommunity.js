@@ -1,4 +1,4 @@
-export const CreateCommunity = async (data, firestore, userApp, communityImage, storage, roomPrivacy, typeOfSpace) => {
+export const CreateCommunity = async (data, firestore, userApp, communityImage, storage, roomPrivacy, typeOfSpace, speakers) => {
   const {nameCommunity} = data
   let uid = userApp.authState.uid
   let displayName = userApp.authState.displayName
@@ -16,6 +16,7 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
       communitiesRef,
     {
       username: userApp.userFromDB.username,
+      speakers,
       privacy: roomPrivacy,
       typeOfSpace,
       name: displayName,
@@ -40,6 +41,7 @@ export const CreateCommunity = async (data, firestore, userApp, communityImage, 
       roomName: hashName,
       privacy: roomPrivacy,
       typeOfSpace,
+      speakers,
       creatorUid: uid,
       numberOfUsersConnected: 1,
       // usersConnected: [

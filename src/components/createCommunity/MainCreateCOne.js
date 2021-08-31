@@ -23,10 +23,11 @@ const MainCreateCOne = () => {
   const [disable, setDisable] = useState(false);
   const [roomPrivacy, setRoomPrivacy] = useState("public")
   const [typeOfSpace, setTypeOfSpace] = useState("conference")
+  const [speakers, setSpeakers] = useState([])
 
   const onSubmit = async data => {
     setCommunityCreated("sending")
-    let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage, roomPrivacy, typeOfSpace)
+    let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage, roomPrivacy, typeOfSpace, speakers)
     setRoomName(result.hashName)//Este debe ir primero para que se pueda pasar el roomName, de lo contrario habrá error.
     setCommunityCreated(result.result)
     window.location.reload()
@@ -57,6 +58,13 @@ const MainCreateCOne = () => {
 
   const checkConference = () => {
     setTypeOfSpace("conference")
+  }
+
+  const addSpeaker = (e) => {
+    e.preventDefault()
+    const newSpeaker = document.getElementById("newSpeaker").value
+    !speakers.includes(newSpeaker) && newSpeaker!== "" && setSpeakers([...speakers, newSpeaker])
+    document.getElementById("newSpeaker").value = ""
   }
 
   return (
@@ -133,6 +141,13 @@ const MainCreateCOne = () => {
                       </FieldSet>
                     </div>
                   }
+                  <br/>
+                  <InputStyled type="email" placeholder="Conferencista (opcional)" id="newSpeaker" name="speakers" />
+                  <TextBody secondParagraph>
+                    Inserta el correo electrónico del conferencista invitado.
+                  </TextBody>
+                  <ButtonStyled onClick={addSpeaker} secondary bottom30>Agregar</ButtonStyled>
+
                   <ButtonStyled primary type="submit">Crear espacio social</ButtonStyled>
                 </form>
               </OnlyDesktop>
