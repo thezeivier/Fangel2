@@ -107,6 +107,21 @@ const MainCreateCOne = () => {
                   <TextBody secondParagraph>
                     Los espacios privados solo son accedidos medinate un link.
                   </TextBody>
+                  <div>
+                    <SubtitleStyled>Elige la finalidad del evento</SubtitleStyled>
+                    <FieldSet>
+                      <label className="radiosContainerFlex__item">
+                        <input type="radio" defaultChecked onClick={checkPublic} id="public" name="privacy" value="public" />
+                        <span className="rCCheckmark"></span>
+                        Conversatorio <span className="spanRadiosDescription">(Menor a 30 personas)</span>
+                      </label>
+                      <label className="radiosContainerFlex__item">
+                        <input type="radio" onClick={checkPrivate} name="privacy" value="private"/>
+                        <span className="rCCheckmark"></span>
+                        Conferencia <span className="spanRadiosDescription">(Mayor o igual a 30 personas)</span>
+                      </label>
+                    </FieldSet>
+                  </div>
                   <ButtonStyled primary type="submit">Crear espacio social</ButtonStyled>
                 </form>
               </OnlyDesktop>
