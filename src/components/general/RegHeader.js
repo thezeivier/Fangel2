@@ -21,7 +21,7 @@ const RegHeader = ({isBusinessAccount}) => {
           <Logo />
           <IconsContainer>
             <div className="nameUserProfile">
-              {contextFromApp? (contextFromApp.authState? contextFromApp.authState.displayName:"Cargando..."):"Cargando..."}{/*Falta maquillar*/}
+              {contextFromApp? (contextFromApp.authState? contextFromApp.authState.displayName:userFromDB.name.firstName):"Cargando..."}{/*Falta maquillar*/}
             </div>
             <Link to={`/u/${contextFromApp.authState && userFromDB.username}`}>
               {

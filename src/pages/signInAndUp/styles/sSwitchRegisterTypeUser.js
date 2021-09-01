@@ -26,7 +26,7 @@ export const Label = styled.label`
     width: inherit;
     height: inherit;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;width: 30px;
     justify-content: center;
     align-items: center;
     background: ${props => props.theme.colorModalBackground};

@@ -49,6 +49,7 @@ export const IconsContainer = styled.nav`
 
   img {
     transition: .2s;
+    width: 30px;
 
     &:hover {
       border: 1px solid ${props => props.theme.colorbrandSolid};

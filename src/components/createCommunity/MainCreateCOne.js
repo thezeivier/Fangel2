@@ -9,7 +9,7 @@ import { TitleStyled, TextAreaStyled, ButtonStyled, OnlyDesktop,
          SubtitleStyled } from './../../themes/internalRecyclableStyles'
 import { InputStyled, ErrorAlert } from './../../pages/signInAndUp/styles/sGlobalForm'
 import { TextBody } from './../../themes/externalRecyclableStyles'
-import { FieldSet, OtherInformation } from './styles/sMainCreateCommunity'
+import { FieldSet, OtherInformation, SpeakersList } from './styles/sMainCreateCommunity'
 import { CreateCommunity } from './algorithms/CreateCommunity'
 
 const MainCreateCOne = () => {
@@ -23,10 +23,11 @@ const MainCreateCOne = () => {
   const [disable, setDisable] = useState(false);
   const [roomPrivacy, setRoomPrivacy] = useState("public")
   const [typeOfSpace, setTypeOfSpace] = useState("conference")
+  const [speakers, setSpeakers] = useState([])
 
   const onSubmit = async data => {
     setCommunityCreated("sending")
-    let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage, roomPrivacy, typeOfSpace)
+    let result = await CreateCommunity(data, firestore, userApp, imageRecovered, storage, roomPrivacy, typeOfSpace, speakers)
     setRoomName(result.hashName)//Este debe ir primero para que se pueda pasar el roomName, de lo contrario habrá error.
     setCommunityCreated(result.result)
     window.location.reload()
@@ -59,6 +60,13 @@ const MainCreateCOne = () => {
     setTypeOfSpace("conference")
   }
 
+  const addSpeaker = (e) => {
+    e.preventDefault()
+    const newSpeaker = document.getElementById("newSpeaker").value
+    !speakers.includes(newSpeaker) && newSpeaker!== "" && setSpeakers([...speakers, newSpeaker])
+    document.getElementById("newSpeaker").value = ""
+  }
+
   return (
     <main>
       {
@@ -79,7 +87,7 @@ const MainCreateCOne = () => {
               <OnlyDesktop>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div>
-                    <SubtitleStyled>Elige el tipo de espacio social</SubtitleStyled>
+                    <SubtitleStyled>Tipo de espacio social</SubtitleStyled>
                     <FieldSet>
                       <label className="radiosContainerFlex__item">
                         <input type="radio" defaultChecked onClick={checkPublic} id="public" name="privacy" value="public" />
@@ -90,6 +98,23 @@ const MainCreateCOne = () => {
                         <input type="radio" onClick={checkPrivate} name="privacy" value="private"/>
                         <span className="rCCheckmark"></span>
                         Privada <span className="spanRadiosDescription">(No visible en el feed, solo se accede con un link)</span>
+                      </label>
+                    </FieldSet>
+                  </div>
+                  <div>
+                    <SubtitleStyled>Finalidad del espacio</SubtitleStyled>
+                    <FieldSet>
+                      {roomPrivacy === "private" &&
+                        <label className="radiosContainerFlex__item">
+                          <input type="radio" onClick={checkConversation} name="finally" value="conversation" />
+                          <span className="rCCheckmark"></span>
+                          Conversatorio <span className="spanRadiosDescription">(Menor a 30 personas)</span>
+                        </label>
+                      }
+                      <label className="radiosContainerFlex__item">
+                        <input type="radio" defaultChecked onClick={checkConference} name="finally" value="conference"/>
+                        <span className="rCCheckmark"></span>
+                        Conferencia <span className="spanRadiosDescription">(Mayor a 30 personas)</span>
                       </label>
                     </FieldSet>
                   </div>
@@ -109,30 +134,26 @@ const MainCreateCOne = () => {
                       </div>
                     </>
                   }
+
+                  <div>
+                    <SubtitleStyled>Conferencistas (Opcional)</SubtitleStyled>
+                    <FieldSet>
+                      <InputStyled type="email" placeholder="Correo de conferencista" id="newSpeaker" name="speakers" />
+                    </FieldSet>
+                    <SpeakersList>
+                      {
+                        speakers.map(speaker => <li key={speaker}>{speaker}</li>)
+                      }
+                    </SpeakersList>
+                    <ButtonStyled onClick={addSpeaker} secondary bottom30>Agregar</ButtonStyled>
+                  </div>
+
                   <TextBody>
                     Los espacios sociales públicos son visibles para todo los usuarios registrados en Fangel.
                   </TextBody>
                   <TextBody secondParagraph>
                     Los espacios privados solo son accedidos medinate un link.
                   </TextBody>
-                  {roomPrivacy !== "public" &&
-                    <div>
-                      <br/>
-                      <SubtitleStyled>Elige la finalidad del evento</SubtitleStyled>
-                      <FieldSet>
-                        <label className="radiosContainerFlex__item">
-                          <input type="radio" defaultChecked onClick={checkConversation} id="conversation" name="finally" value="conversation" />
-                          <span className="rCCheckmark"></span>
-                          Conversatorio <span className="spanRadiosDescription">(Menor a 30 personas)</span>
-                        </label>
-                        <label className="radiosContainerFlex__item">
-                          <input type="radio" onClick={checkConference} name="finally" value="conference"/>
-                          <span className="rCCheckmark"></span>
-                          Conferencia <span className="spanRadiosDescription">(Mayor o igual a 30 personas)</span>
-                        </label>
-                      </FieldSet>
-                    </div>
-                  }
                   <ButtonStyled primary type="submit">Crear espacio social</ButtonStyled>
                 </form>
               </OnlyDesktop>

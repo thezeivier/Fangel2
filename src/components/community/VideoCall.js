@@ -5,6 +5,7 @@ import {useFirestore} from 'reactfire'
 import { GetAdminCommunity } from '../../pages/inCommunity/algorithms/GetAdminCommunity'
 import { SendParticipants } from './algorithms/SendParticipants'
 import { VerifyIsBusinessProfile } from './algorithms/VerifyIsBusinessProfile'
+import { IsSpeaker } from './algorithms/IsSpeaker'
 
 const interfaceConfig = {
   LANG_DETECTION: false,
@@ -22,24 +23,33 @@ const interfaceConfig = {
   ENABLE_DIAL_OUT: false,
   SHOW_CHROME_EXTENSION_BANNER: false,
   TOOLBAR_TIMEOUT: 2000,
-  TOOLBAR_BUTTONS: [
-    "microphone",
-    "camera",
-    "fullscreen",
-    'desktop',
-    "videoquality",
-    "tileview",
-    "mute-everyone",
-    'mute-video-everyone',
-    'raisehand',
-    'sharedvideo',
-    'select-background',
-    // 'shortcuts',
-    // 'filmstrip',
-  ],
 };
 
-const userToolBarButtons = [
+const ownerUserToolBarButtons = [
+  "microphone",
+  "camera",
+  "fullscreen",
+  'desktop',
+  "videoquality",
+  "tileview",
+  "mute-everyone",
+  'mute-video-everyone',
+  'raisehand',
+  'sharedvideo',
+  'select-background',
+]
+
+const listenersUserToolBarButtons = [
+  "fullscreen",
+  "tileview",
+  "microphone",
+  "raisehand",
+  "camera",
+  "videoquality",
+  // 'shortcuts',
+]
+
+const speakersUserToolBarButtons = [
   "microphone",
   "camera",
   "fullscreen",
@@ -51,6 +61,8 @@ const userToolBarButtons = [
   'select-background',
   'shortcuts',
 ]
+
+
 const config = {
   defaultLanguage: "es",
   prejoinPageEnabled: false,
@@ -65,6 +77,8 @@ const config = {
 const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipants}) => {
   const firestore = useFirestore()
   const isAdmin = communityDataRoom.creatorUid ? GetAdminCommunity(communityDataRoom.creatorUid, dataUser.uid) : false
+  const isSpeaker = communityDataRoom.speakers && IsSpeaker(communityDataRoom.speakers, dataUser.email) 
+  
   const userInfoData = {
     name: dataUser.name,
     email: dataUser.email
@@ -102,8 +116,13 @@ const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipa
   };
 
   
-  const {TOOLBAR_BUTTONS, ...restConf} = interfaceConfig
-  const interfaceUserConf = {...restConf, TOOLBAR_BUTTONS: userToolBarButtons}
+  const {...restConf} = interfaceConfig
+  const interfaceOwnerUserConf = {...restConf, TOOLBAR_BUTTONS: ownerUserToolBarButtons}
+  const interfaceListenerUserConf = {...restConf, TOOLBAR_BUTTONS: listenersUserToolBarButtons}
+  const interfaceSpeakerUserConf = {...restConf, TOOLBAR_BUTTONS: speakersUserToolBarButtons}
+  
+  const typeOfInterfaceUser = isAdmin ? interfaceOwnerUserConf : (isSpeaker ? interfaceSpeakerUserConf : interfaceListenerUserConf) 
+  
   return(
     <Jitsi
       domain="meet.jit.si"
@@ -112,7 +131,7 @@ const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipa
       roomName={ !communityDataRoom.communityDataSubSpace ? communityDataRoom.roomName : `${communityDataRoom.communityData.roomName}${communityDataRoom.communityDataSubSpace.id}`}
       displayName={authState.displayName}
       loadingComponent={VideoSpinner}
-      interfaceConfig={isAdmin ? interfaceConfig : interfaceUserConf}
+      interfaceConfig={typeOfInterfaceUser}
       config={config}
     />
   )
