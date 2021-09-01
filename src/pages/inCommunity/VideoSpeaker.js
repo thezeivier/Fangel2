@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MainVideoListener from './../../components/community/MainVideoListener'
+import MainVideoUser from './../../components/community/MainVideoUser'
 import RegHeader from '../../components/general/RegHeader'
 import VideoHeader from '../../components/general/VideoHeader'
 import Footer from '../../components/general/Footer'
@@ -30,7 +30,7 @@ const VideoSpeaker = ({communityData, isAdmin, communityDataSubSpace, isSubSpace
           isSettings="none" 
           closeModal={closeModal} 
           modalIsOpen={modalIsOpen}/>
-        <MainVideoListener 
+        <MainVideoUser 
           communityData={communityData}
           open={openMoldal}
           isSubSpace={isSubSpace}

@@ -7,7 +7,7 @@ import { GetCommunityVideoData } from './algorithms/GetCommunityVideoData'
 import { GetAdminCommunity } from './algorithms/GetAdminCommunity'
 import { useFirestore } from 'reactfire'
 
-import VideoAdmin from './VideoAdmin'
+import VideoSpeaker from './VideoSpeaker'
 import VideoListener from './VideoListener'
 
 const SwitchVideoContext =  React.createContext()
@@ -53,7 +53,7 @@ export const SwitchCommunitySubSpace = () => {
             <Provider value={activeCommunityValue}>
                 {
                     isAdmin ? 
-                    <VideoAdmin 
+                    <VideoSpeaker 
                         activeCommunity={activeCommunity} 
                         isAdmin={isAdmin} 
                         communityData={communityData} 
