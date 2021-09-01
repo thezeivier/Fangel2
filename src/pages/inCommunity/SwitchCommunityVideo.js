@@ -6,8 +6,8 @@ import { GetCommunityVideoData } from './algorithms/GetCommunityVideoData'
 import { GetAdminCommunity } from './algorithms/GetAdminCommunity'
 import { useFirestore } from 'reactfire'
 
-import VideoAdmin from './VideoAdmin'
-import VideoUser from './VideoUser'
+import VideoSpeaker from './VideoSpeaker'
+import VideoListener from './VideoListener'
 import ContractFangelConnect from '../../components/fangelConnect/ContractFangelConnect'
 import ModalGeneral from '../../components/modal/ModalGeneral'
 import ScoreFangelConnect from '../../components/fangelConnect/ScoreFangelConnect'
@@ -90,8 +90,8 @@ const SwitchCommunityVideo = () => {
 
                 {
                     isAdmin ? 
-                    <VideoAdmin activeCommunity={activeCommunity} isAdmin={isAdmin} communityData={communityData} setStateScore={setStateScore} fangelConnectData={fangelConnectData}/> : 
-                    <VideoUser activeCommunity={activeCommunity} communityData={communityData} fangelConnectData={fangelConnectData}/>
+                    <VideoSpeaker activeCommunity={activeCommunity} isAdmin={isAdmin} communityData={communityData} setStateScore={setStateScore} fangelConnectData={fangelConnectData}/> : 
+                    <VideoListener activeCommunity={activeCommunity} communityData={communityData} fangelConnectData={fangelConnectData}/>
                 }
             </Provider>
         </>

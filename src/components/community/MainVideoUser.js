@@ -11,7 +11,7 @@ import { AppContext } from '../../App'
 import firebase from 'firebase/app'
 import { GetDataFromCollection } from './algorithms/GetDataFromCollection'
 
-const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, isSubSpace, communityDataSubSpace, fangelConnectData }) => {
+const MainVideoListener = ({ communityData, modalIsOpen, open, closeModal, isAdmin, isSubSpace, communityDataSubSpace, fangelConnectData }) => {
   const lastMsgRef = useRef()
   const { userFromDB, authState } = useContext(AppContext)
   const {data, status, error} = !isSubSpace ? GetDataFromCollection(communityData.roomName, 'chatroom', 'messages') : 
@@ -56,4 +56,4 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
   );
 }
 
-export default MainVideoUser;
+export default MainVideoListener;

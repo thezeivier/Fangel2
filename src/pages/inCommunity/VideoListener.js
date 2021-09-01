@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import MainVideoUser from './../../components/community/MainVideoUser'
-import RegHeader from './../../components/general/RegHeader'
-import VideoHeader from './../../components/general/VideoHeader'
-import FooterForSpaces from './../../components/general/FooterForSpaces'
-import { ContainerForCommunity } from './../../components/general/InternalLayout'
-import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsAdmin'
-import VerticalHeader from './../../components/general/VerticalHeader'
+import MainVideoListener from '../../components/community/MainVideoListener'
+import RegHeader from '../../components/general/RegHeader'
+import VideoHeader from '../../components/general/VideoHeader'
+import FooterForSpaces from '../../components/general/FooterForSpaces'
+import { ContainerForCommunity } from '../../components/general/InternalLayout'
+import MainSettingsAdmin from '../../components/settingsForAdmin/MainSettingsAdmin'
+import VerticalHeader from '../../components/general/VerticalHeader'
 
-const VideoUser = ({communityData, isSubSpace, communityDataSubSpace, fangelConnectData}) => {
+const VideoListener = ({communityData, isSubSpace, communityDataSubSpace, fangelConnectData}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openMoldal = () => {
     setModalIsOpen(true)
@@ -34,23 +34,23 @@ const VideoUser = ({communityData, isSubSpace, communityDataSubSpace, fangelConn
           closeModal={closeModal} 
           modalIsOpen={modalIsOpen} 
         />
-        <MainVideoUser
-          open={openMoldal}
+        <MainVideoListener
           communityData={communityData}
-          communityDataSubSpace={communityDataSubSpace}
+          open={openMoldal}
           isSubSpace={isSubSpace}
           displayNoAdmin="none"
+          communityDataSubSpace={communityDataSubSpace}
           fangelConnectData={fangelConnectData}
         />
-        <MainSettingsAdmin 
+        {/* <MainSettingsAdmin 
           communityData={communityData}
           inDesktop="grid"
           isSubSpace={isSubSpace} 
-          communityDataSubSpace={communityDataSubSpace}/>
+          communityDataSubSpace={communityDataSubSpace}/> */}
         <FooterForSpaces noMobile/>
       </ContainerForCommunity>
     </>
   );
 }
 
-export default VideoUser;
+export default VideoListener;
