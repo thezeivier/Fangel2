@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import MainVideoListener from '../../components/community/MainVideoListener'
+import MainVideoUser from '../../components/community/MainVideoUser'
 import RegHeader from '../../components/general/RegHeader'
 import VideoHeader from '../../components/general/VideoHeader'
 import FooterForSpaces from '../../components/general/FooterForSpaces'
@@ -34,7 +34,7 @@ const VideoListener = ({communityData, isSubSpace, communityDataSubSpace, fangel
           closeModal={closeModal} 
           modalIsOpen={modalIsOpen} 
         />
-        <MainVideoListener
+        <MainVideoUser
           communityData={communityData}
           open={openMoldal}
           isSubSpace={isSubSpace}
