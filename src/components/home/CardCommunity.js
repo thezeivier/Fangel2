@@ -39,11 +39,11 @@ const CardCommunity = ({communityData, communityProvider}) => {
     }
   }, [])
 
-  const handleLeaveCommunity = () => {
+  const handleJoinToCommunity = () => {
     communityProvider.communityGlobalData && communityProvider.setCommunityGlobalData(false)
     history.push(`/room/${communityData.roomName}`)
     window.location.reload()
-  } 
+  }
   ShowMore(cardRef, textRef, buttonRef)
   /* CardCommunity v1.0 */
   return (
@@ -75,7 +75,7 @@ const CardCommunity = ({communityData, communityProvider}) => {
               </Truncate>
             </DescriptionContainer>
           </ImageContainer>
-          <ButtonStyled secondary onClick={handleLeaveCommunity}>Entrar</ButtonStyled>
+          <ButtonStyled secondary onClick={handleJoinToCommunity}>Entrar</ButtonStyled>
         </CardContainer>
       </li>
     </>

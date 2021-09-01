@@ -8,7 +8,7 @@ import { GetAdminCommunity } from './algorithms/GetAdminCommunity'
 import { useFirestore } from 'reactfire'
 
 import VideoAdmin from './VideoAdmin'
-import VideoUser from './VideoUser'
+import VideoListener from './VideoListener'
 
 const SwitchVideoContext =  React.createContext()
 const {Provider, Consumer} = SwitchVideoContext
@@ -59,7 +59,7 @@ export const SwitchCommunitySubSpace = () => {
                         communityData={communityData} 
                         isSubSpace
                         communityDataSubSpace={communityDataSubSpace}/> : 
-                    <VideoUser 
+                    <VideoListener 
                         activeCommunity={activeCommunity} 
                         communityData={communityData} 
                         isSubSpace

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import MainVideoUser from './../../components/community/MainVideoUser'
-import RegHeader from './../../components/general/RegHeader'
-import VideoHeader from './../../components/general/VideoHeader'
-import Footer from './../../components/general/Footer'
-import { ContainerForCommunity } from './../../components/general/InternalLayout'
-import MainSettingsAdmin from './../../components/settingsForAdmin/MainSettingsAdmin'
-import VerticalHeader from './../../components/general/VerticalHeader'
+import MainVideoListener from './../../components/community/MainVideoListener'
+import RegHeader from '../../components/general/RegHeader'
+import VideoHeader from '../../components/general/VideoHeader'
+import Footer from '../../components/general/Footer'
+import { ContainerForCommunity } from '../../components/general/InternalLayout'
+import MainSettingsAdmin from '../../components/settingsForAdmin/MainSettingsAdmin'
+import VerticalHeader from '../../components/general/VerticalHeader'
 
-const VideoAdmin = ({communityData, isAdmin, communityDataSubSpace, isSubSpace, fangelConnectData}) => {
+const VideoSpeaker = ({communityData, isAdmin, communityDataSubSpace, isSubSpace, fangelConnectData}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openMoldal = () => {
     setModalIsOpen(true)
@@ -25,22 +25,22 @@ const VideoAdmin = ({communityData, isAdmin, communityDataSubSpace, isSubSpace, 
         <VerticalHeader />
         <VideoHeader 
           communityData={communityData} 
+          communityDataSubSpace={communityDataSubSpace}
+          isSubSpace={isSubSpace} 
           isSettings="none" 
           closeModal={closeModal} 
-          modalIsOpen={modalIsOpen} 
-          isSubSpace={isSubSpace} 
-          communityDataSubSpace={communityDataSubSpace}/>
-        <MainVideoUser 
+          modalIsOpen={modalIsOpen}/>
+        <MainVideoListener 
           communityData={communityData}
-          open={openMoldal} 
-          isAdmin={isAdmin} 
-          isSubSpace={isSubSpace} 
+          open={openMoldal}
+          isSubSpace={isSubSpace}
+          isAdmin={isAdmin}
           communityDataSubSpace={communityDataSubSpace}
           fangelConnectData={fangelConnectData}/>
         {/* Solo para desktop */}
         <MainSettingsAdmin 
-          communityData={communityData}
           isAdmin={isAdmin}
+          communityData={communityData}
           inDesktop="grid"
           isSubSpace={isSubSpace} 
           communityDataSubSpace={communityDataSubSpace}/>
@@ -50,4 +50,4 @@ const VideoAdmin = ({communityData, isAdmin, communityDataSubSpace, isSubSpace, 
   );
 }
 
-export default VideoAdmin;
+export default VideoSpeaker;
