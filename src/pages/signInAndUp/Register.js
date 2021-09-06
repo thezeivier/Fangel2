@@ -81,11 +81,11 @@ const Register = () => {
     return <MainSpinner/>
   }
 
-  if (switchRegisterTypeUser) {
-    return (
-      <SwitchRegisterTypeUser typeUser={changeRegisterTypeUser} />
-    )
-  }
+  // if (switchRegisterTypeUser) {
+  //   return (
+  //     <SwitchRegisterTypeUser typeUser={changeRegisterTypeUser} />
+  //   )
+  // }
 
   // console.log(emailRegistered)
   // console.log(codeBValidated)
@@ -107,70 +107,70 @@ const Register = () => {
             <ExternalsWrapper>
               <ContainerDesktop>
                 {
-                  !userPersonal ? (
-                    <>
-                      <SubtitleStyled>Registra tu empresa para empezar</SubtitleStyled>
-                      <TextStyled></TextStyled>
-                      <ErrorAlert>
-                        {emailRegistered === false? "Ya existe una cuenta empresarial con este correo*": ""}
-                      </ErrorAlert>
-                      <Form center>
-                        <InputStyled 
-                          type="text"
-                          placeholder="Nombre de la empresa"
-                          name="businessName"
-                          ref={register(otherTextValidator)}
-                        />
-                        <ErrorAlert>
-                          {errors.firstName? errors.otherText.message: ""}
-                        </ErrorAlert>
+                  // !userPersonal ? (
+                  //   <>
+                  //     <SubtitleStyled>Registra tu empresa para empezar</SubtitleStyled>
+                  //     <TextStyled></TextStyled>
+                  //     <ErrorAlert>
+                  //       {emailRegistered === false? "Ya existe una cuenta empresarial con este correo*": ""}
+                  //     </ErrorAlert>
+                  //     <Form center>
+                  //       <InputStyled 
+                  //         type="text"
+                  //         placeholder="Nombre de la empresa"
+                  //         name="businessName"
+                  //         ref={register(otherTextValidator)}
+                  //       />
+                  //       <ErrorAlert>
+                  //         {errors.firstName? errors.otherText.message: ""}
+                  //       </ErrorAlert>
                         
-                        <InputStyled 
-                          type="text"
-                          placeholder="Sector"
-                          name="businessSector"
-                          ref={register(otherTextValidator)}
-                        />
-                        <ErrorAlert>
-                          {errors.lastName? errors.otherText.message: ""}
-                        </ErrorAlert>
+                  //       <InputStyled 
+                  //         type="text"
+                  //         placeholder="Sector"
+                  //         name="businessSector"
+                  //         ref={register(otherTextValidator)}
+                  //       />
+                  //       <ErrorAlert>
+                  //         {errors.lastName? errors.otherText.message: ""}
+                  //       </ErrorAlert>
 
-                        <InputStyled 
-                          type="text"
-                          placeholder="Sede principal. Ejm: Lima, Perú"
-                          name="businessAddress"
-                          ref={register(emailFValidator)} 
-                        />
-                        <ErrorAlert>
-                          {errors.email? errors.email.message: ""} 
-                        </ErrorAlert>
+                  //       <InputStyled 
+                  //         type="text"
+                  //         placeholder="Sede principal. Ejm: Lima, Perú"
+                  //         name="businessAddress"
+                  //         ref={register(emailFValidator)} 
+                  //       />
+                  //       <ErrorAlert>
+                  //         {errors.email? errors.email.message: ""} 
+                  //       </ErrorAlert>
 
-                        <InputPasswordContainer>
-                          <InputStyled
-                            id="password"
-                            type="password"
-                            placeholder="Contraseña"
-                            name="password"
-                            autocomplete="new-password"
-                            ref={register(passwordFValidator)} 
-                          />
-                          <ButtonViewPassword viewPassword={ViewPassword} view={view} />
-                        </InputPasswordContainer>
-                        <ErrorAlert>
-                          {errors.password? errors.password.message: ""}
-                        </ErrorAlert>
-                        <Contract>
-                          Al registrarte estas de acuerdo con los <Link to={"/terms-conditions"}>Términos y Condiciones</Link> y <Link to={"/politics-privacy"}>Políticas de privacidad.</Link>
-                        </Contract>
-                        <ButtonStyled primary type="submit">Registrarse</ButtonStyled>
-                        <SeparatorStyled>o</SeparatorStyled>
-                        <ButtonStyled solidWhite googleIcon type="button" id="google-auth" onClick={() => onClickWithGoogle(auth, firebase, firestore, contextFromApp.routeProviderRoom.routeShareRoom, history)}>
-                          <span aria-labelledby="google-auth"></span>
-                          Regístrate con Google
-                        </ButtonStyled>
-                      </Form>
-                    </>
-                  ) : (
+                  //       <InputPasswordContainer>
+                  //         <InputStyled
+                  //           id="password"
+                  //           type="password"
+                  //           placeholder="Contraseña"
+                  //           name="password"
+                  //           autocomplete="new-password"
+                  //           ref={register(passwordFValidator)} 
+                  //         />
+                  //         <ButtonViewPassword viewPassword={ViewPassword} view={view} />
+                  //       </InputPasswordContainer>
+                  //       <ErrorAlert>
+                  //         {errors.password? errors.password.message: ""}
+                  //       </ErrorAlert>
+                  //       <Contract>
+                  //         Al registrarte estas de acuerdo con los <Link to={"/terms-conditions"}>Términos y Condiciones</Link> y <Link to={"/politics-privacy"}>Políticas de privacidad.</Link>
+                  //       </Contract>
+                  //       <ButtonStyled primary type="submit">Registrarse</ButtonStyled>
+                  //       <SeparatorStyled>o</SeparatorStyled>
+                  //       <ButtonStyled solidWhite googleIcon type="button" id="google-auth" onClick={() => onClickWithGoogle(auth, firebase, firestore, contextFromApp.routeProviderRoom.routeShareRoom, history)}>
+                  //         <span aria-labelledby="google-auth"></span>
+                  //         Regístrate con Google
+                  //       </ButtonStyled>
+                  //     </Form>
+                  //   </>
+                  // ) : (
                     <>
                       <SubtitleStyled>Regístrate para empezar</SubtitleStyled>
                       <TextStyled>A tener conexiones duraderas con nuevas personas</TextStyled>
@@ -233,7 +233,7 @@ const Register = () => {
                         </ButtonStyled>
                       </Form>
                     </>
-                  )
+                  // )
                 }
               </ContainerDesktop>
               <LinkOtherPage>
