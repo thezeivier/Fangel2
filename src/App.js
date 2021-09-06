@@ -21,7 +21,7 @@ import Profile from './pages/Profile'
 import ThanksReport from './pages/ThanksReport'
 import DashboardSpaces from './pages/DashboardSpaces'
 import FangelConnect from './pages/FangelConnect'
-import CreateBusinessProfile from './pages/CreateBusinessProfile'
+// import CreateBusinessProfile from './pages/CreateBusinessProfile'
 import BusinessProfile from './pages/BusinessProfile'
 import {SwitchCommunityVideo} from './pages/inCommunity/SwitchCommunityVideo'
 import {SwitchCommunitySubSpace} from './pages/inCommunity/SwitchCommunitySubSpace'
@@ -195,7 +195,7 @@ function App() {
               <Route exact path={"/u/:id"} component={authState ? Profile : Landing}/> {/* temporal */}
               <Route exact path={"/thank-you"} component={authState? ThanksReport : Landing}/>
               <Route exact path={"/dashboard/my-spaces"} component={authState? DashboardSpaces : Landing}/>
-              <Route exact path={"/create-business-profile"} component={authState? CreateBusinessProfile : Landing}/>
+              {/* <Route exact path={"/create-business-profile"} component={authState? CreateBusinessProfile : Landing}/> */}
               <Route exact path={"/business-profile"} component={authState? BusinessProfile : Landing}/>
               {ListOfRoutes.map((route)=>{
                 return <ExternalLayoutRoute key={route.path} authState={authState} {...route} />

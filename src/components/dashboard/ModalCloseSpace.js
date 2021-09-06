@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Wrapper from './../general/Wrapper'
+import LoadServSpinner from '../spinner/LoadServSpinner'
 import { ModalCloseContainer, SubtitleStyled, TextStyled, ButtonsContainer,
          ButtonStyled } from './styles/sModalCloseSpace'
 import {deleteSpaceAndMessages} from './algorithms/deleteSpaceAndMessages' //Recordar que hay que migrar a una cloudFunction por motivos de rendimiento.
@@ -8,7 +9,10 @@ import "firebase/functions";
 
 const ModalCloseSpace = ({ modalIsOpen, roomName, uid, creatorUid }) => {
 
+  const [deleting, setDeleting] = useState(false)
+
   const handleDeleteSpace = async() =>{
+    setDeleting(true)
     const path = {
       space: `/communities/${roomName}`,
       chatRoom: `/chatroom/${roomName}`,
@@ -18,22 +22,29 @@ const ModalCloseSpace = ({ modalIsOpen, roomName, uid, creatorUid }) => {
     }else{
       modalIsOpen()//Cierra el Modal en caso de ser un pirata que intenta eliminar el espacio.
     }
+    setDeleting(false)
   }
+
   return (
-    <main>
-      <Wrapper>
-        <ModalCloseContainer>
-          <div>
-            <SubtitleStyled as="p">¿Estás seguro(a) de eliminar este espacio?</SubtitleStyled>
-            <TextStyled as="span">También se eliminarán los subespacios y no se podrán recuperar después</TextStyled>
-          </div>
-          <ButtonsContainer>
-            <a onClick={modalIsOpen}>No, gracias</a>
-            <ButtonStyled secondary onClick={handleDeleteSpace}>Sí, porfavor</ButtonStyled>{/*Llamado a la ejecución de eliminación de espacio*/}
-          </ButtonsContainer>
-        </ModalCloseContainer>
-      </Wrapper>
-    </main>
+    <>
+      {deleting? 
+        <LoadServSpinner title="Elminando espacio social"/>:
+        <main>
+          <Wrapper>
+            <ModalCloseContainer>
+              <div>
+                <SubtitleStyled as="p">¿Estás seguro(a) de eliminar este espacio?</SubtitleStyled>
+                <TextStyled as="span">También se eliminarán los subespacios y no se podrán recuperar después</TextStyled>
+              </div>
+              <ButtonsContainer>
+                <a onClick={modalIsOpen}>No, gracias</a>
+                <ButtonStyled secondary onClick={handleDeleteSpace}>Sí, porfavor</ButtonStyled>{/*Llamado a la ejecución de eliminación de espacio*/}
+              </ButtonsContainer>
+            </ModalCloseContainer>
+          </Wrapper>
+        </main>
+      }
+    </>
   );
 }
 

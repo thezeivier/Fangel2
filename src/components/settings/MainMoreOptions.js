@@ -37,12 +37,13 @@ const listOptionsDashBoard = [
     svg: <DashboardSVG className="icon" />,
     name: 'Espacios creados',
     to: '/dashboard/my-spaces'
-  }, {
-    id: 2,
-    svg: <BusinessProfileSVG className="icon" />,
-    name: 'Crear perfil para empresas',
-    to: '/create-business-profile'
-  },
+  }, 
+  // {
+  //   id: 2,
+  //   svg: <BusinessProfileSVG className="icon" />,
+  //   name: 'Crear perfil para empresas',
+  //   to: '/create-business-profile'
+  // },
 ]
 
 const MainSettings = () => {
