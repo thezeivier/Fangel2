@@ -37,6 +37,7 @@ const ownerUserToolBarButtons = [
   'raisehand',
   'sharedvideo',
   'select-background',
+  "settings"
 ]
 
 const listenersUserToolBarButtons = [
@@ -88,7 +89,7 @@ const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipa
 
     JitsiMeetAPI.executeCommands({
       toggleAudio: [],
-      // toggleVideo: [],
+      toggleVideo: [],
       avatarUrl: [dataUser.photoUrl? dataUser.photoUrl: null],
       email: [dataUser.email],
       toggleVirtualBackgroundDialog: [],
@@ -112,7 +113,9 @@ const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipa
     //   SetNumberOfParticipants(firestore, number, communityDataRoom.roomName)
     // JitsiMeetAPI.executeCommand('startShareVideo', "2jmZeLlaCDc")
     // })
-    
+    JitsiMeetAPI.addEventListener('participantRoleChanged', (event) => {
+      console.log(event)
+    })
   };
 
   
