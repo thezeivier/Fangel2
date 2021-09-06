@@ -30,10 +30,12 @@ const ModalCloseSpace = ({ modalIsOpen, roomName, uid, creatorUid, privacy, setL
     if(privacy === "public"){
       const newPublicListOfSpaces = listOfSpaces.public.filter(space => space.roomName !== roomName)
       listOfSpaces.public = newPublicListOfSpaces
+      setListOfSpaces(0)
       setListOfSpaces(listOfSpaces)
     }else if(privacy === "private"){
       const newPrivateListOfSpaces = listOfSpaces.private.filter(space => space.roomName !== roomName)
       listOfSpaces.private = newPrivateListOfSpaces
+      setListOfSpaces(0)
       setListOfSpaces(listOfSpaces)
     }else{
       window.location.reload()

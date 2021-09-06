@@ -16,10 +16,7 @@ const DashboardSpaces = () => {
     if(authState && listOfSpaces === null) {
       setListOfSpaces(await recoverSpaces(firestore, authState))
     }
-    console.log(listOfSpaces)
   },[authState, firestore, listOfSpaces])
-
-  console.log("render")
   
   return (
     <main>
