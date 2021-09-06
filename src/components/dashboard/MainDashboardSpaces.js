@@ -13,11 +13,14 @@ const DashboardSpaces = () => {
   const {authState} = contextFromApp
   const [listOfSpaces, setListOfSpaces] = useState(null)
   useEffect(async()=>{
-    if(authState) {
+    if(authState && listOfSpaces === null) {
       setListOfSpaces(await recoverSpaces(firestore, authState))
     }
-  },[authState. firestore])
+    console.log(listOfSpaces)
+  },[authState, firestore, listOfSpaces])
 
+  console.log("render")
+  
   return (
     <main>
       <Wrapper>
@@ -29,7 +32,7 @@ const DashboardSpaces = () => {
                   <ul>
                     {
                       listOfSpaces.public.map((space)=>{
-                        return <DbSpaceCard key={space.roomName} {...space} uid={authState.uid}/>
+                        return <DbSpaceCard setListOfSpaces={setListOfSpaces} listOfSpaces={listOfSpaces} key={space.roomName} {...space} uid={authState.uid}/>
                       })
                     }
                   </ul>
@@ -42,7 +45,7 @@ const DashboardSpaces = () => {
                   <ul>
                     {
                       listOfSpaces.private.map((space)=>{
-                        return <DbSpaceCard key={space.roomName} {...space} uid={authState.uid}/>
+                        return <DbSpaceCard setListOfSpaces={setListOfSpaces} listOfSpaces={listOfSpaces} key={space.roomName} {...space} uid={authState.uid}/>
                       })
                     }
                   </ul>

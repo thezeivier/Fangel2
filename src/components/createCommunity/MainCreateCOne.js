@@ -101,7 +101,7 @@ const MainCreateCOne = () => {
                       </label>
                     </FieldSet>
                   </div>
-                  <div>
+                  {/* <div>
                     <SubtitleStyled>Finalidad del espacio</SubtitleStyled>
                     <FieldSet>
                       {roomPrivacy === "private" &&
@@ -117,7 +117,7 @@ const MainCreateCOne = () => {
                         Conferencia <span className="spanRadiosDescription">(Mayor a 30 personas)</span>
                       </label>
                     </FieldSet>
-                  </div>
+                  </div> */}
                   <InputStyled type="text" placeholder="Nombre del espacio social" name="nameCommunity" ref={register({required:{value: true, message:"Campo requerido*"}})}/>
                   <ErrorAlert>{errors.nameCommunity? errors.nameCommunity.message: ""}</ErrorAlert>
                   {roomPrivacy === "public" && 

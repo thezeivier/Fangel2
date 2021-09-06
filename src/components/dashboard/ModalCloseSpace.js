@@ -7,7 +7,7 @@ import {deleteSpaceAndMessages} from './algorithms/deleteSpaceAndMessages' //Rec
 import firebase from "firebase/app";
 import "firebase/functions";
 
-const ModalCloseSpace = ({ modalIsOpen, roomName, uid, creatorUid }) => {
+const ModalCloseSpace = ({ modalIsOpen, roomName, uid, creatorUid, privacy, setListOfSpaces, listOfSpaces }) => {
 
   const [deleting, setDeleting] = useState(false)
 
@@ -22,7 +22,22 @@ const ModalCloseSpace = ({ modalIsOpen, roomName, uid, creatorUid }) => {
     }else{
       modalIsOpen()//Cierra el Modal en caso de ser un pirata que intenta eliminar el espacio.
     }
-    setDeleting(false)
+    modalIsOpen()
+    deleteLocalSpace()
+  }
+
+  const deleteLocalSpace = () => {
+    if(privacy === "public"){
+      const newPublicListOfSpaces = listOfSpaces.public.filter(space => space.roomName !== roomName)
+      listOfSpaces.public = newPublicListOfSpaces
+      setListOfSpaces(listOfSpaces)
+    }else if(privacy === "private"){
+      const newPrivateListOfSpaces = listOfSpaces.private.filter(space => space.roomName !== roomName)
+      listOfSpaces.private = newPrivateListOfSpaces
+      setListOfSpaces(listOfSpaces)
+    }else{
+      window.location.reload()
+    }
   }
 
   return (
