@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useRouteMatch, useHistory, useLocation } from 'react-router-dom'
+import { useRouteMatch, useHistory, useLocation, Redirect } from 'react-router-dom'
 import 'firebase/database'
 import { AppContext } from '../../App'
 import { GetCommunityVideoData } from './algorithms/GetCommunityVideoData'
@@ -30,6 +30,14 @@ const SwitchCommunityVideo = () => {
     const [stateContract, setStateContract] = useState(false)
     const [stateScore, setStateScore] = useState(null)
     const [fangelConnectData, setFangelConnectData] = useState(null)
+
+    useEffect(() => {
+        let communityData = data[0]
+        if(communityData && communityData.emailRestriction && !userFromDB.email.endsWith(communityData.emailRestriction)) {
+            history.push("/")
+            return window.location.reload()
+        }
+    }, [data])
     
     useEffect(async ()=>{
         let communityData = data[0]
@@ -53,8 +61,9 @@ const SwitchCommunityVideo = () => {
     
     if(status) return <MainSpinner/>
     if(error) return null
-
+    
     let communityData = data[0]
+ 
     const isAdmin = GetAdminCommunity(communityData.creatorUid, userFromDB.uid)
     
     const activeCommunityValue = {
