@@ -59,7 +59,7 @@ const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, commu
         </SectionContainer>
         <SectionContainer width50ptg domine>
               <SubtitleStyled as="h4">Seguridad</SubtitleStyled>
-                <TextBody>Restricción de dominio: "{emailRestriction && emailRestriction}"</TextBody>
+                <TextBody>Restricción de dominio: {emailRestriction && `"${emailRestriction}"`}</TextBody>
                 <InputContainer domine>
                   <InputStyledForm 
                     id="emailRestriction" 
