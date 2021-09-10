@@ -22,7 +22,7 @@ const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, commu
 
   const handleSendEmailRestriction = (e) => {
     e.preventDefault();
-    let value = document.getElementById("emailRestriction")
+    let value = document.getElementById("emailRestriction").value
     let batch = firestore.batch()
     let spaceRef = firestore.collection("communities").doc(communityData.roomName)
     batch
@@ -33,7 +33,7 @@ const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, commu
       },
       {merge: true}
     )
-    if(value.includes == "@"){
+    if(value.includes("@")){
       batch.commit().then(setEmailRestriction(value))
     }
   }
