@@ -17,6 +17,10 @@ import {CopyCode} from '../createCommunity/algorithms/CopyCode'
 const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, communityDataSubSpace }) => {
   const [hoverRef, isHovered] = useHover();
   const contextFromApp = useContext(AppContext)
+
+  const handleSendEmailRestriction = () => {
+
+  }
   return (
     <DisplayContainer inDesktop={inDesktop}>
       <div>
@@ -37,10 +41,7 @@ const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, commu
             </InputContainer>
           </div>
         </SectionContainer>
-        {
-          communityData.privacy === "private" && !isSubSpace &&
-          <>
-            <SectionContainer width50ptg domine>
+        <SectionContainer width50ptg domine>
               <SubtitleStyled as="h4">Seguridad</SubtitleStyled>
                 <TextBody>Restricción de dominio:</TextBody>
                 <InputContainer domine>
@@ -48,9 +49,12 @@ const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, commu
                     id="" 
                     placeholder="Ejm: @example.com" 
                   />
-                  <ButtonStyled secondary>Guardar</ButtonStyled>
+                  <ButtonStyled secondary onClick={handleSendEmailRestriction}>Guardar</ButtonStyled>
                 </InputContainer>
             </SectionContainer>
+        {
+          communityData.privacy === "private" && !isSubSpace &&
+          <>
             <SectionContainer>
               <SubtitleStyled as="h4">Subespacios</SubtitleStyled>
               <SubSpaceMain isAdmin={isAdmin} communityData={communityData} isSubSpace={isSubSpace}/>
