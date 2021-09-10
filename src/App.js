@@ -102,6 +102,10 @@ function App() {
                   { merge: true }
                 )
               }
+
+              if(!dataUser.username){
+                window.location.reload()
+              }
               if(!dataUser.photoUrl){
                 if(dataUser.bucket && dataUser.route){
                   const profileImageReference = storage.refFromURL(`gs://${dataUser.bucket}/${dataUser.route}`)
