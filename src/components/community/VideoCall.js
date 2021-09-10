@@ -45,7 +45,6 @@ const listenersUserToolBarButtons = [
   "tileview",
   "microphone",
   "raisehand",
-  "camera",
   "videoquality",
   // 'shortcuts',
 ]
