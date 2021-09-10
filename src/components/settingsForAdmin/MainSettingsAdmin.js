@@ -16,10 +16,26 @@ import {CopyCode} from '../createCommunity/algorithms/CopyCode'
 
 const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, communityDataSubSpace }) => {
   const [hoverRef, isHovered] = useHover();
+  const [emailRestriction, setEmailRestriction] = useState(communityData.emailRestriction ? communityData.emailRestriction: null);
   const contextFromApp = useContext(AppContext)
+  const firestore = useFirestore()
 
-  const handleSendEmailRestriction = () => {
-
+  const handleSendEmailRestriction = (e) => {
+    e.preventDefault();
+    let value = document.getElementById("emailRestriction")
+    let batch = firestore.batch()
+    let spaceRef = firestore.collection("communities").doc(communityData.roomName)
+    batch
+    .set(
+      spaceRef,
+      {
+        emailRestriction: value
+      },
+      {merge: true}
+    )
+    if(value.includes == "@"){
+      batch.commit().then(setEmailRestriction(value))
+    }
   }
   return (
     <DisplayContainer inDesktop={inDesktop}>
@@ -43,10 +59,10 @@ const MainSettingsAdmin = ({isAdmin, inDesktop, communityData, isSubSpace, commu
         </SectionContainer>
         <SectionContainer width50ptg domine>
               <SubtitleStyled as="h4">Seguridad</SubtitleStyled>
-                <TextBody>Restricción de dominio:</TextBody>
+                <TextBody>Restricción de dominio: "{emailRestriction && emailRestriction}"</TextBody>
                 <InputContainer domine>
                   <InputStyledForm 
-                    id="" 
+                    id="emailRestriction" 
                     placeholder="Ejm: @example.com" 
                   />
                   <ButtonStyled secondary onClick={handleSendEmailRestriction}>Guardar</ButtonStyled>
