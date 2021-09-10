@@ -37,6 +37,17 @@ export const SectionContainer = styled.section`
       width: 50%;
     }
   `}
+
+  ${props => props.domine && css`
+    p {
+      margin: 0 0 10px 0;
+    }
+
+    button {
+      height: 52px;
+      display: block !important;
+    }
+  `}
 `
 
 export const SubtitleStyled = styled(SecondaryTitle)`
@@ -75,6 +86,23 @@ export const InputContainer = styled.div`
       display: block;
     }
   }
+
+  ${props => props.domine && css`
+    flex-direction: column;
+    justify-content: default;
+    
+    button {
+      margin: 0;
+    }
+
+    @media(min-width:1200px) {
+      flex-direction: row;
+
+      button {
+        margin: 0 0 0 10px;
+      }
+    }
+  `}
 `
 
 export const ButtonStyled = styled(Button)`
