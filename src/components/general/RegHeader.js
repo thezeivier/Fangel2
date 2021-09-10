@@ -21,9 +21,9 @@ const RegHeader = ({isBusinessAccount}) => {
           <Logo />
           <IconsContainer>
             <div className="nameUserProfile">
-              {contextFromApp? (contextFromApp.authState? contextFromApp.authState.displayName:userFromDB.name.firstName):"Cargando..."}{/*Falta maquillar*/}
+              {authState? authState.displayName: userFromDB.name.firstName}{/*Falta maquillar*/}
             </div>
-            <Link to={`/u/${contextFromApp.authState && userFromDB.username}`}>
+            <Link to={`/u/${authState && userFromDB && userFromDB.username}`}>
               {
                 profileThumb?
                 <img src={profileThumb} className="profileImg" alt="Imagen de perfil" style={{borderRadius: "100%"}} />:
