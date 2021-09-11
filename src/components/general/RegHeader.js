@@ -10,6 +10,8 @@ import { ReactComponent as ChatSVG } from './icons/chat.svg'
 import { ReactComponent as HomeSVG } from './icons/home.svg'
 import { ReactComponent as MenuSVG } from './icons/menu.svg'
 
+import MainSpinner from '../spinner/MainSpinner';
+
 const RegHeader = ({isBusinessAccount}) => {
   const contextFromApp = useContext(AppContext)
   const { userFromDB, profileThumb, authState } = contextFromApp 
