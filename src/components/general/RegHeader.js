@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import { AppContext } from '../../App'
 import Logo from './Logo'
 import Wrapper from './Wrapper'
@@ -14,6 +14,14 @@ const RegHeader = ({isBusinessAccount}) => {
   const contextFromApp = useContext(AppContext)
   const { userFromDB, profileThumb, authState } = contextFromApp 
   // console.log(contextFromApp)
+
+  // useEffect(() => {
+
+  // }, [userFromDB])
+
+  if(authState && !userFromDB.username) {
+    return <p>Loading</p>
+  }
   return (
     <Header className="regHeader">
       <Wrapper>

@@ -46,7 +46,7 @@ const Register = () => {
 
   const onClickWithGoogle = async (auth, firebase, firestore, nextRoute, history) => {
     setLoading(true)
-    SignInWithGoogle(auth, firebase, firestore, nextRoute, history)
+    await SignInWithGoogle(auth, firebase, firestore, nextRoute, history)
     setLoading(false)
   }
 

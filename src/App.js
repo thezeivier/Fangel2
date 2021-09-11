@@ -103,9 +103,9 @@ function App() {
                 )
               }
 
-              if(!dataUser.username){
-                window.location.reload()
-              }
+              // if(!dataUser.username){
+              //   window.location.reload()
+              // }
               
               if(!dataUser.photoUrl){
                 if(dataUser.bucket && dataUser.route){
