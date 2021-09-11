@@ -40,6 +40,13 @@ const MainHome = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const modalOpen = () => setModalIsOpen(!modalIsOpen)
 
+  if(communities && userFromDB) {
+    let communityRestrict = userFromDB.email && communities.filter(item => item.emailRestriction && !userFromDB.email.endsWith(item.emailRestriction))
+    // let communityPermit = communities.filter((item, index) => item.roomName !== communityRestrict[index].roomName)
+    // console.log(communityPermit)
+    // console.log("communityRestrict")
+  }
+
   return (
     <main>
       <Wrapper>
@@ -49,10 +56,17 @@ const MainHome = () => {
         {
           isAdmin && //If the user is an admin, activate the "AddCardContainer" button.
             <CardsContainer>
-              <AddCardContainer colorbackground="#E9760D" colorhover="#C56610" as={Link} to="/fangel-connect" >
-                <FangelConnectSVG />
+              {fangelScore >= 135 ?
+                <AddCardContainer colorbackground="#E9760D" colorhover="#C56610" as={Link} to="/fangel-connect" >
+                  <FangelConnectSVG />
+                  <span>Fangel Connect</span>
+                </AddCardContainer> :
+                <AddCardContainer locked="true" colorbackground="#844d1c">
+                <SpacesSVG />
                 <span>Fangel Connect</span>
+                <LockedSVG className="disableIcon" />
               </AddCardContainer>
+              }
               {fangelScore >= 135 ?
                 <AddCardContainer colorbackground="#2D9CDB" colorhover="#2277A7" as={Link} to="/create-community-1" >
                   <SpacesSVG />

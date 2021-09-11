@@ -74,7 +74,7 @@ export const AddCardContainer = styled.li`
     }
 
     &:hover {
-      background: #032655;
+      /* background: #032655; */
 
       svg {
         transform: scale(1);
