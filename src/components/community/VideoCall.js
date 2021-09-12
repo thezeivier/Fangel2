@@ -37,7 +37,8 @@ const ownerUserToolBarButtons = [
   'raisehand',
   'sharedvideo',
   'select-background',
-  "settings"
+  "settings",
+  "livestreaming"
 ]
 
 const listenersUserToolBarButtons = [
