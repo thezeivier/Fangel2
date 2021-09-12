@@ -127,7 +127,7 @@ const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipa
   
   return(
     <Jitsi
-      domain="videocall.fangelweb.com"
+      domain={isAdmin || isSpeaker ? "meet.jit.si": "videocall.fangelweb.com"}
       onAPILoad={handleAPI}
       password={!communityDataRoom.communityDataSubSpace ? `fangel_${communityDataRoom.roomName}_fangel` : `fangel_${communityDataRoom.communityData.roomName}&@&${communityDataRoom.communityDataSubSpace.id}_fangel`}
       roomName={ !communityDataRoom.communityDataSubSpace ? communityDataRoom.roomName : `${communityDataRoom.communityData.roomName}${communityDataRoom.communityDataSubSpace.id}`}
