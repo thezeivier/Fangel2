@@ -53,11 +53,8 @@ export const ContainerForCommunity = styled.div`
     flex: 1 0 auto;
 
     @media(min-width:1200px) {
-      margin: 15px 140px 0 170px;
+      margin: 15px 15px 0 95px;
       padding: 0px;
-      display: grid;
-      grid-template-columns: auto max-content;
-      column-gap: 15px;
     }
   }
 
