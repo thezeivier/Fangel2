@@ -26,19 +26,38 @@ const interfaceConfig = {
 };
 
 const ownerUserToolBarButtons = [
-  "microphone",
-  "camera",
-  "fullscreen",
+  'camera',
+  'chat',
+  'closedcaptions',
   'desktop',
-  "videoquality",
-  "tileview",
-  "mute-everyone",
+  // 'download',
+  // 'embedmeeting',
+  // 'etherpad',
+  // 'feedback',
+  'filmstrip',
+  'fullscreen',
+  // 'hangup',
+  // 'help',
+  // 'invite',
+  // 'livestreaming',
+  'microphone',
+  'mute-everyone',
   'mute-video-everyone',
+  'participants-pane',
+  'profile',
   'raisehand',
-  'sharedvideo',
+  // 'recording',
+  'security',
   'select-background',
-  "settings",
-  "livestreaming"
+  'settings',
+  'shareaudio',
+  'sharedvideo',
+  'shortcuts',
+  // 'stats',
+  'tileview',
+  'toggle-camera',
+  'videoquality',
+  // '__end'
 ]
 
 const listenersUserToolBarButtons = [
@@ -47,7 +66,7 @@ const listenersUserToolBarButtons = [
   "microphone",
   "raisehand",
   "videoquality",
-  // 'shortcuts',
+  'shortcuts',
 ]
 
 const speakersUserToolBarButtons = [
@@ -113,9 +132,9 @@ const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipa
     //   SetNumberOfParticipants(firestore, number, communityDataRoom.roomName)
     // JitsiMeetAPI.executeCommand('startShareVideo', "2jmZeLlaCDc")
     // })
-    JitsiMeetAPI.addEventListener('participantRoleChanged', (event) => {
-      console.log(event)
-    })
+    // JitsiMeetAPI.addEventListener('participantRoleChanged', (event) => {
+    //   console.log(event)
+    // })
   };
 
   
@@ -124,11 +143,12 @@ const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipa
   const interfaceListenerUserConf = {...restConf, TOOLBAR_BUTTONS: listenersUserToolBarButtons}
   const interfaceSpeakerUserConf = {...restConf, TOOLBAR_BUTTONS: speakersUserToolBarButtons}
   
-  const typeOfInterfaceUser = isAdmin ? interfaceOwnerUserConf : (isSpeaker ? interfaceSpeakerUserConf : interfaceListenerUserConf) 
+  // const typeOfInterfaceUser = isAdmin ? interfaceOwnerUserConf : (isSpeaker ? interfaceSpeakerUserConf : interfaceListenerUserConf)
+  const typeOfInterfaceUser = interfaceOwnerUserConf 
   
   return(
     <Jitsi
-      domain="videocall.fangelweb.com"
+      domain="talk.fangelweb.com"
       onAPILoad={handleAPI}
       password={!communityDataRoom.communityDataSubSpace ? `fangel_${communityDataRoom.roomName}_fangel` : `fangel_${communityDataRoom.communityData.roomName}&@&${communityDataRoom.communityDataSubSpace.id}_fangel`}
       roomName={ !communityDataRoom.communityDataSubSpace ? communityDataRoom.roomName : `${communityDataRoom.communityData.roomName}${communityDataRoom.communityDataSubSpace.id}`}

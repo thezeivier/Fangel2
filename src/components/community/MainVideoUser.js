@@ -39,9 +39,9 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
     <MainOnlyDesktop>
       <div style={{position: "relative"}}>
         <EmbedVideo communityData={communityData} isAdmin={isAdmin} isSubSpace={isSubSpace} communityDataSubSpace={communityDataSubSpace} />
-        <ButtonComments onClick={buttonComments}>Comentarios</ButtonComments>
+        {/* <ButtonComments onClick={buttonComments}>Comentarios</ButtonComments> */}
       </div>
-      <Wrapper height="100%">
+      {/* <Wrapper height="100%">
         <ContainerResponsive id="containerComments">
           {
             fangelConnectData &&
@@ -50,7 +50,7 @@ const MainVideoUser = ({ communityData, modalIsOpen, open, closeModal, isAdmin, 
           <CommentsBox background="true" data={data} userFromDB={userFromDB} lastMsgRef={lastMsgRef} />
           <InputComments background="true" userFromDB={userFromDB} data={data} messageRef={messageRef} lastMsgRef={lastMsgRef} name={authState.displayName} open={open} /> 
         </ContainerResponsive>
-      </Wrapper>
+      </Wrapper> */}
       <ModalSettingsAdmin communityData={communityData} modalIsOpen={modalIsOpen} isSubSpace={isSubSpace} closeModal={closeModal} communityDataSubSpace={communityDataSubSpace}/>
     </MainOnlyDesktop>
   );
