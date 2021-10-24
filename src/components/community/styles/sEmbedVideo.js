@@ -58,9 +58,10 @@ export const EmbedContainer = styled.div`
     visibility: hidden !important;
   }
 
-  @media(min-width:1000px) {
+  @media(min-width:1200px) {
     border-radius: 10px;
-    padding-bottom: calc(100vh - 90px);
+    padding-bottom: ${props => props.paddingBottom};
+  }
 
   iframe {
     position: absolute;
