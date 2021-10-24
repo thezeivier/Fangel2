@@ -155,7 +155,7 @@ const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipa
       displayName={authState.displayName}
       loadingComponent={VideoSpinner}
       interfaceConfig={typeOfInterfaceUser}
-      containerStyle={{ width: '110vw', height: '90vh' }}
+      containerStyle={{ width: '110vw', height: '45em' }}
       config={config}
     />
   )
