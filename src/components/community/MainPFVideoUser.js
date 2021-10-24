@@ -26,7 +26,7 @@ const MainPFVideoUser = ({children, communityGlobalData, setCommunityGlobalData}
         <FullSreenSVG className="fullScreenSvg" onClick={handleClickToCommunity}/>
         <CloseSVG onClick={handleLeaveCommunity}/>
       </SvgsContainer>
-      <EmbedContainer hover>
+      <EmbedContainer hover paddingBottom='56.25%'>
         {children}
       </EmbedContainer>
       <TitleStyled as="h3">{!communityGlobalData.communityDataSubSpace ? communityGlobalData.title : `${communityGlobalData.communityData.title} - ${communityGlobalData.communityDataSubSpace.nameOfSpace}`}</TitleStyled>
