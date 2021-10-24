@@ -110,7 +110,7 @@ const VideoCall = ({dataUser, authState, communityDataRoom, SetNumberOfParticipa
       toggleAudio: [],
       toggleVideo: [],
       avatarUrl: [dataUser.photoUrl? dataUser.photoUrl: null],
-      email: [dataUser.email],
+      email: [dataUser.email? dataUser.email: null],
       toggleVirtualBackgroundDialog: [],
       subject: [communityDataRoom.privacy === "public"? `${communityDataRoom.title} - Público`:  `${communityDataRoom.title}`],
     });
