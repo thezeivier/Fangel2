@@ -8,12 +8,12 @@ import { VerifyIsBusinessProfile } from './algorithms/VerifyIsBusinessProfile'
 import { IsSpeaker } from './algorithms/IsSpeaker'
 
 const interfaceConfig = {
-  LANG_DETECTION: false,
+  LANG_DETECTION: true,
   lang: "es",
   APP_NAME: "fangel",
   CONNECTION_INDICATOR_DISABLED: true,
-  DEFAULT_REMOTE_DISPLAY_NAME: 'Fangeller',
-  DEFAULT_BACKGROUND: '#252525',
+  DEFAULT_REMOTE_DISPLAY_NAME: 'Fangel User',
+  DEFAULT_BACKGROUND: "#e1812a",
   DEFAULT_LOCAL_DISPLAY_NAME: '',
   DISABLE_PRESENCE_STATUS: true,
   DISABLE_JOIN_LEAVE_NOTIFICATIONS: true,

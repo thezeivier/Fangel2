@@ -1,10 +1,11 @@
 import React, {useState, useEffect, useContext} from 'react';
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useLocation} from 'react-router-dom'
 import { ButtonStyled } from './styles/sButtonLeaveCom'
 import {SwitchVideoContext} from '../../pages/inCommunity/SwitchCommunityVideo' 
 
 const ButtonLeaveCom = ({ communityProvider, setCommunityGlobalData}) => {
   const history = useHistory()
+  const location = useLocation()
   const contextOfSwitchVideo = useContext(SwitchVideoContext)
   const stateScore = contextOfSwitchVideo ?.stateScore
   const setStateScore = contextOfSwitchVideo ?.setStateScore
@@ -21,7 +22,14 @@ const ButtonLeaveCom = ({ communityProvider, setCommunityGlobalData}) => {
     if(subSpaceState && communityProvider) {
       history.push(`/room/${communityProvider.communityGlobalData.communityData.roomName}`)
     } else if(stateScore !== null) {
-      setStateScore(true)
+      try{
+        setStateScore(true)
+      }catch(err){
+        if(location.pathname.startsWith("/room/") && location.pathname.slice(6).includes("/")){
+          const roomRoute = location.pathname.slice(6)
+          history.push(`/room/${roomRoute.slice(0, roomRoute.indexOf("/"))}`)
+        }
+      }
     }else{
       history.push(`/`)
       setCommunityGlobalData(false)
