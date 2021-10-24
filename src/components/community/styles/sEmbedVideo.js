@@ -43,7 +43,8 @@ export const VideoContainer = styled.div`
 
 export const EmbedContainer = styled.div`
   position: relative;
-  padding-bottom: 56.25%;
+  /* padding-bottom: 56.25%; */
+  padding-bottom: calc(100vh - 64px);
   height: 0;
   overflow: hidden;
 
@@ -57,9 +58,9 @@ export const EmbedContainer = styled.div`
     visibility: hidden !important;
   }
 
-  @media(min-width:1200px) {
+  @media(min-width:1000px) {
     border-radius: 10px;
-  }
+    padding-bottom: calc(100vh - 90px);
 
   iframe {
     position: absolute;
@@ -67,10 +68,6 @@ export const EmbedContainer = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-  }
-
-  @media(min-width:1200px) {
-    padding-bottom: 45.85%;
   }
 `
 
