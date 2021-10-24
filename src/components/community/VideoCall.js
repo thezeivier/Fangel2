@@ -84,7 +84,7 @@ const speakersUserToolBarButtons = [
 
 
 const config = {
-  defaultLanguage: "es",
+  defaultLanguage: "esUS",
   prejoinPageEnabled: false,
   enableWelcomePage: false,
   disableProfile: true,
