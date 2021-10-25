@@ -4,7 +4,7 @@ const Container = styled.div`
   background: ${props => props.theme.background};
   color:${props => props.theme.textColor};
   height: 100%;
-  width: 100vw;
+  width: 98vw;
   overflow-y: none;
 
   @media(min-width:1200px) {

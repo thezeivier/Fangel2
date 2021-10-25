@@ -43,9 +43,13 @@ export const VideoContainer = styled.div`
 
 export const EmbedContainer = styled.div`
   position: relative;
-  /* padding-bottom: 56.25%; */
-  padding-bottom: calc(100vh - 64px);
-  height: 0;
+  border-radius: 10px;
+  // padding-bottom: 0;
+  // padding-bottom: 56.25%;
+  ${({ active }) => active && `
+    padding-bottom: calc(100vh - 80px);
+  `}
+  height: 280px;
   overflow: hidden;
 
   .watermark {
@@ -59,7 +63,6 @@ export const EmbedContainer = styled.div`
   }
 
   @media(min-width:1200px) {
-    border-radius: 10px;
     padding-bottom: ${props => props.paddingBottom};
   }
 
