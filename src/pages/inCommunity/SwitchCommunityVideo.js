@@ -31,7 +31,7 @@ const SwitchCommunityVideo = () => {
     const [stateScore, setStateScore] = useState(null)
     const [fangelConnectData, setFangelConnectData] = useState(null)
 
-    useEffect(() => {
+    useEffect(async () => {
         let communityData = data[0]
         if(communityData && communityData.emailRestriction && !userFromDB.email.endsWith(communityData.emailRestriction)) {
             history.push("/")
@@ -40,7 +40,7 @@ const SwitchCommunityVideo = () => {
     }, [data])
     
     useEffect(async ()=>{
-        let communityData = data[0]
+        let communityData = await data[0]
         if(location.state && location.state.origin){
             setStateScore(false)
             setStateLocation(location.state.origin)

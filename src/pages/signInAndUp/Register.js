@@ -44,12 +44,6 @@ const Register = () => {
     }
   },[auth, firestore, firebase])
 
-  const onClickWithGoogle = async (auth, firebase, firestore, nextRoute, history) => {
-    setLoading(true)
-    await SignInWithGoogle(auth, firebase, firestore, nextRoute, history)
-    setLoading(false)
-  }
-
   const onSubmit = async (data) => {
     setDataRegister(data)
     setLoading(true)
@@ -227,7 +221,7 @@ const Register = () => {
                         </Contract>
                         <ButtonStyled primary type="submit">Registrarse</ButtonStyled>
                         <SeparatorStyled>o</SeparatorStyled>
-                        <ButtonStyled solidWhite googleIcon type="button" id="google-auth" onClick={() => onClickWithGoogle(auth, firebase, firestore, contextFromApp.routeProviderRoom.routeShareRoom, history)}>
+                        <ButtonStyled solidWhite googleIcon type="button" id="google-auth" onClick={() => SignInWithGoogle(auth, firebase, firestore, contextFromApp.routeProviderRoom.routeShareRoom, history)}>
                           <span aria-labelledby="google-auth"></span>
                           Regístrate con Google
                         </ButtonStyled>

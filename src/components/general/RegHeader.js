@@ -10,7 +10,7 @@ import { ReactComponent as ChatSVG } from './icons/chat.svg'
 import { ReactComponent as HomeSVG } from './icons/home.svg'
 import { ReactComponent as MenuSVG } from './icons/menu.svg'
 
-import MainSpinner from '../spinner/MainSpinner';
+import MinSpinner from '../spinner/MinSpinner';
 
 const RegHeader = ({isBusinessAccount}) => {
   const contextFromApp = useContext(AppContext)
@@ -18,11 +18,11 @@ const RegHeader = ({isBusinessAccount}) => {
   // console.log(contextFromApp)
 
   // useEffect(() => {
-
+    
   // }, [userFromDB])
 
   if(authState && !userFromDB.username) {
-    return <p>Loading</p>
+    return <MinSpinner/>
   }
   return (
     <Header className="regHeader">
