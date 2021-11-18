@@ -47,9 +47,9 @@ export const EmbedContainer = styled.div`
   // padding-bottom: 0;
   // padding-bottom: 56.25%;
   ${({ active }) => active && `
-    padding-bottom: calc(100vh - 80px);
+    // padding-bottom: calc(100vh - 80px);
+    height: 280px;
   `}
-  height: 280px;
   overflow: hidden;
 
   .watermark {
@@ -63,7 +63,11 @@ export const EmbedContainer = styled.div`
   }
 
   @media(min-width:1200px) {
-    padding-bottom: ${props => props.paddingBottom};
+    // padding-bottom: ${props => props.paddingBottom};
+  }
+
+  @media(min-width:1440px) {
+    height: 90vh;
   }
 
   iframe {

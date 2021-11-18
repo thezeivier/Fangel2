@@ -22,7 +22,7 @@ const EmbedVideo = ({ communityData, communityDataSubSpace, isSubSpace }) => {
           <ButtonLeaveCom setCommunityGlobalData={setCommunityGlobalData} communityProvider={communityProvider}/>
         </ButtonLeaveContainer>
       </TitleOnlyDesktopContainer>
-      <EmbedContainer active>
+      <EmbedContainer>
         {videoCall}
       </EmbedContainer>
     </VideoContainer>
